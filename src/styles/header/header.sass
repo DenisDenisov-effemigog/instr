@@ -1,36 +1,37 @@
 .header
     & > .container
         display: flex
-        padding: 1.25rem 0
         align-items: center
-        +mobile
-            justify-content: space-between
+        justify-content: space-between
+        padding: .75rem 0
+        +tablet
+            padding: 1.25rem 0
     &__logo
-        +mobile
-            order: 2
+        order: 2
         padding-right: 2rem
-
+        +tablet
+            order: 0
     &__catalog
-        +mobile
-            order: 1
+        order: 1
         padding-right: 1.5rem
+        +tablet
+            order: 0
     &__catalog-btn
         @extend .button-catalogue
-        +mobile
-            display: none
+        display: none
+        +tablet
+            display: block
     &__catalog-btn-icon
         padding-right: 0.625rem
     &__catalog-mobile
-        display: none
-        +mobile
-            display: block
+        +tablet
+            display: none
 
     &__menu
-        +mobile
-            display: none
-    &__menu-list
-        display: flex
-        align-items: center
+        display: none
+        +tablet
+            display: flex
+            align-items: center
     &__menu-item
         padding-right: 1.5rem
         &:last-child
@@ -39,23 +40,27 @@
         display: flex
         flex-direction: column
         align-items: center
+    &__menu-icon
+        margin-bottom: .5rem
     &__menu-text
         color: $black
 
     &__search
-        +mobile
-            order: 3
-        padding-right: 1.625rem
+        order: 3
         +tablet
+            padding-right: 1.625rem
+            order: 0
             flex: 1
     &__search-mobile
-        display: none
-        +mobile
-            display: block
-    &__search-form
         display: flex
-        +mobile
+        +tablet
             display: none
+    &__search-mobile-icon
+        height: 1.125rem
+    &__search-form
+        display: none
+        +tablet
+            display: flex
     &__search-input
         +border-style
         flex: 1

@@ -1,4 +1,5 @@
 .topnav
+    @extend .text-2
     background: #F6F6F6
     +mobile
         display: none
@@ -18,13 +19,17 @@
     &__switch
         padding-right: 1.625rem
         display: flex
+        align-items: center
     &__switch-icon
         padding-right: 0.313rem
+        &_opened
+            transform: rotate(180deg)
     &__switch-text
         color: $grey
     &__phone
     &__phone-link
         color: $grey
         display: flex
+        align-items: center
     &__phone-icon 
         padding-right: 0.625rem
