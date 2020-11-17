@@ -78,3 +78,26 @@
         weight: $font-weight_semibold
     line-height: $line-height_3
     color: $blue
+
+.discount
+    &-text
+        font:
+            family: $font-montserrat-medium-italic
+            size: $font-size
+            weight: $font-weight_medium
+            style: italic
+        line-height: 80%
+        color: $white
+        &_bold
+            @extend .discount-text
+            font:
+                family: $font-montserrat-bold-italic
+                weight: $font-weight_bold
+    &-value
+        font:
+            family: $font-montserrat-bold-italic
+            size: $font-size_7
+            weight: $font-weight_bold
+            style: italic
+        line-height: $line-height_7
+        color: $white
