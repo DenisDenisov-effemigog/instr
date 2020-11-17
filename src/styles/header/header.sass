@@ -1,0 +1,65 @@
+.header
+    & > .container
+        display: flex
+        padding: 1.25rem 0
+        align-items: center
+        +mobile
+            justify-content: space-between
+    &__logo
+        +mobile
+            order: 2
+        padding-right: 2rem
+
+    &__catalog
+        +mobile
+            order: 1
+        padding-right: 1.5rem
+    &__catalog-btn
+        @extend .button-catalogue
+        +mobile
+            display: none
+    &__catalog-btn-icon
+        padding-right: 0.625rem
+    &__catalog-mobile
+        display: none
+        +mobile
+            display: block
+
+    &__menu
+        +mobile
+            display: none
+    &__menu-list
+        display: flex
+        align-items: center
+    &__menu-item
+        padding-right: 1.5rem
+        &:last-child
+            padding-right: 0
+    &__menu-link
+        display: flex
+        flex-direction: column
+        align-items: center
+    &__menu-text
+        color: $black
+
+    &__search
+        +mobile
+            order: 3
+        padding-right: 1.625rem
+        +tablet
+            flex: 1
+    &__search-mobile
+        display: none
+        +mobile
+            display: block
+    &__search-form
+        display: flex
+        +mobile
+            display: none
+    &__search-input
+        +border-style
+        flex: 1
+        height: 2.5rem
+        padding-left: 2.375rem
+        background: url(../images/header/icons/mag.svg) left 0.75rem center no-repeat
+    
