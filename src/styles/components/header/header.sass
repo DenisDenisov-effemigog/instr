@@ -1,0 +1,62 @@
+.header
+    &-container
+        @extend .container
+        display: flex
+        padding: 1.25rem 0
+        align-items: center
+        +mobile
+            justify-content: space-between
+    &__logo
+        +mobile
+            order: 2
+        padding-right: 2rem
+    &__catalog
+        +mobile
+            order: 1
+        padding-right: 1.5rem
+        &-btn
+            @extend .button-catalogue
+            +mobile
+                display: none
+            &-icon
+                padding-right: 0.625rem
+        &-mobile
+            display: none
+            +mobile
+                display: block
+    &__menu
+        +mobile
+            display: none
+        &-list
+            display: flex
+            align-items: center
+        &-item
+            padding-right: 1.5rem
+            &:last-child
+                padding-right: 0
+        &-link
+            display: flex
+            flex-direction: column
+            align-items: center
+        &-text
+            color: $black
+    &__search
+        +mobile
+            order: 3
+        padding-right: 1.625rem
+        +tablet
+            flex: 1
+        &-mobile
+            display: none
+            +mobile
+                display: block
+        &-form
+            display: flex
+            +mobile
+                display: none
+        &-input
+            flex: 1
+            height: 2.5rem
+            padding-left: 2.375rem
+            background: url(../images/header/icons/mag.svg) left 0.75rem center no-repeat
+    
