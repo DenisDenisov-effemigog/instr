@@ -1,0 +1,82 @@
+
+.column
+  display: block
+  flex-basis: 0
+  flex-grow: 1
+  flex-shrink: 1
+  padding: $column-gap
+
+  +mobile
+    @for $i from 0 through 12
+      &_width-mobile_#{$i}
+        flex: none
+        width: percentage($i / 12)
+      &_offset-mobile_#{$i}
+        margin-left: percentage($i / 12)
+
+  +tablet
+    @for $i from 0 through 12
+      &_width_#{$i},
+      &_width-tablet_#{$i}
+        flex: none
+        width: percentage($i / 12)
+      &_offset_#{$i},
+      &_offset-tablet_#{$i}
+        margin-left: percentage($i / 12)
+
+  +desktop
+    @for $i from 0 through 12
+      &_width-desktop_#{$i}
+        flex: none
+        width: percentage($i / 12)
+      &_offset-desktop_#{$i}
+        margin-left: percentage($i / 12)
+
+.columns
+  margin-left: (-$column-gap)
+  margin-right: (-$column-gap)
+  margin-top: (-$column-gap)
+
+  &:last-child
+    margin-bottom: (-$column-gap)
+
+  &:not(:last-child)
+    margin-bottom: $columns-margin - $column-gap
+
+  +mobile
+    margin-left: (-$column-gap_mobile)
+    margin-right: (-$column-gap_mobile)
+    margin-top: (-$column-gap_mobile)
+    &:last-child
+      margin-bottom: (-$column-gap_mobile)
+    &:not(:last-child)
+      margin-bottom: $columns-margin_mobile - $column-gap_mobile
+    > .column
+      padding: $column-gap_mobile
+
+
+  &_mobile
+    display: flex
+
+  &_multiline
+    flex-wrap: wrap
+
+  &_gapless
+    margin-left: 0
+    margin-right: 0
+    margin-top: 0
+
+    & > .column
+      margin: 0
+      padding: 0
+
+    &:not(:last-child)
+      margin-bottom: $columns-margin
+
+    &:last-child
+      margin-bottom: 0
+
+  +tablet
+    display: flex
+    //flex-wrap: wrap
+

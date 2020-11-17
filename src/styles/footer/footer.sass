@@ -1,0 +1,111 @@
+.footer
+    background-color: $light
+    border-top: 1px solid $border-color_2
+    .container
+        display: flex
+        flex-direction: column
+        padding: 2rem 0 0 0
+        +desktop
+            flex-direction: row
+            align-items: center
+            padding: 5.5rem 0
+
+    &__layout
+        width: 100%
+        +desktop
+            display: flex
+            flex-direction: column
+            justify-content: space-between
+            width: percentage(4 / 12)
+
+    &__logo
+        text-transform: uppercase
+
+    &__company
+        @extend .text-2
+        color: $light-grey
+        &_mobile
+            @extend .text-3
+            width: 100%
+            margin: 0 -1rem
+            padding: 1rem 1rem 1.5rem 1rem
+            border-top: 1px solid $border-color_2
+            +tablet
+                font-size: $font-size_3
+                line-height: $line-height_3
+            +desktop
+                display: none
+        &_desktop
+            display: none
+            +desktop
+                display: block
+                margin: 2rem 0 1rem 0
+
+    &__agreement
+        @extend .text-1
+        &_mobile
+            @extend .text-2
+            margin: 2rem 0
+            +tablet
+                font-size: $font-size
+                line-height: $line-height
+            +desktop
+                display: none
+        &_desktop
+            display: none
+            +desktop
+                display: block
+    &__menu
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        width: 100%
+        margin-top: 1.5rem
+        +tablet
+            flex-direction: row
+        +desktop
+            width: percentage(8 / 12)
+            margin-top: 0
+    &__menu-column
+        //margin-top: 1.5rem
+        &_mobile
+            display: flex
+            margin-bottom: 2rem
+            +tablet
+                display: none
+            & > ul
+                width: 50%
+        &_desktop
+            display: none
+            +tablet
+                display: block
+
+    &__menu-title
+        @extend .text-2
+        height: 1.25rem
+        margin-bottom: 1rem
+        +tablet
+            font-size: $font-size
+            line-height: $line-height
+
+    &__menu-item
+        @extend .text-3
+        color: $light-grey
+        +tablet
+            font-size: $font-size_3
+            line-height: $line-height_3
+        &:not(:last-of-type)
+            margin-bottom: .5rem
+        & > a
+            color: $light-grey
+            & > div:not(:last-of-type)
+                margin-bottom: .5rem
+        &_img
+            display: flex
+            flex-direction: flex-start
+            align-items: center
+
+    &__menu-icon
+        margin-right: .375rem
+        +tablet
+            margin-right: .625rem
