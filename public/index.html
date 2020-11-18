@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
@@ -7,186 +8,192 @@
     <title>Мир Инструмента</title>
     <link rel="stylesheet" href="./css/css.min.css">
 </head>
+
 <body class="page">
-
-    <div class="topnav">
-        <div class="container">
-            <nav class="topnav__nav">
-                <ul class="topnav__nav-list">
-                    <li class="topnav__nav-item">
-                        <a href="#" class="topnav__nav-link">О компании</a>
-                    </li>
-                    <li class="topnav__nav-item">
-                        <a href="#" class="topnav__nav-link">Филиалы</a>
-                    </li>
-                    <li class="topnav__nav-item">
-                        <a href="#" class="topnav__nav-link">Где купить</a>
-                    </li>
-                    <li class="topnav__nav-item">
-                        <a href="#" class="topnav__nav-link">Условия сотрудничества</a>
-                    </li>
-                    <li class="topnav__nav-item">
-                        <a href="#" class="topnav__nav-link">Бренды</a>
-                    </li>
-                    <li class="topnav__nav-item">
-                        <a href="#" class="topnav__nav-link">Акции</a>
-                    </li>
-                </ul>
-            </nav>
-            <div class="topnav__switch">
-                <img src="./images/header/icons/arrow.svg" alt="открыть" class="topnav__switch-icon">
-                <div class="topnav__switch-text">Toolsworld/Romania</div>
-            </div>
-            <a href="#" class="topnav__phone">
-                <img src="./images/header/icons/phone.svg" alt="позвонить" class="topnav__phone-icon">
-                +4 0371 166 478
-            </a>
-        </div>
-    </div>
-    <header class="header">
-        <div class="container">
-            <div class="header__logo">
-                <a href="#" class="header__logo-link">
-                    <img src="./images/header/logo.png" alt="Логотип" class="header__logo-pic">
-                </a>
-            </div>
-            <div class="header__catalog">
-                <div class="header__catalog-mobile">
-                    <img src="./images/header/icons/mobile-ham.svg" alt="открыть" class="header__catalog-mobile-icon">
+    <div id="app">
+        <div class="topnav">
+            <div class="container">
+                <nav class="topnav__nav">
+                    <ul class="topnav__nav-list">
+                        <li class="topnav__nav-item">
+                            <a href="#" class="topnav__nav-link">О компании</a>
+                        </li>
+                        <li class="topnav__nav-item">
+                            <a href="#" class="topnav__nav-link">Филиалы</a>
+                        </li>
+                        <li class="topnav__nav-item">
+                            <a href="#" class="topnav__nav-link">Где купить</a>
+                        </li>
+                        <li class="topnav__nav-item">
+                            <a href="#" class="topnav__nav-link">Условия сотрудничества</a>
+                        </li>
+                        <li class="topnav__nav-item">
+                            <a href="#" class="topnav__nav-link">Бренды</a>
+                        </li>
+                        <li class="topnav__nav-item">
+                            <a href="#" class="topnav__nav-link">Акции</a>
+                        </li>
+                    </ul>
+                </nav>
+                <component is="topnav-switch"></component>
+                <div class="topnav__phone">
+                    <a href="#" class="topnav__phone-link">
+                        <img src="./images/header/icons/phone.svg" alt="позвонить" class="topnav__phone-icon">
+                        +4 0371 166 478
+                    </a>
                 </div>
-                <button class="header__catalog-btn">
-                    <img src="./images/header/icons/ham.svg" alt="открыть" class="header__catalog-btn-icon">
-                    Каталог
-                </button>
             </div>
-            <div class="header__search">
-                <div class="header__search-mobile">
-                    <img src="./images/header/icons/mag.svg" alt="" class="header__search-mobile-icon">
-                </div>
-                <form action="" class="header__search-form">
-                    <input type="text" class="header__search-input" placeholder="Поиск по сайту">
-                </form>
-            </div>
-            <ul class="header__menu">
-                <li class="header__menu-item">
-                    <a href="#" class="header__menu-link">
-                        <img src="./images/header/icons/user.svg" alt="личный кабинет" class="header__menu-icon">
-                        <p class="header__menu-text">Войти</p>
-                    </a>
-                </li>
-                <li class="header__menu-item">
-                    <a href="#" class="header__menu-link">
-                        <img src="./images/header/icons/graf.svg" alt="иконка сравнения" class="header__menu-icon">
-                        <p class="header__menu-text">Сравнить</p>
-                    </a>
-                </li>
-                <li class="header__menu-item">
-                    <a href="#" class="header__menu-link">
-                        <img src="./images/header/icons/heart.svg" alt="иконка избранного" class="header__menu-icon">
-                        <p class="header__menu-text">Избранное</p>
-                    </a>
-                </li>
-                <li class="header__menu-item">
-                    <a href="#" class="header__menu-link header__menu-link_cart_active">
-                        <img src="./images/header/icons/cart.svg" alt="иконка корзины" class="header__menu-icon">
-                        <p class="header__menu-text">Корзина</p>
-                    </a>
-                </li>
-            </ul>
         </div>
-    </header>
-
-    <main class="">
-
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-
-            <div class="footer__layout">
-                <picture>
-                    <source media="(max-width:768px)" srcset="./images/footer/logo-footer_mobile.svg">
-                    <img src="./images/footer/logo-footer.svg" class="footer__logo" alt="instrumtorg logo">
-                </picture>
-                <div class="footer__company footer__company_desktop">&#169; 2020 ООО «МИР ИНСТРУМЕНТА»</div>
-                <a href="#" class="footer__agreement footer__agreement_desktop">Пользовательское соглашение</a>
-            </div>
-
-            <nav class="footer__menu">
-                <ul class="footer__menu-column footer__menu-column_desktop">
-                    <li class="footer__menu-title"><a href="#">О&nbsp;компании</a></li>
-                    <li class="footer__menu-item"><a href="#">Филиалы</a></li>
-                    <li class="footer__menu-item"><a href="#">Бренды</a></li>
-                    <li class="footer__menu-item"><a href="#">Гарантия</a></li>
-                    <li class="footer__menu-item"><a href="#">Новости</a></li>     
-                </ul>
-                <ul class="footer__menu-column footer__menu-column_desktop">
-                    <li class="footer__menu-title"><a href="#">Помощь</a></li>
-                    <li class="footer__menu-item"><a href="#">Акции</a></li>
-                    <li class="footer__menu-item"><a href="#">Оптовые&nbsp;скидки</a></li>
-                    <li class="footer__menu-item"><a href="#">Каталог&nbsp;товаров</a></li>
-                    <li class="footer__menu-item"><a href="#">Где купить</a></li>     
-                </ul>
-                <ul class="footer__menu-column footer__menu-column_desktop">
-                    <li class="footer__menu-title"><a href="#">Покупателю</a></li>
-                    <li class="footer__menu-item"><a href="#">Сервис&nbsp;и&nbsp;гарантия</a></li>
-                    <li class="footer__menu-item"><a href="#">Обратная&nbsp;связь</a></li>
-                    <li class="footer__menu-item">
-                        <a href="#">
-                            <div>Политика&nbsp;обработки</div>
-                            <div>персональных&nbsp;данных</div>
+        <component is="country"></component>
+        <header class="header">
+            <div class="container">
+                <div class="header__logo">
+                    <a href="#" class="header__logo-link">
+                        <img src="./images/header/logo.png" alt="Логотип" class="header__logo-pic">
+                    </a>
+                </div>
+                <div class="header__catalog">
+                    <div class="header__catalog-mobile">
+                        <img src="./images/header/icons/mobile-ham.svg" alt="открыть"
+                            class="header__catalog-mobile-icon">
+                    </div>
+                    <button class="header__catalog-btn">
+                        <img src="./images/header/icons/ham.svg" alt="открыть" class="header__catalog-btn-icon">
+                        Каталог
+                    </button>
+                </div>
+                <div class="header__search">
+                    <div class="header__search-mobile">
+                        <img src="./images/header/icons/mag.svg" alt="" class="header__search-mobile-icon">
+                    </div>
+                    <form action="" class="header__search-form">
+                        <input type="text" class="header__search-input" placeholder="Поиск по сайту">
+                    </form>
+                </div>
+                <ul class="header__menu">
+                    <li class="header__menu-item">
+                        <a href="#" class="header__menu-link">
+                            <img src="./images/header/icons/user.svg" alt="личный кабинет" class="header__menu-icon">
+                            <p class="header__menu-text">Войти</p>
                         </a>
-                    </li>    
+                    </li>
+                    <li class="header__menu-item">
+                        <a href="#" class="header__menu-link">
+                            <img src="./images/header/icons/graf.svg" alt="иконка сравнения" class="header__menu-icon">
+                            <p class="header__menu-text">Сравнить</p>
+                        </a>
+                    </li>
+                    <li class="header__menu-item">
+                        <a href="#" class="header__menu-link">
+                            <img src="./images/header/icons/heart.svg" alt="иконка избранного"
+                                class="header__menu-icon">
+                            <p class="header__menu-text">Избранное</p>
+                        </a>
+                    </li>
+                    <li class="header__menu-item">
+                        <a href="#" class="header__menu-link">
+                            <img src="./images/header/icons/cart.svg" alt="иконка корзины" class="header__menu-icon">
+                            <p class="header__menu-text">Корзина</p>
+                        </a>
+                    </li>
                 </ul>
-                <div class="footer__menu-column footer__menu-column_mobile">
-                    <ul>
-                        <li class="footer__menu-title"><a href="#">Помощь</a></li>
-                        <li class="footer__menu-item"><a href="#">Каталог&nbsp;товаров</a></li>
-                        <li class="footer__menu-item"><a href="#">Акции</a></li>
+            </div>
+        </header>
+
+        <main class="">
+
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+
+                <div class="footer__layout">
+                    <picture>
+                        <source media="(max-width:768px)" srcset="./images/footer/logo-footer_mobile.svg">
+                        <img src="./images/footer/logo-footer.svg" class="footer__logo" alt="instrumtorg logo">
+                    </picture>
+                    <div class="footer__company footer__company_desktop">&#169; 2020 ООО «МИР ИНСТРУМЕНТА»</div>
+                    <a href="#" class="footer__agreement footer__agreement_desktop">Пользовательское соглашение</a>
+                </div>
+
+                <nav class="footer__menu">
+                    <ul class="footer__menu-column footer__menu-column_desktop">
+                        <li class="footer__menu-title">О&nbsp;компании</li>
+                        <li class="footer__menu-item"><a href="#">Филиалы</a></li>
                         <li class="footer__menu-item"><a href="#">Бренды</a></li>
                         <li class="footer__menu-item"><a href="#">Гарантия</a></li>
-                        <li class="footer__menu-item"><a href="#">Где купить</a></li>
-                        <li class="footer__menu-item"><a href="#">Оптовые&nbsp;скидки</a></li>
+                        <li class="footer__menu-item"><a href="#">Новости</a></li>
                     </ul>
-                    <ul>
-                        <li class="footer__menu-title"></li>
+                    <ul class="footer__menu-column footer__menu-column_desktop">
+                        <li class="footer__menu-title">Помощь</li>
+                        <li class="footer__menu-item"><a href="#">Акции</a></li>
+                        <li class="footer__menu-item"><a href="#">Оптовые&nbsp;скидки</a></li>
+                        <li class="footer__menu-item"><a href="#">Каталог&nbsp;товаров</a></li>
+                        <li class="footer__menu-item"><a href="#">Где купить</a></li>
+                    </ul>
+                    <ul class="footer__menu-column footer__menu-column_desktop">
+                        <li class="footer__menu-title">Покупателю</li>
+                        <li class="footer__menu-item"><a href="#">Сервис&nbsp;и&nbsp;гарантия</a></li>
+                        <li class="footer__menu-item"><a href="#">Обратная&nbsp;связь</a></li>
                         <li class="footer__menu-item">
                             <a href="#">
                                 <div>Политика&nbsp;обработки</div>
                                 <div>персональных&nbsp;данных</div>
                             </a>
-                        </li>    
-                        <li class="footer__menu-item"><a href="#">Новости</a></li>
-                        <li class="footer__menu-item"><a href="#">Филиалы</a></li>
-                        <li class="footer__menu-item"><a href="#">Обратная&nbsp;связь</a></li>
-                        <li class="footer__menu-item"><a href="#">Сервис&nbsp;и&nbsp;гарантия</a></li>
+                        </li>
                     </ul>
-                </div>
-                <ul class="footer__menu-column">
-                    <li class="footer__menu-title"><a href="#">Контакты</a></li>
-                    <li class="footer__menu-item footer__menu-item_img">
-                        <img src="./images/footer/icons/phone.svg" class="footer__menu-icon" alt="контакты">
-                        <a href="#">8&nbsp;(800)&nbsp;200-49-49</a>
-                    </li>
-                    <li class="footer__menu-item footer__menu-item_img">
-                        <img src="./images/footer/icons/working-time.svg" class="footer__menu-icon" alt="время работы">
-                        <a href="#">пн-пт&nbsp;2-18&nbsp;(мск)</a>
-                    </li>
-                    <li class="footer__menu-item footer__menu-item_img">
-                        <img src="./images/footer/icons/email.svg" class="footer__menu-icon" alt="email">
-                        <a href="#">почта@mail.ru</a>
-                    </li>
-                    <li class="footer__menu-item footer__menu-item_img">
-                        <img src="./images/footer/icons/pin.svg" class="footer__menu-icon" alt="адрес">
-                        <a href="#">г.Москва,&nbsp;ул.&nbsp;Трехгорный&nbsp;Вал&nbsp;3</a>
-                    </li>     
-                </ul>
-            </nav>
+                    <div class="footer__menu-column footer__menu-column_mobile">
+                        <ul>
+                            <li class="footer__menu-title">Помощь</li>
+                            <li class="footer__menu-item"><a href="#">Каталог&nbsp;товаров</a></li>
+                            <li class="footer__menu-item"><a href="#">Акции</a></li>
+                            <li class="footer__menu-item"><a href="#">Бренды</a></li>
+                            <li class="footer__menu-item"><a href="#">Гарантия</a></li>
+                            <li class="footer__menu-item"><a href="#">Где купить</a></li>
+                            <li class="footer__menu-item"><a href="#">Оптовые&nbsp;скидки</a></li>
+                        </ul>
+                        <ul>
+                            <li class="footer__menu-title"></li>
+                            <li class="footer__menu-item">
+                                <a href="#">
+                                    <div>Политика&nbsp;обработки</div>
+                                    <div>персональных&nbsp;данных</div>
+                                </a>
+                            </li>
+                            <li class="footer__menu-item"><a href="#">Новости</a></li>
+                            <li class="footer__menu-item"><a href="#">Филиалы</a></li>
+                            <li class="footer__menu-item"><a href="#">Обратная&nbsp;связь</a></li>
+                            <li class="footer__menu-item"><a href="#">Сервис&nbsp;и&nbsp;гарантия</a></li>
+                        </ul>
+                    </div>
+                    <ul class="footer__menu-column">
+                        <li class="footer__menu-title">Контакты</li>
+                        <li class="footer__menu-item footer__menu-item_img">
+                            <img src="./images/footer/phone.svg" class="footer__menu-icon" alt="контакты">
+                            8&nbsp;(800)&nbsp;200-49-49
+                        </li>
+                        <li class="footer__menu-item footer__menu-item_img">
+                            <img src="./images/footer/working-time.svg" class="footer__menu-icon" alt="время работы">
+                            пн-пт&nbsp;2-18&nbsp;(мск)
+                        </li>
+                        <li class="footer__menu-item footer__menu-item_img">
+                            <img src="./images/footer/email.svg" class="footer__menu-icon" alt="email">
+                            почта@mail.ru
+                        </li>
+                        <li class="footer__menu-item footer__menu-item_img">
+                            <img src="./images/footer/pin.svg" class="footer__menu-icon" alt="адрес">
+                            г.Москва,&nbsp;ул.&nbsp;Трехгорный&nbsp;Вал&nbsp;3
+                        </li>
+                    </ul>
+                </nav>
 
-            <a href="#" class="footer__agreement footer__agreement_mobile">Пользовательское соглашение</a>
-            <div class="footer__company footer__company_mobile">&#169; 2020 ООО «МИР ИНСТРУМЕНТА»</div>
+                <a href="#" class="footer__agreement footer__agreement_mobile">Пользовательское соглашение</a>
+                <div class="footer__company footer__company_mobile">&#169; 2020 ООО «МИР ИНСТРУМЕНТА»</div>
 
-        </div>
-    </footer>
+            </div>
+        </footer>
+    </div>
+    <script src="./js/js.min.js"></script>
 </body>
+
 </html>
