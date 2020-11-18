@@ -42,7 +42,8 @@
                 margin: 2rem 0 1rem 0
 
     &__agreement
-        @extend .text-1
+        @extend .link-1
+        //@extend .text-1
         &_mobile
             @extend .text-2
             margin: 2rem 0
@@ -81,23 +82,23 @@
                 display: block
 
     &__menu-title
-        @extend .text-2
         height: 1.25rem
         margin-bottom: 1rem
-        +tablet
-            font-size: $font-size
-            line-height: $line-height
+        & > a
+            @extend .link-1
+            @extend .text-2
+            +tablet
+                font-size: $font-size
+                line-height: $line-height
 
     &__menu-item
-        @extend .text-3
-        color: $light-grey
-        +tablet
-            font-size: $font-size_3
-            line-height: $line-height_3
         &:not(:last-of-type)
             margin-bottom: .5rem
         & > a
-            color: $light-grey
+            @extend .link-2
+            +tablet
+                font-size: $font-size_3
+                line-height: $line-height_3
             & > div:not(:last-of-type)
                 margin-bottom: .5rem
         &_img
