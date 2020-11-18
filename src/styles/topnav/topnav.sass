@@ -28,10 +28,29 @@
             transform: rotate(180deg)
     &__switch-text
     &__phone
+        position: relative
         display: flex
         align-items: center
         @extend .link-2
-        &:hover > img
-            filter: brightness(.5)
+        &:hover
+            & > img
+                filter: brightness(.5)
+            & > .topnav__phone-tooltip
+                display: block
+                top: 2.375rem
+                left: -1.5rem
     &__phone-icon 
         padding-right: 0.625rem
+    &__phone-tooltip
+        @extend .tooltip
+        &::before
+            left: calc(50% - 5px)
+    &__phone-tooltip-layout
+        display: flex
+        align-items: center
+        & > img
+            margin-right: .375rem
+        &:not(:last-of-type)
+            margin-bottom: .5rem
+        &:last-of-type
+            padding-left: 1.125rem
