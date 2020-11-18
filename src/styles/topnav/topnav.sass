@@ -1,5 +1,4 @@
 .topnav
-    @extend .text-2
     background: #F6F6F6
     +mobile
         display: none
@@ -15,21 +14,24 @@
         &:last-child
             padding-right: 0
     &__nav-link
-        color: $grey
+        @extend .link-2
     &__switch
+        @extend .link-2
         padding-right: 1.625rem
         display: flex
         align-items: center
+        &:hover > img
+            filter: brightness(.5)
     &__switch-icon
         padding-right: 0.313rem
         &_opened
             transform: rotate(180deg)
     &__switch-text
-        color: $grey
     &__phone
-    &__phone-link
-        color: $grey
         display: flex
         align-items: center
+        @extend .link-2
+        &:hover > img
+            filter: brightness(.5)
     &__phone-icon 
         padding-right: 0.625rem

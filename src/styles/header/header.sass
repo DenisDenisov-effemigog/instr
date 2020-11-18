@@ -1,4 +1,5 @@
 .header
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
     & > .container
         display: flex
         align-items: center
@@ -37,15 +38,37 @@
         &:last-child
             padding-right: 0
     &__menu-link
+        @extend .link-3
         display: flex
         flex-direction: column
+        justify-content: space-between
         align-items: center
+        height: 3rem
+        &:hover > .header__menu-icon
+            filter: none
+        &_cart_active
+            position: relative
+            &::after
+                position: absolute
+                content: '3'
+                top: -.4375rem
+                right: .75rem
+                display: flex
+                justify-content: center
+                align-items: center
+                width: 1rem
+                height: 1rem
+                border-radius: 50%
+                background-color: $primary-red
+                color: $white
+                @extend .text-3
+                z-index: 4
     &__menu-icon
         margin-bottom: .5rem
-    &__menu-text
-        color: $black
+        filter: grayscale(1)
 
     &__search
+        @extend .text-2
         order: 3
         +tablet
             padding-right: 1.625rem
@@ -63,8 +86,13 @@
             display: flex
     &__search-input
         +border-style
+        @extend .text-2
         flex: 1
         height: 2.5rem
         padding-left: 2.375rem
         background: url(../images/header/icons/mag.svg) left 0.75rem center no-repeat
+        &:hover,
+        &:focus
+            background-image: url(../images/header/icons/mag_black.svg)
+        
     

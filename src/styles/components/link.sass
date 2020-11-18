@@ -1,17 +1,28 @@
 .link
-    @extend .text-1
-    position: relative
-    color: $black
-    &:hover
-        .link::after
-            content: ''
-            position: absolute
-            top: 1.9375rem
-            display: block
-    &_active
-        @extend .link
-        &::after
-            content: ''
-            position: absolute
-            top: 1.9375rem
-            display: block
+    &-1
+        @extend .text-1
+        position: relative
+        color: $black
+        &:hover
+            .link::after
+                content: ''
+                position: absolute
+                top: 1.9375rem
+                display: block
+        &_active
+            @extend .link
+            &::after
+                content: ''
+                position: absolute
+                top: 1.9375rem
+                display: block
+    &-2
+        @extend .text-2
+        color: $grey
+        &:hover
+            color: $black
+    &-3
+        @extend .text-2
+        color: $black
+        &:hover
+            color: $primary-hover
