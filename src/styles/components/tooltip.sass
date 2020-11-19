@@ -18,3 +18,10 @@
         height: 1rem
         background-color: $white
         transform: rotate(45deg)
+    &__item
+        @extend .link-2
+        @extend .text-3
+        display: flex
+        align-items: center
+        &:not(:last-of-type)
+            margin-bottom: .5rem

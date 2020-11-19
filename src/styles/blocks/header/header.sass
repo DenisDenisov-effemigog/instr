@@ -48,7 +48,7 @@
         &:hover
             & > .header__menu-icon
                 filter: none
-            & > .header__menu-tooltip
+            .header__menu-tooltip
                 display: block
                 top: 3.625rem
         &_cart_active
@@ -75,16 +75,11 @@
         @extend .tooltip
 
     &__menu-tooltip-layout
-        display: flex
-        align-items: center
-        &:not(:last-of-type)
-            margin-bottom: .5rem
-        & > div
-            display: flex
-            justify-content: center
-            align-items: center
-            width: .625rem
-            margin-right: .5rem
+        @extend .tooltip__item
+        &:hover img
+            filter: brightness(.5)
+        & > img
+            margin-right: .25rem
 
     &__search
         @extend .text-2
