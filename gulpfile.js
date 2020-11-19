@@ -39,6 +39,7 @@ let config = {
                 './src/main.sass'
             ],
             js: [
+                './node_modules/@babel/polyfill/dist/polyfill.js',
                 './src/index.js'
             ],
             fonts: [
@@ -52,6 +53,29 @@ let config = {
 };
 
 
+gulp.task('fix:vue-agile', function () {
+    const foFind = `// Center mode margin
+\t\t\t\tif (this.settings.centerMode) {
+\t\t\t\t\tmarginX -= (Math.floor(this.settings.slidesToShow / 2) - +(this.settings.slidesToShow % 2 === 0)) * this.widthSlide
+\t\t\t\t}`;
+    const toReplace = `
+                // Center mode margin
+                if (this.settings.centerMode) {
+                    if(this.settings.slidesToShow >= 2) {
+                        marginX -= (Math.floor(this.settings.slidesToShow / 2) - +(this.settings.slidesToShow % 2 === 0)) * this.widthSlide
+                    } else {
+                        marginX -= 0.5 * (this.settings.slidesToShow - 1) * this.widthSlide
+                    }
+                }
+    `;
+
+    return gulp.src([
+        './node_modules/vue-agile/src/Agile.vue'
+    ], {base: './'})
+        .pipe(replace(foFind, toReplace))
+        .pipe(gulp.dest('./'));
+});
+
 gulp.task('fix:vuefy', function () {
     return gulp.src([
         "./node_modules/vueify/lib/compiler.js",
@@ -62,7 +86,8 @@ gulp.task('fix:vuefy', function () {
 });
 
 gulp.task('fix', gulp.parallel(
-    'fix:vuefy'
+    'fix:vuefy',
+    'fix:vue-agile'
 ));
 
 
