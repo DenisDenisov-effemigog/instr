@@ -9,6 +9,9 @@ import sliderMain from '../src/js/components/main-page/slider-main.vue';
 
 Vue.use(VueAgile)
 
+import showCatalogue from '../src/js/components/catalogue/show-catalogue.vue';
+import catalogue from '../src/js/components/catalogue/catalogue.vue';
+
 Vue.prototype.$eventBus = new Vue();
 
 const app = new Vue({
@@ -18,6 +21,8 @@ const app = new Vue({
         country,
         topnavSwitch,
         sliderMain,
+        showCatalogue,
+        catalogue
     },
     mounted() {
     }

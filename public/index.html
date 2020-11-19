@@ -41,7 +41,7 @@
                     +4 0371 166 478
                     <div class="topnav__phone-tooltip">
                         <div class="topnav__phone-tooltip-layout">
-                            <img src="./images/header/icons/clock.svg" alt="время работы">
+                            <img src="./images/header/icons/tooltip/clock.svg" alt="время работы">
                             Пн-Пт: с 9:00 - 18:00
                         </div>
                         <div class="topnav__phone-tooltip-layout">Сб-Вс: с 11:00 - 15:00</div>
@@ -62,10 +62,7 @@
                         <img src="./images/header/icons/mobile-ham.svg" alt="открыть"
                             class="header__catalog-mobile-icon">
                     </div>
-                    <button class="header__catalog-btn">
-                        <img src="./images/header/icons/ham.svg" alt="открыть" class="header__catalog-btn-icon">
-                        Каталог
-                    </button>
+                    <component is="show-catalogue"></component>
                 </div>
                 <div class="header__search">
                     <div class="header__search-mobile">
@@ -81,15 +78,42 @@
                             <img src="./images/header/icons/user.svg" alt="личный кабинет" class="header__menu-icon">
                             <p class="header__menu-text">Войти</p>
                             <div class="header__menu-tooltip">
-                                <div class="header__menu-tooltip-layout">
-                                    <div><img src="./images/header/icons/entrance.svg" alt="вход"></div>
+                                <div href="#" class="header__menu-tooltip-layout">
+                                    <img src="./images/header/icons/entrance.svg" alt="вход">
                                     Вход
                                 </div>
-                                <div class="header__menu-tooltip-layout">
-                                    <div><img src="./images/header/icons/plus.svg" alt="регистрация"></div>
+                                <div href="#" class="header__menu-tooltip-layout">
+                                    <img src="./images/header/icons/plus.svg" alt="регистрация">
                                     Регистрация
                                 </div>
                             </div>
+                            <!-- Tooltip для залогиненных пользователей -->
+                            <!-- <div class="header__menu-tooltip">
+                                <div href="#" class="header__menu-tooltip-layout">
+                                    <img src="./images/header/icons/tooltip/home.svg" alt="вход">
+                                    Мой профиль
+                                </div>
+                                <div href="#" class="header__menu-tooltip-layout">
+                                    <img src="./images/header/icons/tooltip/order.svg" alt="вход">
+                                    Список заказов
+                                </div>
+                                <div href="#" class="header__menu-tooltip-layout">
+                                    <img src="./images/header/icons/tooltip/card.svg" alt="вход">
+                                    Мой счет
+                                </div>
+                                <div href="#" class="header__menu-tooltip-layout">
+                                    <img src="./images/header/icons/tooltip/delivery.svg" alt="вход">
+                                    Адреса доставки
+                                </div>
+                                <div href="#" class="header__menu-tooltip-layout">
+                                    <img src="./images/header/icons/tooltip/sale.svg" alt="вход">
+                                    Акции
+                                </div>
+                                <div href="#" class="header__menu-tooltip-layout">
+                                    <img src="./images/header/icons/tooltip/exit.svg" alt="регистрация">
+                                    Выход
+                                </div>
+                            </div> -->
                         </a>
                     </li>
                     <li class="header__menu-item">
@@ -115,6 +139,8 @@
             </div>
         </header>
 
+        <component is="catalogue"></component>
+
         <main class="">
             <div class="container" style="margin: 40px auto 56px">
                 <component is="slider-main"></component>
@@ -135,21 +161,21 @@
 
                 <nav class="footer__menu">
                     <ul class="footer__menu-column footer__menu-column_desktop">
-                        <li class="footer__menu-title">О&nbsp;компании</li>
+                        <li class="footer__menu-title"><a href="#">О&nbsp;компании</a></li>
                         <li class="footer__menu-item"><a href="#">Филиалы</a></li>
                         <li class="footer__menu-item"><a href="#">Бренды</a></li>
                         <li class="footer__menu-item"><a href="#">Гарантия</a></li>
                         <li class="footer__menu-item"><a href="#">Новости</a></li>
                     </ul>
                     <ul class="footer__menu-column footer__menu-column_desktop">
-                        <li class="footer__menu-title">Помощь</li>
+                        <li class="footer__menu-title"><a href="#">Помощь</a></li>
                         <li class="footer__menu-item"><a href="#">Акции</a></li>
                         <li class="footer__menu-item"><a href="#">Оптовые&nbsp;скидки</a></li>
                         <li class="footer__menu-item"><a href="#">Каталог&nbsp;товаров</a></li>
                         <li class="footer__menu-item"><a href="#">Где купить</a></li>
                     </ul>
                     <ul class="footer__menu-column footer__menu-column_desktop">
-                        <li class="footer__menu-title">Покупателю</li>
+                        <li class="footer__menu-title"><a href="#">Покупателю</a></li>
                         <li class="footer__menu-item"><a href="#">Сервис&nbsp;и&nbsp;гарантия</a></li>
                         <li class="footer__menu-item"><a href="#">Обратная&nbsp;связь</a></li>
                         <li class="footer__menu-item">
@@ -161,7 +187,7 @@
                     </ul>
                     <div class="footer__menu-column footer__menu-column_mobile">
                         <ul>
-                            <li class="footer__menu-title">Помощь</li>
+                            <li class="footer__menu-title"><a href="#">Помощь</a></li>
                             <li class="footer__menu-item"><a href="#">Каталог&nbsp;товаров</a></li>
                             <li class="footer__menu-item"><a href="#">Акции</a></li>
                             <li class="footer__menu-item"><a href="#">Бренды</a></li>
@@ -184,21 +210,21 @@
                         </ul>
                     </div>
                     <ul class="footer__menu-column">
-                        <li class="footer__menu-title">Контакты</li>
+                        <li class="footer__menu-title"><a href="#">Контакты</a></li>
                         <li class="footer__menu-item footer__menu-item_img">
-                            <img src="./images/footer/phone.svg" class="footer__menu-icon" alt="контакты">
+                            <img src="./images/footer/icons/phone.svg" class="footer__menu-icon" alt="контакты">
                             8&nbsp;(800)&nbsp;200-49-49
                         </li>
                         <li class="footer__menu-item footer__menu-item_img">
-                            <img src="./images/footer/working-time.svg" class="footer__menu-icon" alt="время работы">
+                            <img src="./images/footer/icons/working-time.svg" class="footer__menu-icon" alt="время работы">
                             пн-пт&nbsp;2-18&nbsp;(мск)
                         </li>
                         <li class="footer__menu-item footer__menu-item_img">
-                            <img src="./images/footer/email.svg" class="footer__menu-icon" alt="email">
+                            <img src="./images/footer/icons/email.svg" class="footer__menu-icon" alt="email">
                             почта@mail.ru
                         </li>
                         <li class="footer__menu-item footer__menu-item_img">
-                            <img src="./images/footer/pin.svg" class="footer__menu-icon" alt="адрес">
+                            <img src="./images/footer/icons/pin.svg" class="footer__menu-icon" alt="адрес">
                             г.Москва,&nbsp;ул.&nbsp;Трехгорный&nbsp;Вал&nbsp;3
                         </li>
                     </ul>
