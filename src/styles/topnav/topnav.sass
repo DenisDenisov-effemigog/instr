@@ -23,10 +23,13 @@
         align-items: center
         &:hover > img
             filter: brightness(.5)
-    &__switch-icon
+    &__switch-pic
         padding-right: 0.313rem
-        &_opened
+        align-self: baseline
+        &-icon
             transform: rotate(180deg)
+            &_opened
+                transform: rotate(0deg)
     &__switch-text
     &__phone
         display: flex
