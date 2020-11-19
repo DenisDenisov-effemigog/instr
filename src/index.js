@@ -4,6 +4,9 @@ import store from './js/store';
 import country from '../src/js/components/country.vue';
 import topnavSwitch from '../src/js/components/topnav/topnav-switch.vue';
 
+import showCatalogue from '../src/js/components/catalogue/show-catalogue.vue';
+import catalogue from '../src/js/components/catalogue/catalogue.vue';
+
 Vue.prototype.$eventBus = new Vue();
 
 const app = new Vue({
@@ -11,7 +14,9 @@ const app = new Vue({
     store,
     components: {
         country,
-        topnavSwitch
+        topnavSwitch,
+        showCatalogue,
+        catalogue
     },
     mounted() {
     }
