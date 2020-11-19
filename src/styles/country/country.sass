@@ -4,8 +4,9 @@
     width: 100%
     height: 100vh
     z-index: 5
-    &-close
-        display: none
+    display: none
+    &-open
+        display: block
     &__bg
         opacity: 0
         position: absolute
@@ -19,9 +20,11 @@
         position: absolute
         background: #fff
         width: 100%
+        opacity: 0
         top: -28.125rem
         &-open
             transition: 0.3s
+            opacity: 1
             top: 0
     &-container
         @extend .container
