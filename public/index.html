@@ -36,12 +36,17 @@
                     </ul>
                 </nav>
                 <component is="topnav-switch"></component>
-                <div class="topnav__phone">
-                    <a href="#" class="topnav__phone-link">
-                        <img src="./images/header/icons/phone.svg" alt="позвонить" class="topnav__phone-icon">
-                        +4 0371 166 478
-                    </a>
-                </div>
+                <a href="#" class="topnav__phone">
+                    <img src="./images/header/icons/phone.svg" alt="позвонить" class="topnav__phone-icon">
+                    +4 0371 166 478
+                    <div class="topnav__phone-tooltip">
+                        <div class="topnav__phone-tooltip-layout">
+                            <img src="./images/header/icons/clock.svg" alt="время работы">
+                            Пн-Пт: с 9:00 - 18:00
+                        </div>
+                        <div class="topnav__phone-tooltip-layout">Сб-Вс: с 11:00 - 15:00</div>
+                    </div>
+                </a>
             </div>
         </div>
         <component is="country"></component>
@@ -75,6 +80,16 @@
                         <a href="#" class="header__menu-link">
                             <img src="./images/header/icons/user.svg" alt="личный кабинет" class="header__menu-icon">
                             <p class="header__menu-text">Войти</p>
+                            <div class="header__menu-tooltip">
+                                <div class="header__menu-tooltip-layout">
+                                    <div><img src="./images/header/icons/entrance.svg" alt="вход"></div>
+                                    Вход
+                                </div>
+                                <div class="header__menu-tooltip-layout">
+                                    <div><img src="./images/header/icons/plus.svg" alt="регистрация"></div>
+                                    Регистрация
+                                </div>
+                            </div>
                         </a>
                     </li>
                     <li class="header__menu-item">
@@ -91,7 +106,7 @@
                         </a>
                     </li>
                     <li class="header__menu-item">
-                        <a href="#" class="header__menu-link">
+                        <a href="#" class="header__menu-link header__menu-link_cart_active">
                             <img src="./images/header/icons/cart.svg" alt="иконка корзины" class="header__menu-icon">
                             <p class="header__menu-text">Корзина</p>
                         </a>

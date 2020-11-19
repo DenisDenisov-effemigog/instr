@@ -1,0 +1,20 @@
+.tooltip
+    position: absolute
+    display: none
+    width: 11.25rem
+    padding: 1rem
+    color: $tooltip-grey
+    @extend .text-3
+    background-color: $white
+    border-radius: $border-radius_2
+    z-index: 5
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08)
+    &::before
+        content: ''
+        position: absolute
+        top: -.5625rem
+        left: calc(50% - 8px)
+        width: 1rem
+        height: 1rem
+        background-color: $white
+        transform: rotate(45deg)
