@@ -1,7 +1,7 @@
 <template>
     <div class="topnav__switch">
             <div class="topnav__switch-pic">
-                <img src="./images/header/icons/arrow.svg" alt="открыть" class="topnav__switch-pic-icon">
+                <img src="./images/header/icons/arrow.svg" alt="открыть" class="topnav__switch-pic-icon" :class="{'topnav__switch-pic-icon_opened': openedModal}">
             </div>
             <div @click="clickToCountry" class="topnav__switch-text">Toolsworld/{{country}}</div>
     </div>
@@ -14,27 +14,26 @@ export default {
     name: 'topnav-switch',
     data(){
         return{
-            country: 'Румыния'
+            country: 'Румыния',
+            openedModal: false
             
         }
     },
     methods:{
         clickToCountry(){
-            let country = document.querySelector('.country')
-            let countryBg = country.firstElementChild
-            let countryWrap = countryBg.nextElementSibling
-            let topnavIcon = document.querySelector('.topnav__switch-pic-icon')
-            country.classList.toggle('country-close')
-            countryBg.classList.toggle('country__bg-open')
-            countryWrap.classList.toggle('country__wrapper-open')
-            topnavIcon.classList.toggle('topnav__switch-pic-icon_opened')
+            this.openedModal = !this.openedModal
+            this.$eventBus.$emit("open-country")
         },
         countryName(name){
             this.country = name
+        },
+        closeCountry(){
+            this.openedModal = !this.openedModal
         }
     },
     created(){
         this.$eventBus.$on('countryName', this.countryName)
+        this.$eventBus.$on('closeCountry', this.closeCountry)
     }
 }
 </script>

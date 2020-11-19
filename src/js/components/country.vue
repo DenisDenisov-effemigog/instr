@@ -1,7 +1,7 @@
 <template>
-    <div class="country country-close">
-        <div class="country__bg"></div>
-        <div class="country__wrapper">
+    <div class="country" :class="{'country-open': openedCountry}">
+        <div class="country__bg" :class="{'country__bg-open': openedCountry}"></div>
+        <div class="country__wrapper" :class="{'country__wrapper-open': openedCountry}">
             <div class="country-container">
                 <div class="country__choice">
                     <h2 class="country__choice-title">Выбор страны</h2>
@@ -32,19 +32,17 @@ export default {
     name: "country",
     data(){
         return{
-            countryArr:['Белоруссия','Казахстан','Румыния','Болгария','Польша','США','Венгрия','Россия','Украина']
+            countryArr:['Белоруссия','Казахстан','Румыния','Болгария','Польша','США','Венгрия','Россия','Украина'],
+            openedCountry: false
         }
     },
+    created() {
+            this.$eventBus.$on("open-country", this.openCountry)
+        },
     methods:{
         closeChoiceCountry(){
-            let country = document.querySelector('.country')
-            let countryBg = country.firstElementChild
-            let countryWrap = countryBg.nextElementSibling
-            let topnavIcon = document.querySelector('.topnav__switch-pic-icon')
-            country.classList.toggle('country-close')
-            countryBg.classList.toggle('country__bg-open')
-            countryWrap.classList.toggle('country__wrapper-open')
-            topnavIcon.classList.toggle('topnav__switch-pic-icon_opened')
+            this.openedCountry =!this.openedCountry
+            this.$eventBus.$emit("closeCountry")
         },
         choiceCountry(e){
             let a = e.target
@@ -53,7 +51,10 @@ export default {
                 countryLinkActive[0].classList.remove('country__choice-link-active')
             a.classList.toggle('country__choice-link-active')
             this.$eventBus.$emit("countryName", a.textContent)
+        },
+        openCountry(){
+            this.openedCountry =!this.openedCountry
         }
-    }
+    },
 }
 </script>
