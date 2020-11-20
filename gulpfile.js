@@ -2,15 +2,19 @@ const gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     babelify = require('babelify'),
     browserify = require('browserify'),
-    sass = require('gulp-sass'),
-    source = require('vinyl-source-stream'),
+    cheerio = require('gulp-cheerio'),
     concat = require('gulp-concat'),
     csso = require('gulp-csso'),
     gulpif = require('gulp-if'),
     envify = require('envify'),
     imagemin = require('gulp-imagemin'),
+    path = require('path'),
     rename = require('gulp-rename'),
     replace = require('gulp-replace'),
+    sass = require('gulp-sass'),
+    source = require('vinyl-source-stream'),
+    svgo = require('gulp-svgo'),
+    svgstore = require('gulp-svgstore'),
     terser = require('gulp-terser'),
     vueify = require('vueify'),
     vinyl_buffer = require('vinyl-buffer')
@@ -31,6 +35,7 @@ let config = {
         app: {
             css: 'css.min.css',
             js: 'js.min.js',
+            sprite: 'sprite.svg',
         },
     },
     src: {
@@ -47,6 +52,9 @@ let config = {
             ],
             images: [
                 './src/images/**/*.*'
+            ],
+            sprite: [
+                './src/sprite/**/*.svg'
             ],
         },
     },
@@ -159,11 +167,36 @@ gulp.task('app:images:minify', function () {
         .pipe(gulp.dest(config.build.images));
 });
 
+gulp.task('app:sprite:build', function () {
+    return gulp.src(config.src.app.sprite, {base: './src/sprite'})
+        .pipe(rename(function (file) {
+            let name = file.dirname.split(path.sep).filter(part => part !== '.');
+            name.push(file.basename);
+            file.basename = name.join('__');
+        }))
+        .pipe(svgo())
+        .pipe(svgstore({
+            inlineSvg: false
+        }))
+        .pipe(cheerio({
+            run: function ($) {
+                // remove empty symbols
+                $('symbol').filter(function (i, el) {
+                    return $(this).html().length === 0;
+                }).remove();
+            },
+            parserOptions: {xmlMode: true}
+        }))
+        .pipe(rename(config.bundles.app.sprite))
+        .pipe(gulp.dest(config.build.images));
+});
+
 gulp.task('app:build', gulp.parallel(
     'app:fonts:build',
     'app:css:build',
     'app:js:build',
-    'app:images:minify'
+    'app:images:minify',
+    'app:sprite:build',
 ));
 
 gulp.task('default', gulp.series(

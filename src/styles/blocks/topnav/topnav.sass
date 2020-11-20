@@ -1,6 +1,6 @@
 .topnav
     position: relative
-    background: #F6F6F6
+    background: $light
     +mobile
         display: none
     & > .container
@@ -21,12 +21,16 @@
         padding-right: 1.625rem
         display: flex
         align-items: center
-        &:hover > img
-            filter: brightness(.5)
+        cursor: pointer
+        &:hover svg
+            fill: $icon-black
     &__switch-pic
         padding-right: 0.313rem
         align-self: baseline
         &-icon
+            width: $size_8-33
+            height: $size_5
+            fill: $icon-grey
             transform: rotate(180deg)
             &_opened
                 transform: rotate(0deg)
@@ -44,7 +48,10 @@
                 top: 2.375rem
                 left: -1.5rem
     &__phone-icon 
-        padding-right: 0.625rem
+        margin-right: 0.625rem
+        fill: $icon-grey
+        width: $size_15
+        height: $size_15
     &__phone-tooltip
         @extend .tooltip
         &::before
@@ -52,8 +59,11 @@
     &__phone-tooltip-layout
         display: flex
         align-items: center
-        & > img
+        & > svg
             margin-right: .375rem
+            fill: $icon-medium-grey
+            width: $size_12
+            height: $size_12
         &:not(:last-of-type)
             margin-bottom: .5rem
         &:last-of-type
