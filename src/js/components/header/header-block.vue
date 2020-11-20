@@ -12,10 +12,8 @@
                         <use :xlink:href="'./images/sprite.svg#icons__ham'"></use>
                     </svg>
                 </div>
-                <button class="header__catalog-btn">
-                    <img src="./images/header/icons/ham.svg" alt="открыть" class="header__catalog-btn-icon">
-                    Каталог
-                </button>
+
+                <component is="show-catalogue"></component>
             </div>
             <header-search
                 @searchClick=searchClick
@@ -112,12 +110,14 @@
 </template>
 
 <script>
+    import showCatalogue from '../catalogue/show-catalogue.vue';
     import headerSearch from './header-search.vue';
 
 export default {
     name: "header-block",
     components:{
-        headerSearch
+        headerSearch,
+        showCatalogue
     },
     data(){
         return{
