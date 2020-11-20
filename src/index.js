@@ -4,8 +4,10 @@ import VueAgile from 'vue-agile';
 
 import store from './js/store';
 import country from '../src/js/components/country.vue';
+import headerBlock from '../src/js/components/header/header-block.vue';
 import topnavSwitch from '../src/js/components/topnav/topnav-switch.vue';
 import sliderMain from '../src/js/components/main-page/slider-main.vue';
+import sliderPromo from '../src/js/components/main-page/slider-promo.vue';
 
 Vue.use(VueAgile)
 
@@ -21,7 +23,9 @@ const app = new Vue({
     components: {
         country,
         topnavSwitch,
+        headerBlock,
         sliderMain,
+        sliderPromo,
         showCatalogue,
         catalogue,
         // catalogueSubcategories

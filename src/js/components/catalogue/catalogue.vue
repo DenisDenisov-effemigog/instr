@@ -80,6 +80,9 @@
 
     export default {
         name: "catalogue",
+        components:{
+            subcategories
+        },
         data() {
             return {
                categories: [
