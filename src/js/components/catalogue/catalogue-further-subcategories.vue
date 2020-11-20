@@ -1,7 +1,7 @@
 <template>
-    <ul>
-        <li v-for="further-subcategory in subcategory">
-            <a href="#" class="catalogue__further-subcategory">{{furtherSubcategory}}</a>
+    <ul class="catalogue__further-subcategories">
+        <li v-for="category in subcategories">
+            <a href="#" class="catalogue__further-subcategory">{{category}}</a>
         </li>
     </ul>
 </template>
@@ -10,7 +10,16 @@
     export default {
         name: "further-subcategories",
         props: {
-            subcategory: {required: true}
+            categories: {
+                type: Object,
+                required: true,
+                //default: () => ([])
+                }
+        },
+        computed: {
+            subcategories() {
+                return this.categories
+            }
         }
     }
 </script>
