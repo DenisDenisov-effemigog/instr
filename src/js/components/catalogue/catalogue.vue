@@ -4,61 +4,60 @@
         <div class="container">
             <ul class="catalogue__categories">
                 <div class="catalogue__categories-bg"></div>
-                <li v-for="category in categories">
-
+                <li class="catalogue__category" v-for="category in categories">
                     <div>
-                        <a href="#" class="catalogue__category">
+                        <a href="#" class="catalogue__category-link">
                             {{category.title}}
                             <svg class="" viewBox="0 0 6 10">
                                 <use :xlink:href="'./images/sprite.svg#arrows__arrow-right'"></use>
                             </svg>
                         </a>
+                        <subcategories :categories="category.subcategories"></subcategories>
+                        <div class="catalogue__subcategories">
+                            <div class="catalogue__subcategory">
+                                <a href="#" class="catalogue__subcategory-link">Аксессуары автомобильные</a>
+                                <ul class="catalogue__further-subcategories">
+                                    <li>
+                                        <a href="#" class="catalogue__further-subcategory">Ареометры</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="catalogue__further-subcategory">Ареометры</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="catalogue__further-subcategory">Ареометры</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="catalogue__further-subcategory">Ареометры</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="catalogue__further-subcategory">Ареометры</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="catalogue__subcategory">
+                                <a href="#" class="catalogue__subcategory-link">Аксессуары автомобильные</a>
+                                <ul class="catalogue__further-subcategories">
+                                    <li>
+                                        <a href="#" class="catalogue__further-subcategory">Ареометры</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="catalogue__further-subcategory">Ареометры</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="catalogue__further-subcategory">Ареометры</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="catalogue__further-subcategory">Ареометры</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="catalogue__further-subcategory">Ареометры</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="catalogue__subcategories">
-                        <ul class="catalogue__subcategory">
-                            <li>
-                                <a href="#" class="catalogue__subcategory-link">Аксессуары автомобильные</a>
-                                <ul>
-                                    <li>
-                                        <a href="#" class="catalogue__further-subcategory">Ареометры</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="catalogue__further-subcategory">Ареометры</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="catalogue__further-subcategory">Ареометры</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="catalogue__further-subcategory">Ареометры</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="catalogue__further-subcategory">Ареометры</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#" class="catalogue__subcategory-link">Аксессуары автомобильные</a>
-                                <ul>
-                                    <li>
-                                        <a href="#" class="catalogue__further-subcategory">Ареометры</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="catalogue__further-subcategory">Ареометры</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="catalogue__further-subcategory">Ареометры</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="catalogue__further-subcategory">Ареометры</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="catalogue__further-subcategory">Ареометры</a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <!-- <subcategories :subcategories="category.subcategories"></subcategories> -->
+                    <!-- <subcategories :subcategories="category.subcategories"></subcategories> -->
                             <!-- <li v-for="subcategory in category.subcategories">
                                 <a href="#" class="catalogue__subcategory-link">{{subcategory}}</a>
                                 <furtherSubcategories :subcategory="subcategory"></furtherSubcategories>
@@ -68,8 +67,6 @@
                                     </li>
                                 </ul>
                             </li> -->
-                        </ul>
-                    </div>
 
                 </li>
             </ul>
@@ -79,7 +76,7 @@
 </template>
 
 <script>
-    // import subcategories from './catalogue-subcategories.vue';
+    import subcategories from './catalogue-subcategories.vue';
 
     export default {
         name: "catalogue",
