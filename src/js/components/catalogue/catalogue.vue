@@ -81,7 +81,7 @@
     export default {
         name: "catalogue",
         components:{
-            subcategories
+            catalogueSubcategories
         },
         data() {
             return {
@@ -234,9 +234,6 @@
 
                 ] 
             }
-        },
-        components: {
-            catalogueSubcategories
         }
 
     }

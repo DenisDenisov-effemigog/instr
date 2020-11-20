@@ -11,9 +11,7 @@ import sliderPromo from '../src/js/components/main-page/slider-promo.vue';
 
 Vue.use(VueAgile)
 
-import showCatalogue from '../src/js/components/catalogue/show-catalogue.vue';
 import catalogue from '../src/js/components/catalogue/catalogue.vue';
-// import catalogueSubcategories from '../src/js/components/catalogue/catalogue-subcategories.vue';
 
 Vue.prototype.$eventBus = new Vue();
 
@@ -26,9 +24,7 @@ const app = new Vue({
         headerBlock,
         sliderMain,
         sliderPromo,
-        showCatalogue,
         catalogue,
-        // catalogueSubcategories
     },
     mounted() {
     }
