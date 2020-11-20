@@ -37,11 +37,15 @@
                 </nav>
                 <component is="topnav-switch"></component>
                 <a href="#" class="topnav__phone">
-                    <img src="./images/header/icons/phone.svg" alt="позвонить" class="topnav__phone-icon">
+                    <svg class="topnav__phone-icon" viewBox="0 0 15 15">
+                        <use :xlink:href="'./images/sprite.svg#icons__phone'"></use>
+                    </svg>
                     +4 0371 166 478
                     <div class="topnav__phone-tooltip">
                         <div class="topnav__phone-tooltip-layout">
-                            <img src="./images/header/icons/tooltip/clock.svg" alt="время работы">
+                            <svg viewBox="0 0 12 12">
+                                <use :xlink:href="'./images/sprite.svg#icons__clock'"></use>
+                            </svg>
                             Пн-Пт: с 9:00 - 18:00
                         </div>
                         <div class="topnav__phone-tooltip-layout">Сб-Вс: с 11:00 - 15:00</div>
@@ -59,14 +63,17 @@
                 </div>
                 <div class="header__catalog">
                     <div class="header__catalog-mobile">
-                        <img src="./images/header/icons/mobile-ham.svg" alt="открыть"
-                            class="header__catalog-mobile-icon">
+                        <svg class="header__catalog-mobile-icon" viewBox="0 0 18 14">
+                            <use :xlink:href="'./images/sprite.svg#icons__ham'"></use>
+                        </svg>
                     </div>
                     <component is="show-catalogue"></component>
                 </div>
                 <div class="header__search">
                     <div class="header__search-mobile">
-                        <img src="./images/header/icons/mag.svg" alt="" class="header__search-mobile-icon">
+                        <svg class="header__search-mobile-icon" viewBox="0 0 14 14">
+                            <use :xlink:href="'./images/sprite.svg#icons__mag'"></use>
+                        </svg>
                     </div>
                     <form action="" class="header__search-form">
                         <input type="text" class="header__search-input" placeholder="Поиск по сайту">
@@ -75,42 +82,59 @@
                 <ul class="header__menu">
                     <li class="header__menu-item">
                         <a href="#" class="header__menu-link">
-                            <img src="./images/header/icons/user.svg" alt="личный кабинет" class="header__menu-icon">
+                            <svg class="header__menu-icon">
+                                <use :xlink:href="'./images/sprite.svg#icons__user'"></use>
+                            </svg>
                             <p class="header__menu-text">Войти</p>
                             <div class="header__menu-tooltip">
                                 <div href="#" class="header__menu-tooltip-layout">
-                                    <img src="./images/header/icons/entrance.svg" alt="вход">
+                                    <svg class="" viewBox="0 0 16 16">
+                                        <use :xlink:href="'./images/sprite.svg#icons__entrance'"></use>
+                                    </svg>
                                     Вход
                                 </div>
                                 <div href="#" class="header__menu-tooltip-layout">
-                                    <img src="./images/header/icons/plus.svg" alt="регистрация">
+                                    <svg class="" viewBox="0 0 16 16">
+                                        <use :xlink:href="'./images/sprite.svg#plus'"></use>
+                                    </svg>
                                     Регистрация
                                 </div>
                             </div>
                             <!-- Tooltip для залогиненных пользователей -->
                             <!-- <div class="header__menu-tooltip">
                                 <div href="#" class="header__menu-tooltip-layout">
-                                    <img src="./images/header/icons/tooltip/home.svg" alt="вход">
+                                    <svg>
+                                        <use :xlink:href="'./images/sprite.svg#icons__home'"></use>
+                                    </svg>
                                     Мой профиль
                                 </div>
                                 <div href="#" class="header__menu-tooltip-layout">
-                                    <img src="./images/header/icons/tooltip/order.svg" alt="вход">
+                                    <svg>
+                                        <use :xlink:href="'./images/sprite.svg#icons__order'"></use>
+                                    </svg>
                                     Список заказов
                                 </div>
                                 <div href="#" class="header__menu-tooltip-layout">
-                                    <img src="./images/header/icons/tooltip/card.svg" alt="вход">
+                                    <svg>
+                                        <use :xlink:href="'./images/sprite.svg#icons__card'"></use>
+                                    </svg>
                                     Мой счет
                                 </div>
                                 <div href="#" class="header__menu-tooltip-layout">
-                                    <img src="./images/header/icons/tooltip/delivery.svg" alt="вход">
+                                    <svg>
+                                        <use :xlink:href="'./images/sprite.svg#icons__delivery'"></use>
+                                    </svg>
                                     Адреса доставки
                                 </div>
                                 <div href="#" class="header__menu-tooltip-layout">
-                                    <img src="./images/header/icons/tooltip/sale.svg" alt="вход">
+                                        <use :xlink:href="'./images/sprite.svg#icons__sale'"></use>
+                                    </svg>
                                     Акции
                                 </div>
                                 <div href="#" class="header__menu-tooltip-layout">
-                                    <img src="./images/header/icons/tooltip/exit.svg" alt="регистрация">
+                                    <svg>
+                                        <use :xlink:href="'./images/sprite.svg#icons__exit'"></use>
+                                    </svg>
                                     Выход
                                 </div>
                             </div> -->
@@ -118,20 +142,25 @@
                     </li>
                     <li class="header__menu-item">
                         <a href="#" class="header__menu-link">
-                            <img src="./images/header/icons/graf.svg" alt="иконка сравнения" class="header__menu-icon">
+                            <svg class="header__menu-icon">
+                                <use :xlink:href="'./images/sprite.svg#icons__graf'"></use>
+                            </svg>
                             <p class="header__menu-text">Сравнить</p>
                         </a>
                     </li>
                     <li class="header__menu-item">
                         <a href="#" class="header__menu-link">
-                            <img src="./images/header/icons/heart.svg" alt="иконка избранного"
-                                class="header__menu-icon">
+                            <svg class="header__menu-icon">
+                                <use :xlink:href="'./images/sprite.svg#icons__heart'"></use>
+                            </svg>
                             <p class="header__menu-text">Избранное</p>
                         </a>
                     </li>
                     <li class="header__menu-item">
                         <a href="#" class="header__menu-link header__menu-link_cart_active">
-                            <img src="./images/header/icons/cart.svg" alt="иконка корзины" class="header__menu-icon">
+                            <svg class="header__menu-icon">
+                                <use :xlink:href="'./images/sprite.svg#icons__cart'"></use>
+                            </svg>
                             <p class="header__menu-text">Корзина</p>
                         </a>
                     </li>
@@ -212,19 +241,27 @@
                     <ul class="footer__menu-column">
                         <li class="footer__menu-title"><a href="#">Контакты</a></li>
                         <li class="footer__menu-item footer__menu-item_img">
-                            <img src="./images/footer/icons/phone.svg" class="footer__menu-icon" alt="контакты">
+                            <svg class="footer__menu-icon">
+                                <use :xlink:href="'./images/sprite.svg#icons__phone'"></use>
+                            </svg>
                             8&nbsp;(800)&nbsp;200-49-49
                         </li>
                         <li class="footer__menu-item footer__menu-item_img">
-                            <img src="./images/footer/icons/working-time.svg" class="footer__menu-icon" alt="время работы">
+                            <svg class="footer__menu-icon" viewBox="0 0 12 12">
+                                <use :xlink:href="'./images/sprite.svg#icons__clock'"></use>
+                            </svg>
                             пн-пт&nbsp;2-18&nbsp;(мск)
                         </li>
                         <li class="footer__menu-item footer__menu-item_img">
-                            <img src="./images/footer/icons/email.svg" class="footer__menu-icon" alt="email">
+                            <svg class="footer__menu-icon">
+                                <use :xlink:href="'./images/sprite.svg#icons__email'"></use>
+                            </svg>
                             почта@mail.ru
                         </li>
                         <li class="footer__menu-item footer__menu-item_img">
-                            <img src="./images/footer/icons/pin.svg" class="footer__menu-icon" alt="адрес">
+                            <svg class="footer__menu-icon">
+                                <use :xlink:href="'./images/sprite.svg#icons__pin'"></use>
+                            </svg>
                             г.Москва,&nbsp;ул.&nbsp;Трехгорный&nbsp;Вал&nbsp;3
                         </li>
                     </ul>

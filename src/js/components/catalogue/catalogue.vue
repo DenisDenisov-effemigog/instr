@@ -9,7 +9,9 @@
                     <div>
                         <a href="#" class="catalogue__category">
                             {{category.title}}
-                            <img src="./images/category/array.svg" alt="открыть подкатегории">
+                            <svg class="" viewBox="0 0 6 10">
+                                <use :xlink:href="'./images/sprite.svg#arrows__arrow-right'"></use>
+                            </svg>
                         </a>
                     </div>
 

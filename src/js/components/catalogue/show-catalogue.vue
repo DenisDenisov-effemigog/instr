@@ -1,11 +1,11 @@
 <template>
     <div class="header__catalog-btn" @click.prevent="open">
-        <img src="./images/header/icons/arrow-line-right.svg" alt="закрыть"
-            class="header__catalog-btn-icon"
-            v-if="active">
-        <img src="./images/header/icons/ham.svg" alt="открыть"
-            class="header__catalog-btn-icon"
-            v-else>
+        <svg class="header__catalog-btn-icon" viewBox="0 0 18 14" v-if="active">
+            <use :xlink:href="'./images/sprite.svg#close'"></use>
+        </svg>
+        <svg class="header__catalog-btn-icon" viewBox="0 0 18 14" v-else>
+            <use :xlink:href="'./images/sprite.svg#icons__ham'"></use>
+        </svg>
         Каталог
     </div>
 </template>

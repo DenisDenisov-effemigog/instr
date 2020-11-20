@@ -18,9 +18,9 @@
                 </div>
                 <div @click="closeChoiceCountry" class="country__close">
                     <div class="country__close-text">Закрыть</div>
-                    <div class="country__close-pic">
-                        <img src="./images/country/icons/close.svg" alt="" class="country__close-pic-icon">
-                    </div>
+                    <svg class="country__close-pic" viewBox="0 0 12 12">
+                        <use :xlink:href="'./images/sprite.svg#close'"></use>
+                    </svg>
                 </div>
             </div>
         </div>

@@ -1,7 +1,9 @@
 <template>
     <div class="topnav__switch">
             <div class="topnav__switch-pic">
-                <img src="./images/header/icons/arrow.svg" alt="открыть" class="topnav__switch-pic-icon" :class="{'topnav__switch-pic-icon_opened': openedModal}">
+                <svg class="topnav__switch-pic-icon" :class="{'topnav__switch-pic-icon_opened': openedModal}" viewBox="0 0 10 6">
+                    <use :xlink:href="'./images/sprite.svg#arrows__arrow-top'"></use>
+                </svg>
             </div>
             <div @click="clickToCountry" class="topnav__switch-text">Toolsworld/{{country}}</div>
     </div>
