@@ -1,0 +1,20 @@
+.slider-main
+    &__slide
+        position: relative
+        height: 450px
+        padding: 50px 80px
+        display: flex !important
+        align-items: flex-end
+        &_img
+            +absolute-full
+            +full-content
+            object-fit: cover
+            object-position: center center
+            z-index: -1
+        &_link
+            @extend .button-primary
+            width: 199px
+            height: 48px
+            margin-bottom: 51px
+            &:hover
+                color: $white

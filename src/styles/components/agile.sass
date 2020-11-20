@@ -2,22 +2,26 @@
     &__slides
         align-items: stretch !important
     &__nav-button
+        +flex-container-center
+        +absolute-center-x
+        top: calc(50% - 20px)
         background: rgba(255, 255, 255, 0.4)
         border-radius: 100%
-        //color: $text-color-primary
-        //font-size: $font-size_9
         transition-duration: .3s
         width: 56px
         height: 56px
-        +absolute-center-x
-        top: calc(50% - 20px)
         &:hover
-            background: #ffffff
-            opacity: 1
+            //background: #ffffff
+            //opacity: 1
+            box-shadow: 0 0 10px 3px rgba(53, 53, 53, .15)
         &--prev
             left: 40px
         &--next
             right: 40px
+        & svg
+            fill: $icon-white
+            width: 8px
+            height: 14px
     &__dots
         margin: 16px auto 0
     &__dot

@@ -1,11 +1,28 @@
 <template>
-    <div class="slider">
-        <agile :options="options">
-            <div><img src="./images/banners/main-banner.png" alt=""></div>
-            <div><img src="./images/banners/main-banner.png" alt=""></div>
-            <div><img src="./images/banners/main-banner.png" alt=""></div>
-            <template slot="prevButton"></template>
-            <template slot="nextButton"></template>
+    <div class="slider-main">
+        <agile :options="options" @after-change="showCurrentSlide($event)">
+            <div class="slider-main__slide">
+                <img class="slider-main__slide_img" src="./images/banners/main-banner.png" alt="">
+                <a href="" class="slider-main__slide_link">Подробнее</a> 
+            </div>
+            <div class="slider-main__slide">
+                <img class="slider-main__slide_img" src="./images/banners/main-banner.png" alt="">
+                <a href="" class="slider-main__slide_link">Подробнее</a> 
+            </div>
+            <div class="slider-main__slide">
+                <img class="slider-main__slide_img" src="./images/banners/main-banner.png" alt="">
+                <a href="" class="slider-main__slide_link">Подробнее</a> 
+            </div>
+            <template slot="prevButton" v-if="slideCurrent !== 0">
+                <svg viewBox="0 0 10 12">
+                    <use :xlink:href="'./images/sprite.svg#arrows__arrow-left'"></use>
+                </svg>
+            </template>
+            <template slot="nextButton">
+                <svg viewBox="0 0 6 10">
+                    <use :xlink:href="'./images/sprite.svg#arrows__arrow-right'"></use>
+                </svg>
+            </template>
         </agile>
     </div>
 </template>
@@ -20,6 +37,7 @@
         },
         data() {
             return {
+                slideCurrent: 0,
                 options: {
                     navButtons: false,
                     // autoplay: true,
@@ -39,6 +57,11 @@
                     ]
                 }
             }
+        },
+        methods: {
+            showCurrentSlide(event) {
+                this.slideCurrent = event;
+            },
         }
     }
 </script>
