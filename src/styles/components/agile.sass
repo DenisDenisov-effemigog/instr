@@ -1,0 +1,47 @@
+.agile
+    &__slides
+        align-items: stretch !important
+    &__nav-button
+        +flex-container-center
+        +absolute-center-x
+        top: calc(50% - 20px)
+        background: rgba(255, 255, 255, 0.4)
+        border-radius: 100%
+        transition-duration: .3s
+        width: 56px
+        height: 56px
+        &:hover
+            //background: #ffffff
+            //opacity: 1
+            box-shadow: 0 0 10px 3px rgba(53, 53, 53, .15)
+        &--prev
+            left: 40px
+        &--next
+            right: 40px
+        & svg
+            fill: $icon-white
+            width: 8px
+            height: 14px
+    &__dots
+        margin: 16px auto 0
+    &__dot
+        margin: 0 $dot-spacing
+        +mobile
+            pointer-events: none
+        button
+            width: $dot-width
+            height: $dot-width
+            background: $pre-white
+            border-radius: 100%
+            padding: 0
+            transition-duration: .3s
+
+        &:hover
+            button
+                background: $light-grey
+        &--current button,
+        &--current:hover button
+            background: $light-grey
+            transition-duration: .3s
+            cursor: default
+

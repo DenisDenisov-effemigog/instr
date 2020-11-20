@@ -3,8 +3,10 @@
         <div class="header__search-mobile">
             <img v-show="!flag" @click="searchClick" src="./images/header/icons/mag.svg" alt="" class="header__search-mobile-icon">
             <div class="mobile-search" v-show="flag">
-                <div class="mobile-search__pic">
-                    <img @click='clickClose' class="mobile-search__pic-icon" src="./images/header/icons/left-arrow.svg" alt="">
+                <div @click='clickClose' class="mobile-search__pic">
+                    <svg class="mobile-search__pic-icon">
+                        <use :xlink:href="'./images/sprite.svg#arrows__arrow-left'"></use>
+                    </svg>
                 </div>
                 <form action="" class="mobile-search__form">
                     <input type="text" class="mobile-search__input" :class="{'header__search-input_focused': focused}" placeholder="Поиск">
@@ -18,7 +20,9 @@
         <form action="" class="header__search-form">
             <input @focus="focus" type="text" class="header__search-input" :class="{'header__search-input_focused': focused}" placeholder="Поиск по сайту">
             <div v-show="focused" @click="closeSearch" class="header__search-form-close__btn">
-                <img src="./images/header/icons/close.svg" alt="" class="header__search-form-close__btn-icon">
+                 <svg class="header__search-form-close__btn-icon">
+                    <use :xlink:href="'./images/sprite.svg#close'"></use>
+                </svg>
             </div>
             <search
                 :focused=focused

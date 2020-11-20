@@ -1,5 +1,7 @@
 .header
+    position: relative
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08)
+    z-index: 4
     & > .container
         display: flex
         align-items: center
@@ -24,10 +26,16 @@
             display: flex
     &__catalog-btn-icon
         padding-right: 0.625rem
+        fill: $icon-white
+        width: 1.75rem
+        height: 1.5rem
     &__catalog-mobile
         +tablet
             display: none
-
+    &__catalog-mobile-icon
+        fill: $icon-black
+        width: $size_18
+        height: $size_14
     &__menu
         display: none
         +tablet
@@ -47,8 +55,8 @@
         height: 3rem
         &:hover
             & > .header__menu-icon
-                filter: none
-            & > .header__menu-tooltip
+                fill: $icon-red
+            .header__menu-tooltip
                 display: block
                 top: 3.625rem
         &_cart_active
@@ -70,21 +78,21 @@
                 z-index: 4
     &__menu-icon
         margin-bottom: .5rem
-        filter: grayscale(1)
+        fill: $icon-black
+        width: $size_19
+        height: $size_20
     &__menu-tooltip
         @extend .tooltip
 
     &__menu-tooltip-layout
-        display: flex
-        align-items: center
-        &:not(:last-of-type)
-            margin-bottom: .5rem
-        & > div
-            display: flex
-            justify-content: center
-            align-items: center
-            width: .625rem
-            margin-right: .5rem
+        @extend .tooltip__item
+        &:hover svg
+            fill: $icon-black
+        & > svg
+            margin-right: .25rem
+            fill: $icon-grey
+            width: $size_16
+            height: $size_16
 
     &__search
         @extend .text-2
@@ -98,7 +106,9 @@
         +tablet
             display: none
     &__search-mobile-icon
-        height: 1.125rem
+        width: $size_18
+        height: $size_18
+        fill: $icon-light-grey
     &__search-form
         position: relative
         display: none
@@ -106,6 +116,8 @@
             display: flex
         &-close
             &__btn
+                width: $size_18
+                height: $size_18
                 position: absolute
                 top: 50%
                 right: 1rem

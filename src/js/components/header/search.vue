@@ -5,14 +5,18 @@
                 <li v-for="item in resultArr" :key="item" class="search-result__item">
                     <a href="#" class="search-result__link">{{item}}</a>
                     <div class="search-result__pic">
-                        <img src="./images/search/icons/mob-arrow.svg" alt="" class="search-result__pic-icon">
+                        <svg class="search-result__pic-icon">
+                            <use :xlink:href="'./images/sprite.svg#arrows__mob-arrow'"></use>
+                        </svg>
                     </div>
                 </li>
             </ul>
             <div @click="clearHistory" class="search-result__clear">
                 <p class="search-result__clear-text">Очистить историю</p>
                 <div class="search-result__clear-pic">
-                    <img src="./images/search/icons/del.svg" alt="" class="search-result__clear-pic-icon">
+                    <svg class="search-result__clear-pic-icon">
+                        <use :xlink:href="'./images/sprite.svg#icons__del'"></use>
+                    </svg>
                 </div>
             </div>
         </div>
@@ -35,15 +39,19 @@
                         <p class="search-items__desc-text">Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel 52 сс</p>
                         <p class="search-items__desc-price">2 819.27 RON</p>
                     </div>
-                    <div class="search-items__pic">
-                        <img src="./images/search/icons/next.svg" alt="" class="search-items__pic-icon">
+                    <div class="search-items__icon">
+                        <svg class="">
+                            <use :xlink:href="'./images/sprite.svg#arrows__arrow-right'"></use>
+                        </svg>
                     </div>
                 </li>
             </ul>
             <div @click="showMore" v-show="itemFlag" class="search-items__download">
                 <p class="search-items__download-text">Загрузить</p>
                 <div class="search-items__download-pic">
-                    <img src="./images/search/icons/arrow.svg" alt="" class="search-items__download-pic-icon">
+                    <svg class="search-items__download-pic-icon">
+                        <use :xlink:href="'./images/sprite.svg#arrows__arrow-down'"></use>
+                    </svg>
                 </div>
             </div>
         </div>

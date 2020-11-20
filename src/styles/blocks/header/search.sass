@@ -21,6 +21,7 @@
             padding: 0.75rem 1rem
             display: flex
             justify-content: space-between
+            align-items: center
             +tablet
                 display: block
         &__link
@@ -39,9 +40,14 @@
                     padding-left: 0
                     order: 1
                 color: $blue
+            &-pic
+                width: $size_18
+                height: $size_18
         &__close
             display: none
         &__pic
+            width: $size_18
+            height: $size_18
             +tablet
                 display: none
     &-category
@@ -100,12 +106,19 @@
             &-price
                 font-size: $font-size_3
                 font-weight: normal
+        &__icon
+            width: $size_18
+            height: $size_18
         &__download
             display: flex
             justify-content: center
+            align-items: center
             &-text
                 padding-right: 0.75rem
                 color: $blue
+            &-pic
+                width: $size_18
+                height: $size_18
 
 
         

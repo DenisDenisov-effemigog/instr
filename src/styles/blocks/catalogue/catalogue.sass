@@ -1,0 +1,62 @@
+.catalogue
+    display: none
+    position: absolute
+    top: 8.75rem
+    left: 0
+    width: 100%
+    background-color: $white
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.08)
+    z-index: 3
+    &__categories
+        position: relative
+        width: 25%
+        padding: 2.5rem 0
+    &__categories-bg
+        position: absolute
+        top: 0
+        right: 0
+        width: 50vw
+        height: 100%
+        background-color: $light
+        z-index: inherit
+    &__category
+        &:hover
+            background-color: $white
+            color: $black
+            & .catalogue__subcategories
+                display: block
+    &__category-link
+        @extend .text-1
+        position: relative
+        display: flex
+        align-items: center
+        padding: 1rem 2.9375rem 1rem 1.8125rem
+        margin: 0 1px 0 -1.8125rem
+        &:hover
+            background-color: $white
+            color: $black
+            & ~ .catalogue__subcategories
+                display: block
+        & > svg
+            position: absolute
+            right: 1.5rem
+            fill: $icon-black
+            width: $size_5
+            height: $size_8-33
+    &__subcategories
+        display: none
+        position: absolute
+        top: 0
+        left: 100%
+        width: 300%
+        padding: 3.5rem 1.5rem
+    &__subcategory
+        margin-bottom: 3.25rem
+    &__subcategory-link
+        @extend .subtitle-2
+    &__further-subcategories
+        margin-top: 1rem
+        & > li:not(:last-of-type)
+            margin-bottom: 1rem
+    &__further-subcategory
+        @extend .link-2
