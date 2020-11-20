@@ -12,7 +12,7 @@
                                 <use :xlink:href="'./images/sprite.svg#arrows__arrow-right'"></use>
                             </svg>
                         </a>
-                        <subcategories :categories="category.subcategories"></subcategories>
+                        <!-- <subcategories :categories="category.subcategories"></subcategories> -->
                         <div class="catalogue__subcategories">
                             <div class="catalogue__subcategory">
                                 <a href="#" class="catalogue__subcategory-link">Аксессуары автомобильные</a>
@@ -80,6 +80,9 @@
 
     export default {
         name: "catalogue",
+        components:{
+            subcategories
+        },
         data() {
             return {
                categories: [
