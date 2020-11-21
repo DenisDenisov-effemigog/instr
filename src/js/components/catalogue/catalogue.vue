@@ -12,8 +12,8 @@
                                 <use :xlink:href="'./images/sprite.svg#arrows__arrow-right'"></use>
                             </svg>
                         </a>
-                        <!-- <subcategories :categories="category.subcategories"></subcategories> -->
-                        <div class="catalogue__subcategories">
+                        <catalogue-subcategories :categories="category.subcategories"></catalogue-subcategories>
+                        <!-- <div class="catalogue__subcategories">
                             <div class="catalogue__subcategory">
                                 <a href="#" class="catalogue__subcategory-link">Аксессуары автомобильные</a>
                                 <ul class="catalogue__further-subcategories">
@@ -54,7 +54,7 @@
                                     </li>
                                 </ul>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
 
                     <!-- <subcategories :subcategories="category.subcategories"></subcategories> -->
@@ -76,12 +76,12 @@
 </template>
 
 <script>
-    import subcategories from './catalogue-subcategories.vue';
+    import catalogueSubcategories from './catalogue-subcategories.vue';
 
     export default {
         name: "catalogue",
         components:{
-            subcategories
+            catalogueSubcategories
         },
         data() {
             return {
@@ -127,8 +127,14 @@
                         'subcategories': {
                             'accessories': [
                                 'aroma',
-                                'holders'
-                            ]
+                                'holders',
+                            ],
+                            'Тельферы': [],
+                            'Лебедки автомобильные': [],
+                            'Масленки': [],
+                            'Мебель гаражная': [],
+                            'Моечные машины высокого давления': [],
+                            'Насосы гидравлические': []
                         }
                     },
                     {
@@ -137,7 +143,11 @@
                             'accessories': [
                                 'aroma',
                                 'holders'
-                            ]
+                            ],
+                            'Тельферы': [],
+                            'Лебедки автомобильные': [],
+                            'Масленки': [],
+                            'Мебель гаражная': []
                         }
                     },
                     {
@@ -224,7 +234,7 @@
 
                 ] 
             }
-        },
+        }
 
     }
 </script>
