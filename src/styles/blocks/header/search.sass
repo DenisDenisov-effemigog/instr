@@ -23,6 +23,9 @@
             align-items: center
             +tablet
                 display: block
+                cursor: pointer
+                &:hover
+                    background: $pre-white
         &__link
             font-size: $font-size_4
         &__clear
@@ -35,18 +38,29 @@
             &-text
                 order: 2
                 padding-left: 0.5rem
+                color: $blue
                 +tablet
                     padding-left: 0
                     order: 1
-                color: $blue
+                    &:hover
+                        border-bottom: 1px solid $blue
+                
+                
             &-pic
-                width: $size_18
-                height: $size_18
+                order: 1
+                +tablet
+                    order: 2
+                &-icon
+                    fill: $blue
+                    width: $size_18
+                    height: $size_18
         &__close
             display: none
         &__pic
-            width: $size_18
-            height: $size_18
+            &-icon
+                width: $size_18
+                height: $size_18
+                fill: $black
             +tablet
                 display: none
     &-category
@@ -78,26 +92,36 @@
             &-active
                 color: #ffffff
                 background: $blue
-
+            +tablet
+                &:hover
+                    color: #ffffff
+                    background: $blue
     &-items
         display: none
         +tablet
             display: block
-        padding: 1rem 1.5rem 1.5rem 1rem
         &__title
+            padding-top: 1rem
+            padding-left: 1rem
             font-size: $font-size_3
             color: $black
         &__list
             padding-top: 2.5rem
             &_hidden
                 overflow: hidden
-                height: 296px
+                height: 280px
         &__item
+            cursor: pointer
+            &:hover
+                background: $pre-white
+        &__info
             display: flex
-            padding-bottom: 1rem
+            padding: 1rem
         &__desc
             padding: 0 1rem
             margin-right: 1.75rem
+            padding-bottom: 1rem
+            margin-bottom: -1rem
             border-bottom: 1px solid $grey
             flex: 1
             &-text
@@ -106,18 +130,30 @@
                 font-size: $font-size_3
                 font-weight: normal
         &__icon
-            width: $size_18
-            height: $size_18
+            padding-top: 1rem
+            & > svg
+                fill: $black
+                width: $size_18
+                height: $size_18
         &__download
             display: flex
             justify-content: center
             align-items: center
+            padding-bottom: 1.5rem
             &-text
+                cursor: pointer
                 padding-right: 0.75rem
                 color: $blue
+                border-bottom: 1px solid transparent
+                +tablet
+                    &:hover
+                        border-bottom: 1px solid $blue
             &-pic
-                width: $size_18
-                height: $size_18
+                &-icon
+                    padding-top: 0.5rem
+                    fill: $blue
+                    width: $size_18
+                    height: $size_18
 
 
         
