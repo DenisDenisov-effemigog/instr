@@ -1,19 +1,13 @@
 <template>
     <div class="slider-main">
         <agile :options="options" @after-change="showCurrentSlide($event)">
-            <div class="slider-main__slide">
-                <img class="slider-main__slide_img" src="./images/banners/main-banner.png" alt="">
-                <a href="" class="slider-main__slide_link">Подробнее</a> 
+            
+            <div class="slider-main__slide" v-for="slide in slides">
+                <img class="slider-main__slide_img" :src="slide.img">
+                <a :href="slide.link" class="slider-main__slide_link">Подробнее</a> 
             </div>
-            <div class="slider-main__slide">
-                <img class="slider-main__slide_img" src="./images/banners/main-banner.png" alt="">
-                <a href="" class="slider-main__slide_link">Подробнее</a> 
-            </div>
-            <div class="slider-main__slide">
-                <img class="slider-main__slide_img" src="./images/banners/main-banner.png" alt="">
-                <a href="" class="slider-main__slide_link">Подробнее</a> 
-            </div>
-            <template slot="prevButton" v-if="slideCurrent !== 0">
+            
+            <template slot="prevButton">
                 <svg viewBox="0 0 10 12">
                     <use :xlink:href="'./images/sprite.svg#arrows__arrow-left'"></use>
                 </svg>
@@ -38,9 +32,14 @@
         data() {
             return {
                 slideCurrent: 0,
+                slides: [
+                    {id: 1, img: './images/banners/main-banner.png',link: ''},
+                    {id: 2, img: './images/banners/main-banner.png',link: ''},
+                    {id: 3, img: './images/banners/main-banner.png',link: ''},
+                    {id: 4, img: './images/banners/main-banner.png',link: ''},
+                ],
                 options: {
                     navButtons: false,
-                    // autoplay: true,
                     fade: false,
                     responsive: [
                         {
@@ -51,7 +50,6 @@
                                 pauseOnDotsHover: true,
                                 slidesToShow: 1,
                                 dots: true,
-                                // autoplaySpeed: 9000,
                             }
                         },
                     ]
@@ -60,7 +58,15 @@
         },
         methods: {
             showCurrentSlide(event) {
-                this.slideCurrent = event;
+                let arrLeft = document.querySelector('.slider-main .agile__nav-button--prev')
+                this.slideCurrent = event.currentSlide;
+                if (arrLeft !== null) {
+                    if (this.slideCurrent !== 0) {
+                        arrLeft.style.display = 'block'
+                    } else {
+                        arrLeft.style.display = 'none'
+                    }
+                }
             },
         }
     }
