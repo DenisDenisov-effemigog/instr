@@ -13,65 +13,11 @@
                             </svg>
                         </a>
                         <catalogue-subcategories :categories="category.subcategories"></catalogue-subcategories>
-                        <!-- <div class="catalogue__subcategories">
-                            <div class="catalogue__subcategory">
-                                <a href="#" class="catalogue__subcategory-link">Аксессуары автомобильные</a>
-                                <ul class="catalogue__further-subcategories">
-                                    <li>
-                                        <a href="#" class="catalogue__further-subcategory">Ареометры</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="catalogue__further-subcategory">Ареометры</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="catalogue__further-subcategory">Ареометры</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="catalogue__further-subcategory">Ареометры</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="catalogue__further-subcategory">Ареометры</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="catalogue__subcategory">
-                                <a href="#" class="catalogue__subcategory-link">Аксессуары автомобильные</a>
-                                <ul class="catalogue__further-subcategories">
-                                    <li>
-                                        <a href="#" class="catalogue__further-subcategory">Ареометры</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="catalogue__further-subcategory">Ареометры</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="catalogue__further-subcategory">Ареометры</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="catalogue__further-subcategory">Ареометры</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="catalogue__further-subcategory">Ареометры</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div> -->
                     </div>
-
-                    <!-- <subcategories :subcategories="category.subcategories"></subcategories> -->
-                            <!-- <li v-for="subcategory in category.subcategories">
-                                <a href="#" class="catalogue__subcategory-link">{{subcategory}}</a>
-                                <furtherSubcategories :subcategory="subcategory"></furtherSubcategories>
-                                <ul>
-                                    <li v-for="further-subcategory in subcategory">
-                                        <a href="#" class="catalogue__further-subcategory">{{furtherSubcategory}}</a>
-                                    </li>
-                                </ul>
-                            </li> -->
-
                 </li>
             </ul>
         </div>
-        <!-- container end -->
+
     </div>
 </template>
 
@@ -88,148 +34,163 @@
                categories: [
                     {
                         'title': 'Автомобильный инструмент',
-                        'subcategories': {
-                            'Аксессуары автомобильные': ['Ареометры', 'Воронки', 'Держатели телефонов и планшетов', 
+                        'subcategories': [
+                            {'title': 'Аксессуары автомобильные',
+                            'categories': ['Ареометры', 'Воронки', 'Держатели телефонов и планшетов', 
                                 'Знаки аварийной остановки', 'Канистры для топлива', 'Компрессоры автомобильные', 
                                 'Органайзеры', 'Пакеты для шин', 'Провода стартовые', 'Резинки багажные', 'Ремни багажные', 
                                 'Салфетки и губки', 'Скребки и водосгоны', 'Тросы буксировочные', 'Удобства в автомобиле', 
-                                'Щетки стеклоочистителя', 'Щетки-сметки'],
-                            'Домкраты': ['Домкраты гидравлические подкатные', 'Домкраты гидравлические бутылочные', 
-                                'Домкраты механические бутылочные', 'Домкраты реечные', 'Домкраты ромбовые'],
-                            'Пневмоинструмент': ['Аксессуары к компрессору', 'Гвозди для пневмо нейлера', 'Краскораспылители', 
-                                'Наборы пневмоинструмента', 'Нейлеры пневматические', 'Пистолеты пневматические', 
-                                'Ремкомплекты для краскораспылителей', 'Скобы для пневмостеплера', 'Степлеры пневматические', 
-                                'Шланги спиральные'],
-                            'Пробники автомобильные': [],
-                            'Перчатки': [],
-                            'Растяжки гидравлические': [],
-                            'Специальные приспособления': [],
-                            'Тали': [],
-                            'Поддоны для сбора масла': [],
-                            'Тельферы': [],
-                            'Лебедки автомобильные': [],
-                            'Масленки': [],
-                            'Мебель гаражная': [],
-                            'Моечные машины высокого давления': [],
-                            'Насосы гидравлические': [],
-                            'Поддоны для сбора масла': [],
-                            'Подставки под машину регулируемые':[],
-                            'Прессы гидравлические':[],
-                            'Специальные приспособления':[],
-                            'Трубогибы гидравлические':[],
-                            'Цилиндры гидравлические':[],
-                            'Пробники автомобильные':[],
-                            'Подставки под машину регулируемые':[],
-                        }
+                                'Щетки стеклоочистителя', 'Щетки-сметки']
+                            },
+                            {
+                                'title': 'Домкраты',
+                                'categories': ['Домкраты гидравлические подкатные', 'Домкраты гидравлические бутылочные', 
+                                    'Домкраты механические бутылочные', 'Домкраты реечные', 'Домкраты ромбовые'],
+                            },
+                            {
+                                'title': 'Пневмоинструмент',
+                                'categories': ['Аксессуары к компрессору', 'Гвозди для пневмо нейлера', 'Краскораспылители', 
+                                    'Наборы пневмоинструмента', 'Нейлеры пневматические', 'Пистолеты пневматические', 
+                                    'Ремкомплекты для краскораспылителей', 'Скобы для пневмостеплера', 'Степлеры пневматические', 
+                                    'Шланги спиральные']
+                            },
+                            {
+                                'title': 'Пробники автомобильные'
+                            },
+                            {'title': 'Перчатки'},
+                            {'title': 'Растяжки гидравлические'},
+                            {'title': 'Специальные приспособления'},
+                            {'title': 'Тали'},
+                            {'title': 'Поддоны для сбора масла'},
+                            {'title': 'Тельферы'},
+                            {'title': 'Лебедки автомобильные'},
+                            {'title': 'Масленки'},
+                            {'title': 'Мебель гаражная'},
+                            {'title': 'Моечные машины высокого давления'},
+                            {'title': 'Насосы гидравлические'},
+                            {'title': 'Поддоны для сбора масла'},
+                            {'title': 'Подставки под машину регулируемые'},
+                            {'title': 'Прессы гидравлические'},
+                            {'title': 'Специальные приспособления'},
+                            {'title': 'Трубогибы гидравлические'},
+                            {'title': 'Цилиндры гидравлические'},
+                            {'title': 'Пробники автомобильные'},
+                            {'title': 'Подставки под машину регулируемые'},
+                        ]
                     },
                     {
                         'title': 'Слесарный инструмент',
-                        'subcategories': {
-                            'accessories': [
-                                'aroma',
-                                'holders',
-                            ],
-                            'Тельферы': [],
-                            'Лебедки автомобильные': [],
-                            'Масленки': [],
-                            'Мебель гаражная': [],
-                            'Моечные машины высокого давления': [],
-                            'Насосы гидравлические': []
-                        }
+                        'subcategories': [
+                            {
+                                'title': 'accessories',
+                                'categories' : ['aroma', 'holders',]
+                            },
+                            {'title': 'Тельферы'},
+                            {'title': 'Лебедки автомобильные'},
+                            {'title': 'Масленки'},
+                            {'title': 'Мебель гаражная'},
+                            {'title': 'Моечные машины высокого давления'},
+                            {'title': 'Насосы гидравлические'}
+                        ]
                     },
                     {
                         'title': 'Столярный инструмент',
-                        'subcategories': {
-                            'accessories': [
-                                'aroma',
-                                'holders'
-                            ],
-                            'Тельферы': [],
-                            'Лебедки автомобильные': [],
-                            'Масленки': [],
-                            'Мебель гаражная': []
-                        }
+                        'subcategories': [
+                            {
+                                'title': 'accessories',
+                                'categories' : ['aroma', 'holders',]
+                            },
+                            {'title': 'Тельферы'},
+                            {'title': 'Лебедки автомобильные'},
+                            {'title': 'Масленки'},
+                            {'title': 'Мебель гаражная'},
+                        ]
                     },
                     {
                         'title': 'Измерительный инструмент',
-                        'subcategories': {
-                            'accessories': [
-                                'aroma',
-                                'holders'
-                            ]
-                        }
+                        'subcategories': [
+                            {
+                                'title': 'accessories',
+                                'categories' : ['aroma', 'holders',]
+                            },
+                            {'title': 'Тельферы'},
+                        ]
                     },
                     {
                         'title': 'Крепежный инструмент',
-                        'subcategories': {
-                            'accessories': [
-                                'aroma',
-                                'holders'
-                            ]
-                        }
+                        'subcategories': [
+                            {
+                                'title': 'accessories',
+                                'categories' : ['aroma', 'holders',]
+                            }
+                        ]
                     },
                     {
                         'title': 'Садовый инвентарь',
-                        'subcategories': {
-                            'accessories': [
-                                'aroma',
-                                'holders'
-                            ]
-                        }
+                        'subcategories': [
+                            {
+                                'title': 'accessories',
+                                'categories' : ['aroma', 'holders',]
+                            }
+                        ]
                     },
                     {
                         'title': 'Режущий инструмент',
-                        'subcategories': {
-                            'accessories': [
-                                'aroma',
-                                'holders'
-                            ]
-                        }
+                        'subcategories': [
+                            {
+                                'title': 'accessories',
+                                'categories' : ['aroma', 'holders',]
+                            },
+                            {'title': 'Тельферы'}
+                        ]
                     },
                     {
                         'title': 'Отделочный инструмент',
-                        'subcategories': {
-                            'accessories': [
-                                'aroma',
-                                'holders'
-                            ]
-                        }
+                        'subcategories': [
+                            {
+                                'title': 'accessories',
+                                'categories' : ['aroma', 'holders',]
+                            }
+                        ]
                     },
                     {
                         'title': 'Силовое оборудование',
-                        'subcategories': {
-                            'accessories': [
-                                'aroma',
-                                'holders'
-                            ]
-                        }
+                        'subcategories': [
+                            {
+                                'title': 'accessories',
+                                'categories' : ['aroma', 'holders',]
+                            },
+                            {'title': 'Тельферы'}
+                        ]
                     },
                     {
                         'title': 'Средства индивидуальной защиты',
-                        'subcategories': {
-                            'accessories': [
-                                'aroma',
-                                'holders'
-                            ]
-                        }
+                        'subcategories': [
+                            {
+                                'title': 'accessories',
+                                'categories' : ['aroma', 'holders',]
+                            }
+                        ]
                     },
                     {
                         'title': 'Товары первой необходимости',
-                        'subcategories': {
-                            'accessories': [
-                                'aroma',
-                                'holders'
-                            ]
-                        }
+                        'subcategories': [
+                            {
+                                'title': 'accessories',
+                                'categories' : ['aroma', 'holders',]
+                            },
+                            {'title': 'Тельферы'},
+                            {'title': 'Лебедки автомобильные'}
+                        ]
                     },
                     {
                         'title': 'Прочий инструмент',
-                        'subcategories': {
-                            'accessories': [
-                                'aroma',
-                                'holders'
-                            ]
-                        }
+                        'subcategories': [
+                            {
+                                'title': 'accessories',
+                                'categories' : ['aroma', 'holders',]
+                            }
+                        ]
                     }
 
                 ] 
