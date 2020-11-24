@@ -1,0 +1,20 @@
+.bestsellers
+    @extend .container
+    margin-bottom: 56px
+    &__title
+        @extend .title-3
+        margin-bottom: 32px
+    &__block
+        display: flex
+    &__banner
+        width: 336px
+        height: 488px
+        background: #c4c4c4
+        margin-right: 24px
+        cursor: pointer
+        &:hover
+            box-shadow: 0 14px 25px 0 rgba($black-real, .16)
+    &__cards
+        display: flex
+        & .card:not(last-child)
+            margin-right: 24px
