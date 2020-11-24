@@ -16,7 +16,7 @@
         &_sticker
             @extend .text-3
             padding: 4px 8px
-            border: 1px solid black
+            border: 1px solid
             border-radius: 4px
             margin-right: 4px
             position: relative
@@ -30,6 +30,12 @@
                 border-left: 1px solid transparent
                 border-top: 24px solid black
             &:after
+            &--new
+                border-color: $primary-red
+                color: $primary-red
+            &--promo
+                border-color: $blue
+                color: $blue
     &__favorite-btn
         cursor: pointer
         svg
@@ -49,6 +55,8 @@
         @extend .text-2
         color: $black
         margin-bottom: 16px
+        height: 60px
+        overflow: hidden
     &__price-block
         &_old-price
             @extend .text-2
