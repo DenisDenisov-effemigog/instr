@@ -33,6 +33,11 @@
                     <use xlink:href="./images/sprite.svg#icons__graf"></use>
                 </svg>
             </div>
+            <div class="card__menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </div>
 </template>

@@ -6,15 +6,30 @@
         margin-bottom: 32px
     &__block
         display: flex
+        flex-direction: column
+        +desktop
+            flex-direction: row
     &__banner
-        width: 336px
-        height: 496px
+        width: 328px
+        height: 64px
+        margin: 0 auto 24px
         background: #c4c4c4
-        margin-right: 24px
+        border-radius: 4px
         cursor: pointer
+        +desktop
+            width: 336px
+            height: 496px
+            margin: 0 24px 0 0
         &:hover
             box-shadow: 0 14px 25px 0 rgba($black-real, .16)
     &__cards
         display: flex
-        & .card:not(last-child)
-            margin-right: 24px
+        flex-wrap: wrap
+        margin-left: -16px
+        margin-right: -16px
+        +desktop
+            flex-wrap: nowrap
+            margin: 0
+        & .card:not(:last-child)
+            +desktop
+                margin-right: 24px

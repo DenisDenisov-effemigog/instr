@@ -1,9 +1,13 @@
 .slider-photo-card
     width: 100%
     &__slide
-        height: 192px
+        height: 156px
+        +desktop
+            height: 192px
         &_image
-            max-height: 192px
+            max-height: 156px
+            +desktop
+                max-height: 192px
     & .agile__dot
         margin: 0 4px
         button
