@@ -1,33 +1,40 @@
 <template>
     <div class="catalogue">
 
-        <div class="container">
-            <ul class="catalogue__categories">
-                <div class="catalogue__categories-bg"></div>
-                <li class="catalogue__category" v-for="category in categories">
-                    <div>
-                        <a href="#" class="catalogue__category-link">
-                            {{category.title}}
-                            <svg class="" viewBox="0 0 6 10">
-                                <use :xlink:href="'./images/sprite.svg#arrows__arrow-right'"></use>
-                            </svg>
-                        </a>
-                        <catalogue-subcategories :categories="category.subcategories"></catalogue-subcategories>
-                    </div>
-                </li>
-            </ul>
-        </div>
+        <catalogue-mobile :categories="categories"></catalogue-mobile>
 
+        <div class="catalogue_tablet">
+            <div class="container">
+                <ul class="catalogue__categories">
+                    <div class="catalogue__categories-bg"></div>
+                    <li class="catalogue__category" v-for="category in categories">
+                        <div>
+                            <a href="#" class="catalogue__category-link">
+                                {{category.title}}
+                                <svg class="" viewBox="0 0 6 10">
+                                    <use :xlink:href="'./images/sprite.svg#arrows__arrow-right'"></use>
+                                </svg>
+                            </a>
+                            <catalogue-subcategories :categories="category.subcategories"></catalogue-subcategories>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
+    import catalogueMobile from './mobile/catalogue-mobile.vue'
     import catalogueSubcategories from './catalogue-subcategories.vue';
+    import headerMenuMobile from '../header/mobile/header-menu-mobile.vue';
 
     export default {
         name: "catalogue",
-        components:{
-            catalogueSubcategories
+        components: {
+            catalogueMobile,
+            catalogueSubcategories,
+            headerMenuMobile
         },
         data() {
             return {
@@ -85,6 +92,14 @@
                                 'title': 'accessories',
                                 'categories' : ['aroma', 'holders',]
                             },
+                            {
+                                'title': 'accessories',
+                                'categories' : ['aroma', 'holders',]
+                            },
+                            {
+                                'title': 'accessories',
+                                'categories' : ['aroma', 'holders',]
+                            },
                             {'title': 'Тельферы'},
                             {'title': 'Лебедки автомобильные'},
                             {'title': 'Масленки'},
@@ -96,6 +111,10 @@
                     {
                         'title': 'Столярный инструмент',
                         'subcategories': [
+                            {
+                                'title': 'accessories',
+                                'categories' : ['aroma', 'holders',]
+                            },
                             {
                                 'title': 'accessories',
                                 'categories' : ['aroma', 'holders',]

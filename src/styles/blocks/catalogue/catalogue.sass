@@ -1,20 +1,38 @@
 .catalogue
-    display: none
     position: absolute
-    top: 8.75rem
+    top: 3.5rem
     left: 0
     width: 100%
-    height: 63.375rem
-    //height: fit-content
-    //overflow-y: hidden
-    background-color: $white
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.08)
     z-index: 3
+    +tablet
+        top: 5rem
+    &_active
+        .catalogue_mobile
+            display: block
+            +tablet
+                display: none
+        .catalogue_tablet
+            +tablet
+                display: block
+    &_tablet
+        display: none
+        height: 63.375rem
+        background-color: $white
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.08)
+    &_mobile
+        display: none
+        height: fit-content
+        background-color: $white
+    &__title
+        @extend .title-3
+        margin: 1.5rem 0 .5rem 0
     &__categories
         position: relative
-        width: 25%
+        width: 100%
         height: 100%
-        padding: 2.5rem 0
+        +tablet
+            width: 25%
+            padding: 2.5rem 0
     &__categories-bg
         position: absolute
         top: 0
@@ -24,18 +42,28 @@
         background-color: $light
         z-index: inherit
     &__category
-        &:hover
-            background-color: $white
-            color: $black
-            & .catalogue__subcategories
-                display: flex
+        +tablet
+            &:hover
+                background-color: $white
+                color: $black
+                & .catalogue__subcategories
+                    display: flex
     &__category-link
-        @extend .text-1
+        @extend .subtitle-2
         position: relative
         display: flex
         align-items: center
-        padding: 1rem 2.9375rem 1rem 1.8125rem
-        margin: 0 1px 0 -1.8125rem
+        padding: 1.125rem 1.5rem 1.125rem 0
+        border-bottom: 1px solid $border-color_2
+        +tablet
+            padding: 1rem 2.9375rem 1rem 1.8125rem
+            margin: 0 1px 0 -1.8125rem
+            font:
+                family: $font-montserrat-regular
+                size: $font-size
+                weight: $font-weight
+            line-height: $line-height
+            border-bottom: none
         &:hover
             background-color: $white
             color: $black
@@ -43,10 +71,12 @@
                 display: flex
         & > svg
             position: absolute
-            right: 1.5rem
+            right: .5rem
             fill: $icon-black
             width: $size_5
             height: $size_8-33
+            +tablet
+                right: 1.5rem
     &__subcategories
         @extend .columns
         position: absolute
@@ -67,13 +97,21 @@
         width: percentage(1 / 3)
         padding-top: 1.625rem
         padding-bottom: 1.625rem
-        line-height: 1.25rem
+        line-height: $line-height_3
     &__subcategory-link
         @extend .subtitle-2
+        &_mobile
+            @extend .catalogue__category-link
+            @extend .text-2
     &__further-subcategories
         margin-top: 1rem
-        line-height: 1.25rem
+        line-height: $line-height_3
         & > li:not(:last-of-type)
             margin-bottom: 1rem
     &__further-subcategory
         @extend .link-2
+    &__button
+        @extend .button
+        @extend .text-2
+        margin: 2.5rem 0 1rem 0
+        padding: .625rem 7rem

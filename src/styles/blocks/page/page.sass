@@ -1,3 +1,11 @@
 .page
     margin: 0
     font-family: $font-montserrat-regular
+    &_hide-main
+        .main
+            +mobile
+                display: none
+    &_hide-footer
+        .footer
+            +mobile
+                display: none

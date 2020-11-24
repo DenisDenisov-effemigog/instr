@@ -8,10 +8,10 @@
 
 <script>
     export default {
-        name: "further-subcategories",
+        name: "further-subcategories-mobile",
         props: {
             categories: {
-                //type: Array,
+                type: Array,
                 required: true
             }
         },

@@ -1,20 +1,13 @@
 <template>
     <header class="header">
         <div class="container">
-            <div v-show="!flag" class="header__logo">
-                <a href="#" class="header__logo-link">
-                    <img src="./images/header/logo.png" alt="Логотип" class="header__logo-pic">
-                </a>
-            </div>
-            <div v-show="!flag" class="header__catalog">
-                <div  class="header__catalog-mobile">
-                    <svg class="header__catalog-mobile-icon">
-                        <use :xlink:href="'./images/sprite.svg#icons__ham'"></use>
-                    </svg>
-                </div>
-
-                <component is="show-catalogue"></component>
-            </div>
+            <a href="#" class="header__logo" v-show="!flag">
+                <picture>
+                    <source media="(max-width:768px)" srcset="./images/header/logo_mobile.svg">
+                    <img src="./images/header/logo.png" class="header__logo-pic" alt="Логотип">
+                </picture>
+            </a>
+            <show-catalogue v-show="!flag"></show-catalogue>
             <header-search
                 @searchClick=searchClick
                 @clickClose=clickClose
