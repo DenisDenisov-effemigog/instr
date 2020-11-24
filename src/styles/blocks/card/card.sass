@@ -1,3 +1,82 @@
 .card
-    //border: 1px solid $border-color
-    //padding: 16px
+    border: 1px solid $border-color
+    padding: 16px
+    width: 246px
+    cursor: pointer
+    border-radius: 4px
+    &:hover
+        box-shadow: 0 5px 15px 0 rgba($black-real, .08)
+    &__header
+        display: flex
+        justify-content: space-between
+        align-items: center
+        margin-bottom: 16px
+    &__stickers
+        display: flex
+        &_sticker
+            @extend .text-3
+            padding: 4px 8px
+            border: 1px solid black
+            border-radius: 4px
+            margin-right: 4px
+            position: relative
+            transform: skew(-16deg)
+            & span
+                transform: skew(16deg)
+            //&:before
+                content: ''
+                position: absolute
+                display: block
+                border-left: 1px solid transparent
+                border-top: 24px solid black
+            &:after
+    &__favorite-btn
+        cursor: pointer
+        cursor: pointer
+        svg
+            fill: $icon-grey
+            width: $size_19
+            height: $size_16
+        &:hover svg
+            fill: $icon-black
+    &__image-block
+        width: 192px
+        height: 192px
+        margin: 0 auto 16px
+        padding-bottom: 16px
+    &__code
+        @extend .text-2
+        color: $light-grey
+        margin-bottom: 4px
+    &__name
+        @extend .text-2
+        color: $black
+        margin-bottom: 16px
+    &__price-block
+        &_old-price
+            @extend .text-2
+            color: $black
+            text-decoration: line-through
+            margin-bottom: 4px
+        &_current-price
+            @extend .title-4
+            font-size: 20px
+            color: $black
+            margin-bottom: 8px
+    &__button-block
+        display: flex
+        justify-content: space-between
+        align-items: center
+    &__buy-btn
+        @extend .button
+        padding: 6px 34px
+        cursor: pointer
+    &__compare-btn
+        cursor: pointer
+        svg
+            fill: $icon-grey
+            width: $size_14
+            height: $size_16
+        &:hover svg
+            fill: $icon-black
+            
