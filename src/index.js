@@ -8,6 +8,8 @@ import headerBlock from '../src/js/components/header/header-block.vue';
 import topnavSwitch from '../src/js/components/topnav/topnav-switch.vue';
 import sliderMain from '../src/js/components/main-page/slider-main.vue';
 import sliderPromo from '../src/js/components/main-page/slider-promo.vue';
+import card from '../src/js/components/card/card.vue';
+import sliderPhotoCard from './js/components/card/slider-photo-card.vue';
 
 Vue.use(VueAgile)
 
@@ -24,6 +26,8 @@ const app = new Vue({
         headerBlock,
         sliderMain,
         sliderPromo,
+        card,
+        sliderPhotoCard,
         catalogue,
     },
     mounted() {
