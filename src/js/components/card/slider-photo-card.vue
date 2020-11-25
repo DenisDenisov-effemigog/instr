@@ -4,6 +4,11 @@
 
             <div class="slider-photo-card__slide" v-for="slide in slides">
                 <img class="slider-photo-card__slide_image" :src="slide.img">
+                <div class="slider-photo-card__slide_image--hover">
+                    <svg>
+                        <use xlink:href="./images/sprite.svg#icons__mag"></use>
+                    </svg>
+                </div>
             </div>
             
         </agile>
@@ -39,6 +44,7 @@ export default {
                             pauseOnDotsHover: true,
                             slidesToShow: 1,
                             dots: true,
+                            // autoplay: true,
                         }
                     },
                 ]

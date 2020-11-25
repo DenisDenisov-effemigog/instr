@@ -46,6 +46,31 @@
             &--promo
                 border-color: $blue
                 color: $blue
+        &_sticker-wrap
+            position: relative
+            &:hover .card__stickers_sticker-tooltip
+                display: flex
+        &_sticker-tooltip
+            @extend .tooltip
+            top: 38px
+            left: 50%
+            transform: translateX(-50%)
+            font-size: 14px
+            line-height: 20px
+            width: 240px
+            & a
+                color: $blue
+                &:hover
+                    text-decoration: underline
+                    color: $blue
+            & svg
+                fill: $icon-grey
+                width: $size_12
+                height: $size_12
+                flex-shrink: 0
+                margin-left: 16px
+                &:hover
+                    fill: $icon-medium-grey
     &__favorite-btn
         display: none
         cursor: pointer
@@ -57,6 +82,9 @@
             height: $size_16
         &:hover svg
             fill: $icon-black
+        &--active svg,
+        &--active:hover svg
+            fill: $primary-red
     &__image-block
         width: 156px
         margin: 0 auto 16px
@@ -102,6 +130,9 @@
             height: $size_16
         &:hover svg
             fill: $icon-black
+        &--active svg,
+        &--active:hover svg
+            fill: $primary-red
     &__menu-btn
         width: 32px
         height: 32px

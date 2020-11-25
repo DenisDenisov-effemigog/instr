@@ -2,12 +2,29 @@
     width: 100%
     &__slide
         height: 156px
+        position: relative
         +desktop
             height: 192px
+        &:hover .slider-photo-card__slide_image--hover
+            display: flex
         &_image
             max-height: 156px
             +desktop
                 max-height: 192px
+            &--hover
+                display: none
+                background: rgba($black-real, .3)
+                width: 100%
+                height: 100%
+                align-items: center
+                justify-content: center
+                position: absolute
+                top: 0
+                left: 0
+                & svg
+                    fill: $icon-white
+                    width: $size_18
+                    height: $size_18
     & .agile__dot
         margin: 0 4px
         button
