@@ -11,6 +11,7 @@ import sliderPromo from '../src/js/components/main-page/slider-promo.vue';
 import sliderCards from '../src/js/components/main-page/slider-cards.vue';
 import card from '../src/js/components/card/card.vue';
 import sliderPhotoCard from './js/components/card/slider-photo-card.vue';
+import addToCart from './js/components/card/add-to-cart.vue';
 
 Vue.use(VueAgile)
 
@@ -31,6 +32,7 @@ const app = new Vue({
         card,
         sliderPhotoCard,
         catalogue,
+        addToCart,
     },
     mounted() {
     }

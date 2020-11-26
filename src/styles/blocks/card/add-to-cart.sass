@@ -1,0 +1,46 @@
+.add-to-cart
+    &__in-cart
+        display: flex
+        flex-direction: row
+        justify-content: space-between
+        background: $white
+    &__button
+        @extend .button
+        width: 32px
+        height: 32px
+        background: $primary-red
+        flex-shrink: 0
+        &:hover
+            background: $primary-hover
+        &_decrease
+            border-top-right-radius: 0
+            border-bottom-right-radius: 0
+            & svg
+                width: 16px
+                height: 2px
+        &_increase
+            border-top-left-radius: 0
+            border-bottom-left-radius: 0
+            & svg
+                width: 24px
+                height: 24px
+        & svg
+            fill: $icon-white
+
+    &__amount
+        display: flex
+        flex-direction: column
+        justify-content: center
+        width: 81px
+        text-align: center
+        font-size: 14px
+
+    &__amount-input
+        @extend .add-to-cart__amount
+        background: $white
+        width: 81px
+
+    &__add
+        @extend .button
+        padding: 6px 34px
+        cursor: pointer

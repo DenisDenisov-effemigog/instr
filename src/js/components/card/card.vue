@@ -48,7 +48,8 @@
             <div class="card__price-block_current-price">{{ product.newPrice }} RON</div>
         </div>
         <div class="card__button-block">
-            <div class="card__buy-btn">В корзину</div>
+<!--            <div class="card__buy-btn">В корзину</div>-->
+            <addToCart></addToCart>
             <div 
                 class="card__compare-btn"
                 :class="{'card__compare-btn--active': inCompare}"
@@ -68,11 +69,13 @@
 
 <script>
 import sliderPhotoCard from './slider-photo-card.vue';
+import addToCart from './add-to-cart.vue';
 
 export default {
     name: 'card',
     components: {
-        sliderPhotoCard
+        sliderPhotoCard,
+        addToCart
     },
     data() {
         return {
