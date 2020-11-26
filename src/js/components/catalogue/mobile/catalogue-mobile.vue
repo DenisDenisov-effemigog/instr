@@ -18,7 +18,6 @@
                     </a>
                     <catalogue-subcategories-mobile :categories="category.subcategories" v-else></catalogue-subcategories-mobile>
                 </li>
-                <header-menu-mobile v-if="!subcategory"></header-menu-mobile>
             </ul>
         </div>
     </div>
@@ -26,7 +25,6 @@
 
 <script>
     import catalogueSubcategoriesMobile from './catalogue-subcategories-mobile.vue'
-    import headerMenuMobile from '../../header/mobile/header-menu-mobile.vue'
 
     export default {
         name: 'catalogue-mobile',
@@ -38,7 +36,6 @@
         },
         components: {
             catalogueSubcategoriesMobile,
-            headerMenuMobile
         },
         props: {
             categories: {

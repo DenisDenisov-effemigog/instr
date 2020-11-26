@@ -27,7 +27,7 @@
 <script>
     import catalogueMobile from './mobile/catalogue-mobile.vue'
     import catalogueSubcategories from './catalogue-subcategories.vue';
-    import headerMenuMobile from '../header/mobile/header-menu-mobile.vue';
+    import headerMenuMobile from '../header/mobile/home-menu.vue';
 
     export default {
         name: "catalogue",

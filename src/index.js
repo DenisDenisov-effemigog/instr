@@ -12,10 +12,12 @@ import sliderCards from '../src/js/components/main-page/slider-cards.vue';
 import card from '../src/js/components/card/card.vue';
 import sliderPhotoCard from './js/components/card/slider-photo-card.vue';
 import addToCart from './js/components/card/add-to-cart.vue';
+import homeMenu from './js/components/header/mobile/home-menu.vue';
 
 Vue.use(VueAgile)
 
 import catalogue from '../src/js/components/catalogue/catalogue.vue';
+import mobileMenu from '../src/js/components/mobile-menu.vue';
 
 Vue.prototype.$eventBus = new Vue();
 
@@ -33,6 +35,8 @@ const app = new Vue({
         sliderPhotoCard,
         catalogue,
         addToCart,
+        mobileMenu,
+        homeMenu,
     },
     mounted() {
     }

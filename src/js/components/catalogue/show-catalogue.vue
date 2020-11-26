@@ -1,8 +1,13 @@
 <template>
     <div class="header__catalog" v-click-outside="close" >
-        <div  class="header__catalog-mobile" @click.prevent="open">
+        <div  class="header__catalog-mobile" @click.prevent="openMenu" v-if="!openedMenu">
             <svg class="header__catalog-mobile-icon">
                 <use :xlink:href="'./images/sprite.svg#icons__ham'"></use>
+            </svg>
+        </div>
+        <div  class="header__catalog-mobile" @click.prevent="closeMenu" v-else>
+            <svg class="header__catalog-mobile-icon">
+                <use :xlink:href="'./images/sprite.svg#close'"></use>
             </svg>
         </div>
         <div class="header__catalog-btn" @click.prevent="open">
@@ -33,19 +38,9 @@
         },
         data() {
             return {
-                active: false
+                active: false,
+                openedMenu: false,
             }
-        },
-        methods: {
-            open() {
-                this.active = !this.active;
-                this.isActive
-            },
-            close() {
-                this.active = false
-                this.isActive
-            },
-            
         },
         computed: {
             isActive() {
@@ -58,6 +53,25 @@
                     page.classList.remove('page_hide-footer');
                 }
             }
-        }
+        },
+        methods: {
+            open() {
+                this.active = !this.active;
+                this.isActive
+            },
+            close() {
+                this.active = false
+                this.isActive
+            },
+            openMenu() {
+                this.openedMenu = true;
+                this.$eventBus.$emit('open-menu', 'home');
+            },
+            closeMenu() {
+                this.openedMenu = false;
+                this.$eventBus.$emit('close-menu');
+            },
+            
+        },
     }
 </script>

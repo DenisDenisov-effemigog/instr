@@ -47,13 +47,16 @@
         &_mobile
             display: flex
             justify-content: space-between
-            margin: 3.4375rem -1rem 0 -1rem
             padding: .75rem 1rem
             box-shadow: 0px -2px 8px 0px rgba(0, 0, 0, .08)
             .header__menu-item
                 padding: 0
             .header__menu-link
                 @extend .link-3_mobile
+                &--active
+                    color: $primary-hover
+                    & svg
+                        fill: $icon-red
             .header__menu-icon
                 fill: $light-grey
                 margin-bottom: .25rem
