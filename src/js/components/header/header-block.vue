@@ -2,10 +2,9 @@
     <header class="header">
         <div class="container">
             <a href="#" class="header__logo" v-show="!flag">
-                <picture>
-                    <source media="(max-width:768px)" srcset="./images/header/logo_mobile.svg">
-                    <img src="./images/header/logo.png" class="header__logo-pic" alt="Логотип">
-                </picture>
+                <svg viewBox="0 0 141 32">
+                    <use :xlink:href="'./images/sprite.svg#logo'"></use>
+                </svg>
             </a>
             <show-catalogue v-show="!flag"></show-catalogue>
             <header-search

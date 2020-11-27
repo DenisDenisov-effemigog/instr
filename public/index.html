@@ -193,10 +193,9 @@
             <div class="container">
 
                 <div class="footer__layout">
-                    <picture>
-                        <source media="(max-width:768px)" srcset="./images/footer/logo-footer_mobile.svg">
-                        <img src="./images/footer/logo-footer.svg" class="footer__logo" alt="instrumtorg logo">
-                    </picture>
+                    <svg viewBox="0 0 141 32">
+                        <use :xlink:href="'./images/sprite.svg#logo'"></use>
+                    </svg>
                     <div class="footer__company footer__company_desktop">&#169; 2020 ООО «МИР ИНСТРУМЕНТА»</div>
                     <a href="#" class="footer__agreement footer__agreement_desktop">Пользовательское соглашение</a>
                 </div>
