@@ -10,9 +10,9 @@
     &__slide
         padding: 0 12px
         position: relative
-        //height: 360px
+        height: 353px
         &:hover img
-            box-shadow: 0 14px 25px 0 rgba(0, 0, 0, .16)
+            box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .16)
         & img
             //+absolute-full
             transition: 200ms
@@ -21,6 +21,9 @@
             z-index: -1
             +desktop
                 +full-content
+        & a
+            display: block
+            border-radius: 4px
             
     & .agile__nav-button
         background: $white
