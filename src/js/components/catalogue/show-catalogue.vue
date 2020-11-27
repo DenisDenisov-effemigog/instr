@@ -54,6 +54,9 @@
                 }
             }
         },
+        created() {
+            this.$eventBus.$on("exitSearch", this.closeMenu)
+        },
         methods: {
             open() {
                 this.active = !this.active;

@@ -106,10 +106,22 @@
     &__further-subcategories
         margin-top: 1rem
         line-height: $line-height_3
-        & > li:not(:last-of-type)
-            margin-bottom: 1rem
+        padding-left: 24px
+        & > li
+            position: relative
+            &:not(:last-of-type)
+                margin-bottom: 1rem
     &__further-subcategory
         @extend .link-2
+        &--active
+            color: $blue
+            & + svg
+                fill: $icon-blue
+                width: 10px
+                height: 10px
+                position: absolute
+                top: 5px
+                left: -21px
     &__button
         @extend .button
         @extend .text-2

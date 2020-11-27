@@ -50,11 +50,30 @@
                 </a>
             </li>
             <li>
-                <div class="home-menu__link">
-                    <span>Румыния</span>
+                <div 
+                    class="home-menu__link" 
+                    :class="{'home-menu__link--opened': showCountry}"
+                    @click="openCountry"
+                >
+                    <span>{{ activeCountry }}</span>
                     <svg viewBox="0 0 6 10">
                         <use :xlink:href="'./images/sprite.svg#arrows__arrow-right'"></use>
                     </svg>
+                </div>
+                <div 
+                    class="home-menu__link_content" 
+                    v-if="showCountry" v-for="country in countries"
+                >
+                    <div
+                        class="home-menu__link_sublink"
+                        :class="{'home-menu__link_sublink--active': activeCountry === country}"
+                        @click="chooseCountry(country)"
+                    >
+                        <span>{{ country }}</span>
+                        <svg v-if="activeCountry === country"> 
+                            <use :xlink:href="'./images/sprite.svg#check'"></use>
+                        </svg>
+                    </div>
                 </div>
             </li>
         </ul>
@@ -78,5 +97,20 @@
 <script>
     export default {
         name: 'home-menu',
+        data(){
+            return{
+                countries:['Белоруссия','Казахстан','Румыния','Болгария','Польша','США','Венгрия','Россия','Украина'],
+                showCountry: false,
+                activeCountry: 'Румыния',
+            }
+        },
+        methods: {
+            openCountry() {
+                this.showCountry = !this.showCountry
+            },
+            chooseCountry(country){
+                this.activeCountry = country;
+            },
+        }
     }
 </script>

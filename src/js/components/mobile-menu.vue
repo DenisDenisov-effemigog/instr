@@ -5,7 +5,8 @@
             :class="{'mobile-menu__content--short': menuLink === 'home'}"
         >
             <component is="home-menu" v-if="menuLink === 'home'"></component>
-            <div v-else-if="menuLink === 'catalog'"></div>
+            <catalogue v-else-if="menuLink === 'catalog'" class="catalogue_active"></catalogue>
+            <div></div>
         </div>
         <div class="mobile-menu__buttons">
             <ul class="header__menu header__menu_mobile">
@@ -13,7 +14,7 @@
                     <a 
                         class="header__menu-link" 
                         :class="{'header__menu-link--active': menuLink === 'home'}"
-                        @click.prevent="menuLink = 'home'"
+                        @click.prevent="clickMenu('home')"
                     >
                         <svg class="header__menu-icon">
                             <use :xlink:href="'./images/sprite.svg#icons__home'"></use>
@@ -25,7 +26,7 @@
                     <a 
                         class="header__menu-link"
                         :class="{'header__menu-link--active': menuLink === 'catalog' || menuLink === 'search'}"
-                        @click.prevent="menuLink = 'catalog'"
+                        @click.prevent="clickMenu('catalog')"
                     >
                         <svg class="header__menu-icon">
                             <use :xlink:href="'./images/sprite.svg#icons__catalog'"></use>
@@ -64,16 +65,17 @@
 
 <script>
 import homeMenu from './header/mobile/home-menu.vue'
+import catalogue from './catalogue/catalogue.vue'
 
 export default {
     name: "mobile-menu",
     components: {
-        homeMenu,
+        homeMenu, catalogue,
     },
     data(){
         return{
             openModal: false,
-            menuLink: 'home,'
+            menuLink: 'home'
         }
     },
     created() {
@@ -89,6 +91,10 @@ export default {
         closeMenuModal(){
             document.querySelector('html').style.overflow = 'auto';
             this.openModal = false;
+        },
+        clickMenu(menu) {
+            this.menuLink = menu
+            this.$eventBus.$emit("closeSearch");
         },
     },
 }

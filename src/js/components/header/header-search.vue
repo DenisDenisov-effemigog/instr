@@ -11,9 +11,7 @@
                 <form action="" class="mobile-search__form">
                     <input type="text" class="mobile-search__input" :class="{'header__search-input_focused': focused}" placeholder="Поиск">
                     <button class="mobile-search__btn">Найти</button>
-                     <search
-                        :focused=focused
-                    ></search> 
+                     <search :focused=focused></search> 
                 </form>
             </div>
         </div>
@@ -45,6 +43,9 @@ export default {
             flag: false
         }
     },
+    created(){
+        this.$eventBus.$on("closeSearch", this.exitSearch)
+    },
     methods:{
         focus(){
             this.focused = true
@@ -55,9 +56,16 @@ export default {
         searchClick(){
             this.flag = true
             this.focused = true
+            this.$eventBus.$emit("open-menu", 'search')
             this.$emit("searchClick", this.flag)
         },
         clickClose(){
+            this.flag = false
+            this.focused = false
+            this.$eventBus.$emit('exitSearch')
+            this.$emit("clickClose", this.flag)
+        },
+        exitSearch() {
             this.flag = false
             this.focused = false
             this.$emit("clickClose", this.flag)
