@@ -1,13 +1,18 @@
 .slider-main
     @extend .container
-    margin-top: 40px
-    margin-bottom: 56px
+    margin-top: 32px
+    margin-bottom: 32px
+    +desktop
+        margin-top: 40px
+        margin-bottom: 56px
     &__slide
         position: relative
-        height: 450px
+        height: 190px
         padding: 50px 80px
         display: flex !important
         align-items: flex-end
+        +desktop
+            height: 450px
         &_img
             +absolute-full
             +full-content
@@ -19,6 +24,9 @@
             width: 199px
             height: 48px
             margin-bottom: 51px
+            display: none
+            +desktop
+                display: flex
             &:hover
                 color: $white
     & .agile__nav-button

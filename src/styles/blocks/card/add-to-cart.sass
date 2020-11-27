@@ -31,16 +31,22 @@
         display: flex
         flex-direction: column
         justify-content: center
-        width: 81px
         text-align: center
         font-size: 14px
+        width: 52px
+        +desktop
+            width: 81px
 
     &__amount-input
         @extend .add-to-cart__amount
         background: $white
-        width: 81px
+        width: 52px
+        +desktop
+            width: 81px
 
     &__add
         @extend .button
-        padding: 6px 34px
         cursor: pointer
+        padding: 6px 20px
+        +desktop
+            padding: 6px 34px

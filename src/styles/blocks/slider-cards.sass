@@ -22,10 +22,12 @@
         &--prev
             display: none
         &--next
+            top: 0
             right: 0
+            transform: translate(0)
             border-radius: 4px
             width: 66px
-            height: 488px
+            height: 496px
             display: none
             +desktop
                 display: block
@@ -36,3 +38,6 @@
                     fill: $icon-black
             & svg
                 fill: $icon-grey
+    & .card
+        +mobile
+            padding: 0

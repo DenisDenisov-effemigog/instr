@@ -55,6 +55,7 @@
                     </svg>
                 </li>
             </ul>
+<!--            <div class="catalogue__button">Показать {{items}}&nbsp;товаров</div>-->
         </div>
     </div>
 </template>
