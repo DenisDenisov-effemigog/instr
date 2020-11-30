@@ -49,7 +49,7 @@
                 </li>
             </ul>
             <div @click="showMore" v-show="itemFlag" class="search-items__download">
-                <p class="search-items__download-text">Загрузить</p>
+                <p class="search-items__download-text">Загрузить ещё</p>
                 <div class="search-items__download-pic">
                     <svg class="search-items__download-pic-icon" viewBox="0 0 12 10">
                         <use :xlink:href="'./images/sprite.svg#arrows__arrow-down'"></use>
