@@ -1,0 +1,279 @@
+{% extends "../layout.twig" %}
+
+{% block title %}Pages | 01 Главная{% endblock %}
+
+{% block content %}
+    <div class="topnav">
+        <div class="container">
+            <nav class="topnav__nav">
+                <ul class="topnav__nav-list">
+                    <li class="topnav__nav-item">
+                        <a href="#" class="topnav__nav-link">О компании</a>
+                    </li>
+                    <li class="topnav__nav-item">
+                        <a href="#" class="topnav__nav-link">Филиалы</a>
+                    </li>
+                    <li class="topnav__nav-item">
+                        <a href="#" class="topnav__nav-link">Где купить</a>
+                    </li>
+                    <li class="topnav__nav-item">
+                        <a href="#" class="topnav__nav-link">Условия сотрудничества</a>
+                    </li>
+                    <li class="topnav__nav-item">
+                        <a href="#" class="topnav__nav-link">Бренды</a>
+                    </li>
+                    <li class="topnav__nav-item">
+                        <a href="#" class="topnav__nav-link">Акции</a>
+                    </li>
+                </ul>
+            </nav>
+            <component is="topnav-switch"></component>
+            <a href="#" class="topnav__phone">
+                <svg class="topnav__phone-icon" viewBox="0 0 15 15">
+                    <use :xlink:href="'./images/sprite.svg#icons__phone'"></use>
+                </svg>
+                +4 0371 166 478
+                <div class="topnav__phone-tooltip">
+                    <div class="topnav__phone-tooltip-layout">
+                        <svg viewBox="0 0 12 12">
+                            <use :xlink:href="'./images/sprite.svg#icons__clock'"></use>
+                        </svg>
+                        Пн-Пт: с 9:00 - 18:00
+                    </div>
+                    <div class="topnav__phone-tooltip-layout">Сб-Вс: с 11:00 - 15:00</div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <component is="header-block"></component>
+
+    <main class="main">
+        <component is="slider-main"></component>
+        <component is="slider-promo"></component>
+        <div class="bestsellers">
+            <div class="bestsellers__title">Хиты продаж</div>
+            <div class="bestsellers__block">
+                <div class="bestsellers__banner"></div>
+                <div class="bestsellers__cards">
+                    <component is="card"></component>
+                    <component is="card"></component>
+                    <component is="card"></component>
+                    <component is="card"></component>
+                </div>
+            </div>
+        </div>
+        <section class="collection">
+            <h2 class="collection__title">Подборка подборок</h2>
+            <div class="collection__content">
+                <div class="collection__block">
+                    <div class="collection__card">
+                        <img src="./images/banners/collection/banner-1.png" alt="" class="collection__img">
+                    </div>
+                    <p class="collection__name">Заклепочник для резьбовых заклепок</p>
+                </div>
+                <div class="collection__block">
+                    <div class="collection__card">
+                        <img src="./images/banners/collection/banner-2.png" alt="" class="collection__img">
+                    </div>
+                    <p class="collection__name">Скобы для мебельных степлеров</p>
+                </div>
+                <div class="collection__block">
+                    <div class="collection__card">
+                        <img src="./images/banners/collection/banner-3.png" alt="" class="collection__img">
+                    </div>
+                    <p class="collection__name">Щипцы для зачистки электропроводов</p>
+                </div>
+                <div class="collection__block">
+                    <div class="collection__card">
+                        <img src="./images/banners/collection/banner-4.png" alt="" class="collection__img">
+                    </div>
+                    <p class="collection__name">Буры и насадки для перфоратора</p>
+                </div>
+                <div class="collection__block">
+                    <div class="collection__card">
+                        <img src="./images/banners/collection/banner-5.png" alt="" class="collection__img">
+                    </div>
+                    <p class="collection__name">Сетки абразивные и сеткодержатели</p>
+                </div>
+                <div class="collection__block">
+                    <div class="collection__card">
+                        <img src="./images/banners/collection/banner-6.png" alt="" class="collection__img">
+                    </div>
+                    <p class="collection__name">Диски пильные по дереву</p>
+                </div>
+                <div class="collection__block">
+                    <div class="collection__card">
+                        <img src="./images/banners/collection/banner-1.png" alt="" class="collection__img">
+                    </div>
+                    <p class="collection__name">Буры и насадки для перфоратора</p>
+                </div>
+                <div class="collection__block">
+                    <div class="collection__card">
+                        <img src="./images/banners/collection/banner-2.png" alt="" class="collection__img">
+                    </div>
+                    <p class="collection__name">Сетки абразивные и сеткодержатели</p>
+                </div>
+                <div class="collection__block">
+                    <div class="collection__card">
+                        <img src="./images/banners/collection/banner-3.png" alt="" class="collection__img">
+                    </div>
+                    <p class="collection__name">Диски пильные по дереву</p>
+                </div>
+                <div class="collection__block">
+                    <div class="collection__card">
+                        <img src="./images/banners/collection/banner-4.png" alt="" class="collection__img">
+                    </div>
+                    <p class="collection__name">Заклепочник для резьбовых заклепок</p>
+                </div>
+                <div class="collection__block">
+                    <div class="collection__card">
+                        <img src="./images/banners/collection/banner-5.png" alt="" class="collection__img">
+                    </div>
+                    <p class="collection__name">Щипцы для зачистки электропроводов</p>
+                </div>
+                <a href="" class="collection__block">
+                    <div class="collection__card">
+                        <img src="./images/banners/collection/banner-6.png" alt="" class="collection__img">
+                    </div>
+                    <p class="collection__name">Скобы для мебельных степлеров</p>
+                </a>
+            </div>
+        </section>
+        <section class="new-items">
+            <div class="new-items__title">Новинки от производителя</div>
+            <div class="new-items__content">
+                <div class="new-items__content_items-block">
+                    <component is="card"></component>
+                    <component is="card"></component>
+                    <component is="card"></component>
+                    <component is="card"></component>
+                    <component is="card"></component>
+                    <component is="card"></component>
+                </div>
+                <div class="new-items__content_banner"></div>
+            </div>
+        </section>
+        <section class="banners-section">
+            <div class="banners-section__title">Плитка баннеров наших акций</div>
+            <div class="banners-section__content">
+                <div class="banners-section__banner">
+                    <img src="./images/banners/banners-block/ban-1.png" alt="">
+                </div>
+                <div class="banners-section__banner">
+                    <img src="./images/banners/banners-block/ban-2.png" alt="">
+                </div>
+                <div class="banners-section__banner">
+                    <img src="./images/banners/banners-block/ban-3.png" alt="">
+                </div>
+                <div class="banners-section__banner">
+                    <img src="./images/banners/banners-block/ban-4.png" alt="">
+                </div>
+                <div class="banners-section__banner">
+                    <img src="./images/banners/banners-block/ban-5.png" alt="">
+                </div>
+                <div class="banners-section__banner">
+                    <img src="./images/banners/banners-block/ban-4.png" alt="">
+                </div>
+            </div>
+        </section>
+        <component is="slider-cards"></component>
+    </main>
+
+    <component is="country"></component>
+    <component is="mobile-menu"></component>
+    <footer class="footer">
+        <div class="container">
+
+            <div class="footer__layout">
+                <svg viewBox="0 0 141 32">
+                    <use :xlink:href="'./images/sprite.svg#logo'"></use>
+                </svg>
+                <div class="footer__company footer__company_desktop">&#169; 2020 ООО «МИР ИНСТРУМЕНТА»</div>
+                <a href="#" class="footer__agreement footer__agreement_desktop">Пользовательское соглашение</a>
+            </div>
+
+            <nav class="footer__menu">
+                <ul class="footer__menu-column footer__menu-column_desktop">
+                    <li class="footer__menu-title"><a href="#">О&nbsp;компании</a></li>
+                    <li class="footer__menu-item"><a href="#">Филиалы</a></li>
+                    <li class="footer__menu-item"><a href="#">Бренды</a></li>
+                    <li class="footer__menu-item"><a href="#">Гарантия</a></li>
+                    <li class="footer__menu-item"><a href="#">Новости</a></li>
+                </ul>
+                <ul class="footer__menu-column footer__menu-column_desktop">
+                    <li class="footer__menu-title"><a href="#">Помощь</a></li>
+                    <li class="footer__menu-item"><a href="#">Акции</a></li>
+                    <li class="footer__menu-item"><a href="#">Оптовые&nbsp;скидки</a></li>
+                    <li class="footer__menu-item"><a href="#">Каталог&nbsp;товаров</a></li>
+                    <li class="footer__menu-item"><a href="#">Где купить</a></li>
+                </ul>
+                <ul class="footer__menu-column footer__menu-column_desktop">
+                    <li class="footer__menu-title"><a href="#">Покупателю</a></li>
+                    <li class="footer__menu-item"><a href="#">Сервис&nbsp;и&nbsp;гарантия</a></li>
+                    <li class="footer__menu-item"><a href="#">Обратная&nbsp;связь</a></li>
+                    <li class="footer__menu-item">
+                        <a href="#">
+                            <div>Политика&nbsp;обработки</div>
+                            <div>персональных&nbsp;данных</div>
+                        </a>
+                    </li>
+                </ul>
+                <div class="footer__menu-column footer__menu-column_mobile">
+                    <ul>
+                        <li class="footer__menu-title"><a href="#">Помощь</a></li>
+                        <li class="footer__menu-item"><a href="#">Каталог&nbsp;товаров</a></li>
+                        <li class="footer__menu-item"><a href="#">Акции</a></li>
+                        <li class="footer__menu-item"><a href="#">Бренды</a></li>
+                        <li class="footer__menu-item"><a href="#">Гарантия</a></li>
+                        <li class="footer__menu-item"><a href="#">Где купить</a></li>
+                        <li class="footer__menu-item"><a href="#">Оптовые&nbsp;скидки</a></li>
+                    </ul>
+                    <ul>
+                        <li class="footer__menu-title"></li>
+                        <li class="footer__menu-item">
+                            <a href="#">
+                                <div>Политика&nbsp;обработки</div>
+                                <div>персональных&nbsp;данных</div>
+                            </a>
+                        </li>
+                        <li class="footer__menu-item"><a href="#">Новости</a></li>
+                        <li class="footer__menu-item"><a href="#">Филиалы</a></li>
+                        <li class="footer__menu-item"><a href="#">Обратная&nbsp;связь</a></li>
+                        <li class="footer__menu-item"><a href="#">Сервис&nbsp;и&nbsp;гарантия</a></li>
+                    </ul>
+                </div>
+                <ul class="footer__menu-column">
+                    <li class="footer__menu-title"><a href="#">Контакты</a></li>
+                    <li class="footer__menu-item footer__menu-item_img">
+                        <svg class="footer__menu-icon">
+                            <use :xlink:href="'./images/sprite.svg#icons__phone'"></use>
+                        </svg>
+                        8&nbsp;(800)&nbsp;200-49-49
+                    </li>
+                    <li class="footer__menu-item footer__menu-item_img">
+                        <svg class="footer__menu-icon" viewBox="0 0 12 12">
+                            <use :xlink:href="'./images/sprite.svg#icons__clock'"></use>
+                        </svg>
+                        пн-пт&nbsp;2-18&nbsp;(мск)
+                    </li>
+                    <li class="footer__menu-item footer__menu-item_img">
+                        <svg class="footer__menu-icon">
+                            <use :xlink:href="'./images/sprite.svg#icons__email'"></use>
+                        </svg>
+                        почта@mail.ru
+                    </li>
+                    <li class="footer__menu-item footer__menu-item_img">
+                        <svg class="footer__menu-icon">
+                            <use :xlink:href="'./images/sprite.svg#icons__pin'"></use>
+                        </svg>
+                        г.Москва,&nbsp;ул.&nbsp;Трехгорный&nbsp;Вал&nbsp;3
+                    </li>
+                </ul>
+            </nav>
+
+            <a href="#" class="footer__agreement footer__agreement_mobile">Пользовательское соглашение</a>
+            <div class="footer__company footer__company_mobile">&#169; 2020 ООО «МИР ИНСТРУМЕНТА»</div>
+
+        </div>
+    </footer>
+{% endblock %}

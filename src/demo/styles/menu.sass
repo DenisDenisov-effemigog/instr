@@ -1,0 +1,42 @@
+@import "../../vendor/fonts"
+@import "../../styles/variables"
+@import "../../styles/mixins"
+@import "../../styles/generic"
+
+$sidebar-width: 12rem
+
+html,
+body
+  overflow: hidden
+
+body
+  padding: 0 0 0 $sidebar-width
+
+.navigation
+  display: block
+  position: fixed
+  left: 0
+  top: 0
+  bottom: 0
+  width: $sidebar-width
+  overflow-y: auto
+  overflow-x: hidden
+  padding: 1rem
+  //background-color: $color_yellow
+
+  &__menu-list
+  &__menu
+    padding-left: 0.75rem
+  &__link
+    //color: $text-color-primary
+    text-decoration: none
+    &:hover
+      //color: $text-color-primary
+  &__title
+    //font-family: $font-family_alt
+    font-size: $font-size_4
+
+.content
+  width: 100%
+  height: 100vh
+  min-height: 100vh

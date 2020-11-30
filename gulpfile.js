@@ -7,8 +7,10 @@ const gulp = require('gulp'),
     csso = require('gulp-csso'),
     gulpif = require('gulp-if'),
     envify = require('envify'),
+    fs = require('fs'),
     imagemin = require('gulp-imagemin'),
     path = require('path'),
+    php_strings = require('locutus/php/strings'),
     rename = require('gulp-rename'),
     replace = require('gulp-replace'),
     sass = require('gulp-sass'),
@@ -16,6 +18,7 @@ const gulp = require('gulp'),
     svgo = require('gulp-svgo'),
     svgstore = require('gulp-svgstore'),
     terser = require('gulp-terser'),
+    twig = require('gulp-twig'),
     vueify = require('vueify'),
     vinyl_buffer = require('vinyl-buffer')
 ;
@@ -30,12 +33,18 @@ let config = {
         js: "./public/js/",
         images: "./public/images/",
         fonts: './public/fonts/',
+
+        demo_images: "./public/demo_images/",
     },
     bundles: {
         app: {
             css: 'css.min.css',
             js: 'js.min.js',
             sprite: 'sprite.svg',
+        },
+        demo: {
+            css_menu: 'demo_menu.min.css',
+            css_mixins: 'demo_mixins.min.css',
         },
     },
     src: {
@@ -55,6 +64,22 @@ let config = {
             ],
             sprite: [
                 './src/sprite/**/*.svg'
+            ],
+        },
+        demo: {
+            css_menu: [
+                './node_modules/minireset.css/minireset.sass',
+                './src/demo/styles/menu.sass'
+            ],
+            css_mixins: [
+                './src/demo/styles/mixins.sass'
+            ],
+            images: [
+                './src/demo/images/**/*.*'
+            ],
+            templates_menu_dir: './src/demo/templates/pages/',
+            templates: [
+                './src/demo/templates/pages/*.*'
             ],
         },
     },
@@ -199,6 +224,134 @@ gulp.task('app:build', gulp.parallel(
     'app:sprite:build',
 ));
 
+
+//--------------------------------------------------------------------------------------------------------------------//
+// DEMO
+//--------------------------------------------------------------------------------------------------------------------//
+
+
+gulp.task('demo:css_menu:build', function () {
+    return buildSass(config.src.demo.css_menu, config.bundles.demo.css_menu, config.build.css);
+});
+
+gulp.task('demo:css_mixins:build', function () {
+    return buildSass(config.src.demo.css_mixins, config.bundles.demo.css_mixins, config.build.css);
+});
+
+gulp.task('demo:img:minify', function () {
+    return gulp.src(config.src.demo.images)
+        .pipe(imagemin([
+            imagemin.mozjpeg({progressive: true}),
+            imagemin.optipng({optimizationLevel: 3}),
+            imagemin.gifsicle({interlaced: true}),
+            imagemin.svgo({
+                plugins: [{
+                    removeTitle: true,
+                    cleanupIDs: true,
+                    convertStyleToAttrs: true
+                }]
+            })
+        ]))
+        .pipe(rename(function (path) {
+            path.dirname = path.dirname.replace('/demo/images', '');
+        }))
+        .pipe(gulp.dest(config.build.demo_images));
+});
+
+gulp.task('demo:templates:build', function () {
+
+    let menu = [
+        {
+            title: 'Components',
+            children: []
+        },
+        {
+            title: 'Elements',
+            children: []
+        },
+        {
+            title: 'Blocks',
+            children: []
+        },
+        {
+            title: 'Pages',
+            children: []
+        }
+
+    ];
+    let files = fs.readdirSync(config.src.demo.templates_menu_dir);
+
+    files.forEach(function (file) {
+        if (file !== 'index.twig') {
+            let data = fs.readFileSync(config.src.demo.templates_menu_dir + file, 'utf8');
+            let match = data.match(/{% block title %}(.*?){% endblock %}/);
+
+            let menuTitle = 'undefined';
+            let submenuTitle = file;
+
+            if (match) {
+                let titleData = match[1].split('|');
+                if (titleData[0] && titleData[1]) {
+                    menuTitle = titleData[0].trim();
+                    submenuTitle = titleData[1].trim();
+                } else {
+                    submenuTitle = match[1].trim();
+                }
+            }
+
+            let htmlFileName = './' + file.replace('.twig', '.html');
+
+            let menufound = false;
+            menu.forEach(function (item, index) {
+                if (item.title === menuTitle) {
+                    menufound = true;
+                    menu[index]['children'].push({
+                        url: htmlFileName,
+                        title: submenuTitle
+                    });
+                }
+            });
+            if (!menufound) {
+                menu.push({
+                    title: menuTitle,
+                    children: [
+                        {
+                            url: htmlFileName,
+                            title: submenuTitle
+                        }
+                    ]
+                })
+            }
+        }
+    });
+
+
+    return gulp.src(config.src.demo.templates)
+        .pipe(twig({
+            data: {
+                demo_menu: menu,
+                templatePath: config.build.templatePath
+            },
+            filters: [
+                {
+                    name: 'currency',
+                    func: function (value) {
+                        return php_strings.number_format(value, 2, '.', ',');
+                    }
+                }
+            ]
+        }))
+        .pipe(gulp.dest(config.build.root));
+});
+
+gulp.task('demo:build', gulp.parallel(
+    'demo:css_menu:build',
+    'demo:css_mixins:build',
+    'demo:img:minify',
+    'demo:templates:build'
+));
+
 gulp.task('default', gulp.series(
     'app:build',
+    'demo:build'
 ));

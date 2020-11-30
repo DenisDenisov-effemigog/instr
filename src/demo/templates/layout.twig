@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}Мир Инструмента{% endblock %}</title>
+    
+    <!-- START include only into demo pages -->
+    <link rel="stylesheet" href="./css/css.min.css">
+    <link rel="stylesheet" href="./css/demo_mixins.min.css">
+    <!-- END include only into demo pages -->
+    
+{#    {% include '../../../templates/partials/favicon.twig' %}#}
+</head>
+<body class="page">
+    <div id="app" v-cloak>
+        {% block content %}
+        {% endblock %}
+    </div>
+    <script src="./js/js.min.js"></script>
+</body>
+</html>

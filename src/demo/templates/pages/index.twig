@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Мир Инструмента</title>
+    <link rel="stylesheet" href="./css/demo_menu.min.css">
+{#    {% include '../../../templates/partials/favicon.twig' %}#}
+</head>
+<body class="page">
+<nav class="navigation">
+    <ul class="navigation__menu-list">
+        {% set firstPage = '' %}
+        {% for menu in demo_menu %}
+            {% if not menu.children is empty %}
+                <li class="navigation__title">{{ menu.title }}</li>
+                {% for submenu in menu.children %}
+                    <li class="navigation__menu"><a class="navigation__link" href="{{ submenu.url }}" target="content">{{ submenu.title }}</a></li>
+                    {%  if firstPage is empty %}
+                        {% set firstPage = submenu.url %}
+                    {% endif %}
+                {% endfor %}
+            {%  endif %}
+        {% endfor %}
+    </ul>
+</nav>
+
+    <iframe class="content" name="content" src="{{ firstPage }}"></iframe>
+</body>
+</html>
