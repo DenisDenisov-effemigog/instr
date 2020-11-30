@@ -40,9 +40,9 @@
             <component is="slider-photo-card"></component>
         </div>
         <div class="card__code">{{ product.code}}</div>
-        <div class="card__name">
+        <a :href="product.link" class="card__name">
             {{ product.title }}
-        </div>
+        </a>
         <div class="card__price-block">
             <div class="card__price-block_old-price">{{ product.oldPrice}} RON</div>
             <div class="card__price-block_current-price">{{ product.newPrice }} RON</div>

@@ -4,8 +4,11 @@
 
             <div class="slider-photo-card__slide" v-for="slide in slides">
                 <img class="slider-photo-card__slide_image" :src="slide.img">
-                <div class="slider-photo-card__slide_image--hover">
-                    <svg>
+                <div class="slider-photo-card__slide_image--hover" :class="{'slider-photo-card__slide_image--hover-bg': showBackground}">
+                    <svg 
+                        @mouseover="showBackground = true" 
+                        @mouseout="showBackground = false"
+                    >
                         <use xlink:href="./images/sprite.svg#icons__mag"></use>
                     </svg>
                 </div>
@@ -26,6 +29,7 @@ export default {
     data() {
         return {
             slideCurrent: 0,
+            showBackground: false,
             slides: [
                 {id: 1, img: './images/product/image_50.png', link: ''},
                 {id: 2, img: './images/product/image_51.png', link: ''},
