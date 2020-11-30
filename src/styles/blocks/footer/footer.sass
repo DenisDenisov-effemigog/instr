@@ -103,9 +103,13 @@
             margin-bottom: .5rem
         & > a
             @extend .link-2
+            color: #999
+            +mobile
+                font-size: 12px
             +tablet
                 font-size: $font-size_3
                 line-height: $line-height_3
+                color: $light-grey
             & > div:not(:last-of-type)
                 margin-bottom: .5rem
         &_img
