@@ -32,8 +32,15 @@
                 </svg>
 			</div>
         </div>
-		<div v-else class="add-to-cart__add" @click="increase">
-			<template>В корзину</template>
+		<div v-else >
+            <div class="add-to-cart__add" @click="increase">
+              <template>В корзину</template>  
+            </div>
+            <div class="add-to-cart__add__mobile">
+                <svg class="add-to-cart__add__mobile-icon">
+                    <use xlink:href="./images/sprite.svg#icons__cart"></use>
+                </svg>
+            </div>
 		</div>
     </div>
 </template>
