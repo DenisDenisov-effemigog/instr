@@ -7,6 +7,7 @@
                     v-for="tooltip in product.tooltips"
                     @mouseenter="openTooltip"
                     @mouseleave="closeTooltip"
+                    @click="openTooltip"
                 >   
                     <div 
                         class="card__stickers_sticker card__stickers_sticker--new"
