@@ -6,7 +6,7 @@
                     <use :xlink:href="'./images/sprite.svg#logo'"></use>
                 </svg>
             </a>
-            <show-catalogue v-show="!flag"></show-catalogue>
+            <show-catalogue :categories="categories" v-show="!flag"></show-catalogue>
             <header-search
                 @searchClick=searchClick
                 @clickClose=clickClose
@@ -110,6 +110,9 @@ export default {
     components:{
         headerSearch,
         showCatalogue
+    },
+    props: {
+        categories: {required: true}
     },
     data(){
         return{

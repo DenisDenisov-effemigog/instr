@@ -6,9 +6,9 @@
                 <div class="country__choice">
                     <h2 class="country__choice-title">Выбор страны</h2>
                     <ul class="country__choice-list">
-                        <li v-for="item in countryArr" :key=item class="country__choice-item">
+                        <li v-for="country in countries" class="country__choice-item">
                             <a @click="choiceCountry" href="#" class="country__choice-link">
-                                {{item}}
+                                {{country}}
                             </a>
                         </li>
                     </ul>
@@ -30,9 +30,11 @@
 <script>
 export default {
     name: "country",
+    props: {
+        countries: {required: true}
+    },
     data(){
         return{
-            countryArr:['Белоруссия','Казахстан','Румыния','Болгария','Польша','США','Венгрия','Россия','Украина'],
             openedCountry: false
         }
     },

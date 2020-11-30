@@ -19,7 +19,7 @@
             </svg>
             Каталог
         </div>
-        <catalogue :class="{'catalogue_active': active}"></catalogue>
+        <catalogue :categories="categories" :class="{'catalogue_active': active}"></catalogue>
     </div>
 </template>
 
@@ -35,6 +35,9 @@
         },
         components: {
             catalogue
+        },
+        props: {
+            categories: {required: true}
         },
         data() {
             return {

@@ -1,0 +1,97 @@
+<component is="country" :countries="{{ countries|json_encode()|e('html_attr') }}"></component>
+<component is="mobile-menu" :countries="{{ countries|json_encode()|e('html_attr') }}"></component>
+<footer class="footer">
+    <div class="container">
+
+        <div class="footer__layout">
+            <svg viewBox="0 0 141 32">
+                <use :xlink:href="'./images/sprite.svg#logo'"></use>
+            </svg>
+            <div class="footer__company footer__company_desktop">&#169; 2020 ООО «МИР ИНСТРУМЕНТА»</div>
+            <a href="#" class="footer__agreement footer__agreement_desktop">Пользовательское соглашение</a>
+        </div>
+
+        <nav class="footer__menu">
+            <ul class="footer__menu-column footer__menu-column_desktop">
+                <li class="footer__menu-title"><a href="#">О&nbsp;компании</a></li>
+                <li class="footer__menu-item"><a href="#">Филиалы</a></li>
+                <li class="footer__menu-item"><a href="#">Бренды</a></li>
+                <li class="footer__menu-item"><a href="#">Гарантия</a></li>
+                <li class="footer__menu-item"><a href="#">Новости</a></li>
+            </ul>
+            <ul class="footer__menu-column footer__menu-column_desktop">
+                <li class="footer__menu-title"><a href="#">Помощь</a></li>
+                <li class="footer__menu-item"><a href="#">Акции</a></li>
+                <li class="footer__menu-item"><a href="#">Оптовые&nbsp;скидки</a></li>
+                <li class="footer__menu-item"><a href="#">Каталог&nbsp;товаров</a></li>
+                <li class="footer__menu-item"><a href="#">Где купить</a></li>
+            </ul>
+            <ul class="footer__menu-column footer__menu-column_desktop">
+                <li class="footer__menu-title"><a href="#">Покупателю</a></li>
+                <li class="footer__menu-item"><a href="#">Сервис&nbsp;и&nbsp;гарантия</a></li>
+                <li class="footer__menu-item"><a href="#">Обратная&nbsp;связь</a></li>
+                <li class="footer__menu-item">
+                    <a href="#">
+                        <div>Политика&nbsp;обработки</div>
+                        <div>персональных&nbsp;данных</div>
+                    </a>
+                </li>
+            </ul>
+            <div class="footer__menu-column footer__menu-column_mobile">
+                <ul>
+                    <li class="footer__menu-title"><a href="#">Помощь</a></li>
+                    <li class="footer__menu-item"><a href="#">Каталог&nbsp;товаров</a></li>
+                    <li class="footer__menu-item"><a href="#">Акции</a></li>
+                    <li class="footer__menu-item"><a href="#">Бренды</a></li>
+                    <li class="footer__menu-item"><a href="#">Гарантия</a></li>
+                    <li class="footer__menu-item"><a href="#">Где купить</a></li>
+                    <li class="footer__menu-item"><a href="#">Оптовые&nbsp;скидки</a></li>
+                </ul>
+                <ul>
+                    <li class="footer__menu-title"></li>
+                    <li class="footer__menu-item">
+                        <a href="#">
+                            <div>Политика&nbsp;обработки</div>
+                            <div>персональных&nbsp;данных</div>
+                        </a>
+                    </li>
+                    <li class="footer__menu-item"><a href="#">Новости</a></li>
+                    <li class="footer__menu-item"><a href="#">Филиалы</a></li>
+                    <li class="footer__menu-item"><a href="#">Обратная&nbsp;связь</a></li>
+                    <li class="footer__menu-item"><a href="#">Сервис&nbsp;и&nbsp;гарантия</a></li>
+                </ul>
+            </div>
+            <ul class="footer__menu-column">
+                <li class="footer__menu-title"><a href="#">Контакты</a></li>
+                <li class="footer__menu-item footer__menu-item_img">
+                    <svg class="footer__menu-icon">
+                        <use :xlink:href="'./images/sprite.svg#icons__phone'"></use>
+                    </svg>
+                    8&nbsp;(800)&nbsp;200-49-49
+                </li>
+                <li class="footer__menu-item footer__menu-item_img">
+                    <svg class="footer__menu-icon" viewBox="0 0 12 12">
+                        <use :xlink:href="'./images/sprite.svg#icons__clock'"></use>
+                    </svg>
+                    пн-пт&nbsp;2-18&nbsp;(мск)
+                </li>
+                <li class="footer__menu-item footer__menu-item_img">
+                    <svg class="footer__menu-icon">
+                        <use :xlink:href="'./images/sprite.svg#icons__email'"></use>
+                    </svg>
+                    почта@mail.ru
+                </li>
+                <li class="footer__menu-item footer__menu-item_img">
+                    <svg class="footer__menu-icon">
+                        <use :xlink:href="'./images/sprite.svg#icons__pin'"></use>
+                    </svg>
+                    г.Москва,&nbsp;ул.&nbsp;Трехгорный&nbsp;Вал&nbsp;3
+                </li>
+            </ul>
+        </nav>
+
+        <a href="#" class="footer__agreement footer__agreement_mobile">Пользовательское соглашение</a>
+        <div class="footer__company footer__company_mobile">&#169; 2020 ООО «МИР ИНСТРУМЕНТА»</div>
+
+    </div>
+</footer>

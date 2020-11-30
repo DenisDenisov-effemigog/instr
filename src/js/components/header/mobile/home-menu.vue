@@ -97,9 +97,11 @@
 <script>
     export default {
         name: 'home-menu',
+        props: {
+            countries: {required: true}
+        },
         data(){
             return{
-                countries:['Белоруссия','Казахстан','Румыния','Болгария','Польша','США','Венгрия','Россия','Украина'],
                 showCountry: false,
                 activeCountry: 'Румыния',
             }
