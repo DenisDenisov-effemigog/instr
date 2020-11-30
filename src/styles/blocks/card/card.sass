@@ -48,8 +48,7 @@
                 color: $blue
         &_sticker-wrap
             position: relative
-            &:hover .card__stickers_sticker-tooltip
-                display: flex
+
         &_sticker-tooltip
             @extend .tooltip
             top: 38px
@@ -69,8 +68,11 @@
                 height: $size_12
                 flex-shrink: 0
                 margin-left: 16px
+                cursor: pointer
                 &:hover
                     fill: $icon-medium-grey
+            &-open
+                display: flex
     &__favorite-btn
         display: none
         cursor: pointer

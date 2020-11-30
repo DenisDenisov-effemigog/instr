@@ -5,7 +5,9 @@
                 <div 
                     class="card__stickers_sticker-wrap" 
                     v-for="tooltip in product.tooltips"
-                >
+                    @mouseenter="openTooltip"
+                    @mouseleave="closeTooltip"
+                >   
                     <div 
                         class="card__stickers_sticker card__stickers_sticker--new"
                         :class="'card__stickers_sticker--' + tooltip.status"
@@ -17,8 +19,8 @@
                             <div>{{ tooltip.text }}</div>
                             <a :href="tooltip.link">Подробнее</a>
                         </div>
-                        <svg viewBox="0 0 12 12">
-                            <use xlink:href="./images/sprite.svg#close"></use>
+                        <svg @click="clickCloseTooltip" viewBox="0 0 12 12">
+                            <use @click.stop xlink:href="./images/sprite.svg#close"></use>
                         </svg>
                     </div>
                 </div>
@@ -53,7 +55,8 @@
             <div 
                 class="card__compare-btn"
                 :class="{'card__compare-btn--active': inCompare}"
-                @click="inCompare = !inCompare">
+                @click="inCompare = !inCompare"
+            >
                 <svg>
                     <use xlink:href="./images/sprite.svg#icons__graf"></use>
                 </svg>
@@ -109,6 +112,20 @@ export default {
         }
     },
     methods: {
+        openTooltip(e){
+            let $this = e.target
+            let tooltip = $this.querySelector('.card__stickers_sticker-tooltip')
+            tooltip.classList.add('card__stickers_sticker-tooltip-open')
+        },
+        closeTooltip(e){
+            let $this = e.target
+            let tooltip = $this.querySelector('.card__stickers_sticker-tooltip')
+            tooltip.classList.remove('card__stickers_sticker-tooltip-open')
+        },
+        clickCloseTooltip(e){
+            let $this = e.target
+            $this.parentElement.classList.remove('card__stickers_sticker-tooltip-open')
+        }
     },
 }
 </script>
