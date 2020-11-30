@@ -14,7 +14,7 @@
             <ul class="header__menu">
                 <li class="header__menu-item">
                     <a href="#" class="header__menu-link">
-                        <svg class="header__menu-icon">
+                        <svg class="header__menu-icon" viewBox="-2 0 19 20">
                             <use :xlink:href="'./images/sprite.svg#icons__user'"></use>
                         </svg>
                         <p class="header__menu-text">Войти</p>
@@ -74,8 +74,8 @@
                 </li>
                 <li class="header__menu-item">
                     <a href="#" class="header__menu-link">
-                        <svg class="header__menu-icon">
-                            <use :xlink:href="'./images/sprite.svg#icons__graf'"></use>
+                        <svg class="header__menu-icon" viewBox="-2 0 19 20">
+                            <use :xlink:href="'./images/sprite.svg#icons__graf'" ></use>
                         </svg>
                         <p class="header__menu-text">Сравнить</p>
                     </a>

@@ -51,7 +51,7 @@
             </li>
             <li>
                 <div 
-                    class="home-menu__link" 
+                    class="home-menu__link home-menu__link--closed" 
                     :class="{'home-menu__link--opened': showCountry}"
                     @click="openCountry"
                 >
@@ -110,6 +110,7 @@
             },
             chooseCountry(country){
                 this.activeCountry = country;
+                this.showCountry = false;
             },
         }
     }
