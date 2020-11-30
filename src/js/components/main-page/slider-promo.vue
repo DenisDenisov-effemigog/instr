@@ -34,14 +34,14 @@
         data() {
             return {
                 slides: [
-                    {id: 1, img: './images/banners/promo1.png', link: ''},
-                    {id: 2, img: './images/banners/promo3.png', link: ''},
-                    {id: 3, img: './images/banners/promo4.png', link: ''},
-                    {id: 4, img: './images/banners/promo5.png', link: ''},
-                    {id: 5, img: './images/banners/promo6.png', link: ''},
-                    {id: 6, img: './images/banners/promo3.png', link: ''},
-                    {id: 7, img: './images/banners/promo4.png', link: ''},
-                    {id: 8, img: './images/banners/promo5.png', link: ''},
+                    {id: 1, img: './demo_images/banners/promo1.png', link: ''},
+                    {id: 2, img: './demo_images/banners/promo3.png', link: ''},
+                    {id: 3, img: './demo_images/banners/promo4.png', link: ''},
+                    {id: 4, img: './demo_images/banners/promo5.png', link: ''},
+                    {id: 5, img: './demo_images/banners/promo6.png', link: ''},
+                    {id: 6, img: './demo_images/banners/promo3.png', link: ''},
+                    {id: 7, img: './demo_images/banners/promo4.png', link: ''},
+                    {id: 8, img: './demo_images/banners/promo5.png', link: ''},
                 ],
                 options: {
                     slidesToShow: 2.5,

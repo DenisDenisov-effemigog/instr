@@ -33,10 +33,10 @@
             return {
                 slideCurrent: 0,
                 slides: [
-                    {id: 1, img: './images/banners/main-banner.png',link: ''},
-                    {id: 2, img: './images/banners/main-banner.png',link: ''},
-                    {id: 3, img: './images/banners/main-banner.png',link: ''},
-                    {id: 4, img: './images/banners/main-banner.png',link: ''},
+                    {id: 1, img: './demo_images/banners/main-banner.png',link: ''},
+                    {id: 2, img: './demo_images/banners/main-banner.png',link: ''},
+                    {id: 3, img: './demo_images/banners/main-banner.png',link: ''},
+                    {id: 4, img: './demo_images/banners/main-banner.png',link: ''},
                 ],
                 options: {
                     navButtons: false,

@@ -31,10 +31,10 @@ export default {
             slideCurrent: 0,
             showBackground: false,
             slides: [
-                {id: 1, img: './images/product/image_50.png', link: ''},
-                {id: 2, img: './images/product/image_51.png', link: ''},
-                {id: 3, img: './images/product/image_52.png', link: ''},
-                {id: 4, img: './images/product/image_53.png', link: ''},
+                {id: 1, img: './demo_images/product/image_50.png', link: ''},
+                {id: 2, img: './demo_images/product/image_51.png', link: ''},
+                {id: 3, img: './demo_images/product/image_52.png', link: ''},
+                {id: 4, img: './demo_images/product/image_53.png', link: ''},
             ],
             options: {
                 navButtons: false,
