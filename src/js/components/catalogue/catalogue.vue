@@ -1,5 +1,5 @@
 <template>
-    <div class="catalogue">
+    <div class="catalogue" :class="{'catalogue_active': active}">
 
         <catalogue-mobile :categories="categories"></catalogue-mobile>
 
@@ -7,7 +7,12 @@
             <div class="container">
                 <ul class="catalogue__categories">
                     <div class="catalogue__categories-bg"></div>
-                    <li class="catalogue__category" v-for="category in categories">
+                    <li 
+                        class="catalogue__category"
+                        v-for="(category, index) in categories"
+                        @mouseover="hovered = index"
+                        :class="{'catalogue__category--hovered': hovered === index}"
+                    >
                         <div>
                             <a href="#" class="catalogue__category-link">
                                 {{category.title}}
@@ -41,9 +46,19 @@
         },
         data() {
             return {
-                
+                active: false,
+                hovered: 0,
             }
-        }
+        },
+        created() {
+            this.$eventBus.$on("open-catalogue", this.openCatalogue)
+        },
+        methods: {
+            openCatalogue(state) {
+                this.active = state;
+                this.hovered = 0;
+            }
+        },
 
     }
 </script>

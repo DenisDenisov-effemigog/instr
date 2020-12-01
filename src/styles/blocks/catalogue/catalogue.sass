@@ -4,9 +4,9 @@
     left: 0
     width: 100%
     +desktop
-        z-index: 3
+        z-index: 1
     +tablet
-        top: 5rem
+        top: 8rem
     &_active
         .catalogue_mobile
             display: block
@@ -44,11 +44,17 @@
         z-index: inherit
     &__category
         +tablet
-            &:hover
+            &:hover,
+            &--hovered
                 background-color: $white
                 color: $black
                 & .catalogue__subcategories
                     display: flex
+                & .catalogue__category-link
+                    background-color: $white
+                    color: $black
+                    & ~ .catalogue__subcategories
+                        display: flex
     &__category-link
         @extend .subtitle-2
         position: relative
@@ -65,11 +71,6 @@
                 weight: $font-weight
             line-height: $line-height
             border-bottom: none
-        &:hover
-            background-color: $white
-            color: $black
-            & ~ .catalogue__subcategories
-                display: flex
         & > svg
             position: absolute
             right: .5rem

@@ -19,7 +19,6 @@
             </svg>
             Каталог
         </div>
-        <catalogue :categories="categories" :class="{'catalogue_active': active}"></catalogue>
     </div>
 </template>
 
@@ -64,6 +63,7 @@
             open() {
                 this.active = !this.active;
                 this.isActive
+                this.$eventBus.$emit('open-catalogue', this.active);
             },
             close() {
                 this.active = false
