@@ -2,12 +2,12 @@
     <div class="slider-cards">
         <div class="slider-cards__title">Еще одна интересная подборка со скроллом</div>
         <agile :options="options">
-            <div class="slider-cards__slide"><card></card></div>
-            <div class="slider-cards__slide"><card></card></div>
-            <div class="slider-cards__slide"><card></card></div>
-            <div class="slider-cards__slide"><card></card></div>
-            <div class="slider-cards__slide"><card></card></div>
-            <div class="slider-cards__slide"><card></card></div>
+            <div class="slider-cards__slide"><card :changeIcon="changeIcon"></card></div>
+            <div class="slider-cards__slide"><card :changeIcon="changeIcon"></card></div>
+            <div class="slider-cards__slide"><card :changeIcon="changeIcon"></card></div>
+            <div class="slider-cards__slide"><card :changeIcon="changeIcon"></card></div>
+            <div class="slider-cards__slide"><card :changeIcon="changeIcon"></card></div>
+            <div class="slider-cards__slide"><card :changeIcon="changeIcon"></card></div>
             <template slot="nextButton">
                 <svg>
                     <use :xlink:href="'./images/sprite.svg#arrows__arrow-right'"></use>
@@ -27,6 +27,12 @@
             agile: VueAgile,
             card
         },
+        props: {
+            changeIcon: {
+                type: Boolean,
+                default: false,
+            }
+        },
         data() {
             return {
                 options: {
@@ -42,14 +48,14 @@
                                 dots: true,
                             }
                         },
-                        {
+                        /*{
                             breakpoint: 320,
                             settings: {
                                 navButtons: true,
                                 slidesToShow: 1,
                                 dots: true,
                             }
-                        },
+                        },*/
                     ]
                 }
             }

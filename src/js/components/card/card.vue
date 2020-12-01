@@ -51,8 +51,7 @@
             <div class="card__price-block_current-price">{{ product.newPrice }} RON</div>
         </div>
         <div class="card__button-block">
-<!--            <div class="card__buy-btn">В корзину</div>-->
-            <addToCart></addToCart>
+            <addToCart :changeIcon="changeIcon"></addToCart>
             <div 
                 class="card__compare-btn"
                 :class="{'card__compare-btn--active': inCompare}"
@@ -110,6 +109,12 @@ export default {
     components: {
         sliderPhotoCard,
         addToCart
+    },
+    props: {
+        changeIcon: {
+            type: Boolean,
+            default: false,
+        }
     },
     data() {
         return {
