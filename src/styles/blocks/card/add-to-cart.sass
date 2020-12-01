@@ -48,20 +48,14 @@
     &__add
         @extend .button
         cursor: pointer
-        padding: 6px 20px
-        //display: none
+        padding: 6px 19px
         +desktop
             padding: 6px 34px
         +tablet
             display: block
-        &__mobile
-            @extend .button
-            cursor: pointer
-            padding: 4px 35px
-            display: block
-            +tablet
-                display: none
-            &-icon 
-                width: 1.2rem
-                height: 1.2rem
-                fill: $white
+        &--smaller
+            width: 86px
+        & svg
+            width: 1.2rem
+            height: 1.2rem
+            fill: $white

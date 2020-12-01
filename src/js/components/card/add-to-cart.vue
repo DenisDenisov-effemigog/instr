@@ -33,14 +33,15 @@
 			</div>
         </div>
 		<div v-else >
-            <div class="add-to-cart__add" @click="increase">
-              <template>В корзину</template>  
-            </div>
-            <!--<div class="add-to-cart__add__mobile">
-                <svg class="add-to-cart__add__mobile-icon">
+            <div 
+                class="add-to-cart__add" 
+                :class="{'add-to-cart__add--smaller': changeIcon && width < 760}" 
+                @click="increase">
+                <svg v-if="changeIcon && width < 760">
                     <use xlink:href="./images/sprite.svg#icons__cart"></use>
                 </svg>
-            </div>-->
+              <template v-else>В корзину</template>  
+            </div>
 		</div>
     </div>
 </template>
@@ -60,10 +61,15 @@
                 required: false,
                 default: true
             },
+            changeIcon: {
+                type: Boolean,
+                default: false,
+            },
         },
         data() {
             return {
                 amount: 0,
+                width: 0,
             };
         },
         computed: {
@@ -81,13 +87,19 @@
         },
         mounted() {
         },
+        created() {
+            window.addEventListener('resize', this.updateWidth);
+            this.updateWidth()
+        },
         methods: {
             decrease() {
                 if (this.amount > this.allowedDecreaseAmount) {
                     this.amount--;
                 }
             },
-
+            updateWidth() {
+                this.width = window.innerWidth;
+            },
             increase() {
                 if (this.amount < this.maxAmount) {
                     this.amount++;
