@@ -4,8 +4,8 @@
             class="mobile-menu__content"
             :class="{'mobile-menu__content--short': menuLink === 'home'}"
         >
-            <component is="home-menu" v-if="menuLink === 'home'"></component>
-            <catalogue v-else-if="menuLink === 'catalog'" class="catalogue_active"></catalogue>
+            <component :countries="countries" is="home-menu" v-if="menuLink === 'home'"></component>
+            <catalogue :categories="categories" v-else-if="menuLink === 'catalog'" class="catalogue_active"></catalogue>
             <div></div>
         </div>
         <div class="mobile-menu__buttons">
@@ -71,6 +71,10 @@ export default {
     name: "mobile-menu",
     components: {
         homeMenu, catalogue,
+    },
+    props: {
+        categories: {required: true},
+        countries: {required: true}
     },
     data(){
         return{
