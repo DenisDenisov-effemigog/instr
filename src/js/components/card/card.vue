@@ -119,9 +119,12 @@ export default {
             tooltip.classList.add('card__stickers_sticker-tooltip-open')
         },
         closeTooltip(e){
-            let $this = e.target
-            let tooltip = $this.querySelector('.card__stickers_sticker-tooltip')
-            tooltip.classList.remove('card__stickers_sticker-tooltip-open')
+            let $this = e.target;
+            let tooltip = $this.querySelector('.card__stickers_sticker-tooltip');
+
+            setTimeout(function (){
+                tooltip.classList.remove('card__stickers_sticker-tooltip-open')
+            }, 4000)
         },
         clickCloseTooltip(e){
             let $this = e.target

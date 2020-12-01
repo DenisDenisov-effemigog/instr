@@ -1,5 +1,5 @@
 <template>
-    <div class="catalogue" :class="{'catalogue_active': active}">
+    <div class="catalogue" :class="{'catalogue_active': active}" v-click-outside="closeCatalogue">
 
         <catalogue-mobile :categories="categories"></catalogue-mobile>
 
@@ -33,6 +33,7 @@
     import catalogueMobile from './mobile/catalogue-mobile.vue'
     import catalogueSubcategories from './catalogue-subcategories.vue';
     import headerMenuMobile from '../header/mobile/home-menu.vue';
+    import ClickOutside from "vue-click-outside";
 
     export default {
         name: "catalogue",
@@ -40,6 +41,9 @@
             catalogueMobile,
             catalogueSubcategories,
             headerMenuMobile
+        },
+        directives: {
+            ClickOutside
         },
         props: {
             categories: {required: true} 
@@ -51,13 +55,23 @@
             }
         },
         created() {
-            this.$eventBus.$on("open-catalogue", this.openCatalogue)
+            this.$eventBus.$on("open-catalogue", this.openCatalogue);
         },
         methods: {
             openCatalogue(state) {
                 this.active = state;
                 this.hovered = 0;
-            }
+            },
+            closeCatalogue(event) {
+                let vm = this;
+                
+                if(window.innerWidth > 760) {
+                    if(event.toElement.className !== 'header__catalog-btn') {
+                        vm.active = false;
+                        this.$eventBus.$emit('close-catalogue', vm.active);
+                    }
+                }
+            },
         },
 
     }
