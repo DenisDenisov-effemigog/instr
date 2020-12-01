@@ -1,5 +1,5 @@
 <template>
-    <div class="header__catalog" v-click-outside="close" >
+    <div class="header__catalog">
         <div  class="header__catalog-mobile" @click.prevent="openMenu" v-if="!openedMenu">
             <svg class="header__catalog-mobile-icon">
                 <use :xlink:href="'./images/sprite.svg#icons__ham'"></use>
@@ -19,22 +19,20 @@
             </svg>
             Каталог
         </div>
-        <catalogue :class="{'catalogue_active': active}"></catalogue>
     </div>
 </template>
 
 <script>
-    import ClickOutside from "vue-click-outside";
     import catalogue from "./catalogue.vue";
 
     export default {
 
         name: "show-catalogue",
-        directives: {
-            ClickOutside 
-        },
         components: {
             catalogue
+        },
+        props: {
+            categories: {required: true}
         },
         data() {
             return {
@@ -55,16 +53,19 @@
             }
         },
         created() {
-            this.$eventBus.$on("exitSearch", this.closeMenu)
+            this.$eventBus.$on("exitSearch", this.closeMenu);
+            this.$eventBus.$on("close-catalogue", this.close);
         },
         methods: {
             open() {
                 this.active = !this.active;
-                this.isActive
+                this.isActive;
+                this.$eventBus.$emit('open-catalogue', this.active);
             },
-            close() {
-                this.active = false
-                this.isActive
+            close(state) {
+                this.active = state;
+                this.isActive;
+                this.$eventBus.$emit('open-catalogue', this.active)
             },
             openMenu() {
                 this.openedMenu = true;

@@ -5,6 +5,7 @@ import VueAgile from 'vue-agile';
 import store from './js/store';
 import country from '../src/js/components/country.vue';
 import headerBlock from '../src/js/components/header/header-block.vue';
+import stickyHeader from '../src/js/components/header/sticky-header.vue';
 import topnavSwitch from '../src/js/components/topnav/topnav-switch.vue';
 import sliderMain from '../src/js/components/main-page/slider-main.vue';
 import sliderPromo from '../src/js/components/main-page/slider-promo.vue';
@@ -21,6 +22,17 @@ import mobileMenu from '../src/js/components/mobile-menu.vue';
 
 Vue.prototype.$eventBus = new Vue();
 
+Vue.directive('scroll', {
+    inserted: function (el, binding) {
+      let f = function (evt) {
+        if (binding.value(evt, el)) {
+          window.removeEventListener('scroll', f)
+        }
+      };
+      window.addEventListener('scroll', f)
+    }
+});
+
 const app = new Vue({
     el: '#app',
     store,
@@ -28,6 +40,7 @@ const app = new Vue({
         country,
         topnavSwitch,
         headerBlock,
+        stickyHeader,
         sliderMain,
         sliderPromo,
         sliderCards,

@@ -30,7 +30,7 @@ export default {
             this.country = name
         },
         closeCountry(){
-            this.openedModal = !this.openedModal
+            this.openedModal = false;
         }
     },
     created(){

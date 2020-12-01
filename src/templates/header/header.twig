@@ -1,0 +1,47 @@
+<component is="sticky-header">
+    <template slot="topnav">
+        <div class="container">
+            <nav class="topnav__nav">
+                <ul class="topnav__nav-list">
+                    <li class="topnav__nav-item">
+                        <a href="#" class="topnav__nav-link">О компании</a>
+                    </li>
+                    <li class="topnav__nav-item">
+                        <a href="#" class="topnav__nav-link">Филиалы</a>
+                    </li>
+                    <li class="topnav__nav-item">
+                        <a href="#" class="topnav__nav-link">Где купить</a>
+                    </li>
+                    <li class="topnav__nav-item">
+                        <a href="#" class="topnav__nav-link">Условия сотрудничества</a>
+                    </li>
+                    <li class="topnav__nav-item">
+                        <a href="#" class="topnav__nav-link">Бренды</a>
+                    </li>
+                    <li class="topnav__nav-item">
+                        <a href="#" class="topnav__nav-link">Акции</a>
+                    </li>
+                </ul>
+            </nav>
+            <component is="topnav-switch"></component>
+            <a href="#" class="topnav__phone">
+                <svg class="topnav__phone-icon" viewBox="0 0 15 15">
+                    <use :xlink:href="'./images/sprite.svg#icons__phone'"></use>
+                </svg>
+                +4 0371 166 478
+                <div class="topnav__phone-tooltip">
+                    <div class="topnav__phone-tooltip-layout">
+                        <svg viewBox="0 0 12 12">
+                            <use :xlink:href="'./images/sprite.svg#icons__clock'"></use>
+                        </svg>
+                        Пн-Пт: с 9:00 - 18:00
+                    </div>
+                    <div class="topnav__phone-tooltip-layout">Сб-Вс: с 11:00 - 15:00</div>
+                </div>
+            </a>
+        </div>
+    </template>
+    <template slot="header">
+        <component :categories="{{ categories|json_encode()|e('html_attr') }}" is="header-block"></component>
+    </template>
+</component>

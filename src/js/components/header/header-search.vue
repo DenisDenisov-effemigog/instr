@@ -1,5 +1,5 @@
 <template>
-    <div class="header__search">
+    <div class="header__search" v-click-outside="clickOutside">
         <div class="header__search-mobile">
             <img v-show="!flag" @click="searchClick" src="./images/header/icons/mag.svg" alt="" class="header__search-mobile-icon">
             <div class="mobile-search" v-show="flag">
@@ -31,11 +31,15 @@
 
 <script>
     import search from './search.vue';
+    import ClickOutside from "vue-click-outside";
 
 export default {
     name: "header-search",
     components:{
         search
+    },
+    directives: {
+        ClickOutside
     },
     data(){
         return{
@@ -69,7 +73,13 @@ export default {
             this.flag = false
             this.focused = false
             this.$emit("clickClose", this.flag)
-        }
+        },
+        clickOutside() {
+            let vm = this
+            if(window.innerWidth > 760) {
+                vm.clickClose()
+            }
+        },
     }
     
 }
