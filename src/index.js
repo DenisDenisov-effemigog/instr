@@ -4,6 +4,7 @@ import VueAgile from 'vue-agile';
 
 import store from './js/store';
 import country from '../src/js/components/country.vue';
+import modal from '../src/js/components/modal.vue';
 import headerBlock from '../src/js/components/header/header-block.vue';
 import stickyHeader from '../src/js/components/header/sticky-header.vue';
 import topnavSwitch from '../src/js/components/topnav/topnav-switch.vue';
@@ -50,6 +51,7 @@ const app = new Vue({
         addToCart,
         mobileMenu,
         homeMenu,
+        modal,
     },
     mounted() {
     }
