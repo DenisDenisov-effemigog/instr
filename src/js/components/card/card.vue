@@ -62,10 +62,40 @@
                     <use xlink:href="./images/sprite.svg#icons__graf"></use>
                 </svg>
             </div>
-            <div class="card__menu-btn">
+            <div @click="menuTooltip = !menuTooltip" class="card__menu-btn">
                 <span></span>
                 <span></span>
                 <span></span>
+            </div>
+            <div v-show="menuTooltip" class="card__menu-tooltip">
+                <div>
+                    <div 
+                        class="card__favorite-btn card__favorite-btn__mobile" 
+                        :class="{'card__favorite-btn--active': inFavorite}" 
+                        @click="inFavorite = !inFavorite"
+                    >
+                        <svg v-if="!inFavorite" viewBox="0 0 18 15">
+                            <use xlink:href="./images/sprite.svg#icons__heart"></use>
+                        </svg>
+                        <svg v-else viewBox="0 0 18 15">
+                            <use xlink:href="./images/sprite.svg#icons__heart-full"></use>
+                        </svg>
+                        <span>В избранное</span>
+                    </div>
+                    <div 
+                        class="card__compare-btn card__compare-btn__mobile"
+                        :class="{'card__compare-btn--active': inCompare}"
+                        @click="inCompare = !inCompare"
+                    >
+                        <svg viewBox="0 0 18 15">
+                            <use xlink:href="./images/sprite.svg#icons__graf"></use>
+                        </svg>
+                        <span>Сравнить</span>
+                    </div>
+                </div>
+                <svg @click="menuTooltip = false" viewBox="0 0 12 12">
+                    <use @click.stop xlink:href="./images/sprite.svg#close"></use>
+                </svg>
             </div>
         </div>
     </div>
@@ -83,6 +113,7 @@ export default {
     },
     data() {
         return {
+            menuTooltip: false,
             inFavorite: false,
             inCompare: false,
             product: 
@@ -115,17 +146,33 @@ export default {
     methods: {
         openTooltip(e){
             let $this = e.target
-            let tooltip = $this.querySelector('.card__stickers_sticker-tooltip')
-            tooltip.classList.add('card__stickers_sticker-tooltip-open')
+            if($this.classList.contains('card__stickers_sticker-wrap')){
+                let tooltip = $this.querySelector('.card__stickers_sticker-tooltip')
+                tooltip.classList.add('card__stickers_sticker-tooltip-open')
+                let c = tooltip.getBoundingClientRect()
+                let tooltipX = c.left + c.width
+                let windowWidth = window.screen.availWidth
+                if(windowWidth < tooltipX){
+                    tooltip.classList.add('card__stickers_sticker-tooltip--rigth')
+                }
+            }
+            
         },
         closeTooltip(e){
             let $this = e.target
             let tooltip = $this.querySelector('.card__stickers_sticker-tooltip')
             tooltip.classList.remove('card__stickers_sticker-tooltip-open')
+            if( tooltip.classList.contains('card__stickers_sticker-tooltip--rigth'))
+                tooltip.classList.remove('card__stickers_sticker-tooltip--rigth')
         },
         clickCloseTooltip(e){
             let $this = e.target
             $this.parentElement.classList.remove('card__stickers_sticker-tooltip-open')
+            if( $this.parentElement.classList.contains('card__stickers_sticker-tooltip--rigth'))
+                $this.parentElement.classList.remove('card__stickers_sticker-tooltip--rigth')
+        },
+        menuBtnClick(e){
+            console.log(e.target)
         }
     },
 }

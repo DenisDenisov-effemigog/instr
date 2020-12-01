@@ -21,6 +21,20 @@
         justify-content: space-between
         align-items: center
         margin-bottom: 16px
+    &__menu-tooltip
+        @extend .tooltip
+        right: -10%
+        top: 46px
+        display: flex
+        svg
+            fill: $icon-grey
+            width: 0.5rem
+            height: 0.5rem
+            flex-shrink: 0
+            margin-left: 16px
+            cursor: pointer
+        &::before
+            left: calc(80% - 8px)
     &__stickers
         display: flex
         &_sticker
@@ -54,6 +68,11 @@
             top: 38px
             left: 50%
             transform: translateX(-50%)
+            +mobile
+                left: 0
+                transform: translateX(0%)
+                &::before
+                    left: calc(10% - 8px)
             font-size: 14px
             line-height: 20px
             width: 240px
@@ -73,6 +92,11 @@
                     fill: $icon-medium-grey
             &-open
                 display: flex
+            &--rigth
+                left: auto
+                right: 0
+                &::before
+                    left: calc(90% - 8px)
     &__favorite-btn
         display: none
         cursor: pointer
@@ -87,6 +111,15 @@
         &--active svg,
         &--active:hover svg
             fill: $primary-red
+        &__mobile
+            padding-top: 1rem
+            display: flex
+            align-items: center
+            & svg
+                width: $size_12
+                height: $size_10
+            span
+                padding-left: 0.5rem
     &__image-block
         width: 156px
         margin: 0 auto 16px
@@ -118,6 +151,7 @@
             color: $black
             margin-bottom: 8px
     &__button-block
+        position: relative
         display: flex
         justify-content: space-between
         align-items: center
@@ -126,7 +160,7 @@
         cursor: pointer
         +desktop
             display: block
-        svg
+        & svg
             fill: $icon-grey
             width: $size_14
             height: $size_16
@@ -135,6 +169,15 @@
         &--active svg,
         &--active:hover svg
             fill: $primary-red
+        &__mobile
+            padding-top: 0.75rem
+            display: flex
+            align-items: center
+            svg
+                width: $size_12
+                height: $size_10
+            span
+                padding-left: 0.5rem
     &__menu-btn
         width: 32px
         height: 32px
@@ -143,11 +186,14 @@
         justify-content: center
         background: $pre-white
         border-radius: 2px
+        cursor: pointer
+        z-index: 2
         &:hover
             background: $border-color
             & span
                 background: $black
         & span
+            z-index: -1
             width: 5px
             height: 5px
             border-radius: 100%
@@ -157,4 +203,6 @@
                 margin-right: 0
         +desktop    
             display: none
+    
+
             

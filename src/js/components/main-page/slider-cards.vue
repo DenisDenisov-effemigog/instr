@@ -42,6 +42,14 @@
                                 dots: true,
                             }
                         },
+                        {
+                            breakpoint: 320,
+                            settings: {
+                                navButtons: true,
+                                slidesToShow: 1,
+                                dots: true,
+                            }
+                        },
                     ]
                 }
             }
