@@ -65,6 +65,8 @@ export default {
         },
         openCountry(){
             this.openedCountry = !this.openedCountry
+            console.log(document.querySelector('body'))
+            document.querySelector('body').classList.toggle('body-fixed')
         }
     },
 }
