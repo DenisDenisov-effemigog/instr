@@ -62,12 +62,13 @@
         methods: {
             open() {
                 this.active = !this.active;
-                this.isActive
+                this.isActive;
                 this.$eventBus.$emit('open-catalogue', this.active);
             },
             close() {
                 this.active = false
-                this.isActive
+                this.isActive;
+                this.$eventBus.$emit('open-catalogue', this.active)
             },
             openMenu() {
                 this.openedMenu = true;
