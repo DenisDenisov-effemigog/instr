@@ -39,29 +39,47 @@
             left: calc(80% - 8px)
     &__stickers
         display: flex
+        &_sticker-wrap:first-child .card__stickers_sticker:after
+            content: ''
+            position: absolute
+            left: -2px
+            top: 0
+            background: $white
+            border: 1px solid
+            border-radius: 4px
+            z-index: -1
+            width: 50%
+            height: 92%
+            border-right: none
+            clip-path: inset(0 21% 0 0)
         &_sticker
             @extend .text-3
             padding: 4px 8px
-            border: 1px solid
-            border-radius: 4px
-            margin-right: 4px
+            margin-right: 8px
             position: relative
-            transform: skew(-16deg)
-            & span
-                transform: skew(16deg)
-            //&:before
+                //transform: skew(16deg)
+            &:before
                 content: ''
                 position: absolute
-                display: block
-                border-left: 1px solid transparent
-                border-top: 24px solid black
-            &:after
+                left: 0
+                top: 0
+                right: 0
+                bottom: 0
+                background: $white
+                border: 1px solid
+                transform: skew(170deg)
+                border-radius: 4px
+                z-index: -2
             &--new
-                border-color: $primary-red
                 color: $primary-red
+                &:before,
+                &:after
+                    border-color: $primary-red
             &--promo
-                border-color: $blue
                 color: $blue
+                &:before,
+                &:after
+                    border-color: $blue
         &_sticker-wrap
             position: relative
 

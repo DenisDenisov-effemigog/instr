@@ -85,6 +85,7 @@ export default {
     created() {
         this.$eventBus.$on("open-menu", this.openMenuModal)
         this.$eventBus.$on("close-menu", this.closeMenuModal)
+        // this.$eventBus.$on("openMenuLink", this.openMenuModal)
     },
     methods:{
         openMenuModal(link){

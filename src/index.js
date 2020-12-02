@@ -19,6 +19,7 @@ Vue.use(VueAgile)
 
 import catalogue from '../src/js/components/catalogue/catalogue.vue';
 import mobileMenu from '../src/js/components/mobile-menu.vue';
+import stickyMenu from '../src/js/components/sticky-menu.vue';
 
 Vue.prototype.$eventBus = new Vue();
 
@@ -50,6 +51,7 @@ const app = new Vue({
         addToCart,
         mobileMenu,
         homeMenu,
+        stickyMenu,
     },
     mounted() {
     }
