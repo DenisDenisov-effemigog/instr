@@ -21,7 +21,7 @@
                             <a :href="tooltip.link">Подробнее</a>
                         </div>
                         <svg @click="clickCloseTooltip" viewBox="0 0 12 12">
-                            <use @click.stop :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
+                            <use :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
                         </svg>
                     </div>
                 </div>

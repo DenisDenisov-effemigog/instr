@@ -3,6 +3,7 @@
         <ul class="header__menu header__menu_mobile">
             <li class="header__menu-item">
                 <a
+                    href="#"
                     class="header__menu-link"
                     :class="{'header__menu-link--active': menuLink === 'home'}"
                     @click.prevent="clickMenu('home')"
@@ -66,7 +67,13 @@ export default {
         clickMenu(menu) {
             this.menuLink = menu
             this.$eventBus.$emit("closeSearch");
-            this.$eventBus.$emit("openMenuLink", this.menuLink);
+            if (this.menuLink === 'catalog') {
+                this.$eventBus.$emit("open-catalogue", true);
+            } else {
+                this.$eventBus.$emit("close-catalogue", false);
+                document.querySelector('html').style.overflow = 'auto';
+            }
+            
         },
     },
 }

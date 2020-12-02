@@ -5,15 +5,15 @@
             :class="{'mobile-menu__content--short': menuLink === 'home'}"
         >
             <component :countries="countries" is="home-menu" v-if="menuLink === 'home'"></component>
-            <catalogue :categories="categories" v-else-if="menuLink === 'catalog'" class="catalogue_active"></catalogue>
+<!--            <catalogue :categories="categories" v-else-if="menuLink === 'catalog'" class="catalogue_active"></catalogue>-->
             <div></div>
         </div>
-        <div class="mobile-menu__buttons">
+        <!--<div class="mobile-menu__buttons">
             <ul class="header__menu header__menu_mobile">
                 <li class="header__menu-item">
                     <a 
                         class="header__menu-link" 
-                        :class="{'header__menu-link--active': menuLink === 'home'}"
+                        :class="{'header__menu-link&#45;&#45;active': menuLink === 'home'}"
                         @click.prevent="clickMenu('home')"
                     >
                         <svg class="header__menu-icon">
@@ -25,7 +25,7 @@
                 <li class="header__menu-item">
                     <a 
                         class="header__menu-link"
-                        :class="{'header__menu-link--active': menuLink === 'catalog' || menuLink === 'search'}"
+                        :class="{'header__menu-link&#45;&#45;active': menuLink === 'catalog' || menuLink === 'search'}"
                         @click.prevent="clickMenu('catalog')"
                     >
                         <svg class="header__menu-icon">
@@ -59,7 +59,7 @@
                     </a>
                 </li>
             </ul>
-        </div>
+        </div>-->
     </div>
 </template>
 
@@ -85,7 +85,6 @@ export default {
     created() {
         this.$eventBus.$on("open-menu", this.openMenuModal)
         this.$eventBus.$on("close-menu", this.closeMenuModal)
-        // this.$eventBus.$on("openMenuLink", this.openMenuModal)
     },
     methods:{
         openMenuModal(link){
@@ -97,10 +96,10 @@ export default {
             document.querySelector('html').style.overflow = 'auto';
             this.openModal = false;
         },
-        clickMenu(menu) {
+        /*clickMenu(menu) {
             this.menuLink = menu
             this.$eventBus.$emit("closeSearch");
-        },
+        },*/
     },
 }
 </script>

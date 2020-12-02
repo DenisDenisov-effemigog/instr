@@ -61,14 +61,17 @@
             openCatalogue(state) {
                 this.active = state;
                 this.hovered = 0;
+                document.querySelector('html').style.overflow = 'hidden';
             },
             closeCatalogue(event) {
                 let vm = this;
                 
                 if(window.innerWidth > 760) {
-                    if(event.toElement.className !== 'header__catalog-btn') {
+                    if(event.toElement.className !== 'header__catalog-btn' && 
+                        event.toElement.className.animVal !=='header__catalog-btn-icon') {
                         vm.active = false;
                         this.$eventBus.$emit('close-catalogue', vm.active);
+                        document.querySelector('html').style.overflow = 'auto';
                     }
                 }
             },
