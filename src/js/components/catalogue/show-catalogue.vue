@@ -59,12 +59,15 @@
         methods: {
             open() {
                 this.active = !this.active;
-                this.isActive;
+                // this.isActive;
                 this.$eventBus.$emit('open-catalogue', this.active);
+                if (!this.active) {
+                    document.querySelector('html').style.overflow = 'auto';
+                }
             },
             close(state) {
                 this.active = state;
-                this.isActive;
+                // this.isActive;
                 this.$eventBus.$emit('open-catalogue', this.active)
             },
             openMenu() {
