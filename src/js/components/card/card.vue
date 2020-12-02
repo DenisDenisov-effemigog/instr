@@ -21,7 +21,7 @@
                             <a :href="tooltip.link">Подробнее</a>
                         </div>
                         <svg @click="clickCloseTooltip" viewBox="0 0 12 12">
-                            <use @click.stop :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
+                            <use :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
                         </svg>
                     </div>
                 </div>
@@ -166,10 +166,12 @@ export default {
         closeTooltip(e){
             let $this = e.target
             let tooltip = $this.querySelector('.card__stickers_sticker-tooltip')
+            tooltip.classList.remove('card__stickers_sticker-tooltip-open')
+            if( tooltip.classList.contains('card__stickers_sticker-tooltip--rigth')) {
+                tooltip.classList.remove('card__stickers_sticker-tooltip--rigth')
+            }
+                
             setTimeout(function (){
-                tooltip.classList.remove('card__stickers_sticker-tooltip-open')
-                if( tooltip.classList.contains('card__stickers_sticker-tooltip--rigth'))
-                    tooltip.classList.remove('card__stickers_sticker-tooltip--rigth')
             }, 4000)
         },
         clickCloseTooltip(e){

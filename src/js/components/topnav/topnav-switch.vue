@@ -31,7 +31,6 @@ export default {
         },
         closeCountry(){
             this.openedModal = false;
-            document.querySelector('body').classList.remove('body-fixed')
         }
     },
     created(){
