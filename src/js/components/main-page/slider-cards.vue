@@ -2,15 +2,15 @@
     <div class="slider-cards">
         <div class="slider-cards__title">Еще одна интересная подборка со скроллом</div>
         <agile :options="options">
-            <div class="slider-cards__slide"><card :changeIcon="changeIcon"></card></div>
-            <div class="slider-cards__slide"><card :changeIcon="changeIcon"></card></div>
-            <div class="slider-cards__slide"><card :changeIcon="changeIcon"></card></div>
-            <div class="slider-cards__slide"><card :changeIcon="changeIcon"></card></div>
-            <div class="slider-cards__slide"><card :changeIcon="changeIcon"></card></div>
-            <div class="slider-cards__slide"><card :changeIcon="changeIcon"></card></div>
+            <div class="slider-cards__slide"><card :changeIcon="changeIcon" @touchstart.prevent></card></div>
+            <div class="slider-cards__slide"><card :changeIcon="changeIcon" @touchstart.prevent></card></div>
+            <div class="slider-cards__slide"><card :changeIcon="changeIcon" @touchstart.prevent></card></div>
+            <div class="slider-cards__slide"><card :changeIcon="changeIcon" @touchstart.prevent></card></div>
+            <div class="slider-cards__slide"><card :changeIcon="changeIcon" @touchstart.prevent></card></div>
+            <div class="slider-cards__slide"><card :changeIcon="changeIcon" @touchstart.prevent></card></div>
             <template slot="nextButton">
                 <svg>
-                    <use :xlink:href="'./images/sprite.svg#arrows__arrow-right'"></use>
+                    <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                 </svg>
             </template>
         </agile>

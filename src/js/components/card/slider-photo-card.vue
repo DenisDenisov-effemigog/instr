@@ -9,7 +9,7 @@
                         @mouseover="showBackground = true" 
                         @mouseout="showBackground = false"
                     >
-                        <use xlink:href="./images/sprite.svg#icons__mag"></use>
+                        <use :xlink:href="templatePath + 'images/sprite.svg#icons__mag'"></use>
                     </svg>
                 </div>
             </div>

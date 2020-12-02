@@ -17,7 +17,7 @@
                         @click.prevent="clickMenu('home')"
                     >
                         <svg class="header__menu-icon">
-                            <use :xlink:href="'./images/sprite.svg#icons__home'"></use>
+                            <use :xlink:href="templatePath + 'images/sprite.svg#icons__home'"></use>
                         </svg>
                         <p class="header__menu-text">Главная</p>
                     </a>
@@ -29,7 +29,7 @@
                         @click.prevent="clickMenu('catalog')"
                     >
                         <svg class="header__menu-icon">
-                            <use :xlink:href="'./images/sprite.svg#icons__catalog'"></use>
+                            <use :xlink:href="templatePath + 'images/sprite.svg#icons__catalog'"></use>
                         </svg>
                         <p class="header__menu-text">Каталог</p>
                     </a>
@@ -37,7 +37,7 @@
                 <li class="header__menu-item">
                     <a href="#" class="header__menu-link">
                         <svg class="header__menu-icon">
-                            <use :xlink:href="'./images/sprite.svg#icons__heart'"></use>
+                            <use :xlink:href="templatePath + 'images/sprite.svg#icons__heart'"></use>
                         </svg>
                         <p class="header__menu-text">Избранное</p>
                     </a>
@@ -45,7 +45,7 @@
                 <li class="header__menu-item">
                     <a href="#" class="header__menu-link">
                         <svg class="header__menu-icon">
-                            <use :xlink:href="'./images/sprite.svg#icons__user'"></use>
+                            <use :xlink:href="templatePath + 'images/sprite.svg#icons__user'"></use>
                         </svg>
                         <p class="header__menu-text">Войти</p>
                     </a>
@@ -53,7 +53,7 @@
                 <li class="header__menu-item">
                     <a href="#" class="header__menu-link">
                         <svg class="header__menu-icon">
-                            <use :xlink:href="'./images/sprite.svg#icons__cart'"></use>
+                            <use :xlink:href="templatePath + 'images/sprite.svg#icons__cart'"></use>
                         </svg>
                         <p class="header__menu-text">Корзина</p>
                     </a>

@@ -3,6 +3,9 @@ import Vue from 'vue';
 import VueAgile from 'vue-agile';
 
 import store from './js/store';
+import HelpersMixin from './js/mixins/helper';
+
+
 import country from '../src/js/components/country.vue';
 import modal from '../src/js/components/modal.vue';
 import headerBlock from '../src/js/components/header/header-block.vue';
@@ -17,6 +20,7 @@ import addToCart from './js/components/card/add-to-cart.vue';
 import homeMenu from './js/components/header/mobile/home-menu.vue';
 
 Vue.use(VueAgile)
+Vue.mixin(HelpersMixin)
 
 import catalogue from '../src/js/components/catalogue/catalogue.vue';
 import mobileMenu from '../src/js/components/mobile-menu.vue';

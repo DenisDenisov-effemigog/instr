@@ -9,12 +9,12 @@
             
             <template slot="prevButton">
                 <svg viewBox="0 0 10 12">
-                    <use :xlink:href="'./images/sprite.svg#arrows__arrow-left'"></use>
+                    <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-left'"></use>
                 </svg>
             </template>
             <template slot="nextButton">
                 <svg viewBox="0 0 6 10">
-                    <use :xlink:href="'./images/sprite.svg#arrows__arrow-right'"></use>
+                    <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                 </svg>
             </template>
         </agile>
