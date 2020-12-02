@@ -55,7 +55,7 @@
                     </svg>
                 </li>
             </ul>
-           <div class="catalogue__button">Показать <span>{{items}}&nbsp;товаров</span></div>
+           <div v-if="subcategories || subcategory" class="catalogue__button">Показать <span>{{items}}&nbsp;товаров</span></div>
         </div>
     </div>
 </template>

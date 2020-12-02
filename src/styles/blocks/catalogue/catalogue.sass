@@ -1,4 +1,5 @@
 .catalogue
+    height: 100%
     position: absolute
     top: 3.5rem
     left: 0
@@ -29,6 +30,11 @@
         display: none
         height: fit-content
         background-color: $white
+        height: 100%
+        & > .container
+            display: flex
+            flex-direction: column
+            height: 100%
     &__title
         @extend .title-3
         margin: 1.5rem 0 .5rem 0
@@ -111,6 +117,7 @@
             @extend .catalogue__category-link
             @extend .text-2
     &__further-subcategories
+        height: 100%
         margin-top: 1rem
         line-height: $line-height_3
         padding-left: 24px
