@@ -1,25 +1,35 @@
 <template>
-    <div class="modal" v-if="opened">
+    <div v-show="openFlag" class="modal">
+        <div class="modal-bg"></div>
         <div class="modal-wrapper">
             <div class="modal-desc">
-                <div class="modal-title">Третий в подарок!</div>
+                <h3 class="modal-title">Третий в подарок!</h3>
                 <div class="modal-text">Здесь отображена текстовая информация об условиях акции, ее сроках, товарах, которые принимают участие, а так же что-нибудь еще.</div>
-                <div class="modal-btn">Понятно!</div>
+                <div @click="openFlag = false" class="modal-btn">Понятно!</div>
             </div>
-            <svg class="modal__close-icon" viewBox="0 0 12 12">
-                <use :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
-            </svg>
+            <div class="modal__close" @click="openFlag = false">
+                <svg class="modal__close-icon" viewBox="0 0 12 12">
+                    <use :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
+                </svg>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
 export default {
-
     data(){
         return{
-            opened: false,
+            openFlag:false
         }
     },
+    created(){
+        this.$eventBus.$on("bannerLinkClick", this.openModal)
+    },
+    methods:{
+        openModal(){
+            this.openFlag = true
+        }
+    }
 }
 </script>
