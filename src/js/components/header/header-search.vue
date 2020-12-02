@@ -76,7 +76,7 @@ export default {
         },
         clickOutside() {
             let vm = this
-            if(window.innerWidth > 760) {
+            if(window.innerWidth > 760 && vm.focused) {
                 vm.clickClose()
             }
         },

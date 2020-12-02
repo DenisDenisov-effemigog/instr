@@ -1,0 +1,23 @@
+{#
+    breadcrumbs: array
+        title: string
+        url: string
+#}
+<section class="section">
+    <div class="container">
+        {% if breadcrumbs|length %}
+            <ul class="breadcrumbs">
+                {% for item in breadcrumbs %}
+                    <li 
+                        class="breadcrumbs__item {% if loop.last %} breadcrumbs__item_active{% endif %}{% if loop.revindex == 2 %} breadcrumbs__item_penultimate{% endif %}"
+                    >
+                        <a href="{{ item.url }}">{{ item.title }}</a>
+                        {#<svg>
+                            <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
+                        </svg>#}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</section>
