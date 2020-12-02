@@ -5,7 +5,7 @@
             <div class="mobile-search" v-show="flag">
                 <div @click='clickClose' class="mobile-search__pic">
                     <svg class="mobile-search__pic-icon">
-                        <use :xlink:href="'./images/sprite.svg#arrows__arrow-left'"></use>
+                        <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-left'"></use>
                     </svg>
                 </div>
                 <form action="" class="mobile-search__form">
@@ -19,7 +19,7 @@
             <input @focus="focus" type="text" class="header__search-input" :class="{'header__search-input_focused': focused}" placeholder="Поиск по сайту">
             <div v-show="focused" @click="" class="header__search-form__btn">
                  <svg class="header__search-form__btn-icon">
-                    <use :xlink:href="'./images/sprite.svg#icons__mag'"></use>
+                    <use :xlink:href="templatePath + 'images/sprite.svg#icons__mag'"></use>
                 </svg>
             </div>
             <search

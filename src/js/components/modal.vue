@@ -9,7 +9,7 @@
             </div>
             <div class="modal__close" @click="openFlag = false">
                 <svg class="modal__close-icon" viewBox="0 0 12 12">
-                    <use :xlink:href="'./images/sprite.svg#close'"></use>
+                    <use :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
                 </svg>
             </div>
         </div>

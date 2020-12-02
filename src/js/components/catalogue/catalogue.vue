@@ -17,7 +17,7 @@
                             <a href="#" class="catalogue__category-link">
                                 {{category.title}}
                                 <svg class="" viewBox="0 0 6 10">
-                                    <use :xlink:href="'./images/sprite.svg#arrows__arrow-right'"></use>
+                                    <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                                 </svg>
                             </a>
                             <catalogue-subcategories :categories="category.subcategories"></catalogue-subcategories>

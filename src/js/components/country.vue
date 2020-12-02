@@ -19,7 +19,7 @@
                 <div @click="closeChoiceCountry" class="country__close">
                     <div class="country__close-text">Закрыть</div>
                     <svg class="country__close-pic" viewBox="0 0 12 12">
-                        <use :xlink:href="'./images/sprite.svg#close'"></use>
+                        <use :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
                     </svg>
                 </div>
             </div>

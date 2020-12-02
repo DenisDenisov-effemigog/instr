@@ -5,7 +5,7 @@
                 <a href="" class="home-menu__link">
                     <span>О компании</span>
                     <svg viewBox="0 0 6 10">
-                        <use :xlink:href="'./images/sprite.svg#arrows__arrow-right'"></use>
+                        <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                     </svg>
                 </a>
             </li>
@@ -13,7 +13,7 @@
                 <a href="" class="home-menu__link">
                     <span>Филиалы</span>
                     <svg viewBox="0 0 6 10">
-                        <use :xlink:href="'./images/sprite.svg#arrows__arrow-right'"></use>
+                        <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                     </svg>
                 </a>
             </li>
@@ -21,7 +21,7 @@
                 <a href="" class="home-menu__link">
                     <span>Где купить</span>
                     <svg viewBox="0 0 6 10">
-                        <use :xlink:href="'./images/sprite.svg#arrows__arrow-right'"></use>
+                        <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                     </svg>
                 </a>
             </li>
@@ -29,7 +29,7 @@
                 <a href="" class="home-menu__link">
                     <span>Условия сотрудничества</span>
                     <svg viewBox="0 0 6 10">
-                        <use :xlink:href="'./images/sprite.svg#arrows__arrow-right'"></use>
+                        <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                     </svg>
                 </a>
             </li>
@@ -37,7 +37,7 @@
                 <a href="" class="home-menu__link">
                     <span>Бренды</span>
                     <svg viewBox="0 0 6 10">
-                        <use :xlink:href="'./images/sprite.svg#arrows__arrow-right'"></use>
+                        <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                     </svg>
                 </a>
             </li>
@@ -45,7 +45,7 @@
                 <a href="" class="home-menu__link">
                     <span>Акции</span>
                     <svg viewBox="0 0 6 10">
-                        <use :xlink:href="'./images/sprite.svg#arrows__arrow-right'"></use>
+                        <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                     </svg>
                 </a>
             </li>
@@ -57,7 +57,7 @@
                 >
                     <span>{{ activeCountry }}</span>
                     <svg viewBox="0 0 6 10">
-                        <use :xlink:href="'./images/sprite.svg#arrows__arrow-right'"></use>
+                        <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                     </svg>
                 </div>
                 <div 
@@ -71,7 +71,7 @@
                     >
                         <span>{{ country }}</span>
                         <svg v-if="activeCountry === country"> 
-                            <use :xlink:href="'./images/sprite.svg#check'"></use>
+                            <use :xlink:href="templatePath + 'images/sprite.svg#check'"></use>
                         </svg>
                     </div>
                 </div>
@@ -80,13 +80,13 @@
         <div class="home-menu__info">
             <div class="home-menu__info_link">
                 <svg viewBox="0 0 15 15">
-                    <use xlink:href="./images/sprite.svg#icons__phone"></use>
+                    <use :xlink:href="templatePath + 'images/sprite.svg#icons__phone'"></use>
                 </svg>
                 <span>+4 0371 166 478</span>
             </div>
             <div class="home-menu__info_link">
                 <svg>
-                    <use xlink:href="./images/sprite.svg#icons__pin"></use>
+                    <use :xlink:href="templatePath + 'images/sprite.svg#icons__pin'"></use>
                 </svg>
                 <span>Москва</span>
             </div>

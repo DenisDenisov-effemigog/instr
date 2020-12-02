@@ -6,7 +6,7 @@
                     <a href="#" class="search-result__link">{{item}}</a>
                     <div class="search-result__pic">
                         <svg class="search-result__pic-icon">
-                            <use :xlink:href="'./images/sprite.svg#arrows__mob-arrow'"></use>
+                            <use :xlink:href="templatePath + 'images/sprite.svg#arrows__mob-arrow'"></use>
                         </svg>
                     </div>
                 </li>
@@ -15,7 +15,7 @@
                 <p class="search-result__clear-text">Очистить историю</p>
                 <div class="search-result__clear-pic">
                     <svg class="search-result__clear-pic-icon">
-                        <use :xlink:href="'./images/sprite.svg#icons__del'"></use>
+                        <use :xlink:href="templatePath + 'images/sprite.svg#icons__del'"></use>
                     </svg>
                 </div>
             </div>
@@ -42,7 +42,7 @@
                         </div>
                         <div class="search-items__icon">
                             <svg class="">
-                                <use :xlink:href="'./images/sprite.svg#arrows__arrow-right'"></use>
+                                <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                             </svg>
                         </div>
                     </div>
@@ -52,7 +52,7 @@
                 <p class="search-items__download-text">Загрузить ещё</p>
                 <div class="search-items__download-pic">
                     <svg class="search-items__download-pic-icon" viewBox="0 0 12 10">
-                        <use :xlink:href="'./images/sprite.svg#arrows__arrow-down'"></use>
+                        <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-down'"></use>
                     </svg>
                 </div>
             </div>

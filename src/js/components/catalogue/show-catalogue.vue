@@ -2,20 +2,20 @@
     <div class="header__catalog">
         <div  class="header__catalog-mobile" @click.prevent="openMenu" v-if="!openedMenu">
             <svg class="header__catalog-mobile-icon">
-                <use :xlink:href="'./images/sprite.svg#icons__ham'"></use>
+                <use :xlink:href="templatePath + 'images/sprite.svg#icons__ham'"></use>
             </svg>
         </div>
         <div  class="header__catalog-mobile" @click.prevent="closeMenu" v-else>
             <svg class="header__catalog-mobile-icon">
-                <use :xlink:href="'./images/sprite.svg#close'"></use>
+                <use :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
             </svg>
         </div>
         <div class="header__catalog-btn" @click.prevent="open">
             <svg class="header__catalog-btn-icon" viewBox="0 0 18 14" v-if="active">
-                <use :xlink:href="'./images/sprite.svg#close'"></use>
+                <use :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
             </svg>
             <svg class="header__catalog-btn-icon" viewBox="0 0 18 14" v-else>
-                <use :xlink:href="'./images/sprite.svg#icons__ham'"></use>
+                <use :xlink:href="templatePath + 'images/sprite.svg#icons__ham'"></use>
             </svg>
             Каталог
         </div>

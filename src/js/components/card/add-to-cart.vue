@@ -7,7 +7,7 @@
 				@click="decrease"
 			>
                 <svg>
-                    <use :xlink:href="'./images/sprite.svg#minus'"></use>
+                    <use :xlink:href="templatePath + 'images/sprite.svg#minus'"></use>
                 </svg>
 			</div>
             
@@ -28,7 +28,7 @@
 				@click="increase"
 			>
                 <svg viewBox="2 2 12 12">
-                    <use :xlink:href="'./images/sprite.svg#plus'"></use>
+                    <use :xlink:href="templatePath + 'images/sprite.svg#plus'"></use>
                 </svg>
 			</div>
         </div>
@@ -38,7 +38,7 @@
                 :class="{'add-to-cart__add--smaller': changeIcon && width < 760}" 
                 @click="increase">
                 <svg v-if="changeIcon && width < 760">
-                    <use xlink:href="./images/sprite.svg#icons__cart"></use>
+                    <use :xlink:href="templatePath + 'images/sprite.svg#icons__cart'"></use>
                 </svg>
               <template v-else>В корзину</template>  
             </div>

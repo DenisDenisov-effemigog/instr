@@ -21,7 +21,7 @@
                             <a :href="tooltip.link">Подробнее</a>
                         </div>
                         <svg @click="clickCloseTooltip" viewBox="0 0 12 12">
-                            <use @click.stop xlink:href="./images/sprite.svg#close"></use>
+                            <use @click.stop :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
                         </svg>
                     </div>
                 </div>
@@ -32,10 +32,10 @@
                 @click="inFavorite = !inFavorite"
             >
                 <svg v-if="!inFavorite">
-                    <use xlink:href="./images/sprite.svg#icons__heart"></use>
+                    <use :xlink:href="templatePath + './images/sprite.svg#icons__heart'"></use>
                 </svg>
                 <svg v-else>
-                    <use xlink:href="./images/sprite.svg#icons__heart-full"></use>
+                    <use :xlink:href="templatePath + 'images/sprite.svg#icons__heart-full'"></use>
                 </svg>
             </div>
         </div>
@@ -58,7 +58,7 @@
                 @click="inCompare = !inCompare"
             >
                 <svg>
-                    <use xlink:href="./images/sprite.svg#icons__graf"></use>
+                    <use :xlink:href="templatePath + 'images/sprite.svg#icons__graf'"></use>
                 </svg>
             </div>
             <div @click="menuTooltip = !menuTooltip" class="card__menu-btn">
@@ -74,10 +74,10 @@
                         @click="inFavorite = !inFavorite"
                     >
                         <svg v-if="!inFavorite" viewBox="0 0 18 15">
-                            <use xlink:href="./images/sprite.svg#icons__heart"></use>
+                            <use :xlink:href="templatePath + 'images/sprite.svg#icons__heart'"></use>
                         </svg>
                         <svg v-else viewBox="0 0 18 15">
-                            <use xlink:href="./images/sprite.svg#icons__heart-full"></use>
+                            <use :xlink:href="templatePath + 'images/sprite.svg#icons__heart-full'"></use>
                         </svg>
                         <span>В избранное</span>
                     </div>
@@ -87,13 +87,13 @@
                         @click="inCompare = !inCompare"
                     >
                         <svg viewBox="0 0 18 15">
-                            <use xlink:href="./images/sprite.svg#icons__graf"></use>
+                            <use :xlink:href="templatePath + 'images/sprite.svg#icons__graf'"></use>
                         </svg>
                         <span>Сравнить</span>
                     </div>
                 </div>
                 <svg @click="menuTooltip = false" viewBox="0 0 12 12">
-                    <use @click.stop xlink:href="./images/sprite.svg#close"></use>
+                    <use @click.stop :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
                 </svg>
             </div>
         </div>

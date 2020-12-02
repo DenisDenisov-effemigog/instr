@@ -7,7 +7,7 @@
                 @click="goBack"
             >
                 <svg class="breadcrumbs__array">
-                    <use :xlink:href="'./images/sprite.svg#arrows__arr-long-left'"></use>
+                    <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
                 </svg>
                 <span>Назад</span>
             </div>
@@ -21,7 +21,7 @@
                     <a href="#" class="catalogue__category-link">
                         {{category.title}}
                         <svg class="" viewBox="0 0 6 10">
-                            <use :xlink:href="'./images/sprite.svg#arrows__arrow-right'"></use>
+                            <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                         </svg>
                     </a>
                 </li>
@@ -35,7 +35,7 @@
                     <a href="#" class="catalogue__subcategory-link_mobile">
                         {{subcategory.title}}
                         <svg class="" viewBox="0 0 6 10">
-                            <use :xlink:href="'./images/sprite.svg#arrows__arrow-right'"></use>
+                            <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                         </svg>
                     </a>
                 </li>
@@ -51,7 +51,7 @@
                         :class="{'catalogue__further-subcategory--active': selectedCategory === category}"
                     >{{category}}</a>
                     <svg v-if="selectedCategory === category">
-                        <use :xlink:href="'./images/sprite.svg#check'"></use>
+                        <use :xlink:href="templatePath + 'images/sprite.svg#check'"></use>
                     </svg>
                 </li>
             </ul>
