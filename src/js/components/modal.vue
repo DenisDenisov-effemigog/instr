@@ -1,5 +1,5 @@
 <template>
-    <div class="modal">
+    <div class="modal" v-if="opened">
         <div class="modal-wrapper">
             <div class="modal-desc">
                 <div class="modal-title">Третий в подарок!</div>
@@ -15,6 +15,11 @@
 
 <script>
 export default {
-    
+
+    data(){
+        return{
+            opened: false,
+        }
+    },
 }
 </script>
