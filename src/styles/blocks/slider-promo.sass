@@ -13,6 +13,9 @@
         //height: 353px
         &:hover img
             box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .16)
+        &:hover .slider-promo__modal
+            display: flex
+            align-items: center
         & img
             //+absolute-full
             transition: 200ms
@@ -42,3 +45,18 @@
             height: 12px
     & .agile__list
         padding: 30px 0
+    &__modal
+        @extend .tooltip
+        width: 100%
+        border-radius: 2px
+        bottom: -1.6875rem
+        &-text
+            @extend .text-2
+            color: $blue
+            cursor: pointer
+            font-weight: 600
+        &-icon
+            fill: $blue
+            width: $size_12
+            height: $size_12
+            margin-right: 0.375rem
