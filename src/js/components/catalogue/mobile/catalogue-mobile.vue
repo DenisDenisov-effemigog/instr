@@ -55,7 +55,7 @@
                     </svg>
                 </li>
             </ul>
-<!--            <div class="catalogue__button">Показать {{items}}&nbsp;товаров</div>-->
+           <div class="catalogue__button">Показать <span>{{items}}&nbsp;товаров</span></div>
         </div>
     </div>
 </template>
@@ -72,6 +72,7 @@
                 currentCategory: false,
                 currentSubategory: false,
                 selectedCategory: '',
+                items:1010
             }
         },
         props: {
