@@ -18,7 +18,7 @@ export default {
                 if (path) {
                     window.template_path = path.replace(/\/+$/, '') + './';
                 } else {
-                    window.template_path = '/local/php_interface/lib/instrumtorg/ds-denzel/public/';
+                    window.template_path = '/local/php_interface/lib/instrumtorg/ds-mi/public/';
                 }
             }
 
