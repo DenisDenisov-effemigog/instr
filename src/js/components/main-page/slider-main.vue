@@ -4,7 +4,7 @@
             
             <div class="slider-main__slide" v-for="slide in slides">
                 <img class="slider-main__slide_img" :src="slide.img">
-                <a :href="slide.link" class="slider-main__slide_link" @click="bannerLinkClick">Подробнее</a> 
+                <a :href="slide.link" class="slider-main__slide_link" >Подробнее</a> 
             </div>
             
             <template slot="prevButton">
@@ -33,10 +33,10 @@
             return {
                 slideCurrent: 0,
                 slides: [
-                    {id: 1, img: './demo_images/banners/main-banner.png',link: '#'},
-                    {id: 2, img: './demo_images/banners/main-banner.png',link: '#'},
-                    {id: 3, img: './demo_images/banners/main-banner.png',link: '#'},
-                    {id: 4, img: './demo_images/banners/main-banner.png',link: '#'},
+                    {id: 1, img: './demo_images/banners/main-banner.png',link: ''},
+                    {id: 2, img: './demo_images/banners/main-banner.png',link: ''},
+                    {id: 3, img: './demo_images/banners/main-banner.png',link: ''},
+                    {id: 4, img: './demo_images/banners/main-banner.png',link: ''},
                 ],
                 options: {
                     navButtons: false,
@@ -68,9 +68,6 @@
                     }
                 }
             },
-            bannerLinkClick(){
-                this.$eventBus.$emit("bannerLinkClick")
-            }
         }
     }
 </script>

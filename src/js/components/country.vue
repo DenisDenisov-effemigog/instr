@@ -1,7 +1,7 @@
 <template>
     <div class="country" :class="{'country-open': openedCountry}">
-        <div class="country__bg" :class="{'country__bg-open': openedCountry}"></div>
-        <div class="country__wrapper" :class="{'country__wrapper-open': openedCountry}" v-click-outside="closeChoiceCountry">
+        <div @click="closeChoiceCountry" class="country__bg" :class="{'country__bg-open': openedCountry}"></div>
+        <div class="country__wrapper" :class="{'country__wrapper-open': openedCountry}"> 
             <div class="country-container">
                 <div class="country__choice">
                     <h2 class="country__choice-title">Выбор страны</h2>
@@ -47,13 +47,14 @@ export default {
             this.$eventBus.$on("open-country", this.openCountry)
         },
     methods:{
-        closeChoiceCountry(event){
+        closeChoiceCountry(){
             if(window.innerWidth > 760) {
                 if(event.toElement.className !== 'topnav__switch-text') {
                     this.openedCountry = false
                     this.$eventBus.$emit("closeCountry")
                 } 
             }
+            document.querySelector('body').classList.remove('body-fixed')
         },
         choiceCountry(e){
             let a = e.target
@@ -65,7 +66,6 @@ export default {
         },
         openCountry(){
             this.openedCountry = !this.openedCountry
-            console.log(document.querySelector('body'))
             document.querySelector('body').classList.toggle('body-fixed')
         }
     },

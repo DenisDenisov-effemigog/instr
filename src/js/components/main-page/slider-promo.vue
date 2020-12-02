@@ -7,6 +7,12 @@
                 <a :href="slide.link" class="">
                     <img :src="slide.img" alt="">
                 </a>
+                <div class="slider-promo__modal">
+                    <svg class="slider-promo__modal-icon">
+                        <use :xlink:href="templatePath + 'images/sprite.svg#icons__link'"></use>
+                    </svg>
+                    <p @click="openModal" class="slider-promo__modal-text">Подробнее об акции</p>
+                </div>
             </div>
             
             <template slot="prevButton">
@@ -60,6 +66,9 @@
             }
         },
         methods: {
+            openModal(){
+                this.$eventBus.$emit("openModal")
+            }
         }
     }
 </script>
