@@ -1,51 +1,49 @@
 <template>
     <div class="slider-photo-card">
-        <agile :options="options">
-
-            <div class="slider-photo-card__slide" v-for="slide in slides">
-                <img class="slider-photo-card__slide_image" :src="slide.img">
+            <div class="slider-photo-card__slide">
+                <img class="slider-photo-card__slide_image" :src="a">
             </div>
-            
-        </agile>
+            <div class="slider-photo-card__markers" @mouseleave="outSlide">
+                <div @mouseenter="hoverSlide(marker.id)" class="slider-photo-card__marker" v-for="marker in slides" ></div>
+            </div>
+            <ul class="slider-photo-card__dots">
+                <li class="slider-photo-card__dot" v-for="dot in slides">
+                    
+                </li>
+            </ul>
     </div>
 </template>
 
 <script>
-import {VueAgile} from 'vue-agile';
 
 export default {
     name: 'slider-photo-card',
     components: {
-        agile: VueAgile
     },
     data() {
         return {
-            slideCurrent: 0,
             slides: [
                 {id: 1, img: './demo_images/product/image_50.png', link: ''},
                 {id: 2, img: './demo_images/product/image_51.png', link: ''},
                 {id: 3, img: './demo_images/product/image_52.png', link: ''},
                 {id: 4, img: './demo_images/product/image_53.png', link: ''},
             ],
-            options: {
-                navButtons: false,
-                fade: false,
-                responsive: [
-                    {
-                        breakpoint: 768,
-                        settings: {
-                            navButtons: false,
-                            fade: false,
-                            pauseOnDotsHover: true,
-                            slidesToShow: 1,
-                            dots: true,
-                        }
-                    },
-                ]
-            }
+            a:'./demo_images/product/image_50.png'
         }
     },
     methods: {
+        hoverSlide(id){
+            this.slides.forEach(item => {
+                if(id == item.id){
+                    this.a = item.img
+                }
+            })
+            return this.a
+            
+        },
+        outSlide(){
+            return this.a = './demo_images/product/image_50.png'
+        }
     },
 }
 </script>
