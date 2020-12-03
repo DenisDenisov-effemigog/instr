@@ -19,7 +19,6 @@ export default {
         homeMenu,
     },
     props: {
-        categories: {required: true},
         countries: {required: true}
     },
     data(){
