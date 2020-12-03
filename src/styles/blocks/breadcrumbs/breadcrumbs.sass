@@ -10,26 +10,26 @@
         padding: 1px 0
     &__item
         display: flex
-        &:not(:first-of-type)
+        &:not(:first-child):not(:last-child)
             display: none
             +tablet
                 display: flex
         &:last-of-type .breadcrumbs__array
             display: none
-        &_penultimate
-            display: flex !important
-            & > .breadcrumbs__array_mobile
-                display: none
+        // &_penultimate
+        //     display: flex !important
+        //     & > .breadcrumbs__array_mobile
+        //         display: none
     &__array
         display: none
+        fill: $black
         +tablet
             display: block
-            fill: $black
             width: 1.25rem
             height: 1.25rem
             margin: 0 .5rem
         &_mobile
-            fill: $black
+            display: block
             width: 1rem
             height: 1rem
             margin: 0 .25rem
