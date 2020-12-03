@@ -1,5 +1,5 @@
 <template>
-    <div class="catalogue" :class="{'catalogue_active': active}" v-click-outside="closeCatalogue">
+    <div class="catalogue" v-if="active" v-click-outside="closeCatalogue">
 
         <catalogue-mobile :categories="categories"></catalogue-mobile>
 
