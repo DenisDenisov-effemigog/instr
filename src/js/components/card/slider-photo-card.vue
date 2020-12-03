@@ -1,51 +1,84 @@
 <template>
     <div class="slider-photo-card">
-        <agile :options="options">
-
-            <div class="slider-photo-card__slide" v-for="slide in slides">
-                <img class="slider-photo-card__slide_image" :src="slide.img">
+            <div
+            @touchstart="touchStart"
+            @touchmove="touchMove"
+            @touchend="touchEnd"
+            class="slider-photo-card__slide">
+                <img class="slider-photo-card__slide_image" v-for="slide in showSlide" :src="slide.img">
             </div>
-            
-        </agile>
+            <div class="slider-photo-card__markers" @mouseleave="outSlide">
+                <div @mouseenter="hoverSlide(marker.id)" class="slider-photo-card__marker" v-for="marker in slides" ></div>
+            </div>
+            <slider-photo-dots
+                :slides="slides"
+                :currentSlide="currentSlide"
+            ></slider-photo-dots>
     </div>
 </template>
 
 <script>
-import {VueAgile} from 'vue-agile';
+import SliderPhotoDots from './slider-photo-dots.vue'
 
 export default {
     name: 'slider-photo-card',
     components: {
-        agile: VueAgile
+        SliderPhotoDots
     },
     data() {
         return {
-            slideCurrent: 0,
             slides: [
                 {id: 1, img: './demo_images/product/image_50.png', link: ''},
                 {id: 2, img: './demo_images/product/image_51.png', link: ''},
                 {id: 3, img: './demo_images/product/image_52.png', link: ''},
                 {id: 4, img: './demo_images/product/image_53.png', link: ''},
             ],
-            options: {
-                navButtons: false,
-                fade: false,
-                responsive: [
-                    {
-                        breakpoint: 768,
-                        settings: {
-                            navButtons: false,
-                            fade: false,
-                            pauseOnDotsHover: true,
-                            slidesToShow: 1,
-                            dots: true,
-                        }
-                    },
-                ]
-            }
+            currentSlide: 1,
+            startTouch:0,
+            moveTouch:0
         }
     },
     methods: {
+        hoverSlide(id){
+            this.slides.forEach(item => {
+                if(id == item.id){
+                    this.currentSlide = item.id
+                }
+            })
+            this.activeDot
+            return this.currentSlide
+            
+        },
+        outSlide(){
+            this.activeDot
+            return this.currentSlide = 1
+        },
+        touchStart(e){
+            this.startTouch = e.changedTouches[0].pageX
+        },
+        touchMove(e){
+            this.moveTouch = e.changedTouches[0].pageX
+        },
+        touchEnd(){
+            if(this.startTouch > this.moveTouch){
+                if(this.currentSlide >= this.slides.length ){
+                    this.currentSlide = 1
+                }else{
+                    this.currentSlide++
+                }
+            }else{
+                if(this.currentSlide <= 1){
+                    this.currentSlide =  this.slides.length
+                }else{
+                    this.currentSlide--
+                }
+            }
+        }
     },
+    computed:{
+        showSlide: function(){
+            return this.slides.filter(item => item.id == this.currentSlide)
+        }
+    }
 }
 </script>
