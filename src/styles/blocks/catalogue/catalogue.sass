@@ -65,6 +65,8 @@
                     color: $black
                     & ~ .catalogue__subcategories
                         display: flex
+        &:last-child
+            margin-bottom: 100px
     &__category-link
         @extend .subtitle-2
         position: relative
@@ -128,6 +130,8 @@
             position: relative
             &:not(:last-of-type)
                 margin-bottom: 1rem
+            &:last-child
+                margin-bottom: 100px
     &__further-subcategory
         @extend .link-2
         &--active
