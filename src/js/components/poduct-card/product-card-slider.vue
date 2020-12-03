@@ -1,16 +1,36 @@
 <template>
     <div class="product-card-slider">
-        <VueSlickCarousel v-bind="settings" ref="main">
-            <div style="width: 5px;">1</div>
-            <div style="width: 5px;">2</div>
-            <div style="width: 5px;">3</div>
-            <div style="width: 5px;">4</div>
+        <VueSlickCarousel
+            class="product-card-slider__previous"
+            v-bind="settingsForPrev"
+            ref="previous"
+            :asNavFor="$refs.main"
+        >
+            <template #prevArrow>
+                <svg class="product-card-slider__previous_arrow" viewBox="0 0 10 10">
+                    <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-top'"></use>
+                </svg>
+            </template>
+            <div class="product-card-slider__previous_slide"
+                 v-for="productImage in productImages">
+                <img :src="productImage.img" alt="">
+            </div>
+            <template #nextArrow>
+                <svg class="product-card-slider__previous_arrow" viewBox="0 0 12 12">
+                    <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-down'"></use>
+                </svg>
+            </template>
         </VueSlickCarousel>
-        <VueSlickCarousel v-bind="settingsForPrev" ref="previous">
-            <div style="width: 5px;">1</div>
-            <div style="width: 5px;">2</div>
-            <div style="width: 5px;">3</div>
-            <div style="width: 5px;">4</div>
+        <VueSlickCarousel
+            class="product-card-slider__main"
+            v-bind="settings"
+            ref="main"
+            :asNavFor="$refs.previous"
+        >
+            <div class="product-card-slider__main_slide"
+                 v-for="productImage in productImages">
+                <img :src="productImage.img" alt="">
+            </div>
         </VueSlickCarousel>
     </div>
 </template>
@@ -27,19 +47,36 @@ export default {
         return {
             settings: {
                 dots: false,
-                asNavFor: $refs.previous,
+                arrows: false,
+                focusOnSelect: false,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                draggable: false,
             },
             settingsForPrev: {
                 dots: false,
-                asNavFor: $refs.main,
                 slidesToShow: 4,
                 slidesToScroll: 1,
                 vertical: true,
                 verticalSwiping: true,
-            }
+                focusOnSelect: true,
+            },
+            productImages: [
+                {img: './demo_images/product-big/image-70.png'},
+                {img: './demo_images/product-big/image-71.png'},
+                {img: './demo_images/product-big/image-72.png'},
+                {img: './demo_images/product-big/image-73.png'},
+                {img: './demo_images/product-big/image-74.png'},
+                {img: './demo_images/product-big/image-75.png'},
+                {img: './demo_images/product-big/image-76.png'},
+                {img: './demo_images/product-big/image-77.png'},
+                {img: './demo_images/product-big/image-78.png'},
+            ],
         }
     },
     methods: {
+    },mounted() {
+        this.$nextTick(this.$forceUpdate);
     },
 }
 </script>
