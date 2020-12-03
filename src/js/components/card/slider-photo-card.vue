@@ -1,24 +1,29 @@
 <template>
     <div class="slider-photo-card">
-            <div class="slider-photo-card__slide">
-                <img class="slider-photo-card__slide_image" :src="a">
+            <div
+            @touchstart="touchStart"
+            @touchmove="touchMove"
+            @touchend="touchEnd"
+            class="slider-photo-card__slide">
+                <img class="slider-photo-card__slide_image" v-for="slide in showSlide" :src="slide.img">
             </div>
             <div class="slider-photo-card__markers" @mouseleave="outSlide">
                 <div @mouseenter="hoverSlide(marker.id)" class="slider-photo-card__marker" v-for="marker in slides" ></div>
             </div>
-            <ul class="slider-photo-card__dots">
-                <li class="slider-photo-card__dot" v-for="dot in slides">
-                    
-                </li>
-            </ul>
+            <slider-photo-dots
+                :slides="slides"
+                :currentSlide="currentSlide"
+            ></slider-photo-dots>
     </div>
 </template>
 
 <script>
+import SliderPhotoDots from './slider-photo-dots.vue'
 
 export default {
     name: 'slider-photo-card',
     components: {
+        SliderPhotoDots
     },
     data() {
         return {
@@ -28,22 +33,52 @@ export default {
                 {id: 3, img: './demo_images/product/image_52.png', link: ''},
                 {id: 4, img: './demo_images/product/image_53.png', link: ''},
             ],
-            a:'./demo_images/product/image_50.png'
+            currentSlide: 1,
+            startTouch:0,
+            moveTouch:0
         }
     },
     methods: {
         hoverSlide(id){
             this.slides.forEach(item => {
                 if(id == item.id){
-                    this.a = item.img
+                    this.currentSlide = item.id
                 }
             })
-            return this.a
+            this.activeDot
+            return this.currentSlide
             
         },
         outSlide(){
-            return this.a = './demo_images/product/image_50.png'
+            this.activeDot
+            return this.currentSlide = 1
+        },
+        touchStart(e){
+            this.startTouch = e.changedTouches[0].pageX
+        },
+        touchMove(e){
+            this.moveTouch = e.changedTouches[0].pageX
+        },
+        touchEnd(){
+            if(this.startTouch > this.moveTouch){
+                if(this.currentSlide >= this.slides.length ){
+                    this.currentSlide = 1
+                }else{
+                    this.currentSlide++
+                }
+            }else{
+                if(this.currentSlide <= 1){
+                    this.currentSlide =  this.slides.length
+                }else{
+                    this.currentSlide--
+                }
+            }
         }
     },
+    computed:{
+        showSlide: function(){
+            return this.slides.filter(item => item.id == this.currentSlide)
+        }
+    }
 }
 </script>
