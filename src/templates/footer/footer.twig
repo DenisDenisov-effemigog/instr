@@ -1,12 +1,9 @@
 <component is="sticky-menu"></component>
 <component is="country" :countries="{{ countries|json_encode()|e('html_attr') }}"></component>
 <component is="catalogue" :categories="{{ categories|json_encode()|e('html_attr') }}"></component>
-<component 
-    is="mobile-menu" 
-    :countries="{{ countries|json_encode()|e('html_attr') }}" 
-    :categories="{{ categories|json_encode()|e('html_attr') }}"
-></component>
+<component is="mobile-menu" :countries="{{ countries|json_encode()|e('html_attr') }}"></component>
 <component is="modal"></component>
+<component is="sticky-mobile-button"></component>
 
 <footer class="footer">
     <div class="container">

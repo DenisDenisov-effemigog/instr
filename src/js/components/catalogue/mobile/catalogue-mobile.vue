@@ -55,7 +55,7 @@
                     </svg>
                 </li>
             </ul>
-           <div v-if="subcategories || subcategory" class="catalogue__button">Показать <span>{{items}}&nbsp;товаров</span></div>
+<!--           <div v-if="subcategories || subcategory" class="catalogue__button">Показать <span>{{items}}&nbsp;товаров</span></div>-->
         </div>
     </div>
 </template>
@@ -93,6 +93,7 @@
                     this.subcategory = false;
                     this.title = 'Каталог';
                     this.currentCategory = false;
+                    this.$eventBus.$emit("hide-button");
                 } else {
                     this.subcategories = false;
                     this.subcategory = true;
@@ -113,7 +114,8 @@
                 this.currentSubategory = item;
             },
             selectCategory(category) {
-                this.selectedCategory = category
+                this.selectedCategory = category;
+                this.$eventBus.$emit("sow-button", 110);
             },
         }
     }

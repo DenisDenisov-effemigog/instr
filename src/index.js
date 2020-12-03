@@ -25,6 +25,7 @@ Vue.mixin(HelpersMixin)
 import catalogue from '../src/js/components/catalogue/catalogue.vue';
 import mobileMenu from '../src/js/components/mobile-menu.vue';
 import stickyMenu from '../src/js/components/sticky-menu.vue';
+import stickyMobileButton from '../src/js/components/sticky-mobile-button.vue';
 
 Vue.prototype.$eventBus = new Vue();
 
@@ -58,6 +59,7 @@ const app = new Vue({
         homeMenu,
         stickyMenu,
         modal,
+        stickyMobileButton,
     },
     mounted() {
     }
