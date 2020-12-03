@@ -1,6 +1,7 @@
 import Vue from 'vue';
 
 import VueAgile from 'vue-agile';
+import VueSlickCarousel from 'vue-slick-carousel';
 
 import store from './js/store';
 import HelpersMixin from './js/mixins/helper';
@@ -62,6 +63,7 @@ const app = new Vue({
         modal,
         stickyMobileButton,
         productCardSlider,
+        VueSlickCarousel,
     },
     mounted() {
     }
