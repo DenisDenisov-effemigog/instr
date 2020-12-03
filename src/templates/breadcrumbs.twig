@@ -12,9 +12,12 @@
                         class="breadcrumbs__item {% if loop.last %} breadcrumbs__item_active{% endif %}{% if loop.revindex == 2 %} breadcrumbs__item_penultimate{% endif %}"
                     >
                         <a href="{{ item.url }}">{{ item.title }}</a>
-                        {#<svg>
-                            <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
-                        </svg>#}
+                        <svg class="breadcrumbs__array">
+                            <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right-small'"></use>
+                        </svg>
+                        <svg class="breadcrumbs__array_mobile">
+                            <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right-small-mob'"></use>
+                        </svg>
                     </li>
                 {% endfor %}
             </ul>
