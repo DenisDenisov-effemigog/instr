@@ -18,6 +18,7 @@ import card from '../src/js/components/card/card.vue';
 import sliderPhotoCard from './js/components/card/slider-photo-card.vue';
 import addToCart from './js/components/card/add-to-cart.vue';
 import homeMenu from './js/components/header/mobile/home-menu.vue';
+import productCardSlider from './js/components/poduct-card/product-card-slider.vue';
 
 Vue.use(VueAgile)
 Vue.mixin(HelpersMixin)
@@ -60,6 +61,7 @@ const app = new Vue({
         stickyMenu,
         modal,
         stickyMobileButton,
+        productCardSlider,
     },
     mounted() {
     }
