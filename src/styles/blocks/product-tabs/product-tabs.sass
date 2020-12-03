@@ -1,0 +1,22 @@
+.product-tabs
+    &__tabs
+        @extend .tabs
+    &__tab
+        @extend .tabs__tab
+        &_active
+            @extend .tabs__tab_active
+    &__content
+        display: none
+        +tablet
+            display: block
+            padding-top: 2.5rem
+        &_mobile
+            +tablet
+                display: none
+    &__content-layout:not(:last-child)
+        margin-bottom: 2.5rem
+    &__content-title
+        @extend .title-4
+        color: $black
+        margin-bottom: 1.5rem
+    &__content-text

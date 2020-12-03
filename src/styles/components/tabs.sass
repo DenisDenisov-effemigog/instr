@@ -1,0 +1,17 @@
+.tabs
+    display: flex
+    flex-direction: row
+    width: 100%
+    border-bottom: 1px solid $border-color_3
+    &__tab
+        @extend .tabs
+        color: $light-grey
+        cursor: pointer
+        padding-bottom: .4375rem
+        &_active
+            color: $black
+            border-bottom: 2px solid $primary-red
+        &:hover
+            +tablet
+                color: $black
+        

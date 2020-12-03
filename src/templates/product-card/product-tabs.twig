@@ -1,0 +1,50 @@
+<component is="product-tabs"
+    :features="{{ product.features|json_encode()|e('html_attr') }}"
+    :description="{{ product.description|json_encode()|e('html_attr') }}"
+    :questions="{{ product.questions|json_encode()|e('html_attr') }}"
+>
+    <template v-slot:features>
+        <div class="product-tabs__content-grid">
+            <div class="product-tabs__content-title">Основные характеристики</div>
+            <div class="product-tabs__content-title">Параметры упаковки</div>
+            <div class="product-tabs__content-title">Комплектация товара</div>
+        </div>   
+    </template>
+    <template v-slot:description>
+        <div class="product-tabs__content-layout">
+            <div class="product-tabs__content-title">Описание товара</div>
+            <p class="product-tabs__content-text">{{product.description}}</p>
+        </div>
+        <div class="product-tabs__content-layout">
+            <div class="product-tabs__content-title">Особенности</div>
+            {% for feature in product.features %}
+                <div class="product-tabs__content-feature">
+                    <img src="{{ feature.image}}" alt="product.name|e('html_attr')">
+                    <div class="product-tabs__feature">
+                        <div class="product-tabs__content-title">{{ feature.description}}</div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="product-tabs__content-layout">
+            <div class="product-tabs__content-title">Преимущества</div>
+            <ul class="product-tabs__content-list">
+                {% for advantage in product.advantages %}
+                    <li class="product-tabs__content-feature">{{advantage}}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </template>
+    <template v-slot:questions>
+        <form class="product-tabs__form">
+            <div class="product-tabs__content-title">Задайте вопрос о товаре</div>
+            <input class="product-tabs__input" type="text">
+        </form>
+        {% for question in product.questions %}
+            <div class="product-tabs__content-feature">
+                <strong>{{ question.term }}</strong>
+                <p>{{ question.determ }}</p>
+            </div>
+        {% endfor %}
+    </template>
+</component>
