@@ -1,6 +1,7 @@
 import Vue from 'vue';
 
 import VueAgile from 'vue-agile';
+import VueSlickCarousel from 'vue-slick-carousel';
 
 import store from './js/store';
 import HelpersMixin from './js/mixins/helper';
@@ -16,6 +17,7 @@ import sliderPromo from '../src/js/components/main-page/slider-promo.vue';
 import sliderCards from '../src/js/components/main-page/slider-cards.vue';
 import card from '../src/js/components/card/card.vue';
 import sliderPhotoCard from './js/components/card/slider-photo-card.vue';
+import sliderPhotoDots from './js/components/card/slider-photo-dots.vue';
 import addToCart from './js/components/card/add-to-cart.vue';
 import homeMenu from './js/components/header/mobile/home-menu.vue';
 import productCardSlider from './js/components/poduct-card/product-card-slider.vue';
@@ -64,6 +66,8 @@ const app = new Vue({
         stickyMobileButton,
         productCardSlider,
         productTabs,
+        VueSlickCarousel,
+        sliderPhotoDots
     },
     mounted() {
     }
