@@ -10,9 +10,6 @@
                 >
                     Характеристики
                 </div>
-                <div v-if="currentTab === 'features'" class="product-tabs__content_mobile">
-                    <slot name="features"></slot>
-                </div>
                 <div
                     v-if="description"
                     class="product-tabs__tab"
@@ -21,9 +18,6 @@
                 >
                     Описание
                 </div>
-                <div v-if="currentTab === 'description'" class="product-tabs__content_mobile">
-                    <slot name="description"></slot>
-                </div>
                 <div
                     v-if="questions"
                     class="product-tabs__tab"
@@ -31,9 +25,6 @@
                     @click.prevent="showTab('questions')"
                 >
                     Вопросы и ответы ({{questions.quantity}})
-                </div>
-                <div v-if="currentTab === 'questions'" class="product-tabs__content_mobile">
-                    <slot name="questions"></slot>
                 </div>
             </div>
             <div class="product-tabs__content">
