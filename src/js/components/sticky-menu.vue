@@ -69,6 +69,7 @@ export default {
             this.$eventBus.$emit("closeSearch");
             if (this.menuLink === 'catalog') {
                 this.$eventBus.$emit("open-catalogue", true);
+                this.$eventBus.$emit('exitSearch');
             } else {
                 this.$eventBus.$emit("close-catalogue", false);
                 document.querySelector('html').style.overflow = 'auto';
