@@ -45,7 +45,11 @@
         padding-top: 3rem
         display: flex
         max-width: 21.5rem
-        justify-content: space-between
+        +tablet
+            justify-content: space-between
         +mobile
             max-width: 100%
             order: 1
+        &-logo
+            +mobile
+                padding-right: 1.625rem
