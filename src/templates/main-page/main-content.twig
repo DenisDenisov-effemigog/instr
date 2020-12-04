@@ -6,10 +6,26 @@
         <div class="bestsellers__block">
             <div class="bestsellers__banner"></div>
             <div class="bestsellers__cards">
-                <component is="card"></component>
-                <component is="card"></component>
-                <component is="card"></component>
-                <component is="card"></component>
+                <component 
+                    is="card" 
+                    :card-size="'short'" 
+                    :product="{{ product|json_encode()|e('html_attr') }}"
+                ></component>
+                <component 
+                    is="card" 
+                    :card-size="'short'" 
+                    :product="{{ product|json_encode()|e('html_attr') }}"
+                ></component>
+                <component 
+                    is="card" 
+                    :card-size="'short'" 
+                    :product="{{ product|json_encode()|e('html_attr') }}"
+                ></component>
+                <component 
+                    is="card" 
+                    :card-size="'short'" 
+                    :product="{{ product|json_encode()|e('html_attr') }}"
+                ></component>
             </div>
         </div>
     </div>
@@ -94,12 +110,36 @@
         <div class="new-items__title">Новинки от производителя</div>
         <div class="new-items__content">
             <div class="new-items__content_items-block">
-                <component is="card"></component>
-                <component is="card"></component>
-                <component is="card"></component>
-                <component is="card"></component>
-                <component is="card"></component>
-                <component is="card"></component>
+                <component 
+                    is="card" 
+                    :card-size="'short'" 
+                    :product="{{ product|json_encode()|e('html_attr') }}"
+                ></component>
+                <component 
+                    is="card" 
+                    :card-size="'short'" 
+                    :product="{{ product|json_encode()|e('html_attr') }}"
+                ></component>
+                <component 
+                    is="card" 
+                    :card-size="'short'" 
+                    :product="{{ product|json_encode()|e('html_attr') }}"
+                ></component>
+                <component 
+                    is="card" 
+                    :card-size="'short'" 
+                    :product="{{ product|json_encode()|e('html_attr') }}"
+                ></component>
+                <component 
+                    is="card" 
+                    :card-size="'short'" 
+                    :product="{{ product|json_encode()|e('html_attr') }}"
+                ></component>
+                <component 
+                    is="card" 
+                    :card-size="'short'" 
+                    :product="{{ product|json_encode()|e('html_attr') }}"
+                ></component>
             </div>
             <div class="new-items__content_banner"></div>
         </div>
@@ -131,5 +171,7 @@
         is="slider-cards" 
         :change-icon="true"
         :title="'Еще одна интересная подборка со скроллом'"
+        :card-size="'short'"
+        :products="{{ products|json_encode()|e('html_attr') }}"
     ></component>
 </main>
