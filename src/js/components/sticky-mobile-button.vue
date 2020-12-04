@@ -1,6 +1,6 @@
 <template>
     <div class="sticky-mobile-button" v-if="showButton">
-        <a href="" class="sticky-mobile-button__button">Показать <span>{{ items }}&nbsp;товаров</span></a>
+        <a href="" class="sticky-mobile-button__button">{{ titlePartFirst }} <span>{{ items }}&nbsp;{{ titlePartSecond }}</span></a>
     </div>
     
 </template>
@@ -15,6 +15,8 @@ export default {
         return{
             showButton: false,
             items: 0,
+            titlePartFirst: '',
+            titlePartSecond: '',
         }
     },
     created() {
@@ -22,9 +24,11 @@ export default {
         this.$eventBus.$on("hide-button", this.hideButton);
     },
     methods:{
-        sowButton(items) {
+        sowButton(firstPart, items, secondPart) {
             this.showButton = true
             this.items = items
+            this.titlePartFirst = firstPart
+            this.titlePartSecond = secondPart
         },
         hideButton() {
             this.showButton = false

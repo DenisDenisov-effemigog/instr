@@ -55,7 +55,6 @@
                     </svg>
                 </li>
             </ul>
-<!--           <div v-if="subcategories || subcategory" class="catalogue__button">Показать <span>{{items}}&nbsp;товаров</span></div>-->
         </div>
     </div>
 </template>
@@ -99,6 +98,7 @@
                     this.subcategory = true;
                     this.title = this.prevTitle;
                     this.currentSubategory = false;
+                    this.$eventBus.$emit("sow-button", 'Показать', 2, 'товар' + this.ending(2));
                 }
             },
             openSubcategory(item) {
@@ -106,16 +106,31 @@
                 this.title = item.title;
                 this.prevTitle = this.title;
                 this.currentCategory = item;
+                this.$eventBus.$emit("sow-button", 'Показать', item.subcategories.length, 'товар' + this.ending(item.subcategories.length));
             },
             openSubSubcategory(item) {
                 this.subcategories = true;
                 this.subcategory = false;
                 this.title = item.title;
                 this.currentSubategory = item;
+                this.$eventBus.$emit("sow-button", 'Показать', item.categories.length, 'товар' + this.ending(item.categories.length));
             },
             selectCategory(category) {
                 this.selectedCategory = category;
-                this.$eventBus.$emit("sow-button", 110);
+                this.$eventBus.$emit("sow-button", 'Показать', 1, 'товар' + this.ending(1));
+            },
+            ending(value) {
+                let end = '';
+                
+                if (value % 10 > 4 || value % 10 == 0 || value > 10 && value < 15) {
+                    end = 'ов'
+                } else if ((value % 10) === 1) {
+                    end = ''
+                } else {
+                    end = 'а'
+                }
+
+                return end
             },
         }
     }
