@@ -1,10 +1,21 @@
 .product-order
     &__list
+        margin-top: 1rem
         padding: 1.5rem
+        border: 1px solid $border-color
     &__item
+        padding-bottom: 0.5rem
         display: flex
+        align-items: center
         & svg
             width: $size_15
             height: $size_15
+            margin-right: 1.625rem
+            cursor: pointer
+            flex: 1
+        &--retail
+            padding-bottom: 1rem
+            margin-bottom: 1.5rem
+            border-bottom: 1px solid $border-color
     &__name
         padding-right: 0.375rem
