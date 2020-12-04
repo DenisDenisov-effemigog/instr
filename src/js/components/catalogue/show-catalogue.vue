@@ -72,6 +72,7 @@
             },
             openMenu() {
                 this.openedMenu = true;
+                this.$eventBus.$emit('open-catalogue', this.active)
                 this.$eventBus.$emit('open-menu', 'home');
             },
             closeMenu() {
