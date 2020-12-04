@@ -1,13 +1,16 @@
 <template>
-    <div class="slider-cards">
-        <div class="slider-cards__title">Еще одна интересная подборка со скроллом</div>
+    <div class="slider-cards"
+         :class="{'slider-cards--short-card': cardSize === 'short'}">
+        <div class="slider-cards__title">{{ title }}</div>
         <agile :options="options">
-            <div class="slider-cards__slide"><card :changeIcon="changeIcon" @touchstart.prevent></card></div>
-            <div class="slider-cards__slide"><card :changeIcon="changeIcon" @touchstart.prevent></card></div>
-            <div class="slider-cards__slide"><card :changeIcon="changeIcon" @touchstart.prevent></card></div>
-            <div class="slider-cards__slide"><card :changeIcon="changeIcon" @touchstart.prevent></card></div>
-            <div class="slider-cards__slide"><card :changeIcon="changeIcon" @touchstart.prevent></card></div>
-            <div class="slider-cards__slide"><card :changeIcon="changeIcon" @touchstart.prevent></card></div>
+            <div class="slider-cards__slide" v-for="product in products">
+                <card 
+                    :changeIcon="changeIcon" 
+                    @touchstart.prevent
+                    :cardSize="cardSize"
+                    :product="product"
+                ></card>
+            </div>
             <template slot="nextButton">
                 <svg>
                     <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
@@ -31,6 +34,22 @@
             changeIcon: {
                 type: Boolean,
                 default: false,
+            },
+            title: {
+                type: String,
+                required: true,
+            },
+            dots: {
+                type: Boolean,
+                default: true,
+            },
+            cardSize: {
+                type: String,
+                default: '',
+            },
+            products: {
+                required: true,
+                type: Array,
             }
         },
         data() {
@@ -45,7 +64,7 @@
                             settings: {
                                 navButtons: true,
                                 slidesToShow: 5,
-                                dots: true,
+                                dots: this.dots,
                             }
                         },
                     ]

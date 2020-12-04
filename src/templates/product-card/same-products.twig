@@ -1,0 +1,7 @@
+<component 
+    is="slider-cards" 
+    :change-icon="true"
+    :title="'Похожие товары'"
+    :dots="false"
+    :products="{{ products|json_encode()|e('html_attr') }}"
+></component>

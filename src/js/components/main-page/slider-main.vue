@@ -2,7 +2,7 @@
     <div class="slider-main">
         <agile :options="options" @after-change="showCurrentSlide($event)">
             
-            <div class="slider-main__slide" v-for="slide in slides">
+            <div class="slider-main__slide" v-for="slide in mainSlides">
                 <img class="slider-main__slide_img" :src="slide.img">
                 <a :href="slide.link" class="slider-main__slide_link" >Подробнее</a> 
             </div>
@@ -29,15 +29,15 @@
         components: {
             agile: VueAgile
         },
+        props: {
+            mainSlides: {
+                required: true,
+                type: Array,
+            }
+        },
         data() {
             return {
                 slideCurrent: 0,
-                slides: [
-                    {id: 1, img: './demo_images/banners/main-banner.png',link: ''},
-                    {id: 2, img: './demo_images/banners/main-banner.png',link: ''},
-                    {id: 3, img: './demo_images/banners/main-banner.png',link: ''},
-                    {id: 4, img: './demo_images/banners/main-banner.png',link: ''},
-                ],
                 options: {
                     navButtons: false,
                     fade: false,

@@ -21,10 +21,12 @@
         align-items: center
         position: relative
         z-index: 1
-        //margin-bottom: 16px
+        margin-bottom: 16px
+        &--short-card
+            margin-bottom: 0
     &__menu-tooltip
         @extend .tooltip
-        right: 0%
+        right: 0
         top: 46px
         display: flex
         svg
@@ -56,7 +58,6 @@
             padding: 4px 8px
             margin-right: 8px
             position: relative
-                //transform: skew(16deg)
             &:before
                 content: ''
                 position: absolute
@@ -141,9 +142,11 @@
                 padding-left: 0.5rem
     &__image-block
         width: 156px
-        margin: -15px auto 8px //16px
+        margin: 16px auto
         +desktop
             width: 192px
+        &--short-card
+            margin: -15px auto 8px
     &__code
         @extend .text-2
         color: $light-grey

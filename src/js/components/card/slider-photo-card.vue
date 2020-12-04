@@ -1,5 +1,6 @@
 <template>
-    <div class="slider-photo-card">
+    <div class="slider-photo-card"
+         :class="{'slider-photo-card--short-card': cardSize === 'short'}">
             <div
             @touchstart="touchStart"
             @touchmove="touchMove"
@@ -24,6 +25,12 @@ export default {
     name: 'slider-photo-card',
     components: {
         SliderPhotoDots
+    },
+    props: {
+        cardSize: {
+            type: String,
+            default: '',
+        },
     },
     data() {
         return {
