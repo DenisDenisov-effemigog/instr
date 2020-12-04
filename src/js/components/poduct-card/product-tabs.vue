@@ -1,7 +1,9 @@
 <template>
     <div class="product-tabs">
         <div class="container">
-            <div class="product-tabs__tabs">
+            <div class="product-tabs__tabs"
+                :class="{'product-tabs__tabs_center': currentTab === 'description', 
+                    'product-tabs__tabs_end': currentTab === 'questions'}">
                 <div
                     v-if="features"
                     class="product-tabs__tab"
@@ -24,7 +26,7 @@
                     :class="{'product-tabs__tab_active': currentTab === 'questions'}"
                     @click.prevent="showTab('questions')"
                 >
-                    Вопросы и ответы ({{questions.quantity}})
+                    Вопросы&nbsp;и&nbsp;ответы&nbsp;({{questions.quantity}})
                 </div>
             </div>
             <div class="product-tabs__content">
@@ -53,7 +55,7 @@
             },
         data() {
             return {
-                currentTab: this.description ? 'description' : 'details',
+                currentTab: this.description ? 'features' : 'description',
             }
         },
         methods: {
