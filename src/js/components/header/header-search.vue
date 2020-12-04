@@ -61,6 +61,8 @@ export default {
             this.flag = true
             this.focused = true
             this.$eventBus.$emit("open-menu", 'search')
+            this.$eventBus.$emit("hide-button")
+            this.$eventBus.$emit('open-catalogue', this.active)
             this.$emit("searchClick", this.flag)
         },
         clickClose(){

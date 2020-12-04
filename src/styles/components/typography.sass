@@ -63,6 +63,12 @@
                 family: $font-montserrat-semibold
                 weight: $font-weight_semibold
             color: $white
+    &-4
+        @extend .text-2
+        line-height: $line-height_9
+        +tablet
+            font-size: $font-size
+            line-height: $line-height
 
 .show-more
     font:
@@ -95,9 +101,12 @@
         line-height: $line-height_7
         color: $white
 
-.tabs
+.tabs-typo
     font:
         family: $font-montserrat-bold
-        size: $font-size_8
+        size: $font-size_3
         weight: $font-weight_bold
-    line-height: $line-height_8
+    line-height: $line-height_3
+    +tablet
+        font-size: $font-size_8
+        line-height: $line-height_8

@@ -74,6 +74,7 @@
                 this.openedMenu = true;
                 this.$eventBus.$emit('open-catalogue', this.active)
                 this.$eventBus.$emit('open-menu', 'home');
+                this.$eventBus.$emit("hide-button");
             },
             closeMenu() {
                 this.openedMenu = false;
