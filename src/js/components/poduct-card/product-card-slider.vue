@@ -52,6 +52,14 @@ export default {
                 slidesToShow: 1,
                 slidesToScroll: 1,
                 draggable: false,
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            dots: true
+                        }
+                    }
+                ]
             },
             settingsForPrev: {
                 dots: false,
@@ -60,6 +68,14 @@ export default {
                 vertical: true,
                 verticalSwiping: true,
                 focusOnSelect: true,
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            
+                        }
+                    }
+                ]
             },
             productImages: [
                 {img: './demo_images/product-big/image-70.png'},

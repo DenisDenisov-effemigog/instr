@@ -2,12 +2,18 @@
     width: 100%
     display: flex
     &__main
-        width: 504px
+        width: 328px
+        margin: 0 auto
+        +desktop
+            width: 504px
+            margin: 0
         &_slide
             outline: none
     &__previous
         width: 56px
         margin-right: 16px
+        +mobile
+            display: none !important
         &_slide
             outline: none
         &_arrow
@@ -79,7 +85,27 @@
 .slick-list[data-v-3d1a4f76]:focus
     outline: none
 .slick-list.dragging[data-v-3d1a4f76]
-    cursor: pointer      
+    cursor: pointer
+
+.slick-dots
+    margin: 16px auto 0
+    display: flex !important
+    justify-content: center
+    li
+        margin: 0 $dot-spacing
+        +mobile
+            pointer-events: none
+        button
+            width: 8px
+            height: 8px
+            background: $pre-white
+            border-radius: 100%
+            padding: 0
+            transition-duration: .3s
+            font-size: 0
+.slick-active button,
+.slick-active:hover button
+    background: $light-grey !important
         
         
         
