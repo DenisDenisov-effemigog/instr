@@ -1,6 +1,8 @@
 .product-card
     @extend .container
     margin-bottom: 56px
+    +mobile
+        order: 1
     &__title
         padding-top: 1.5rem
         @extend .title-3
@@ -8,23 +10,55 @@
         display: flex
         padding-top: 1rem
         padding-bottom: 1rem
-        border-bottom: 1px solid #8A98A7
+        border-bottom: 1px solid $border-color
     &__favorite-btn
+        color: $grey
         cursor: pointer
         @extend .card__favorite-btn__mobile
         padding-top: 0
         padding-right: 1.25rem
+        display: none
+        +tablet
+            display: block
+            &:hover
+                color: $black
     &__compare-btn
+        color: $grey
         cursor: pointer
         @extend .card__compare-btn__mobile
         padding-top: 0
         flex: 1
+        display: none
+        +tablet
+            display: block
+            &:hover
+                color: $black
+    &__article
+        position: relative
+        cursor: pointer
+        &-number
+            font-weight: bold
+        &-tooltip
+            @extend .tooltip
+            width: 7.125rem
+            left: 0.625rem
+            bottom: -3.438rem
+        +tablet
+            &:hover .product-card__article-number
+                color: $primary-hover
+            &:hover .product-card__article-tooltip
+                display: flex
+
     &__content
         display: flex
+        padding-top: 3.5rem
+        +mobile
+            flex-direction: column
     &__slider
         width: 45%
     &__description
         display: flex
         width: 55%
-    &__product-info
-        flex: 1
+        +mobile
+            width: 100%
+            flex-direction: column
