@@ -1,6 +1,6 @@
 <template>
     <div class="slider-cards">
-        <div class="slider-cards__title">Еще одна интересная подборка со скроллом</div>
+        <div class="slider-cards__title">{{ title }}</div>
         <agile :options="options">
             <div class="slider-cards__slide"><card :changeIcon="changeIcon" @touchstart.prevent></card></div>
             <div class="slider-cards__slide"><card :changeIcon="changeIcon" @touchstart.prevent></card></div>
@@ -31,6 +31,10 @@
             changeIcon: {
                 type: Boolean,
                 default: false,
+            },
+            title: {
+                type: String,
+                required: true,
             }
         },
         data() {
