@@ -1,15 +1,23 @@
 .product-info
     &__item
         display: flex
-        padding-top: 1.125rem
+        justify-content: space-between
+        align-items: flex-start
+        margin-top: 1.125rem
     &__list
-        max-width: 344px
+        margin-right: 136px
+        font-size: 14px
     &__desc
-        &::before
-            position: absolute
-            right: 0
-            content: ''
-            border-bottom: 1px solid black
+        width: 114px
+        margin-top: auto
     &__name
-        width: 
+        position: relative
+        border-bottom: 1px solid rgba($light-grey, .42)
+        width: calc(100% - 114px)
+        & span
+            margin-bottom: -5px
+            background: #fff
+            max-width: 204px
+            width: fit-content
+            display: block
         
