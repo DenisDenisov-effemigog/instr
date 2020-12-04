@@ -1,6 +1,9 @@
 <template>
     <div class="card">
-        <div class="card__header">
+        <div 
+            class="card__header" 
+            :class="{'card__header--short-card': cardSize === 'short'}"
+        >
             <div class="card__stickers">
                 <div 
                     class="card__stickers_sticker-wrap" 
@@ -39,8 +42,10 @@
                 </svg>
             </div>
         </div>
-        <div class="card__image-block">
-            <component is="slider-photo-card"></component>
+        <div class="card__image-block" 
+             :class="{'card__image-block--short-card': cardSize === 'short'}"
+        >
+            <component is="slider-photo-card" :cardSize="cardSize"></component>
         </div>
         <div class="card__code">{{ product.code}}</div>
         <a :href="product.link" class="card__name">
@@ -114,6 +119,14 @@ export default {
         changeIcon: {
             type: Boolean,
             default: false,
+        },
+        cardSize: {
+            type: String,
+            default: '',
+        },
+        product: {
+            type: Object,
+            required: true,
         }
     },
     data() {
@@ -121,7 +134,7 @@ export default {
             menuTooltip: false,
             inFavorite: false,
             inCompare: false,
-            product: 
+            /*product: 
                 {
                     id: 1, 
                     title: 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel', 
@@ -145,7 +158,7 @@ export default {
                             status: 'promo',
                         },
                     ]
-                },
+                },*/
         }
     },
     methods: {

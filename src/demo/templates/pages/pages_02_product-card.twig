@@ -179,6 +179,153 @@
 
 {% set countries = ['Белоруссия','Казахстан','Румыния','Болгария','Польша','США','Венгрия','Россия','Украина'] %}
 
+{% set products = [
+    {
+        'id': 1,
+        'title': 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
+        'link': '',
+        'code': 717950,
+        'oldPrice': '3 819.27',
+        'newPrice': '2 819.27',
+        'tooltips': [
+            {
+                'id': 1,
+                'title': 'Новинка',
+                'text': 'Товар находится в акционной категории товаров “Новинка”',
+                'link': '',
+                'status': 'new',
+            },
+            {
+                'id': 2,
+                'title': 'Акция',
+                'text': 'Товар участвует в акции “Акция”',
+                'link': '',
+                'status': 'promo',
+            },
+        ]
+    },
+    {
+        'id': 1,
+        'title': 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
+        'link': '',
+        'code': 717950,
+        'oldPrice': '3 819.27',
+        'newPrice': '2 819.27',
+        'tooltips': [
+            {
+                'id': 1,
+                'title': 'Новинка',
+                'text': 'Товар находится в акционной категории товаров “Новинка”',
+                'link': '',
+                'status': 'new',
+            },
+            {
+                'id': 2,
+                'title': 'Акция',
+                'text': 'Товар участвует в акции “Акция”',
+                'link': '',
+                'status': 'promo',
+            },
+        ]
+    },
+    {
+        'id': 1,
+        'title': 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
+        'link': '',
+        'code': 717950,
+        'oldPrice': '3 819.27',
+        'newPrice': '2 819.27',
+        'tooltips': [
+            {
+                'id': 1,
+                'title': 'Новинка',
+                'text': 'Товар находится в акционной категории товаров “Новинка”',
+                'link': '',
+                'status': 'new',
+            },
+            {
+                'id': 2,
+                'title': 'Акция',
+                'text': 'Товар участвует в акции “Акция”',
+                'link': '',
+                'status': 'promo',
+            },
+        ]
+    },
+    {
+        'id': 1,
+        'title': 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
+        'link': '',
+        'code': 717950,
+        'oldPrice': '3 819.27',
+        'newPrice': '2 819.27',
+        'tooltips': [
+            {
+                'id': 1,
+                'title': 'Новинка',
+                'text': 'Товар находится в акционной категории товаров “Новинка”',
+                'link': '',
+                'status': 'new',
+            },
+            {
+                'id': 2,
+                'title': 'Акция',
+                'text': 'Товар участвует в акции “Акция”',
+                'link': '',
+                'status': 'promo',
+            },
+        ]
+    },
+    {
+        'id': 1,
+        'title': 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
+        'link': '',
+        'code': 717950,
+        'oldPrice': '3 819.27',
+        'newPrice': '2 819.27',
+        'tooltips': [
+            {
+                'id': 1,
+                'title': 'Новинка',
+                'text': 'Товар находится в акционной категории товаров “Новинка”',
+                'link': '',
+                'status': 'new',
+            },
+            {
+                'id': 2,
+                'title': 'Акция',
+                'text': 'Товар участвует в акции “Акция”',
+                'link': '',
+                'status': 'promo',
+            },
+        ]
+    },
+    {
+        'id': 1,
+        'title': 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
+        'link': '',
+        'code': 717950,
+        'oldPrice': '3 819.27',
+        'newPrice': '2 819.27',
+        'tooltips': [
+            {
+                'id': 1,
+                'title': 'Новинка',
+                'text': 'Товар находится в акционной категории товаров “Новинка”',
+                'link': '',
+                'status': 'new',
+            },
+            {
+                'id': 2,
+                'title': 'Акция',
+                'text': 'Товар участвует в акции “Акция”',
+                'link': '',
+                'status': 'promo',
+            },
+        ]
+    },
+] %}
+
 {% set product = {
     'features': 'Основные характеристики',
     'description': 'Аккумуляторная бесщеточная дрель-шуруповерт DENZEL BLDL-IB-18-02 26121 предназначена для домашних 
@@ -216,11 +363,11 @@
             },
         ]
     } %}
-    {% include '../../../templates/product-card/product-card.twig'%}
-    {% include '../../../templates/product-card/same-products.twig'%}
-    {% include '../../../templates/product-card/product-tabs.twig'%}
-    {#слайдер#}
-    {#Баннер#}
-    {% include '../../../templates/footer/footer.twig'  with {'countries': countries}%}
+    {% include '../../../templates/product-card/product-card.twig' %}
+    {% include '../../../templates/product-card/same-products.twig' with {'products': products} %}
+    {% include '../../../templates/product-card/product-tabs.twig' %}
+    {% include '../../../templates/product-card/recommend.twig' with {'products': products} %}
+    {% include '../../../templates/product-card/banner.twig' with {'banner': '/demo_images/banners/product-card.png'} %}
+    {% include '../../../templates/footer/footer.twig'  with {'countries': countries} %}
     
 {% endblock %}

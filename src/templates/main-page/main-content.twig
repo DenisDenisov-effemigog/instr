@@ -1,135 +1,111 @@
 <main class="main">
-    <component is="slider-main"></component>
-    <component is="slider-promo"></component>
+    <component is="slider-main"
+               :main-slides="{{ mainSlides|json_encode()|e('html_attr') }}"
+    ></component>
+    <component is="slider-promo" 
+               :promo-banners="{{ promoBanners|json_encode()|e('html_attr') }}"
+    ></component>
     <div class="bestsellers">
         <div class="bestsellers__title">Хиты продаж</div>
         <div class="bestsellers__block">
-            <div class="bestsellers__banner"></div>
+            <div class="bestsellers__banner">
+                <img src="./demo_images/banners/promo4.png" alt="">
+            </div>
             <div class="bestsellers__cards">
-                <component is="card"></component>
-                <component is="card"></component>
-                <component is="card"></component>
-                <component is="card"></component>
+                <component 
+                    is="card" 
+                    :card-size="'short'" 
+                    :product="{{ product|json_encode()|e('html_attr') }}"
+                ></component>
+                <component 
+                    is="card" 
+                    :card-size="'short'" 
+                    :product="{{ product|json_encode()|e('html_attr') }}"
+                ></component>
+                <component 
+                    is="card" 
+                    :card-size="'short'" 
+                    :product="{{ product|json_encode()|e('html_attr') }}"
+                ></component>
+                <component 
+                    is="card" 
+                    :card-size="'short'" 
+                    :product="{{ product|json_encode()|e('html_attr') }}"
+                ></component>
             </div>
         </div>
     </div>
     <section class="collection">
         <h2 class="collection__title">Подборка подборок</h2>
         <div class="collection__content">
-            <div class="collection__block">
-                <div class="collection__card">
-                    <img src="./demo_images/banners/collection/banner-1.png" alt="" class="collection__img">
-                </div>
-                <p class="collection__name">Заклепочник для резьбовых заклепок</p>
-            </div>
-            <div class="collection__block">
-                <div class="collection__card">
-                    <img src="./demo_images/banners/collection/banner-2.png" alt="" class="collection__img">
-                </div>
-                <p class="collection__name">Скобы для мебельных степлеров</p>
-            </div>
-            <div class="collection__block">
-                <div class="collection__card">
-                    <img src="./demo_images/banners/collection/banner-3.png" alt="" class="collection__img">
-                </div>
-                <p class="collection__name">Щипцы для зачистки электропроводов</p>
-            </div>
-            <div class="collection__block">
-                <div class="collection__card">
-                    <img src="./demo_images/banners/collection/banner-4.png" alt="" class="collection__img">
-                </div>
-                <p class="collection__name">Буры и насадки для перфоратора</p>
-            </div>
-            <div class="collection__block">
-                <div class="collection__card">
-                    <img src="./demo_images/banners/collection/banner-5.png" alt="" class="collection__img">
-                </div>
-                <p class="collection__name">Сетки абразивные и сеткодержатели</p>
-            </div>
-            <div class="collection__block">
-                <div class="collection__card">
-                    <img src="./demo_images/banners/collection/banner-6.png" alt="" class="collection__img">
-                </div>
-                <p class="collection__name">Диски пильные по дереву</p>
-            </div>
-            <div class="collection__block">
-                <div class="collection__card">
-                    <img src="./demo_images/banners/collection/banner-1.png" alt="" class="collection__img">
-                </div>
-                <p class="collection__name">Буры и насадки для перфоратора</p>
-            </div>
-            <div class="collection__block">
-                <div class="collection__card">
-                    <img src="./demo_images/banners/collection/banner-2.png" alt="" class="collection__img">
-                </div>
-                <p class="collection__name">Сетки абразивные и сеткодержатели</p>
-            </div>
-            <div class="collection__block">
-                <div class="collection__card">
-                    <img src="./demo_images/banners/collection/banner-3.png" alt="" class="collection__img">
-                </div>
-                <p class="collection__name">Диски пильные по дереву</p>
-            </div>
-            <div class="collection__block">
-                <div class="collection__card">
-                    <img src="./demo_images/banners/collection/banner-4.png" alt="" class="collection__img">
-                </div>
-                <p class="collection__name">Заклепочник для резьбовых заклепок</p>
-            </div>
-            <div class="collection__block">
-                <div class="collection__card">
-                    <img src="./demo_images/banners/collection/banner-5.png" alt="" class="collection__img">
-                </div>
-                <p class="collection__name">Щипцы для зачистки электропроводов</p>
-            </div>
-            <a href="" class="collection__block">
-                <div class="collection__card">
-                    <img src="./demo_images/banners/collection/banner-6.png" alt="" class="collection__img">
-                </div>
-                <p class="collection__name">Скобы для мебельных степлеров</p>
-            </a>
+            {% for collection in collections %}
+                <a class="collection__block" href="{{ collection.link }}">
+                    <div class="collection__card">
+                        <img 
+                            src="{{ collection.img }}"
+                            alt="{{ collection.title }}" 
+                            class="collection__img">
+                    </div>
+                    <p class="collection__name">{{ collection.title }}</p>
+                </a>
+            {% endfor %}
         </div>
     </section>
     <section class="new-items">
         <div class="new-items__title">Новинки от производителя</div>
         <div class="new-items__content">
             <div class="new-items__content_items-block">
-                <component is="card"></component>
-                <component is="card"></component>
-                <component is="card"></component>
-                <component is="card"></component>
-                <component is="card"></component>
-                <component is="card"></component>
+                <component 
+                    is="card" 
+                    :card-size="'short'" 
+                    :product="{{ product|json_encode()|e('html_attr') }}"
+                ></component>
+                <component 
+                    is="card" 
+                    :card-size="'short'" 
+                    :product="{{ product|json_encode()|e('html_attr') }}"
+                ></component>
+                <component 
+                    is="card" 
+                    :card-size="'short'" 
+                    :product="{{ product|json_encode()|e('html_attr') }}"
+                ></component>
+                <component 
+                    is="card" 
+                    :card-size="'short'" 
+                    :product="{{ product|json_encode()|e('html_attr') }}"
+                ></component>
+                <component 
+                    is="card" 
+                    :card-size="'short'" 
+                    :product="{{ product|json_encode()|e('html_attr') }}"
+                ></component>
+                <component 
+                    is="card" 
+                    :card-size="'short'" 
+                    :product="{{ product|json_encode()|e('html_attr') }}"
+                ></component>
             </div>
-            <div class="new-items__content_banner"></div>
+            <div class="new-items__content_banner">
+                <img src="./demo_images/banners/promo4.png" alt="">
+            </div>
         </div>
     </section>
     <section class="banners-section">
         <div class="banners-section__title">Плитка баннеров наших акций</div>
         <div class="banners-section__content">
-            <div class="banners-section__banner">
-                <img src="./demo_images/banners/banners-block/ban-1.png" alt="">
-            </div>
-            <div class="banners-section__banner">
-                <img src="./demo_images/banners/banners-block/ban-2.png" alt="">
-            </div>
-            <div class="banners-section__banner">
-                <img src="./demo_images/banners/banners-block/ban-3.png" alt="">
-            </div>
-            <div class="banners-section__banner">
-                <img src="./demo_images/banners/banners-block/ban-4.png" alt="">
-            </div>
-            <div class="banners-section__banner">
-                <img src="./demo_images/banners/banners-block/ban-5.png" alt="">
-            </div>
-            <div class="banners-section__banner">
-                <img src="./demo_images/banners/banners-block/ban-4.png" alt="">
-            </div>
+            {% for actionBanner in actionBanners %}
+                <a href="{{ actionBanner.link }}" class="banners-section__banner">
+                    <img src="{{ actionBanner.img }}" alt="">
+                </a>
+            {% endfor %}
         </div>
     </section>
     <component 
         is="slider-cards" 
         :change-icon="true"
         :title="'Еще одна интересная подборка со скроллом'"
+        :card-size="'short'"
+        :products="{{ products|json_encode()|e('html_attr') }}"
     ></component>
 </main>
