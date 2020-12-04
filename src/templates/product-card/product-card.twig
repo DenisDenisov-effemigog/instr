@@ -13,114 +13,113 @@
 			</svg>
 			<span>Сравнить</span>
 		</div>
-        <div class="product-card__article">
-            <span>Артикул:</span>
-            <span>26304</span>
-        </div>
+		<div class="product-card__article">
+			<span>Артикул:</span>
+			<span class="product-card__article-number">26304</span>
+            <div class="product-card__article-tooltip">
+                Скопировать
+            </div>
+		</div>
 	</div>
 	<div class="product-card__content">
 		<div class="product-card__slider">
 			<component is="product-card-slider"></component>
 		</div>
 		<div class="product-card__description">
-            <div class="product-card__product-info">
-                <ul class="product-info__list">
-                    <li class="product-info__item">
-                        <div class="product-info__name">
-                            <span>Тип патрона</span>
-                        </div>
-                        <div class="product-info__desc">бесключевой одномуфтовый</div>
-                    </li>
-                    <li class="product-info__item">
-                        <div class="product-info__name">
-                            <span>Число скоростей</span>
-                        </div>
-                        <div class="product-info__desc">2</div>
-                    </li>
-                    <li class="product-info__item">
-                        <div class="product-info__name">
-                            <span>Тип аккумулятора</span>
-                        </div>
-                        <div class="product-info__desc">Li-Ion</div>
-                    </li>
-                    <li class="product-info__item">
-                        <div class="product-info__name">
-                            <span>Емкость аккумулятора</span>
-                        </div>
-                        <div class="product-info__desc">1.5 А*ч</div>
-                    </li>
-                    <li class="product-info__item">
-                        <div class="product-info__name">
-                            <span>Напряжение аккумулятора</span>
-                        </div>
-                        <div class="product-info__desc">18 В</div>
-                    </li>
-                    <li class="product-info__item">
-                        <div class="product-info__name">
-                            <span>Количество <br> аккумуляторов в комплекте</span>
-                        </div>
-                        <div class="product-info__desc">255 мм</div>
-                    </li>
-                </ul>
-                <div class="product-info__all">Все характеристики</div>
-                <div class="product-info__brand">
-                    <div class="product-info__brand">
-                        <div class="product-info__brand-logo">
-                            <img src="./images/product-card/logo.png">
-                        </div>
-                        <div class="product-info__brand-">
-                            <svg v-if="!inFavorite" viewBox="0 0 18 15">
-                                <use :xlink:href="templatePath + 'images/sprite.svg#icons__shield'"></use>
-                            </svg>
-                            <span>
-                                <span>3 года</span>
-                                <span>Гарантия</span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="product-card__product-order">
-                <div class="product-order__stock">В наличии</div>
-                <ul class="product-order__list">
-                    <li class="product-order__item product-order__item--retail">
-                        <p class="product-order__name">Розничная цена</p>
-                        <svg>
-                            <use :xlink:href="templatePath + 'images/sprite.svg#icons__info'"></use>
-                        </svg>
-                        <p class="product-order__price">3 819.27 RON</p>
-                    </li>
-                    <li class="product-order__item">
-                        <p class="product-order__name">Базовая цена</p>
-                        <svg>
-                            <use :xlink:href="templatePath + 'images/sprite.svg#icons__info'"></use>
-                        </svg>
-                        <p class="product-order__price">3 819.27 RON</p>
-                    </li>
-                    <li class="product-order__item">
-                        <p class="product-order__name">Скидка 10%</p>
-                        <svg>
-                            <use :xlink:href="templatePath + 'images/sprite.svg#icons__info'"></use>
-                        </svg>
-                        <p class="product-order__price">819.27 RON</p>
-                    </li>
-                    <li class="product-order__item">
-                        <p class="product-order__name">Скидка 5%</p>
-                        <svg>
-                            <use :xlink:href="templatePath + 'images/sprite.svg#icons__info'"></use>
-                        </svg>
-                        <p class="product-order__price">19.27 RON</p>
-                    </li>
-                    <li class="product-order__item">
-                        <p class="product-order__name">Ваша цена</p>
-                        <svg>
-                            <use :xlink:href="templatePath + 'images/sprite.svg#icons__info'"></use>
-                        </svg>
-                        <p class="product-order__price">3 819.27 RON</p>
-                    </li>
-                    <component is="add-to-cart"></component>
-                </ul>
-            </div>
-        </div>
+			<div class="product-info">
+				<ul class="product-info__list">
+					<li class="product-info__item">
+						<div class="product-info__name">
+							<span>Тип патрона</span>
+						</div>
+						<div class="product-info__desc">бесключевой одномуфтовый</div>
+					</li>
+					<li class="product-info__item">
+						<div class="product-info__name">
+							<span>Число скоростей</span>
+						</div>
+						<div class="product-info__desc">2</div>
+					</li>
+					<li class="product-info__item">
+						<div class="product-info__name">
+							<span>Тип аккумулятора</span>
+						</div>
+						<div class="product-info__desc">Li-Ion</div>
+					</li>
+					<li class="product-info__item">
+						<div class="product-info__name">
+							<span>Емкость аккумулятора</span>
+						</div>
+						<div class="product-info__desc">1.5 А*ч</div>
+					</li>
+					<li class="product-info__item">
+						<div class="product-info__name">
+							<span>Напряжение аккумулятора</span>
+						</div>
+						<div class="product-info__desc">18 В</div>
+					</li>
+					<li class="product-info__item">
+						<div class="product-info__name">
+							<span>Количество
+								<br>
+								аккумуляторов в комплекте</span>
+						</div>
+						<div class="product-info__desc">255 мм</div>
+					</li>
+				</ul>
+				<div class="product-info__all">Все характеристики</div>
+				<div class="product-info__brand">
+					<div class="product-info__brand-logo">
+						<img src="./images/product-card/logo.png">
+					</div>
+					<div class="product-info__brand-shield">
+						<img src="./images/product-card/shield.png">
+					</div>
+				</div>
+			</div>
+			<div class="product-order">
+				<div class="product-order__stock">В наличии</div>
+				<ul class="product-order__list">
+					<li class="product-order__item product-order__item--retail">
+						<p class="product-order__name">Розничная цена</p>
+						<svg>
+							<use :xlink:href="templatePath + 'images/sprite.svg#icons__info'"></use>
+						</svg>
+						<p class="product-order__price">3 819.27 RON</p>
+					</li>
+					<li class="product-order__item product-order__item--base">
+						<p class="product-order__name">Базовая цена</p>
+						<svg>
+							<use :xlink:href="templatePath + 'images/sprite.svg#icons__info'"></use>
+						</svg>
+						<p class="product-order__price">3 819.27 RON</p>
+					</li>
+					<li class="product-order__item product-order__item--discount-green">
+						<p class="product-order__name">Скидка 10%</p>
+						<svg>
+							<use :xlink:href="templatePath + 'images/sprite.svg#icons__info'"></use>
+						</svg>
+                        <div class="product-order__item-tooltip">Информация о скидке</div>
+						<p class="product-order__price">819.27 RON</p>
+					</li>
+					<li class="product-order__item product-order__item--discount-blue">
+						<p class="product-order__name">Скидка 5%</p>
+						<svg>
+							<use :xlink:href="templatePath + 'images/sprite.svg#icons__info'"></use>
+						</svg>
+                        <div class="product-order__item-tooltip">Информация о скидке</div>
+						<p class="product-order__price">19.27 RON</p>
+					</li>
+					<li class="product-order__item product-order__item--total">
+						<p class="product-order__name">Ваша цена</p>
+						<svg>
+							<use :xlink:href="templatePath + 'images/sprite.svg#icons__info'"></use>
+						</svg>
+						<p class="product-order__price">3 819.27 RON</p>
+					</li>
+					<component is="add-to-cart"></component>
+				</ul>
+			</div>
+		</div>
 	</div>
 </div>
