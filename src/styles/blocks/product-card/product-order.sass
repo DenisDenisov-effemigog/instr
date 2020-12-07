@@ -28,8 +28,6 @@
         +tablet
             &:hover + .product-order__item-tooltip
                 display: flex
-            &:hover + .product-order__item svg
-                fill: $grey
     &__item
         position: relative
         padding-bottom: 0.5rem
@@ -37,6 +35,9 @@
         align-items: center
         color: $grey
         & svg
+            +tablet
+                &:hover
+                    fill: $grey
             fill: $border-color
             width: $size_15
             height: $size_15

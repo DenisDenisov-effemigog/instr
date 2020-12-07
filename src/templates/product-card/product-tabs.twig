@@ -8,7 +8,7 @@
             <div class="product-tabs__content-title">Основные характеристики</div>
             <ul class="product-tabs__features product-tabs__features_main">
                 {% for feature in product.features.main %}
-                    <li>
+                    <li class="product-tabs__features-item">
                         <div class="product-tabs__features-dash">
                             <span>{{feature.title}}</span>
                         </div>
@@ -32,7 +32,7 @@
             <div class="product-tabs__content-title">Параметры упаковки</div>
             <ul class="product-tabs__features product-tabs__features_packaging">
                 {% for feature in product.features.packaging %}
-                    <li>
+                    <li class="product-tabs__features-item">
                         <div class="product-tabs__features-dash"><span>{{feature.title}}</span></div>
                         <div class="product-tabs__features-value">{{feature.value}}</div>
                     </li>
@@ -43,7 +43,7 @@
             <div class="product-tabs__content-title">Комплектация товара</div>
             <ul class="product-tabs__features product-tabs__features_equipment">
                 {% for feature in product.features.equipment %}
-                    <li>
+                    <li class="product-tabs__features-item">
                         <div class="product-tabs__features-dash"><span>{{feature.title}}</span></div>
                         <div class="product-tabs__features-value">{{feature.value}}</div>
                     </li>
@@ -58,15 +58,19 @@
         </div>
         <div class="product-tabs__content-layout">
             <div class="product-tabs__content-title">Особенности</div>
-            {% for feature in product.description.features %}
-                <div class="product-tabs__content-feature">
-                    <img class="product-tabs__feature-img" src="{{ feature.image}}" alt="{{product.name|e('html_attr')}}">
-                    <div class="product-tabs__feature">
-                        <div class="product-tabs__content-title">{{ feature.title}}</div>
-                        <div class="product-tabs__content-text">{{ feature.value}}</div>
+            <div class="product-tabs__content-grid">
+                {% for feature in product.description.features %}
+                    <div class="product-tabs__content-grid-item">
+                        <div class="product-tabs__content-feature">
+                            <img class="product-tabs__feature-img" src="{{ feature.image}}" alt="{{product.name|e('html_attr')}}">
+                            <div class="product-tabs__feature">
+                                <div class="product-tabs__content-title">{{ feature.title}}</div>
+                                <div class="product-tabs__content-text">{{ feature.value}}</div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
         </div>
         <div class="product-tabs__content-layout">
             <div class="product-tabs__content-title">Преимущества</div>
