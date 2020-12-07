@@ -22,6 +22,8 @@ import addToCart from './js/components/card/add-to-cart.vue';
 import homeMenu from './js/components/header/mobile/home-menu.vue';
 import productCardSlider from './js/components/poduct-card/product-card-slider.vue';
 import productTabs from './js/components/poduct-card/product-tabs.vue';
+import stickyCard from './js/components/poduct-card/sticky-card.vue';
+import productInfoAll from './js/components/product-info/product-info-all.vue';
 import productCardArticle from './js/components/poduct-card/product-card-article.vue';
 
 Vue.use(VueAgile)
@@ -69,7 +71,9 @@ const app = new Vue({
         productTabs,
         VueSlickCarousel,
         sliderPhotoDots,
-        productCardArticle
+        productCardArticle,
+        productInfoAll,
+        stickyCard,
     },
     mounted() {
     }

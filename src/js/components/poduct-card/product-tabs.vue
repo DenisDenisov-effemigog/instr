@@ -1,7 +1,7 @@
 <template>
     <div class="product-tabs">
         <div class="container">
-            <div class="product-tabs__tabs"
+            <div ref="tabs" class="product-tabs__tabs"
                 :class="{'product-tabs__tabs_center': currentTab === 'description', 
                     'product-tabs__tabs_end': currentTab === 'questions'}">
                 <div
@@ -75,7 +75,14 @@
                         this.currentTab = code;
                     }
                 })
+            },
+            scroll(){
+                this.$refs.tabs.scrollIntoView({block: "center", behavior: "smooth"});
+                this.showTab('features')
             }
+        },
+        created(){
+            this.$eventBus.$on("click", this.scroll)
         }
     }
 </script>
