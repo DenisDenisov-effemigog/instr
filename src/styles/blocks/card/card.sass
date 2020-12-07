@@ -39,49 +39,7 @@
         &::before
             left: calc(92% - 8px)
     &__stickers
-        display: flex
-        &_sticker-wrap:first-child .card__stickers_sticker:after
-            content: ''
-            position: absolute
-            left: -2px
-            top: 0
-            background: $white
-            border: 1px solid
-            border-radius: 4px
-            z-index: -1
-            width: 50%
-            height: 22px
-            border-right: none
-            clip-path: inset(0 21% 0 0)
-        &_sticker
-            @extend .text-3
-            padding: 4px 8px
-            margin-right: 8px
-            position: relative
-            &:before
-                content: ''
-                position: absolute
-                left: 0
-                top: 0
-                right: 0
-                bottom: 0
-                background: $white
-                border: 1px solid
-                transform: skew(170deg)
-                border-radius: 4px
-                z-index: -2
-            &--new
-                color: $primary-red
-                &:before,
-                &:after
-                    border-color: $primary-red
-            &--promo
-                color: $blue
-                &:before,
-                &:after
-                    border-color: $blue
-        &_sticker-wrap
-            position: relative
+        +stickers
 
         &_sticker-tooltip
             @extend .tooltip

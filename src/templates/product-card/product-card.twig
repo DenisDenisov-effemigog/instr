@@ -23,7 +23,40 @@
 	</div>
 	<div class="product-card__content">
 		<div class="product-card__slider">
+            <div class="product-card__slider_stickers">
+                <div class="product-card__stickers">
+                    <div class="product-card__stickers_sticker-wrap">
+                        <div
+                            class="product-card__stickers_sticker product-card__stickers_sticker--new"
+                        >
+                            <span>Новинка</span>
+                        </div>
+                    </div>
+                    <div class="product-card__stickers_sticker-wrap">
+                        <div
+                            class="product-card__stickers_sticker product-card__stickers_sticker--promo"
+                        >
+                            <span>Акция</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
 			<component is="product-card-slider"></component>
+            <div class="product-card__slider_media">
+                <div class="product-card__media-buttons">
+                    <div class="product-card__media-buttons_button">
+                        <svg>
+                            <use :xlink:href="templatePath + 'images/sprite.svg#buttons__play-btn'"></use>
+                        </svg>
+                    </div>
+                    <div class="product-card__media-buttons_button">
+
+                        <svg>
+                            <use :xlink:href="templatePath + 'images/sprite.svg#buttons__around-photo'"></use>
+                        </svg>
+                    </div>
+                </div>
+            </div>
 		</div>
 		<div class="product-card__description">
 			<div class="product-info">

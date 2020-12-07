@@ -10,7 +10,8 @@
         display: flex
         padding-top: 1rem
         padding-bottom: 1rem
-        border-bottom: 1px solid $border-color
+        +desktop
+            border-bottom: 1px solid $border-color
     &__favorite-btn
         color: $grey
         cursor: pointer
@@ -56,9 +57,57 @@
             flex-direction: column
     &__slider
         margin-bottom: 26px
+        position: relative
         +desktop
             width: 45%
             margin: 0
+        &_stickers
+            position: absolute
+            top: 0
+            left: 0
+            z-index: 1
+            +desktop
+                left: 75px
+        &_media
+            position: absolute
+            bottom: 40px
+            right: 0
+            +desktop
+                left: 0
+                bottom: 0
+    &__stickers
+        +stickers
+    &__media-buttons
+        display: flex
+        +desktop
+            flex-direction: column
+        &_button
+            width: 48px
+            height: 48px
+            background: rgba($light-grey, .42)
+            border-radius: 4px
+            margin-right: 8px
+            +flex-container-center
+            &:last-child
+                margin-right: 0
+            +desktop
+                width: 56px
+                height: 56px
+                background: transparent
+                margin-bottom: 16px
+                margin-right: 0
+                cursor: pointer
+                &:last-child
+                    margin-bottom: 0
+            &:hover
+                background: $pre-white
+            & svg
+                width: 38px
+                height: 38px
+                fill: $icon-white
+                +desktop
+                    fill: $icon-black
+                
     &__description
         display: flex
         width: 55%
