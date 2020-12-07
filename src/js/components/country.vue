@@ -55,6 +55,7 @@ export default {
                 } 
             }
             document.querySelector('body').classList.remove('body-fixed')
+            document.querySelector('html').style.overflow = 'auto';
         },
         choiceCountry(e){
             let a = e.target
@@ -67,6 +68,11 @@ export default {
         openCountry(){
             this.openedCountry = !this.openedCountry
             document.querySelector('body').classList.toggle('body-fixed')
+            if(document.querySelector('body').classList.contains('body-fixed')){
+                document.querySelector('html').style.overflow = 'scroll';
+            }else{
+                document.querySelector('html').style.overflow = 'auto';
+            }
         }
     },
 }
