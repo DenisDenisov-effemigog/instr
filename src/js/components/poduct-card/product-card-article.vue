@@ -1,8 +1,7 @@
 <template>
-    <div @mouseleave="copyFlag = true" class="product-card__article">
-        <span>Артикул:</span>
-        <span ref="number" class="product-card__article-number">{{articleCode}}</span>
-        <div @click="copyArticle" v-if="copyFlag" class="product-card__article-tooltip">
+    <div  @click="copyArticle" @mouseleave="copyFlag = true" class="product-card__article">
+        <span ref="number">Артикул:<span class="product-card__article-number">{{articleCode}}</span></span>
+        <div v-if="copyFlag" class="product-card__article-tooltip">
             Скопировать
         </div>
         <div v-else class="product-card__article-tooltip product-card__article-tooltip--copy">

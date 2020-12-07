@@ -29,11 +29,13 @@ export default {
     methods:{
         openModal(){
             document.querySelector('body').classList.add('body-fixed')
+            document.querySelector('html').style.overflow = 'scroll';
             this.openFlag = true
         },
         closeModal(){
             this.openFlag = false
             document.querySelector('body').classList.remove('body-fixed')
+            document.querySelector('html').style.overflow = 'auto';
         }
     }
 }
