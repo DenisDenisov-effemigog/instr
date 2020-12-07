@@ -4,44 +4,52 @@
     :questions="{{ product.questions|json_encode()|e('html_attr') }}"
 >
     <template v-slot:features>
-        <div class="product-tabs__content-grid">
-            <div class="product-tabs__content-layout">
-                <div class="product-tabs__content-title">Основные характеристики</div>
-                <ul class="product-tabs__features">
-                    {% for feature in product.features.main %}
-                        <li>
-                            <div>{{feature.title}}</div>
-                            <div class="product-tabs__features-dash">&emsp;</div>
-                            <div>{{feature.value}}</div>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-            <div class="product-tabs__content-layout">
-                <div class="product-tabs__content-title">Параметры упаковки</div>
-                <ul class="product-tabs__features">
-                    {% for feature in product.features.packaging %}
-                        <li>
-                            <div>{{feature.title}}</div>
-                            <div></div>
-                            <div>{{feature.value}}</div>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-            <div class="product-tabs__content-layout">
-                <div class="product-tabs__content-title">Комплектация товара</div>
-                <ul class="product-tabs__features">
-                    {% for feature in product.features.equipment %}
-                        <li>
-                            <div>{{feature.title}}</div>
-                            <div></div>
-                            <div>{{feature.value}}</div>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>   
+        <div class="product-tabs__content-layout">
+            <div class="product-tabs__content-title">Основные характеристики</div>
+            <ul class="product-tabs__features product-tabs__features_main">
+                {% for feature in product.features.main %}
+                    <li>
+                        <div class="product-tabs__features-dash">
+                            <span>{{feature.title}}</span>
+                        </div>
+                        <div class="product-tabs__features-value">
+                            {{feature.value}}
+                            {% if feature.country %}
+                            <svg class="product-tabs__features-country" viewBox="0 0 36 24">
+                                {% if feature.country == 'Germany' %}
+                                    <use :xlink:href="templatePath + 'images/sprite.svg#countries__germany'"></use>
+                                {% elseif feature.country == 'China' %}
+                                    <use :xlink:href="templatePath + 'images/sprite.svg#countries__china'"></use>
+                                {% endif %}
+                            </svg>
+                            {% endif %}
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="product-tabs__content-layout">
+            <div class="product-tabs__content-title">Параметры упаковки</div>
+            <ul class="product-tabs__features product-tabs__features_packaging">
+                {% for feature in product.features.packaging %}
+                    <li>
+                        <div class="product-tabs__features-dash"><span>{{feature.title}}</span></div>
+                        <div class="product-tabs__features-value">{{feature.value}}</div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="product-tabs__content-layout">
+            <div class="product-tabs__content-title">Комплектация товара</div>
+            <ul class="product-tabs__features product-tabs__features_equipment">
+                {% for feature in product.features.equipment %}
+                    <li>
+                        <div class="product-tabs__features-dash"><span>{{feature.title}}</span></div>
+                        <div class="product-tabs__features-value">{{feature.value}}</div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>  
     </template>
     <template v-slot:description>
         <div class="product-tabs__content-layout">

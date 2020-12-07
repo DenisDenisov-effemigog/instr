@@ -1,4 +1,7 @@
 .product-tabs
+    margin-bottom: 2.5rem
+    +tablet
+        margin-bottom: 3.5rem
     &__tabs
         @extend .tabs
         &_center
@@ -26,16 +29,77 @@
     &__content-grid
         display: flex
         flex-direction: column
-        height: 100vh
-        & .product-tabs__content-layout
+    &__features
+        @extend .columns
+        @extend .text-3
+        display: flex
+        flex-direction: column
+        flex-wrap: wrap
+        margin-top: -.5rem
+        +tablet
+            margin-top: -.5rem
+            font-size: $font-size
+            line-height: $line-height
+        &:last-child
+            margin-bottom: -.5rem
+            +tablet
+                margin-bottom: -.5rem
+        &_main
+            +tablet
+                max-height: 41.5rem
+            +desktop
+                max-height: 31.5rem
+        &_packaging
+            +tablet
+                max-height: 10rem
+        &_equipment
+            +tablet
+                max-height: 14rem
+            +desktop
+                max-height: 12rem
+        li
+            @extend .column
+            display: flex
+            justify-content: space-between
+            align-items: flex-start
+            flex: none
+            color: $light-grey
+            padding-top: .5rem
+            padding-bottom: .5rem
             +tablet
                 width: 50%
-    &__features li
-        display: flex
-        justify-content: space-between
-        color: $light-grey
     &__features-dash
+        position: relative
+        width: calc(100% - 6.5rem)
+        margin-bottom: -1px
         border-bottom: 1px solid rgba($light-grey, .42)
+        +tablet
+            width: calc(100% - 10rem)
+        +from($desktop-small)
+            width: calc(100% - 13.3125rem)
+        span
+            display: block
+            max-width: 26.875rem
+            width: fit-content
+            margin-bottom: -5px
+            background: $white
+    &__features-value
+        color: $black
+        width: 6.5rem
+        +tablet
+            width: 10rem
+        +from($desktop-small)
+            width: 13.3125rem
+    &__features-country
+        width: 1.5rem
+        height: 1rem
+        margin-left: .5rem
+        +tablet
+            width: 2.25rem
+            height: 1.5rem
+            margin-left: 1rem
+
+
     &__content-title
         @extend .title-4
         color: $black
