@@ -1,6 +1,6 @@
 <template>
     <div  @click="copyArticle" @mouseleave="copyFlag = true" class="product-card__article">
-        <span ref="number">Артикул:<span class="product-card__article-number">{{articleCode}}</span></span>
+        <span ref="number">Артикул:&nbsp;<span class="product-card__article-number">{{articleCode}}</span></span>
         <div v-if="copyFlag" class="product-card__article-tooltip">
             Скопировать
         </div>
