@@ -1,4 +1,7 @@
 .product-tabs
+    margin-bottom: 2.5rem
+    +tablet
+        margin-bottom: 3.5rem
     &__tabs
         @extend .tabs
         &_center
@@ -23,44 +26,118 @@
                 display: none
     &__content-layout:not(:last-child)
         margin-bottom: 2.5rem
-    &__content-grid
-        display: flex
-        flex-direction: column
-        height: 100vh
-        & .product-tabs__content-layout
-            +tablet
-                width: 50%
-    &__features li
-        display: flex
-        justify-content: space-between
-        color: $light-grey
-    &__features-dash
-        border-bottom: 1px solid rgba($light-grey, .42)
     &__content-title
         @extend .title-4
         color: $black
         margin-bottom: 1.5rem
+
+
+    &__features
+        @extend .columns
+        @extend .text-3
+        display: flex
+        flex-direction: column
+        flex-wrap: wrap
+        margin-top: -.5rem
+        +tablet
+            margin-top: -.5rem
+            font-size: $font-size
+            line-height: $line-height
+        &:last-child
+            margin-bottom: -.5rem
+            +tablet
+                margin-bottom: -.5rem
+        &_main
+            +tablet
+                max-height: 41.5rem
+            +desktop
+                max-height: 31.5rem
+        &_packaging
+            +tablet
+                max-height: 10rem
+        &_equipment
+            +tablet
+                max-height: 14rem
+            +desktop
+                max-height: 12rem
+    &__features-item
+        @extend .column
+        display: flex
+        justify-content: space-between
+        align-items: flex-start
+        flex: none
+        color: $light-grey
+        padding-top: .5rem
+        padding-bottom: .5rem
+        +tablet
+            width: 50%
+    &__features-dash
+        position: relative
+        width: calc(100% - 6.5rem)
+        margin-bottom: -1px
+        border-bottom: 1px solid rgba($light-grey, .42)
+        +tablet
+            width: calc(100% - 10rem)
+        +from($desktop-small)
+            width: calc(100% - 13.3125rem)
+        span
+            display: block
+            max-width: 26.875rem
+            width: fit-content
+            margin-bottom: -5px
+            background: $white
+    &__features-value
+        color: $black
+        width: 6.5rem
+        +tablet
+            width: 10rem
+        +from($desktop-small)
+            width: 13.3125rem
+    &__features-country
+        width: 1.5rem
+        height: 1rem
+        margin-left: .5rem
+        +tablet
+            width: 2.25rem
+            height: 1.5rem
+            margin-left: 1rem
+
+
     &__content-text
         @extend .text-4
         color: $black
+    &__content-grid
+        @extend .columns
+        margin: -0.5rem
+        flex-wrap: wrap
+        +tablet
+            margin: -0.75rem
+        & > .product-tabs__content-grid-item
+            padding: .5rem
+            +tablet
+                padding: .75rem
+    &__content-grid-item
+        @extend .column
+        flex: none
+        +tablet
+            width: 50%
     &__content-feature
         border: 1px solid rgba($light-grey, .42)
         border-radius: $border-radius
         display: flex
         flex-direction: column
+        max-height: 18.125rem
         overflow: hidden
         +tablet
             flex-direction: row
-        &:not(:last-child)
-            margin-bottom: 1rem
-            +tablet
-                margin-bottom: 1.5rem
+            height: 100%
+            max-height: 11.875rem
     &__feature-img
         width: 100%
+        object-fit: cover
         height: 9.375rem
         +tablet
             width: calc(50% - 1.5rem)
-            height: 100%
     &__feature 
         padding: .5rem 1rem 1rem 1rem
         +tablet
@@ -70,6 +147,37 @@
                 color: $medium-grey
         & .product-tabs__content-title
             margin-bottom: .5rem
+
+
+    &__content-list
+        @extend .product-tabs__features
+        +tablet
+            max-height: 12.5rem
+        li
+            @extend .product-tabs__features-item
+            position: relative
+            padding-left: 2rem
+            font-size: $font-size_3
+            line-height: $line-height_3
+            color: $black
+            +tablet
+                width: 50%
+                padding-left: 2.75rem
+            &::before
+                content: ''
+                position: absolute
+                left: .25rem
+                display: block
+                width: 1.25rem
+                height: 1.25rem
+                background: url(../images/check.svg)
+                background-size: contain
+                +tablet  
+                    left: .75rem     
+                    width: 1.5rem
+                    height: 1.5rem
+
+
     &__content-answer
         +desktop
             width: 51rem
