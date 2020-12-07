@@ -62,6 +62,7 @@
                 // this.isActive;
                 this.$eventBus.$emit('open-catalogue', this.active);
                 if (!this.active) {
+                    document.querySelector('body').classList.remove('body-fixed')
                     document.querySelector('html').style.overflow = 'auto';
                 }
             },
