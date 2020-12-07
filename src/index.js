@@ -23,6 +23,7 @@ import homeMenu from './js/components/header/mobile/home-menu.vue';
 import productCardSlider from './js/components/poduct-card/product-card-slider.vue';
 import productTabs from './js/components/poduct-card/product-tabs.vue';
 import productCardArticle from './js/components/poduct-card/product-card-article.vue';
+import photoModal from './js/components/poduct-card/photo-modal.vue';
 
 Vue.use(VueAgile)
 Vue.mixin(HelpersMixin)
@@ -69,7 +70,8 @@ const app = new Vue({
         productTabs,
         VueSlickCarousel,
         sliderPhotoDots,
-        productCardArticle
+        productCardArticle,
+        photoModal
     },
     mounted() {
     }

@@ -3,23 +3,24 @@
     top: 0
     width: 100%
     height: 100vh
-    z-index: 10
+    z-index: 20
     &-bg
-        opacity: 0
-        background: #001427
         width: 100%
         height: 100vh
-        opacity: 0.72
+        background: rgba($black, .72)
     &-wrapper
         position: absolute
-        top: 0
-        width: 100%
+        //top: 0
+        //width: 100%
         background: #ffffff
         width: 24.3125rem
         padding: 2rem 2.5rem 2.5rem 2.5rem
         top: 50%
         left: 50%
         transform: translate(-50%, -50%)
+        &--big
+            width: 90%
+            max-height: 90%
     &-title
         @extend .title-2
         font-size: 1.25rem
@@ -39,5 +40,12 @@
             width: $size_12
             height: $size_12
             fill: #999
+            &--black
+                fill: $icon-black
+                width: 16px
+                height: 16px
+                
+//.modal-slider
+    display: flex
         
 

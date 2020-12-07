@@ -63,7 +63,7 @@
         },
         methods: {
             openModal(){
-                this.$eventBus.$emit("openModal")
+                this.$eventBus.$emit("openModal", 'promo')
             }
         }
     }

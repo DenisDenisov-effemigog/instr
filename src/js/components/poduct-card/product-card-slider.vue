@@ -29,7 +29,7 @@
         >
             <div class="product-card-slider__main_slide"
                  v-for="productImage in productImages">
-                <img :src="productImage.img" alt="">
+                <img :src="productImage.img" alt="" @click="openModal">
             </div>
         </VueSlickCarousel>
     </div>
@@ -91,7 +91,13 @@ export default {
         }
     },
     methods: {
-    },mounted() {
+        openModal(){
+            if (window.innerWidth > 760) {
+                this.$eventBus.$emit("openModal", 'product-card', this.productImages) 
+            }
+        }
+    },
+    mounted() {
         this.$nextTick(this.$forceUpdate);
     },
 }
