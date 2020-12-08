@@ -1,5 +1,5 @@
 <template>
-    <div class="header-all" v-scroll="handleScroll">
+    <div v-show="flag" class="header-all" v-scroll="handleScroll">
         <div class="topnav">
             <slot name="topnav"></slot>
         </div>
@@ -17,7 +17,8 @@
                 previousTop: 0,
                 currentTop: 0,
                 scrollOffset: 48,
-                hidden: false
+                hidden: false,
+                flag: true
             }
         },
         computed: {
@@ -56,7 +57,19 @@
                     this.hidden = true;
                     this.showHideHeader
                 }
-            }  
+            },
+            closeHeader(){
+                this.flag = false
+                console.log('cl')
+            },
+            openHeader(){
+                this.flag = true
+                console.log('op')
+            }
+        },
+        created(){
+            this.$eventBus.$on('openStickyCard', this.closeHeader)
+            this.$eventBus.$on('closeStickyCard', this.openHeader)
         }
     }
 </script>

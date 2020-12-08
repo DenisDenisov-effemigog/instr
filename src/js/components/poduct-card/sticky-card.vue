@@ -44,14 +44,18 @@ export default {
     methods:{
         mouseWheel(){
             let productCard = document.querySelector('.product-card')
-            let headerHeigth = document.querySelector('.header').offsetHeight
-            let productCardPosition = productCard.offsetTop + productCard.clientHeight
-            let windowPosition = window.pageYOffset + headerHeigth
+            if(productCard !== null){
+                let headerHeigth = document.querySelector('.header').offsetHeight
+                let productCardPosition = productCard.offsetTop + productCard.clientHeight
+                let windowPosition = window.pageYOffset
 
-            if(windowPosition > productCardPosition){
-                this.flag = true
-            }else{
-                this.flag = false
+                if(windowPosition > productCardPosition){
+                    this.flag = true
+                    this.$eventBus.$emit('openStickyCard')
+                }else{
+                    this.flag = false
+                    this.$eventBus.$emit('closeStickyCard')
+                }
             }
         }
     },
