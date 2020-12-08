@@ -24,6 +24,9 @@
         margin-bottom: 16px
         &--short-card
             margin-bottom: 0
+        &_in-favorite
+            +mobile
+                display: none !important  
     &__menu-tooltip
         @extend .tooltip
         right: 0
@@ -112,29 +115,9 @@
         display: flex
         justify-content: space-between
         align-items: center
-    &__compare-btn
-        display: none
-        cursor: pointer
-        +desktop
-            display: block
-        & svg
-            fill: $icon-grey
-            width: $size_14
-            height: $size_16
-        &:hover svg
-            fill: $icon-black
-        &--active svg,
-        &--active:hover svg
-            fill: $primary-red
-        &__mobile
-            padding-top: 0.75rem
-            display: flex
-            align-items: center
-            svg
-                width: $size_12
-                height: $size_10
-            span
-                padding-left: 0.5rem
+        &_to-compare
+            +mobile
+            display: none !important
     &__menu-btn
         width: 32px
         height: 32px

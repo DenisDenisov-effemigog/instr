@@ -25,7 +25,6 @@
     &__compare-btn
         color: $grey
         cursor: pointer
-        @extend .card__compare-btn__mobile
         padding-top: 0
         flex: 1
         display: none
@@ -67,10 +66,13 @@
         +desktop
             width: 45%
             margin: 0
-        &_stickers
+        &_header
             position: absolute
             top: 0
             left: 0
+            width: 100%
+            display: flex
+            justify-content: space-between
             z-index: 1
             +desktop
                 left: 75px
@@ -83,6 +85,15 @@
                 bottom: 0
     &__stickers
         +stickers
+        .product-card__stickers_sticker
+            +mobile
+                transform: scale(1.5)
+                margin-left: 19px
+                margin-right: 25px
+    &__actions
+        display: flex
+        .to-compare
+            margin-right: 16px
     &__media-buttons
         display: flex
         +desktop

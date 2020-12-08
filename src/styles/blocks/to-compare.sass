@@ -1,4 +1,4 @@
-.in-favorite
+.to-compare
     cursor: pointer
     display: flex
     align-items: center
@@ -7,10 +7,10 @@
             color: $black
         &:hover svg
             fill: $icon-black
-    svg
+    & svg
         fill: $icon-grey
-        width: $size_19
-        height: $size_16
+        width: 18px
+        height: 18px
     span
         display: block
         margin-left: 6px
@@ -20,10 +20,10 @@
     &--active:hover svg
         fill: $primary-red
     &--mobile
-        padding-top: 1rem
+        padding-top: 0.75rem
         display: flex
         align-items: center
-        & svg
-            width: 12px
-            height: 10px
+        svg
+            width: $size_12
+            height: $size_10
         
