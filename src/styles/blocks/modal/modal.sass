@@ -10,8 +10,6 @@
         background: rgba($black, .72)
     &-wrapper
         position: absolute
-        //top: 0
-        //width: 100%
         background: #ffffff
         width: 24.3125rem
         padding: 2rem 2.5rem 2.5rem 2.5rem
@@ -21,6 +19,10 @@
         &--big
             width: 90%
             max-height: 90%
+            padding: 56px
+            .modal__close
+                top: 56px
+                right: 56px
     &-title
         @extend .title-2
         font-size: 1.25rem
@@ -32,10 +34,13 @@
         margin: 2rem auto 0
     &__close
         position: absolute
-        top: 0
-        right: 0
-        padding: 14px 14px 0 0
+        top: 2.5rem
+        right: 2rem
+        +flex-container-center
         cursor: pointer
+        span
+            margin-right: 16px
+            color: $grey
         &-icon
             width: $size_12
             height: $size_12
@@ -45,7 +50,5 @@
                 width: 16px
                 height: 16px
                 
-//.modal-slider
-    display: flex
         
 

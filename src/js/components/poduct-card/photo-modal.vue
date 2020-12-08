@@ -59,10 +59,20 @@
             ref="main"
             :asNavFor="$refs.previous"
         >
+            <template #prevArrow>
+                <svg class="photo-modal__main_arrow photo-modal__main_arrow--prev" viewBox="0 0 12 12">
+                    <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-left'"></use>
+                </svg>
+            </template>
             <div class="photo-modal__main_slide"
                  v-for="productImage in productImages">
                 <img :src="productImage.img" alt="">
             </div>
+            <template #nextArrow>
+                <svg class="photo-modal__main_arrow photo-modal__main_arrow--next" viewBox="0 0 11 10">
+                    <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
+                </svg>
+            </template>
         </VueSlickCarousel>
         <VueSlickCarousel
             class="photo-modal__previous"
@@ -71,7 +81,7 @@
             :asNavFor="$refs.main"
         >
             <template #prevArrow>
-                <svg class="photo-modal__previous_arrow" viewBox="0 0 10 10">
+                <svg class="photo-modal__previous_arrow photo-modal__previous_arrow--prev" viewBox="1 2 7 10">
                     <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-left'"></use>
                 </svg>
             </template>
@@ -80,7 +90,7 @@
                 <img :src="productImage.img" alt="">
             </div>
             <template #nextArrow>
-                <svg class="photo-modal__previous_arrow" viewBox="0 0 12 12">
+                <svg class="photo-modal__previous_arrow photo-modal__previous_arrow--next" viewBox="0 1 6 11">
                     <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                 </svg>
             </template>
@@ -106,7 +116,6 @@ export default {
         return {
             settings: {
                 dots: false,
-                arrows: false,
                 focusOnSelect: false,
                 slidesToShow: 1,
                 slidesToScroll: 1,
@@ -117,6 +126,14 @@ export default {
                 slidesToShow: 4,
                 slidesToScroll: 1,
                 focusOnSelect: true,
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            arrows: false
+                        }
+                    }
+                ],
             },
         }
     },
