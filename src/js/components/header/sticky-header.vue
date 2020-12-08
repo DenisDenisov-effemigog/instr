@@ -60,11 +60,9 @@
             },
             closeHeader(){
                 this.flag = false
-                console.log('cl')
             },
             openHeader(){
                 this.flag = true
-                console.log('op')
             }
         },
         created(){

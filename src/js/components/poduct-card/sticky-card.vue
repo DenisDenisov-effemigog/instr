@@ -43,20 +43,22 @@ export default {
     },
     methods:{
         mouseWheel(){
-            let productCard = document.querySelector('.product-card')
-            if(productCard !== null){
-                let headerHeigth = document.querySelector('.header').offsetHeight
-                let productCardPosition = productCard.offsetTop + productCard.clientHeight
-                let windowPosition = window.pageYOffset
+             if(window.innerWidth > 768) {
+                let productCard = document.querySelector('.product-card')
+                if(productCard !== null){
+                    let headerHeigth = document.querySelector('.header').offsetHeight
+                    let productCardPosition = productCard.offsetTop + productCard.clientHeight
+                    let windowPosition = window.pageYOffset
 
-                if(windowPosition > productCardPosition){
-                    this.flag = true
-                    this.$eventBus.$emit('openStickyCard')
-                }else{
-                    this.flag = false
-                    this.$eventBus.$emit('closeStickyCard')
+                    if(windowPosition > productCardPosition){
+                        this.flag = true
+                        this.$eventBus.$emit('openStickyCard')
+                    }else{
+                        this.flag = false
+                        this.$eventBus.$emit('closeStickyCard')
+                    }
                 }
-            }
+             }
         }
     },
     created () {

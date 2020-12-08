@@ -57,5 +57,47 @@
             max-width: 100%
             order: 1
         &-logo
+            cursor: pointer
             +mobile
                 padding-right: 1.625rem
+    &__assurance
+        display: flex
+        cursor: pointer
+        &-icon
+            width: 1.5rem
+            height: 1.875rem
+            margin-right: 0.5rem
+        &-text
+            padding-top: 0.25rem
+            display: flex
+            flex-direction: column
+            align-items: center
+            & span:first-child
+                font-size: 16px
+                text-transform: uppercase
+                font-weight: bold
+            & span:last-child
+                line-height: 1rem
+                text-transform: uppercase
+                color: #ffffff
+                background: $primary-red
+                padding: 0 0.938rem
+                position: relative
+                &::after
+                    display: block
+                    content: ''
+                    position: absolute
+                    right: 0
+                    top: 0
+                    border-top: 16px solid transparent
+                    border-right: 16px solid #fff
+                &::before
+                    display: block
+                    content: ''
+                    position: absolute
+                    left: 0
+                    top: 0
+                    border-bottom: 16px solid transparent
+                    border-left: 16px solid #fff
+
+                

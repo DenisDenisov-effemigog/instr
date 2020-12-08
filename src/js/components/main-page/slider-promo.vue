@@ -3,7 +3,7 @@
         <div class="slider-promo__title">Промо моменты</div>
         <agile :options="options">
             
-            <div class="slider-promo__slide" v-for="slide in promoBanners">
+            <div @mousemove="openTooltip" @mouseleave="closeTooltip" class="slider-promo__slide" v-for="slide in promoBanners">
                 <a :href="slide.link" class="">
                     <img :src="slide.img" alt="">
                 </a>
@@ -64,6 +64,18 @@
         methods: {
             openModal(){
                 this.$eventBus.$emit("openModal", 'promo')
+            },
+            openTooltip(e){
+                let elemPositionTop = e.target.getBoundingClientRect().top.toFixed(0)
+                let elemPositionLeft = e.target.getBoundingClientRect().left.toFixed(0)
+                var x = e.pageX - elemPositionLeft;
+                var y = e.pageY - elemPositionTop;
+                console.log(x)
+                console.log(y)
+                console.log(elemPositionTop)
+            },
+            closeTooltip(){
+
             }
         }
     }
