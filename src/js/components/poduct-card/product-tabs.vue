@@ -77,7 +77,10 @@
                 })
             },
             scroll(){
-                this.$refs.tabs.scrollIntoView({block: "center", behavior: "smooth"});
+                var target = this.$refs.tabs;
+                let topnavHeigth = document.querySelector('.header').offsetHeight
+                let targetOffsetTop = target.offsetTop - topnavHeigth;    
+                window.scroll({top: targetOffsetTop, behavior: 'smooth'});
                 this.showTab('features')
             }
         },
