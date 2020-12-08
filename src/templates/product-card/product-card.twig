@@ -36,17 +36,16 @@
 			<component is="product-card-slider"></component>
             <div class="product-card__slider_media">
                 <div class="product-card__media-buttons">
-                    <div class="product-card__media-buttons_button">
-                        <svg>
-                            <use :xlink:href="templatePath + 'images/sprite.svg#buttons__play-btn'"></use>
-                        </svg>
-                    </div>
-                    <div class="product-card__media-buttons_button">
-
-                        <svg>
-                            <use :xlink:href="templatePath + 'images/sprite.svg#buttons__around-photo'"></use>
-                        </svg>
-                    </div>
+                    <component is="media-button"
+                               :svg="'play-btn'"
+                               :action="'openVideo'"
+                               :link="'Тут будет видео'"
+                    ></component>
+                    <component is="media-button"
+                               :svg="'around-photo'"
+                               :action="'openThreeD'"
+                               :link="'Тут будет 3D фото'"
+                    ></component>
                 </div>
             </div>
 		</div>

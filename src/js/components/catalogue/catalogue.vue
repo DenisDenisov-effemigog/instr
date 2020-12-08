@@ -62,7 +62,7 @@
                 this.active = state;
                 this.hovered = 0;
                 document.querySelector('body').classList.add('body-fixed')
-                document.querySelector('html').style.overflow = 'scroll';
+                document.querySelector('html').style.overflow = 'hidden';
             },
             closeCatalogue(event) {
                 let vm = this;

@@ -2,7 +2,7 @@
     <div v-show="openFlag" class="modal">
         <div class="modal-bg"></div>
         <div class="modal-wrapper"
-             :class="{'modal-wrapper--big': modal === 'product-card'}"
+             :class="{'modal-wrapper--big': modal !== 'promo'}"
         >
             
             <div class="modal-desc" v-if="modal === 'promo'">
@@ -11,13 +11,19 @@
                 <div @click="closeModal" class="modal-btn">Понятно!</div>
             </div>
             <div class="modal-slider" v-else-if="modal === 'product-card'">
-                <component is="photo-modal" :productImages="productImages"></component>
+                <component is="photo-modal" :productImages="props"></component>
+            </div>
+            <div class="modal__video" v-else-if="modal === 'openVideo'">
+                <p>{{ props }}</p>
+            </div>
+            <div class="modal__threeD" v-else-if="modal === 'openThreeD'">
+                <p>{{ props }}</p>
             </div>
             <div class="modal__close" @click="closeModal">
-                <span v-if="modal === 'product-card'">Закрыть</span>
+                <span v-if="modal !== 'promo'">Закрыть</span>
                 <svg 
                     class="modal__close-icon" 
-                    :class="{'modal__close-icon--black': modal === 'product-card'}" 
+                    :class="{'modal__close-icon--black': modal !== 'promo'}" 
                     viewBox="0 0 12 12"
                 >
                     <use :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
@@ -38,7 +44,7 @@ export default {
         return{
             openFlag: false,
             modal: '',
-            productImages: [],
+            props: [],
         }
     },
     created(){
@@ -47,13 +53,14 @@ export default {
     methods:{
         openModal(modal, props){
             document.querySelector('body').classList.add('body-fixed')
-            document.querySelector('html').style.overflowY = 'scroll';
+            document.querySelector('html').style.overflowY = 'hidden';
             this.openFlag = true
             this.modal = modal
-            this.productImages = props
+            this.props = props
         },
         closeModal(){
             this.openFlag = false
+            this.$eventBus.$emit("deleteActive")
             document.querySelector('body').classList.remove('body-fixed')
             document.querySelector('html').style.overflow = 'auto';
         }
