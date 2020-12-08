@@ -29,18 +29,7 @@
                     </div>
                 </div>
             </div>
-            <div 
-                class="card__favorite-btn" 
-                :class="{'card__favorite-btn--active': inFavorite}" 
-                @click="inFavorite = !inFavorite"
-            >
-                <svg v-if="!inFavorite">
-                    <use :xlink:href="templatePath + './images/sprite.svg#icons__heart'"></use>
-                </svg>
-                <svg v-else>
-                    <use :xlink:href="templatePath + 'images/sprite.svg#icons__heart-full'"></use>
-                </svg>
-            </div>
+            <component class="card__header_in-favorite" is="in-favorite"></component>
         </div>
         <div class="card__image-block" 
              :class="{'card__image-block--short-card': cardSize === 'short'}"
@@ -57,15 +46,7 @@
         </div>
         <div class="card__button-block">
             <addToCart :changeIcon="changeIcon"></addToCart>
-            <div 
-                class="card__compare-btn"
-                :class="{'card__compare-btn--active': inCompare}"
-                @click="inCompare = !inCompare"
-            >
-                <svg>
-                    <use :xlink:href="templatePath + 'images/sprite.svg#icons__graf'"></use>
-                </svg>
-            </div>
+            <component class="card__button-block_to-compare" is="to-compare"></component>
             <div @click="menuTooltip = !menuTooltip" class="card__menu-btn">
                 <span></span>
                 <span></span>
@@ -73,29 +54,14 @@
             </div>
             <div v-show="menuTooltip" class="card__menu-tooltip">
                 <div>
-                    <div 
-                        class="card__favorite-btn card__favorite-btn__mobile" 
-                        :class="{'card__favorite-btn--active': inFavorite}" 
-                        @click="inFavorite = !inFavorite"
-                    >
-                        <svg v-if="!inFavorite" viewBox="0 0 18 15">
-                            <use :xlink:href="templatePath + 'images/sprite.svg#icons__heart'"></use>
-                        </svg>
-                        <svg v-else viewBox="0 0 18 15">
-                            <use :xlink:href="templatePath + 'images/sprite.svg#icons__heart-full'"></use>
-                        </svg>
-                        <span>В избранное</span>
-                    </div>
-                    <div 
-                        class="card__compare-btn card__compare-btn__mobile"
-                        :class="{'card__compare-btn--active': inCompare}"
-                        @click="inCompare = !inCompare"
-                    >
-                        <svg viewBox="0 0 18 15">
-                            <use :xlink:href="templatePath + 'images/sprite.svg#icons__graf'"></use>
-                        </svg>
-                        <span>Сравнить</span>
-                    </div>
+                    <component is="in-favorite"
+                               :text="true"
+                               :mobile="true"
+                    ></component>
+                    <component is="to-compare"
+                               :text="true"
+                               :mobile="true"
+                    ></component>
                 </div>
                 <svg @click="menuTooltip = false" viewBox="0 0 12 12">
                     <use @click.stop :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
@@ -108,12 +74,16 @@
 <script>
 import sliderPhotoCard from './slider-photo-card.vue';
 import addToCart from './add-to-cart.vue';
+import inFavorite from '../in-favorite.vue';
+import toCompare from '../to-compare.vue';
 
 export default {
     name: 'card',
     components: {
         sliderPhotoCard,
-        addToCart
+        addToCart,
+        inFavorite,
+        toCompare,
     },
     props: {
         changeIcon: {
@@ -132,33 +102,6 @@ export default {
     data() {
         return {
             menuTooltip: false,
-            inFavorite: false,
-            inCompare: false,
-            /*product: 
-                {
-                    id: 1, 
-                    title: 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel', 
-                    link: '',
-                    code: 717950,
-                    oldPrice: '3 819.27',
-                    newPrice: '2 819.27',
-                    tooltips: [
-                        {
-                            id: 1, 
-                            title: 'Новинка', 
-                            text: 'Товар находится в акционной категории товаров “Новинка”', 
-                            link: '',
-                            status: 'new',
-                        },
-                        {
-                            id: 2, 
-                            title: 'Акция', 
-                            text: 'Товар участвует в акции “Акция”', 
-                            link: '',
-                            status: 'promo',
-                        },
-                    ]
-                },*/
         }
     },
     methods: {

@@ -30,6 +30,7 @@
 <script>
 import photoModal from "./poduct-card/photo-modal.vue"
 export default {
+    name: 'modal',
     components: {
         photoModal,
     },

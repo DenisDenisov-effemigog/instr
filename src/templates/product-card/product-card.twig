@@ -2,22 +2,16 @@
 	<div class="product-card__title">Аккумуляторная бесщеточная дрель-шуруповерт DENZEL BLDL-IB-18-02, Li-Ion, 18 В, 1.5 А*ч, 2 аккумулятора</div>
 	<div class="product-card__header">
 		<div class="product-card__favorite-btn">
-			<svg viewbox="0 0 18 15">
-				<use xlink:href="./images/sprite.svg#icons__heart"></use>
-			</svg>
-			<span>В избранное</span>
+			<component is="in-favorite" :text="true"></component>
 		</div>
 		<div class="product-card__compare-btn">
-			<svg viewbox="0 0 18 15">
-				<use xlink:href="./images/sprite.svg#icons__graf"></use>
-			</svg>
-			<span>Сравнить</span>
+            <component is="to-compare" :text="true"></component>
 		</div>
 		<component is="product-card-article"></component>
 	</div>
 	<div class="product-card__content">
 		<div class="product-card__slider">
-            <div class="product-card__slider_stickers">
+            <div class="product-card__slider_header">
                 <div class="product-card__stickers">
                     <div class="product-card__stickers_sticker-wrap">
                         <div
@@ -33,6 +27,10 @@
                             <span>Акция</span>
                         </div>
                     </div>
+                </div>
+                <div class="product-card__actions">
+                    <component is="to-compare"></component>
+                    <component is="in-favorite"></component>
                 </div>
             </div>
 			<component is="product-card-slider"></component>
