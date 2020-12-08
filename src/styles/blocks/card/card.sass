@@ -75,29 +75,6 @@
                 right: 0
                 &::before
                     left: calc(90% - 8px)
-    &__favorite-btn
-        display: none
-        cursor: pointer
-        +desktop
-            display: block
-        svg
-            fill: $icon-grey
-            width: $size_19
-            height: $size_16
-        &:hover svg
-            fill: $icon-black
-        &--active svg,
-        &--active:hover svg
-            fill: $primary-red
-        &__mobile
-            padding-top: 1rem
-            display: flex
-            align-items: center
-            & svg
-                width: $size_12
-                height: $size_10
-            span
-                padding-left: 0.5rem
     &__image-block
         width: 156px
         margin: 16px auto
