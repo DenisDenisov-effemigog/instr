@@ -93,12 +93,18 @@
 				</ul>
 				<component is="product-info-all"></component>
 				<div class="product-info__brand">
-					<div class="product-info__brand-logo">
-						<img src="./demo_images/product-card/logo.png">
-					</div>
-					<div class="product-info__brand-shield">
-						<img src="./demo_images/product-card/shield.png">
-					</div>
+					<a href="#" class="product-info__brand-logo">
+						<img src="./demo_images/product-card/logo.svg">
+					</a>
+					<a href="#" class="product-info__assurance">
+						<svg class="product-info__assurance-icon">
+                            <use :xlink:href="templatePath + 'images/sprite.svg#icons__shield'"></use>
+                        </svg>
+						<div class="product-info__assurance-text">
+							<span>3 года</span>
+							<span>Гарантии</span>
+						</div>
+					</a>
 				</div>
 			</div>
 			<div class="product-order">
