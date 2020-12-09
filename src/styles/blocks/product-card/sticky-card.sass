@@ -24,12 +24,15 @@
         font-size: $font-size_4  
         padding-top: 0.5rem
     &__price
-        padding-left: 9rem
+        padding-left: percentage(9 / 101.5)
         border-left: 1px solid $border-color
-        padding-right: 5.5rem
+        padding-right: percentage(5.5 / 101.5)
         &--old
             font-size: 0.875rem
             text-decoration: line-through
         &--total
             font-size: $font-size_8
             font-weight: bold
+    .add-to-cart
+        width: 13rem
+        height: 2.5rem
