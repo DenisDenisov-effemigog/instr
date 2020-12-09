@@ -1,5 +1,5 @@
 <template>
-    <div class="add-to-cart">
+    <div class="add-to-cart" :class="{'add-to-cart--big': size==='big'}">
         <div class="add-to-cart__in-cart" v-if="amount > 0">
 			<div
 				class="add-to-cart__button add-to-cart__button_decrease"
@@ -67,6 +67,11 @@
                 default: false,
             },
             text: {
+                type: String,
+                default: '',
+                required: false,
+            },
+            size: {
                 type: String,
                 default: '',
                 required: false,
