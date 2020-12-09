@@ -16,15 +16,24 @@
             display: none !important
         &_slide
             outline: none
+            cursor: pointer
+            border: 1px solid transparent
+            border-radius: $border-radius_2
+            overflow: hidden
+            &:hover
+                border: 1px solid $border-color
         &_arrow
             fill: $light-grey
             width: 19px
             height: 18px
             margin-left: 35%
+            cursor: pointer
+            &:hover
+                fill: $grey
             
         & .slick-current .product-card-slider__previous_slide
-            border: 1px solid $light-grey
-            border-radius: 2px
+            border: 1px solid $grey
+            border-radius: $border-radius_2
             
 .slick-track
     &[data-v-e4caeaf8]

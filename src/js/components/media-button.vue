@@ -1,5 +1,5 @@
 <template>
-    <div class="media-button" :class="{'media-button--active': active}" @click="openAction">
+    <div class="media-button" :class="{'media-button_active': active}" @click="openAction">
         <svg>
             <use :xlink:href="templatePath + 'images/sprite.svg#buttons__' + svg"></use>
         </svg>
