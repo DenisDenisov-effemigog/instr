@@ -36,6 +36,7 @@ export default {
             document.querySelector('html').style.overflow = 'hidden';
             this.openModal = true;
             this.menuLink = link;
+            this.$eventBus.$emit('notActiveButton');
         },
         closeMenuModal(){
             document.querySelector('html').style.overflow = 'auto';
