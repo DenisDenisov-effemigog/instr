@@ -81,6 +81,10 @@
             questionsAnswers() {
                 return this.questions
             }
+        },
+        created(){
+            this.$eventBus.$on("click", this.scroll)
         }
+
     }
 </script>
