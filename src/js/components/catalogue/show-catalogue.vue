@@ -11,10 +11,10 @@
             </svg>
         </div>
         <div class="header__catalog-btn" @click.prevent="open">
-            <svg class="header__catalog-btn-icon" viewBox="0 0 18 14" v-if="active">
-                <use :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
+            <svg class="header__catalog-btn-icon" viewBox="0 0 24 24" v-if="active">
+                <use :xlink:href="templatePath + 'images/sprite.svg#icons__times'"></use>
             </svg>
-            <svg class="header__catalog-btn-icon" viewBox="0 0 18 14" v-else>
+            <svg class="header__catalog-btn-icon" viewBox="0 0 24 24" v-else>
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__ham'"></use>
             </svg>
             Каталог
@@ -62,7 +62,7 @@
                 // this.isActive;
                 this.$eventBus.$emit('open-catalogue', this.active);
                 if (!this.active) {
-                    document.querySelector('body').classList.remove('body-fixed')
+                    document.querySelector('.page').classList.remove('page_fixed')
                     document.querySelector('html').style.overflow = 'auto';
                 }
             },

@@ -54,7 +54,7 @@ export default {
                     this.$eventBus.$emit("closeCountry")
                 } 
             }
-            document.querySelector('body').classList.remove('body-fixed')
+            document.querySelector('.page').classList.remove('page_fixed')
             document.querySelector('html').style.overflow = 'auto';
         },
         choiceCountry(e){
@@ -67,8 +67,8 @@ export default {
         },
         openCountry(){
             this.openedCountry = !this.openedCountry
-            document.querySelector('body').classList.toggle('body-fixed')
-            if(document.querySelector('body').classList.contains('body-fixed')){
+            document.querySelector('.page').classList.toggle('page_fixed')
+            if(document.querySelector('.page').classList.contains('page_fixed')){
                 document.querySelector('html').style.overflow = 'hidden';
             }else{
                 document.querySelector('html').style.overflow = 'auto';

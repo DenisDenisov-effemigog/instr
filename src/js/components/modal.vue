@@ -52,7 +52,7 @@ export default {
     },
     methods:{
         openModal(modal, props){
-            document.querySelector('body').classList.add('body-fixed')
+            document.querySelector('.page').classList.add('page_fixed')
             document.querySelector('html').style.overflowY = 'hidden';
             this.openFlag = true
             this.modal = modal
@@ -61,7 +61,7 @@ export default {
         closeModal(){
             this.openFlag = false
             this.$eventBus.$emit("deleteActive")
-            document.querySelector('body').classList.remove('body-fixed')
+            document.querySelector('.page').classList.remove('page_fixed')
             document.querySelector('html').style.overflow = 'auto';
         }
     }

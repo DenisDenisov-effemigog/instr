@@ -61,7 +61,7 @@
             openCatalogue(state) {
                 this.active = state;
                 this.hovered = 0;
-                document.querySelector('body').classList.add('body-fixed')
+                document.querySelector('.page').classList.add('page_fixed')
                 document.querySelector('html').style.overflow = 'hidden';
             },
             closeCatalogue(event) {
@@ -72,7 +72,7 @@
                         event.toElement.className.animVal !=='header__catalog-btn-icon') {
                         vm.active = false;
                         this.$eventBus.$emit('close-catalogue', vm.active);
-                        document.querySelector('body').classList.remove('body-fixed')
+                        document.querySelector('.page').classList.remove('page_fixed')
                         document.querySelector('html').style.overflow = 'auto';
                     }
                 }
