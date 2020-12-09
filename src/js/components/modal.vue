@@ -1,12 +1,9 @@
 <template>
     <div v-show="openFlag" class="modal">
-        <div class="modal-bg"></div>
         <div class="modal-wrapper"
              :class="{'modal-wrapper--big': modal !== 'promo'}"
-             @focusout="focused = false"
              v-click-outside="closeOutside"
         >
-            
             <div class="modal-desc" v-if="modal === 'promo'">
                 <h3 class="modal-title">Третий в подарок!</h3>
                 <div class="modal-text">Здесь отображена текстовая информация об условиях акции, ее сроках, товарах, которые принимают участие, а так же что-нибудь еще.</div>
@@ -29,6 +26,7 @@
                 </svg>
             </div>
         </div>
+        <slot></slot>
     </div>
 </template>
 
@@ -47,7 +45,6 @@ export default {
     data(){
         return{
             openFlag: false,
-            focused: false,
             modal: '',
             props: [],
         }
@@ -57,22 +54,22 @@ export default {
     },
     methods:{
         openModal(modal, props){
-            // document.querySelector('.page').classList.add('page_fixed')
-            // document.querySelector('html').style.overflowY = 'hidden';
+            document.querySelector('.page').classList.add('page_fixed')
+            document.querySelector('html').style.overflowY = 'hidden';
             this.openFlag = true
-            this.focused = true
             this.modal = modal
             this.props = props
         },
         closeModal(){
             this.openFlag = false
-            this.focused = false
+            this.$eventBus.$emit("deleteActive");
+            document.querySelector('.page').classList.remove('page_fixed');
+            document.querySelector('html').style.overflow = 'auto';
         },
         closeOutside() {
-            let vm = this
-            if (vm.focused) {
-                vm.openFalg = false
-            }
+            // let vm = this
+            // vm.openFalg = false
+            this.closeModal
         }
     },
     computed: {
@@ -81,10 +78,7 @@ export default {
                 this.$eventBus.$emit("deleteActive");
                 document.querySelector('.page').classList.remove('page_fixed');
                 document.querySelector('html').style.overflow = 'auto';
-            } else {
-                document.querySelector('.page').classList.add('page_fixed')
-                document.querySelector('html').style.overflowY = 'hidden';
-            }
+            } 
         }
     }
     
