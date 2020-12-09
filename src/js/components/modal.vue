@@ -3,6 +3,8 @@
         <div class="modal-bg"></div>
         <div class="modal-wrapper"
              :class="{'modal-wrapper--big': modal !== 'promo'}"
+             @focusout="focused = false"
+             v-click-outside="closeOutside"
         >
             
             <div class="modal-desc" v-if="modal === 'promo'">
@@ -34,15 +36,21 @@
 </template>
 
 <script>
-import photoModal from "./poduct-card/photo-modal.vue"
+    import photoModal from "./poduct-card/photo-modal.vue"
+    import ClickOutside from "vue-click-outside";
+
 export default {
     name: 'modal',
     components: {
         photoModal,
     },
+    directives: {
+        ClickOutside
+    },
     data(){
         return{
             openFlag: false,
+            focused: false,
             modal: '',
             props: [],
         }
@@ -52,18 +60,36 @@ export default {
     },
     methods:{
         openModal(modal, props){
-            document.querySelector('.page').classList.add('page_fixed')
-            document.querySelector('html').style.overflowY = 'hidden';
+            // document.querySelector('.page').classList.add('page_fixed')
+            // document.querySelector('html').style.overflowY = 'hidden';
             this.openFlag = true
+            this.focused = true
             this.modal = modal
             this.props = props
         },
         closeModal(){
             this.openFlag = false
-            this.$eventBus.$emit("deleteActive")
-            document.querySelector('.page').classList.remove('page_fixed')
-            document.querySelector('html').style.overflow = 'auto';
+            this.focused = false
+        },
+        closeOutside() {
+            let vm = this
+            if (vm.focused) {
+                vm.openFalg = false
+            }
+        }
+    },
+    computed: {
+        close() {
+            if (this.openFlag === false) {
+                this.$eventBus.$emit("deleteActive");
+                document.querySelector('.page').classList.remove('page_fixed');
+                document.querySelector('html').style.overflow = 'auto';
+            } else {
+                document.querySelector('.page').classList.add('page_fixed')
+                document.querySelector('html').style.overflowY = 'hidden';
+            }
         }
     }
+    
 }
 </script>
