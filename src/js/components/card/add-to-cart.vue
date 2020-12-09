@@ -1,5 +1,5 @@
 <template>
-    <div class="add-to-cart">
+    <div class="add-to-cart" :class="{'add-to-cart--big': size==='big'}">
         <div class="add-to-cart__in-cart" v-if="amount > 0">
 			<div
 				class="add-to-cart__button add-to-cart__button_decrease"
@@ -19,6 +19,7 @@
                 :value="amount"
             > 
             <span v-else class="add-to-cart__amount">
+                <span v-if="text">{{ text }}</span>
                 <template>{{ amount }} шт.</template>
             </span>
             
@@ -64,6 +65,16 @@
             changeIcon: {
                 type: Boolean,
                 default: false,
+            },
+            text: {
+                type: String,
+                default: '',
+                required: false,
+            },
+            size: {
+                type: String,
+                default: '',
+                required: false,
             },
         },
         data() {

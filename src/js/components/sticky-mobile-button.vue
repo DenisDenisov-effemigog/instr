@@ -1,15 +1,19 @@
 <template>
     <div class="sticky-mobile-button" v-if="showButton">
         <a v-if="flag" href="" class="sticky-mobile-button__button">{{ titlePartFirst }} <span>{{ items }}&nbsp;{{ titlePartSecond }}</span></a>
-        <a v-else href="" class="sticky-mobile-button__button">{{ titlePartFirst }}</a>
+        <component v-else is="add-to-cart" :text="'В корзине'" :size="'big'"></component>
     </div>
     
 </template>
 
 <script>
+import addToCart from './card/add-to-cart.vue'
 
 export default {
     name: "sticky-mobile-button",
+    components: {
+        addToCart
+    },
     props: {
     },
     data(){

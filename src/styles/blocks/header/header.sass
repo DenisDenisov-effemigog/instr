@@ -167,15 +167,16 @@
         display: none
         +tablet
             display: flex
-        &__btn
-            width: 3.5rem
-            @extend .button-catalogue
-            &-icon
-                fill: $white
-                width: $size_18
-                height: $size_18
+        &-icon
+            fill: $primary-red
+            width: $size_18
+            height: $size_18
             cursor: pointer
+            position: absolute
+            right: 0.688rem
+            top: 0.688rem
     &__search-input
+        position: relative
         +border-style
         @extend .text-2
         flex: 1

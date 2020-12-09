@@ -16,10 +16,7 @@
                 <component is="photo-modal" :productImages="props"></component>
             </div>
             <div class="modal__video" v-else-if="modal === 'openVideo'">
-                <p>{{ props }}</p>
-            </div>
-            <div class="modal__threeD" v-else-if="modal === 'openThreeD'">
-                <p>{{ props }}</p>
+                <iframe :src="props" frameborder="0" allowfullscreen></iframe>
             </div>
             <div class="modal__close" @click="closeModal">
                 <span v-if="modal !== 'promo'">Закрыть</span>

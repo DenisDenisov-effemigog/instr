@@ -3,19 +3,6 @@
         <ul class="header__menu header__menu_mobile">
             <li class="header__menu-item">
                 <a
-                    href="#"
-                    class="header__menu-link"
-                    :class="{'header__menu-link_active': menuLink === 'home'}"
-                    @click.prevent="clickMenu('home')"
-                >
-                    <svg class="header__menu-icon">
-                        <use :xlink:href="templatePath + 'images/sprite.svg#icons__home'"></use>
-                    </svg>
-                    <p class="header__menu-text">Главная</p>
-                </a>
-            </li>
-            <li class="header__menu-item">
-                <a
                     class="header__menu-link"
                     :class="{'header__menu-link_active': menuLink === 'catalog' || menuLink === 'search'}"
                     @click.prevent="clickMenu('catalog')"
@@ -60,8 +47,11 @@ export default {
     name: "sticky-menu",
     data(){
         return{
-            menuLink: 'home'
+            menuLink: ''
         }
+    },
+    created() {
+        this.$eventBus.$on("notActiveButton", this.notActiveButton)
     },
     methods:{
         clickMenu(menu) {
@@ -74,7 +64,9 @@ export default {
                 this.$eventBus.$emit("close-catalogue", false);
                 document.querySelector('html').style.overflow = 'auto';
             }
-            
+        },
+        notActiveButton() {
+            this.menuLink = ''
         },
     },
 }

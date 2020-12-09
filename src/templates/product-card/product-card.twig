@@ -39,12 +39,12 @@
                     <component is="media-button"
                                :svg="'play-btn'"
                                :action="'openVideo'"
-                               :link="'Тут будет видео'"
+                               :link="'http://www.youtube.com/embed/ODEsC4Ijc2o'"
                     ></component>
                     <component is="media-button"
                                :svg="'around-photo'"
-                               :action="'openThreeD'"
-                               :link="'Тут будет 3D фото'"
+                               :action="'openVideo'"
+                               :link="'https://instrument.ru/info/3d_photo/14109/READY/3D.html'"
                     ></component>
                 </div>
             </div>
@@ -161,7 +161,10 @@
 							<p class="product-order__price">3 819.27 RON</p>
 						</li>
 					</ul>
-					<component is="add-to-cart"></component>
+					<component is="add-to-cart" 
+                               :text="'В корзине'" 
+                               :size="'big'"
+                    ></component>
 				</div>
 			</div>
 		</div>
