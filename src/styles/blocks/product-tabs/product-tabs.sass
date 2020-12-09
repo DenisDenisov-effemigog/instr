@@ -290,3 +290,17 @@
             min-width: 13rem
             max-width: 13rem
             margin-left: 1.5rem
+
+.a-transition 
+  transition: all .3s ease;
+  height: 30px;
+  padding: 10px;
+  background-color: #eee;
+  overflow: hidden;
+
+/* .a-enter defines the starting state for entering */
+/* .a-leave defines the ending state for leaving */
+.a-enter, .a-leave 
+  height: 0;
+  padding: 0 10px;
+  opacity: 0;
