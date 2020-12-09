@@ -26,7 +26,7 @@
                     :class="{'product-tabs__tab_active': currentTab === 'questions'}"
                     @click.prevent="showTab('questions')"
                 >
-                    Вопросы&nbsp;и&nbsp;ответы&nbsp;({{questions.quantity}})
+                    Вопросы&nbsp;и&nbsp;ответы&nbsp;({{questions.length}})
                 </div>
             </div>
             <div class="product-tabs__content">
@@ -36,18 +36,23 @@
                 <div v-show="currentTab === 'description'" class="product-tabs_content__container">
                     <slot name="description"></slot>
                 </div>
-                <div v-show="currentTab === 'questions'">
-                    <slot name="questions"></slot>
-                </div>
+                <product-tabs-questions 
+                    v-show="currentTab === 'questions'"
+                    :questions="questionsAnswers">
+                </product-tabs-questions>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+    import productTabsQuestions from './product-tabs-questions.vue'
+
     export default {
         name: "product-tabs",
-        components: {},
+        components: {
+            productTabsQuestions
+        },
         props: {
             description: {},
             features: {},
@@ -62,27 +67,13 @@
             showTab(code) {
                 if (this.currentTab !== code) {
                     this.currentTab = code;
-                    if (window.innerWidth < 768) {
-                        this.$el.scrollIntoView({ behavior: 'smooth', block: 'start'})
-                    }
-                } else {
-                    if (window.innerWidth < 768) {
-                        this.currentTab = '';
-                    }
                 }
-                window.addEventListener('resize', () => {
-                    if (window.innerWidth >= 768) {
-                        this.currentTab = code;
-                    }
-                })
             },
-            scroll(){
-                this.$refs.tabs.scrollIntoView({block: "center", behavior: "smooth"});
-                this.showTab('features')
-            }
         },
-        created(){
-            this.$eventBus.$on("click", this.scroll)
+        computed: {
+            questionsAnswers() {
+                return this.questions
+            }
         }
     }
 </script>

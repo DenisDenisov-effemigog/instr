@@ -81,27 +81,16 @@
             </ul>
         </div>
     </template>
-    <template v-slot:questions>
+    {# <template v-slot:questions>
         <div class="product-tabs__content-answer">
             <form class="product-tabs__form">
                 <div class="product-tabs__content-title">Задайте вопрос о товаре</div>
-                <input class="product-tabs__input" type="text">
+                <textarea class="product-tabs__input" type="text" placeholder="Напишите свой вопрос"></textarea>
+                <input class="product-tabs__input-email" type="email" placeholder="Email для ответа">
+                <button class="product-tabs__button">Отправить вопрос</button>
             </form>
-            {% for question in product.questions %}
-                <div class="product-tabs__answer">
-                    <div class="product-tabs__content-title">{{question.name}}</div>
-                    <div class="product-tabs__question">
-                        <svg  viewBox="0 0 18 18">
-                            <use :xlink:href="templatePath + 'images/sprite.svg#icons__question'"></use>
-                        </svg>
-                        <div class="product-tabs__content-subtitle">{{question.question}}</div>
-                    </div>
-                    <div class="product-tabs__answer-text">
-                        {{question.answer}}
-                        <span class="product-tabs__text-prompt">… <span>Читать полностью</span></span>       
-                    </div>    
-                </div>
-            {% endfor %}
         </div>
-    </template>
+        <component is="product-tabs-questions" :questions="{{ product.questions|json_encode()|e('html_attr') }}">
+        <component>
+    </template> #}
 </component>
