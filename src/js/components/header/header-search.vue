@@ -17,11 +17,9 @@
         </div>
         <form action="" class="header__search-form">
             <input @focus="focus" type="text" class="header__search-input" :class="{'header__search-input_focused': focused}" placeholder="Поиск по сайту">
-            <div v-show="focused" @click="" class="header__search-form__btn">
-                 <svg class="header__search-form__btn-icon">
+                <svg v-show="focused" class="header__search-form-icon">
                     <use :xlink:href="templatePath + 'images/sprite.svg#icons__mag'"></use>
                 </svg>
-            </div>
             <search
                 :focused=focused
             ></search>
