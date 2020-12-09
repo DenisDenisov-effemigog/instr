@@ -1,7 +1,7 @@
 <template>
     <div
         class="to-compare"
-        :class="{'to-compare--active': inCompare, 'to-compare--mobile': mobile}"
+        :class="{'to-compare_active': inCompare, 'to-compare--mobile': mobile}"
         @click="inCompare = !inCompare"
     >
         <svg viewBox="0 0 18 15">

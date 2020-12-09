@@ -5,7 +5,7 @@
                 <a
                     href="#"
                     class="header__menu-link"
-                    :class="{'header__menu-link--active': menuLink === 'home'}"
+                    :class="{'header__menu-link_active': menuLink === 'home'}"
                     @click.prevent="clickMenu('home')"
                 >
                     <svg class="header__menu-icon">
@@ -17,7 +17,7 @@
             <li class="header__menu-item">
                 <a
                     class="header__menu-link"
-                    :class="{'header__menu-link--active': menuLink === 'catalog' || menuLink === 'search'}"
+                    :class="{'header__menu-link_active': menuLink === 'catalog' || menuLink === 'search'}"
                     @click.prevent="clickMenu('catalog')"
                 >
                     <svg class="header__menu-icon">

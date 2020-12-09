@@ -48,7 +48,7 @@
                     <a 
                         href="#" 
                         class="catalogue__further-subcategory"
-                        :class="{'catalogue__further-subcategory--active': selectedCategory === category}"
+                        :class="{'catalogue__further-subcategory_active': selectedCategory === category}"
                     >{{category}}</a>
                     <svg v-if="selectedCategory === category">
                         <use :xlink:href="templatePath + 'images/sprite.svg#check'"></use>

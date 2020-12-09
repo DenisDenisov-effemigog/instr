@@ -1,7 +1,7 @@
 <template>
     <div
         class="in-favorite"
-        :class="{'in-favorite--active': inFavorite, 'in-favorite--mobile': mobile}"
+        :class="{'in-favorite_active': inFavorite, 'in-favorite--mobile': mobile}"
         @click="inFavorite = !inFavorite"
     >
         <!--<svg viewbox="0 0 18 15">
