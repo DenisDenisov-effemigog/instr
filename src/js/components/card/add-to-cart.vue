@@ -19,6 +19,7 @@
                 :value="amount"
             > 
             <span v-else class="add-to-cart__amount">
+                <span v-if="text">{{ text }}</span>
                 <template>{{ amount }} шт.</template>
             </span>
             
@@ -64,6 +65,11 @@
             changeIcon: {
                 type: Boolean,
                 default: false,
+            },
+            text: {
+                type: String,
+                default: '',
+                required: false,
             },
         },
         data() {
