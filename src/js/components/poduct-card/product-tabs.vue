@@ -1,16 +1,21 @@
 <template>
     <div class="product-tabs">
-        <div class="container">
+        <div 
+            @touchstart="touchStart"
+            @touchmove="touchMove"
+            @touchend="touchEnd"
+            class="container">
             <div ref="tabs" class="product-tabs__tabs"
                 :class="{'product-tabs__tabs_center': currentTab === 'description', 
                     'product-tabs__tabs_end': currentTab === 'questions'}">
                 <div
+                    transition ="a"
                     v-if="features"
                     class="product-tabs__tab"
                     :class="{'product-tabs__tab_active': currentTab === 'features'}"
                     @click.prevent="showTab('features')"
                 >
-                    Характеристики
+                        Характеристики
                 </div>
                 <div
                     v-if="description"
@@ -60,6 +65,8 @@
             },
         data() {
             return {
+                startTouch:0,
+                moveTouch:0,
                 currentTab: this.description ? 'features' : 'description',
             }
         },
@@ -75,6 +82,37 @@
                 let targetOffsetTop = target.offsetTop - headerHeigth;    
                 window.scroll({top: targetOffsetTop, behavior: 'smooth'});
                 this.showTab('features')
+            },
+            touchStart(e){
+                this.startTouch = e.changedTouches[0].pageX
+            },
+            touchMove(e){
+                this.moveTouch = e.changedTouches[0].pageX
+            },
+            touchEnd(){
+                if(this.startTouch > this.moveTouch){
+                    switch(this.currentTab){
+                        case 'features':
+                            this.currentTab = 'description';
+                            break;
+                        case 'description':
+                            this.currentTab = 'questions';
+                            break;
+                        case 'questions':
+                            break;
+                    }
+                }else{
+                    switch(this.currentTab){
+                        case 'questions':
+                            this.currentTab = 'description';
+                            break;
+                        case 'description':
+                            this.currentTab = 'features';
+                            break;
+                        case 'features':
+                            break;
+                    }
+                }
             }
         },
         computed: {
