@@ -1,13 +1,13 @@
 .sticky-card
     background: #fff
-    opacity: 0
+    transform: translateY(-100%)
+    position: fixed
+    width: 100%
+    top: 0
+    z-index: 1000
+    transition-duration: .3s
     &--fixed
-        position: fixed
-        width: 100%
-        top: 0
-        opacity: 1
-        transition: 0.3s
-        z-index: 1000
+        transform: translateY(0%)
     & > .container
         display: flex
         align-items: center
