@@ -69,7 +69,7 @@ export default {
             this.openedCountry = !this.openedCountry
             document.querySelector('body').classList.toggle('body-fixed')
             if(document.querySelector('body').classList.contains('body-fixed')){
-                document.querySelector('html').style.overflow = 'scroll';
+                document.querySelector('html').style.overflow = 'hidden';
             }else{
                 document.querySelector('html').style.overflow = 'auto';
             }

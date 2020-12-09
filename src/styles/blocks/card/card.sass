@@ -14,7 +14,7 @@
         +desktop
             border-left: 1px solid $border-color 
     &:hover
-        box-shadow: 0 5px 15px 0 rgba($black-real, .08)
+        border-color: $light-grey
     &__header
         display: flex
         justify-content: space-between
@@ -24,12 +24,17 @@
         margin-bottom: 16px
         &--short-card
             margin-bottom: 0
+        &_in-favorite
+            +mobile
+                display: none !important  
     &__menu-tooltip
         @extend .tooltip
         right: 0
         top: 46px
         display: flex
         svg
+            +tablet
+                display: none
             fill: $icon-grey
             width: 0.5rem
             height: 0.5rem
@@ -66,6 +71,8 @@
                 flex-shrink: 0
                 margin-left: 16px
                 cursor: pointer
+                +tablet
+                    display: none
                 &:hover
                     fill: $icon-medium-grey
             &-open
@@ -75,29 +82,6 @@
                 right: 0
                 &::before
                     left: calc(90% - 8px)
-    &__favorite-btn
-        display: none
-        cursor: pointer
-        +desktop
-            display: block
-        svg
-            fill: $icon-grey
-            width: $size_19
-            height: $size_16
-        &:hover svg
-            fill: $icon-black
-        &--active svg,
-        &--active:hover svg
-            fill: $primary-red
-        &__mobile
-            padding-top: 1rem
-            display: flex
-            align-items: center
-            & svg
-                width: $size_12
-                height: $size_10
-            span
-                padding-left: 0.5rem
     &__image-block
         width: 156px
         margin: 16px auto
@@ -135,29 +119,9 @@
         display: flex
         justify-content: space-between
         align-items: center
-    &__compare-btn
-        display: none
-        cursor: pointer
-        +desktop
-            display: block
-        & svg
-            fill: $icon-grey
-            width: $size_14
-            height: $size_16
-        &:hover svg
-            fill: $icon-black
-        &--active svg,
-        &--active:hover svg
-            fill: $primary-red
-        &__mobile
-            padding-top: 0.75rem
-            display: flex
-            align-items: center
-            svg
-                width: $size_12
-                height: $size_10
-            span
-                padding-left: 0.5rem
+        &_to-compare
+            +mobile
+            display: none !important
     &__menu-btn
         width: 32px
         height: 32px

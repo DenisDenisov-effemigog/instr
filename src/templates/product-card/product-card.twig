@@ -2,22 +2,16 @@
 	<div class="product-card__title">Аккумуляторная бесщеточная дрель-шуруповерт DENZEL BLDL-IB-18-02, Li-Ion, 18 В, 1.5 А*ч, 2 аккумулятора</div>
 	<div class="product-card__header">
 		<div class="product-card__favorite-btn">
-			<svg viewbox="0 0 18 15">
-				<use xlink:href="./images/sprite.svg#icons__heart"></use>
-			</svg>
-			<span>В избранное</span>
+			<component is="in-favorite" :text="true"></component>
 		</div>
 		<div class="product-card__compare-btn">
-			<svg viewbox="0 0 18 15">
-				<use xlink:href="./images/sprite.svg#icons__graf"></use>
-			</svg>
-			<span>Сравнить</span>
+            <component is="to-compare" :text="true"></component>
 		</div>
 		<component is="product-card-article"></component>
 	</div>
 	<div class="product-card__content">
 		<div class="product-card__slider">
-            <div class="product-card__slider_stickers">
+            <div class="product-card__slider_header">
                 <div class="product-card__stickers">
                     <div class="product-card__stickers_sticker-wrap">
                         <div
@@ -34,21 +28,24 @@
                         </div>
                     </div>
                 </div>
+                <div class="product-card__actions">
+                    <component is="to-compare"></component>
+                    <component is="in-favorite"></component>
+                </div>
             </div>
 			<component is="product-card-slider"></component>
             <div class="product-card__slider_media">
                 <div class="product-card__media-buttons">
-                    <div class="product-card__media-buttons_button">
-                        <svg>
-                            <use :xlink:href="templatePath + 'images/sprite.svg#buttons__play-btn'"></use>
-                        </svg>
-                    </div>
-                    <div class="product-card__media-buttons_button">
-
-                        <svg>
-                            <use :xlink:href="templatePath + 'images/sprite.svg#buttons__around-photo'"></use>
-                        </svg>
-                    </div>
+                    <component is="media-button"
+                               :svg="'play-btn'"
+                               :action="'openVideo'"
+                               :link="'Тут будет видео'"
+                    ></component>
+                    <component is="media-button"
+                               :svg="'around-photo'"
+                               :action="'openThreeD'"
+                               :link="'Тут будет 3D фото'"
+                    ></component>
                 </div>
             </div>
 		</div>
@@ -96,12 +93,18 @@
 				</ul>
 				<component is="product-info-all"></component>
 				<div class="product-info__brand">
-					<div class="product-info__brand-logo">
-						<img src="./demo_images/product-card/logo.png">
-					</div>
-					<div class="product-info__brand-shield">
-						<img src="./demo_images/product-card/shield.png">
-					</div>
+					<a href="#" class="product-info__brand-logo">
+						<img src="./demo_images/product-card/logo.svg">
+					</a>
+					<a href="#" class="product-info__assurance">
+						<svg class="product-info__assurance-icon">
+                            <use :xlink:href="templatePath + 'images/sprite.svg#icons__shield'"></use>
+                        </svg>
+						<div class="product-info__assurance-text">
+							<span>3 года</span>
+							<span>Гарантии</span>
+						</div>
+					</a>
 				</div>
 			</div>
 			<div class="product-order">
@@ -132,8 +135,8 @@
 								<svg>
 									<use :xlink:href="templatePath + 'images/sprite.svg#icons__info'"></use>
 								</svg>
+								<div class="product-order__item-tooltip">Информация о скидке</div>
 							</div>
-							<div class="product-order__item-tooltip">Информация о скидке</div>
 							<p class="product-order__price">819.27 RON</p>
 						</li>
 						<li class="product-order__item product-order__item--discount-blue">
@@ -142,8 +145,8 @@
 								<svg>
 									<use :xlink:href="templatePath + 'images/sprite.svg#icons__info'"></use>
 								</svg>
+								<div class="product-order__item-tooltip">Информация о скидке</div>
 							</div>
-							<div class="product-order__item-tooltip">Информация о скидке</div>
 							<p class="product-order__price">19.27 RON</p>
 						</li>
 						<li class="product-order__item product-order__item--total">
@@ -162,4 +165,3 @@
 		</div>
 	</div>
 </div>
-<component is="sticky-card"></component>

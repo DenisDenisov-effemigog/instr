@@ -92,9 +92,7 @@ export default {
     },
     methods: {
         openModal(){
-            if (window.innerWidth > 760) {
-                this.$eventBus.$emit("openModal", 'product-card', this.productImages) 
-            }
+            this.$eventBus.$emit("openModal", 'product-card', this.productImages)
         }
     },
     mounted() {

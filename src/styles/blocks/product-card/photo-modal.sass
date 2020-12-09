@@ -1,20 +1,43 @@
 .photo-modal
     margin: 0 auto
-    width: 638px
+    max-width: 638px
     height: 100%
     &__main
         max-height: calc(100vh - 292px)
         &_slide
-            max-width: 100%
-            max-height: 100%
             outline: none
-    &__previous
-        width: 352px
-        position: relative
-        &_slide
-            max-width: 56px
-            height: 56px
-            outline: none
+            padding: 0 15%
         &_arrow
-            width: 8px
-            height: 14px
+            width: 30px
+            height: 28px
+            fill: $light-grey
+            +absolute-center-x
+            &--prev
+                left: -42px
+            &--next
+                right: -52px
+    &__previous
+        max-width: 352px
+        position: relative
+        margin: 24px auto 0
+        &_slide
+            outline: none
+            max-width: 40px
+            height: 40px
+            box-shadow: 0 5px 15px 0 rgba($black-real, 0.08)
+            +desktop
+                max-width: 56px
+                height: 56px
+        &_arrow
+            width: 9px
+            height: 15px
+            fill: $light-grey
+            +absolute-center-x
+            &--prev
+                left: -30px
+            &--next
+                right: -3px
+
+        & .slick-current .photo-modal__previous_slide
+            border: 1px solid $light-grey
+            border-radius: 4px

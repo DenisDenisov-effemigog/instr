@@ -69,6 +69,13 @@
                     this.currentTab = code;
                 }
             },
+            scroll(){
+                var target = this.$refs.tabs;
+                let headerHeigth = document.querySelector('.header').offsetHeight
+                let targetOffsetTop = target.offsetTop - headerHeigth;    
+                window.scroll({top: targetOffsetTop, behavior: 'smooth'});
+                this.showTab('features')
+            }
         },
         computed: {
             questionsAnswers() {

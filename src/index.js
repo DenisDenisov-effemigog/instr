@@ -14,6 +14,7 @@ import stickyHeader from '../src/js/components/header/sticky-header.vue';
 import topnavSwitch from '../src/js/components/topnav/topnav-switch.vue';
 import sliderMain from '../src/js/components/main-page/slider-main.vue';
 import sliderPromo from '../src/js/components/main-page/slider-promo.vue';
+import sliderPromoModal from '../src/js/components/main-page/slider-promo-modal.vue';
 import sliderCards from '../src/js/components/main-page/slider-cards.vue';
 import card from '../src/js/components/card/card.vue';
 import sliderPhotoCard from './js/components/card/slider-photo-card.vue';
@@ -35,6 +36,9 @@ import catalogue from '../src/js/components/catalogue/catalogue.vue';
 import mobileMenu from '../src/js/components/mobile-menu.vue';
 import stickyMenu from '../src/js/components/sticky-menu.vue';
 import stickyMobileButton from '../src/js/components/sticky-mobile-button.vue';
+import inFavorite from '../src/js/components/in-favorite.vue';
+import toCompare from '../src/js/components/to-compare.vue';
+import mediaButton from '../src/js/components/media-button.vue';
 
 Vue.prototype.$eventBus = new Vue();
 
@@ -78,6 +82,10 @@ const app = new Vue({
         photoModal,
         productInfoAll,
         stickyCard,
+        sliderPromoModal,
+        inFavorite,
+        toCompare,
+        mediaButton,
     },
     mounted() {
     }

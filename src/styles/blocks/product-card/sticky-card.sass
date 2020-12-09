@@ -1,8 +1,17 @@
 .sticky-card
-    background: fff
+    background: #fff
+    opacity: 0
+    &--fixed
+        position: fixed
+        width: 100%
+        top: 0
+        opacity: 1
+        transition: 0.3s
+        z-index: 1000
     & > .container
         display: flex
         align-items: center
+        padding: 0.5rem 0
     &__img
         width: 4rem
         height: 4rem
