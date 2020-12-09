@@ -68,11 +68,10 @@
             openTooltip(e){
                 let elemPositionTop = e.target.getBoundingClientRect().top.toFixed(0)
                 let elemPositionLeft = e.target.getBoundingClientRect().left.toFixed(0)
-                var x = e.pageX - elemPositionLeft;
-                var y = e.pageY - elemPositionTop;
-                console.log(x)
+                var x = (e.pageX - elemPositionLeft).toFixed(0);
+                var y = (Number(e.pageY) - (Number(elemPositionTop) + Number(window.pageYOffset))).toFixed(0)
                 console.log(y)
-                console.log(elemPositionTop)
+                console.log(x)
             },
             closeTooltip(){
 

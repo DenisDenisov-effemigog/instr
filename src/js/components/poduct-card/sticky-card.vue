@@ -1,5 +1,5 @@
 <template>
-    <div v-show="flag" class="sticky-card" :class="{'sticky-card--fixed': flag}">
+    <div class="sticky-card" :class="{'sticky-card--fixed': flag}">
         <div class="container">
             <div class="sticky-card__img">
                 <img src="./demo_images/product/image_51.png" alt="">
@@ -44,13 +44,13 @@ export default {
     methods:{
         mouseWheel(){
              if(window.innerWidth > 768) {
-                let productCard = document.querySelector('.product-card')
-                if(productCard !== null){
+                let productOrder = document.querySelector('.product-order__wrapper')
+                if(productOrder !== null){
                     let headerHeigth = document.querySelector('.header').offsetHeight
-                    let productCardPosition = productCard.offsetTop + productCard.clientHeight
+                    let productOrderPosition = productOrder.offsetTop + productOrder.clientHeight
                     let windowPosition = window.pageYOffset
 
-                    if(windowPosition > productCardPosition){
+                    if(windowPosition > productOrderPosition){
                         this.flag = true
                         this.$eventBus.$emit('openStickyCard')
                     }else{
