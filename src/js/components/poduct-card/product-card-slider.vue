@@ -29,7 +29,7 @@
         >
             <div class="product-card-slider__main_slide"
                  v-for="productImage in productImages">
-                <img :src="productImage.img" alt="" @click="openModal">
+                <img :class="{'hover': flag}" :src="productImage.img" alt="" @click="openModal" @mouseenter="hoverOn" @mouseleave="hoverOff">
             </div>
         </VueSlickCarousel>
     </div>
@@ -45,6 +45,7 @@ export default {
     },
     data() {
         return {
+            flag: false,
             settings: {
                 dots: false,
                 arrows: false,
@@ -93,6 +94,16 @@ export default {
     methods: {
         openModal(){
             this.$eventBus.$emit("openModal", 'product-card', this.productImages)
+        },
+        hoverOn(){
+            this.flag = true
+            let productStickers = document.querySelector('.product-card__stickers')
+            productStickers.classList.add('product-card__stickers--close')
+        },
+        hoverOff(){
+            this.flag = false
+            let productStickers = document.querySelector('.product-card__stickers')
+            productStickers.classList.remove('product-card__stickers--close')
         }
     },
     mounted() {
