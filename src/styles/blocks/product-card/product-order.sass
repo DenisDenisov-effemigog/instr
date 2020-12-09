@@ -18,11 +18,21 @@
         padding: 1.5rem
         border: 1px solid $border-color
         
-        & .add-to-cart__button,
-        .add-to-cart__in-cart
+        & .add-to-cart__button
+            width: 56px
+            height: 100%
+        & .add-to-cart__in-cart
+            border: 1px solid #e5e5e5
             height: 56px
+        &  .add-to-cart
+            padding-right: 0
         &  .add-to-cart__add
             padding: 18px 34px
+        & .add-to-cart__amount
+            width: 100%
+            font-weight: 600
+            & > span
+                color: $grey
     &__icon
         width: $size_20
         height: $size_20
