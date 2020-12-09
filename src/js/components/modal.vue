@@ -1,8 +1,8 @@
 <template>
     <div v-show="openFlag" class="modal">
+        <div class="modal-bg" @click="closeOutside"></div>
         <div class="modal-wrapper"
              :class="{'modal-wrapper--big': modal !== 'promo'}"
-             v-click-outside="closeOutside"
         >
             <div class="modal-desc" v-if="modal === 'promo'">
                 <h3 class="modal-title">Третий в подарок!</h3>
@@ -66,10 +66,11 @@ export default {
             document.querySelector('.page').classList.remove('page_fixed');
             document.querySelector('html').style.overflow = 'auto';
         },
-        closeOutside() {
-            // let vm = this
-            // vm.openFalg = false
-            this.closeModal
+        closeOutside(event) {
+            console.log(event.toElement.className)
+            if(event.toElement.className !== '') {
+                this.closeModal() 
+            }
         }
     },
     computed: {
