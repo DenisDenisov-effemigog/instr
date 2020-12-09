@@ -2,42 +2,93 @@
     margin: 0 auto
     max-width: 638px
     height: 100%
+    &__title
+        @extend .title-4
+        margin-bottom: 24px
+        +desktop
+            display: none
     &__main
         max-height: calc(100vh - 292px)
         &_slide
             outline: none
-            padding: 0 15%
+            +desktop
+                padding: 0 15%
+                box-shadow: 0 5px 15px 0 rgba($black-real, 0.08)
         &_arrow
-            width: 30px
-            height: 28px
-            fill: $light-grey
+            width: 20px
+            height: 20px
+            fill: $icon-grey
+            cursor: pointer
+            z-index: 1
             +absolute-center-x
+            +desktop
+                width: 30px
+                height: 28px
+                fill: $light-grey
+                &:hover
+                    fill: $grey
             &--prev
-                left: -42px
+                left: 0
+                +desktop
+                    left: -42px
             &--next
-                right: -52px
+                right: 0
+                +desktop
+                    right: -52px
     &__previous
-        max-width: 352px
+        max-width: 208px
         position: relative
-        margin: 24px auto 0
+        margin-right: 16px
+        +desktop
+            margin-right: 31px
+            max-width: 352px
         &_slide
             outline: none
             max-width: 40px
             height: 40px
-            box-shadow: 0 5px 15px 0 rgba($black-real, 0.08)
+            border: 1px solid transparent
+            border-radius: 4px
+            overflow: hidden
+            cursor: pointer
             +desktop
                 max-width: 56px
                 height: 56px
+                &:hover
+                    border-color: $border-color
         &_arrow
             width: 9px
             height: 15px
             fill: $light-grey
+            cursor: pointer
             +absolute-center-x
+            &:hover
+                fill: $grey
             &--prev
                 left: -30px
             &--next
                 right: -3px
 
         & .slick-current .photo-modal__previous_slide
-            border: 1px solid $light-grey
-            border-radius: 4px
+            border-color: $light-grey
+            
+    &__footer
+        +flex-container-center
+        width: 328px
+        margin-top: 24px
+        +desktop
+            width: 638px
+        .media-button
+            margin-bottom: 0
+            +mobile
+                width: 40px
+                height: 40px
+                background: transparent
+                svg
+                    fill: $icon-black
+                    //width: 26px
+                    //height: 26px
+            &:first-child
+                margin-right: 16px
+                +desktop
+                    margin-right: 24px
+        

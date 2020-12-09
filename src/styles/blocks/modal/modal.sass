@@ -19,10 +19,15 @@
         &--big
             width: 90%
             max-height: 90%
-            padding: 56px
+            padding: 64px 16px 85px
+            +desktop
+                padding: 56px
             .modal__close
-                top: 56px
-                right: 56px
+                top: 38px
+                right: 16px
+                +desktop
+                    top: 56px
+                    right: 56px
     &-title
         @extend .title-2
         font-size: 1.25rem
@@ -41,14 +46,26 @@
         span
             margin-right: 16px
             color: $grey
+            +mobile
+                display: none
         &-icon
             width: $size_12
             height: $size_12
             fill: #999
             &--black
-                fill: $icon-black
-                width: 16px
-                height: 16px
+                width: $size_12
+                height: $size_12
+                fill: #999
+                +desktop
+                    fill: $icon-black
+                    width: 16px
+                    height: 16px
+    &__video
+        margin: 0 auto
+        width: 80%
+        iframe
+            width: 100%
+            height: 500px
                 
         
 
