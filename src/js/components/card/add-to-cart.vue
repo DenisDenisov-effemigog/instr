@@ -90,6 +90,7 @@
         created() {
             window.addEventListener('resize', this.updateWidth);
             this.updateWidth()
+            window.addEventListener('scroll', this.mobileScroll);
         },
         methods: {
             decrease() {
@@ -120,6 +121,18 @@
                     }
                 }
             },
+            mobileScroll(){
+                if(window.innerWidth < 768) {
+                    let productOrder = document.querySelector('.product-order__wrapper')
+                    let productOrderPosition = productOrder.offsetTop + (productOrder.clientHeight - 24)
+                    let windowPosition = window.pageYOffset
+                    if(windowPosition > productOrderPosition){
+                        this.$eventBus.$emit('openStickyButton', 'Добавить в корзину')
+                    }else{
+                        this.$eventBus.$emit('closeStickyButton')
+                    }
+                }
+            }
         }
     }
 </script>
