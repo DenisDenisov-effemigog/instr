@@ -85,6 +85,11 @@
                 left: 0
                 bottom: 0
     &__stickers
+        opacity: 1
+        transition: .3s
+        &--close
+            opacity: 0
+            transition: .3s
         +stickers
         .product-card__stickers_sticker
             +mobile
