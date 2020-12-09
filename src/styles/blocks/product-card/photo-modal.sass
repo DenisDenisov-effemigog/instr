@@ -11,7 +11,10 @@
             width: 30px
             height: 28px
             fill: $light-grey
+            cursor: pointer
             +absolute-center-x
+            &:hover
+                fill: $grey
             &--prev
                 left: -42px
             &--next
@@ -25,6 +28,7 @@
             max-width: 40px
             height: 40px
             box-shadow: 0 5px 15px 0 rgba($black-real, 0.08)
+            @extend .product-card-slider__previous_slide
             +desktop
                 max-width: 56px
                 height: 56px
@@ -32,7 +36,10 @@
             width: 9px
             height: 15px
             fill: $light-grey
+            cursor: pointer
             +absolute-center-x
+            &:hover
+                fill: $grey
             &--prev
                 left: -30px
             &--next
