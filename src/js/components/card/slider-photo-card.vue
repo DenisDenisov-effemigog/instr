@@ -38,12 +38,6 @@ export default {
     },
     data() {
         return {
-            /*slides: [
-                {id: 1, img: './demo_images/product/image_50.png', link: ''},
-                {id: 2, img: './demo_images/product/image_51.png', link: ''},
-                {id: 3, img: './demo_images/product/image_52.png', link: ''},
-                {id: 4, img: './demo_images/product/image_53.png', link: ''},
-            ],*/
             currentSlide: 1,
             startTouch:0,
             moveTouch:0

@@ -36,6 +36,12 @@ import productInfoAll from './components/poduct-card/product-info-all.vue';
 /*profile*/
 import profile from './components/profile/profile.vue';
 import profileMenuMobile from './components/profile/profile-menu-mobile.vue';
+import pagePersonal from './components/profile/page-personal.vue';
+import pageOrders from './components/profile/page-orders.vue';
+import pageCheck from './components/profile/page-check.vue';
+import pageAddress from './components/profile/page-address.vue';
+import pageFavorite from './components/profile/page-favorite.vue';
+import pageActions from './components/profile/page-actions.vue';
 
 export default {
     components: {
@@ -70,5 +76,11 @@ export default {
         mediaButton,
         profile,
         profileMenuMobile,
+        pagePersonal,
+        pageOrders,
+        pageCheck,
+        pageAddress,
+        pageFavorite,
+        pageActions,
     },
 }
