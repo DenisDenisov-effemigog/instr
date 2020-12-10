@@ -8,7 +8,7 @@
                        :countries="countries" 
                        v-if="menuLink === 'home'"
             ></component>
-            <component is="profile-menu-mobile" v-if="menuLink === 'profile'"></component>
+<!--            <component is="profile-menu-mobile" v-if="menuLink === 'profile'"></component>-->
         </div>
     </div>
 </template>

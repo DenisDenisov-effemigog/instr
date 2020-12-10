@@ -39,31 +39,20 @@
             right: 1rem
             width: 6px
             height: 10px
-            fill: $icon-grey
-    &__divide
-        width: calc(100% + 2rem)
-        margin: .5rem -1rem .25rem -1rem
-        border-bottom: 1px solid $border-color_4
-        +tablet
+            fill: $icon-black
+    &__menu-mobile
+        margin-top: 8px
+        +desktop
             display: none
-    &__bottom
-        align-items: center
-        width: calc(100% + 2rem)
-        margin: 0 -1rem 4.375rem -1rem
-        +tablet
-            display: none
-    &__bottom-item
-        @extend .text-2
-        display: flex
-        align-items: center
-        padding: 1rem 10rem 1rem 1.75rem
-        color: $grey
-        svg
-            width: $size_20
-            height: $size_20
-            fill: $icon-grey
-            margin-right: .5rem
-
+        &_link
+            color: $grey
+            font-size: 14px
+            padding: 18px
+            & svg
+                fill: $icon-grey
+                width: 15px
+                height: 15px
+                margin-right: 11px
     &__content
         display: none
         +tablet

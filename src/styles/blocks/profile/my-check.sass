@@ -1,0 +1,67 @@
+.my-check
+    &__title
+        @extend .order__title
+    &__info
+        @extend .order__info
+        &-icon
+            @extend .order__info-icon
+            & svg
+                width: $size_18
+                height: $size_18
+    &__main
+        padding-top: 2rem
+    &__item
+        @extend .text-2
+        display: flex
+        padding: 1rem
+        border-bottom: 1px solid $border-color
+        +mobile
+            flex-wrap: wrap
+            justify-content: space-between
+        &--head
+            background: #F9FAFB
+            border: none
+            +mobile
+                display: none
+    &__sum
+        &--red
+            color: $primary-hover
+        +tablet
+            flex: 1
+            max-width: 9.813rem
+        +mobile
+            order: 1
+            width: 30%
+    &__date
+        +tablet
+            flex: 1
+            max-width: 14.875rem
+        +mobile
+            order: 3
+            font-size: $font-size_4
+            width: 45%
+            padding-top: 0.5rem
+            color: $light-grey
+    &__operation
+        +tablet
+            flex: 1
+        +mobile
+            order: 2
+    &__code
+        color: $blue
+        &--head
+            color: $black
+        +tablet
+            flex: 1
+            display: flex
+            justify-content: flex-end
+        +mobile
+            display: none
+    &__order
+        order: 4
+        color: $blue
+        padding-top: 0.5rem
+        +tablet
+            display: none
+
+    
