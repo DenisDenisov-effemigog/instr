@@ -2,7 +2,8 @@
     <div v-show="openFlag" class="modal">
         <div class="modal-wrapper"
              :class="{'modal-wrapper--big': modal !== 'promo'}"
-             v-click-outside="closeOutside"
+              v-click-outside="closeOutside"
+             
         >
             <div class="modal-desc" v-if="modal === 'promo'">
                 <h3 class="modal-title">Третий в подарок!</h3>
@@ -70,6 +71,7 @@ export default {
             // let vm = this
             // vm.openFalg = false
             this.closeModal
+            console.log('outside')
         }
     },
     computed: {
@@ -80,7 +82,10 @@ export default {
                 document.querySelector('html').style.overflow = 'auto';
             } 
         }
-    }
+    },
+    mounted() {
+        this.popupItem = this.$el
+    },
     
 }
 </script>
