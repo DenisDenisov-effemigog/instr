@@ -1,7 +1,7 @@
 <template>
     <div class="profile">
         <div class="profile__menu" v-if="showMenu">
-            <ul>
+            <ul class="profile__menu-list">
                 <li class="profile__menu-link"
                     :class="{'profile__menu-link_active': currentPage === 'my-profile'}"
                     @click.prevent="openPage('my-profile')">

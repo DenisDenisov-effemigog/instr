@@ -14,6 +14,14 @@
             margin: 0 1rem 0 -1rem
         +widescreen
             margin: 0 3.5rem 0 -3.5rem
+    &__menu-list
+        &::after
+            content: ''
+            display: block
+            margin-top: .5rem
+            border-bottom: 1px solid $border-color_4
+            +tablet
+                content: unset
     &__menu-link
         @extend .text-2
         position: relative
@@ -39,12 +47,13 @@
             right: 1rem
             width: 6px
             height: 10px
-            fill: $icon-black
+            fill: $icon-grey
     &__menu-mobile
-        margin-top: 8px
         +desktop
             display: none
         &_link
+            display: flex
+            align-items: center
             color: $grey
             font-size: 14px
             padding: 18px
