@@ -73,8 +73,8 @@ export default {
                 this.$eventBus.$emit("open-catalogue", true);
                 this.$eventBus.$emit('exitSearch', true);
             } else if (this.menuLink === 'profile') {
-                this.$eventBus.$emit('open-menu', menu);
-                this.$eventBus.$emit('exitSearch', false);
+                // this.$eventBus.$emit('open-menu', menu);
+                // this.$eventBus.$emit('exitSearch', false);
             } else {
                 this.$eventBus.$emit("close-catalogue", false);
                 document.querySelector('html').style.overflow = 'auto';

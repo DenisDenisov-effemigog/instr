@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="personalcab">
         <div class="personalcab__layout">
             <div class="personalcab__flex_space">
 
