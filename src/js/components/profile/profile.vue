@@ -1,5 +1,16 @@
 <template>
     <div class="profile">
+        <!-- <div class="profile__company-wrapper">
+            <div class="profile__company-logo">
+                <svg viewBox="0 0 72 72">
+                    <use :xlink:href="templatePath + 'images/sprite.svg#company-logo'"></use>
+                </svg>
+            </div>
+            <div class="profile__company">
+                <h3 class="profile__company-name">{{profile.company.name}}</h3>
+                <p class="profile__company-type">Юридическое лицо</p>
+            </div>
+        </div> -->
         <ul class="profile__menu">
             <li class="profile__menu-link"
                 :class="{'profile__menu-link_active': currentPage == 'my-profile'}" 
@@ -50,6 +61,27 @@
                 </svg>
             </li>
         </ul>
+        <div class="profile__divide"></div>
+        <ul class="profile__bottom">
+            <li class="profile__bottom-item">
+                <svg class="" viewBox="0 0 20 20">
+                    <use :xlink:href="templatePath + 'images/sprite.svg#icons__call-menu'"></use>
+                </svg>
+                <span>+4 0371 166 478</span>
+            </li>
+            <li class="profile__bottom-item">
+                <svg class="" viewBox="0 0 20 20">
+                    <use :xlink:href="templatePath + 'images/sprite.svg#icons__location-menu'"></use>
+                </svg>
+                <span>Москва</span>
+            </li>
+            <li class="profile__bottom-item">
+                <svg class="" viewBox="0 0 20 20">
+                    <use :xlink:href="templatePath + 'images/sprite.svg#icons__exit-menu'"></use>
+                </svg>
+                <span>Выйти</span>
+            </li>
+        </ul>
         <div class="profile__content">
             <div v-show="currentPage === 'my-profile'" class="profile__page">
                 <slot name="my-profile"></slot>
@@ -85,6 +117,9 @@ export default {
         };
     },
     computed: {
+        // profile() {
+        //     return this.profile
+        // }
     },
     watch: {
     },

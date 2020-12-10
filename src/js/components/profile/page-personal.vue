@@ -20,7 +20,7 @@
                     </svg>
                 </div>
                 <div class="profile__company">
-                    <h3 class="profile__company-name">{{profile.company.name}}</h3>
+                    <h3 class="profile__company-name">{{personal.company.name}}</h3>
                     <p class="profile__company-type">Юридическое лицо</p>
                 </div>
 
@@ -32,7 +32,7 @@
                     </svg>
                     <div>
                         <p class="personalcab__data">Контактное лицо</p>
-                        <div class="personalcab__data-value">{{profile.contact}}</div>
+                        <div class="personalcab__data-value">{{personal.contact}}</div>
                     </div>
                 </li>
                 <li class="personalcab__column">
@@ -41,7 +41,7 @@
                     </svg>
                     <div>
                         <p class="personalcab__data">Телефон</p>
-                        <div class="personalcab__data-value">{{profile.phone}}</div>
+                        <div class="personalcab__data-value">{{personal.phone}}</div>
                     </div>
                 </li>
                 <li class="personalcab__column">
@@ -50,7 +50,7 @@
                     </svg>
                     <div>
                         <p class="personalcab__data">Код доступа</p>
-                        <div class="personalcab__data-value">{{profile.code}}</div>
+                        <div class="personalcab__data-value">{{personal.code}}</div>
                     </div>
                 </li>
                 <li class="personalcab__column">
@@ -59,7 +59,7 @@
                     </svg>
                     <div>
                         <p class="personalcab__data">Компания</p>
-                        <div class="personalcab__data-value">{{profile.company.name}}</div>
+                        <div class="personalcab__data-value">{{personal.company.name}}</div>
                     </div>
                 </li>
                 <li class="personalcab__column">
@@ -68,7 +68,7 @@
                     </svg>
                     <div>
                         <p class="personalcab__data">Электронная почта</p>
-                        <div class="personalcab__data-value">{{profile.email}}</div>
+                        <div class="personalcab__data-value">{{personal.email}}</div>
                     </div>
                 </li>
                 <li class="personalcab__column">
@@ -77,7 +77,7 @@
                     </svg>
                     <div>
                         <p class="personalcab__data">Юридический адрес</p>
-                        <div class="personalcab__data-value">{{profile.address}}</div>
+                        <div class="personalcab__data-value">{{personal.address}}</div>
                     </div>
                 </li>
             </ul>
@@ -108,5 +108,12 @@ export default {
             type: Object,
         },
     },
+    computed: {
+        personal() {
+            return this.profile.personal
+        }
+
+    }
+
 }
 </script>

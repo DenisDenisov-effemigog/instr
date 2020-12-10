@@ -1,23 +1,37 @@
 .profile
     @extend .container
     display: flex
-    margin-top: 56px
-    margin-bottom: 104px
+    flex-direction: column
+    +tablet
+        flex-direction: row
+        margin-top: 56px
+        margin-bottom: 104px
     &__menu
-        @extend .column_width_3
-        margin: 0 3.5rem 0 -3.5rem
+        width: calc(100% + 2rem)
+        margin: 0 -1rem
+        +tablet
+            width: percentage(3 / 12)
+            margin: 0 1rem 0 -1rem
+        +widescreen
+            margin: 0 3.5rem 0 -3.5rem
     &__menu-link
         @extend .text-2
         position: relative
         padding: 1rem 10rem 1rem 1.75rem
+        color: $grey
+        cursor: pointer
         +tablet
-            pagging-right: 3rem
+            padding-right: 1.75rem
             font-size: $font-size
             line-height: $line-height
         &:hover
-            background-color: $pre-white
+            @extend .text_active
+            color: $black
+            svg
+               fill: $icon-black 
         &_active
             @extend .text_active
+            color: $black
             background-color: $pre-white
         svg
             position: absolute
@@ -25,17 +39,44 @@
             right: 1rem
             width: 6px
             height: 10px
-            fill: $icon-black
+            fill: $icon-grey
+    &__divide
+        width: calc(100% + 2rem)
+        margin: .5rem -1rem .25rem -1rem
+        border-bottom: 1px solid $border-color_4
+        +tablet
+            display: none
+    &__bottom
+        align-items: center
+        width: calc(100% + 2rem)
+        margin: 0 -1rem 4.375rem -1rem
+        +tablet
+            display: none
+    &__bottom-item
+        @extend .text-2
+        display: flex
+        align-items: center
+        padding: 1rem 10rem 1rem 1.75rem
+        color: $grey
+        svg
+            width: $size_20
+            height: $size_20
+            fill: $icon-grey
+            margin-right: .5rem
+
     &__content
-        @extend .column_width_9
+        display: none
+        +tablet
+            display: block
+            @extend .column_width_9
     &__page
         width: 100%
                 
     &__title
         @extend .title-5
-        margin-bottom: 1rem
+        margin-top: 1rem
         +tablet
-            margin: .75rem 0 1.5rem 0
+            margin-top: .75rem
     &__logo
         svg
             width: 4.5rem
@@ -56,6 +97,10 @@
             height: $size_20
             fill: $blue
             margin-right: .5rem
+    &__company-wrapper
+        display: flex
+        +tablet
+            display: none
     &__company
         margin-left: 1rem
     &__company-logo
