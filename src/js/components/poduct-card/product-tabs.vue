@@ -90,6 +90,8 @@
                 this.moveTouch = e.changedTouches[0].pageX
             },
             touchEnd(){
+                let a = document.querySelector('.product-tabs_content__container')
+                console.log(a)
                 if(this.startTouch > this.moveTouch){
                     switch(this.currentTab){
                         case 'features':
