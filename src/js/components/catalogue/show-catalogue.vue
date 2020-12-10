@@ -1,7 +1,7 @@
 <template>
     <div class="header__catalog">
         <div  class="header__catalog-mobile" @click.prevent="openMenu" v-if="!openedMenu">
-            <svg class="header__catalog-mobile-icon">
+            <svg class="header__catalog-mobile-icon" viewBox="0 0 24 24">
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__ham'"></use>
             </svg>
         </div>
@@ -77,9 +77,11 @@
                 this.$eventBus.$emit('open-menu', 'home');
                 this.$eventBus.$emit("hide-button");
             },
-            closeMenu() {
+            closeMenu(action) {
                 this.openedMenu = false;
-                this.$eventBus.$emit('close-menu');
+                if (action) {
+                    this.$eventBus.$emit('close-menu');
+                }
             },
             
         },

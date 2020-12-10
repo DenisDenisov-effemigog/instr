@@ -2,7 +2,7 @@
     <div class="sticky-card" :class="{'sticky-card--fixed': flag}">
         <div class="container">
             <div class="sticky-card__img">
-                <img src="./demo_images/product/image_51.png" alt="">
+                <img :src="templatePath + 'demo_images/product/image_51.png'" alt="">
             </div>
             <div class="sticky-card__desc">
                 <div class="sticky-card__stickers">

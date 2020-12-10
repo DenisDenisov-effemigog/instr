@@ -1,0 +1,164 @@
+.order
+    &__title
+        @extend .title-3
+    &__info
+        font-size: $font-size_4
+        margin-top: 3.125rem
+        background: $pre-white
+        padding: 1rem 1.188rem
+        display: flex
+        border-radius: 4px
+        +mobile
+            align-items: center
+        &-icon
+            padding-right: 0.625rem
+        & svg
+            width: $size_18
+            height: $size_18
+    &__select
+        font-size: $font-size_4
+        margin-top: 1.5rem
+        & select
+            width: 100%
+            padding: 0.75rem 1rem
+            border: 1px solid $border-color
+            box-sizing: border-box
+            border-radius: 2px
+            +tablet
+                max-width: 13.5rem
+    &__list
+        @extend .text-2
+        margin-top: 3.125rem
+    &__item
+        padding-bottom: 2.5rem
+    &__desc
+        padding: 0 1rem
+        padding-bottom: 1.25rem
+        display: flex
+        justify-content: space-between
+        align-items: center
+        border-bottom: 1px solid $border-color
+        +mobile
+            flex-wrap: wrap
+    &__number
+        +mobile
+            order: 1
+            width: 49%
+        +tablet
+            flex: 1
+            max-width: 6.25rem
+        font-weight: bold
+        color: $blue
+    &__date
+        +mobile
+            width: 50%
+            order: 3
+            padding-top: 0.625rem
+        +tablet
+            flex: 1
+            max-width: 7.5rem
+        color: $light-grey
+    &__status
+        +mobile
+            width: 65%
+            order: 5
+            font-size: $font-size_4
+            padding-top: 0.625rem
+        +tablet
+            flex: 1
+            max-width: 7.5rem
+        color: #049004
+    &__qty
+        +mobile
+            order: 2
+    &__price
+        +mobile
+            order: 4
+        +tablet
+            flex: 1
+            margin-right: 2.5rem
+            display: flex
+            justify-content: flex-end
+        font-weight: 700
+        font-size: $font-size
+    &__btn
+        +mobile
+            order: 7
+            width: 100%
+            margin-top: 0.625rem
+            justify-content: center
+        display: flex
+        border: 1px solid $light-grey
+        padding: 0.5rem
+        border-radius: 4px
+        &-icon
+            padding-right: 0.625rem
+            & svg
+                fill: $grey
+                width: $size_12
+                height: $size_12
+    &__arrow
+        +mobile
+            order: 6
+        +tablet
+            flex: 1
+            display: flex
+            justify-content: flex-end
+            max-width: 100px
+        & svg
+            width: $size_14
+            height: 0.5rem
+            fill: $light-grey
+    &__product-list
+        margin-top: 1.625rem
+    &__product-item
+        display: flex
+        justify-content: space-between
+        padding: 0 1rem
+        padding-bottom: 0.625rem
+        border-bottom: 1px solid $border-color
+        margin-bottom: 1.125rem
+        +mobile
+            flex-wrap: wrap
+    &__product-number
+        +tablet
+            flex: 1
+            max-width: 6.25rem
+        +mobile
+            width: 100%
+            color: $grey
+    &__product-desc
+        +tablet
+            flex: 2
+        +mobile
+            width: 100%
+            padding-top: 0.25rem
+    &__product-qty
+        +tablet
+            flex: 1
+            max-width: 5rem
+        +mobile
+            padding-top: 0.625rem
+            color: $grey
+    &__product-item-price
+        +tablet
+            flex: 1
+            max-width: 6.875rem
+        +mobile
+            display: none
+    &__product-all-price
+        +tablet
+            flex: 1
+        +mobile
+            font-weight: bold
+    &__product-discount
+        +tablet
+            flex: 1
+        +mobile
+            display: none
+    &__product-total-price
+        +tablet
+            flex: 1
+        +mobile
+            display: none
+        color: #049004

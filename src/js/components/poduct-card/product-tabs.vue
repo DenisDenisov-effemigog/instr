@@ -9,7 +9,6 @@
                 :class="{'product-tabs__tabs_center': currentTab === 'description', 
                     'product-tabs__tabs_end': currentTab === 'questions'}">
                 <div
-                    transition ="a"
                     v-if="features"
                     class="product-tabs__tab"
                     :class="{'product-tabs__tab_active': currentTab === 'features'}"
@@ -90,6 +89,8 @@
                 this.moveTouch = e.changedTouches[0].pageX
             },
             touchEnd(){
+                let a = document.querySelector('.product-tabs_content__container')
+                console.log(a)
                 if(this.startTouch > this.moveTouch){
                     switch(this.currentTab){
                         case 'features':

@@ -1,6 +1,6 @@
 <template>
-    <ul v-show="slides.length > 1" class="slider-photo-card__dots">
-        <li class="slider-photo-card__dot" :class="{'slider-photo-card__dot_active': dot.id == currentSlide}" v-for="dot in slides" :data-slide="dot.id">
+    <ul v-show="images.length > 1" class="slider-photo-card__dots">
+        <li class="slider-photo-card__dot" :class="{'slider-photo-card__dot_active': dot.id == currentSlide}" v-for="dot in images" :data-slide="dot.id">
         </li>
     </ul>
 </template>
@@ -9,7 +9,7 @@
 export default {
     name:"slider-photo-dots",
     props:{
-        slides:{
+        images:{
             type: Array
         },
         currentSlide:{

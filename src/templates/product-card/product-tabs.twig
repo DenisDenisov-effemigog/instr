@@ -23,9 +23,9 @@
                             {% if feature.country %}
                             <svg class="product-tabs__features-country" viewBox="0 0 36 24">
                                 {% if feature.country == 'Germany' %}
-                                    <use :xlink:href="templatePath + 'images/sprite.svg#countries__germany'"></use>
+                                    <use xlink:href="{{ templatePath }}images/sprite.svg#countries__germany"></use>
                                 {% elseif feature.country == 'China' %}
-                                    <use :xlink:href="templatePath + 'images/sprite.svg#countries__china'"></use>
+                                    <use xlink:href="{{ templatePath }}images/sprite.svg#countries__china"></use>
                                 {% endif %}
                             </svg>
                             {% endif %}
