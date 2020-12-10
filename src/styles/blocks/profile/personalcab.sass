@@ -5,15 +5,18 @@
             margin-bottom: 3.5rem
     &__flex
         display: flex
-        &_company
-            display: none
-            +tablet
-                display: flex
-                align-content: center
-                margin-bottom: 
-        &_space
+    &__company
+        display: none
+        +tablet
+            display: flex
+            align-items: center
+            margin-bottom: 2.1875rem
+    &__personal-data
+        margin-bottom: 1.5rem
+        +tablet
             display: flex
             justify-content: space-between
+            align-items: center
     &__columns
         @extend .columns
         flex-wrap: wrap

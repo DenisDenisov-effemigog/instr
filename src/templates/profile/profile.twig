@@ -1,18 +1,18 @@
 <component is="profile">
     <template v-slot:my-profile>
         <div class="personalcab__layout">
-            <div class="personalcab__flex_space">
+            <div class="personalcab__personal-data">
 
                 <h2 class="profile__title">Личные данные</h2>
                 <a href="" class="profile__link profile__link_title">
                     <svg viewBox="0 0 20 20">
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__download'"></use>
                     </svg>
-                    Выгрузить каталог
+                    <span>Выгрузить каталог</span>
                 </a>
 
             </div>
-            <div class="personalcab__flex_company">
+            <div class="personalcab__company">
 
                 <div class="profile__company-logo">
                     <svg viewBox="0 0 72 72">
@@ -23,7 +23,7 @@
                     <h3 class="profile__company-name">{{profile.company.name}}</h3>
                     <p class="profile__company-type">Юридическое лицо</p>
                 </div>
-                
+
             </div>
             <ul class="personalcab__columns">
                 <li class="personalcab__column">
@@ -93,7 +93,7 @@
                 <svg viewBox="0 0 20 20">
                     <use :xlink:href="templatePath + 'images/sprite.svg#icons__delete'"></use>
                 </svg>
-                Удалить профиль
+                <span>Удалить профиль</span>
             </a>
         </div>
     </template>
