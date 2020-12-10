@@ -1,0 +1,44 @@
+.personalcab
+    &__layout
+        margin-bottom: 2rem
+        +tablet
+            margin-bottom: 3.5rem
+    &__flex
+        display: flex
+    &__company
+        display: none
+        +tablet
+            display: flex
+            align-items: center
+            margin-bottom: 2.1875rem
+    &__personal-data
+        margin-bottom: 1.5rem
+        +tablet
+            display: flex
+            justify-content: space-between
+            align-items: center
+    &__columns
+        @extend .columns
+        flex-wrap: wrap
+    &__column
+        @extend .column
+        flex: none
+        width: 100%
+        display: flex
+        +tablet
+            width: 50%
+        svg
+            width: $size_24
+            height: $size_24
+            fill: $grey
+            margin-right: 1rem
+    &__title
+        @extend .profile__company-name
+    &__data
+        @extend .text-3
+        color: $grey
+    &__data-value
+        @extend .text-2
+        +tablet
+            font-size: $font-size
+            line-height: $line-height

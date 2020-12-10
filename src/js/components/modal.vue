@@ -73,15 +73,9 @@ export default {
             }
         }
     },
-    computed: {
-        close() {
-            if (this.openFlag === false) {
-                this.$eventBus.$emit("deleteActive");
-                document.querySelector('.page').classList.remove('page_fixed');
-                document.querySelector('html').style.overflow = 'auto';
-            } 
-        }
-    }
+    mounted() {
+        this.popupItem = this.$el
+    },
     
 }
 </script>
