@@ -1,0 +1,41 @@
+=mobile-menu-links
+    &__links
+        padding-bottom: 8px
+        border-bottom: 1px solid $border-color_2
+    &__link
+        padding: 18px 23px 18px 18px
+        +flex-container
+        font-size: 14px
+        color: $grey
+        & svg
+            width: 6px
+            height: 10px
+            fill: $icon-grey
+        &--closed svg
+            transform: rotate(90deg)
+        &--opened svg
+            transform: rotate(-90deg)
+        &_content
+            padding: 10px 23px 0 37px
+        &_sublink
+            font-size: 14px
+            color: $grey
+            margin-bottom: 20px
+            &_active
+                +flex-container
+                color: $black
+                & svg
+                    fill: $icon-grey
+                    width: 10px
+                    height: 10px
+    &__info
+        margin-top: 8px
+        &_link
+            color: $grey
+            font-size: 14px
+            padding: 18px
+            & svg
+                fill: $icon-grey
+                width: 15px
+                height: 15px
+                margin-right: 11px

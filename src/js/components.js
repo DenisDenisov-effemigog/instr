@@ -35,6 +35,7 @@ import photoModal from './components/poduct-card/photo-modal.vue';
 import productInfoAll from './components/poduct-card/product-info-all.vue';
 /*profile*/
 import profile from './components/profile/profile.vue';
+import profileMenuMobile from './components/profile/profile-menu-mobile.vue';
 
 export default {
     components: {
@@ -68,5 +69,6 @@ export default {
         toCompare,
         mediaButton,
         profile,
+        profileMenuMobile,
     },
 }

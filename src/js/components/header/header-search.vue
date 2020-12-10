@@ -66,7 +66,7 @@ export default {
         clickClose(){
             this.flag = false
             this.focused = false
-            this.$eventBus.$emit('exitSearch')
+            this.$eventBus.$emit('exitSearch', true)
             this.$emit("clickClose", this.flag)
         },
         exitSearch() {

@@ -21,12 +21,24 @@
                     <p class="header__menu-text">Избранное</p>
                 </a>
             </li>
-            <li class="header__menu-item">
+            <!--<li class="header__menu-item">
                 <a href="#" class="header__menu-link">
                     <svg class="header__menu-icon">
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__user'"></use>
                     </svg>
                     <p class="header__menu-text">Войти</p>
+                </a>
+            </li>-->
+            <li class="header__menu-item">
+                <a 
+                    class="header__menu-link"
+                    :class="{'header__menu-link_active': menuLink === 'profile' || menuLink === 'search'}"
+                    @click.prevent="clickMenu('profile')"
+                >
+                    <svg class="header__menu-icon">
+                        <use :xlink:href="templatePath + 'images/sprite.svg#icons__user'"></use>
+                    </svg>
+                    <p class="header__menu-text">Профиль</p>
                 </a>
             </li>
             <li class="header__menu-item">
@@ -59,7 +71,10 @@ export default {
             this.$eventBus.$emit("closeSearch");
             if (this.menuLink === 'catalog') {
                 this.$eventBus.$emit("open-catalogue", true);
-                this.$eventBus.$emit('exitSearch');
+                this.$eventBus.$emit('exitSearch', true);
+            } else if (this.menuLink === 'profile') {
+                this.$eventBus.$emit('open-menu', menu);
+                this.$eventBus.$emit('exitSearch', false);
             } else {
                 this.$eventBus.$emit("close-catalogue", false);
                 document.querySelector('html').style.overflow = 'auto';
