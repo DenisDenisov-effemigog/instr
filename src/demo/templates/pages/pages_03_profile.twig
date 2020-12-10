@@ -603,26 +603,6 @@
 {% block content %}
 
     {% include '../../../templates/header/header.twig' with {'categories': categories} %}
-    {% include '../../../templates/breadcrumbs.twig' with {
-        'breadcrumbs': [
-            {
-                'title': 'Главная',
-                'url': '/'
-            },
-            {
-                'title': 'Силовое оборудование',
-                'url': '/PowerEquipment/'
-            },
-            {
-                'title': 'Электроинструменты',
-                'url': '/PowelTools/'
-            },
-            {
-                'title': 'Дрели',
-                'url': '/Drills/'
-            },
-        ]
-    } %}
     {% include '../../../templates/profile/profile.twig' %}
     {% include '../../../templates/footer/footer.twig'  with {'countries': countries} %}
     

@@ -39,6 +39,7 @@ import stickyMobileButton from '../src/js/components/sticky-mobile-button.vue';
 import inFavorite from '../src/js/components/in-favorite.vue';
 import toCompare from '../src/js/components/to-compare.vue';
 import mediaButton from '../src/js/components/media-button.vue';
+import profile from '../src/js/components/profile/profile.vue';
 
 Vue.prototype.$eventBus = new Vue();
 
@@ -86,6 +87,7 @@ const app = new Vue({
         inFavorite,
         toCompare,
         mediaButton,
+        profile,
     },
     mounted() {
     }
