@@ -34,7 +34,7 @@
                 <li v-for="item in itemArr" :key="item" class="search-items__item">
                     <div class="search-items__info">
                         <div class="search-items__img">
-                            <img src="./images/search/item.png" alt="" class="search-items__pic">
+                            <img :src="templatePath + 'images/search/item.png'" alt="" class="search-items__pic">
                         </div>
                         <div class="search-items__desc">
                             <p class="search-items__desc-text">Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel 52 сс</p>

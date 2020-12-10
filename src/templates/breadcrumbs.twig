@@ -13,10 +13,10 @@
                     >
                         <a href="{{ item.url }}">{{ item.title }}</a>
                         <svg class="breadcrumbs__array">
-                            <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right-small'"></use>
+                            <use xlink:href="{{ templatePath }}images/sprite.svg#arrows__arrow-right-small"></use>
                         </svg>
                         <svg class="breadcrumbs__array breadcrumbs__array_mobile">
-                            <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right-small-mob'"></use>
+                            <use xlink:href="{{ templatePath }}images/sprite.svg#arrows__arrow-right-small-mob"></use>
                         </svg>
                     </li>
                 {% endfor %}
