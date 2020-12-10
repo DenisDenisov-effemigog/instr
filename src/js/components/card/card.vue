@@ -34,7 +34,10 @@
         <div class="card__image-block" 
              :class="{'card__image-block--short-card': cardSize === 'short'}"
         >
-            <component is="slider-photo-card" :cardSize="cardSize"></component>
+            <component is="slider-photo-card" 
+                       :cardSize="cardSize"
+                       :images="product.images"
+            ></component>
         </div>
         <div class="card__code">{{ product.code}}</div>
         <a :href="product.link" class="card__name">

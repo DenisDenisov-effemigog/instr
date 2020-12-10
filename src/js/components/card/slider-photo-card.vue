@@ -9,10 +9,10 @@
                 <img class="slider-photo-card__slide_image" v-for="slide in showSlide" :src="slide.img">
             </div>
             <div class="slider-photo-card__markers" @mouseleave="outSlide">
-                <div @mouseenter="hoverSlide(marker.id)" class="slider-photo-card__marker" v-for="marker in slides" ></div>
+                <div @mouseenter="hoverSlide(marker.id)" class="slider-photo-card__marker" v-for="marker in images" ></div>
             </div>
             <slider-photo-dots
-                :slides="slides"
+                :images="images"
                 :currentSlide="currentSlide"
             ></slider-photo-dots>
     </div>
@@ -31,15 +31,19 @@ export default {
             type: String,
             default: '',
         },
+        images: {
+            required: true,
+            type: Array,
+        },
     },
     data() {
         return {
-            slides: [
+            /*slides: [
                 {id: 1, img: './demo_images/product/image_50.png', link: ''},
                 {id: 2, img: './demo_images/product/image_51.png', link: ''},
                 {id: 3, img: './demo_images/product/image_52.png', link: ''},
                 {id: 4, img: './demo_images/product/image_53.png', link: ''},
-            ],
+            ],*/
             currentSlide: 1,
             startTouch:0,
             moveTouch:0
@@ -47,7 +51,7 @@ export default {
     },
     methods: {
         hoverSlide(id){
-            this.slides.forEach(item => {
+            this.images.forEach(item => {
                 if(id == item.id){
                     this.currentSlide = item.id
                 }
@@ -68,14 +72,14 @@ export default {
         },
         touchEnd(){
             if(this.startTouch > this.moveTouch){
-                if(this.currentSlide >= this.slides.length ){
+                if(this.currentSlide >= this.images.length ){
                     this.currentSlide = 1
                 }else{
                     this.currentSlide++
                 }
             }else{
                 if(this.currentSlide <= 1){
-                    this.currentSlide =  this.slides.length
+                    this.currentSlide =  this.images.length
                 }else{
                     this.currentSlide--
                 }
@@ -84,7 +88,7 @@ export default {
     },
     computed:{
         showSlide: function(){
-            return this.slides.filter(item => item.id == this.currentSlide)
+            return this.images.filter(item => item.id == this.currentSlide)
         }
     }
 }
