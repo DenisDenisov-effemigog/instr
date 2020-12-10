@@ -1,7 +1,7 @@
 <template>
     <div class="personalcab">
         <div class="personalcab__layout">
-            <div class="personalcab__flex_space">
+            <div class="personalcab__personal-data">
 
                 <h2 class="profile__title">Личные данные</h2>
                 <a href="" class="profile__link profile__link_title">
@@ -12,7 +12,7 @@
                 </a>
 
             </div>
-            <div class="personalcab__flex_company">
+            <div class="personalcab__company">
 
                 <div class="profile__company-logo">
                     <svg viewBox="0 0 72 72">

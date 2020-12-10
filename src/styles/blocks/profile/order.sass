@@ -3,7 +3,7 @@
         @extend .title-3
     &__info
         font-size: $font-size_4
-        margin-top: 3.125rem
+        margin-top: 2rem
         background: $pre-white
         padding: 1rem 1.188rem
         display: flex
@@ -91,16 +91,23 @@
         border: 1px solid $light-grey
         padding: 0.5rem
         border-radius: 4px
+        cursor: pointer
         &-icon
             padding-right: 0.625rem
             & svg
                 fill: $grey
                 width: $size_12
                 height: $size_12
+        &:hover
+            border: 1px solid $primary-hover
+            color: $primary-hover
+            & > .order__btn-icon svg 
+                fill: $primary-hover
     &__arrow
         +mobile
             order: 6
         +tablet
+            cursor: pointer
             flex: 1
             display: flex
             justify-content: flex-end
