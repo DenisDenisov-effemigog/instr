@@ -1,37 +1,49 @@
 <template>
     <div class="profile">
         <ul class="profile__menu">
-            <li class="profile__menu_link" @click.prevent="openPage('my-profile')">
+            <li class="profile__menu-link"
+                :class="{'profile__menu-link_active': currentPage == 'my-profile'}" 
+                @click.prevent="openPage('my-profile')">
                 <span>Мой профиль</span>
                 <svg class="" viewBox="0 0 6 10">
                     <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                 </svg>
             </li>
-            <li class="profile__menu_link" @click.prevent="openPage('order-list')">
+            <li class="profile__menu-link" 
+                :class="{'profile__menu-link_active': currentPage == 'order-list'}" 
+                @click.prevent="openPage('order-list')">
                 <span>Список заказов</span>
                 <svg class="" viewBox="0 0 6 10">
                     <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                 </svg>
             </li>
-            <li class="profile__menu_link" @click.prevent="openPage('my-check')">
+            <li class="profile__menu-link" 
+                :class="{'profile__menu-link_active': currentPage == 'my-check'}" 
+                @click.prevent="openPage('my-check')">
                 <span>Мой счет</span>
                 <svg class="" viewBox="0 0 6 10">
                     <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                 </svg>
             </li>
-            <li class="profile__menu_link" @click.prevent="openPage('address-list')">
+            <li class="profile__menu-link" 
+                :class="{'profile__menu-link_active': currentPage == 'address-list'}" 
+                @click.prevent="openPage('address-list')">
                 <span>Адреса доставки</span>
                 <svg class="" viewBox="0 0 6 10">
                     <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                 </svg>
             </li>
-            <li class="profile__menu_link" @click.prevent="openPage('my-favorite')">
+            <li class="profile__menu-link" 
+                :class="{'profile__menu-link_active': currentPage == 'my-favorite'}" 
+                @click.prevent="openPage('my-favorite')">
                 <span>Избранное</span>
                 <svg class="" viewBox="0 0 6 10">
                     <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                 </svg>
             </li>
-            <li class="profile__menu_link" @click.prevent="openPage('actions')">
+            <li class="profile__menu-link" 
+                :class="{'profile__menu-link_active': currentPage == 'actions'}" 
+                @click.prevent="openPage('actions')">
                 <span>Акции</span>
                 <svg class="" viewBox="0 0 6 10">
                     <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>

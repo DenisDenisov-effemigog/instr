@@ -5,8 +5,107 @@
     margin-bottom: 104px
     &__menu
         @extend .column_width_3
-        &_link
-            svg
-                width: 6px
-                height: 10px
-                fill: $icon-black
+        margin: 0 3.5rem 0 -3.5rem
+    &__menu-link
+        @extend .text-2
+        position: relative
+        padding: 1rem 10rem 1rem 1.75rem
+        +tablet
+            pagging-right: 3rem
+            font-size: $font-size
+            line-height: $line-height
+        &:hover
+            background-color: $pre-white
+        &_active
+            @extend .text_active
+            background-color: $pre-white
+        svg
+            position: absolute
+            top: 1.4375rem
+            right: 1rem
+            width: 6px
+            height: 10px
+            fill: $icon-black
+    &__page
+        @extend .column_width_9
+                
+    &__title
+        @extend .title-5
+        +tablet
+            margin: .75rem 0 1.5rem 0
+    &__logo
+        svg
+            width: 4.5rem
+            height: 4.5rem
+    &__link
+        @extend .link-blue
+        @extend .show-more
+        margin-top: 1rem
+        +tablet
+            margin-top: 1.5rem
+        &_title
+            margin-top: 0
+            +tablet
+                margin-top: 0
+        svg
+            width: $size_20
+            height: $size_20
+            fill: $blue
+    &__company
+        margin-left: 1rem
+    &__company-logo
+        width: 4.5rem
+        height: 4.5rem
+        svg
+            width: 4.5rem
+            height: 4.5rem
+    &__company-name
+        @extend .title-4
+        +tablet
+            font-size: $font-size_8
+            line-height: $line-height_8
+    &__company-type
+        @extend .text-2
+        margin-top: .5rem
+
+    &__personal-layout
+        margin-bottom: 2rem
+        +tablet
+            margin-bottom: 3.5rem
+    &__personalcab-flex
+        display: flex
+        &_company
+            display: none
+            +tablet
+                display: flex
+                align-content: center
+                margin-bottom: 
+        &_space
+            display: flex
+            justify-content: space-between
+    &__personalcab-columns
+        @extend .columns
+        flex-wrap: wrap
+    &__personalcab-column
+        @extend .column
+        flex: none
+        width: 100%
+        display: flex
+        +tablet
+            width: 50%
+        svg
+            width: $size_24
+            height: $size_24
+            fill: $grey
+            margin-right: 1rem
+    &__personalcab-title
+        @extend .profile__company-name
+    &__personalcab-data
+        @extend .text-3
+        color: $grey
+    &__personalcab-data-value
+        @extend .text-2
+        +tablet
+            font-size: $font-size
+            line-height: $line-height
+    
