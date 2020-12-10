@@ -14,7 +14,7 @@
                     </ul>
                 </div>
                 <div class="country__map">
-                    <img src="./images/country/map.png" alt="" class="country__map-pic">
+                    <img :src="templatePath + 'images/country/map.png'" alt="" class="country__map-pic">
                 </div>
                 <div @click="closeChoiceCountry" class="country__close">
                     <div class="country__close-text">Закрыть</div>

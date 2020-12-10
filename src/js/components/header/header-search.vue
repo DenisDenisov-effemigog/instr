@@ -1,7 +1,7 @@
 <template>
     <div class="header__search" v-click-outside="clickOutside">
         <div class="header__search-mobile">
-            <img v-show="!flag" @click="searchClick" src="./images/header/icons/mag.svg" alt="" class="header__search-mobile-icon">
+            <img v-show="!flag" @click="searchClick" :src="templatePath + 'images/header/icons/mag.svg'" alt="" class="header__search-mobile-icon">
             <div class="mobile-search" v-show="flag">
                 <div @click='clickClose' class="mobile-search__pic">
                     <svg class="mobile-search__pic-icon">
