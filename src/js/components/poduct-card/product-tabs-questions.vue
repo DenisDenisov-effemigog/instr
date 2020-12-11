@@ -35,7 +35,7 @@
                 Заполните все поля</span>
         </form>
         <div class="product-tabs__answer" v-for="(question, index) in qAs">
-            <span class="product-tabs__new-badge" v-if="newBadge == index">Новый вопрос</span>
+            <span class="product-tabs__new-badge" v-if="newBadge === index">Новый вопрос</span>
             <div class="product-tabs__content-title" v-show="question.name">{{question.name}}</div>
             <div class="product-tabs__question">
                 <svg  viewBox="0 0 18 18">
@@ -43,7 +43,7 @@
                 </svg>
                 <div class="product-tabs__question-text">{{question.question}}</div>
             </div>
-            <product-tabs-answer v-show="question.answer" :answer = "question.answer">
+            <product-tabs-answer v-show="question.answer" :answer="question.answer">
             </product-tabs-answer>    
         </div>
         <div class="product-tabs__answers-all" @click="expand" v-if="!expanded && quantity > 3">
