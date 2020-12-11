@@ -140,7 +140,8 @@ export default {
         },
         goBack() {
             this.mobile = true
-            this.showMenu = true 
+            this.showMenu = true
+            this.currentPage = ''
         },
         updateWidth() {
             this.mobile = window.innerWidth < 760
