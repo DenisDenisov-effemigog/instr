@@ -10,8 +10,10 @@
 	<template v-slot:my-check>
 		<component is="page-check"></component>
 	</template>
-	<template v-slot:address-list>
-        <component is="page-address"></component>
+	<template v-slot:delivery-list>
+        <component is="page-delivery"
+                    :profile="{{ profile|json_encode()|e('html_attr') }}"
+        ></component>
     </template>
 	<template v-slot:my-favorite>
         <component is="page-favorite"></component>
