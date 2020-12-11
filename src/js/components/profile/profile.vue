@@ -27,8 +27,8 @@
                     </svg>
                 </li>
                 <li class="profile__menu-link"
-                    :class="{'profile__menu-link_active': currentPage === 'address-list'}"
-                    @click.prevent="openPage('address-list')">
+                    :class="{'profile__menu-link_active': currentPage === 'delivery-list'}"
+                    @click.prevent="openPage('delivery-list')">
                     <span>Адреса доставки</span>
                     <svg class="" viewBox="0 0 6 10">
                         <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
@@ -101,14 +101,14 @@
                 </div>
                 <slot name="my-check"></slot>
             </div>
-            <div v-show="currentPage === 'address-list' && !mobile" class="profile__page">
+            <div v-show="currentPage === 'delivery-list' && !mobile" class="profile__page">
                 <div class="breadcrumbs" v-if="!showMenu" @click="goBack">
                     <svg class="breadcrumbs__back" viewBox="0 0 20 20">
                         <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
                     </svg>
                     <span>Назад</span>
                 </div>
-                <slot name="address-list"></slot>
+                <slot name="delivery-list"></slot>
             </div>
             <div v-show="currentPage === 'my-favorite' && !mobile" class="profile__page">
                 <div class="breadcrumbs" v-if="!showMenu" @click="goBack">

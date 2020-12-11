@@ -1,6 +1,6 @@
 <template>
     <div class="my-check">
-        <h2 class="my-check__title">Мой счет</h2>
+        <h2 class="profile__title">Мой счет</h2>
         <div class="my-check__info">
             <div class="my-check__info-icon">
                 <svg>

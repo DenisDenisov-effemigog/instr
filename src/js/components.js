@@ -40,7 +40,7 @@ import pagePersonal from './components/profile/page-personal.vue';
 import pageOrders from './components/profile/page-orders.vue';
 import selectList from './components/profile/select-list.vue';
 import pageCheck from './components/profile/page-check.vue';
-import pageAddress from './components/profile/page-address.vue';
+import pageDelivery from './components/profile/page-delivery.vue';
 import pageFavorite from './components/profile/page-favorite.vue';
 import pageActions from './components/profile/page-actions.vue';
 
@@ -80,7 +80,7 @@ export default {
         pagePersonal,
         pageOrders,
         pageCheck,
-        pageAddress,
+        pageDelivery,
         pageFavorite,
         pageActions,
         selectList,
