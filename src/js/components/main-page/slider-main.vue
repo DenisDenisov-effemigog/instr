@@ -8,13 +8,13 @@
             </div>
             
             <template slot="prevButton">
-                <svg viewBox="0 0 10 12">
-                    <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-left'"></use>
+                <svg>
+                    <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
                 </svg>
             </template>
             <template slot="nextButton">
-                <svg viewBox="0 0 6 10">
-                    <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
+                <svg>
+                    <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-right'"></use>
                 </svg>
             </template>
         </agile>
@@ -62,7 +62,7 @@
                 this.slideCurrent = event.currentSlide;
                 if (arrLeft !== null) {
                     if (this.slideCurrent !== 0) {
-                        arrLeft.style.display = 'block'
+                        arrLeft.style.display = 'flex'
                     } else {
                         arrLeft.style.display = 'none'
                     }
