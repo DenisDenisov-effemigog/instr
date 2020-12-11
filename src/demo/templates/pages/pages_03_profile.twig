@@ -327,15 +327,16 @@
 ] %}
 
 {% set profile = {
-    'company': [
-        'name': 'Компания «Инструменты Будущего»',
-    ],
-    'contact': 'Константин Дзю',
-    'phone': '+7 (910) 872-92-89',
-    'code': 'RO7434924042',
-    'email': 'konstantynopolsky@gmail.com',
-    'address': 'Название адреса'
-    
+    'personal': {
+        'company': {
+            'name': 'Компания «Инструменты Будущего»',
+        },
+        'contact': 'Константин Дзю',
+        'phone': '+7 (910) 872-92-89',
+        'code': 'RO7434924042',
+        'email': 'konstantynopolsky@gmail.com',
+        'address': 'Название адреса'
+    }, 
 } %}
 
 {% block content %}
