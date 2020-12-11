@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <a href="#" class="header__logo" v-show="!flag">
-            <svg viewBox="0 0 141 32">
+            <svg viewBox="0 0 650 150">
                 <use :xlink:href="templatePath + 'images/sprite.svg#logo'"></use>
             </svg>
         </a>
