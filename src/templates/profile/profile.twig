@@ -16,7 +16,9 @@
         ></component>
     </template>
 	<template v-slot:my-favorite>
-        <component is="page-favorite"></component>
+        <component is="page-favorite"
+                    :profile="{{ profile|json_encode()|e('html_attr') }}"
+        ></component>
     </template>
 	<template v-slot:actions>
         <component is="page-actions"></component>

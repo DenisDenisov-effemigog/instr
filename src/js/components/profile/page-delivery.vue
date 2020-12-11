@@ -11,7 +11,7 @@
             </div>
         </div>
         <div v-if="delivery.length > 0">
-            <ul class="delivery__address" v-for="(address, order) in deliveryList">
+            <ul class="delivery__address" v-for="(address, order) in delivery">
                 <li>
                     <div>
                         <div>Адрес № {{order}}</div>
