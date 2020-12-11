@@ -67,7 +67,6 @@ export default {
             document.querySelector('html').style.overflow = 'auto';
         },
         closeOutside(event) {
-            console.log(event.toElement.className)
             if(event.toElement.className !== '') {
                 this.closeModal() 
             }

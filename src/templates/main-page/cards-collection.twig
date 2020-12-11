@@ -1,0 +1,8 @@
+<component
+    is="slider-cards"
+    :change-icon="true"
+    :dots="false"
+    :title="'Еще одна интересная подборка со скроллом'"
+    :card-size="'short'"
+    :products="{{ products|json_encode()|e('html_attr') }}"
+></component>

@@ -1,7 +1,7 @@
 <template>
     <div class="order">
         <div class="order__header">
-            <h2 class="order__title">Список заказов</h2>
+            <h2 class="profile__title">Список заказов</h2>
         </div>
         <div class="order__info">
             <div class="order__info-icon">

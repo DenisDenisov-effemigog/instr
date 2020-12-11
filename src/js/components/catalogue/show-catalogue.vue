@@ -59,7 +59,6 @@
         methods: {
             open() {
                 this.active = !this.active;
-                // this.isActive;
                 this.$eventBus.$emit('open-catalogue', this.active);
                 if (!this.active) {
                     document.querySelector('.page').classList.remove('page_fixed')
@@ -68,7 +67,6 @@
             },
             close(state) {
                 this.active = state;
-                // this.isActive;
                 this.$eventBus.$emit('open-catalogue', this.active)
             },
             openMenu() {

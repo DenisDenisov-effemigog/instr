@@ -1,5 +1,5 @@
 <template>
-    <div v-if="openModal" class="mobile-menu">
+    <div v-if="openModal" class="mobile-menu" @click="closeOutside">
         <div 
             class="mobile-menu__content"
             :class="{'mobile-menu__content--short': menuLink === 'home'}"
@@ -46,6 +46,11 @@ export default {
         closeMenuModal(){
             document.querySelector('html').style.overflow = 'auto';
             this.openModal = false;
+        },
+        closeOutside(event) {
+            if(event.toElement.className === 'mobile-menu') {
+                this.$eventBus.$emit("exitSearch", true)
+            }
         },
     },
 }

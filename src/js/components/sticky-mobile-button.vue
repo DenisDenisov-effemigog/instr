@@ -1,7 +1,11 @@
 <template>
     <div class="sticky-mobile-button" v-if="showButton">
         <a v-if="flag" href="" class="sticky-mobile-button__button">{{ titlePartFirst }} <span>{{ items }}&nbsp;{{ titlePartSecond }}</span></a>
-        <component v-else is="add-to-cart" :text="'В корзине'" :size="'big'"></component>
+        <component v-else is="add-to-cart" 
+                   :text="'В корзине'"
+                   :button-title="'Добавить в корзину'"
+                   :size="'big'"
+        ></component>
     </div>
     
 </template>
