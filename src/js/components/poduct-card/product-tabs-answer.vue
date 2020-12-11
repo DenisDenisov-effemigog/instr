@@ -24,29 +24,15 @@
                 expanded: false
             }
         },
-        // methods: {
-        //     textHeight() {
-        //         if (this.$refs.text.clientHeight <= this.$refs.textBlock.clientHeight) {
-        //             console.log(this.$refs.text.clientHeight, this.$refs.textBlock.clientHeight)
-        //             this.expanded = true
-        //         }
-        //     }
-        // },
-        mounted() {
-            this.textHeight;
-            window.addEventListener("resize", function(event) {
-                this.textHeight
-            })
-        },
-        computed: {
+        methods: {
             textHeight() {
-                const text = this.$refs.text
-                const textBlock = this.$refs.textBlock
-                if (text.offsetHeight <= textBlock.clientHeight) {
-                    console.log(text.clientHeight, textBlock.clientHeight)
+                if (this.$refs.text.clientHeight <= this.$refs.textBlock.clientHeight) {
                     return this.expanded = true
                 }
             }
-        }
+        },
+        mounted() {
+            this.textHeight();
+        },
     }
 </script>

@@ -63,6 +63,8 @@
                 & .catalogue__category-link
                     background-color: $white
                     color: $black
+                    & > svg
+                        fill: $icon-black
                     & ~ .catalogue__subcategories
                         display: flex
         &:last-child
@@ -74,6 +76,7 @@
         display: flex
         align-items: center
         padding: 1.125rem 1.5rem 1.125rem 0
+        color: $grey
         border-bottom: 1px solid $border-color_2
         +tablet
             padding: 1rem 2.9375rem 1rem 1.8125rem
@@ -87,7 +90,7 @@
         & > svg
             position: absolute
             right: .5rem
-            fill: $icon-black
+            fill: $icon-grey
             width: $size_5
             height: $size_8-33
             +tablet

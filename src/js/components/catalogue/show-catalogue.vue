@@ -41,16 +41,16 @@
             }
         },
         computed: {
-            isActive() {
-                const page = document.querySelector('.page');
-                if (this.active) {
-                    page.classList.add('page_hide-main');
-                    page.classList.add('page_hide-footer');
-                } else {
-                    page.classList.remove('page_hide-main');
-                    page.classList.remove('page_hide-footer');
-                }
-            }
+            // isActive() {
+            //     const page = document.querySelector('.page');
+            //     if (this.active) {
+            //         page.classList.add('page_hide-main');
+            //         page.classList.add('page_hide-footer');
+            //     } else {
+            //         page.classList.remove('page_hide-main');
+            //         page.classList.remove('page_hide-footer');
+            //     }
+            // }
         },
         created() {
             this.$eventBus.$on("exitSearch", this.closeMenu);
