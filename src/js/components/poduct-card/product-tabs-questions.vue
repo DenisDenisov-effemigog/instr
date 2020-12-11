@@ -116,14 +116,6 @@
             questionsQuantity() {
                 return this.quantity = this.questions.length
             },
-            // questionsQuantity: {
-            //     get: function() {
-            //         return this.questions.length
-            //     },
-            //     set: function(value) {
-            //         return value
-            //     }
-            // },
             newQuestionItem() {
                 if (this.email == 'moymir@mail.ru') {
                     this.newItem.name = 'Роман Сычев'
@@ -132,14 +124,10 @@
                 }
                 this.newItem.question = this.newQuestion;
                 return this.newItem
-            },
-            // expandableText() {
-            //     this.$refs.text.forEach(function(item, index) {
-            //         if (item.clientHeight == this.$refs.textBlock[index]) {
-            //             this.$refs.textBlock[index].classList.add('product-tabs__answer-text_expanded')
-            //         }
-            //     })
-            // }
+            }
+        },
+        created() {
+            this.questionsQuantity()
         }
     }
 </script>
