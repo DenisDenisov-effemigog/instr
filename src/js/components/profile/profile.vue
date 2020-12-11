@@ -75,27 +75,57 @@
         
         <div class="profile__content">
             <div v-show="currentPage === 'my-profile' && !mobile" class="profile__page">
-                <div v-if="!showMenu" @click="goBack">Кнопка назад</div>
+                <div class="breadcrumbs" v-if="!showMenu" @click="goBack">
+                    <svg class="breadcrumbs__back" viewBox="0 0 20 20">
+                        <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
+                    </svg>
+                    <span>Назад</span>
+                </div>
                 <slot name="my-profile"></slot>
             </div>
             <div v-show="currentPage === 'order-list' && !mobile" class="profile__page">
-                <div v-if="!showMenu" @click="goBack">Кнопка назад</div>
+                <div class="breadcrumbs" v-if="!showMenu" @click="goBack">
+                    <svg class="breadcrumbs__back" viewBox="0 0 20 20">
+                        <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
+                    </svg>
+                    <span>Назад</span>
+                </div>
                 <slot name="order-list"></slot>
             </div>
             <div v-show="currentPage === 'my-check' && !mobile" class="profile__page">
-                <div v-if="!showMenu" @click="goBack">Кнопка назад</div>
+                <div class="breadcrumbs" v-if="!showMenu" @click="goBack">
+                    <svg class="breadcrumbs__back" viewBox="0 0 20 20">
+                        <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
+                    </svg>
+                    <span>Назад</span>
+                </div>
                 <slot name="my-check"></slot>
             </div>
             <div v-show="currentPage === 'address-list' && !mobile" class="profile__page">
-                <div v-if="!showMenu" @click="goBack">Кнопка назад</div>
+                <div class="breadcrumbs" v-if="!showMenu" @click="goBack">
+                    <svg class="breadcrumbs__back" viewBox="0 0 20 20">
+                        <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
+                    </svg>
+                    <span>Назад</span>
+                </div>
                 <slot name="address-list"></slot>
             </div>
             <div v-show="currentPage === 'my-favorite' && !mobile" class="profile__page">
-                <div v-if="!showMenu" @click="goBack">Кнопка назад</div>
+                <div class="breadcrumbs" v-if="!showMenu" @click="goBack">
+                    <svg class="breadcrumbs__back" viewBox="0 0 20 20">
+                        <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
+                    </svg>
+                    <span>Назад</span>
+                </div>
                 <slot name="my-favorite"></slot>
             </div>
             <div v-show="currentPage === 'actions' && !mobile" class="profile__page">
-                <div v-if="!showMenu" @click="goBack">Кнопка назад</div>
+                <div class="breadcrumbs" v-if="!showMenu" @click="goBack">
+                    <svg class="breadcrumbs__back" viewBox="0 0 20 20">
+                        <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
+                    </svg>
+                    <span>Назад</span>
+                </div>
                 <slot name="actions"></slot>
             </div>
         </div>
