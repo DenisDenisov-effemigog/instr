@@ -6,7 +6,7 @@
                 v-if="subcategory || subcategories" 
                 @click="goBack"
             >
-                <svg class="breadcrumbs__back" viewBox="0 0 20 20">
+                <svg class="breadcrumbs__back" viewBox="0 0 18 12">
                     <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
                 </svg>
                 <span>Назад</span>
