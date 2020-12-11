@@ -47,6 +47,10 @@
         &--total
             padding-top: 0.75rem
             padding-bottom: 1.75rem
+            & .product-order__price
+                @extend .title-3
+                +mobile
+                    @extend .title-5
         &--discount
             &-green
                 color: #049004
@@ -61,5 +65,4 @@
         padding-right: 0.375rem
     &__price
         flex: 1
-        display: flex
-        justify-content: flex-end
+        text-align: right
