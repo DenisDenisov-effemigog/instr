@@ -32,8 +32,10 @@
         right: 0
         top: 46px
         display: flex
+        width: 100%
+        justify-content: space-between
         svg
-            +tablet
+            +desktop
                 display: none
             fill: $icon-grey
             width: 0.5rem
@@ -43,6 +45,9 @@
             cursor: pointer
         &::before
             left: calc(92% - 8px)
+        &-close
+            +tablet
+                display: none
     &__stickers
         +stickers
 

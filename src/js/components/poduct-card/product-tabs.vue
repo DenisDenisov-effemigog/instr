@@ -34,14 +34,14 @@
                 </div>
             </div>
             <div class="product-tabs__content">
-                <div v-show="currentTab === 'features'" class="product-tabs_content__container">
+                <div v-if="currentTab === 'features'" class="product-tabs_content__container">
                     <slot name="features"></slot>
                 </div>
-                <div v-show="currentTab === 'description'" class="product-tabs_content__container">
+                <div v-else-if="currentTab === 'description'" class="product-tabs_content__container">
                     <slot name="description"></slot>
                 </div>
                 <product-tabs-questions 
-                    v-show="currentTab === 'questions'"
+                    v-else-if="currentTab === 'questions'"
                     :questions="questionsAnswers">
                 </product-tabs-questions>
             </div>

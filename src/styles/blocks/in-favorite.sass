@@ -1,8 +1,9 @@
 .in-favorite
     cursor: pointer
-    display: flex
+    display: none
     align-items: center
     +desktop
+        display: flex
         &:hover
             color: $black
         &:hover svg
@@ -26,4 +27,6 @@
         & svg
             width: 12px
             height: 10px
+        +desktop
+            display: none
         

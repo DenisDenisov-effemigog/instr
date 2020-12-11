@@ -6,7 +6,7 @@
             </svg>
         </div>
         <div  class="header__catalog-mobile" @click.prevent="closeMenu" v-else>
-            <svg class="header__catalog-mobile-icon">
+            <svg class="header__catalog-mobile-icon header__catalog-mobile-icon--close">
                 <use :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
             </svg>
         </div>
