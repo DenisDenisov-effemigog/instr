@@ -187,6 +187,7 @@
         @extend .link-blue
     &__answer
         @extend .product-tabs__content-feature
+        position: relative
         max-height: fit-content
         padding: 1.5rem 1rem
         +tablet
@@ -195,6 +196,14 @@
             padding: 1.5rem
         &:not(:last-of-type)
             margin-bottom: 1.5rem
+    &__new-badge
+        @extend .text-4
+        position: absolute
+        top: 1.5rem
+        right: 1rem
+        color: $blue
+        +tablet
+            right: 1.5rem
     &__question
         @extend .subtitle-2
         display: flex

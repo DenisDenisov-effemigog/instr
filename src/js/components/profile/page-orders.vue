@@ -13,13 +13,7 @@
                 В этом разделе вы найдете информацию о заказах, сделанных на сайте
             </div>
         </div>
-        <div class="order__select">
-            <select name="" id="">
-                <option value="Выполнено" default>Выполнено</option>
-                <option value="Не выполнено">Не выполнено</option>
-                <option value="Еще что-то">Еще что-то</option>
-            </select>
-        </div>
+        <select-list></select-list>
         <div class="order__main">
             <ul class="order__list">
                 <li class="order__item">
@@ -162,7 +156,9 @@
 </template>
 
 <script>
+import selectList from './select-list.vue'
 export default {
+ components: { selectList },
     name:"page-orders",
     props:{
     }

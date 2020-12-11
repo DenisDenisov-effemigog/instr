@@ -38,6 +38,7 @@ import profile from './components/profile/profile.vue';
 import profileMenuMobile from './components/profile/profile-menu-mobile.vue';
 import pagePersonal from './components/profile/page-personal.vue';
 import pageOrders from './components/profile/page-orders.vue';
+import selectList from './components/profile/select-list.vue';
 import pageCheck from './components/profile/page-check.vue';
 import pageAddress from './components/profile/page-address.vue';
 import pageFavorite from './components/profile/page-favorite.vue';
@@ -82,5 +83,6 @@ export default {
         pageAddress,
         pageFavorite,
         pageActions,
+        selectList,
     },
 }

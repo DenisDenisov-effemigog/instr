@@ -35,6 +35,7 @@
                 Заполните все поля</span>
         </form>
         <div class="product-tabs__answer" v-for="(question, index) in qAs">
+            <span class="product-tabs__new-badge" v-if="newBadge == index">Новый вопрос</span>
             <div class="product-tabs__content-title" v-show="question.name">{{question.name}}</div>
             <div class="product-tabs__question">
                 <svg  viewBox="0 0 18 18">
@@ -74,6 +75,7 @@
                 formExpanded: false,
                 error: false,
                 newQuestion: '',
+                newBadge: null,
                 email: 'moymir@mail.ru',
                 newItem: {
                     'name': null,
@@ -92,7 +94,8 @@
             },
             addQuestion() {
                 if (this.email && this.newQuestion) {
-                    this.error = false
+                    this.newBadge = 0;
+                    this.error = false;
                     if (this.expanded) {
                         this.questions.unshift({...this.newQuestionItem});
                     } else {
@@ -101,6 +104,7 @@
                     }
                     this.quantity = this.questions.length
                 } else {
+                    this.newBadge = null;
                     this.error = true
                 }
             }
