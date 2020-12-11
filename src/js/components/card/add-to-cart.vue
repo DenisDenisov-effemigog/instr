@@ -41,7 +41,7 @@
                 <svg v-if="changeIcon && width < 760">
                     <use :xlink:href="templatePath + 'images/sprite.svg#icons__cart'"></use>
                 </svg>
-              <template v-else>В корзину</template>  
+              <template v-else>{{ buttonTitle }}</template>  
             </div>
 		</div>
     </div>
@@ -69,6 +69,11 @@
             text: {
                 type: String,
                 default: '',
+                required: false,
+            },
+            buttonTitle: {
+                type: String,
+                default: 'В корзину',
                 required: false,
             },
             size: {
