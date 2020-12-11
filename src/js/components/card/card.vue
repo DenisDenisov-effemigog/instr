@@ -66,7 +66,7 @@
                                :mobile="true"
                     ></component>
                 </div>
-                <svg @click="menuTooltip = false" viewBox="0 0 12 12">
+                <svg class="card__menu-tooltip-close" @click="menuTooltip = false" viewBox="0 0 12 12">
                     <use @click.stop :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
                 </svg>
             </div>
