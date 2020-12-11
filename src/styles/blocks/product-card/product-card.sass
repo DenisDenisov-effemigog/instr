@@ -49,6 +49,10 @@
             &--copy
                 width: 13.375rem
                 left: -2.5rem
+                +mobile
+                    left: -65%
+            &--open
+                display: flex
         +tablet
             &:hover .product-card__article-number
                 color: $primary-hover
@@ -106,10 +110,11 @@
         display: flex
         +desktop
             flex-direction: column
-                
+
     &__description
         display: flex
         width: 55%
         +mobile
             width: 100%
             flex-direction: column
+
