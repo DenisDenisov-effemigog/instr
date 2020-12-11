@@ -106,8 +106,14 @@
             width: $size_14
             height: 0.5rem
             fill: $light-grey
+        &--open
+            & svg
+                transform: rotate(180deg)
     &__product-list
+        display: none
         margin-top: 1.625rem
+        &--open
+            display: block
     &__product-item
         display: flex
         justify-content: space-between
