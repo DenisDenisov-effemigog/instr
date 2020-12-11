@@ -99,26 +99,26 @@
                 line-height: $line-height
 
     &__menu-item
+        color: $light-grey
+        font-size: $font-size_4
+        +tablet
+            font-size: $font-size_3
+            line-height: $line-height_3
         &:not(:last-of-type)
             margin-bottom: .5rem
         & > a
             @extend .link-2
-            color: #999
-            +mobile
-                font-size: 12px
+            font-size: $font-size_4
+            color: $light-grey
             +tablet
                 font-size: $font-size_3
                 line-height: $line-height_3
-                color: $light-grey
             & > div:not(:last-of-type)
                 margin-bottom: .5rem
         &_img
+            @extend .link-2
             display: flex
             align-items: center
-            @extend .link-2
-            +tablet
-                font-size: $font-size_3
-                line-height: $line-height_3
             &:hover > svg
                 fill: $icon-black
     &__menu-icon
