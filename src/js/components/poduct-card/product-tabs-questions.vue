@@ -43,14 +43,8 @@
                 </svg>
                 <div class="product-tabs__question-text">{{question.question}}</div>
             </div>
-            <div class="product-tabs__answer-text" ref="textBlock" v-show="question.answer">
-                <div class="product-tabs__answer-full-text" ref="text">
-                    {{question.answer}}
-                    <span class="product-tabs__text-prompt">
-                        … <span @click="showText(index)">Читать полностью</span>
-                    </span>       
-                </div>
-            </div>    
+            <product-tabs-answer v-show="question.answer" :answer = "question.answer">
+            </product-tabs-answer>    
         </div>
         <div class="product-tabs__answers-all" @click="expand" v-if="!expanded && quantity > 3">
             Посмотреть все {{quantity}} 
@@ -61,6 +55,8 @@
 </template>
 
 <script>
+    import productTabsAnswer from './product-tabs-answer.vue'
+
     export default {
         name: "product-tabs-questions",
         props: {
@@ -85,13 +81,13 @@
                 quantity: 4
             }
         },
+        components: {
+            productTabsAnswer
+        },
         methods: {
             expand() {
                 this.expanded = true;
-            },
-            showText(index) {
-                this.$refs.textBlock[index].classList.add('product-tabs__answer-text_expanded')
-            },
+            },        
             addQuestion() {
                 if (this.email && this.newQuestion) {
                     this.newBadge = 0;
