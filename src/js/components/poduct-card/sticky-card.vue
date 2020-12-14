@@ -20,8 +20,8 @@
                 <div class="sticky-card__text">Набор бит SL6 x 50, сталь S2, 10 шт. Gross Набор 50, сталь S2, шт. Gross 50, сталь S2</div>
             </div>
             <div class="sticky-card__price">
-                <div class="sticky-card__price--old">3 819.27 RON</div>
-                <div class="sticky-card__price--total">2 819.27 RON</div>
+                <div class="sticky-card__price--old">3 819.27 &#8381;</div>
+                <div class="sticky-card__price--total">2 819.27 &#8381;</div>
             </div>
             <add-to-cart></add-to-cart>
         </div>
