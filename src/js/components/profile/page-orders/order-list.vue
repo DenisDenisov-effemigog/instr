@@ -1,8 +1,8 @@
 <template>
     <ul class="order__list">
-        <li class="order__item" v-for="item in dataArr" :key="item.id">
+        <li class="order__item" v-for="item in orders" :key="item.id">
             <div class="order__desc">
-                <div class="order__number">{{item.number}}</div>
+                <div class="order__number">#{{item.number}}</div>
                 <div class="order__date">{{item.date}}</div>
                 <div class="order__status">{{item.status}}</div>
                 <div class="order__qty">{{item.qty}}</div>
@@ -44,18 +44,92 @@ export default {
     data(){
         return{
             flag: false,
-            dataArr:[
+            orders:[
                 {
                     id: 1,
-                    number:'#325214',
+                    number:'325214',
                     date:'31.12.2020',
                     status:'Выполнен',
-                    qty:'1 000 000 товаров',
-                    price:'1 000 819.27 RON'
+                    qty:'8 товаров',
+                    price:'1 000 819.27 RON',
+                    product:[
+                        {
+                            art:'325214',
+                            desc:'Trimmer pe benzina GT-52S...',
+                            qty:'12',
+                            itemPrice:'65 RON',
+                            allPrice:'910.30 RON',
+                            discount:'10%',
+                            totalPrice:'810.30 RON'
+                        },
+                        {
+                            art:'325214',
+                            desc:'Trimmer pe benzina GT-52S...',
+                            qty:'12',
+                            itemPrice:'65 RON',
+                            allPrice:'910.30 RON',
+                            discount:'10%',
+                            totalPrice:'810.30 RON'
+                        },
+                        {
+                            art:'325214',
+                            desc:'Trimmer pe benzina GT-52S...',
+                            qty:'12',
+                            itemPrice:'65 RON',
+                            allPrice:'910.30 RON',
+                            discount:'10%',
+                            totalPrice:'810.30 RON'
+                        },
+                        {
+                            art:'325214',
+                            desc:'Trimmer pe benzina GT-52S...',
+                            qty:'12',
+                            itemPrice:'65 RON',
+                            allPrice:'910.30 RON',
+                            discount:'10%',
+                            totalPrice:'810.30 RON'
+                        },
+                        {
+                            art:'325214',
+                            desc:'Trimmer pe benzina GT-52S...',
+                            qty:'12',
+                            itemPrice:'65 RON',
+                            allPrice:'910.30 RON',
+                            discount:'10%',
+                            totalPrice:'810.30 RON'
+                        },
+                        {
+                            art:'325214',
+                            desc:'Trimmer pe benzina GT-52S...',
+                            qty:'12',
+                            itemPrice:'65 RON',
+                            allPrice:'910.30 RON',
+                            discount:'10%',
+                            totalPrice:'810.30 RON'
+                        },
+                        {
+                            art:'325214',
+                            desc:'Trimmer pe benzina GT-52S...',
+                            qty:'12',
+                            itemPrice:'65 RON',
+                            allPrice:'910.30 RON',
+                            discount:'10%',
+                            totalPrice:'810.30 RON'
+                        },
+                        {
+                            art:'325214',
+                            desc:'Trimmer pe benzina GT-52S...',
+                            qty:'12',
+                            itemPrice:'65 RON',
+                            allPrice:'910.30 RON',
+                            discount:'10%',
+                            totalPrice:'810.30 RON'
+                        }
+                    ]
                 },
                 {
                     id: 2,
-                    number:'#325214',
+                    number:'325214',
                     date:'31.12.2020',
                     status:'Выполнен',
                     qty:'2 товарa',
@@ -83,7 +157,7 @@ export default {
                 },
                 {
                     id: 3,
-                    number:'#325214',
+                    number:'325214',
                     date:'31.12.2020',
                     status:'Выполнен',
                     qty:'4 товара',
@@ -129,7 +203,7 @@ export default {
                 },
                 {
                     id: 4,
-                    number:'#325214',
+                    number:'325214',
                     date:'31.12.2020',
                     status:'Выполнен',
                     qty:'1 000 000 товаров',

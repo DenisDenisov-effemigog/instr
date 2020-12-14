@@ -34,13 +34,20 @@
     &__article
         position: relative
         cursor: pointer
-        margin-left: auto
+        +tablet
+            margin-left: auto
         & span
             &::selection
                 background: #fff
-                color: $black
+                color: $primary-red
+            +tablet
+                &::selection
+                    background: #fff
+                    color: $black
         &-number
             font-weight: bold
+            &--copy
+                color: $primary-red
         &-tooltip
             @extend .tooltip
             width: 7.125rem
@@ -50,7 +57,7 @@
                 width: 13.375rem
                 left: -2.5rem
                 +mobile
-                    left: -65%
+                    left: 0
             &--open
                 display: flex
         +tablet
