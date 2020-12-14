@@ -9,6 +9,12 @@
             <div class="order__product-discount">{{product.discount}}</div>
             <div class="order__product-total-price">{{product.totalPrice}}</div>
         </li>
+        <!-- Нужно выводить 20 товаров -->
+        <li class="order__product-item--all" v-show="products.length > 5">
+            <a href="#">
+                Больше информации о заказе
+            </a>
+        </li>
     </ul>
 </template>
 

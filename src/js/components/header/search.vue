@@ -30,7 +30,7 @@
         </div>
         <div class="search-items">
             <h2 class="search-items__title">Товары</h2>
-            <ul class="search-items__list" :class="{'search-items__list_hidden': itemFlag}">
+            <ul class="search-items__list">
                 <li v-for="item in itemArr" :key="item" class="search-items__item">
                     <div class="search-items__info">
                         <div class="search-items__img">
@@ -48,8 +48,9 @@
                     </div>
                 </li>
             </ul>
-            <div @click="showMore" v-show="itemFlag" class="search-items__download">
-                <p class="search-items__download-text">Показать все результаты</p>
+            <div class="search-items__download">
+                <!-- Переход к результатам -->
+                <a href="#" class="search-items__download-text">Показать все результаты</a>
                 <div class="search-items__download-pic">
                     <svg class="search-items__download-pic-icon" viewBox="0 0 12 10">
                         <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-down'"></use>
@@ -76,7 +77,6 @@ export default {
             categoryArr:["Лебедки автомобильные",'Масленки','Мебель гаражная','Гидравлические опоры','Моечные машины высокого давления','Домкраты','Аксессуары автомобильные'],
             itemArr:[1,2,3,4,5,6,7],
             flag: false,
-            itemFlag: false
         }
     },
     methods:{
@@ -88,18 +88,7 @@ export default {
                 let a = e.target
                 a.classList.toggle('search-category__link-active')
             }
-        },
-        showMore(){
-            this.itemFlag = false
         }
-    },
-    computed:{
-        itemLength(){
-            if(this.itemArr.length > 3){
-                this.itemFlag = true
-            }
-            return this.itemFlag
-        },
     },
     created(){
         this.itemLength

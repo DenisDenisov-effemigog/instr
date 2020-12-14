@@ -115,6 +115,18 @@
         &--open
             display: block
     &__product-item
+        &--all
+            & a
+                @extend .profile__link
+        &:nth-child(5)
+            // Нужно выводить 20 товаров
+            & ~ .order__product-item
+                display: none
+            & ~ .order__product-item--all
+                display: flex
+                align-items: center
+                justify-content: center
+            
         display: flex
         justify-content: space-between
         padding: 0 1rem
