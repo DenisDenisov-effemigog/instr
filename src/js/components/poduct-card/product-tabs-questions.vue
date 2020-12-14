@@ -128,6 +128,7 @@
         },
         created() {
             this.questionsQuantity()
+            this.addQuestion()
         }
     }
 </script>
