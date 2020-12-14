@@ -6,7 +6,7 @@
                 <div class="order__date">{{item.date}}</div>
                 <div class="order__status">{{item.status}}</div>
                 <div class="order__qty">{{item.qty}}</div>
-                <div class="order__price">{{item.price}}</div>
+                <div class="order__price">{{item.price}} &#8381;</div>
                 <div class="order__btn">
                     <div class="order__btn-icon">
                         <svg>
@@ -51,79 +51,79 @@ export default {
                     date:'31.12.2020',
                     status:'Выполнен',
                     qty:'8 товаров',
-                    price:'1 000 819.27 &#8381;',
+                    price:'1 000 819.27',
                     product:[
                         {
                             art:'325214',
                             desc:'Trimmer pe benzina GT-52S...',
                             qty:'12',
-                            itemPrice:'65 &#8381;',
-                            allPrice:'910.30 &#8381;',
+                            itemPrice:'65',
+                            allPrice:'910.30',
                             discount:'10%',
-                            totalPrice:'810.30 &#8381;'
+                            totalPrice:'810.30'
                         },
                         {
                             art:'325214',
                             desc:'Trimmer pe benzina GT-52S...',
                             qty:'12',
-                            itemPrice:'65 &#8381;',
-                            allPrice:'910.30 &#8381;',
+                            itemPrice:'65',
+                            allPrice:'910.30',
                             discount:'10%',
-                            totalPrice:'810.30 &#8381;'
+                            totalPrice:'810.30'
                         },
                         {
                             art:'325214',
                             desc:'Trimmer pe benzina GT-52S...',
                             qty:'12',
-                            itemPrice:'65 &#8381;',
-                            allPrice:'910.30 &#8381;',
+                            itemPrice:'65',
+                            allPrice:'910.30',
                             discount:'10%',
-                            totalPrice:'810.30 &#8381;'
+                            totalPrice:'810.30'
                         },
                         {
                             art:'325214',
                             desc:'Trimmer pe benzina GT-52S...',
                             qty:'12',
-                            itemPrice:'65 &#8381;',
-                            allPrice:'910.30 &#8381;',
+                            itemPrice:'65',
+                            allPrice:'910.30',
                             discount:'10%',
-                            totalPrice:'810.30 &#8381;'
+                            totalPrice:'810.30'
                         },
                         {
                             art:'325214',
                             desc:'Trimmer pe benzina GT-52S...',
                             qty:'12',
-                            itemPrice:'65 &#8381;',
-                            allPrice:'910.30 &#8381;',
+                            itemPrice:'65',
+                            allPrice:'910.30',
                             discount:'10%',
-                            totalPrice:'810.30 &#8381;'
+                            totalPrice:'810.30'
                         },
                         {
                             art:'325214',
                             desc:'Trimmer pe benzina GT-52S...',
                             qty:'12',
-                            itemPrice:'65 &#8381;',
-                            allPrice:'910.30 &#8381;',
+                            itemPrice:'65',
+                            allPrice:'910.30;',
                             discount:'10%',
-                            totalPrice:'810.30 &#8381;'
+                            totalPrice:'810.30'
                         },
                         {
                             art:'325214',
                             desc:'Trimmer pe benzina GT-52S...',
                             qty:'12',
-                            itemPrice:'65 &#8381;',
-                            allPrice:'910.30 &#8381;',
+                            itemPrice:'65',
+                            allPrice:'910.30',
                             discount:'10%',
-                            totalPrice:'810.30 &#8381;'
+                            totalPrice:'810.30'
                         },
                         {
                             art:'325214',
                             desc:'Trimmer pe benzina GT-52S...',
                             qty:'12',
-                            itemPrice:'65 &#8381;',
-                            allPrice:'910.30 &#8381;',
+                            itemPrice:'65',
+                            allPrice:'910.30',
                             discount:'10%',
-                            totalPrice:'810.30 &#8381;'
+                            totalPrice:'810.30'
                         }
                     ]
                 },
@@ -133,25 +133,25 @@ export default {
                     date:'31.12.2020',
                     status:'Выполнен',
                     qty:'2 товарa',
-                    price:'1 000 819.27 &#8381;',
+                    price:'1 000 819.27',
                     product:[
                         {
                             art:'325214',
                             desc:'Trimmer pe benzina GT-52S...',
                             qty:'12',
-                            itemPrice:'65 &#8381;',
-                            allPrice:'910.30 &#8381;',
+                            itemPrice:'65',
+                            allPrice:'910.30',
                             discount:'10%',
-                            totalPrice:'810.30 &#8381;'
+                            totalPrice:'810.30'
                         },
                         {
                             art:'325214',
                             desc:'Trimmer pe benzina GT-52S...',
                             qty:'12',
-                            itemPrice:'65 &#8381;',
-                            allPrice:'910.30 &#8381;',
+                            itemPrice:'65',
+                            allPrice:'910.30',
                             discount:'10%',
-                            totalPrice:'810.30 &#8381;'
+                            totalPrice:'810.30'
                         },
                     ]
                 },
@@ -161,43 +161,43 @@ export default {
                     date:'31.12.2020',
                     status:'Выполнен',
                     qty:'4 товара',
-                    price:'819.27 &#8381;',
+                    price:'819.27',
                     product:[
                         {
                             art:'325214',
                             desc:'Trimmer pe benzina GT-52S...',
                             qty:'12',
-                            itemPrice:'65 &#8381;',
-                            allPrice:'910.30 &#8381;',
+                            itemPrice:'65',
+                            allPrice:'910.30',
                             discount:'10%',
-                            totalPrice:'810.30 &#8381;'
+                            totalPrice:'810.30'
                         },
                         {
                             art:'325214',
                             desc:'Trimmer pe benzina GT-52S...',
                             qty:'12',
-                            itemPrice:'65 &#8381;',
-                            allPrice:'910.30 &#8381;',
+                            itemPrice:'65',
+                            allPrice:'910.30',
                             discount:'10%',
-                            totalPrice:'810.30 &#8381;'
+                            totalPrice:'810.30'
                         },
                         {
                             art:'325214',
                             desc:'Trimmer pe benzina GT-52S...',
                             qty:'12',
-                            itemPrice:'65 &#8381;',
-                            allPrice:'910.30 &#8381;',
+                            itemPrice:'65',
+                            allPrice:'910.30',
                             discount:'10%',
-                            totalPrice:'810.30 &#8381;'
+                            totalPrice:'810.30'
                         },
                         {
                             art:'325214',
                             desc:'Trimmer pe benzina GT-52S...',
                             qty:'12',
-                            itemPrice:'65 &#8381;',
-                            allPrice:'910.30 &#8381;',
+                            itemPrice:'65',
+                            allPrice:'910.30',
                             discount:'10%',
-                            totalPrice:'810.30 &#8381;'
+                            totalPrice:'810.30'
                         }
                     ]
                 },
@@ -207,7 +207,7 @@ export default {
                     date:'31.12.2020',
                     status:'Выполнен',
                     qty:'1 000 000 товаров',
-                    price:'1 000 819.27 &#8381;'
+                    price:'1 000 819.27'
                 }
             ]
         }
