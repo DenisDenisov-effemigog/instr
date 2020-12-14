@@ -7,6 +7,8 @@
                 type="text"
                 name="name"
                 id="name"
+                autocomplete="name"
+                autocorrect="off"
                 placeholder="Контактное лицо">
             <svg viewBox="0 0 24 24">
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
@@ -19,6 +21,8 @@
                 type="text"
                 name="company"
                 id="company"
+                autocomplete="organization"
+                autocorrect="off"
                 placeholder="Компания">
             <svg viewBox="0 0 24 24">
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
@@ -28,7 +32,7 @@
             <span class="profile-modal__label-text">Код доступа</span>
             <input
                 class="profile-modal__input"
-                type="number"
+                type="text"
                 name="code"
                 id="code"
                 placeholder="Код доступа">
@@ -36,13 +40,15 @@
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>
         </label>
-        <label name="company" class="profile-modal__label">
+        <label name="tel" class="profile-modal__label">
             <span class="profile-modal__label-text">Номер телефона</span>
             <input
                 class="profile-modal__input"
-                type="phone"
-                name="phone"
-                id="phone"
+                type="tel"
+                name="tel"
+                id="tel"
+                autocomplete="tel"
+                autocorrect="off"
                 placeholder="Номер телефона">
             <svg viewBox="0 0 24 24">
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
@@ -55,6 +61,9 @@
                 type="email"
                 name="email"
                 id="email"
+                autocomplete="email"
+                autocorrect="off"
+                autocapitalize="off"
                 placeholder="Email">
             <svg viewBox="0 0 24 24">
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>

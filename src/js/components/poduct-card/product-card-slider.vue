@@ -30,10 +30,9 @@
             <div class="product-card-slider__main_slide"
                  v-for="productImage in productImages"
                  @click="openModal" 
-                 @mouseenter="hoverOn" 
                  @mouseleave="hoverOff"
             >
-                <img :src="productImage.img" alt="">
+                <img @mouseenter="hoverOn" :src="productImage.img" alt="">
                 <div @mousemove="zoomImg" class="product-card-slider__zoom" :class="{'product-card-slider__zoom--open': flag}" :style="`background-image:url(${productImage.img}); background-position:${x}% ${y}%`"></div>
             </div>
         </VueSlickCarousel>
@@ -120,21 +119,17 @@ export default {
             this.y = 0
         },
         zoomImg(e){
-            let zoomSlide = document.querySelector('.product-card-slider__zoom')
-            let zoomSlideTop = zoomSlide.getBoundingClientRect().top.toFixed(0)
-            let zoomSlideRight = zoomSlide.getBoundingClientRect().right.toFixed(0)
-            // console.log(e.pageY - zoomSlideTop)
-            // console.log(typeof e.pageX - zoomSlideRight)
-            // this.x = (e.pageX - zoomSlideRight) / 10
-            // this.y = (e.pageY - zoomSlideTop) / 10
-            let zoomSlideWidth = zoomSlide.getBoundingClientRect().width.toFixed(0)
-            let zoomSlideHeight = zoomSlide.getBoundingClientRect().height.toFixed(0)
-            let mY = e.pageY - zoomSlideTop
-            let mX = e.pageX - zoomSlideRight
-            console.log(zoomSlide.getBoundingClientRect())
-            console.log(zoomSlideHeight)
-            this.x = mX/zoomSlideWidth * 100
-            this.y = mY/zoomSlideHeight * 100
+            if(window.innerWidth > 768) {
+                let zoomSlide = document.querySelector('.product-card-slider__zoom')
+                let zoomSlideTop = zoomSlide.getBoundingClientRect().top + window.pageYOffset
+                let slideHeader = document.querySelector('.product-card__slider_header').getBoundingClientRect().left
+                let zoomSlideWidth = zoomSlide.getBoundingClientRect().width
+                let zoomSlideHeight = zoomSlide.getBoundingClientRect().height
+                let mY = e.pageY - zoomSlideTop
+                let mX = e.pageX - slideHeader
+                this.x = mX/zoomSlideWidth * 100
+                this.y = mY/zoomSlideHeight * 100
+            }
         }
     },
     mounted() {
