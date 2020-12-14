@@ -34,7 +34,7 @@
                         <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                     </svg>
                 </li>
-                <li class="profile__menu-link"
+                <!--<li class="profile__menu-link"
                     :class="{'profile__menu-link_active': currentPage === 'my-favorite'}"
                     @click.prevent="openPage('my-favorite')">
                     <span>Избранное</span>
@@ -49,7 +49,7 @@
                     <svg class="" viewBox="0 0 6 10">
                         <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                     </svg>
-                </li>
+                </li>-->
             </ul>
             <div class="profile__menu-mobile">
                 <div class="profile__menu-mobile_link">
