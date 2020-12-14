@@ -5,7 +5,7 @@
                     <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-top'"></use>
                 </svg>
             </div>
-            <div @click="clickToCountry" class="topnav__switch-text">Toolsworld/{{country}}</div>
+            <div @click="clickToCountry" class="topnav__switch-text">{{country}}</div>
     </div>
 </template>
 
@@ -16,7 +16,7 @@ export default {
     name: 'topnav-switch',
     data(){
         return{
-            country: 'Румыния',
+            country: 'Россия',
             openedModal: false
             
         }

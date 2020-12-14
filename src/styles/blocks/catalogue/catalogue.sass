@@ -30,10 +30,19 @@
         height: fit-content
         min-height: 83vh
         background-color: $white
+        position: relative
         & > .container
             display: flex
             flex-direction: column
             height: 100%
+        &__close
+            position: absolute
+            top: 28px
+            right: 22px
+            svg
+                fill: $light-grey
+                width: 12px
+                height: 12px
     &__title
         @extend .title-3
         margin: 1.5rem 0 .5rem 0

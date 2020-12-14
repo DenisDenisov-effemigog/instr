@@ -1,6 +1,11 @@
 <template>
     <div class="catalogue_mobile">
         <div class="container">
+            <div class="catalogue_mobile__close" @click="closeCategory">
+                <svg>
+                    <use :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
+                </svg>
+            </div>
             <div 
                 class="breadcrumbs" 
                 v-if="subcategory || subcategories" 
@@ -118,6 +123,11 @@
             selectCategory(category) {
                 this.selectedCategory = category;
                 this.$eventBus.$emit("sow-button", 'Показать', 1, 'товар' + this.ending(1));
+            },
+            closeCategory() {
+                this.$eventBus.$emit('open-catalogue', false);
+                this.$eventBus.$emit("hide-button");
+                this.$eventBus.$emit('notActiveButton');
             },
             ending(value) {
                 let end = '';

@@ -17,19 +17,19 @@
                 <iframe :src="props" frameborder="0" allowfullscreen></iframe>
             </div>
             <div class="modal__profile-edit" v-else-if="modal === 'profile-edit'">
-                <h3 class="modal-title">Изменение данных</h3>
+                <h3 class="modal-title modal-title_centered">Изменение данных</h3>
                 <component is="edit-profile"></component>
             </div>
             <div class="modal__profile-edit" v-else-if="modal === 'profile-password'">
-                <h3 class="modal-title">Изменение пароля</h3>
+                <h3 class="modal-title modal-title_centered">Изменение пароля</h3>
                 <component is="change-password"></component>
             </div>
             <div class="modal__profile-edit" v-else-if="modal === 'profile-delete'">
-                <h3 class="modal-title">Выберите причину удаления профиля:</h3>
+                <h3 class="modal-title modal-title_centered">Выберите причину удаления профиля:</h3>
                 <component is="delete-profile"></component>
             </div>
             <div class="modal__profile-edit" v-else-if="modal === 'new-address'">
-                <h3 class="modal-title">Добавление нового адреса доставки</h3>
+                <h3 class="modal-title modal-title_centered">Добавление нового адреса доставки</h3>
                 <component is="add-address"></component>
             </div>
             
@@ -79,6 +79,9 @@ export default {
     created(){
         this.$eventBus.$on("openModal", this.openModal)
     },
+    beforeDestroy(){
+        this.$eventBus.$off('openModal');
+    },
     methods:{
         openModal(modal, props, modalSize){
             document.querySelector('.page').classList.add('page_fixed')
@@ -90,6 +93,9 @@ export default {
         },
         closeModal(){
             this.open = false
+            this.modal = ''
+            this.props = []
+            this.modalBigger = false
             this.$eventBus.$emit("deleteActive");
             document.querySelector('.page').classList.remove('page_fixed');
             document.querySelector('html').style.overflow = 'auto';

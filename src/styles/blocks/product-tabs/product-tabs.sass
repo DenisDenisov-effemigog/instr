@@ -75,12 +75,13 @@
         position: relative
         width: calc(100% - 6.5rem)
         margin-bottom: -1px
-        border-bottom: 1px solid rgba($light-grey, .42)
+        border-bottom: 1px solid $border-color_4
         +tablet
             width: calc(100% - 10rem)
         +from($desktop-small)
-            width: calc(100% - 13.3125rem)
+            width: calc(100% - 218px)
         span
+            padding-right: 3px
             display: block
             max-width: 26.875rem
             width: fit-content
@@ -210,7 +211,7 @@
         display: flex
         justify-content: flex-start
         +mobile
-            line-height: $line-height_9
+            line-height: $line-height_10
         & svg
             fill: $black
             min-width: 1.125rem
