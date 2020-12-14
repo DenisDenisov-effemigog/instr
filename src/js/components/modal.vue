@@ -79,6 +79,9 @@ export default {
     created(){
         this.$eventBus.$on("openModal", this.openModal)
     },
+    beforeDestroy(){
+        this.$eventBus.$off('openModal');
+    },
     methods:{
         openModal(modal, props, modalSize){
             document.querySelector('.page').classList.add('page_fixed')
@@ -90,6 +93,9 @@ export default {
         },
         closeModal(){
             this.open = false
+            this.modal = ''
+            this.props = []
+            this.modalBigger = false
             this.$eventBus.$emit("deleteActive");
             document.querySelector('.page').classList.remove('page_fixed');
             document.querySelector('html').style.overflow = 'auto';

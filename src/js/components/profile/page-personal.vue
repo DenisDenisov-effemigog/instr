@@ -4,21 +4,21 @@
             <div class="personalcab__personal-data">
 
                 <h2 class="profile__title">Личные данные</h2>
-                <a href="" class="profile__link profile__link_title">
+                <!--<a href="" class="profile__link profile__link_title">
                     <svg viewBox="0 0 20 20">
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__download'"></use>
                     </svg>
                     Выгрузить каталог
-                </a>
+                </a>-->
 
             </div>
             <div class="personalcab__company">
 
-                <div class="profile__company-logo">
+                <!--<div class="profile__company-logo">
                     <svg viewBox="0 0 72 72">
                         <use :xlink:href="templatePath + 'images/sprite.svg#company-logo'"></use>
                     </svg>
-                </div>
+                </div>-->
                 <div class="profile__company">
                     <h3 class="profile__company-name">{{personal.company.name}}</h3>
                     <p class="profile__company-type">Юридическое лицо</p>
