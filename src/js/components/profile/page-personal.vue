@@ -81,15 +81,21 @@
                     </div>
                 </li>
             </ul>
-            <a href="" class="profile__link">Изменить данные</a>
+            <a class="profile__link"
+               @click.prevent="openModal('profile-edit')"
+            >Изменить данные</a>
         </div>
         <div class="personalcab__layout">
             <h4 class="personalcab__title">Пароль и авторизация</h4>
-            <a href="" class="profile__link">Изменить пароль</a>
+            <a class="profile__link"
+               @click.prevent="openModal('profile-password')"
+            >Изменить пароль</a>
         </div>
         <div class="personalcab__layout">
             <h4 class="personalcab__title">Удаление профиля</h4>
-            <a href="" class="profile__link">
+            <a class="profile__link"
+               @click.prevent="openModal('profile-delete')"
+            >
                 <svg viewBox="0 0 20 20">
                     <use :xlink:href="templatePath + 'images/sprite.svg#icons__delete'"></use>
                 </svg>
@@ -113,7 +119,11 @@ export default {
             return this.profile.personal
         }
 
-    }
-
+    },
+    methods: {
+        openModal(modal) {
+            this.$eventBus.$emit("openModal", modal, '', false)
+        } 
+    },
 }
 </script>
