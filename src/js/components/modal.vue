@@ -25,7 +25,7 @@
                 <component is="change-password"></component>
             </div>
             <div class="modal__profile-edit" v-else-if="modal === 'profile-delete'">
-                <h3 class="modal-title modal-title_centered">Выберите причину удаления профиля:</h3>
+                <h3 class="modal-title">Выберите причину удаления профиля:</h3>
                 <component is="delete-profile"></component>
             </div>
             <div class="modal__profile-edit" v-else-if="modal === 'new-address'">
