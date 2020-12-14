@@ -7,6 +7,9 @@
     &__label
         position: relative
         display: flex
+        &_column
+            display: flex
+            flex-direction: column
         svg
             position: absolute
             top: .5rem
@@ -51,6 +54,7 @@
             display: block
     &__radio-input
         display: flex
+        align-items: center
         margin-bottom: 1rem
     &__check
         @extend .radio__check
@@ -62,6 +66,8 @@
         padding: .75rem 1rem
         border: 1px solid $light-grey
         border-radius: $border-radius_2
+        &_error
+            border-color: $primary-red
         &::placeholder
             color: $light-grey
     &__error-text

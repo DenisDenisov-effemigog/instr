@@ -29,7 +29,7 @@
                 <component is="delete-profile"></component>
             </div>
             <div class="modal__profile-edit" v-else-if="modal === 'new-address'">
-                <h3 class="modal-title modal-title_centered">Добавление нового адреса доставки</h3>
+                <h3 class="modal-title">Добавление нового адреса доставки</h3>
                 <component is="add-address"></component>
             </div>
             

@@ -44,8 +44,8 @@
             {{ product.title }}
         </a>
         <div class="card__price-block">
-            <div class="card__price-block_old-price">{{ product.oldPrice}} RON</div>
-            <div class="card__price-block_current-price">{{ product.newPrice }} RON</div>
+            <div class="card__price-block_old-price">{{ product.oldPrice}} &#8381;</div>
+            <div class="card__price-block_current-price">{{ product.newPrice }} &#8381;</div>
         </div>
         <div class="card__button-block">
             <addToCart :changeIcon="changeIcon"></addToCart>
