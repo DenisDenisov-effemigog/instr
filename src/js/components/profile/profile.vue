@@ -76,7 +76,7 @@
         <div class="profile__content">
             <div v-show="currentPage === 'my-profile' && !mobile" class="profile__page">
                 <div class="breadcrumbs" v-if="!showMenu" @click="goBack">
-                    <svg class="breadcrumbs__back" viewBox="0 0 18 12">
+                    <svg class="breadcrumbs__back" viewBox="0 3 18 15">
                         <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
                     </svg>
                     <span>Назад</span>
@@ -85,7 +85,7 @@
             </div>
             <div v-show="currentPage === 'order-list' && !mobile" class="profile__page">
                 <div class="breadcrumbs" v-if="!showMenu" @click="goBack">
-                    <svg class="breadcrumbs__back" viewBox="0 0 18 12">
+                    <svg class="breadcrumbs__back" viewBox="0 3 18 15">
                         <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
                     </svg>
                     <span>Назад</span>
@@ -94,7 +94,7 @@
             </div>
             <div v-show="currentPage === 'my-check' && !mobile" class="profile__page">
                 <div class="breadcrumbs" v-if="!showMenu" @click="goBack">
-                    <svg class="breadcrumbs__back" viewBox="0 0 18 12">
+                    <svg class="breadcrumbs__back" viewBox="0 3 18 15">
                         <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
                     </svg>
                     <span>Назад</span>
@@ -103,7 +103,7 @@
             </div>
             <div v-show="currentPage === 'delivery-list' && !mobile" class="profile__page">
                 <div class="breadcrumbs" v-if="!showMenu" @click="goBack">
-                    <svg class="breadcrumbs__back" viewBox="0 0 18 12">
+                    <svg class="breadcrumbs__back" viewBox="0 3 18 15">
                         <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
                     </svg>
                     <span>Назад</span>
@@ -112,7 +112,7 @@
             </div>
             <div v-show="currentPage === 'my-favorite' && !mobile" class="profile__page">
                 <div class="breadcrumbs" v-if="!showMenu" @click="goBack">
-                    <svg class="breadcrumbs__back" viewBox="0 0 18 12">
+                    <svg class="breadcrumbs__back" viewBox="0 3 18 15">
                         <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
                     </svg>
                     <span>Назад</span>
@@ -121,7 +121,7 @@
             </div>
             <div v-show="currentPage === 'actions' && !mobile" class="profile__page">
                 <div class="breadcrumbs" v-if="!showMenu" @click="goBack">
-                    <svg class="breadcrumbs__back" viewBox="0 0 18 12">
+                    <svg class="breadcrumbs__back" viewBox="0 3 18 15">
                         <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
                     </svg>
                     <span>Назад</span>

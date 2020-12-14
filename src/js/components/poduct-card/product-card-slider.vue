@@ -93,7 +93,7 @@ export default {
     },
     methods: {
         openModal(){
-            this.$eventBus.$emit("openModal", 'product-card', this.productImages)
+            this.$eventBus.$emit("openModal", 'product-card', this.productImages, true)
         },
         hoverOn(){
             if(window.innerWidth > 768) {

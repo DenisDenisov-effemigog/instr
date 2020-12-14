@@ -1,9 +1,10 @@
 <template>
-    <div v-show="openFlag" class="modal">
+    <div v-show="open" class="modal">
         <div class="modal-bg" @click="closeOutside"></div>
         <div class="modal-wrapper"
-             :class="{'modal-wrapper--big': modal !== 'promo'}"
+             :class="{'modal-wrapper--big': modalBigger}"
         >
+            
             <div class="modal-desc" v-if="modal === 'promo'">
                 <h3 class="modal-title">Третий в подарок!</h3>
                 <div class="modal-text">Здесь отображена текстовая информация об условиях акции, ее сроках, товарах, которые принимают участие, а так же что-нибудь еще.</div>
@@ -15,11 +16,28 @@
             <div class="modal__video" v-else-if="modal === 'openVideo'">
                 <iframe :src="props" frameborder="0" allowfullscreen></iframe>
             </div>
+            <div class="modal__profile-edit" v-else-if="modal === 'profile-edit'">
+                <h3 class="modal-title">Изменение данных</h3>
+                <component is="edit-profile"></component>
+            </div>
+            <div class="modal__profile-edit" v-else-if="modal === 'profile-password'">
+                <h3 class="modal-title">Изменение пароля</h3>
+                <component is="change-password"></component>
+            </div>
+            <div class="modal__profile-edit" v-else-if="modal === 'profile-delete'">
+                <h3 class="modal-title">Выберите причину удаления профиля:</h3>
+                <component is="delete-profile"></component>
+            </div>
+            <div class="modal__profile-edit" v-else-if="modal === 'new-address'">
+                <h3 class="modal-title">Добавление нового адреса доставки</h3>
+                <component is="add-address"></component>
+            </div>
+            
             <div class="modal__close" @click="closeModal">
-                <span v-if="modal !== 'promo'">Закрыть</span>
+                <span v-if="modalBigger">Закрыть</span>
                 <svg 
                     class="modal__close-icon" 
-                    :class="{'modal__close-icon--black': modal !== 'promo'}" 
+                    :class="{'modal__close-icon--black': modalBigger}" 
                     viewBox="0 0 12 12"
                 >
                     <use :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
@@ -31,37 +49,47 @@
 </template>
 
 <script>
+    import editProfile from './profile/page-modals/edit-profile.vue'
+    import changePassword from './profile/page-modals/change-password.vue'
+    import deleteProfile from './profile/page-modals/delete-profile.vue'
+    import addAddress from './profile/page-modals/add-address.vue'
     import photoModal from "./poduct-card/photo-modal.vue"
-    import ClickOutside from "vue-click-outside";
+    import ClickOutside from "vue-click-outside"
 
 export default {
     name: 'modal',
     components: {
         photoModal,
+        editProfile,
+        changePassword,
+        deleteProfile,
+        addAddress,
     },
     directives: {
         ClickOutside
     },
     data(){
         return{
-            openFlag: false,
+            open: false,
             modal: '',
             props: [],
+            modalBigger: false,
         }
     },
     created(){
         this.$eventBus.$on("openModal", this.openModal)
     },
     methods:{
-        openModal(modal, props){
+        openModal(modal, props, modalSize){
             document.querySelector('.page').classList.add('page_fixed')
             document.querySelector('html').style.overflowY = 'hidden';
-            this.openFlag = true
+            this.open = true
             this.modal = modal
             this.props = props
+            this.modalBigger = modalSize
         },
         closeModal(){
-            this.openFlag = false
+            this.open = false
             this.$eventBus.$emit("deleteActive");
             document.querySelector('.page').classList.remove('page_fixed');
             document.querySelector('html').style.overflow = 'auto';
@@ -71,9 +99,6 @@ export default {
                 this.closeModal() 
             }
         }
-    },
-    mounted() {
-        this.popupItem = this.$el
     },
     
 }

@@ -1,4 +1,4 @@
-<template>
+<template> <!--не используется-->
     <div class="slider-promo__modal">
         <svg class="slider-promo__modal-icon">
             <use :xlink:href="templatePath + 'images/sprite.svg#icons__link'"></use>
@@ -18,7 +18,7 @@ export default {
     },
     methods:{
         openModal(){
-            this.$eventBus.$emit("openModal", 'promo')
+            this.$eventBus.$emit("openModal", 'promo', false)
         },
     }
 }
