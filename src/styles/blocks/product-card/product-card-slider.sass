@@ -8,14 +8,8 @@
             width: 504px
             margin: 0
         &_slide
+            position: relative
             outline: none
-        & .slick-active
-            & img
-                transform: scale(1)
-                transition: .3s
-            & .hover
-                transition: .3s
-                transform: scale(1.1)
     &__previous
         width: 56px
         margin-right: 16px
@@ -41,6 +35,15 @@
         & .slick-current .product-card-slider__previous_slide
             border: 1px solid $grey
             border-radius: $border-radius_2
+    &__zoom
+        display: none
+        width: 100%
+        height: 100%
+        position: absolute
+        top: 0
+        background-repeat: no-repeat
+        &--open
+            display: block
             
 .slick-track
     &[data-v-e4caeaf8]

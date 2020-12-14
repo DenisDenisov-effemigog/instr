@@ -28,8 +28,10 @@ export default {
                 element = this.$refs.number
                 let tooltip = document.querySelector('.product-card__article-tooltip')
                 tooltip.classList.add('product-card__article-tooltip--open')
+                element.classList.add('product-card__article-number--copy')
                 setTimeout(() => {
                     tooltip.classList.remove('product-card__article-tooltip--open')
+                    element.classList.remove('product-card__article-number--copy')
                 }, 2000);
             }
             var range;

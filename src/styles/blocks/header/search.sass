@@ -124,6 +124,9 @@
             cursor: pointer
             &:hover
                 background: $pre-white
+            &:nth-child(3)
+                & ~ .search-items__item
+                    display: none
         &__info
             display: flex
             padding: 1rem
@@ -150,16 +153,11 @@
             justify-content: center
             align-items: center
             padding-bottom: 1.5rem
-            margin-top: 24px
             &-text
-                cursor: pointer
-                padding-right: 0.75rem
-                color: $blue
-                font-weight: 600
-                +tablet
-                    &:hover
-                        text-decoration: underline
+                @extend .profile__link
+                padding-right: 0.625rem
             &-pic
+                margin-top: 1.5rem
                 &-icon
                     fill: $icon-blue
                     width: $size_16
