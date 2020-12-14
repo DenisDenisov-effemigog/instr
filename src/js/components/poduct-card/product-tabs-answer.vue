@@ -24,8 +24,15 @@
                 expanded: false
             }
         },
+        created() {
+            window.addEventListener("resize", this.textHeight);
+        },
+        destroyed() {
+            window.removeEventListener("resize", this.textHeight);
+        },
         methods: {
-            textHeight() {
+            textHeight(e) {
+                console.log(this.$refs.text.clientHeight, this.$refs.textBlock.clientHeight)
                 if (this.$refs.text.clientHeight <= this.$refs.textBlock.clientHeight) {
                     return this.expanded = true
                 }

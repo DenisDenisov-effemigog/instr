@@ -1,9 +1,13 @@
 <template>
     <div class="delivery">
-        <div class="delivery__header" :class="{'delivery__header_column': delivery.length == 0}">
+        <div class="delivery__header" 
+             :class="{'delivery__header_column': delivery.length === 0}"
+        >
             <h2 class="profile__title">Адреса доставки</h2>
-            <p class="delivery__no-address" v-if="delivery.length == 0">У вас пока нет ни одного адреса.</p>
-            <div class="delivery__add-address-btn">
+            <p class="delivery__no-address" v-if="delivery.length === 0">У вас пока нет ни одного адреса.</p>
+            <div class="delivery__add-address-btn"
+                 @click.prevent="openModal('new-address')"
+            >
                 <svg viewBox="0 0 20 20">
                     <use :xlink:href="templatePath + 'images/sprite.svg#icons__plus-small'"></use>
                 </svg>
@@ -24,8 +28,6 @@
                 </li>
             </ul>
         </div>
-        
-        
     </div>
 </template>
 
@@ -42,7 +44,11 @@ export default {
         delivery() {
             return this.profile.delivery
         }
-
-    }
+    },
+    methods: {
+        openModal(modal) {
+            this.$eventBus.$emit("openModal", modal, '', false)
+        }
+    },
 }
 </script>
