@@ -46,10 +46,14 @@
         },
         created(){
             this.$eventBus.$on("allOrders", this.allOrders)
+            this.$eventBus.$on("detailOrder", this.detailOrder)
         },
         methods:{
             allOrders() {
                 this.details = false
+            },
+            detailOrder() {
+                this.details = true
             },
         }
         }
