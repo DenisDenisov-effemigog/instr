@@ -20,42 +20,42 @@
                     <div class="my-check__code my-check__code--head">Код операции</div>
                 </li>
                 <li class="my-check__item">
-                    <div class="my-check__sum my-check__sum--red">1000000 RON</div>
+                    <div class="my-check__sum my-check__sum--red">1000000 &#8381;</div>
                     <div class="my-check__date">23.12.2020 в 24:10</div>
                     <div class="my-check__operation">Оплата заказа #3895347</div>
                     <div class="my-check__code">23064560-0006</div>
                     <div class="my-check__order">#325214</div>
                 </li>
                 <li class="my-check__item">
-                    <div class="my-check__sum">+1500 RON</div>
+                    <div class="my-check__sum">+1500 &#8381;</div>
                     <div class="my-check__date">23.12.2020 в 24:10</div>
                     <div class="my-check__operation">Пополнение баланса</div>
                     <div class="my-check__code">23064560-0006</div>
                     <div class="my-check__order">#325214</div>
                 </li>
                 <li class="my-check__item">
-                    <div class="my-check__sum">+1500 RON</div>
+                    <div class="my-check__sum">+1500 &#8381;</div>
                     <div class="my-check__date">23.12.2020 в 24:10</div>
                     <div class="my-check__operation">Пополнение баланса</div>
                     <div class="my-check__code">23064560-0006</div>
                     <div class="my-check__order">#325214</div>
                 </li>
                 <li class="my-check__item">
-                    <div class="my-check__sum">+1500 RON</div>
+                    <div class="my-check__sum">+1500 &#8381;</div>
                     <div class="my-check__date">23.12.2020 в 24:10</div>
                     <div class="my-check__operation">Пополнение баланса</div>
                     <div class="my-check__code">23064560-0006</div>
                     <div class="my-check__order">#325214</div>
                 </li>
                 <li class="my-check__item">
-                    <div class="my-check__sum my-check__sum--red">-1500 RON</div>
+                    <div class="my-check__sum my-check__sum--red">-1500 &#8381;</div>
                     <div class="my-check__date">23.12.2020 в 24:10</div>
                     <div class="my-check__operation">Оплата заказа</div>
                     <div class="my-check__code">23064560-0006</div>
                     <div class="my-check__order">#325214</div>
                 </li>
                 <li class="my-check__item">
-                    <div class="my-check__sum">+1500 RON</div>
+                    <div class="my-check__sum">+1500 &#8381;</div>
                     <div class="my-check__date">23.12.2020 в 24:10</div>
                     <div class="my-check__operation">Пополнение баланса</div>
                     <div class="my-check__code">23064560-0006</div>

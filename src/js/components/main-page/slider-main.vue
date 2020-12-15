@@ -4,7 +4,7 @@
             
             <div class="slider-main__slide" v-for="slide in mainSlides">
                 <img class="slider-main__slide_img" :src="slide.img">
-                <a :href="slide.link" class="slider-main__slide_link" >Подробнее</a> 
+<!--                <a :href="slide.link" class="slider-main__slide_link" >Подробнее</a> -->
             </div>
             
             <template slot="prevButton">
