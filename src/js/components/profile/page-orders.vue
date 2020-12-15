@@ -13,7 +13,9 @@
                 В этом разделе вы найдете информацию о заказах, сделанных на сайте
             </div>
         </div>
-        <select-list></select-list>
+        <div class="order__info-select">
+            <select-list></select-list>
+        </div>
         <div class="order__main">
             <order-list></order-list>
         </div>

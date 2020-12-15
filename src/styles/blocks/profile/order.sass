@@ -16,6 +16,10 @@
         & svg
             width: $size_18
             height: $size_18
+        &-select
+            margin-top: 1.5rem
+            +tablet
+                max-width: 13.5rem
     &__list
         @extend .text-2
         margin-top: 3.125rem
@@ -142,7 +146,7 @@
             flex: 1
             max-width: 6.25rem
         +mobile
-            @extend .text-4
+            font-size: 0.75rem
             width: 100%
             color: $grey
     &__product-desc
