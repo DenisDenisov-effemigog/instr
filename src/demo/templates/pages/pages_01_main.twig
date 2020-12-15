@@ -513,6 +513,36 @@
                 },
             ]
         },
+        {
+            'id': 6,
+            'title': 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
+            'link': '',
+            'code': 717950,
+            'oldPrice': '3 819.27',
+            'newPrice': '2 819.27',
+            'images': [
+                {id: 1, img: './demo_images/product/image_50.png'},
+                {id: 2, img: './demo_images/product/image_51.png'},
+                {id: 3, img: './demo_images/product/image_52.png'},
+                {id: 4, img: './demo_images/product/image_53.png'},
+            ],
+            'tooltips': [
+                {
+                    'id': 1,
+                    'title': 'Новинка',
+                    'text': 'Товар находится в акционной категории товаров “Новинка”',
+                    'link': '',
+                    'status': 'new',
+                },
+                {
+                    'id': 2,
+                    'title': 'Акция',
+                    'text': 'Товар участвует в акции “Акция”',
+                    'link': '',
+                    'status': 'promo',
+                },
+            ]
+        },
     ]
 %}
 {% set noveltys = 
@@ -701,27 +731,41 @@
 %}
 
 {% set mainSlides = [
-    {id: 1, img: './demo_images/banners/banner.png',link: ''},
-    {id: 2, img: './demo_images/banners/banner2.png',link: ''},
-    {id: 3, img: './demo_images/banners/banner3.png',link: ''},
+    {id: 1, 
+        img: './demo_images/banners/main-banners/banner.png',
+        imgMob: './demo_images/banners/main-banners/banner-mob.png',
+        link: ''
+    },
+    {
+        id: 2, 
+        img: './demo_images/banners/main-banners/banner2.png',
+        imgMob: './demo_images/banners/main-banners/banner-mob1.png',
+        link: ''
+    },
+    {
+        id: 3, 
+        img: './demo_images/banners/main-banners/banner3.png',
+        imgMob: './demo_images/banners/main-banners/banner-mob2.png',
+        link: ''
+    },
 ]%}
 {% set promoBanners = [
-    {id: 1, img: './demo_images/banners/promo1.png', link: ''},
-    {id: 2, img: './demo_images/banners/promo2.png', link: ''},
-    {id: 3, img: './demo_images/banners/promo3.png', link: ''},
-    {id: 4, img: './demo_images/banners/promo4.png', link: ''},
-    {id: 5, img: './demo_images/banners/promo5.png', link: ''},
-    {id: 6, img: './demo_images/banners/promo6.png', link: ''},
-    {id: 7, img: './demo_images/banners/promo4.png', link: ''},
-    {id: 8, img: './demo_images/banners/promo5.png', link: ''},
+    {id: 1, img: './demo_images/banners/promo-banners/promo1.png', link: ''},
+    {id: 2, img: './demo_images/banners/promo-banners/promo2.png', link: ''},
+    {id: 3, img: './demo_images/banners/promo-banners/promo3.png', link: ''},
+    {id: 4, img: './demo_images/banners/promo-banners/promo4.png', link: ''},
+    {id: 5, img: './demo_images/banners/promo-banners/promo5.png', link: ''},
+    {id: 6, img: './demo_images/banners/promo-banners/promo6.png', link: ''},
+    {id: 7, img: './demo_images/banners/promo-banners/promo4.png', link: ''},
+    {id: 8, img: './demo_images/banners/promo-banners/promo5.png', link: ''},
 ] %}
 {% set actionBanners = [
     {id: 1, img: './demo_images/banners/banners-block/ban-1.png', link: ''},
     {id: 2, img: './demo_images/banners/banners-block/ban-2.png', link: ''},
     {id: 3, img: './demo_images/banners/banners-block/ban-3.png', link: ''},
-    {id: 4, img: './demo_images/banners/banners-block/ban-4.png', link: ''},
-    {id: 5, img: './demo_images/banners/banners-block/ban-5.png', link: ''},
-    {id: 6, img: './demo_images/banners/banners-block/ban-4.png', link: ''},
+    {id: 4, img: './demo_images/banners/banners-block/ban-2.png', link: ''},
+    {id: 5, img: './demo_images/banners/banners-block/ban-3.png', link: ''},
+    {id: 6, img: './demo_images/banners/banners-block/ban-2.png', link: ''},
 ] %}
 {% set collections = [
     {

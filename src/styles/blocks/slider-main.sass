@@ -7,18 +7,25 @@
         margin-bottom: 56px
     &__slide
         position: relative
-        height: 190px
-        padding: 50px 80px
+        height: 306px
         display: flex !important
         align-items: flex-end
         +desktop
             height: 450px
+            padding: 50px 80px
         &_img
             +absolute-full
             +full-content
             object-fit: contain
             object-position: center center
             z-index: -1
+            display: none
+            +desktop
+                display: block
+            &--mob
+                display: block
+                +desktop
+                    display: none
         &_link
             @extend .button-primary
             width: 199px

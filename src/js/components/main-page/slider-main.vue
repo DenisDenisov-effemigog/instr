@@ -4,6 +4,7 @@
             
             <div class="slider-main__slide" v-for="slide in mainSlides">
                 <img class="slider-main__slide_img" :src="slide.img">
+                <img class="slider-main__slide_img slider-main__slide_img--mob" :src="slide.imgMob">
 <!--                <a :href="slide.link" class="slider-main__slide_link" >Подробнее</a> -->
             </div>
             
