@@ -1,3 +1,6 @@
-<component is="slider-promo"
-           :promo-banners="{{ promoBanners|json_encode()|e('html_attr') }}"
-></component>
+<div class="slider-promo">
+    <div class="slider-promo__title">Промо моменты</div>
+    <component is="slider-promo"
+               :promo-banners="{{ promoBanners|json_encode()|e('html_attr') }}"
+    ></component>
+</div>
