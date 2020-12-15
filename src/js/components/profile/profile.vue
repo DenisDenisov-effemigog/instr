@@ -167,6 +167,7 @@ export default {
                     this.showMenu = false
                 }
             }
+            this.$eventBus.$emit("allOrders");
         },
         goBack() {
             this.mobile = true

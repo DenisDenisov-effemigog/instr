@@ -1,7 +1,10 @@
 <template>
     <ul class="order__list">
-        <li class="order__item" v-for="item in orders" :key="item.id">
-            <div class="order__desc">
+        <li class="order__item" 
+            v-for="item in orders" 
+            :key="item.id"
+           >
+            <div class="order__desc" @click.stop="openDetails(item.id)">
                 <div class="order__number">#{{item.number}}</div>
                 <div class="order__date">{{item.date}}</div>
                 <div class="order__status">{{item.status}}</div>
@@ -13,12 +16,12 @@
                             <use :xlink:href="templatePath + 'images/sprite.svg#icons__repeat'"></use>
                         </svg>
                     </div>
-                    <div class="order__btn-text">
+                    <div class="order__btn-text" @click.stop="openModal">
                         Повторить заказ
                     </div>
                 </div>
                 <div v-if="item.product" class="order__arrow">
-                    <svg @click="clickArrow">
+                    <svg @click.stop="clickArrow">
                         <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-down'"></use>
                     </svg>
                 </div>
@@ -39,12 +42,18 @@
 <script>
 import orderProductList from './order-product-list.vue'
 export default {
- components: { orderProductList },
-    name: 'order-list',
-    data(){
-        return{
-            flag: false,
-            orders:[
+     components: { orderProductList },
+     name: 'order-list',
+     props: {
+         value: {
+             type: Number,
+             required: true
+         },
+     },
+     data(){
+         return{
+             flag: false,
+             orders:[
                 {
                     id: 1,
                     number:'325214',
@@ -210,13 +219,33 @@ export default {
                     price:'1 000 819'
                 }
             ]
-        }
+         }
+    },
+    model: {
+        prop: 'value',
+        event: 'change',
+    },
+    computed: {
+        showDetails: {
+            get: function () {
+                return this.value;
+            },
+            set: function (newValue) {
+                this.$emit('change', newValue);
+            }
+        },
     },
     methods:{
-        clickArrow(e){
-            e.target.closest('div').classList.toggle('order__arrow--open')
-            e.target.closest('div').parentElement.nextElementSibling.classList.toggle('order__product-list--open')
-        }
+         clickArrow(e){
+             e.target.closest('div').classList.toggle('order__arrow--open')
+             e.target.closest('div').parentElement.nextElementSibling.classList.toggle('order__product-list--open')
+         },
+        openDetails(index){
+            this.showDetails = true
+        },
+        openModal() {
+             
+        },
     }
 }
 </script>
