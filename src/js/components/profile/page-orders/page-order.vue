@@ -7,7 +7,9 @@
                 <div class="page-order__status">Выполнен</div>
             </div>
             <div class="page-order__select">
-                <select-list></select-list>
+                <select-list
+                    :points="points"
+                ></select-list>
             </div>
             <div class="page-order__btn">
                 <div class="page-order__btn-icon">
@@ -49,7 +51,7 @@
                         </div>
                     </li>
                 </ul>
-                <div ref="descOrder" class="page-order__desc-order">
+                <div class="page-order__desc-order">
                     <h3 class="page-order__desc-order_title">Стоимость заказа</h3>
                     <ul class="page-order__desc-order_list">
                         <li class="page-order__desc-order_item">
@@ -95,6 +97,7 @@ export default {
     name:"page-order",
     data(){
         return{
+            points:['Документы','Ключи','Мотоцикл'],
             flag: true,
             deliveryInfo:[
                 {
@@ -164,10 +167,20 @@ export default {
     },
     methods:{
         mouseWheel(){
-            let point = this.$refs.descOrder.getBoundingClientRect().top - this.$refs.descOrder.getBoundingClientRect().height - this.$refs.mobileBtn.getBoundingClientRect().height
-            let windowPosition = window.pageYOffset
-            console.log(point)
-            console.log(windowPosition)
+            if(window.innerWidth < 768) {
+                let windowPosition = (window.pageYOffset + window.innerHeight).toFixed(0)
+                let pcH = document.querySelector('.profile__content').clientHeight.toFixed(0)
+                if(pcH > windowPosition){
+                    this.$refs.mobileBtn.classList.add('page-order__desc-order_btn--fixed')
+                }else{
+                    if(this.$refs.mobileBtn.classList.contains('page-order__desc-order_btn--fixed')){
+                        this.$refs.mobileBtn.classList.remove('page-order__desc-order_btn--fixed')
+                    }
+                }
+                console.log(pcH)
+                console.log(windowPosition)
+            }
+            
         }
     },
     created () {

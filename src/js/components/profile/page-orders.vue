@@ -14,7 +14,9 @@
             </div>
         </div>
         <div class="order__info-select">
-            <select-list></select-list>
+            <select-list
+                :points="points"
+            ></select-list>
         </div>
         <div class="order__main">
             <order-list></order-list>
@@ -38,7 +40,7 @@ export default {
     },
     data(){
         return{
-            
+            points:['Выполнен','В ожидании оплаты','Отменен'],
         }
     },
     methods:{
