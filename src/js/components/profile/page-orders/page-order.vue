@@ -7,7 +7,9 @@
                 <div class="page-order__status">Выполнен</div>
             </div>
             <div class="page-order__select">
-                <select-list></select-list>
+                <select-list
+                    :points="points"
+                ></select-list>
             </div>
             <div class="page-order__btn">
                 <div class="page-order__btn-icon">
@@ -21,42 +23,66 @@
             </div>
         </div>
         <div class="page-order__main">
-            <ul class="page-order__list">
-                <li class="page-order__item">Артикул</li>
-                <li class="page-order__item">Название</li>
-                <li class="page-order__item">Кол-во</li>
-                <li class="page-order__item">Цена/шт.</li>
-                <li class="page-order__item">Старая цена</li>
-                <li class="page-order__item">Скидка</li>
-                <li class="page-order__item">Новая цена</li>
-            </ul>
+            <div class="page-order__table">
+                <div class="page-order__article">Артикул</div>
+                <div class="page-order__name">Название</div>
+                <div class="page-order__qty">Кол-во</div>
+                <div class="page-order__item-price">Цена/шт.</div>
+                <div class="page-order__old-price">Старая цена</div>
+                <div class="page-order__discount">Скидка</div>
+                <div class="page-order__new-price">Новая цена</div>
+            </div>
             <order-product-list :flag='flag' :products="products"></order-product-list>
             <div class="page-order__desc">
-                <ul class="page-order__desc-list">
-                    <li class="page-order__desc-item" v-for="item in deliveryInfo">
-                        <div class="page-order__desc-icon">
+                <ul class="page-order__desc_list">
+                    <li class="page-order__desc_item" v-for="item in deliveryInfo">
+                        <div class="page-order__desc_icon">
                             <svg>
                                 <use :xlink:href="templatePath + `images/sprite.svg#icons__${item.icon}`"></use>
                             </svg>
                         </div>
-                        <div class="page-order__desc-info">
-                            <div class="page-order__desc-subtitle">
+                        <div class="page-order__desc_info">
+                            <div class="page-order__desc_subtitle">
                                 {{item.title}}
                             </div>
-                            <div class="page-order__desc-desc">
+                            <div class="page-order__desc_desc">
                                 {{item.desc}}
                             </div>
                         </div>
                     </li>
                 </ul>
                 <div class="page-order__desc-order">
-                    <h3 class="page-order__desc-title">Стоимость заказа</h3>
-                    <ul class="page-order__desc-list">
-                        <li class="page-order__desc-item"></li>
-                        <li class="page-order__desc-item"></li>
-                        <li class="page-order__desc-item"></li>
-                        <li class="page-order__desc-item"></li>
+                    <h3 class="page-order__desc-order_title">Стоимость заказа</h3>
+                    <ul class="page-order__desc-order_list">
+                        <li class="page-order__desc-order_item">
+                            <div class="page-order__desc-order_name">Цена</div>
+                            <div class="page-order__desc-order_price">6 920 ₽</div>
+                        </li>
+                        <li class="page-order__desc-order_item page-order__desc-order_item--discount">
+                            <div class="page-order__desc-order_name">Скидка</div>
+                            <div class="page-order__desc-order_price page-order__desc-order_price--discount">918 ₽</div>
+                        </li>
+                        <li class="page-order__desc-order_item page-order__desc-order_item--delivery">
+                            <div class="page-order__desc-order_name">Livrare</div>
+                            <div class="page-order__desc-order_price">+119.27 RON</div>
+                        </li>
+                        <li class="page-order__desc-order_item page-order__desc-order_item--total">
+                            <div class="page-order__desc-order_name">Ваша цена</div>
+                            <div class="page-order__desc-order_price page-order__desc-order_price--total">6 000 ₽</div>
+                        </li>
                     </ul>
+                    <div ref="mobileBtn" class="page-order__desc-order_btn">
+                        <div class="page-order__desc-order_btn_wrapper">
+                            <div class="page-order__desc-order_btn_icon">
+                                <svg>
+                                    <use :xlink:href="templatePath + 'images/sprite.svg#icons__repeat'"></use>
+                                </svg>
+                            </div>
+                            <div class="page-order__desc-order_btn_text">
+                                Повторить заказ
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -71,6 +97,7 @@ export default {
     name:"page-order",
     data(){
         return{
+            points:['Документы','Ключи','Мотоцикл'],
             flag: true,
             deliveryInfo:[
                 {
@@ -139,7 +166,25 @@ export default {
         }
     },
     methods:{
-
-    }
+        mouseWheel(){
+            if(window.innerWidth < 768) {
+                let windowPosition = (window.pageYOffset + window.innerHeight).toFixed(0)
+                let pcH = document.querySelector('.profile__content').clientHeight.toFixed(0)
+                if(pcH > windowPosition){
+                    this.$refs.mobileBtn.classList.add('page-order__desc-order_btn--fixed')
+                }else{
+                    if(this.$refs.mobileBtn.classList.contains('page-order__desc-order_btn--fixed')){
+                        this.$refs.mobileBtn.classList.remove('page-order__desc-order_btn--fixed')
+                    }
+                }
+                console.log(pcH)
+                console.log(windowPosition)
+            }
+            
+        }
+    },
+    created () {
+        window.addEventListener('scroll', this.mouseWheel);
+    },
 }
 </script>

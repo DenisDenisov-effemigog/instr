@@ -127,7 +127,7 @@
             }
         },
         created() {
-            this.questionsQuantity()
+            this.questionsQuantity
             this.addQuestion()
         }
     }

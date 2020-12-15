@@ -53,7 +53,7 @@
                 <a href="#" class="search-items__download-text">Показать все результаты</a>
                 <div class="search-items__download-pic">
                     <svg class="search-items__download-pic-icon" viewBox="0 0 12 10">
-                        <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-down'"></use>
+                        <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                     </svg>
                 </div>
             </div>

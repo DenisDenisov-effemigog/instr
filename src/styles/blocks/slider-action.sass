@@ -1,0 +1,16 @@
+.slider-action
+    &__slide
+        padding: 0 6px
+        position: relative
+        cursor: pointer
+        +desktop
+            padding: 0 12px
+        &:hover img
+            box-shadow: 0 2px 8px 0 rgba($black-real, .16)
+        & img
+            transition: 200ms
+            object-fit: cover
+            object-position: center center
+            z-index: -1
+            +desktop
+                +full-content

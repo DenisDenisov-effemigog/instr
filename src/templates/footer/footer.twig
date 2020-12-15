@@ -4,7 +4,11 @@
 <component is="mobile-menu" :countries="{{ countries|json_encode()|e('html_attr') }}"></component>
 <component is="modal"></component>
 <component is="sticky-mobile-button"></component>
-<component is="sticky-card"></component>
+{% if showStickyCard %}
+<component is="sticky-card" :product="{{ product|json_encode()|e('html_attr') }}"></component>
+{% endif %}
+
+
 
 <footer class="footer">
     <div class="container">

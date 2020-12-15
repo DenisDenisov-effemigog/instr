@@ -1,6 +1,14 @@
 <section class="new-items">
-    <div class="new-items__title">Новинки от производителя</div>
-    <div class="new-items__content">
+{#    <div class="new-items__title">Новинки от производителя</div>#}
+    <component
+        is="slider-cards"
+        :change-icon="true"
+        :dots="false"
+        :title="'Новинки от производителя'"
+        :card-size="'short'"
+        :products="{{ noveltys|json_encode()|e('html_attr') }}"
+    ></component>
+    {#<div class="new-items__content">
         <div class="new-items__content_items-block">
             {% for product in noveltys %}
                 <component
@@ -10,8 +18,5 @@
                 ></component>
             {% endfor %}
         </div>
-        {#<div class="new-items__content_banner">
-            <img src="{{ templatePath }}demo_images/banners/promo4.png" alt="">
-        </div>#}
-    </div>
+    </div>#}
 </section>

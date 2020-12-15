@@ -20,6 +20,7 @@ const gulp = require('gulp'),
     terser = require('gulp-terser'),
     twig = require('gulp-twig'),
     vueify = require('vueify'),
+    watch = require('gulp-watch'),
     vinyl_buffer = require('vinyl-buffer')
 ;
 
@@ -351,6 +352,13 @@ gulp.task('demo:build', gulp.parallel(
     'demo:img:minify',
     'demo:templates:build'
 ));
+
+gulp.task('watch', function(){
+    watch(
+        ['./src/**/*.js', './src/**/*.vue'],
+        gulp.series('app:js:build')
+    );
+});
 
 gulp.task('default', gulp.series(
     'app:build',

@@ -22,10 +22,14 @@
 <script>
 export default {
     name: "select-list",
+    props:{
+        points:{
+            type: Array
+        }
+    },
     data(){
         return{
             flag:false,
-            points:['Выполнен','В ожидании оплаты','Отменен'],
             currentPoint:0
         }
     },
