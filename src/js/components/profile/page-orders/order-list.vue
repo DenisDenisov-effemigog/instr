@@ -51,7 +51,7 @@ export default {
                     date:'31.12.2020',
                     status:'Выполнен',
                     qty:'8 товаров',
-                    price:'1 000 819.27',
+                    price:'1 000 819',
                     product:[
                         {
                             art:'325214',
@@ -133,7 +133,7 @@ export default {
                     date:'31.12.2020',
                     status:'Выполнен',
                     qty:'2 товарa',
-                    price:'1 000 819.27',
+                    price:'1 000 819',
                     product:[
                         {
                             art:'325214',
@@ -161,7 +161,7 @@ export default {
                     date:'31.12.2020',
                     status:'Выполнен',
                     qty:'4 товара',
-                    price:'819.27',
+                    price:'819',
                     product:[
                         {
                             art:'325214',
@@ -207,7 +207,7 @@ export default {
                     date:'31.12.2020',
                     status:'Выполнен',
                     qty:'1 000 000 товаров',
-                    price:'1 000 819.27'
+                    price:'1 000 819'
                 }
             ]
         }

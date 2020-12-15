@@ -38,7 +38,7 @@
                         </div>
                         <div class="search-items__desc">
                             <p class="search-items__desc-text">Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel 52 сс</p>
-                            <p class="search-items__desc-price">2 819.27 &#8381;</p>
+                            <p class="search-items__desc-price">2 819 &#8381;</p>
                         </div>
                         <div class="search-items__icon">
                             <svg class="">
