@@ -37,17 +37,17 @@
         data() {
             return {
                 options: {
+                    navButtons: false,
                     slidesToShow: 2.5,
                     dots: false,
-                    navButtons: false,
-                    // responsive: [
-                    //     {
-                    //         breakpoint: 768,
-                    //         settings: {
-                    //             slidesToShow: 2
-                    //         }
-                    //     },
-                    // ]
+                    responsive: [
+                        {
+                            breakpoint: 768,
+                            settings: {
+                                dots: false,
+                            }
+                        },
+                    ]
                 }
             }
         },

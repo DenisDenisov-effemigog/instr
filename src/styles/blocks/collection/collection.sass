@@ -7,6 +7,10 @@
     &__content
         @extend .columns
         flex-wrap: wrap
+        +mobile
+            margin-right: -16px
+        +desktop
+            display: flex
         &_mobile
             +tablet
                 display: none
@@ -22,6 +26,7 @@
         cursor: pointer
         +mobile
             padding: 4px !important
+            height: 203px
         +tablet
             width: percentage(1 / 4)
         +desktop
