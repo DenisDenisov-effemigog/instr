@@ -25,7 +25,7 @@
     &__menu-link
         @extend .text-2
         position: relative
-        padding: 1rem 10rem 1rem 1.75rem
+        padding: 1rem 10rem 1rem 1rem
         color: $grey
         cursor: pointer
         +tablet
@@ -97,6 +97,10 @@
         +tablet
             display: none
     &__company
+        &--mobile
+            padding: 1.5rem 1rem
+            +tablet
+                display: none
         //margin-left: 1rem
     &__company-logo
         width: 4.5rem
@@ -106,6 +110,8 @@
             height: 4.5rem
     &__company-name
         @extend .title-4
+        &--mobile
+            @extend .title-5
         +tablet
             font-size: $font-size_8
             line-height: $line-height_8

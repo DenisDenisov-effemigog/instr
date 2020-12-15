@@ -1,6 +1,10 @@
 <template>
     <div class="profile">
         <div class="profile__menu" v-if="showMenu">
+            <div class="profile__company profile__company--mobile">
+                <h3 class="profile__company-name profile__company-name--mobile">Компания «Инструменты Будущего»</h3>
+                <p class="profile__company-type profile__company-type--mobile">Юридическое лицо</p>
+            </div>
             <ul class="profile__menu-list">
                 <li class="profile__menu-link"
                     :class="{'profile__menu-link_active': currentPage === 'my-profile'}"
