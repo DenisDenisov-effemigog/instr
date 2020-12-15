@@ -21,6 +21,7 @@ import sliderPromo from './components/main-page/slider-promo.vue';
 import sliderPromoModal from './components/main-page/slider-promo-modal.vue';
 import sliderAction from './components/main-page/slider-action.vue';
 import sliderCards from './components/main-page/slider-cards.vue';
+import sliderCollection from './components/main-page/mobile/slider-collection.vue';
 /*card*/
 import card from './components/card/card.vue';
 import sliderPhotoCard from './components/card/slider-photo-card.vue';
@@ -62,6 +63,7 @@ export default {
         sliderPromo,
         sliderAction,
         sliderCards,
+        sliderCollection,
         card,
         sliderPhotoCard,
         catalogue,
