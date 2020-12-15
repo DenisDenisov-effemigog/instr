@@ -1,10 +1,10 @@
 <template>
     <div class="product-tabs">
         <div 
-            @touchstart="touchStart"
-            @touchmove="touchMove"
-            @touchend="touchEnd"
             class="container">
+            <!--@touchstart="touchStart"
+            @touchmove="touchMove"
+            @touchend="touchEnd"-->
             <div ref="tabs" class="product-tabs__tabs"
                 :class="{'product-tabs__tabs_center': currentTab === 'description', 
                     'product-tabs__tabs_end': currentTab === 'questions'}">

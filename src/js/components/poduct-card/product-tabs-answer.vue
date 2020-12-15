@@ -32,7 +32,6 @@
         },
         methods: {
             textHeight(e) {
-                console.log(this.$refs.text.clientHeight, this.$refs.textBlock.clientHeight)
                 if (this.$refs.text.clientHeight <= this.$refs.textBlock.clientHeight) {
                     return this.expanded = true
                 }
