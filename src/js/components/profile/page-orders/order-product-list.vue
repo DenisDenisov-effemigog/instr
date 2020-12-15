@@ -11,7 +11,7 @@
         </li>
         <!-- Нужно выводить 20 товаров -->
         <li class="order__product-item--all" v-show="products.length > 5">
-            <a href="#">
+            <a @click.prevent="openDetails">
                 Больше информации о заказе
             </a>
         </li>
@@ -37,7 +37,9 @@ export default {
         }
     },
     methods:{
-
+        openDetails() {
+            this.$eventBus.$emit("detailOrder");
+        },
     }
 }
 </script>

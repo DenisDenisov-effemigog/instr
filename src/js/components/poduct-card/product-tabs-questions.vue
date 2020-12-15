@@ -30,9 +30,9 @@
                     value="Отправить вопрос"
                 >
             </span>
-            <span class="product-tabs__form-error"
+            <!-- <span class="product-tabs__form-error"
                 :class="{'product-tabs__form-error_show': error}">
-                Заполните все поля</span>
+                Заполните все поля</span> -->
         </form>
         <div class="product-tabs__answer" v-for="(question, index) in qAs">
             <span class="product-tabs__new-badge" v-if="newBadge === index">Новый вопрос</span>
@@ -127,7 +127,8 @@
             }
         },
         created() {
-            this.questionsQuantity()
+            this.questionsQuantity;
+            this.qAs;
             this.addQuestion()
         }
     }
