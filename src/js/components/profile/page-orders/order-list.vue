@@ -58,7 +58,7 @@ export default {
                             desc:'Trimmer pe benzina GT-52S...',
                             qty:'12',
                             itemPrice:'65',
-                            allPrice:'910.30',
+                            allPrice:'910',
                             discount:'10%',
                             totalPrice:'810.30'
                         },
@@ -67,7 +67,7 @@ export default {
                             desc:'Trimmer pe benzina GT-52S...',
                             qty:'12',
                             itemPrice:'65',
-                            allPrice:'910.30',
+                            allPrice:'910',
                             discount:'10%',
                             totalPrice:'810.30'
                         },
@@ -76,7 +76,7 @@ export default {
                             desc:'Trimmer pe benzina GT-52S...',
                             qty:'12',
                             itemPrice:'65',
-                            allPrice:'910.30',
+                            allPrice:'910',
                             discount:'10%',
                             totalPrice:'810.30'
                         },
@@ -85,7 +85,7 @@ export default {
                             desc:'Trimmer pe benzina GT-52S...',
                             qty:'12',
                             itemPrice:'65',
-                            allPrice:'910.30',
+                            allPrice:'910',
                             discount:'10%',
                             totalPrice:'810.30'
                         },
@@ -94,7 +94,7 @@ export default {
                             desc:'Trimmer pe benzina GT-52S...',
                             qty:'12',
                             itemPrice:'65',
-                            allPrice:'910.30',
+                            allPrice:'910',
                             discount:'10%',
                             totalPrice:'810.30'
                         },
@@ -103,7 +103,7 @@ export default {
                             desc:'Trimmer pe benzina GT-52S...',
                             qty:'12',
                             itemPrice:'65',
-                            allPrice:'910.30;',
+                            allPrice:'910;',
                             discount:'10%',
                             totalPrice:'810.30'
                         },
@@ -112,7 +112,7 @@ export default {
                             desc:'Trimmer pe benzina GT-52S...',
                             qty:'12',
                             itemPrice:'65',
-                            allPrice:'910.30',
+                            allPrice:'910',
                             discount:'10%',
                             totalPrice:'810.30'
                         },
@@ -121,7 +121,7 @@ export default {
                             desc:'Trimmer pe benzina GT-52S...',
                             qty:'12',
                             itemPrice:'65',
-                            allPrice:'910.30',
+                            allPrice:'910',
                             discount:'10%',
                             totalPrice:'810.30'
                         }
@@ -140,7 +140,7 @@ export default {
                             desc:'Trimmer pe benzina GT-52S...',
                             qty:'12',
                             itemPrice:'65',
-                            allPrice:'910.30',
+                            allPrice:'910',
                             discount:'10%',
                             totalPrice:'810.30'
                         },
@@ -149,7 +149,7 @@ export default {
                             desc:'Trimmer pe benzina GT-52S...',
                             qty:'12',
                             itemPrice:'65',
-                            allPrice:'910.30',
+                            allPrice:'910',
                             discount:'10%',
                             totalPrice:'810.30'
                         },
@@ -168,7 +168,7 @@ export default {
                             desc:'Trimmer pe benzina GT-52S...',
                             qty:'12',
                             itemPrice:'65',
-                            allPrice:'910.30',
+                            allPrice:'910',
                             discount:'10%',
                             totalPrice:'810.30'
                         },
@@ -177,7 +177,7 @@ export default {
                             desc:'Trimmer pe benzina GT-52S...',
                             qty:'12',
                             itemPrice:'65',
-                            allPrice:'910.30',
+                            allPrice:'910',
                             discount:'10%',
                             totalPrice:'810.30'
                         },
@@ -186,7 +186,7 @@ export default {
                             desc:'Trimmer pe benzina GT-52S...',
                             qty:'12',
                             itemPrice:'65',
-                            allPrice:'910.30',
+                            allPrice:'910',
                             discount:'10%',
                             totalPrice:'810.30'
                         },
@@ -195,7 +195,7 @@ export default {
                             desc:'Trimmer pe benzina GT-52S...',
                             qty:'12',
                             itemPrice:'65',
-                            allPrice:'910.30',
+                            allPrice:'910',
                             discount:'10%',
                             totalPrice:'810.30'
                         }
