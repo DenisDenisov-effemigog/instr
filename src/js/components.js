@@ -38,6 +38,7 @@ import profile from './components/profile/profile.vue';
 import profileMenuMobile from './components/profile/profile-menu-mobile.vue';
 import pagePersonal from './components/profile/page-personal.vue';
 import pageOrders from './components/profile/page-orders.vue';
+import pageOrder from './components/profile/page-orders/page-order.vue';
 import orderList from './components/profile/page-orders/order-list.vue';
 import orderProductList from './components/profile/page-orders/order-product-list.vue';
 import selectList from './components/profile/select-list.vue';
@@ -96,5 +97,6 @@ export default {
         changePassword,
         deleteProfile,
         addAddress,
+        pageOrder,
     },
 }
