@@ -48,10 +48,15 @@
 </template>
 
 <script>
+    import config from "../../config";
 
     export default {
         name: "add-to-cart",
         props: {
+            productId: {
+                type: Number,
+                required: true
+            },
             maxAmount: {
                 type: Number,
                 required: false,
@@ -84,8 +89,11 @@
         },
         data() {
             return {
+                loading: false,
                 amount: 0,
                 width: 0,
+                _debounce_timer: null,
+                _loading_timer: null
             };
         },
         computed: {
@@ -102,16 +110,55 @@
         watch: {
         },
         mounted() {
+            //console.log('mounted', this.productId);
         },
         created() {
+            //console.log('created', this.productId);
             window.addEventListener('resize', this.updateWidth);
             this.updateWidth()
             window.addEventListener('scroll', this.mobileScroll);
         },
         methods: {
+            setAmount(amount) {
+                //debugger;
+                let vm = this;
+
+                // Включение лоадера при долгой загрузке
+                if (vm._loading_timer) {
+                    clearTimeout(vm._loading_timer);
+                    vm._loading_timer = null;
+                }
+                vm._loading_timer = setTimeout(function () {
+                    vm.loading = true;
+                }, config.loading_timeout);
+
+
+                vm.$store.dispatch('basketSendQuantity', {
+                    productId: this.productId,
+                    quantity: amount
+                }).finally(() => {
+                    vm.loading = false;
+
+                    if (vm._loading_timer) {
+                        clearTimeout(vm._loading_timer);
+                        vm._loading_timer = null;
+                    }
+                });
+            },
+            startSetAmount() {
+                let vm = this;
+                if (vm._debounce_timer) {
+                    clearTimeout(vm._debounce_timer);
+                    vm._debounce_timer = null;
+                }
+                this._debounce_timer = setTimeout(function () {
+                    vm.setAmount(vm.amount);
+                }, config.debounce_timeout);
+            },
             decrease() {
                 if (this.amount > this.allowedDecreaseAmount) {
                     this.amount--;
+                    //this.startSetAmount();
                 }
             },
             updateWidth() {
@@ -120,6 +167,7 @@
             increase() {
                 if (this.amount < this.maxAmount) {
                     this.amount++;
+                    //this.startSetAmount();
                 }
             },
             changeVal(e){
