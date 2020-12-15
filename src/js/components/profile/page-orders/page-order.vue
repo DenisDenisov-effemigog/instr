@@ -97,7 +97,7 @@ export default {
                     itemPrice:'65 ',
                     allPrice:'910 ',
                     discount:'10%',
-                    totalPrice:'810.30 '
+                    totalPrice:'810 '
                 },
                 {
                     art:'325214',
@@ -106,7 +106,7 @@ export default {
                     itemPrice:'65 ',
                     allPrice:'910 ',
                     discount:'10%',
-                    totalPrice:'810.30 '
+                    totalPrice:'810 '
                 },
                 {
                     art:'325214',
@@ -115,7 +115,7 @@ export default {
                     itemPrice:'65 ',
                     allPrice:'910 ',
                     discount:'10%',
-                    totalPrice:'810.30 '
+                    totalPrice:'810 '
                 },
                 {
                     art:'325214',
@@ -124,7 +124,7 @@ export default {
                     itemPrice:'65 ',
                     allPrice:'910 ',
                     discount:'10%',
-                    totalPrice:'810.30 '
+                    totalPrice:'810 '
                 },
                 {
                     art:'325214',
@@ -133,7 +133,7 @@ export default {
                     itemPrice:'65 ',
                     allPrice:'910 ',
                     discount:'10%',
-                    totalPrice:'810.30 '
+                    totalPrice:'810 '
                 },
             ]
         }
