@@ -137,9 +137,12 @@
             flex-wrap: wrap
     &__product-number
         +tablet
+            & span
+                display: none
             flex: 1
             max-width: 6.25rem
         +mobile
+            @extend .text-4
             width: 100%
             color: $grey
     &__product-desc
@@ -150,6 +153,8 @@
             padding-top: 0.25rem
     &__product-qty
         +tablet
+            & span
+                display: none
             flex: 1
             max-width: 5rem
         +mobile

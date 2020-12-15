@@ -17,16 +17,19 @@
         <div class="order__main">
             <order-list></order-list>
         </div>
+        <page-order></page-order>
     </div>
 </template>
 
 <script>
 import selectList from './select-list.vue'
 import orderList from './page-orders/order-list.vue'
+import PageOrder from './page-orders/page-order.vue'
 export default {
  components: { 
      selectList,
      orderList,
+  PageOrder,
       },
     name:"page-orders",
     props:{
