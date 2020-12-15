@@ -1,16 +1,19 @@
 <section class="collection">
     <h2 class="collection__title">Подборка подборок</h2>
-    <div class="collection__content">
+    <div class="collection__content collection__content_desktop">
         {% for collection in collections %}
             <a class="collection__block" href="{{ collection.link }}">
                 <div class="collection__card">
-                    <img
-                        src="{{ collection.img }}"
-                        alt="{{ collection.title }}"
-                        class="collection__img">
+                    <div class="collection__image">
+                        <img
+                            src="{{ collection.img }}"
+                            alt="{{ collection.title }}"
+                            class="collection__img">
+                    </div>
+                    <p class="collection__name">{{ collection.title }}</p>
                 </div>
-                <p class="collection__name">{{ collection.title }}</p>
             </a>
         {% endfor %}
     </div>
+    <component is="slider-collection" :collection="{{ collections|json_encode()|e('html_attr') }}"></component>
 </section>
