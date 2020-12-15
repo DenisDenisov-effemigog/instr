@@ -1,11 +1,13 @@
 <template>
-    <div  @click="copyArticle" @mouseleave="copyFlag = true" class="product-card__article">
+    <div @mouseenter="openTooltip" @click="copyArticle" @mouseleave="closeTooltip" class="product-card__article">
         <span ref="art">Артикул:&nbsp;<span ref="number" class="product-card__article-number">{{articleCode}}</span></span>
-        <div v-if="copyFlag" class="product-card__article-tooltip">
-            Скопировать
-        </div>
-        <div v-else class="product-card__article-tooltip product-card__article-tooltip--copy">
-            Скопирован в буфер обмена
+        <div v-show="openFlag">
+            <div v-if="copyFlag" class="product-card__article-tooltip">
+                Скопировать
+            </div>
+            <div v-else class="product-card__article-tooltip product-card__article-tooltip--copy">
+                Скопирован в буфер обмена
+            </div>
         </div>
     </div>
 </template>
@@ -15,6 +17,7 @@ export default {
     name: "product-card-article",
     data(){
         return{
+            openFlag: false,
             articleCode: 26304,
             copyFlag: true
         }
@@ -27,10 +30,9 @@ export default {
             }else{
                 element = this.$refs.number
                 let tooltip = document.querySelector('.product-card__article-tooltip')
-                tooltip.classList.add('product-card__article-tooltip--open')
                 element.classList.add('product-card__article-number--copy')
                 setTimeout(() => {
-                    tooltip.classList.remove('product-card__article-tooltip--open')
+                    this.openFlag = false
                     element.classList.remove('product-card__article-number--copy')
                 }, 2000);
             }
@@ -47,6 +49,13 @@ export default {
             }
             document.execCommand("copy");
             this.copyFlag = false
+        },
+        openTooltip(){
+            this.openFlag = true
+        },
+        closeTooltip(){
+            this.openFlag = false
+            this.copyFlag = true
         }
     }
     
