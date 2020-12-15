@@ -23,7 +23,10 @@
                 <div class="sticky-card__price--old">3 819 &#8381;</div>
                 <div class="sticky-card__price--total">2 819 &#8381;</div>
             </div>
-            <add-to-cart></add-to-cart>
+            <component is="add-to-cart"  
+                               :product-id="product.id"
+                               :max-amount="product.stock"
+                    ></component>
         </div>
     </div>
 </template>
@@ -33,6 +36,12 @@ import AddToCart from "../card/add-to-cart.vue"
 
 export default {
     name:"sticky-card",
+    props: {
+        product: {
+            type: Object,
+            required: true,
+        }
+    },
     components:{
         AddToCart,
     },

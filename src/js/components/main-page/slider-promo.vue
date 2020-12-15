@@ -1,32 +1,32 @@
 <template>
-    <div class="slider-promo">
-        <div class="slider-promo__title">Промо моменты</div>
-        <agile :options="options">
-            
-            <div @click="openModal" class="slider-promo__slide" v-for="slide in promoBanners">
-                <div class="">
-                    <img :src="slide.img" alt="">
-                </div>
-                <!-- <div class="slider-promo__modal">
-                    <svg class="slider-promo__modal-icon">
-                        <use :xlink:href="templatePath + 'images/sprite.svg#icons__link'"></use>
-                    </svg>
-                    <p @click="openModal" class="slider-promo__modal-text">Подробнее об акции</p>
-                </div> -->
+    <agile :options="options">
+
+        <div @click="openModal" class="slider-promo__slide" v-for="slide in promoBanners">
+            <div class="slider-promo__slide_content" 
+                 :class="'slider-promo__slide_content--' + slide.theme"
+            >
+                <img :src="slide.img" alt="">
+                <span class="slider-promo__slide_title">{{ slide.title }}</span>
             </div>
-            
-            <template slot="prevButton">
-                <svg>
-                    <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
+            <!-- <div class="slider-promo__modal">
+                <svg class="slider-promo__modal-icon">
+                    <use :xlink:href="templatePath + 'images/sprite.svg#icons__link'"></use>
                 </svg>
-            </template>
-            <template slot="nextButton">
-                <svg>
-                    <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-right'"></use>
-                </svg>
-            </template>
-        </agile>
-    </div>
+                <p @click="openModal" class="slider-promo__modal-text">Подробнее об акции</p>
+            </div> -->
+        </div>
+
+        <template slot="prevButton">
+            <svg>
+                <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
+            </svg>
+        </template>
+        <template slot="nextButton">
+            <svg>
+                <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-right'"></use>
+            </svg>
+        </template>
+    </agile>
 </template>
 
 <script>

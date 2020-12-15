@@ -44,11 +44,11 @@
             {{ product.title }}
         </a>
         <div class="card__price-block">
-            <div class="card__price-block_old-price">{{ product.oldPrice}} &#8381;</div>
+            <div class="card__price-block_old-price">{{ product.oldPrice }} &#8381;</div>
             <div class="card__price-block_current-price">{{ product.newPrice }} &#8381;</div>
         </div>
         <div class="card__button-block">
-            <addToCart :changeIcon="changeIcon"></addToCart>
+            <component is="add-to-cart" :productId="product.id" :max-amount="product.stock" :changeIcon="changeIcon" ></component>
             <component class="card__button-block_to-compare" is="to-compare"></component>
             <div @click="menuTooltip = !menuTooltip" class="card__menu-btn">
                 <span></span>
