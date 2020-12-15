@@ -140,11 +140,14 @@
         +mobile
             flex-wrap: wrap
     &__product-number
+        @extend .text-4
         +tablet
-            & span
-                display: none
+            font-size: $font-size
+            line-height: $line-height
             flex: 1
             max-width: 6.25rem
+            & span
+                display: none
         +mobile
             font-size: 0.75rem
             width: 100%

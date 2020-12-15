@@ -118,46 +118,46 @@ export default {
                     art:'325214',
                     desc:'Trimmer pe benzina GT-52S...',
                     qty:'12',
-                    itemPrice:'65 RON',
-                    allPrice:'910.30 RON',
+                    itemPrice:'65 ',
+                    allPrice:'910 ',
                     discount:'10%',
-                    totalPrice:'810.30 RON'
+                    totalPrice:'810 '
                 },
                 {
                     art:'325214',
                     desc:'Trimmer pe benzina GT-52S...',
                     qty:'12',
-                    itemPrice:'65 RON',
-                    allPrice:'910.30 RON',
+                    itemPrice:'65 ',
+                    allPrice:'910 ',
                     discount:'10%',
-                    totalPrice:'810.30 RON'
+                    totalPrice:'810 '
                 },
                 {
                     art:'325214',
                     desc:'Trimmer pe benzina GT-52S...',
                     qty:'12',
-                    itemPrice:'65 RON',
-                    allPrice:'910.30 RON',
+                    itemPrice:'65 ',
+                    allPrice:'910 ',
                     discount:'10%',
-                    totalPrice:'810.30 RON'
+                    totalPrice:'810 '
                 },
                 {
                     art:'325214',
                     desc:'Trimmer pe benzina GT-52S...',
                     qty:'12',
-                    itemPrice:'65 RON',
-                    allPrice:'910.30 RON',
+                    itemPrice:'65 ',
+                    allPrice:'910 ',
                     discount:'10%',
-                    totalPrice:'810.30 RON'
+                    totalPrice:'810 '
                 },
                 {
                     art:'325214',
                     desc:'Trimmer pe benzina GT-52S...',
                     qty:'12',
-                    itemPrice:'65 RON',
-                    allPrice:'910.30 RON',
+                    itemPrice:'65 ',
+                    allPrice:'910 ',
                     discount:'10%',
-                    totalPrice:'810.30 RON'
+                    totalPrice:'810 '
                 },
             ]
         }

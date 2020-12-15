@@ -19,6 +19,7 @@ import topnavSwitch from './components/topnav/topnav-switch.vue';
 import sliderMain from './components/main-page/slider-main.vue';
 import sliderPromo from './components/main-page/slider-promo.vue';
 import sliderPromoModal from './components/main-page/slider-promo-modal.vue';
+import sliderAction from './components/main-page/slider-action.vue';
 import sliderCards from './components/main-page/slider-cards.vue';
 /*card*/
 import card from './components/card/card.vue';
@@ -59,6 +60,7 @@ export default {
         stickyHeader,
         sliderMain,
         sliderPromo,
+        sliderAction,
         sliderCards,
         card,
         sliderPhotoCard,

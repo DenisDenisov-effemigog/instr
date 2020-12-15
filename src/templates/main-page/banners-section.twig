@@ -1,10 +1,6 @@
 <section class="banners-section">
-    <div class="banners-section__title">Плитка баннеров наших акций</div>
-    <div class="banners-section__content">
-        {% for actionBanner in actionBanners %}
-            <a href="{{ actionBanner.link }}" class="banners-section__banner">
-                <img src="{{ actionBanner.img }}" alt="">
-            </a>
-        {% endfor %}
-    </div>
+    <div class="banners-section__title">Акции</div>
+    <component is="slider-action" 
+               :action-banners="{{ actionBanners|json_encode()|e('html_attr') }}"
+    ></component>
 </section>
