@@ -37,7 +37,7 @@
         data() {
             return {
                 options: {
-                    slidesToShow: 2,
+                    slidesToShow: 2.5,
                     dots: false,
                     navButtons: false,
                     // responsive: [

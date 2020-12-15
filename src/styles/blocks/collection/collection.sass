@@ -6,12 +6,12 @@
         margin-bottom: 32px
     &__content
         @extend .columns
-        display: flex
         flex-wrap: wrap
         &_mobile
             +tablet
                 display: none
         &_desktop
+            display: flex
             +mobile
                 display: none
     &__block
