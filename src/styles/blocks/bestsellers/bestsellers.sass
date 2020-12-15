@@ -1,9 +1,9 @@
 .bestsellers
     @extend .container
-    margin-bottom: 56px
+    margin-bottom: 44px
     &__title
         @extend .title-3
-        margin-bottom: 32px
+        margin-bottom: 20px
     &__block
         display: flex
         flex-direction: column
@@ -25,11 +25,12 @@
     &__cards
         display: flex
         flex-wrap: wrap
+        justify-content: space-between
         margin-left: -16px
         margin-right: -16px
         +desktop
-            flex-wrap: nowrap
-            margin: 0
-        & .card:not(:last-child)
+            margin-left: -12px
+            margin-right: -12px
+        & .card
             +desktop
-                margin-right: 24px
+                margin: 12px
