@@ -1,5 +1,7 @@
 <template>
-    <div class="card">
+    <div class="card"
+         @touchstart.prevent
+    >
         <div 
             class="card__header" 
             :class="{'card__header--short-card': cardSize === 'short'}"
@@ -39,14 +41,7 @@
                        :images="product.images"
             ></component>
         </div>
-        <div class="card__code">{{ product.code}}</div>
-        <a :href="product.link" class="card__name">
-            {{ product.title }}
-        </a>
-        <div class="card__price-block">
-            <div class="card__price-block_old-price">{{ product.oldPrice }} &#8381;</div>
-            <div class="card__price-block_current-price">{{ product.newPrice }} &#8381;</div>
-        </div>
+        <slot></slot>
         <div class="card__button-block">
             <component is="add-to-cart" :productId="product.id" :max-amount="product.stock" :changeIcon="changeIcon" ></component>
             <component class="card__button-block_to-compare" is="to-compare"></component>

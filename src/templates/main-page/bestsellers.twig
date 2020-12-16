@@ -10,7 +10,9 @@
                     is="card"
                     :card-size="'short'"
                     :product="{{ product|json_encode()|e('html_attr') }}"
-                ></component>
+                >
+                    {% include '../partials/card.twig' with {'product': product} %}
+                </component>
             {% endfor %}
         </div>
     </div>

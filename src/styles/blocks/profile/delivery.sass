@@ -15,9 +15,77 @@
         display: none
     &__add-address-btn
         @extend .profile__link
+        display: none
         color: $blue
         svg
             width: $size_20
             height: $size_20
             fill: $blue
             margin-right: .5rem
+        +tablet
+            display: flex
+    &__list
+        padding-bottom: 4.5rem
+        +tablet
+            padding-top: 2rem
+    &__item
+        padding-top: 1rem
+        padding-bottom: 1rem
+        border-bottom: 1px solid $border-color_4
+        display: flex
+        justify-content: space-between
+        +tablet
+            align-items: center
+        &:first-child
+            padding-top: 0
+        & svg
+            cursor: pointer
+            fill: $light-grey
+            width: $size_18
+            height: $size_18
+            &:hover
+                fill: $grey
+    &__desc
+        padding-right: 1rem
+        font-size: $font-size_3
+    &__order
+        @extend .text-3
+        color: $light-grey
+    &__address
+        padding-top: 0.5rem
+    &__status
+        position: relative
+        cursor: pointer
+        padding-top: 0.5rem
+        @extend .text-3
+        &--сonfirmed
+            color: #049004
+        &--submitted
+            color: $orange
+        &--not-сonfirmed
+            color: $primary-red
+        +tablet
+            &:hover
+                .delivery__tooltip
+                    display: flex
+    &__tooltip
+        @extend .tooltip
+        +tablet
+            width: 15.5rem
+            left: -2rem
+            &::before
+                left: calc(50% - 8px)
+        width: 18.25rem
+        left: 0
+        top: 2rem
+        &::before
+            left: calc(10% - 8px)
+        &--open
+            display: flex
+    &__tooltip-icon
+        & svg
+            width: $size_12
+            height: $size_12
+            +tablet
+                display: none
+                

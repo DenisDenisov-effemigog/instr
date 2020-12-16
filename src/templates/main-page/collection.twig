@@ -15,5 +15,19 @@
             </a>
         {% endfor %}
     </div>
-    <component is="slider-collection" :collection="{{ collections|json_encode()|e('html_attr') }}"></component>
+    <component is="slider-collection">
+        {% for collection in collections %}
+            <a class="collection__block" href="{{ collection.link }}">
+                <div class="collection__card">
+                    <div class="collection__image">
+                        <img
+                            src="{{ collection.img }}"
+                            alt="{{ collection.title }}"
+                            class="collection__img">
+                    </div>
+                    <p class="collection__name">{{ collection.title }}</p>
+                </div>
+            </a>
+        {% endfor %}
+    </component>
 </section>
