@@ -24,26 +24,26 @@
                             Подтвержден
                         </div>
                         <div class="delivery__status delivery__status--submitted" v-if="order.status === 'submitted'">
-                            <p @click="openTooltip">Отправлен на подтверждение</p>
-                            <div class="delivery__tooltip"
-                                 :class="{'delivery__tooltip--open': showToltip}"
+                            <p @click="openTooltip(order.order)">Отправлен на подтверждение</p>
+                            <div ref="tooltip" class="delivery__tooltip"
+                                 :class="{'delivery__tooltip--open': showToltip === order.order}"
                             >
                                 <p>В данный момент адрес проходит проверку модератора. Следить за статусом адреса вы можете тут</p>
                                 <div class="delivery__tooltip-icon">
-                                    <svg @click ="closeTooltip" viewBox="0 0 12 12">
+                                    <svg @click ="closeTooltip(order.order)" viewBox="0 0 12 12">
                                         <use :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
                                     </svg>
                                 </div>
                             </div>
                         </div>
                         <div class="delivery__status delivery__status--not-сonfirmed" v-if="order.status === 'not confirmed'">
-                            <p @click="openTooltip">Не подтвержден</p>
-                            <div class="delivery__tooltip"
-                                 :class="{'delivery__tooltip--open': showToltip}"
+                            <p @click="openTooltip(order.order)">Не подтвержден</p>
+                            <div ref="tooltip" class="delivery__tooltip"
+                                 :class="{'delivery__tooltip--open': showToltip === order.order}"
                             >
                                 <p>К сожалению, адрес не прошел проверку модератора. Подробнее по горячей линии: 8 800-765-87-51</p>
                                 <div class="delivery__tooltip-icon">
-                                    <svg @click="closeTooltip" viewBox="0 0 12 12">
+                                    <svg @click="closeTooltip(order.order)" viewBox="0 0 12 12">
                                         <use :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
                                     </svg>
                                 </div>
@@ -89,18 +89,18 @@ export default {
                     status: 'not confirmed'
                 },
             ],
-            showToltip: false,
+            showToltip: 0,
         }
     },
     methods: {
         openModal(modal) {
             this.$eventBus.$emit("openModal", modal, '', false)
         },
-        openTooltip(){
-            this.showToltip = true
+        openTooltip(data){
+            this.showToltip = data
         },
-        closeTooltip(){
-            this.showToltip = false
+        closeTooltip(data){
+            this.showToltip = 0
         }
     },
 }
