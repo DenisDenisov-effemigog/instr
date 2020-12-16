@@ -1,7 +1,18 @@
-<component 
-    is="slider-cards" 
-    :change-icon="true"
-    :title="'Похожие товары'"
-    :dots="false"
-    :products="{{ products|json_encode()|e('html_attr') }}"
-></component>
+<div class="slider-cards slider-cards--short-card">
+    <div class="slider-cards__title">Похожие товары</div>
+    <component 
+        is="slider-cards"
+        :dots="false"
+    >
+        {% for product in products %}
+            <div class="slider-cards__slide">
+                <card
+                    :change-icon="true"
+                    :product="{{ product|json_encode()|e('html_attr') }}"
+                >
+                    {% include '../partials/card.twig' with {'product': product} %}
+                </card>
+            </div>
+        {% endfor %}
+    </component>
+</div>
