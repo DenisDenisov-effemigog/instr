@@ -2,31 +2,34 @@
     <div class="sticky-card" :class="{'sticky-card--fixed': flag}">
         <div class="container">
             <div class="sticky-card__img">
-                <img :src="templatePath + 'demo_images/product/image_51.png'" alt="">
+                <img :src="product.images[0].img" alt="">
             </div>
             <div class="sticky-card__desc">
                 <div class="sticky-card__stickers">
-                    <div class="product-card__stickers_sticker-wrap">
-                        <div class="product-card__stickers_sticker product-card__stickers_sticker--new">
-                            <span>Новинка</span>
+                    <div class="product-card__stickers_sticker-wrap"
+                    v-for="sticer in product.tooltips">
+                        <div class="product-card__stickers_sticker"
+                             :class="'product-card__stickers_sticker product-card__stickers_sticker--' + sticer.status">
+                            <span>{{ sticer.title }}</span>
                         </div>
                     </div>
-                <div class="product-card__stickers_sticker-wrap">
-                    <div class="product-card__stickers_sticker product-card__stickers_sticker--promo">
-                        <span>Акция</span>
-                    </div>
                 </div>
-                </div>
-                <div class="sticky-card__text">Набор бит SL6 x 50, сталь S2, 10 шт. Gross Набор 50, сталь S2, шт. Gross 50, сталь S2</div>
+                <div class="sticky-card__text">{{ product.name }}</div>
             </div>
             <div class="sticky-card__price">
-                <div class="sticky-card__price--old">3 819 &#8381;</div>
-                <div class="sticky-card__price--total">2 819 &#8381;</div>
+                <div v-for="price in product.prices"
+                     v-if="price.base === 1"
+                     class="sticky-card__price--old"
+                >{{ price.price }} &#8381;</div>
+                <div v-for="price in product.prices"
+                     v-if="price.base === 3"
+                     class="sticky-card__price--total"
+                >{{ price.price }} &#8381;</div>
             </div>
             <component is="add-to-cart"  
-                               :product-id="product.id"
-                               :max-amount="product.stock"
-                    ></component>
+                       :product-id="product.id"
+                       :max-amount="product.stock"
+            ></component>
         </div>
     </div>
 </template>

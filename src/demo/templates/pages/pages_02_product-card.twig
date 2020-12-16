@@ -960,6 +960,6 @@
     {% include '../../../templates/product-card/product-tabs.twig' with {'product': product} %}
     {% include '../../../templates/product-card/recommend.twig' with {'products': products} %}
     {% include '../../../templates/product-card/banner.twig' with {'banner': '/demo_images/banners/product-card.png'} %}
-    {% include '../../../templates/footer/footer.twig'  with {'countries': countries} %}
+    {% include '../../../templates/footer/footer.twig'  with {'countries': countries, 'product': product} %}
     
 {% endblock %}

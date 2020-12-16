@@ -3,7 +3,9 @@
 <component is="catalogue" :categories="{{ categories|json_encode()|e('html_attr') }}"></component>
 <component is="mobile-menu" :countries="{{ countries|json_encode()|e('html_attr') }}"></component>
 <component is="modal"></component>
-<component is="sticky-mobile-button"></component>
+<component is="sticky-mobile-button" 
+           :max-amount="{{ product.stock }}" 
+           :product-id="{{ product.id }}"></component>
 {% if showStickyCard %}
 <component is="sticky-card" :product="{{ product|json_encode()|e('html_attr') }}"></component>
 {% endif %}

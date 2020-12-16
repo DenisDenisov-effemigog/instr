@@ -5,6 +5,8 @@
                    :text="'В корзине'"
                    :button-title="'Добавить в корзину'"
                    :size="'big'"
+                   :productId="productId"
+                   :maxAmount="maxAmount"
         ></component>
     </div>
     
@@ -19,6 +21,12 @@ export default {
         addToCart
     },
     props: {
+        productId: {
+            type: Number,
+        },
+        maxAmount: {
+            type: Number,
+        },
     },
     data(){
         return{
