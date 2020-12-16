@@ -20,34 +20,38 @@
                     <div class="delivery__desc">
                         <div class="delivery__order">Адрес № {{order.order}}</div>
                         <div class="delivery__address">{{order.address}}</div>
-                        <div class="delivery__status delivery__status--сonfirmed" v-if="order.status == 'сonfirmed'">
+                        <div class="delivery__status delivery__status--сonfirmed" v-if="order.status === 'сonfirmed'">
                             Подтвержден
                         </div>
-                        <div class="delivery__status delivery__status--submitted" v-if="order.status == 'submitted'">
+                        <div class="delivery__status delivery__status--submitted" v-if="order.status === 'submitted'">
                             <p @click="openTooltip">Отправлен на подтверждение</p>
-                            <div class="delivery__tooltip">
+                            <div class="delivery__tooltip"
+                                 :class="{'delivery__tooltip--open': showToltip}"
+                            >
                                 <p>В данный момент адрес проходит проверку модератора. Следить за статусом адреса вы можете тут</p>
                                 <div class="delivery__tooltip-icon">
-                                    <svg @click.self ="closeTooltip" viewBox="0 0 12 12">
-                                        <use @click.stop :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
+                                    <svg @click ="closeTooltip" viewBox="0 0 12 12">
+                                        <use :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
                                     </svg>
                                 </div>
                             </div>
                         </div>
-                        <div class="delivery__status delivery__status--not-сonfirmed" v-if="order.status == 'not confirmed'">
+                        <div class="delivery__status delivery__status--not-сonfirmed" v-if="order.status === 'not confirmed'">
                             <p @click="openTooltip">Не подтвержден</p>
-                            <div class="delivery__tooltip">
+                            <div class="delivery__tooltip"
+                                 :class="{'delivery__tooltip--open': showToltip}"
+                            >
                                 <p>К сожалению, адрес не прошел проверку модератора. Подробнее по горячей линии: 8 800-765-87-51</p>
                                 <div class="delivery__tooltip-icon">
-                                    <svg @click.self="closeTooltip" viewBox="0 0 12 12">
-                                        <use @click.stop :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
+                                    <svg @click="closeTooltip" viewBox="0 0 12 12">
+                                        <use :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
                                     </svg>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="delivery__icon">
-                        <svg v-if="order.status != 'not confirmed'">
+                        <svg v-if="order.status !== 'not confirmed'">
                             <use :xlink:href="templatePath + 'images/sprite.svg#icons__del'"></use>
                         </svg>
                     </div>
@@ -84,23 +88,19 @@ export default {
                     address: 'XXI., Áruháztér 8',
                     status: 'not confirmed'
                 },
-            ]
+            ],
+            showToltip: false,
         }
     },
-    // computed: {
-    //     delivery() {
-    //         return this.profile.delivery
-    //     }
-    // },
     methods: {
         openModal(modal) {
             this.$eventBus.$emit("openModal", modal, '', false)
         },
-        openTooltip(e){
-            e.target.nextElementSibling.classList.add('delivery__tooltip--open')
+        openTooltip(){
+            this.showToltip = true
         },
-        closeTooltip(e){
-            e.target.closest('.delivery__tooltip').classList.remove('delivery__tooltip--open')
+        closeTooltip(){
+            this.showToltip = false
         }
     },
 }

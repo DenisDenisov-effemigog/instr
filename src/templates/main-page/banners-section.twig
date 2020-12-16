@@ -1,6 +1,12 @@
 <section class="banners-section">
     <div class="banners-section__title">Акции</div>
-    <component is="slider-action" 
-               :action-banners="{{ actionBanners|json_encode()|e('html_attr') }}"
-    ></component>
+    <component is="slider-action">
+        {% for slide in actionBanners %}
+            <div class="slider-action__slide">
+                <div class="">
+                    <img src="{{ slide.img }}" alt="">
+                </div>
+            </div>
+        {% endfor %}
+    </component>
 </section>

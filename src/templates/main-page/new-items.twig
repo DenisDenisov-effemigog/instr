@@ -1,13 +1,23 @@
 <section class="new-items">
-{#    <div class="new-items__title">Новинки от производителя</div>#}
-    <component
-        is="slider-cards"
-        :change-icon="true"
-        :dots="false"
-        :title="'Новинки от производителя'"
-        :card-size="'short'"
-        :products="{{ noveltys|json_encode()|e('html_attr') }}"
-    ></component>
+    <div class="slider-cards slider-cards--short-card">
+        <div class="slider-cards__title">Новинки от производителя</div>
+        <component
+            is="slider-cards"
+            :dots="false"
+        >
+            {% for product in noveltys %}
+                <div class="slider-cards__slide">
+                    <card
+                        :change-icon="true"
+                        :card-size="'short'"
+                        :product="{{ product|json_encode()|e('html_attr') }}"
+                    >
+                        {% include '../partials/card.twig' with {'product': product} %}
+                    </card>
+                </div>
+            {% endfor %}
+        </component>
+    </div>
     {#<div class="new-items__content">
         <div class="new-items__content_items-block">
             {% for product in noveltys %}

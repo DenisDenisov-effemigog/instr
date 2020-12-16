@@ -2,11 +2,7 @@
     <div class="slider-action">
         <agile :options="options">
 
-            <div class="slider-action__slide" v-for="slide in actionBanners">
-                <div class="">
-                    <img :src="slide.img" alt="">
-                </div>
-            </div>
+            <slot></slot>
 
             <template slot="prevButton">
                 <svg>
@@ -29,12 +25,6 @@
         name: 'slider-action',
         components: {
             agile: VueAgile
-        },
-        props: {
-            actionBanners: {
-                required: true,
-                type: Array,
-            }
         },
         data() {
             return {
