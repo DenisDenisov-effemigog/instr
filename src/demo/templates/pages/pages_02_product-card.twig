@@ -604,18 +604,61 @@
     },
 ] %}
 
+{% set user = {
+    'name' : 'Ivan',
+    'last_name' : 'Sidorov',
+    'personType': 2,
+}%}
 {% set product = {
     'id': 556,
+    'name': 'Аккумуляторная бесщеточная дрель-шуруповерт DENZEL BLDL-IB-18-02, Li-Ion, 18 В, 1.5 А*ч, 2 аккумулятора',
+    'sku': '26304',
     'stock': 20,
     'available': true,
-    'stock': 100,
+    'url': '',
+    'videoUrl': 'http://www.youtube.com/embed/ODEsC4Ijc2o',
+    'threeDUrl': 'https://instrument.ru/info/3d_photo/14109/READY/3D.html',
+    'prices': [
+        {'id': 1, 'base': 1, 'price': '3 819', 'text': ''},
+        {'id': 2, 'base': 2, 'price': '3 819', 'text': ''},
+        {'id': 3, 'base': 0, 'discount': 10, 'price': '819', 'text': 'Информация о скидке'},
+        {'id': 4, 'base': 0, 'discount': 5, 'price': '19', 'text': 'Информация о скидке'},
+        {'id': 5, 'base': 3, 'price': '3 819', 'text': ''}
+    ],
+    'guarantee': 3,
+    'brand': {
+        'link': '',
+        'logo': './demo_images/product-card/logo.svg',
+    },
+    'images': [
+        {img: './demo_images/product-big/image-70.png'},
+        {img: './demo_images/product-big/image-71.png'},
+        {img: './demo_images/product-big/image-72.png'},
+        {img: './demo_images/product-big/image-73.png'},
+        {img: './demo_images/product-big/image-74.png'},
+        {img: './demo_images/product-big/image-75.png'},
+        {img: './demo_images/product-big/image-76.png'},
+        {img: './demo_images/product-big/image-77.png'},
+        {img: './demo_images/product-big/image-78.png'},
+    ],
+    'tooltips': [
+        {
+            'id': 1,
+            'title': 'Новинка',
+            'text': 'Товар находится в акционной категории товаров “Новинка”',
+            'link': '',
+            'status': 'new',
+        },
+        {
+            'id': 2,
+            'title': 'Акция',
+            'text': 'Товар участвует в акции “Акция”',
+            'link': '',
+            'status': 'promo',
+        },
+    ],
     'features': {
         'main': [
-            {
-                'title': 'Гарантия',
-                'value': '3 года',
-                'link': './guaranty'
-            },
             {
                 'title': 'Тип патрона',
                 'value': 'бесключевой одномуфтовый'
@@ -912,8 +955,8 @@
             },
         ]
     } %}
-    {% include '../../../templates/product-card/product-card.twig' %}
-    {% include '../../../templates/product-card/same-products.twig' with {'products': products} %}
+    {% include '../../../templates/product-card/product-card.twig' with {'product': product} %}
+    {% include '../../../templates/product-card/same-products.twig' with {'products': products, 'user': user} %}
     {% include '../../../templates/product-card/product-tabs.twig' with {'product': product} %}
     {% include '../../../templates/product-card/recommend.twig' with {'products': products} %}
     {% include '../../../templates/product-card/banner.twig' with {'banner': '/demo_images/banners/product-card.png'} %}

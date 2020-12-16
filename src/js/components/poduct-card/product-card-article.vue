@@ -1,6 +1,10 @@
 <template>
     <div @mouseenter="openTooltip" @click="copyArticle" @mouseleave="closeTooltip" class="product-card__article">
-        <span ref="art">Артикул:&nbsp;<span ref="number" class="product-card__article-number">{{articleCode}}</span></span>
+        <span ref="art">Артикул:&nbsp;
+            <span ref="number" class="product-card__article-number">
+                <slot></slot>
+            </span>
+        </span>
         <div v-show="openFlag">
             <div v-if="copyFlag" class="product-card__article-tooltip">
                 Скопировать
@@ -18,7 +22,6 @@ export default {
     data(){
         return{
             openFlag: false,
-            articleCode: 26304,
             copyFlag: true
         }
     },

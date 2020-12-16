@@ -47,6 +47,9 @@ export default {
     components: {
         VueSlickCarousel
     },
+    props: {
+        productImages: {required: true, type: Array}  
+    },
     data() {
         return {
             x:0,
@@ -84,17 +87,6 @@ export default {
                     }
                 ]
             },
-            productImages: [
-                {img: './demo_images/product-big/image-70.png'},
-                {img: './demo_images/product-big/image-71.png'},
-                {img: './demo_images/product-big/image-72.png'},
-                {img: './demo_images/product-big/image-73.png'},
-                {img: './demo_images/product-big/image-74.png'},
-                {img: './demo_images/product-big/image-75.png'},
-                {img: './demo_images/product-big/image-76.png'},
-                {img: './demo_images/product-big/image-77.png'},
-                {img: './demo_images/product-big/image-78.png'},
-            ],
         }
     },
     methods: {

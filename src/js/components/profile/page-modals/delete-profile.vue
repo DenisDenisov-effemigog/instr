@@ -49,6 +49,11 @@ export default {
     name:"delete-profile",
     props:{
     },
+    data() {
+        return {
+
+        }
+    },
     methods: {
     },
 }

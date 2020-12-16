@@ -1,5 +1,5 @@
 <div class="product-card">
-	<div class="product-card__title">Аккумуляторная бесщеточная дрель-шуруповерт DENZEL BLDL-IB-18-02, Li-Ion, 18 В, 1.5 А*ч, 2 аккумулятора</div>
+	<div class="product-card__title">{{ product.name }}</div>
 	<div class="product-card__header">
 		<div class="product-card__favorite-btn">
 			<component is="in-favorite" :text="true"></component>
@@ -7,44 +7,43 @@
 		<div class="product-card__compare-btn">
             <component is="to-compare" :text="true"></component>
 		</div>
-		<component is="product-card-article"></component>
+		<component is="product-card-article">{{ product.sku }}</component>
 	</div>
 	<div class="product-card__content">
 		<div class="product-card__slider">
             <div class="product-card__slider_header">
-                <div class="product-card__stickers">
-                    <div class="product-card__stickers_sticker-wrap">
-                        <div
-                            class="product-card__stickers_sticker product-card__stickers_sticker--new"
-                        >
-                            <span>Новинка</span>
-                        </div>
+                {% if product.tooltips %}
+                    <div class="product-card__stickers">
+                        {% for tooltip in product.tooltips %}
+                            <div class="product-card__stickers_sticker-wrap">
+                                <div class="product-card__stickers_sticker product-card__stickers_sticker--{{ tooltip.status }}"
+                                >
+                                    <span>{{ tooltip.title }}</span>
+                                </div>
+                                {#TODO добавить тултип#}
+                            </div>
+                        {% endfor %}
                     </div>
-                    <div class="product-card__stickers_sticker-wrap">
-                        <div
-                            class="product-card__stickers_sticker product-card__stickers_sticker--promo"
-                        >
-                            <span>Акция</span>
-                        </div>
-                    </div>
-                </div>
+                {% endif %}
                 <div class="product-card__actions">
                     <component is="to-compare"></component>
                     <component is="in-favorite"></component>
                 </div>
             </div>
-			<component is="product-card-slider"></component>
+			<component is="product-card-slider"
+                       :product-images="{{ product.images|json_encode()|e('html_attr') }}" 
+            ></component>
             <div class="product-card__slider_media">
                 <div class="product-card__media-buttons">
                     <component is="media-button"
                                :svg="'play-btn'"
                                :action="'openVideo'"
-                               :link="'http://www.youtube.com/embed/ODEsC4Ijc2o'"
+                               :link="{{ product.videoUrl|json_encode()|e('html_attr') }}"
                     ></component>
                     <component is="media-button"
                                :svg="'around-photo'"
                                :action="'openVideo'"
-                               :link="'https://instrument.ru/info/3d_photo/14109/READY/3D.html'"
+                               :link="{{ product.threeDUrl|json_encode()|e('html_attr') }}"
                     ></component>
                 </div>
             </div>
@@ -52,114 +51,62 @@
 		<div class="product-card__description">
 			<div class="product-info">
 				<ul class="product-info__list">
-					<li class="product-info__item">
-						<div class="product-info__name">
-							<span>Тип патрона</span>
-						</div>
-						<div class="product-info__desc">бесключевой одномуфтовый</div>
-					</li>
-					<li class="product-info__item">
-						<div class="product-info__name">
-							<span>Число скоростей</span>
-						</div>
-						<div class="product-info__desc">2</div>
-					</li>
-					<li class="product-info__item">
-						<div class="product-info__name">
-							<span>Тип аккумулятора</span>
-						</div>
-						<div class="product-info__desc">Li-Ion</div>
-					</li>
-					<li class="product-info__item">
-						<div class="product-info__name">
-							<span>Емкость аккумулятора</span>
-						</div>
-						<div class="product-info__desc">1.5 А*ч</div>
-					</li>
-					<li class="product-info__item">
-						<div class="product-info__name">
-							<span>Напряжение аккумулятора</span>
-						</div>
-						<div class="product-info__desc">18 В</div>
-					</li>
-					<li class="product-info__item">
-						<div class="product-info__name">
-							<span>Количество
-								<br>
-								аккумуляторов в комплекте</span>
-						</div>
-						<div class="product-info__desc">255 мм</div>
-					</li>
+                    {% for feature in product.features.main|slice(0, 6) %}
+                        <li class="product-info__item">
+                            <div class="product-info__name">
+                                <span>{{feature.title}}</span>
+                            </div>
+                            <div class="product-info__desc">{{feature.value}}</div>
+                        </li>
+                    {% endfor %}
 				</ul>
 				<component is="product-info-all"></component>
 				<div class="product-info__brand">
-					<a href="#" class="product-info__brand-logo">
-						<img src="{{ templatePath }}demo_images/product-card/logo.svg">
+					<a href="{{ product.brand.link }}" class="product-info__brand-logo">
+						<img src="{{ product.brand.logo }}">
 					</a>
 					<a href="#" class="product-info__assurance">
-						{# <svg class="product-info__assurance-icon">
-                            <use xlink:href="{{ templatePath }}images/sprite.svg#assurance__assurance-1"></use>
-                        </svg>
-						<svg class="product-info__assurance-icon">
-                            <use xlink:href="{{ templatePath }}images/sprite.svg#assurance__assurance-2"></use>
-                        </svg> #}
-						<svg class="product-info__assurance-icon">
-                            <use xlink:href="{{ templatePath }}images/sprite.svg#assurance__assurance-3"></use>
+                        <svg class="product-info__assurance-icon">
+                            <use xlink:href="{{ templatePath }}images/sprite.svg#assurance__assurance-{{ product.guarantee }}"></use>
                         </svg>
 					</a>
 				</div>
 			</div>
 			<div class="product-order">
-				<div class="product-order__stock">В наличии</div>
+                {% if product.avalible %}
+				    <div class="product-order__stock">В наличии</div>
+                {% endif %}
 				<div class="product-order__wrapper">
 					<ul class="product-order__list">
-						<li class="product-order__item product-order__item--retail">
-							<p class="product-order__name">Розничная цена</p>
-							<div class="product-order__icon">
-								<svg>
-									<use xlink:href="{{ templatePath }}images/sprite.svg#icons__info"></use>
-								</svg>
-							</div>
-							<p class="product-order__price">3 819 &#8381;</p>
-						</li>
-						<li class="product-order__item product-order__item--base">
-							<p class="product-order__name">Базовая цена</p>
-							<div class="product-order__icon">
-								<svg>
-									<use xlink:href="{{ templatePath }}images/sprite.svg#icons__info"></use>
-								</svg>
-							</div>
-							<p class="product-order__price">3 819 &#8381;</p>
-						</li>
-						<li class="product-order__item product-order__item--discount-green">
-							<p class="product-order__name">Скидка 10%</p>
-							<div class="product-order__icon">
-								<svg>
-									<use xlink:href="{{ templatePath }}images/sprite.svg#icons__info"></use>
-								</svg>
-								<div class="product-order__item-tooltip">Информация о скидке</div>
-							</div>
-							<p class="product-order__price">819 &#8381;</p>
-						</li>
-						<li class="product-order__item product-order__item--discount-blue">
-							<p class="product-order__name">Скидка 5%</p>
-							<div class="product-order__icon">
-								<svg>
-									<use xlink:href="{{ templatePath }}images/sprite.svg#icons__info"></use>
-								</svg>
-								<div class="product-order__item-tooltip">Информация о скидке</div>
-							</div>
-							<p class="product-order__price">19.27 &#8381;</p>
-						</li>
-						<li class="product-order__item product-order__item--total">
-							<p class="product-order__name">Ваша цена</p>
-							<div class="product-order__icon">
-								<svg>
-									<use xlink:href="{{ templatePath }}images/sprite.svg#icons__info"></use>
-								</svg>
-							</div>
-							<p class="product-order__price">3 819 &#8381;</p>
-						</li>
+                        {#TODO для физика изменить ценообразование#}
+                        {% for price in product.prices %}
+                            <li class="product-order__item product-order__item--{% if price.base == 1 %}retail{% elseif price.base == 2 %}base{% elseif price.base == 0 %}discount-green{% elseif price.base == 3 %}total{% endif %}">
+                                <p class="product-order__name" >
+                                    {% if price.base == 1 %}
+                                        Розничная цена
+                                    {% elseif price.base == 2 %}
+                                        Базовая цена
+                                    {% elseif price.base == 0 %}
+                                        Скидка
+                                    {% elseif price.base == 3 %}
+                                        Ваша цена
+                                    {% endif %}
+                                    {% if price.discount %}
+                                        {#TODO починить цвет скодки#}
+                                        {{ price.discount }}%
+                                    {% endif %}
+                                </p>
+                                <div class="product-order__icon">
+                                    <svg>
+                                        <use xlink:href="{{ templatePath }}images/sprite.svg#icons__info"></use>
+                                    </svg>
+                                    {% if price.discount %}
+                                        <div class="product-order__item-tooltip">{{ price.text }}</div>
+                                    {% endif %}
+                                </div>
+                                <p class="product-order__price {% if price.base == 1 and user.personType == 1 %}product-order__price--throut{% endif %}">{{ price.price }} &#8381;</p>
+                            </li>
+                        {% endfor %}
 					</ul>
 					<component is="add-to-cart" 
                                :text="'В корзине'" 
