@@ -11,6 +11,7 @@ import mediaButton from './components/media-button.vue';
 /*catalogue*/
 import catalogue from './components/catalogue/catalogue.vue';
 /*header*/
+import cartMini from './components/header/cart-mini.vue';
 import headerBlock from './components/header/header-block.vue';
 import stickyHeader from './components/header/sticky-header.vue';
 import homeMenu from './components/header/mobile/home-menu.vue';
@@ -58,6 +59,7 @@ export default {
     components: {
         country,
         topnavSwitch,
+        cartMini,
         headerBlock,
         stickyHeader,
         sliderMain,

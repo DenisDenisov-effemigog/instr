@@ -88,13 +88,7 @@
                 </a>
             </li>
             <li class="header__menu-item">
-                <a href="#" class="header__menu-link header__menu-link_cart_active">
-                    <svg class="header__menu-icon">
-                        <use :xlink:href="templatePath + 'images/sprite.svg#icons__cart'"></use>
-                    </svg>
-                    <p class="header__menu-text">Корзина</p>
-                    <span class="header__mini-cart">3</span>
-                </a>
+                <component is="cart-mini"></component>
             </li>
         </ul>
     </div>
