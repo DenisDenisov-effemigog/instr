@@ -7,6 +7,16 @@
         <div class="product-tabs__content-layout">
             <div class="product-tabs__content-title">Основные характеристики</div>
             <ul class="product-tabs__features product-tabs__features_main">
+                <li class="product-tabs__features-item">
+                    <div class="product-tabs__features-term">
+                        <div class="product-tabs__features-term-dash">
+                            <span class="product-tabs__features-term-label">Гарантия</span>
+                        </div>
+                    </div>
+                    <div class="product-tabs__features-value">
+                        <a href="#">{{ product.guarantee }} года</a>
+                    </div>
+                </li>
                 {% for feature in product.features.main %}
                     <li class="product-tabs__features-item">
                         <div class="product-tabs__features-term">
@@ -15,13 +25,7 @@
                             </div>
                         </div>
                         <div class="product-tabs__features-value">
-                            {% if feature.link %}
-                                <a href="{{feature.link}}">
-                            {% endif %}
                             {{feature.value}}
-                            {% if feature.link %}
-                                </a>
-                            {% endif %}
                             {% if feature.country %}
                             <svg class="product-tabs__features-country" viewBox="0 0 36 24">
                                 {% if feature.country == 'Germany' %}
