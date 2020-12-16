@@ -32,6 +32,9 @@
                 <h3 class="modal-title">Добавление нового адреса доставки</h3>
                 <component is="add-address"></component>
             </div>
+            <div class="modal__profile-edit" v-else-if="modal === 'repeat-order'">
+                <component is="repeat-order"></component>
+            </div>
             
             <div class="modal__close" @click="closeModal">
                 <span v-if="modalBigger">Закрыть</span>

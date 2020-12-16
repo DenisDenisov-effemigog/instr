@@ -11,7 +11,7 @@
                     :points="points"
                 ></select-list>
             </div>
-            <div class="page-order__btn">
+            <div @click.stop="openModal('repeat-order')" class="page-order__btn">
                 <div class="page-order__btn-icon">
                     <svg>
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__repeat'"></use>
@@ -71,7 +71,7 @@
                             <div class="page-order__desc-order_price page-order__desc-order_price--total">6 000 ₽</div>
                         </li>
                     </ul>
-                    <div ref="mobileBtn" class="page-order__desc-order_btn">
+                    <div @click.stop="openModal('repeat-order')" ref="mobileBtn" class="page-order__desc-order_btn">
                         <div class="page-order__desc-order_btn_wrapper">
                             <div class="page-order__desc-order_btn_icon">
                                 <svg>
@@ -177,11 +177,12 @@ export default {
                         this.$refs.mobileBtn.classList.remove('page-order__desc-order_btn--fixed')
                     }
                 }
-                console.log(pcH)
-                console.log(windowPosition)
             }
             
-        }
+        },
+        openModal(modal) {
+            this.$eventBus.$emit("openModal", modal, '', false)
+        } 
     },
     created () {
         window.addEventListener('scroll', this.mouseWheel);

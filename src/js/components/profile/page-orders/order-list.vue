@@ -10,13 +10,13 @@
                 <div class="order__status">{{item.status}}</div>
                 <div class="order__qty">{{item.qty}}</div>
                 <div class="order__price">{{item.price}} &#8381;</div>
-                <div class="order__btn">
+                <div @click.stop="openModal('repeat-order')" class="order__btn">
                     <div class="order__btn-icon">
                         <svg>
                             <use :xlink:href="templatePath + 'images/sprite.svg#icons__repeat'"></use>
                         </svg>
                     </div>
-                    <div class="order__btn-text" @click.stop="openModal">
+                    <div class="order__btn-text">
                         Повторить заказ
                     </div>
                 </div>
@@ -243,9 +243,9 @@ export default {
         openDetails(index){
             this.showDetails = true
         },
-        openModal() {
-             
-        },
+        openModal(modal) {
+            this.$eventBus.$emit("openModal", modal, '', false)
+        } 
     }
 }
 </script>
