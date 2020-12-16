@@ -9,8 +9,10 @@
             <ul class="product-tabs__features product-tabs__features_main">
                 {% for feature in product.features.main %}
                     <li class="product-tabs__features-item">
-                        <div class="product-tabs__features-dash">
-                            <span>{{feature.title}}</span>
+                        <div class="product-tabs__features-term">
+                            <div class="product-tabs__features-term-dash">
+                                <span class="product-tabs__features-term-label">{{feature.title}}</span>
+                            </div>
                         </div>
                         <div class="product-tabs__features-value">
                             {% if feature.link %}
@@ -39,7 +41,11 @@
             <ul class="product-tabs__features product-tabs__features_packaging">
                 {% for feature in product.features.packaging %}
                     <li class="product-tabs__features-item">
-                        <div class="product-tabs__features-dash"><span>{{feature.title}}</span></div>
+                        <div class="product-tabs__features-term">
+                            <div class="product-tabs__features-term-dash">
+                                <span class="product-tabs__features-term-label">{{feature.title}}</span>
+                            </div>
+                        </div>
                         <div class="product-tabs__features-value">{{feature.value}}</div>
                     </li>
                 {% endfor %}
@@ -50,7 +56,11 @@
             <ul class="product-tabs__features product-tabs__features_equipment">
                 {% for feature in product.features.equipment %}
                     <li class="product-tabs__features-item">
-                        <div class="product-tabs__features-dash"><span>{{feature.title}}</span></div>
+                        <div class="product-tabs__features-term">
+                            <div class="product-tabs__features-term-dash">
+                                <span class="product-tabs__features-term-label">{{feature.title}}</span>
+                            </div>
+                        </div>
                         <div class="product-tabs__features-value">{{feature.value}}</div>
                     </li>
                 {% endfor %}

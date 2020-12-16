@@ -64,13 +64,32 @@
         @extend .column
         display: flex
         justify-content: space-between
-        align-items: flex-start
         flex: none
         color: $light-grey
         padding-top: .5rem
         padding-bottom: .5rem
         +tablet
             width: 50%
+    &__features-term
+        display: block        
+        width: calc(100% - 6.5rem)
+        position: relative    
+        +tablet
+            width: calc(100% - 10rem)
+        +from($desktop-small)
+            width: calc(100% - 218px)
+    &__features-term-dash
+        background: linear-gradient(90deg, $border-color_4 100%, transparent 0) repeat-x
+        background-size: 3px 1px
+        background-position: 0 calc(100% - 1px)
+        +tablet
+            background-position: 0 calc(100% - 3px)
+        
+    &__features-term-label
+        display: inline
+        background-color: $white
+            
+    //del
     &__features-dash
         position: relative
         width: calc(100% - 6.5rem)
@@ -90,6 +109,8 @@
     &__features-value
         color: $black
         width: 6.5rem
+        display: flex
+        align-items: flex-end
         +tablet
             width: 10rem
         +from($desktop-small)
