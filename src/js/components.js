@@ -52,6 +52,7 @@ import editProfile from './components/profile/page-modals/edit-profile.vue';
 import changePassword from './components/profile/page-modals/change-password.vue';
 import deleteProfile from './components/profile/page-modals/delete-profile.vue';
 import addAddress from './components/profile/page-modals/add-address.vue';
+import repeatOrder from './components/profile/page-modals/repeat-order.vue';
 
 export default {
     components: {
@@ -102,5 +103,6 @@ export default {
         deleteProfile,
         addAddress,
         pageOrder,
+        repeatOrder,
     },
 }

@@ -28,6 +28,7 @@
                 <input type="submit"
                     class="product-tabs__button"
                     value="Отправить вопрос"
+                    
                 >
             </span>
             <!-- <span class="product-tabs__form-error"
@@ -43,7 +44,7 @@
                 </svg>
                 <div class="product-tabs__question-text">{{question.question}}</div>
             </div>
-            <product-tabs-answer v-show="question.answer" :answer="question.answer">
+            <product-tabs-answer v-if="question.answer" :answer="question.answer">
             </product-tabs-answer>    
         </div>
         <div class="product-tabs__answers-all" @click="expand" v-if="!expanded && quantity > 3">
@@ -78,37 +79,34 @@
                     'question': null,
                     'answer': null
                 },
-                quantity: 4
+                quantity: null
             }
         },
         components: {
             productTabsAnswer
         },
-        methods: {
-            expand() {
-                this.expanded = true;
-            },        
+        methods: {    
             addQuestion() {
                 if (this.email && this.newQuestion) {
                     this.newBadge = 0;
                     this.error = false;
-                    if (this.expanded) {
-                        this.questions.unshift({...this.newQuestionItem});
-                    } else {
-                        this.qAs.unshift({...this.newQuestionItem});
-                        this.questions.unshift({...this.newQuestionItem});
-                    }
+                    this.qAs.unshift({...this.newQuestionItem});
+                    this.questions.unshift({...this.newQuestionItem});
+                    this.newQuestion = ''
                     this.quantity = this.questions.length
                 } else {
                     this.newBadge = null;
                     this.error = true
                 }
+            },
+            expand() {
+                this.expanded = true;
             }
         },
         computed: {
             qAs() {
                 if (this.expanded) {
-                    return this.questions
+                    return this.questions.slice()
                 } else {
                     return this.questions.slice(0, 3)
                 }
@@ -127,9 +125,8 @@
             }
         },
         created() {
-            this.questionsQuantity;
-            this.qAs;
-            this.addQuestion()
+            this.qAs
+            this.questionsQuantity
         }
     }
 </script>
