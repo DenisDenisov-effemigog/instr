@@ -2,7 +2,7 @@
     <div class="product-tabs__answer-text"
         :class="{'product-tabs__answer-text_expanded': expanded}"
         ref="textBlock"
-        v-show="answer">
+        v-if="answer">
         <div class="product-tabs__answer-full-text" ref="text">
             {{answer}}
         </div>
