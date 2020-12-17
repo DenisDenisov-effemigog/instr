@@ -88,7 +88,7 @@
                 <slot name="my-profile"></slot>
             </div>
             <div v-show="currentPage === 'order-list' && !mobile" class="profile__page">
-                <div class="breadcrumbs" v-if="!showMenu" @click="goBack">
+                <div class="breadcrumbs" v-if="!showMenu  && details == false" @click="goBack">
                     <svg class="breadcrumbs__back" viewBox="0 0 18 15">
                         <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
                     </svg>
@@ -147,6 +147,7 @@ export default {
             currentPage: 'my-profile',
             mobile: false,
             showMenu: true,
+            details: false
         };
     },
     computed: {
@@ -161,6 +162,8 @@ export default {
     created() {
         window.addEventListener('resize', this.updateWidth);
         this.updateWidth()
+        this.$eventBus.$on("closeDetails", this.closeOrders)
+        this.$eventBus.$on("openDetails", this.openDetails)
     },
     methods: {
         openPage(code) {
@@ -185,6 +188,12 @@ export default {
             } else {
                 this.currentPage = 'my-profile'
             }
+        },
+        closeOrders() {
+            this.details = false
+        },
+        openDetails() {
+            this.details = true
         },
     }
 }
