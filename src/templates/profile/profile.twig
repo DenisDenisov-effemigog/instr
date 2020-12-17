@@ -1,26 +1,3 @@
-<component is="profile">
-    <template v-slot:my-profile>
-        <component is="page-personal" 
-                   :profile="{{ profile|json_encode()|e('html_attr') }}"
-        ></component>
-    </template>
-	<template v-slot:order-list>
-		<component is="page-orders"></component>
-	</template>
-	<template v-slot:my-check>
-		<component is="page-check"></component>
-	</template>
-	<template v-slot:delivery-list>
-        <component is="page-delivery"
-                    :profile="{{ profile|json_encode()|e('html_attr') }}"
-        ></component>
-    </template>
-	<template v-slot:my-favorite>
-        <component is="page-favorite"
-                    :profile="{{ profile|json_encode()|e('html_attr') }}"
-        ></component>
-    </template>
-	<template v-slot:actions>
-        <component is="page-actions"></component>
-    </template>
-</component>
+<component is="profile"
+           :profile="{{ profile|json_encode()|e('html_attr') }}"
+></component>

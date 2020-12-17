@@ -48,8 +48,6 @@ import orderProductList from './components/profile/page-orders/order-product-lis
 import selectList from './components/profile/select-list.vue';
 import pageCheck from './components/profile/page-check.vue';
 import pageDelivery from './components/profile/page-delivery.vue';
-import pageFavorite from './components/profile/page-favorite.vue';
-import pageActions from './components/profile/page-actions.vue';
 import editProfile from './components/profile/page-modals/edit-profile.vue';
 import changePassword from './components/profile/page-modals/change-password.vue';
 import deleteProfile from './components/profile/page-modals/delete-profile.vue';
@@ -96,8 +94,6 @@ export default {
         pageOrders,
         pageCheck,
         pageDelivery,
-        pageFavorite,
-        pageActions,
         selectList,
         orderList,
         orderProductList,

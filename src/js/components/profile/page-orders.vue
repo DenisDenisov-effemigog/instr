@@ -18,25 +18,26 @@
                 :points="points"
             ></select-list>
         </div>
-        <div class="order__main" v-if="!details">
-            <order-list v-model="details"></order-list>
+        <div class="order__main">
+            <order-list v-model="details" :orders="profile"></order-list>
         </div>
-        <page-order v-if="details"></page-order>
     </div>
 </template>
 
 <script>
     import selectList from './select-list.vue'
     import orderList from './page-orders/order-list.vue'
-    import PageOrder from './page-orders/page-order.vue'
     export default {
          components: { 
              selectList,
              orderList,
-             PageOrder,
          },
         name:"page-orders",
         props:{
+            profile: {
+                required: true,
+                type: Array,
+            },
         },
         data(){
             return{
@@ -46,15 +47,11 @@
         },
         created(){
             this.$eventBus.$on("allOrders", this.allOrders)
-            this.$eventBus.$on("detailOrder", this.detailOrder)
         },
         methods:{
             allOrders() {
                 this.details = false
             },
-            detailOrder() {
-                this.details = true
-            },
         }
-        }
+    }
 </script>
