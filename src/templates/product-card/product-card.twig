@@ -54,7 +54,9 @@
                     {% for feature in product.features.main|slice(0, 6) %}
                         <li class="product-info__item">
                             <div class="product-info__name">
-                                <span>{{feature.title}}</span>
+                                <div class="product-info__name_dash">
+                                    <span class="product-info__name_label">{{feature.title}}</span>
+                                </div>
                             </div>
                             <div class="product-info__desc">{{feature.value}}</div>
                         </li>
