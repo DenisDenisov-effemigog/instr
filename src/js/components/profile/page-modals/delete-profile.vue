@@ -34,11 +34,15 @@
                 <span class="profile-modal__check"></span>
                 <span class="profile-modal__radio-label">Другая причина</span>
             </span>
+            <span class="profile-modal__label-text"
+                :class="{'profile-modal__label-text_up': message}"
+            >Сообщение</span>
             <textarea
                 class="profile-modal__textarea"
                 :class="{'profile-modal__textarea_error': invalid}"
                 name="reason"
                 placeholder="Сообщение"
+                v-model.trim="message"
             ></textarea>
             <span class="profile-modal__error-text" v-if="invalid">*Обязательное поле для заполнения</span>
         </label>
@@ -53,7 +57,8 @@ export default {
     },
     data() {
         return {
-            invalid: false
+            invalid: false,
+            message: ''
         }
     },
     methods: {
