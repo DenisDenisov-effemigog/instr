@@ -31,7 +31,7 @@
     &__menu-tooltip
         @extend .tooltip
         right: 0
-        top: 46px
+        bottom: 46px
         display: flex
         width: 100%
         justify-content: space-between
@@ -46,6 +46,11 @@
             cursor: pointer
         &::before
             left: calc(96% - 8px)
+            bottom: -.5625rem
+            top: auto
+        &::after
+            top: auto
+            bottom: -1rem
         &-close
             +tablet
                 display: none
