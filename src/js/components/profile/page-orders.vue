@@ -1,5 +1,15 @@
 <template>
     <div class="order">
+        <div 
+            v-show="details"
+            class="breadcrumbs" 
+            @click="allOrders"
+        >
+            <svg class="breadcrumbs__back" viewBox="0 0 18 15">
+                <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
+            </svg>
+            <span>Назад</span>
+        </div>
         <div class="order__header">
             <h2 class="profile__title">Список заказов</h2>
         </div>
@@ -19,7 +29,7 @@
             ></select-list>
         </div>
         <div class="order__main">
-            <order-list v-model="details" :orders="profile"></order-list>
+            <order-list v-model.trim="details" :orders="profile"></order-list>
         </div>
     </div>
 </template>
@@ -51,6 +61,7 @@
         methods:{
             allOrders() {
                 this.details = false
+                this.$eventBus.$emit('closeDetails')
             },
         }
     }

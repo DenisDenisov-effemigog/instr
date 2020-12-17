@@ -18,7 +18,7 @@
                             autocorrect="off"
                             autocapitalize="off"
                             placeholder="Email"
-                            v-model="email">
+                            v-model.trim="email">
                         <svg viewBox="0 0 24 24">
                             <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
                         </svg>
@@ -33,7 +33,7 @@
                             name="newPassword"
                             id="newPassword"
                             placeholder="Новый пароль"
-                            v-model="newPassword">
+                            v-model.trim="newPassword">
                         <svg viewBox="0 0 24 24">
                             <use :xlink:href="templatePath + 'images/sprite.svg#icons__eye'"></use>
                         </svg>
@@ -74,7 +74,7 @@
                             autocomplete="name"
                             autocorrect="off"
                             placeholder="Контактное лицо"
-                            v-model="name">
+                            v-model.trim="name">
                         <svg viewBox="0 0 24 24">
                             <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
                         </svg>
@@ -89,7 +89,7 @@
                             autocomplete="organization"
                             autocorrect="off"
                             placeholder="Компания"
-                            v-model="company">
+                            v-model.trim="company">
                         <svg viewBox="0 0 24 24">
                             <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
                         </svg>
@@ -102,7 +102,7 @@
                             name="code"
                             id="code"
                             placeholder="Код доступа"
-                            v-model="code">
+                            v-model.trim="code">
                         <svg viewBox="0 0 24 24">
                             <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
                         </svg>
@@ -117,7 +117,7 @@
                             autocomplete="tel"
                             autocorrect="off"
                             placeholder="Номер телефона"
-                            v-model="phone">
+                            v-model.trim="phone">
                         <svg viewBox="0 0 24 24">
                             <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
                         </svg>
@@ -133,7 +133,7 @@
                             autocorrect="off"
                             autocapitalize="off"
                             placeholder="Email"
-                            v-model="email">
+                            v-model.trim="email">
                         <svg viewBox="0 0 24 24">
                             <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
                         </svg>

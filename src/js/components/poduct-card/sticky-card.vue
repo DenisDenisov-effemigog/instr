@@ -76,6 +76,7 @@ export default {
 
                     if(windowPosition > productOrderPosition){
                         this.showStickyCard = true
+
                         this.$eventBus.$emit('openStickyCard')
                     }else{
                         this.showStickyCard = false

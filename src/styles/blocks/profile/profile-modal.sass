@@ -17,6 +17,13 @@
             width: $size_24
             height: $size_24
             fill: $light-grey
+    &__icon
+        position: absolute
+        right: .5rem
+        svg
+            width: $size_24
+            height: $size_24
+            fill: $light-grey 
     &__label-text
         @extend .label-typo
         position: absolute
@@ -37,6 +44,8 @@
         border-radius: $border-radius_2
         &::placeholder
             color: $light-grey
+        &_dots
+            font-size: 2rem
     &__button
         @extend .button-primary
         padding: .625rem

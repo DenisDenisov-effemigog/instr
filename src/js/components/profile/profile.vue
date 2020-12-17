@@ -33,7 +33,7 @@
         <div class="profile__content">
             <div v-for="content in profileContent" 
                  v-show="currentPage === content.name && !mobile" class="profile__page">
-                <div class="breadcrumbs" v-if="!showMenu" @click="goBack">
+                <div class="breadcrumbs" v-if="!showMenu  && details == false" @click="goBack">
                     <svg class="breadcrumbs__back" viewBox="0 0 18 15">
                         <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
                     </svg>
@@ -62,6 +62,7 @@ export default {
             currentPage: 'my-profile',
             mobile: false,
             showMenu: true,
+            details: false,
             menu: [
                 {'title': 'Мой профиль', 'pageName': 'my-profile', 'personType': 1},
                 {'title': 'Список заказов', 'pageName': 'order-list', 'personType': 1},
@@ -93,6 +94,8 @@ export default {
     created() {
         window.addEventListener('resize', this.updateWidth);
         this.updateWidth()
+        this.$eventBus.$on("closeDetails", this.closeOrders)
+        this.$eventBus.$on("openDetails", this.openDetails)
     },
     methods: {
         openPage(code) {
@@ -117,6 +120,12 @@ export default {
             } else {
                 this.currentPage = 'my-profile'
             }
+        },
+        closeOrders() {
+            this.details = false
+        },
+        openDetails() {
+            this.details = true
         },
     }
 }

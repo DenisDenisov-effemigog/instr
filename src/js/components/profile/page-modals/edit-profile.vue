@@ -11,7 +11,7 @@
                 autocomplete="name"
                 autocorrect="off"
                 placeholder="Контактное лицо"
-                v-model="newName">
+                v-model.trim="newName">
             <svg viewBox="0 0 24 24" v-if="newName" @click="newName = ''">
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>
@@ -26,7 +26,7 @@
                 autocomplete="organization"
                 autocorrect="off"
                 placeholder="Компания"
-                v-model="newCompany">
+                v-model.trim="newCompany">
             <svg viewBox="0 0 24 24" v-if="newCompany" @click="newCompany = ''">
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>
@@ -39,7 +39,7 @@
                 name="code"
                 id="code"
                 placeholder="Код доступа"
-                v-model="newCode">
+                v-model.trim="newCode">
             <svg viewBox="0 0 24 24" v-if="newCode" @click="newCode = ''">
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>
@@ -54,7 +54,7 @@
                 autocomplete="tel"
                 autocorrect="off"
                 placeholder="Номер телефона"
-                v-model="newPhone">
+                v-model.trim="newPhone">
             <svg viewBox="0 0 24 24" v-if="newPhone" @click="newPhone = ''">
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>
@@ -70,7 +70,7 @@
                 autocorrect="off"
                 autocapitalize="off"
                 placeholder="Email"
-                v-model="newEmail">
+                v-model.trim="newEmail">
             <svg viewBox="0 0 24 24" v-if="newEmail" @click="newEmail = ''">
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>

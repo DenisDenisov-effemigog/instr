@@ -29,6 +29,7 @@ import card from './components/card/card.vue';
 import sliderPhotoCard from './components/card/slider-photo-card.vue';
 import sliderPhotoDots from './components/card/slider-photo-dots.vue';
 import addToCart from './components/card/add-to-cart.vue';
+import cardStikers from './components/card/card-stikers.vue';
 /*product-card*/
 import productCardSlider from './components/poduct-card/product-card-slider.vue';
 import productTabs from './components/poduct-card/product-tabs.vue';
@@ -104,5 +105,6 @@ export default {
         pageOrder,
         repeatOrder,
         user,
+        cardStikers,
     },
 }
