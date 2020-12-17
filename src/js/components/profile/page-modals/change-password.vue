@@ -7,6 +7,7 @@
             </span>
             <input
                 class="profile-modal__input"
+                :class="{'profile-modal__input_dots': password && !passwordHidden}"
                 :type="passwordType"
                 name="password"
                 id="password"
@@ -20,6 +21,7 @@
             </span>
             <input
                 class="profile-modal__input"
+                :class="{'profile-modal__input_dots': newPassword && !newPasswordHidden}"
                 :type="newPasswordType"
                 name="newPassword"
                 id="newPassword"
