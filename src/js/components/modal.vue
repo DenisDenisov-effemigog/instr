@@ -35,6 +35,10 @@
             <div class="modal__profile-edit" v-else-if="modal === 'repeat-order'">
                 <component is="repeat-order"></component>
             </div>
+            <div class="modal__profile-edit" v-else-if="modal === 'user'">
+                <h3 class="modal-title modal-title_centered">Авторизоваться</h3>
+                <component is="user"></component>
+            </div>
             
             <div class="modal__close" @click="closeModal">
                 <span v-if="modalBigger">Закрыть</span>
