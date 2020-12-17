@@ -1,5 +1,6 @@
 <template>
-    <form class="profile-modal__form">
+    <form class="profile-modal__form"
+        @submit.prevent="saveChanges">
         <label name="address" class="profile-modal__label">
             <span class="profile-modal__label-text" v-if="address">Адрес</span>
             <input
@@ -16,12 +17,13 @@
             <span class="profile-modal__label-text" v-if="message">Сообщение</span>
             <textarea
                 class="profile-modal__textarea"
+                :class="{'profile-modal__textarea_error': invalid}"
                 name="message"
                 id="message"
                 placeholder="Сообщение"
                 v-model.trim="message"
             ></textarea>
-            <span class="profile-modal__error-text">*Обязательное поле для заполнения</span>
+            <span class="profile-modal__error-text" v-if="invalid">*Обязательное поле для заполнения</span>
         </label>
         <input type="submit" class="profile-modal__button" value="Отправить запрос">
     </form>
@@ -35,10 +37,12 @@ export default {
     data() {
         return {
             address: '',
-            message: ''
+            message: '',
+            invalid: false
         }
     },
     methods: {
+        saveChanges
     },
 }
 </script>
