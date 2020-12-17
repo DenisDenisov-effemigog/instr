@@ -130,6 +130,9 @@
     &__content-text
         @extend .text-4
         color: $black
+        &_description
+            +tablet
+                width: percentage(2 / 3)
     &__content-grid
         @extend .columns
         margin: -0.5rem
