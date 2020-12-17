@@ -2,135 +2,46 @@
     <div class="profile">
         <div class="profile__menu" v-if="showMenu">
             <div class="profile__company profile__company--mobile">
-                <h3 class="profile__company-name profile__company-name--mobile">Компания «Инструменты Будущего»</h3>
-                <p class="profile__company-type profile__company-type--mobile">Юридическое лицо</p>
+                <h3 class="profile__company-name profile__company-name--mobile">{{ profile.personal.company }}</h3>
+                <p class="profile__company-type profile__company-type--mobile">
+                    <span>{{profile.personal.personTypePrint}}</span>
+                </p>
             </div>
             <ul class="profile__menu-list">
-                <li class="profile__menu-link"
-                    :class="{'profile__menu-link_active': currentPage === 'my-profile'}"
-                    @click.prevent="openPage('my-profile')">
-                    <span>Мой профиль</span>
+                <li v-for="link in menu"
+                    class="profile__menu-link"
+                    :class="{'profile__menu-link_active': currentPage === link.pageName}"
+                    @click.prevent="openPage(link.pageName)"
+                    v-show="profile.personal.personType === link.personType && profile.personal.personType !== 2 || profile.personal.personType === 2"
+                >
+                    <span>{{ link.title }}</span>
                     <svg class="" viewBox="0 0 6 10">
                         <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                     </svg>
                 </li>
-                <li class="profile__menu-link"
-                    :class="{'profile__menu-link_active': currentPage === 'order-list'}"
-                    @click.prevent="openPage('order-list')">
-                    <span>Список заказов</span>
-                    <svg class="" viewBox="0 0 6 10">
-                        <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
-                    </svg>
-                </li>
-                <li class="profile__menu-link"
-                    :class="{'profile__menu-link_active': currentPage === 'my-check'}"
-                    @click.prevent="openPage('my-check')">
-                    <span>Мой счет</span>
-                    <svg class="" viewBox="0 0 6 10">
-                        <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
-                    </svg>
-                </li>
-                <li class="profile__menu-link"
-                    :class="{'profile__menu-link_active': currentPage === 'delivery-list'}"
-                    @click.prevent="openPage('delivery-list')">
-                    <span>Адреса доставки</span>
-                    <svg class="" viewBox="0 0 6 10">
-                        <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
-                    </svg>
-                </li>
-                <!--<li class="profile__menu-link"
-                    :class="{'profile__menu-link_active': currentPage === 'my-favorite'}"
-                    @click.prevent="openPage('my-favorite')">
-                    <span>Избранное</span>
-                    <svg class="" viewBox="0 0 6 10">
-                        <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
-                    </svg>
-                </li>
-                <li class="profile__menu-link"
-                    :class="{'profile__menu-link_active': currentPage === 'actions'}"
-                    @click.prevent="openPage('actions')">
-                    <span>Акции</span>
-                    <svg class="" viewBox="0 0 6 10">
-                        <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
-                    </svg>
-                </li>-->
             </ul>
             <div class="profile__menu-mobile">
-                <div class="profile__menu-mobile_link">
+                <div class="profile__menu-mobile_link" v-for="link in menuMobile">
                     <svg viewBox="0 0 15 15">
-                        <use :xlink:href="templatePath + 'images/sprite.svg#icons__phone'"></use>
+                        <use :xlink:href="templatePath + 'images/sprite.svg#icons__' + link.icon"></use>
                     </svg>
-                    <span>+4 0371 166 478</span>
-                </div>
-                <div class="profile__menu-mobile_link">
-                    <svg>
-                        <use :xlink:href="templatePath + 'images/sprite.svg#icons__pin'"></use>
-                    </svg>
-                    <span>Москва</span>
-                </div>
-                <div class="profile__menu-mobile_link">
-                    <svg>
-                        <use :xlink:href="templatePath + 'images/sprite.svg#icons__exit'"></use>
-                    </svg>
-                    <span>Выйти</span>
+                    <span>{{link.title}}</span>
                 </div>
             </div>
         </div>
         
         <div class="profile__content">
-            <div v-show="currentPage === 'my-profile' && !mobile" class="profile__page">
-                <div class="breadcrumbs" v-if="!showMenu" @click="goBack">
-                    <svg class="breadcrumbs__back" viewBox="0 0 18 15">
-                        <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
-                    </svg>
-                    <span>Назад</span>
-                </div>
-                <slot name="my-profile"></slot>
-            </div>
-            <div v-show="currentPage === 'order-list' && !mobile" class="profile__page">
+            <div v-for="content in profileContent" 
+                 v-show="currentPage === content.name && !mobile" class="profile__page">
                 <div class="breadcrumbs" v-if="!showMenu  && details == false" @click="goBack">
                     <svg class="breadcrumbs__back" viewBox="0 0 18 15">
                         <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
                     </svg>
                     <span>Назад</span>
                 </div>
-                <slot name="order-list"></slot>
-            </div>
-            <div v-show="currentPage === 'my-check' && !mobile" class="profile__page">
-                <div class="breadcrumbs" v-if="!showMenu" @click="goBack">
-                    <svg class="breadcrumbs__back" viewBox="0 0 18 15">
-                        <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
-                    </svg>
-                    <span>Назад</span>
-                </div>
-                <slot name="my-check"></slot>
-            </div>
-            <div v-show="currentPage === 'delivery-list' && !mobile" class="profile__page">
-                <div class="breadcrumbs" v-if="!showMenu" @click="goBack">
-                    <svg class="breadcrumbs__back" viewBox="0 0 18 15">
-                        <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
-                    </svg>
-                    <span>Назад</span>
-                </div>
-                <slot name="delivery-list"></slot>
-            </div>
-            <div v-show="currentPage === 'my-favorite' && !mobile" class="profile__page">
-                <div class="breadcrumbs" v-if="!showMenu" @click="goBack">
-                    <svg class="breadcrumbs__back" viewBox="0 0 18 15">
-                        <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
-                    </svg>
-                    <span>Назад</span>
-                </div>
-                <slot name="my-favorite"></slot>
-            </div>
-            <div v-show="currentPage === 'actions' && !mobile" class="profile__page">
-                <div class="breadcrumbs" v-if="!showMenu" @click="goBack">
-                    <svg class="breadcrumbs__back" viewBox="0 0 18 15">
-                        <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
-                    </svg>
-                    <span>Назад</span>
-                </div>
-                <slot name="actions"></slot>
+                <component :is="content.component"
+                           :profile="content.data"
+                ></component>
             </div>
         </div>
     </div>
@@ -141,19 +52,40 @@
 export default {
     name: "profile",
     props: {
+        profile: {
+            required: true,
+            type: Object,
+        },
     },
     data() {
         return {
             currentPage: 'my-profile',
             mobile: false,
             showMenu: true,
-            details: false
+            details: false,
+            menu: [
+                {'title': 'Мой профиль', 'pageName': 'my-profile', 'personType': 1},
+                {'title': 'Список заказов', 'pageName': 'order-list', 'personType': 1},
+                {'title': 'Мой счет', 'pageName': 'my-check', 'personType': 2},
+                {'title': 'Адреса доставки', 'pageName': 'delivery-list', 'personType': 2},
+            ],
+            menuMobile: [
+                {'title': '+4 0371 166 478', 'icon': 'phone'},
+                {'title': 'Москва', 'icon': 'pin'},
+                {'title': 'Выйти', 'icon': 'exit'},
+            ],
+            profileContent: [
+                {'name': 'my-profile', 'component': 'page-personal', 'data': this.profile.personal},
+                {'name': 'order-list', 'component': 'page-orders', 'data': this.profile.orders},
+                {'name': 'my-check', 'component': 'page-check', 'data': this.profile.check},
+                {'name': 'delivery-list', 'component': 'page-delivery', 'data': this.profile.addresses},
+            ],
         };
     },
     computed: {
-        // profile() {
-        //     return this.profile
-        // }
+        personal() {
+            return this.profile.personal
+        }
     },
     watch: {
     },

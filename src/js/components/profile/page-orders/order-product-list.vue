@@ -1,5 +1,5 @@
 <template>
-    <ul class="order__product-list" :class="{'order__product-list--open': flag}">
+    <ul class="order__product-list" :class="{'order__product-list--open': opened}">
         <li v-for="product in products" class="order__product-item">
             <div class="order__product-number"><span>Артикул:</span>{{product.art}}</div>
             <div class="order__product-desc">{{product.desc}}</div>
@@ -10,11 +10,11 @@
             <div class="order__product-total-price">{{product.totalPrice}} &#8381;</div>
         </li>
         <!-- Нужно выводить 20 товаров -->
-        <li class="order__product-item--all" v-show="products.length > 5">
-            <a @click.prevent="openDetails">
+        <!--<li class="order__product-item&#45;&#45;all" v-show="products.length > 5" v-if="!showAll">
+            <a @click.prevent="openDetails"> 
                 Больше информации о заказе
             </a>
-        </li>
+        </li>-->
     </ul>
 </template>
 
@@ -23,13 +23,17 @@ export default {
     name:"order-product-list",
     props:{
         products:{
-            type: Array
+            type: Array,
+            required: true
         },
-        flag:{
+        opened:{
             type: Boolean,
             default: false
-        }
-        
+        },
+        showAll:{
+            type: Boolean,
+            default: false
+        },
     },
     data(){
         return{
@@ -38,7 +42,7 @@ export default {
     },
     methods:{
         openDetails() {
-            this.$eventBus.$emit("detailOrder");
+            this.$eventBus.$emit("detailOrder", this.products);
         },
     }
 }

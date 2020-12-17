@@ -65,10 +65,6 @@
 export default {
     name:"page-delivery",
     props:{
-        profile: {
-            required: true,
-            type: Object,
-        }
     },
     data(){
         return{

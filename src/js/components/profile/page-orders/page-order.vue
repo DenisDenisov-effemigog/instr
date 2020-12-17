@@ -2,9 +2,9 @@
     <div class="page-order">
         <div class="page-order__head">
             <div class="page-order__info">
-                <div class="page-order__number">Заказ #325214</div>
-                <div class="page-order__date">31.12.2020</div>
-                <div class="page-order__status">Выполнен</div>
+                <div class="page-order__number">Заказ #{{ order.number }}</div>
+                <div class="page-order__date">{{ order.date }}</div>
+                <div class="page-order__status">{{ order.status }}</div>
             </div>
             <div class="page-order__select">
                 <select-list
@@ -32,7 +32,7 @@
                 <div class="page-order__discount">Скидка</div>
                 <div class="page-order__new-price">Новая цена</div>
             </div>
-            <order-product-list :flag='flag' :products="products"></order-product-list>
+            <order-product-list :showAll="true" :opened="true" :products="order.product"></order-product-list>
             <div class="page-order__desc">
                 <ul class="page-order__desc_list">
                     <li class="page-order__desc_item" v-for="item in deliveryInfo">
@@ -95,6 +95,12 @@ import OrderProductList from './order-product-list.vue'
 export default {
     components: { selectList,OrderProductList},
     name:"page-order",
+    props: {
+        order: {
+            type: Object,
+            required: true
+        },
+    },
     data(){
         return{
             points:['Документы','Ключи','Мотоцикл'],
@@ -116,53 +122,6 @@ export default {
                     desc: 'Оплата онлайн по карте'
                 },
             ],
-            products:[
-                {
-                    art:'325214',
-                    desc:'Trimmer pe benzina GT-52S...',
-                    qty:'12',
-                    itemPrice:'65 ',
-                    allPrice:'910 ',
-                    discount:'10%',
-                    totalPrice:'810 '
-                },
-                {
-                    art:'325214',
-                    desc:'Trimmer pe benzina GT-52S...',
-                    qty:'12',
-                    itemPrice:'65 ',
-                    allPrice:'910 ',
-                    discount:'10%',
-                    totalPrice:'810 '
-                },
-                {
-                    art:'325214',
-                    desc:'Trimmer pe benzina GT-52S...',
-                    qty:'12',
-                    itemPrice:'65 ',
-                    allPrice:'910 ',
-                    discount:'10%',
-                    totalPrice:'810 '
-                },
-                {
-                    art:'325214',
-                    desc:'Trimmer pe benzina GT-52S...',
-                    qty:'12',
-                    itemPrice:'65 ',
-                    allPrice:'910 ',
-                    discount:'10%',
-                    totalPrice:'810 '
-                },
-                {
-                    art:'325214',
-                    desc:'Trimmer pe benzina GT-52S...',
-                    qty:'12',
-                    itemPrice:'65 ',
-                    allPrice:'910 ',
-                    discount:'10%',
-                    totalPrice:'810 '
-                },
-            ]
         }
     },
     methods:{
