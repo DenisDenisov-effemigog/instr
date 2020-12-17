@@ -1,11 +1,19 @@
 <component is="sticky-menu"></component>
-<component is="country" :countries="{{ countries|json_encode()|e('html_attr') }}"></component>
-<component is="catalogue" :categories="{{ categories|json_encode()|e('html_attr') }}"></component>
-<component is="mobile-menu" :countries="{{ countries|json_encode()|e('html_attr') }}"></component>
+<component is="country" 
+           :countries="{{ countries|json_encode()|e('html_attr') }}"
+></component>
+<component is="catalogue" 
+           :categories="{{ categories|json_encode()|e('html_attr') }}"
+></component>
+<component is="mobile-menu" 
+           :countries="{{ countries|json_encode()|e('html_attr') }}"
+></component>
 <component is="modal"></component>
 <component is="sticky-mobile-button"></component>
 {% if showStickyCard %}
-<component is="sticky-card" :product="{{ product|json_encode()|e('html_attr') }}"></component>
+<component is="sticky-card" 
+           :product="{{ product|json_encode()|e('html_attr') }}"
+></component>
 {% endif %}
 
 
