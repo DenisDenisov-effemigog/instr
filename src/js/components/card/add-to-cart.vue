@@ -1,6 +1,6 @@
 <template>
     <div class="add-to-cart" :class="{'add-to-cart--big': size==='big'}">
-        <div class="add-to-cart__in-cart" v-if="amount > 0">
+        <div class="add-to-cart__in-cart" v-if="amount > 0 && !disabled">
 			<div
 				class="add-to-cart__button add-to-cart__button_decrease"
 				:disabled="decreaseDisabled"
@@ -33,13 +33,18 @@
                 </svg>
 			</div>
         </div>
-		<div v-else >
+		<div v-else>
             <div 
                 class="add-to-cart__add" 
-                :class="{'add-to-cart__add--smaller': changeIcon && width < 760}" 
-                @click="increase">
-                <svg v-if="changeIcon && width < 760">
+                :class="{'add-to-cart__add--smaller': changeIcon && width < 760}"
+                :disabled="disabled"
+                @click="increase"
+            >
+                <svg v-if="changeIcon && width < 760 && !disabled">
                     <use :xlink:href="templatePath + 'images/sprite.svg#icons__cart'"></use>
+                </svg>
+                <svg viewBox="-2 -1 12 12" v-else-if="amount > 0 && disabled">
+                    <use :xlink:href="templatePath + 'images/sprite.svg#check'"></use>
                 </svg>
               <template v-else>{{ buttonTitle }}</template>  
             </div>
@@ -90,10 +95,9 @@
         data() {
             return {
                 loading: false,
+                disabled: false,
                 amount: 0,
                 width: 0,
-                _debounce_timer: null,
-                _loading_timer: null
             };
         },
         computed: {
@@ -110,17 +114,14 @@
         watch: {
         },
         mounted() {
-            //console.log('mounted', this.productId);
         },
         created() {
-            //console.log('created', this.productId);
             window.addEventListener('resize', this.updateWidth);
             this.updateWidth()
             window.addEventListener('scroll', this.mobileScroll);
         },
         methods: {
             setAmount(amount) {
-                //debugger;
                 let vm = this;
 
                 // Включение лоадера при долгой загрузке
@@ -167,6 +168,9 @@
             increase() {
                 if (this.amount < this.maxAmount) {
                     this.amount++;
+                    if(this.changeIcon) {
+                        this.disabled = true
+                    }
                     //this.startSetAmount();
                 }
             },

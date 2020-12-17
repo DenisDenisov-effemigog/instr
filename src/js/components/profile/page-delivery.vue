@@ -73,7 +73,7 @@ export default {
     data(){
         return{
             delivery:[
-                {
+                /*{
                     order: '1',
                     address: '1062 Budapest, V1 Bajzautca, 35 1062 Budapest, V1 Bajzautca, 35 1062 Budapest, V1 Bajzautca, 35 Bajzautca',
                     status: 'сonfirmed'
@@ -87,7 +87,7 @@ export default {
                     order: '3',
                     address: 'XXI., Áruháztér 8',
                     status: 'not confirmed'
-                },
+                },*/
             ],
             showToltip: 0,
         }
