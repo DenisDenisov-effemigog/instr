@@ -1,5 +1,15 @@
 <template>
     <div class="order">
+        <div 
+            v-show="details"
+            class="breadcrumbs" 
+            @click="allOrders"
+        >
+            <svg class="breadcrumbs__back" viewBox="0 0 18 15">
+                <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
+            </svg>
+            <span>Назад</span>
+        </div>
         <div class="order__header">
             <h2 class="profile__title">Список заказов</h2>
         </div>
@@ -46,11 +56,12 @@
         },
         created(){
             this.$eventBus.$on("allOrders", this.allOrders)
-            this.$eventBus.$on("detailOrder", this.detailOrder)
+            this.$eventBus.$on("openDetails", this.detailOrder)
         },
         methods:{
             allOrders() {
                 this.details = false
+                this.$eventBus.$emit('closeDetails')
             },
             detailOrder() {
                 this.details = true

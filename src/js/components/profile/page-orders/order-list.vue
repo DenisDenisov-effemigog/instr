@@ -242,6 +242,7 @@ export default {
          },
         openDetails(index){
             this.showDetails = true
+             this.$eventBus.$emit("openDetails")
         },
         openModal(modal) {
             this.$eventBus.$emit("openModal", modal, '', false)
