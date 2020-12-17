@@ -2,7 +2,9 @@
     <form class="profile-modal__form"
         @submit.prevent="saveChanges">
         <label name="name" class="profile-modal__label">
-            <span class="profile-modal__label-text" v-show="newName">Контактное лицо</span>
+            <span class="profile-modal__label-text"
+                :class="{'profile-modal__label-text_up': newName}"
+            >Контактное лицо</span>
             <input
                 class="profile-modal__input"
                 type="text"
@@ -17,7 +19,9 @@
             </svg>
         </label>
         <label name="company" class="profile-modal__label">
-            <span class="profile-modal__label-text" v-show="newCompany">Компания</span>
+            <span class="profile-modal__label-text"
+                :class="{'profile-modal__label-text_up': newCompany}"
+            >Компания</span>
             <input
                 class="profile-modal__input"
                 type="text"
@@ -32,7 +36,9 @@
             </svg>
         </label>
         <label name="code" class="profile-modal__label">
-            <span class="profile-modal__label-text" v-show="newCode">Код доступа</span>
+            <span class="profile-modal__label-text"
+                :class="{'profile-modal__label-text_up': newCode}"
+            >Код доступа</span>
             <input
                 class="profile-modal__input"
                 type="text"
@@ -45,7 +51,9 @@
             </svg>
         </label>
         <label name="phone" class="profile-modal__label">
-            <span class="profile-modal__label-text" v-show="newPhone">Номер телефона</span>
+            <span class="profile-modal__label-text"
+                :class="{'profile-modal__label-text_up': newPhone}"
+            >Номер телефона</span>
             <input
                 class="profile-modal__input"
                 type="tel"
@@ -60,7 +68,9 @@
             </svg>
         </label>
         <label name="email" class="profile-modal__label">
-            <span class="profile-modal__label-text" v-show="newEmail">Email</span>
+            <span class="profile-modal__label-text"
+                :class="{'profile-modal__label-text_up': newEmail}"
+            >Email</span>
             <input
                 class="profile-modal__input"
                 type="email"

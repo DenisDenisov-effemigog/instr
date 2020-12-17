@@ -33,7 +33,11 @@
         padding: 1px .5rem
         background-color: $white
         color: $light-grey
+        opacity: 0
         z-index: 2
+        &_up
+            opacity: 1
+            animation: labelUp 200ms
     &__input
         @extend .text-3
         width: 100%
@@ -46,6 +50,7 @@
             color: $light-grey
         &_dots
             font-size: 2rem
+            line-height: 2.5rem
     &__button
         @extend .button-primary
         padding: .625rem
