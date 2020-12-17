@@ -17,25 +17,21 @@
             +mobile
                 order: 2
     &__desc
-        &::before
-            position: absolute
-            right: 0
-            content: ''
-            border-bottom: 1px solid $border-color
         width: 114px
         margin-top: auto
     &__name
         color: $light-grey
         position: relative
-        border-bottom: 1px solid $border-color_4
         width: calc(100% - 118px)
-        & span
-            margin-bottom: -5px
+        &_dash
+            background: linear-gradient(90deg, $border-color_4 100%, transparent 0) repeat-x
+            background-size: 3px 1px
+            background-position: 0 calc(100% - 1px)
+            +tablet
+                background-position: 0 calc(100% - 3px)
+        &_label
             background: #fff
             max-width: 208px
-            width: fit-content
-            display: block
-            padding-right: 3px
     &__all
         font-weight: $font-weight_semibold
         color: $blue
