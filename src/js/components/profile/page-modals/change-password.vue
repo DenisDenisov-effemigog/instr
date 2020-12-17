@@ -2,7 +2,9 @@
     <form class="profile-modal__form"
         @submit.prevent="saveChanges">
         <label name="password" class="profile-modal__label">
-            <span class="profile-modal__label-text" v-if="password">
+            <span class="profile-modal__label-text"
+                :class="{'profile-modal__label-text_up': password}"
+            >
                 Текущий пароль
             </span>
             <input
@@ -16,7 +18,9 @@
             <show-password v-model="passwordHidden"></show-password>
         </label>
         <label name="newPassword" class="profile-modal__label">
-            <span class="profile-modal__label-text" v-if="newPassword">
+            <span class="profile-modal__label-text"
+                :class="{'profile-modal__label-text_up': newPassword}"
+            >
                 Новый пароль
             </span>
             <input

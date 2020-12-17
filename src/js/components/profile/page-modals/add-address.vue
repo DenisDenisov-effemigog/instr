@@ -2,7 +2,9 @@
     <form class="profile-modal__form"
         @submit.prevent="saveChanges">
         <label name="address" class="profile-modal__label">
-            <span class="profile-modal__label-text" v-if="address">Адрес</span>
+            <span class="profile-modal__label-text"
+                :class="{'profile-modal__label-text_up': address}"
+            >Адрес</span>
             <input
                 class="profile-modal__input"
                 type="text"
@@ -14,7 +16,9 @@
                 v-model.trim="address">
         </label>
         <label name="message" class="profile-modal__label profile-modal__label_column">
-            <span class="profile-modal__label-text" v-if="message">Сообщение</span>
+            <span class="profile-modal__label-text"
+                :class="{'profile-modal__label-text_up': message}"
+            >Сообщение</span>
             <textarea
                 class="profile-modal__textarea"
                 :class="{'profile-modal__textarea_error': invalid}"
@@ -42,7 +46,9 @@ export default {
         }
     },
     methods: {
-        saveChanges
+        saveChanges() {
+
+        }
     },
 }
 </script>
