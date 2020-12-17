@@ -1,5 +1,6 @@
 <template>
-    <form class="profile-modal__form profile-modal__form_column">
+    <form class="profile-modal__form profile-modal__form_column"
+        @submit.prevent="saveChanges">
         <label name="reason" class="profile-modal__radio">
             <input
                 type="radio"
@@ -34,11 +35,12 @@
                 <span class="profile-modal__radio-label">Другая причина</span>
             </span>
             <textarea
-                class="profile-modal__textarea profile-modal__textarea_error"
+                class="profile-modal__textarea"
+                :class="{'profile-modal__textarea_error': invalid}"
                 name="reason"
                 placeholder="Сообщение"
             ></textarea>
-            <span class="profile-modal__error-text">*Обязательное поле для заполнения</span>
+            <span class="profile-modal__error-text" v-if="invalid">*Обязательное поле для заполнения</span>
         </label>
         <input type="submit" class="profile-modal__button" value="Удалить профиль">
     </form>
@@ -51,10 +53,13 @@ export default {
     },
     data() {
         return {
-
+            invalid: false
         }
     },
     methods: {
+        saveChanges() {
+            
+        }
     },
 }
 </script>
