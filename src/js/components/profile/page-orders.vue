@@ -19,7 +19,7 @@
             ></select-list>
         </div>
         <div class="order__main" v-if="!details">
-            <order-list v-model="details"></order-list>
+            <order-list v-model.trim="details"></order-list>
         </div>
         <page-order v-if="details"></page-order>
     </div>

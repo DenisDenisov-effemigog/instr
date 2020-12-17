@@ -9,7 +9,7 @@
                 type="text"
                 placeholder="Напишите свой вопрос"
                 autocorrect="off"
-                v-model="newQuestion"
+                v-model.trim="newQuestion"
                 required></textarea>
             <span class="product-tabs__form-button-block">
                 <label name="email" class="product-tabs__input-email-label">
@@ -19,7 +19,7 @@
                         placeholder="Email для ответа"
                         autocorrect="off"
                         autocomplete="email"
-                        v-model="email"
+                        v-model.trim="email"
                         required>
                     <svg viewBox="0 0 24 24" @click="email = ''" v-if="email">
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
