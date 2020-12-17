@@ -91,7 +91,6 @@ export default {
     },
     methods:{
         openModal(modal, props, modalSize){
-            document.querySelector('.page').classList.add('page_fixed')
             document.querySelector('html').style.overflowY = 'hidden';
             this.open = true
             this.modal = modal
@@ -104,7 +103,6 @@ export default {
             this.props = []
             this.modalBigger = false
             this.$eventBus.$emit("deleteActive");
-            document.querySelector('.page').classList.remove('page_fixed');
             document.querySelector('html').style.overflow = 'auto';
         },
         closeOutside(event) {

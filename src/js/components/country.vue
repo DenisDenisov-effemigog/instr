@@ -54,7 +54,6 @@ export default {
                     this.$eventBus.$emit("closeCountry")
                 } 
             }
-            document.querySelector('.page').classList.remove('page_fixed')
             document.querySelector('html').style.overflow = 'auto';
         },
         choiceCountry(e){
@@ -67,8 +66,7 @@ export default {
         },
         openCountry(){
             this.openedCountry = !this.openedCountry
-            document.querySelector('.page').classList.toggle('page_fixed')
-            if(document.querySelector('.page').classList.contains('page_fixed')){
+            if(this.openedCountry === true){
                 document.querySelector('html').style.overflow = 'hidden';
             }else{
                 document.querySelector('html').style.overflow = 'auto';

@@ -61,7 +61,6 @@
                 this.active = !this.active;
                 this.$eventBus.$emit('open-catalogue', this.active);
                 if (!this.active) {
-                    document.querySelector('.page').classList.remove('page_fixed')
                     document.querySelector('html').style.overflow = 'auto';
                 }
             },
