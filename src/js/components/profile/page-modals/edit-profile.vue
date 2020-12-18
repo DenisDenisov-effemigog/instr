@@ -1,9 +1,9 @@
 <template>
     <form class="profile-modal__form"
-        @submit.prevent="saveChanges">
+          @submit.prevent="saveChanges">
         <label name="name" class="profile-modal__label">
             <span class="profile-modal__label-text"
-                :class="{'profile-modal__label-text_up': person.contact}"
+                  :class="{'profile-modal__label-text_up': person.contact}"
             >Контактное лицо</span>
             <input
                 class="profile-modal__input"
@@ -13,23 +13,18 @@
                 autocomplete="name"
                 autocorrect="off"
                 placeholder="Контактное лицо"
-<<<<<<< HEAD
-                v-model.trim="newName">
+                v-model.trim="person.contact">
             <svg
                 viewBox="0 0 24 24"
                 class="profile-modal__label-icon"
-                v-if="newName"
-                @click="newName = ''">
-=======
-                v-model.trim="person.contact">
-            <svg viewBox="0 0 24 24" v-if="person.contact" @click="person.contact = ''">
->>>>>>> 23058398d9fcadb460dffe2c6404998621286213
+                v-if="person.contact"
+                @click="person.contact = ''">
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>
         </label>
         <label name="company" class="profile-modal__label">
             <span class="profile-modal__label-text"
-                :class="{'profile-modal__label-text_up': person.company}"
+                  :class="{'profile-modal__label-text_up': person.company}"
             >Компания</span>
             <input
                 class="profile-modal__input"
@@ -39,23 +34,18 @@
                 autocomplete="organization"
                 autocorrect="off"
                 placeholder="Компания"
-<<<<<<< HEAD
-                v-model.trim="newCompany">
+                v-model.trim="person.company">
             <svg
                 viewBox="0 0 24 24"
                 class="profile-modal__label-icon"
-                v-if="newCompany"
-                @click="newCompany = ''">
-=======
-                v-model.trim="person.company">
-            <svg viewBox="0 0 24 24" v-if="person.company" @click="person.company = ''">
->>>>>>> 23058398d9fcadb460dffe2c6404998621286213
+                v-if="person.company"
+                @click="person.company = ''">
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>
         </label>
         <label name="code" class="profile-modal__label">
             <span class="profile-modal__label-text"
-                :class="{'profile-modal__label-text_up': person.code}"
+                  :class="{'profile-modal__label-text_up': person.code}"
             >Код доступа</span>
             <input
                 class="profile-modal__input"
@@ -63,23 +53,18 @@
                 name="code"
                 id="code"
                 placeholder="Код доступа"
-<<<<<<< HEAD
-                v-model.trim="newCode">
+                v-model.trim="person.code">
             <svg
                 viewBox="0 0 24 24"
                 class="profile-modal__label-icon"
-                v-if="newCode"
-                @click="newCode = ''">
-=======
-                v-model.trim="person.code">
-            <svg viewBox="0 0 24 24" v-if="person.code" @click="person.code = ''">
->>>>>>> 23058398d9fcadb460dffe2c6404998621286213
+                v-if="person.code"
+                @click="person.code = ''">
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>
         </label>
         <label name="phone" class="profile-modal__label">
             <span class="profile-modal__label-text"
-                :class="{'profile-modal__label-text_up': person.phone}"
+                  :class="{'profile-modal__label-text_up': person.phone}"
             >Номер телефона</span>
             <input
                 class="profile-modal__input"
@@ -89,23 +74,18 @@
                 autocomplete="tel"
                 autocorrect="off"
                 placeholder="Номер телефона"
-<<<<<<< HEAD
-                v-model.trim="newPhone">
+                v-model.trim="person.phone">
             <svg
                 viewBox="0 0 24 24"
                 class="profile-modal__label-icon"
-                v-if="newPhone"
-                @click="newPhone = ''">
-=======
-                v-model.trim="person.phone">
-            <svg viewBox="0 0 24 24" v-if="person.phone" @click="person.phone = ''">
->>>>>>> 23058398d9fcadb460dffe2c6404998621286213
+                v-if="person.phone"
+                @click="person.phone = ''">
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>
         </label>
         <label name="email" class="profile-modal__label">
             <span class="profile-modal__label-text"
-                :class="{'profile-modal__label-text_up': person.email}"
+                  :class="{'profile-modal__label-text_up': person.email}"
             >Email</span>
             <input
                 class="profile-modal__input"
@@ -116,12 +96,12 @@
                 autocorrect="off"
                 autocapitalize="off"
                 placeholder="Email"
-                v-model.trim="newEmail">
+                v-model.trim="person.email">
             <svg
                 viewBox="0 0 24 24"
                 class="profile-modal__label-icon"
-                v-if="newEmail"
-                @click="newEmail = ''">
+                v-if="person.email"
+                @click="person.email = ''">
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>
         </label>
@@ -139,13 +119,10 @@ export default {
         return {
         }
     },
-    computed: {
-        
-    },
     methods: {
         closeOutside(event) {
             if(event.toElement.className !== '') {
-                this.closeModal() 
+                this.closeModal()
             }
         },
         saveChanges() {
