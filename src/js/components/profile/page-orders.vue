@@ -13,6 +13,10 @@
         <div class="order__header">
             <h2 class="profile__title">Список заказов</h2>
         </div>
+        <div v-if="profile.length === 0" class="order__none">
+            <div class="order__none_text">У вас пока еще нет заказов</div>
+            <div class="order__none_btn">Перейти в каталог</div>
+        </div>
         <div class="order__info" v-if="!details">
             <div class="order__info-icon">
                 <svg>
@@ -26,6 +30,7 @@
         <div class="order__info-select" v-if="!details">
             <select-list
                 :points="points"
+                :icon="icon"
             ></select-list>
         </div>
         <div class="order__main">
@@ -53,6 +58,7 @@
             return{
                 points:['Выполнен','В ожидании оплаты','Отменен'],
                 details: false,
+                icon:'check'
             }
         },
         created(){

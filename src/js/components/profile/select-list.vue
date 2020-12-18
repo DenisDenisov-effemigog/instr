@@ -1,7 +1,8 @@
 <template>
 <div class="select" @click="flag =!flag">
     <div class="select__button" :class="{'select__button--active':flag}">
-        <span>{{points[currentPoint]}}</span>
+        <span v-if="selectFlag">{{points[currentPoint]}}</span>
+        <span v-else>Документы</span>
         <svg>
             <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-down'"></use>
         </svg>
@@ -11,7 +12,7 @@
             <li @click="clickPoint(point)" class="select__item" :class="{'select__item--active':currentPoint == points.indexOf(point)}" v-for="point in points">
                 <span>{{point}}</span>
                 <svg>
-                    <use :xlink:href="templatePath + 'images/sprite.svg#check'"></use>
+                    <use :xlink:href="templatePath + `images/sprite.svg#${icon}`"></use>
                 </svg>
             </li>
         </ul>
@@ -25,6 +26,13 @@ export default {
     props:{
         points:{
             type: Array
+        },
+        icon:{
+            type:String
+        },
+        selectFlag:{
+            type: Boolean,
+            default: true
         }
     },
     data(){

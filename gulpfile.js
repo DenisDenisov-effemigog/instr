@@ -47,6 +47,7 @@ let config = {
         demo: {
             css_menu: 'demo_menu.min.css',
             css_mixins: 'demo_mixins.min.css',
+            js: 'demo.min.js'
         },
     },
     src: {
@@ -83,6 +84,9 @@ let config = {
             templates: [
                 './src/demo/templates/pages/*.*'
             ],
+            js: [
+                './src/demo/js/api-mockup.js'
+            ]
         },
     },
 };
@@ -240,6 +244,18 @@ gulp.task('demo:css_mixins:build', function () {
     return buildSass(config.src.demo.css_mixins, config.bundles.demo.css_mixins, config.build.css);
 });
 
+gulp.task('demo:js:build', function () {
+    return gulp.src(config.src.demo.js)
+        .pipe(concat(config.bundles.demo.js))
+        .pipe(gulpif(isProduction, terser({
+            output: {
+                comments: false,
+                beautify: false
+            }
+        })))
+        .pipe(gulp.dest(config.build.js));
+});
+
 gulp.task('demo:img:minify', function () {
     return gulp.src(config.src.demo.images)
         .pipe(imagemin([
@@ -349,6 +365,7 @@ gulp.task('demo:templates:build', function () {
 gulp.task('demo:build', gulp.parallel(
     'demo:css_menu:build',
     'demo:css_mixins:build',
+    'demo:js:build',
     'demo:img:minify',
     'demo:templates:build'
 ));
@@ -356,7 +373,7 @@ gulp.task('demo:build', gulp.parallel(
 gulp.task('watch', function(){
     watch(
         ['./src/**/*.js', './src/**/*.vue'],
-        gulp.series('app:js:build')
+        gulp.parallel(['app:js:build', 'demo:js:build'])
     );
 });
 

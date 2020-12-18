@@ -20,13 +20,11 @@
         },
         computed: {
             productsQuantity() {
-                //const basketData = this.$store.getters.basketProductsSummary;
-                const basketData = {quantity: 3};
+                const basketData = this.$store.getters.basketProductsSummary;
                 return basketData.quantity;
             },
             productsPrice() {
-                //const basketData = this.$store.getters.basketProductsSummary;
-                const basketData = {price: 100};
+                const basketData = this.$store.getters.basketProductsSummary;
                 return basketData.price;
             },
             

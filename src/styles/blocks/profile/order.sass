@@ -1,6 +1,16 @@
 .order
     &__title
         @extend .title-3
+    &__none
+        padding-top: 0.8rem
+        &_btn
+            @extend .button-catalogue
+            margin-top: 2rem
+            width: 100%
+            +tablet
+                cursor: pointer
+                width: 11.75rem
+
     &__info
         font-size: $font-size_4
         margin-top: 2rem
@@ -123,9 +133,6 @@
             & a
                 @extend .profile__link
         &:nth-child(5)
-            // Нужно выводить 20 товаров
-            & ~ .order__product-item
-                display: none
             & ~ .order__product-item--all
                 display: flex
                 align-items: center
@@ -153,11 +160,29 @@
             width: 100%
             color: $grey
     &__product-desc
+        cursor: pointer
+        position: relative
         +tablet
+            &:hover
+                .order__product-desc_tooltip
+                    display: flex
+                text-decoration: underline
+                
             flex: 2
         +mobile
             width: 100%
             padding-top: 0.25rem
+        & span
+            max-width: 210px
+            overflow: hidden
+            text-overflow: ellipsis
+            white-space: nowrap
+            display: block
+        &_tooltip
+            @extend .tooltip
+            width: 100%
+            max-width: 15rem
+            top: 2rem
     &__product-qty
         +tablet
             & span
@@ -203,13 +228,32 @@
         margin: 0 auto
         margin-top: 2.625rem
     &__special
+        position: relative
         padding-top: 2rem
+        &::after
+            content: ''
+            position: absolute
+            bottom: 0
+            background: #fff
+            width: 100%
+            height: 25px
+            opacity: 0.6
         &_title
             @extend .text-2
             font-weight: bold
         &_list
             padding-top: 1rem
             opacity: .5
+            height: 210px
+            overflow: auto
+            &::-webkit-scrollbar 
+                width: 4px
+            &::-webkit-scrollbar-track 
+                background: #F3F5F6
+            &::-webkit-scrollbar-thumb 
+                background: #D0D6DC
+                height: 85px
+
         &_item
             display: flex
             padding: 0.5rem 0
