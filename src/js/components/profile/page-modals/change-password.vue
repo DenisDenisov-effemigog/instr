@@ -39,7 +39,7 @@
 </template>
 
 <script>
-    import showPassword from './elements/show-password.vue'
+    import showPassword from '../../partials/show-password.vue'
 
     export default {
         name:"change-password",

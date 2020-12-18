@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="profile-modal__icon" @click="hidePassword = !hidePassword">
+        <div class="input-modal__icon" @click="hidePassword = !hidePassword">
             <svg viewBox="0 0 24 24" v-if="hidePassword">
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__eye-closed'"></use>
             </svg>

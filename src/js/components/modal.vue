@@ -37,7 +37,7 @@
             </div>
             <div class="modal__profile-edit" v-else-if="modal === 'user'">
                 <h3 class="modal-title modal-title_centered">Авторизоваться</h3>
-                <component is="user"></component>
+                <component is="user" :selected="props"></component>
             </div>
             
             <div class="modal__close" @click="closeModal">
