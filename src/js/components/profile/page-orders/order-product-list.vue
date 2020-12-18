@@ -7,6 +7,9 @@
             <div class="order__product-number"><span>Артикул:</span>{{product.art}}</div>
             <div class="order__product-desc">
                 <span>{{product.desc}}</span>
+                <div class="order__product-desc_tooltip">
+                    {{product.desc}}
+                </div>
             </div>
             <div class="order__product-qty">{{product.qty}}<span>шт.</span></div>
             <div class="order__product-item-price">{{product.itemPrice}} &#8381;</div>

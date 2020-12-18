@@ -150,7 +150,14 @@
             width: 100%
             color: $grey
     &__product-desc
+        cursor: pointer
+        position: relative
         +tablet
+            &:hover
+                .order__product-desc_tooltip
+                    display: flex
+                text-decoration: underline
+                
             flex: 2
         +mobile
             width: 100%
@@ -161,6 +168,11 @@
             text-overflow: ellipsis
             white-space: nowrap
             display: block
+        &_tooltip
+            @extend .tooltip
+            width: 100%
+            max-width: 15rem
+            top: 2rem
     &__product-qty
         +tablet
             & span
