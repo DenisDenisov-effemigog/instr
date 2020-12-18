@@ -1,6 +1,16 @@
 .order
     &__title
         @extend .title-3
+    &__none
+        padding-top: 0.8rem
+        &_btn
+            @extend .button-catalogue
+            margin-top: 2rem
+            width: 100%
+            +tablet
+                cursor: pointer
+                width: 11.75rem
+
     &__info
         font-size: $font-size_4
         margin-top: 2rem
