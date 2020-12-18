@@ -159,7 +159,7 @@
             decrease() {
                 if (this.amount > this.allowedDecreaseAmount) {
                     this.amount--;
-                    //this.startSetAmount();
+                    this.startSetAmount();
                 }
             },
             updateWidth() {
@@ -171,7 +171,7 @@
                     if(this.changeIcon) {
                         this.disabled = true
                     }
-                    //this.startSetAmount();
+                    this.startSetAmount();
                 }
             },
             changeVal(e){
