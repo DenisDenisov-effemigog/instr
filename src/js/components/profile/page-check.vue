@@ -1,16 +1,6 @@
 <template>
     <div class="my-check">
         <h2 class="profile__title">Мой счет</h2>
-        <div class="my-check__info">
-            <div class="my-check__info-icon">
-                <svg>
-                    <use :xlink:href="templatePath + 'images/sprite.svg#icons__wanted'"></use>
-                </svg>
-            </div>
-            <div class="my-check__info-text">
-                В этом разделе вы найдете информацию о заказах, сделанных на сайте
-            </div>
-        </div>
         <div class="my-check__main">
             <ul class="my-check__list">
                 <li class="my-check__item my-check__item--head">
@@ -70,6 +60,10 @@
 export default {
     name:"page-check",
     props:{
-    }
+        profile: {
+            required: true,
+            type: Object,
+        },
+    },
 }
 </script>
