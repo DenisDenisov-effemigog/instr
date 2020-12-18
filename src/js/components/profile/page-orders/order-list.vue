@@ -10,7 +10,7 @@
                     <div class="order__date">{{item.date}}</div>
                     <div class="order__status">{{item.status}}</div>
                     <div class="order__qty">{{item.qty}} товара</div>
-                    <div class="order__price">{{item.price}} &#8381;</div>
+                    <div class="order__price">{{item.priceTotal}} &#8381;</div>
                     <div @click.stop="openModal('repeat-order')" class="order__btn">
                         <div class="order__btn-icon">
                             <svg>
