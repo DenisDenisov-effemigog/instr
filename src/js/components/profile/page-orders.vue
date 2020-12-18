@@ -26,6 +26,7 @@
         <div class="order__info-select" v-if="!details">
             <select-list
                 :points="points"
+                :icon="icon"
             ></select-list>
         </div>
         <div class="order__main">
@@ -53,6 +54,7 @@
             return{
                 points:['Выполнен','В ожидании оплаты','Отменен'],
                 details: false,
+                icon:'check'
             }
         },
         created(){

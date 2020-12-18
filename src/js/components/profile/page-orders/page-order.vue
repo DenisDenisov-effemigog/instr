@@ -9,6 +9,8 @@
             <div class="page-order__select">
                 <select-list
                     :points="points"
+                    :icon="icon"
+                    :selectFlag="selectFlag"
                 ></select-list>
             </div>
             <div @click.stop="openModal('repeat-order')" class="page-order__btn">
@@ -103,8 +105,10 @@ export default {
     },
     data(){
         return{
-            points:['Документы','Ключи','Мотоцикл'],
+            points:['Загрузить еще что-нибудь','Загрузить счет-фактуру'],
             flag: true,
+            selectFlag: false,
+            icon:'icons__download',
             deliveryInfo:[
                 {
                     icon: 'car',
