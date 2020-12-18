@@ -45,6 +45,7 @@ import pagePersonal from './components/profile/page-personal.vue';
 import pageOrders from './components/profile/page-orders.vue';
 import pageOrder from './components/profile/page-orders/page-order.vue';
 import orderList from './components/profile/page-orders/order-list.vue';
+import order from './components/profile/page-orders/order.vue';
 import orderProductList from './components/profile/page-orders/order-product-list.vue';
 import selectList from './components/profile/select-list.vue';
 import pageCheck from './components/profile/page-check.vue';
@@ -97,6 +98,7 @@ export default {
         pageDelivery,
         selectList,
         orderList,
+        order,
         orderProductList,
         editProfile,
         changePassword,

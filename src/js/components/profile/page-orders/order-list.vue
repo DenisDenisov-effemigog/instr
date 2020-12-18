@@ -5,29 +5,10 @@
                 v-for="(item, index) in orders"
                 :key="item.id"
             >
-                <div class="order__desc" @click.stop="openDetails(index)">
-                    <div class="order__number">#{{item.number}}</div>
-                    <div class="order__date">{{item.date}}</div>
-                    <div class="order__status">{{item.status}}</div>
-                    <div class="order__qty">{{item.qty}} товара</div>
-                    <div class="order__price">{{item.priceTotal}} &#8381;</div>
-                    <div @click.stop="openModal('repeat-order')" class="order__btn">
-                        <div class="order__btn-icon">
-                            <svg>
-                                <use :xlink:href="templatePath + 'images/sprite.svg#icons__repeat'"></use>
-                            </svg>
-                        </div>
-                        <div class="order__btn-text">
-                            Повторить заказ
-                        </div>
-                    </div>
-                    <div class="order__arrow">
-                        <svg @click.stop="clickArrow">
-                            <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-down'"></use>
-                        </svg>
-                    </div>
-                </div>
-                <order-product-list :products="item.product" :orderIndex="index"></order-product-list>
+                <component is="order" 
+                           :order="item" 
+                           :index="index"
+                ></component>
             </li>
         </ul>
         <page-order v-else :order="order"></page-order>
@@ -35,11 +16,11 @@
 </template>
 
 <script>
-import orderProductList from './order-product-list.vue'
+import order from './order.vue'
 import PageOrder from './page-order.vue'
 export default {
-     components: { 
-         orderProductList,
+     components: {
+         order,
          PageOrder, 
      },
      name: 'order-list',
@@ -72,21 +53,14 @@ export default {
             }
         },
     },
-    created(){
-        this.$eventBus.$on("detailOrder", this.openDetails)
+    created() {
+        this.$eventBus.$on("openDetails", this.openDetails)
     },
-    methods:{
-         clickArrow(e){
-             e.target.closest('div').classList.toggle('order__arrow--open')
-             e.target.closest('div').parentElement.nextElementSibling.classList.toggle('order__product-list--open')
-         },
+    methods: {
+
         openDetails(index){
             this.showDetails = true
             this.order = this.orders[index]
-            this.$eventBus.$emit("openDetails")
-        },
-        openModal(modal) {
-            this.$eventBus.$emit("openModal", modal, '', false)
         },
     }
 }

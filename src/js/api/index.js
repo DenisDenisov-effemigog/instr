@@ -1,70 +1,74 @@
 import axios from 'axios';
 
-class Api {
-    _promiseBitrixRequest(action, payload) {
+if (window.runAction == undefined) {
+    window.runAction = function (action, payload) {
         //debugger;
-        
+        if (payload.data){
+            payload = payload.data; 
+        }
+        console.log('runAction call from site');
         return new Promise((resolve, reject) => {
             //debugger;
             let url = '/bitrix/services/main/ajax.php?action='+encodeURIComponent(action);
             let formData = new FormData();
-            Object.keys(payload).forEach(function (key){
-                //console.log(key, payload[key]);
-                formData.append(key, payload[key]);
-            });
-            
-            console.log('formData', formData, payload.id);
-                
+            if (payload) {
+                Object.keys(payload).forEach(function (key) {
+                    //console.log(key, payload[key]);
+                    formData.append(key, payload[key]);
+                });
+                //console.log('formData', formData, payload.id);
+            } else {
+                //console.log('formData', formData);
+            }
+
             axios.post(url, formData, {
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded",
                 }
             })
-                .then((response) => {
-                    console.log('[response]', response);
-                    if (response && response.data) {
-                        if (response.data.status === 0) {
-                            reject(response.data.errors)
-                        } else if (response.data.status === 1) {
-                            resolve(response.data.answer);
-                        }
-                    } else {
-                        console.error('[BX.ajax error]', response.errors);
-                        reject([{code: 'bx_sys_error', message: 'Invalid response'}]);
-                    }
-                })
-                .catch((response) => {
-                    console.error('[BX.ajax error]', response.errors);
-                    reject([{code: 'bx_sys_error', message: ''}]);
-                });
-        });        
-    }
-    _promiseBitrixRequest66(action, payload) {
-        debugger;
+            .then((response) => {
+                //debugger;
+                resolve(response);
+            })
+            .catch((response) => {
+                console.error('[BX.ajax error]', response.errors);
+                reject([{code: 'bx_sys_error', message: ''}]);
+            });
+        });
+    };
+}
+class Api {
+    _promiseBitrixRequest(action, payload) {
+        //debugger;
         return new Promise((resolve, reject) => {
-            debugger;
-            window.BX.ajax.runAction(action, {
+        //debugger;
+            runAction(action, {
                 data: payload
             })
-                .then((response) => {
-                    if (response && response.data) {
-                        if (response.data.status === 0) {
-                            reject(response.data.errors)
-                        } else if (response.data.status === 1) {
-                            resolve(response.data.answer);
-                        }
-                    } else {
-                        console.error('[BX.ajax error]', response.errors);
-                        reject([{code: 'bx_sys_error', message: 'Invalid response'}]);
+            .then((response) => {
+                //debugger;
+                console.log('[response]', response);
+                if (response && response.data) {
+                    response = response.data;
+                    if (response.data.status === 0) {
+                        reject(response.data.errors)
+                    } else if (response.data.status === 1) {
+                        resolve(response.data.answer);
                     }
-                })
-                .catch((response) => {
+                } else {
                     console.error('[BX.ajax error]', response.errors);
-                    reject([{code: 'bx_sys_error', message: ''}]);
-                });
-        });
+                    reject([{code: 'bx_sys_error', message: 'Invalid response'}]);
+                }
+            })
+            .catch((response) => {
+                console.error('[BX.ajax error]', response.errors);
+                reject([{code: 'bx_sys_error', message: ''}]);
+            });
+        });   
     }
-    
+    getBasket() {
+        return this._promiseBitrixRequest('instrum:main.api.basket.get');
+    }
     setBasketQuantity(productId, quantity) {
         return this._promiseBitrixRequest(quantity === 0 ? 'instrum:main.api.basket.delete' :'instrum:main.api.basket.update', {
             id: productId,

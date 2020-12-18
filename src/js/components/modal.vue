@@ -33,7 +33,7 @@
                 <component is="add-address"></component>
             </div>
             <div class="modal__profile-edit" v-else-if="modal === 'repeat-order'">
-                <component is="repeat-order"></component>
+                <component is="repeat-order" :products="props"></component>
             </div>
             <div class="modal__profile-edit" v-else-if="modal === 'user'">
                 <h3 class="modal-title modal-title_centered">Авторизоваться</h3>

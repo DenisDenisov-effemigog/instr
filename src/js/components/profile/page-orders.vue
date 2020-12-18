@@ -13,7 +13,7 @@
         <div class="order__header">
             <h2 class="profile__title">Список заказов</h2>
         </div>
-        <div v-if="profile.length == 0" class="order__none">
+        <div v-if="profile.length === 0" class="order__none">
             <div class="order__none_text">У вас пока еще нет заказов</div>
             <div class="order__none_btn">Перейти в каталог</div>
         </div>
