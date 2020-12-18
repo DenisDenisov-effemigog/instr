@@ -14,7 +14,11 @@
                 autocorrect="off"
                 placeholder="Контактное лицо"
                 v-model.trim="newName">
-            <svg viewBox="0 0 24 24" v-if="newName" @click="newName = ''">
+            <svg
+                viewBox="0 0 24 24"
+                class="profile-modal__label-icon"
+                v-if="newName"
+                @click="newName = ''">
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>
         </label>
@@ -31,7 +35,11 @@
                 autocorrect="off"
                 placeholder="Компания"
                 v-model.trim="newCompany">
-            <svg viewBox="0 0 24 24" v-if="newCompany" @click="newCompany = ''">
+            <svg
+                viewBox="0 0 24 24"
+                class="profile-modal__label-icon"
+                v-if="newCompany"
+                @click="newCompany = ''">
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>
         </label>
@@ -46,7 +54,11 @@
                 id="code"
                 placeholder="Код доступа"
                 v-model.trim="newCode">
-            <svg viewBox="0 0 24 24" v-if="newCode" @click="newCode = ''">
+            <svg
+                viewBox="0 0 24 24"
+                class="profile-modal__label-icon"
+                v-if="newCode"
+                @click="newCode = ''">
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>
         </label>
@@ -63,7 +75,11 @@
                 autocorrect="off"
                 placeholder="Номер телефона"
                 v-model.trim="newPhone">
-            <svg viewBox="0 0 24 24" v-if="newPhone" @click="newPhone = ''">
+            <svg
+                viewBox="0 0 24 24"
+                class="profile-modal__label-icon"
+                v-if="newPhone"
+                @click="newPhone = ''">
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>
         </label>
@@ -81,7 +97,11 @@
                 autocapitalize="off"
                 placeholder="Email"
                 v-model.trim="newEmail">
-            <svg viewBox="0 0 24 24" v-if="newEmail" @click="newEmail = ''">
+            <svg
+                viewBox="0 0 24 24"
+                class="profile-modal__label-icon"
+                v-if="newEmail"
+                @click="newEmail = ''">
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>
         </label>

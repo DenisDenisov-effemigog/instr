@@ -1,0 +1,32 @@
+@import './user-tabs'
+@import './user-login'
+@import './user-reg'
+.user
+    &__label
+        @extend .profile-modal__label
+    &__label-text
+        @extend .profile-modal__label-text
+        &_up
+            @extend .profile-modal__label-text_up
+    &__input
+        @extend .profile-modal__input
+        &_dots
+            @extend .profile-modal__input_dots
+    &__button
+        @extend .profile-modal__button   
+    &__label-icon
+        @extend .profile-modal__label-icon
+    &__error-text
+        @extend .profile-modal__error-text
+        &_invalid
+            margin: .5rem 0 0 0 !important
+    &__checkbox-input
+        @extend .checkbox
+    &__checkbox-label
+        @extend .checkbox__label
+        margin-top: 5px
+        svg
+            @extend .checkbox__label-svg
+    &__checkbox-text
+        display: block
+        @extend .text-2

@@ -1,0 +1,26 @@
+.user-reg
+    &__form
+        margin-top: 1.5rem
+        display: flex
+        flex-direction: column
+    &__radio
+        @extend .profile-modal__radio
+    &__check
+        @extend .profile-modal__check
+    &__radio-label
+        display: block
+    &__checkbox
+        @extend .checkbox-switch
+    &__checkbox-input
+        @extend .checkbox-switch
+        &:checked + .user-reg__checkbox-slider
+            background-color: rgba($primary-red, .56)
+        &:checked + .user-reg__checkbox-slider:before
+            background-color: $primary-red
+            transform: translateX(1rem)
+    &__checkbox-slider
+        @extend .checkbox-switch__slider
+    &__checkbox-label
+        display: block
+        margin-left: .625rem
+        

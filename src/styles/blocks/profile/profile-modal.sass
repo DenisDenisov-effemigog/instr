@@ -10,26 +10,22 @@
         &_column
             display: flex
             flex-direction: column
-        svg
-            position: absolute
-            top: .5rem
-            right: .5rem
-            width: $size_24
-            height: $size_24
-            fill: $light-grey
-    &__icon
+    &__label-icon
         position: absolute
-        right: .5rem
-        svg
-            width: $size_24
-            height: $size_24
-            fill: $light-grey 
+        top: .5rem
+        right: 1rem
+        width: $size_24
+        height: $size_24
+        fill: $light-grey
+        cursor: pointer
+        &:hover
+            fill: $icon-grey
     &__label-text
         @extend .label-typo
         position: absolute
         top: -.375rem
         left: 1rem
-        width: max-content
+        width: initial
         padding: 1px .5rem
         background-color: $white
         color: $light-grey
@@ -39,15 +35,7 @@
             opacity: 1
             animation: labelUp 200ms
     &__input
-        @extend .text-3
-        width: 100%
-        height: 2.5rem
-        margin-bottom: 1rem
-        padding: .75rem 1rem
-        border: 1px solid $light-grey
-        border-radius: $border-radius_2
-        &::placeholder
-            color: $light-grey
+        @extend .input-modal
         &_dots
             font-size: 2rem
             line-height: 2.5rem
@@ -75,6 +63,7 @@
         margin-bottom: 1rem
     &__check
         @extend .radio__check
+        cursor: pointer     
     &__radio-label
         @extend .radio__label
     &__textarea
