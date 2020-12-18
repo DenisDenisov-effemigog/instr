@@ -4,6 +4,15 @@
         margin-bottom: 3.5rem
     &__tabs
         @extend .tabs
+        +mobile
+            -ms-overflow-style: none
+            overflow: -moz-scrollbars-none
+            overflow-x: scroll
+            &::-webkit-scrollbar
+                width: 0 !important
+                height: 0
+                display: none !important
+                background: transparent
         &_center
             @media screen and (max-width: 450px)
                 justify-content: center
