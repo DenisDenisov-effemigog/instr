@@ -64,7 +64,12 @@ export default {
             let result = vm.order.product.filter(function (item) {
                 return item.available === false
             })
-            this.$eventBus.$emit("openModal", modal, result, false)
+            let repeatOrder = {
+                'products': result, 
+                'orderNumber': vm.order.number
+            }
+            
+            this.$eventBus.$emit("openModal", modal, repeatOrder, false)
         },
     }
 }
