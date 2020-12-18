@@ -31,5 +31,6 @@ const app = new Vue({
     store,
     router,
     mounted() {
+        store.dispatch('basketUpdateProducts');
     }
 });

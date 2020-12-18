@@ -1,4 +1,12 @@
 <section class="banners-section">
+    <div class="banners-section__link">
+		<a class="banners-section__link_text">Больше товаров тут</a>
+		<div class="banners-section__link_icon">
+			<svg viewbox="0 0 12 10">
+				<use xlink:href="./images/sprite.svg#arrows__arrow-right"></use>
+			</svg>
+		</div>
+	</div>
     <div class="banners-section__title">Акции</div>
     <component is="slider-action">
         {% for slide in actionBanners %}
