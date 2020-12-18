@@ -71,7 +71,7 @@ export default {
     },
     methods: {
         openModal(modal) {
-            this.$eventBus.$emit("openModal", modal, '', false)
+            this.$eventBus.$emit("openModal", modal, this.profile, false)
         } 
     },
 }
