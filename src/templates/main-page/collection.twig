@@ -1,33 +1,35 @@
 <section class="collection">
-    <h2 class="collection__title">Популярные категории</h2>
-    <div class="collection__content collection__content_desktop">
-        {% for collection in collections %}
-            <a class="collection__block" href="{{ collection.link }}">
-                <div class="collection__card">
-                    <div class="collection__image">
-                        <img
-                            src="{{ collection.img }}"
-                            alt="{{ collection.title }}"
-                            class="collection__img">
-                    </div>
-                    <p class="collection__name">{{ collection.title }}</p>
-                </div>
-            </a>
-        {% endfor %}
-    </div>
-    <component is="slider-collection">
-        {% for collection in collections %}
-            <a class="collection__block" href="{{ collection.link }}">
-                <div class="collection__card">
-                    <div class="collection__image">
-                        <img
-                            src="{{ collection.img }}"
-                            alt="{{ collection.title }}"
-                            class="collection__img">
-                    </div>
-                    <p class="collection__name">{{ collection.title }}</p>
-                </div>
-            </a>
-        {% endfor %}
-    </component>
+	<div class="collection__link">
+		<a class="collection__link_text">Больше товаров тут</a>
+		<div class="collection__link_icon">
+			<svg viewbox="0 0 12 10">
+				<use xlink:href="./images/sprite.svg#arrows__arrow-right"></use>
+			</svg>
+		</div>
+	</div>
+	<h2 class="collection__title">Популярные категории</h2>
+	<div class="collection__content collection__content_desktop">
+		{% for collection in collections %}
+			<a class="collection__block" href="{{ collection.link }}">
+				<div class="collection__card">
+					<div class="collection__image">
+						<img src="{{ collection.img }}" alt="{{ collection.title }}" class="collection__img">
+					</div>
+					<p class="collection__name">{{ collection.title }}</p>
+				</div>
+			</a>
+		{% endfor %}
+	</div>
+	<component is="slider-collection">
+		{% for collection in collections %}
+			<a class="collection__block" href="{{ collection.link }}">
+				<div class="collection__card">
+					<div class="collection__image">
+						<img src="{{ collection.img }}" alt="{{ collection.title }}" class="collection__img">
+					</div>
+					<p class="collection__name">{{ collection.title }}</p>
+				</div>
+			</a>
+		{% endfor %}
+	</component>
 </section>
