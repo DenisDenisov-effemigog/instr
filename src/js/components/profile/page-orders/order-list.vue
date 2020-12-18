@@ -9,7 +9,7 @@
                     <div class="order__number">#{{item.number}}</div>
                     <div class="order__date">{{item.date}}</div>
                     <div class="order__status">{{item.status}}</div>
-                    <div class="order__qty">{{item.qty}}</div>
+                    <div class="order__qty">{{item.qty}} товара</div>
                     <div class="order__price">{{item.price}} &#8381;</div>
                     <div @click.stop="openModal('repeat-order')" class="order__btn">
                         <div class="order__btn-icon">
@@ -27,7 +27,7 @@
                         </svg>
                     </div>
                 </div>
-                <order-product-list :products="item.product"></order-product-list>
+                <order-product-list :products="item.product" :orderIndex="index"></order-product-list>
             </li>
         </ul>
         <page-order v-else :order="order"></page-order>
@@ -73,7 +73,7 @@ export default {
         },
     },
     created(){
-        this.$eventBus.$on("detailOrder", this.detailOrder)
+        this.$eventBus.$on("detailOrder", this.openDetails)
     },
     methods:{
          clickArrow(e){
@@ -83,14 +83,10 @@ export default {
         openDetails(index){
             this.showDetails = true
             this.order = this.orders[index]
-             this.$eventBus.$emit("openDetails")
+            this.$eventBus.$emit("openDetails")
         },
         openModal(modal) {
             this.$eventBus.$emit("openModal", modal, '', false)
-        },
-        detailOrder(products) {
-            this.showDetails = true
-            this.order = products
         },
     }
 }

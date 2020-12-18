@@ -56,19 +56,19 @@
                     <ul class="page-order__desc-order_list">
                         <li class="page-order__desc-order_item">
                             <div class="page-order__desc-order_name">Цена</div>
-                            <div class="page-order__desc-order_price">6 920 ₽</div>
+                            <div class="page-order__desc-order_price">6 920 &#8381;</div>
                         </li>
                         <li class="page-order__desc-order_item page-order__desc-order_item--discount">
                             <div class="page-order__desc-order_name">Скидка</div>
-                            <div class="page-order__desc-order_price page-order__desc-order_price--discount">918 ₽</div>
+                            <div class="page-order__desc-order_price page-order__desc-order_price--discount">918 %</div>
                         </li>
                         <li class="page-order__desc-order_item page-order__desc-order_item--delivery">
                             <div class="page-order__desc-order_name">Livrare</div>
-                            <div class="page-order__desc-order_price">+119.27 RON</div>
+                            <div class="page-order__desc-order_price">+119.27 &#8381;</div>
                         </li>
                         <li class="page-order__desc-order_item page-order__desc-order_item--total">
                             <div class="page-order__desc-order_name">Ваша цена</div>
-                            <div class="page-order__desc-order_price page-order__desc-order_price--total">6 000 ₽</div>
+                            <div class="page-order__desc-order_price page-order__desc-order_price--total">6 000 &#8381;</div>
                         </li>
                     </ul>
                     <div @click.stop="openModal('repeat-order')" ref="mobileBtn" class="page-order__desc-order_btn">
