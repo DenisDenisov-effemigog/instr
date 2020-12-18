@@ -58,19 +58,19 @@
                     <ul class="page-order__desc-order_list">
                         <li class="page-order__desc-order_item">
                             <div class="page-order__desc-order_name">Цена</div>
-                            <div class="page-order__desc-order_price">6 920 &#8381;</div>
+                            <div class="page-order__desc-order_price">{{ order.price }} &#8381;</div>
                         </li>
                         <li class="page-order__desc-order_item page-order__desc-order_item--discount">
                             <div class="page-order__desc-order_name">Скидка</div>
-                            <div class="page-order__desc-order_price page-order__desc-order_price--discount">918 %</div>
+                            <div class="page-order__desc-order_price page-order__desc-order_price--discount">{{ order.discount }} &#8381;</div>
                         </li>
                         <li class="page-order__desc-order_item page-order__desc-order_item--delivery">
-                            <div class="page-order__desc-order_name">Livrare</div>
-                            <div class="page-order__desc-order_price">+119.27 &#8381;</div>
+                            <div class="page-order__desc-order_name">Экономия</div>
+                            <div class="page-order__desc-order_price">+{{ order.economy }} &#8381;</div>
                         </li>
                         <li class="page-order__desc-order_item page-order__desc-order_item--total">
                             <div class="page-order__desc-order_name">Ваша цена</div>
-                            <div class="page-order__desc-order_price page-order__desc-order_price--total">6 000 &#8381;</div>
+                            <div class="page-order__desc-order_price page-order__desc-order_price--total">{{ order.priceTotal }} &#8381;</div>
                         </li>
                     </ul>
                     <div @click.stop="openModal('repeat-order')" ref="mobileBtn" class="page-order__desc-order_btn">
@@ -112,18 +112,18 @@ export default {
             deliveryInfo:[
                 {
                     icon: 'car',
-                    title: 'Доставка курьером',
-                    desc: 'Москва, Трехгорный Вал 3, ст. 26'
+                    title: 'Доставка',
+                    desc: this.order.address
                 },
                 {
                     icon: 'user-profile',
                     title: 'Получатель',
-                    desc: 'Константин Константинопольский konstantynopolsky@gmail.com +7 (910) 872-92-89'
+                    desc: this.order.client
                 },
                 {
                     icon: 'paycard',
                     title: 'Оплата',
-                    desc: 'Оплата онлайн по карте'
+                    desc: this.order.payment
                 },
             ],
         }
