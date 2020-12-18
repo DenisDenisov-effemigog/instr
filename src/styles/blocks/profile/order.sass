@@ -1,6 +1,16 @@
 .order
     &__title
         @extend .title-3
+    &__none
+        padding-top: 0.8rem
+        &_btn
+            @extend .button-catalogue
+            margin-top: 2rem
+            width: 100%
+            +tablet
+                cursor: pointer
+                width: 11.75rem
+
     &__info
         font-size: $font-size_4
         margin-top: 2rem
@@ -123,9 +133,6 @@
             & a
                 @extend .profile__link
         &:nth-child(5)
-            // Нужно выводить 20 товаров
-            & ~ .order__product-item
-                display: none
             & ~ .order__product-item--all
                 display: flex
                 align-items: center
@@ -153,11 +160,29 @@
             width: 100%
             color: $grey
     &__product-desc
+        cursor: pointer
+        position: relative
         +tablet
+            &:hover
+                .order__product-desc_tooltip
+                    display: flex
+                text-decoration: underline
+                
             flex: 2
         +mobile
             width: 100%
             padding-top: 0.25rem
+        & span
+            max-width: 210px
+            overflow: hidden
+            text-overflow: ellipsis
+            white-space: nowrap
+            display: block
+        &_tooltip
+            @extend .tooltip
+            width: 100%
+            max-width: 15rem
+            top: 2rem
     &__product-qty
         +tablet
             & span

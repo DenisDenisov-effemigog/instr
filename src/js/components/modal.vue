@@ -18,7 +18,7 @@
             </div>
             <div class="modal__profile-edit" v-else-if="modal === 'profile-edit'">
                 <h3 class="modal-title modal-title_centered">Изменение данных</h3>
-                <component is="edit-profile"></component>
+                <component is="edit-profile" :person="props"></component>
             </div>
             <div class="modal__profile-edit" v-else-if="modal === 'profile-password'">
                 <h3 class="modal-title modal-title_centered">Изменение пароля</h3>

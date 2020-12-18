@@ -1,20 +1,30 @@
 <template>
     <ul class="order__product-list" :class="{'order__product-list--open': opened}">
-        <li v-for="product in products" class="order__product-item">
+        <li v-for="(product, index) in products" 
+            class="order__product-item" 
+            v-if="index < 20 && !showAll || showAll"
+        >
             <div class="order__product-number"><span>Артикул:</span>{{product.art}}</div>
-            <div class="order__product-desc">{{product.desc}}</div>
+            <div class="order__product-desc">
+                <span>{{product.desc}}</span>
+                <div class="order__product-desc_tooltip">
+                    {{product.desc}}
+                </div>
+            </div>
             <div class="order__product-qty">{{product.qty}}<span>шт.</span></div>
             <div class="order__product-item-price">{{product.itemPrice}} &#8381;</div>
             <div class="order__product-all-price">{{product.allPrice}} &#8381;</div>
-            <div class="order__product-discount">{{product.discount}}</div>
+            <div class="order__product-discount">
+                <span v-if="product.discount > 0">{{product.discount}}%</span>
+            </div>
             <div class="order__product-total-price">{{product.totalPrice}} &#8381;</div>
         </li>
-        <!-- Нужно выводить 20 товаров -->
-        <!--<li class="order__product-item&#45;&#45;all" v-show="products.length > 5" v-if="!showAll">
+        
+        <li class="order__product-item--all" v-if="products.length > 20 && !showAll">
             <a @click.prevent="openDetails"> 
                 Больше информации о заказе
             </a>
-        </li>-->
+        </li>
     </ul>
 </template>
 
@@ -34,6 +44,10 @@ export default {
             type: Boolean,
             default: false
         },
+        orderIndex:{
+            type: Number,
+            default: null
+        },
     },
     data(){
         return{
@@ -42,7 +56,7 @@ export default {
     },
     methods:{
         openDetails() {
-            this.$eventBus.$emit("detailOrder", this.products);
+            this.$eventBus.$emit("detailOrder", this.orderIndex);
         },
     }
 }

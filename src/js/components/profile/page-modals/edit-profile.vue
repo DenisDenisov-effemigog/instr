@@ -3,7 +3,7 @@
         @submit.prevent="saveChanges">
         <label name="name" class="profile-modal__label">
             <span class="profile-modal__label-text"
-                :class="{'profile-modal__label-text_up': newName}"
+                :class="{'profile-modal__label-text_up': person.contact}"
             >Контактное лицо</span>
             <input
                 class="profile-modal__input"
@@ -13,14 +13,14 @@
                 autocomplete="name"
                 autocorrect="off"
                 placeholder="Контактное лицо"
-                v-model.trim="newName">
-            <svg viewBox="0 0 24 24" v-if="newName" @click="newName = ''">
+                v-model.trim="person.contact">
+            <svg viewBox="0 0 24 24" v-if="person.contact" @click="person.contact = ''">
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>
         </label>
         <label name="company" class="profile-modal__label">
             <span class="profile-modal__label-text"
-                :class="{'profile-modal__label-text_up': newCompany}"
+                :class="{'profile-modal__label-text_up': person.company}"
             >Компания</span>
             <input
                 class="profile-modal__input"
@@ -30,14 +30,14 @@
                 autocomplete="organization"
                 autocorrect="off"
                 placeholder="Компания"
-                v-model.trim="newCompany">
-            <svg viewBox="0 0 24 24" v-if="newCompany" @click="newCompany = ''">
+                v-model.trim="person.company">
+            <svg viewBox="0 0 24 24" v-if="person.company" @click="person.company = ''">
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>
         </label>
         <label name="code" class="profile-modal__label">
             <span class="profile-modal__label-text"
-                :class="{'profile-modal__label-text_up': newCode}"
+                :class="{'profile-modal__label-text_up': person.code}"
             >Код доступа</span>
             <input
                 class="profile-modal__input"
@@ -45,14 +45,14 @@
                 name="code"
                 id="code"
                 placeholder="Код доступа"
-                v-model.trim="newCode">
-            <svg viewBox="0 0 24 24" v-if="newCode" @click="newCode = ''">
+                v-model.trim="person.code">
+            <svg viewBox="0 0 24 24" v-if="person.code" @click="person.code = ''">
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>
         </label>
         <label name="phone" class="profile-modal__label">
             <span class="profile-modal__label-text"
-                :class="{'profile-modal__label-text_up': newPhone}"
+                :class="{'profile-modal__label-text_up': person.phone}"
             >Номер телефона</span>
             <input
                 class="profile-modal__input"
@@ -62,14 +62,14 @@
                 autocomplete="tel"
                 autocorrect="off"
                 placeholder="Номер телефона"
-                v-model.trim="newPhone">
-            <svg viewBox="0 0 24 24" v-if="newPhone" @click="newPhone = ''">
+                v-model.trim="person.phone">
+            <svg viewBox="0 0 24 24" v-if="person.phone" @click="person.phone = ''">
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>
         </label>
         <label name="email" class="profile-modal__label">
             <span class="profile-modal__label-text"
-                :class="{'profile-modal__label-text_up': newEmail}"
+                :class="{'profile-modal__label-text_up': person.email}"
             >Email</span>
             <input
                 class="profile-modal__input"
@@ -80,8 +80,8 @@
                 autocorrect="off"
                 autocapitalize="off"
                 placeholder="Email"
-                v-model.trim="newEmail">
-            <svg viewBox="0 0 24 24" v-if="newEmail" @click="newEmail = ''">
+                v-model.trim="person.email">
+            <svg viewBox="0 0 24 24" v-if="person.email" @click="person.email = ''">
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>
         </label>
@@ -93,15 +93,14 @@
 export default {
     name:"edit-profile",
     props:{
+        person: {required: true}
     },
     data() {
         return {
-            newName: '',
-            newCompany: '',
-            newCode: '',
-            newPhone: '',
-            newEmail: ''
         }
+    },
+    computed: {
+        
     },
     methods: {
         closeOutside(event) {
@@ -110,7 +109,7 @@ export default {
             }
         },
         saveChanges() {
-            if (this.newName && this.newCompany && this.newCode && this.newPhone && this.newEmail) {
+            if (this.person.contact && this.person.company && this.person.code && this.person.phone && this.person.email) {
                 console.log('save changes')
             }
         }
