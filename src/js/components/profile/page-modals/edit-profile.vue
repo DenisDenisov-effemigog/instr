@@ -118,7 +118,7 @@
                 v-if="$v.email.$error"
             >Ошибка при вводе данных</span>
         </label>
-        <div class="profile-modal__error-text" v-if="invalid">*Обязательное поле для заполнения</div>
+        <div class="profile-modal__error-text" v-if="$v.$error">*Обязательное поле для заполнения</div>
         <input type="submit" class="profile-modal__button" value="Сохранить">
     </form>
 </template>
@@ -134,7 +134,7 @@
         validations: {
             name: {
                 required,
-                minLength: minLength(4)
+                // minLength: minLength(4)
             },
             company: {
                 required
@@ -145,7 +145,7 @@
             },
             phone: {
                 required,
-                numeric
+                // numeric
             },
             email: {
                 required,
@@ -160,7 +160,6 @@
                 code: '',
                 phone: null,
                 email: '',
-                invalid: false
             }
         },
         methods: {
@@ -168,9 +167,6 @@
                 this.$v.$touch();
                 if (!this.$v.$invalid) {
                     this.saveChanges();
-                    this.invalid = false
-                } else {
-                    this.invalid = true
                 }
             },
             closeOutside(event) {
