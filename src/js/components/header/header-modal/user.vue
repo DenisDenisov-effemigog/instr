@@ -15,9 +15,6 @@
                 <form class="user-login__form"
                     @submit.prevent="enter">
                     <label name="email" class="user__label">
-                        <span class="user__label-text"
-                            :class="{'user__label-text_up': email}"
-                        >Email</span>
                         <input
                             class="user__input"
                             type="email"
@@ -26,8 +23,10 @@
                             autocomplete="email"
                             autocorrect="off"
                             autocapitalize="off"
-                            placeholder="Email"
                             v-model.trim="email">
+                        <span class="user__label-text"
+                            :class="{'user__label-text_up': email}"
+                        >Email</span>
                         <svg viewBox="0 0 24 24"
                             class="user__label-icon"
                             v-if="email"
@@ -40,17 +39,16 @@
                         </div>
                     </label>
                     <label name="password" class="user__label">
-                        <span class="user__label-text"
-                            :class="{'user__label-text_up': password}"
-                        >Пароль</span>
                         <input
                             class="user__input"
                             :class="{'user__input_dots': password && !passwordHidden}"
                             :type="passwordType"
                             name="password"
                             id="password"
-                            placeholder="Пароль"
                             v-model.trim="password">
+                        <span class="user__label-text"
+                            :class="{'user__label-text_up': password}"
+                        >Пароль</span>
                         <show-password v-model="passwordHidden"></show-password>
                         <div class="user__error-text user__error-text_invalid"
                             v-if="invalid">
@@ -92,12 +90,6 @@
                         <span class="user-reg__checkbox-label">Плательщик&nbsp;НДС</span>
                     </label>
                     <label name="name" class="user__label">
-                        <span v-if="!IndividualFlag" class="user__label-text"
-                            :class="{'user__label-text_up': name}"
-                        >Контактное лицо</span>
-                        <span v-else class="user__label-text"
-                            :class="{'user__label-text_up': name}"
-                        >ФИО</span>
                         <input
                             v-if="!IndividualFlag"
                             class="user__input"
@@ -106,7 +98,6 @@
                             id="name"
                             autocomplete="name"
                             autocorrect="off"
-                            placeholder="Контактное лицо"
                             v-model.trim="name">
                         <input
                             v-else
@@ -116,8 +107,13 @@
                             id="name"
                             autocomplete="name"
                             autocorrect="off"
-                            placeholder="ФИО"
                             v-model.trim="name">
+                        <span v-if="!IndividualFlag" class="user__label-text"
+                            :class="{'user__label-text_up': name}"
+                        >Контактное лицо</span>
+                        <span v-else class="user__label-text"
+                            :class="{'user__label-text_up': name}"
+                        >ФИО</span>
                         <svg viewBox="0 0 24 24"
                             class="user__label-icon"
                             v-if="name"
@@ -130,9 +126,6 @@
                         </div>
                     </label>
                     <label v-show="!IndividualFlag" name="company" class="user__label">
-                        <span class="user__label-text"
-                            :class="{'user__label-text_up': company}"
-                        >Компания</span>
                         <input
                             class="user__input"
                             type="text"
@@ -140,8 +133,10 @@
                             id="company"
                             autocomplete="organization"
                             autocorrect="off"
-                            placeholder="Компания"
                             v-model.trim="company">
+                        <span class="user__label-text"
+                            :class="{'user__label-text_up': company}"
+                        >Компания</span>
                         <svg viewBox="0 0 24 24"
                             class="user__label-icon" 
                             v-if="company"
@@ -154,16 +149,15 @@
                         </div>
                     </label>
                     <label v-show="!IndividualFlag" name="code" class="user__label">
-                        <span class="user__label-text"
-                            :class="{'user__label-text_up': code}"
-                        >Код доступа</span>
                         <input
                             class="user__input"
                             type="text"
                             name="code"
                             id="code"
-                            placeholder="Код доступа"
                             v-model.trim="code">
+                        <span class="user__label-text"
+                            :class="{'user__label-text_up': code}"
+                        >Код доступа</span>
                         <svg viewBox="0 0 24 24"
                             class="user__label-icon"
                             v-if="code"
@@ -172,9 +166,6 @@
                         </svg>
                     </label>
                     <label name="phone" class="user__label">
-                        <span class="user__label-text"
-                            :class="{'user__label-text_up': phone}"
-                        >Номер телефона</span>
                         <input
                             class="user__input"
                             type="tel"
@@ -182,8 +173,10 @@
                             id="phone"
                             autocomplete="tel"
                             autocorrect="off"
-                            placeholder="Номер телефона"
                             v-model.trim="phone">
+                        <span class="user__label-text"
+                            :class="{'user__label-text_up': phone}"
+                        >Номер телефона</span>
                         <svg viewBox="0 0 24 24"
                             class="user__label-icon"
                             v-if="phone"
@@ -196,9 +189,6 @@
                         </div>
                     </label>
                     <label name="email" class="user__label">
-                        <span class="user__label-text"
-                            :class="{'user__label-text_up': newEmail}"
-                        >Email</span>
                         <input
                             class="user__input"
                             type="email"
@@ -207,8 +197,10 @@
                             autocomplete="email"
                             autocorrect="off"
                             autocapitalize="off"
-                            placeholder="Email"
                             v-model.trim="newEmail">
+                        <span class="user__label-text"
+                            :class="{'user__label-text_up': newEmail}"
+                        >Email</span>
                         <svg viewBox="0 0 24 24"
                             class="user__label-icon"
                             v-if="newEmail"

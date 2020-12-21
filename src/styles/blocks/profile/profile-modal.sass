@@ -29,7 +29,6 @@
         color: $light-grey
         z-index: 2
         transition: 200ms
-
         &_up
             @extend .label-typo
             top: -.375rem
@@ -41,7 +40,6 @@
         @extend .input-modal
         &:focus ~ .profile-modal__label-text
             @extend .label-typo
-            // opacity: 1
             top: -.375rem
             left: 1rem
             padding: 1px .5rem
@@ -67,9 +65,11 @@
         margin-bottom: 1rem
         &_column
             display: block
-        .profile-modal__label-text,
-        .profile-modal__label-text_up
-            top: 2.0625rem
+        .profile-modal__label-text
+            top: 3.0625rem
+        .profile-modal__label-text_up,
+        .profile-modal__textarea:focus ~ .profile-modal__label-text
+            top: 2.1875rem
     &__radio-input
         display: flex
         align-items: center
@@ -90,6 +90,13 @@
             border-color: $primary-red
         &::placeholder
             color: $light-grey
+        &:focus ~ .profile-modal__label-text
+            @extend .label-typo
+            top: -.375rem
+            left: 1rem
+            padding: 1px .5rem
+            background-color: $white
+            transition: 200ms  
     &__error-text
         @extend .text-3
         margin-bottom: 1rem
