@@ -3,7 +3,7 @@
           @submit.prevent="saveChanges">
         <label name="name" class="profile-modal__label">
             <span class="profile-modal__label-text"
-                  :class="{'profile-modal__label-text_up': person.contact}"
+                  :class="{'profile-modal__label-text_up': $v.name.required}"
             >Контактное лицо</span>
             <input
                 class="profile-modal__input"
@@ -13,12 +13,12 @@
                 autocomplete="name"
                 autocorrect="off"
                 placeholder="Контактное лицо"
-                v-model.trim="person.contact">
+                v-model.trim="$v.name.$model">
             <svg
                 viewBox="0 0 24 24"
                 class="profile-modal__label-icon"
                 v-if="person.contact"
-                @click="person.contact = ''">
+                @click="$v.name.$model = ''">
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>
         </label>
@@ -110,26 +110,38 @@
 </template>
 
 <script>
-export default {
-    name:"edit-profile",
-    props:{
-        person: {required: true}
-    },
-    data() {
-        return {
-        }
-    },
-    methods: {
-        closeOutside(event) {
-            if(event.toElement.className !== '') {
-                this.closeModal()
+    import {required, minLength} from "vuelidate/lib/validators"
+
+    export default {
+        name:"edit-profile",
+        props:{
+            person: {required: true}
+        },
+        validations: {
+            name: {
+                required,
+                minLength: minLength(4)
             }
         },
-        saveChanges() {
-            if (this.person.contact && this.person.company && this.person.code && this.person.phone && this.person.email) {
-                console.log('save changes')
+        data() {
+            return {
+                name: ''
             }
+        },
+        methods: {
+            closeOutside(event) {
+                if(event.toElement.className !== '') {
+                    this.closeModal()
+                }
+            },
+            saveChanges() {
+                if (this.person.contact && this.person.company && this.person.code && this.person.phone && this.person.email) {
+                    console.log('save changes')
+                }
+            }
+        },
+        mounted() {
+            this.name = this.person.contact
         }
-    },
-}
+    }
 </script>
