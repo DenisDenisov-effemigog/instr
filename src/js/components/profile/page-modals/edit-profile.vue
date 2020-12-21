@@ -123,6 +123,7 @@
 <script>
     import {required, minLength, email, numeric, alphaNum} from "vuelidate/lib/validators"
     import {TheMask} from 'vue-the-mask'
+    import config from "../../../config";
 
     export default {
         name:"edit-profile",
@@ -134,8 +135,7 @@
         },
         validations: {
             name: {
-                required,
-                // minLength: minLength(4)
+                required
             },
             company: {
                 required
@@ -145,8 +145,7 @@
                 alphaNum
             },
             phone: {
-                required,
-                // numeric
+                required
             },
             email: {
                 required,
@@ -160,11 +159,8 @@
                 code: '',
                 phone: null,
                 email: '',
-                tokens: {
-                    'F': {pattern: /9/},
-                    '#': {pattern: /\d/}
-                },
-                phoneMask: '+7 (F##) ###-##-##'
+                tokens: config.phoneTokens,
+                phoneMask: config.phoneMask
             }
         },
         methods: {

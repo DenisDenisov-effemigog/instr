@@ -47,8 +47,10 @@
 <script>
     import {required, minLength, helpers} from "vuelidate/lib/validators";
     import showPassword from '../../partials/show-password.vue';
+    
+    import config from "../../../config";
 
-    const pattern = helpers.regex('pattern', /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/)
+    const pattern = helpers.regex('pattern', config.passwordPattern)
 
     export default {
         name:"change-password",
