@@ -4,10 +4,14 @@
             class="card__header" 
             :class="{'card__header--short-card': cardSize === 'short'}"
         >
-            <card-stikers
-                :tooltips="product.tooltips"
-                :index="product.id" 
-            ></card-stikers>
+            <div class="card__stickers">
+<!--                <div class="card__stickers_sticker-wrap">-->
+                    <card-stikers v-for="tooltip in product.tooltips"
+                                  :tooltip="tooltip"
+                                  :index="product.id"
+                    ></card-stikers>
+<!--                </div>-->
+            </div>
             <component class="card__header_in-favorite" is="in-favorite"></component>
         </div>
         <div class="card__image-block" 
