@@ -34,16 +34,15 @@
                 <span class="profile-modal__check"></span>
                 <span class="profile-modal__radio-label">Другая причина</span>
             </span>
+            <textarea
+                class="profile-modal__textarea"
+                :class="{'profile-modal__textarea_error': $v.message.$error}"
+                name="reason"
+                v-model.trim="$v.message.$model"
+            ></textarea>
             <span class="profile-modal__label-text"
                 :class="{'profile-modal__label-text_up': $v.message.required}"
             >Сообщение</span>
-            <textarea
-                class="profile-modal__textarea"
-                :class="{'profile-modal__textarea_error': $v.message.error}"
-                name="reason"
-                placeholder="Сообщение"
-                v-model.trim="$v.message.$model"
-            ></textarea>
             <span class="profile-modal__error-text" v-if="$v.message.$error">*Обязательное поле для заполнения</span>
         </label>
         <input type="submit" class="profile-modal__button" value="Удалить профиль">

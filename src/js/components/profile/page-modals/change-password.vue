@@ -2,11 +2,6 @@
     <form class="profile-modal__form"
         @submit.prevent="submit">
         <label name="password" class="profile-modal__label profile-modal__label_column">
-            <span class="profile-modal__label-text"
-                :class="{'profile-modal__label-text_up': $v.password.required}"
-            >
-                Текущий пароль
-            </span>
             <input
                 class="profile-modal__input"
                 :class="{'profile-modal__input_dots': $v.password.$model && !passwordHidden,
@@ -14,8 +9,11 @@
                 :type="passwordType"
                 name="password"
                 id="password"
-                placeholder="Текущий пароль"
                 v-model.trim="$v.password.$model">
+            <span class="profile-modal__label-text"
+                :class="{'profile-modal__label-text_up': $v.password.required}">
+                Текущий пароль
+            </span>
             <show-password v-model="passwordHidden"></show-password>
             <span
                 class="profile-modal__error-text profile-modal__error-text_input-error"
@@ -23,11 +21,6 @@
             >Ошибка при вводе данных</span>
         </label>
         <label name="newPassword" class="profile-modal__label profile-modal__label_column">
-            <span class="profile-modal__label-text"
-                :class="{'profile-modal__label-text_up': $v.newPassword.required}"
-            >
-                Новый пароль
-            </span>
             <input
                 class="profile-modal__input"
                 :class="{'profile-modal__input_dots': $v.newPassword.required && !newPasswordHidden,
@@ -35,8 +28,11 @@
                 :type="newPasswordType"
                 name="newPassword"
                 id="newPassword"
-                placeholder="Новый пароль"
                 v-model.trim="$v.newPassword.$model">
+            <span class="profile-modal__label-text"
+                :class="{'profile-modal__label-text_up': $v.newPassword.required}">
+                Новый пароль
+            </span>
             <show-password v-model="newPasswordHidden"></show-password>
             <span
                 class="profile-modal__error-text profile-modal__error-text_input-error"
