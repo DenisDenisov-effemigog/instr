@@ -7,7 +7,7 @@
                     <h2 class="country__choice-title">Выбор страны</h2>
                     <ul class="country__choice-list">
                         <li v-for="country in countries" class="country__choice-item">
-                            <a @click="choiceCountry" href="#" class="country__choice-link">
+                            <a @click="choiceCountry(country)" href="#" class="country__choice-link" :class="{'country__choice-link-active': currentLink == countries.indexOf(country)}">
                                 {{country}}
                             </a>
                         </li>
@@ -40,7 +40,8 @@ export default {
     },
     data(){
         return{
-            openedCountry: false
+            openedCountry: false,
+            currentLink: 7
         }
     },
     created() {
@@ -56,13 +57,9 @@ export default {
             }
             document.querySelector('html').style.overflow = 'auto';
         },
-        choiceCountry(e){
-            let a = e.target
-            let countryLinkActive = document.querySelectorAll('.country__choice-link-active')
-            if(countryLinkActive.length > 0 && a !== countryLinkActive[0])
-                countryLinkActive[0].classList.remove('country__choice-link-active')
-            a.classList.toggle('country__choice-link-active')
-            this.$eventBus.$emit("countryName", a.textContent)
+        choiceCountry(country){
+            this.currentLink = this.countries.indexOf(country)
+            this.$eventBus.$emit("countryName", this.countries[this.currentLink])
         },
         openCountry(){
             this.openedCountry = !this.openedCountry
