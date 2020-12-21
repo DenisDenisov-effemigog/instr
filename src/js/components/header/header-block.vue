@@ -18,13 +18,13 @@
                     </svg>
                     <p class="header__menu-text">Войти</p>
                     <div class="header__menu-tooltip">
-                        <div @click.prevent="openModal('user')"  href="#" class="header__menu-tooltip-layout">
+                        <div @click.prevent="openModal('user', 'login')"  href="#" class="header__menu-tooltip-layout">
                             <svg class="" viewBox="0 0 16 16">
                                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__entrance'"></use>
                             </svg>
                             Вход
                         </div>
-                        <div @click.prevent="openModal('user')" href="#" class="header__menu-tooltip-layout">
+                        <div @click.prevent="openModal('user', 'reg')" href="#" class="header__menu-tooltip-layout">
                             <svg class="" viewBox="0 0 16 16">
                                 <use :xlink:href="templatePath + 'images/sprite.svg#plus'"></use>
                             </svg>
@@ -119,8 +119,8 @@ export default {
         clickClose(data){
             this.flag = data
         },
-        openModal(modal) {
-            this.$eventBus.$emit("openModal", modal, '', false)
+        openModal(modal, props) {
+            this.$eventBus.$emit("openModal", modal, props, false)
         },
     }
     
