@@ -84,19 +84,21 @@
         min-height: 6.5rem
         margin-bottom: 1rem
         padding: .75rem 1rem
-        border: 1px solid $light-grey
+        border: 1px solid $border-color
         border-radius: $border-radius_2
         &_error
             border-color: $primary-red
         &::placeholder
             color: $light-grey
-        &:focus ~ .profile-modal__label-text
-            @extend .label-typo
-            top: -.375rem
-            left: 1rem
-            padding: 1px .5rem
-            background-color: $white
-            transition: 200ms  
+        &:focus
+            border-color: $light-grey
+            & ~ .profile-modal__label-text
+                @extend .label-typo
+                top: -.375rem
+                left: 1rem
+                padding: 1px .5rem
+                background-color: $white
+                transition: 200ms  
     &__error-text
         @extend .text-3
         margin-bottom: 1rem
