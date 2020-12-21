@@ -69,16 +69,18 @@
             <span class="profile-modal__label-text"
                   :class="{'profile-modal__label-text_up': $v.phone.required}"
             >Номер телефона</span>
-            <input
+            <the-mask
                 class="profile-modal__input"
                 :class="{'profile-modal__input_error': $v.phone.$error}"
                 type="tel"
+                :mask="phoneMask"
+                :tokens="tokens"
                 name="phone"
                 id="phone"
                 autocomplete="tel"
                 autocorrect="off"
                 placeholder="Номер телефона"
-                v-model.trim="$v.phone.$model">
+                v-model.trim="$v.phone.$model"/>
             <svg
                 viewBox="0 0 24 24"
                 class="profile-modal__label-icon"
@@ -125,11 +127,15 @@
 
 <script>
     import {required, minLength, email, numeric, alphaNum} from "vuelidate/lib/validators"
+    import {TheMask} from 'vue-the-mask'
 
     export default {
         name:"edit-profile",
         props:{
             person: {required: true}
+        },
+        components: {
+            TheMask
         },
         validations: {
             name: {
@@ -151,7 +157,6 @@
                 required,
                 email
             }
-
         },
         data() {
             return {
@@ -160,6 +165,11 @@
                 code: '',
                 phone: null,
                 email: '',
+                tokens: {
+                    'F': {pattern: /9/},
+                    '#': {pattern: /\d/}
+                },
+                phoneMask: '+7 (F##) ###-##-##'
             }
         },
         methods: {
