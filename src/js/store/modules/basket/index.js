@@ -89,6 +89,18 @@ const getters = {
             price: price
         };
     },
+    basketProductQuantity: (state) => (productId) => {
+        let quantity = 0;
+        //console.log('state.products', state.products);
+        state.products.every((product) => {
+            if (product.id == productId) {
+                quantity = product.basket_quantity;
+                return false;
+            }
+            return true;
+        });
+        return quantity;
+    }
 }
 
 export default {

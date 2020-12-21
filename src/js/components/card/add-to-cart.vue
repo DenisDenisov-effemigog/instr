@@ -98,9 +98,14 @@
                 disabled: false,
                 amount: 0,
                 width: 0,
+                _debounce_timer: null,
+                _loading_timer: null,
             };
         },
         computed: {
+            storeAmount() {
+                return this.$store.getters.basketProductQuantity(this.productId);
+            },
             increaseDisabled() {
                 return this.amount >= this.maxAmount;
             },
@@ -112,8 +117,14 @@
             },
         },
         watch: {
+            storeAmount(newValue) {
+                if(!this._debounce_timer) {
+                    this.amount = newValue;
+                }
+            }
         },
         mounted() {
+            this.amount = this.storeAmount;
         },
         created() {
             window.addEventListener('resize', this.updateWidth);
