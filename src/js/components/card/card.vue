@@ -5,7 +5,8 @@
             :class="{'card__header--short-card': cardSize === 'short'}"
         >
             <card-stikers
-                :product="product" 
+                :tooltips="product.tooltips"
+                :index="product.id" 
             ></card-stikers>
             <component class="card__header_in-favorite" is="in-favorite"></component>
         </div>

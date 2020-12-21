@@ -12,20 +12,11 @@
 	<div class="product-card__content">
 		<div class="product-card__slider">
             <div class="product-card__slider_header">
-                {% if product.tooltips %}
-                    <div class="product-card__stickers">
-                        {# <component is="card-stikers"></component> #}
-                        {% for tooltip in product.tooltips %}
-                            <div class="product-card__stickers_sticker-wrap">
-                                <div class="product-card__stickers_sticker product-card__stickers_sticker--{{ tooltip.status }}"
-                                >
-                                    <span>{{ tooltip.title }}</span>
-                                </div>
-                                {#TODO добавить тултип#}
-                            </div>
-                        {% endfor %}
-                    </div>
-                {% endif %}
+                <component is="card-stikers"
+                    :tooltips = "{{ product.tooltips|json_encode()|e('html_attr') }}"
+                    :index = "{{ product.id|json_encode()|e('html_attr') }}"
+                ></component>
+                
                 <div class="product-card__actions">
                     <component is="to-compare"></component>
                     <component is="in-favorite"></component>
