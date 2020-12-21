@@ -2,16 +2,16 @@
     <div class="user">
         <div class="user-tabs">
             <div class="user-tabs__tab"
-                :class="{'user-tabs__tab_active': selected}"
-                @click="selected = !selected"
+                :class="{'user-tabs__tab_active': selected == 'login'}"
+                @click="selected = 'login'"
             >Вход</div>
             <div class="user-tabs__tab"
-                :class="{'user-tabs__tab_active': !selected}"
-                @click="selected = !selected"
+                :class="{'user-tabs__tab_active': selected == 'reg'}"
+                @click="selected = 'reg'"
             >Регистрация</div>
         </div>
         <div class="user-content">
-            <div class="user-login" v-if="selected">
+            <div class="user-login" v-if="selected == 'login'">
                 <form class="user-login__form"
                     @submit.prevent="enter">
                     <label name="email" class="user__label">
@@ -68,7 +68,9 @@
                         <input
                             type="radio"
                             name="entity"
-                            value="legal">
+                            value="legal"
+                            @click ='IndividualFlag = false'
+                            checked>
                         <span class="user-reg__check"></span>
                         <span class="user-reg__radio-label">Юридическое лицо</span>
                     </label>
@@ -76,11 +78,12 @@
                         <input
                             type="radio"
                             name="entity"
-                            value="individual">
+                            value="individual"
+                            @click ='IndividualFlag = true'>
                         <span class="user-reg__check"></span>
                         <span class="user-reg__radio-label">Физическое лицо</span>
                     </label>
-                    <label name="taxPayer" class="user-reg__checkbox">
+                    <label v-show="!IndividualFlag" name="taxPayer" class="user-reg__checkbox">
                         <input
                             class="user-reg__checkbox-input"
                             type="checkbox"
@@ -89,10 +92,14 @@
                         <span class="user-reg__checkbox-label">Плательщик&nbsp;НДС</span>
                     </label>
                     <label name="name" class="user__label">
-                        <span class="user__label-text"
+                        <span v-if="!IndividualFlag" class="user__label-text"
                             :class="{'user__label-text_up': name}"
                         >Контактное лицо</span>
+                        <span v-else class="user__label-text"
+                            :class="{'user__label-text_up': name}"
+                        >ФИО</span>
                         <input
+                            v-if="!IndividualFlag"
                             class="user__input"
                             type="text"
                             name="name"
@@ -100,6 +107,16 @@
                             autocomplete="name"
                             autocorrect="off"
                             placeholder="Контактное лицо"
+                            v-model.trim="name">
+                        <input
+                            v-else
+                            class="user__input"
+                            type="text"
+                            name="name"
+                            id="name"
+                            autocomplete="name"
+                            autocorrect="off"
+                            placeholder="ФИО"
                             v-model.trim="name">
                         <svg viewBox="0 0 24 24"
                             class="user__label-icon"
@@ -112,7 +129,7 @@
                             Ошибка при вводе данных
                         </div>
                     </label>
-                    <label name="company" class="user__label">
+                    <label v-show="!IndividualFlag" name="company" class="user__label">
                         <span class="user__label-text"
                             :class="{'user__label-text_up': company}"
                         >Компания</span>
@@ -136,7 +153,7 @@
                             Ошибка при вводе данных
                         </div>
                     </label>
-                    <label name="code" class="user__label">
+                    <label v-show="!IndividualFlag" name="code" class="user__label">
                         <span class="user__label-text"
                             :class="{'user__label-text_up': code}"
                         >Код доступа</span>
@@ -210,6 +227,7 @@
                             type="checkbox"
                             name="agreement"
                             required
+                            checked
                         >
                         <span class="user__checkbox-label">
                             <svg viewBox="0 0 10 8">
@@ -234,14 +252,14 @@ import showPassword from '../../partials/show-password.vue'
             showPassword
         },
         props: {
-            // selected: {
-            //     type: Boolean,
-            //     required: true
-            // }
+            selected: {
+                type: String,
+                required: true
+            }
         },
         data() {
             return {
-                selected: true,
+                IndividualFlag: false,
                 invalid: false,
                 invalidReg: false,
                 email: '',
