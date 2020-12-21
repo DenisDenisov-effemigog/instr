@@ -34,7 +34,7 @@ let config = {
         js: "./public/js/",
         images: "./public/images/",
         fonts: './public/fonts/',
-        templatePath: "./",
+        templatePath: "/",
 
         demo_images: "./public/demo_images/",
     },

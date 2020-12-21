@@ -20,7 +20,7 @@
                     </svg>
                     <div>
                         <p class="personalcab__data">{{data.title}}</p>
-                        <div class="personalcab__data-value">{{data.data}}</div>
+                        <div class="personalcab__data-value">{{profile[data.index]}}</div>
                     </div>
                 </li>
             </ul>
@@ -52,22 +52,30 @@
 export default {
     name:"page-personal",
     props:{
-        profile: {
+        /*profile: {
             required: true,
             type: Object,
-        },
+        },*/
     },
     data() {
       return {
           person: [
-              {'title': 'Контактное лицо', 'icon': 'user-profile', 'data': this.profile.contact, 'personType': 1},
-              {'title': 'Телефон', 'icon': 'call', 'data': this.profile.phone, 'personType': 1},
-              {'title': 'Код доступа', 'icon': 'edit', 'data': this.profile.code, 'personType': 2},
-              {'title': 'Компания', 'icon': '3d', 'data': this.profile.company, 'personType': 2},
-              {'title': 'Электронная почта', 'icon': 'mail', 'data': this.profile.email, 'personType': 1},
-              {'title': 'Юридический адрес', 'icon': 'location', 'data': this.profile.address, 'personType': 2},
+              {'title': 'Контактное лицо', 'icon': 'user-profile', 'index': 'contact', 'personType': 1},
+              {'title': 'Телефон', 'icon': 'call', 'index': 'phone', 'personType': 1},
+              {'title': 'Код доступа', 'icon': 'edit', 'index': 'code', 'personType': 2},
+              {'title': 'Компания', 'icon': '3d', 'index': 'company', 'personType': 2},
+              {'title': 'Электронная почта', 'icon': 'mail', 'index': 'email', 'personType': 1},
+              {'title': 'Юридический адрес', 'icon': 'location', 'index': 'address', 'personType': 2},
           ]
       }  
+    },
+    computed: {
+        profile() {
+            //console.log('this.$store.state.personal', this.$store.state.personal);            
+            let profile = this.cloneOverJson(this.$store.state.personal);
+            //contract.effective_date = this.when(contract.effective_date);
+            return profile;
+        },
     },
     methods: {
         openModal(modal) {

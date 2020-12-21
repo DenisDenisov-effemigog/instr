@@ -74,6 +74,17 @@ let demoMockupBasket = [
     }
 ];
 
+let demoProfile = {
+    'company': 'Компания «Инструменты Будущего»',
+    'contact': 'Константин Дзю',
+    'personType': 2,
+    'personTypePrint': 'Юридическое лицо',
+    'phone': '+7 (910) 872-92-89',
+    'code': 'RO7434924042',
+    'email': 'konstantynopolsky@gmail.com',
+    'address': 'Название адреса'
+};
+
 function demoSetBasketQuantity(productId, quantity) {
     let found = false;
 
@@ -147,7 +158,71 @@ window.runAction = function (action, config) {
                         }
                     }
                 });
+                break;
+            case 'instrum:main.api.user.base.get':
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                            answer: demoProfile
+                        }
+                    }
+                });
                 break;    
+            case 'instrum:main.api.user.get': //TODO not used yet
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                            answer: {
+                                /*
+                                base: {
+                                    fullname: 'Gregory Luton',
+                                    avatar: {
+                                        full: '/demo_images/profile.jpg',
+                                        "50": '/demo_images/profile.jpg',
+                                    },
+                                    company: {
+                                        name: 'Acme LLS',
+                                        address: 'Unused address field'
+                                    },
+                                    phone: 'Unused phone field',
+                                    email: 'Unused email field'
+                                },
+                                orders: {
+                                    active: 89,
+                                    delivered: 11,
+                                    canceled: 8
+                                },
+                                person: {
+                                    id: -100,
+                                    first_name: 'Unused',
+                                    last_name: 'Unused',
+                                    email: 'unused@unused',
+                                    phone: '123unused',
+                                    default: true,
+                                    user_id: 123545
+                                },
+                                addresses: demoAddressList,
+                                contract: {
+                                    id: 12354321,
+                                    date: 1603092502,
+                                    url: '/path/to/contract',
+                                },
+                                dept: {
+                                    value: 8000,
+                                    max: 11000,
+                                },
+                                pricing: {
+                                    value: 2,
+                                    max: 4,
+                                }
+                                */
+                            }
+                        }
+                    }
+                });
+                break;
         }
     });    
 };

@@ -1,11 +1,15 @@
 export default {
     methods: {
+        cloneOverJson(obj) {
+            return JSON.parse(JSON.stringify(obj));
+        },
         spriteSvg(name) {
             return this.templatePath + 'images/sprite.svg#' + name;
         }
     },
     computed: {
         templatePath() {
+            
             if (window.template_path === undefined) {
                 window.template_path = '';
                 let app = document.getElementById('app');
@@ -16,7 +20,7 @@ export default {
                 }
 
                 if (path) {
-                    window.template_path = path.replace(/\/+$/, '') + './';
+                    window.template_path = path.replace(/\/+$/, '') + '/';
                 } else {
                     window.template_path = '/local/php_interface/lib/instrumtorg/ds-mi/public/';
                 }

@@ -75,6 +75,12 @@ class Api {
             quantity: quantity
         });
     }
+    /*personalProfileSummary() {
+        return this._promiseBitrixRequest('instrum:main.api.user.get', {});
+    }*/
+    personalProfile() {
+        return this._promiseBitrixRequest('instrum:main.api.user.base.get', {});
+    }
 }
 
 let instance = new Api();
