@@ -69,16 +69,18 @@
             <span class="profile-modal__label-text"
                   :class="{'profile-modal__label-text_up': $v.phone.required}"
             >Номер телефона</span>
-            <input
+            <the-mask
                 class="profile-modal__input"
                 :class="{'profile-modal__input_error': $v.phone.$error}"
                 type="tel"
+                :mask="phoneMask"
+                :tokens="tokens"
                 name="phone"
                 id="phone"
                 autocomplete="tel"
                 autocorrect="off"
                 placeholder="Номер телефона"
-                v-model.trim="$v.phone.$model">
+                v-model.trim="$v.phone.$model"/>
             <svg
                 viewBox="0 0 24 24"
                 class="profile-modal__label-icon"
@@ -114,27 +116,31 @@
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>
             <span
-                class="profile-modal__error-text profile-modal__error-text_input-error"
+                class="profile-modal__error-text profile-modal__error-text_input-error_email"
                 v-if="$v.email.$error"
             >Ошибка при вводе данных</span>
         </label>
-        <div class="profile-modal__error-text" v-if="invalid">*Обязательное поле для заполнения</div>
+        <div class="profile-modal__error-text" v-if="$v.$error">*Обязательное поле для заполнения</div>
         <input type="submit" class="profile-modal__button" value="Сохранить">
     </form>
 </template>
 
 <script>
     import {required, minLength, email, numeric, alphaNum} from "vuelidate/lib/validators"
+    import {TheMask} from 'vue-the-mask'
 
     export default {
         name:"edit-profile",
         props:{
             person: {required: true}
         },
+        components: {
+            TheMask
+        },
         validations: {
             name: {
                 required,
-                minLength: minLength(4)
+                // minLength: minLength(4)
             },
             company: {
                 required
@@ -145,13 +151,12 @@
             },
             phone: {
                 required,
-                numeric
+                // numeric
             },
             email: {
                 required,
                 email
             }
-
         },
         data() {
             return {
@@ -160,7 +165,11 @@
                 code: '',
                 phone: null,
                 email: '',
-                invalid: false
+                tokens: {
+                    'F': {pattern: /9/},
+                    '#': {pattern: /\d/}
+                },
+                phoneMask: '+7 (F##) ###-##-##'
             }
         },
         methods: {
@@ -168,9 +177,6 @@
                 this.$v.$touch();
                 if (!this.$v.$invalid) {
                     this.saveChanges();
-                    this.invalid = false
-                } else {
-                    this.invalid = true
                 }
             },
             closeOutside(event) {
