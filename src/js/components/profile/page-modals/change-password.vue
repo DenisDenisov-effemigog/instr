@@ -45,7 +45,7 @@
 </template>
 
 <script>
-    import {required, minLength, helpers} from "vuelidate/lib/validators";
+    import {required, helpers} from "vuelidate/lib/validators";
     import showPassword from '../../partials/show-password.vue';
     
     import config from "../../../config";
@@ -60,12 +60,10 @@
         validations: {
             password: {
                 required,
-                minLength: minLength(6),
                 pattern
             },
             newPassword: {
                 required,
-                minLength: minLength(6),
                 pattern
             },
         },

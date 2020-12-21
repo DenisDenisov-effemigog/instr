@@ -8,7 +8,7 @@ export default {
     },
     phoneMask: '+7 (F##) ###-##-##',
 
-    passwordPattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/
+    passwordPattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,}$/
 
 }
 
