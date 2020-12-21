@@ -1,6 +1,6 @@
 <template>
     <form class="profile-modal__form profile-modal__form_column"
-        @submit.prevent="saveChanges">
+        @submit.prevent="submit">
         <label name="reason" class="profile-modal__radio">
             <input
                 type="radio"
@@ -35,36 +35,50 @@
                 <span class="profile-modal__radio-label">Другая причина</span>
             </span>
             <span class="profile-modal__label-text"
-                :class="{'profile-modal__label-text_up': message}"
+                :class="{'profile-modal__label-text_up': $v.message.required}"
             >Сообщение</span>
             <textarea
                 class="profile-modal__textarea"
-                :class="{'profile-modal__textarea_error': invalid}"
+                :class="{'profile-modal__textarea_error': $v.message.error}"
                 name="reason"
                 placeholder="Сообщение"
-                v-model.trim="message"
+                v-model.trim="$v.message.$model"
             ></textarea>
-            <span class="profile-modal__error-text" v-if="invalid">*Обязательное поле для заполнения</span>
+            <span class="profile-modal__error-text" v-if="$v.message.$error">*Обязательное поле для заполнения</span>
         </label>
         <input type="submit" class="profile-modal__button" value="Удалить профиль">
     </form>
 </template>
 
 <script>
-export default {
-    name:"delete-profile",
-    props:{
-    },
-    data() {
-        return {
-            invalid: false,
-            message: ''
-        }
-    },
-    methods: {
-        saveChanges() {
-            
-        }
-    },
-}
+    import {required, minLength} from "vuelidate/lib/validators"
+
+
+    export default {
+        name:"delete-profile",
+        props:{
+        },
+        validations: {
+            message: {
+                required,
+                minLength: minLength(6)
+            }
+        },
+        data() {
+            return {
+                message: ''
+            }
+        },
+        methods: {
+            submit() {
+                this.$v.$touch();
+                if (!this.$v.$invalid) {
+                    this.saveChanges();
+                }
+            },
+            saveChanges() {
+                
+            }
+        },
+    }
 </script>

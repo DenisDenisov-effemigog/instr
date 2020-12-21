@@ -54,8 +54,7 @@
         data() {
             return {
                 address: '',
-                message: '',
-                invalid: false
+                message: ''
             }
         },
         methods: {
