@@ -2,16 +2,16 @@
     <div class="user">
         <div class="user-tabs">
             <div class="user-tabs__tab"
-                :class="{'user-tabs__tab_active': selected == 'login'}"
-                @click="selected = 'login'"
+                :class="{'user-tabs__tab_active': select == 'login'}"
+                @click="select = 'login'"
             >Вход</div>
             <div class="user-tabs__tab"
-                :class="{'user-tabs__tab_active': selected == 'reg'}"
-                @click="selected = 'reg'"
+                :class="{'user-tabs__tab_active': select == 'reg'}"
+                @click="select = 'reg'"
             >Регистрация</div>
         </div>
         <div class="user-content">
-            <div class="user-login" v-if="selected == 'login'">
+            <div class="user-login" v-if="select == 'login'">
                 <user-login></user-login>
             </div>
             <div class="user-reg" v-else>
@@ -39,6 +39,7 @@
         },
         data() {
             return {
+                select: this.selected
             }
         },
         methods: {
