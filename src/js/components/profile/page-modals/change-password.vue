@@ -49,8 +49,10 @@
 </template>
 
 <script>
-    import {required, minLength} from "vuelidate/lib/validators"
-    import showPassword from '../../partials/show-password.vue'
+    import {required, minLength, helpers} from "vuelidate/lib/validators";
+    import showPassword from '../../partials/show-password.vue';
+
+    const pattern = helpers.regex('pattern', /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/)
 
     export default {
         name:"change-password",
@@ -60,11 +62,13 @@
         validations: {
             password: {
                 required,
-                minLength: minLength(6)
+                minLength: minLength(6),
+                pattern
             },
             newPassword: {
                 required,
-                minLength: minLength(6)
+                minLength: minLength(6),
+                pattern
             },
         },
         data() {
