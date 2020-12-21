@@ -69,6 +69,7 @@
     &__radio-label
         @extend .radio__label
     &__textarea
+        @extend .text-3
         min-height: 6.5rem
         margin-bottom: 1rem
         padding: .75rem 1rem
@@ -80,7 +81,9 @@
             color: $light-grey
     &__error-text
         @extend .text-3
-        margin: .5rem 0 1rem 0
+        margin-bottom: 1rem
         color: $primary-red
         &_input-error
             margin: -.5rem 0 .5rem 0
+        &_input-error_email
+            margin: -.5rem 0 1rem 0

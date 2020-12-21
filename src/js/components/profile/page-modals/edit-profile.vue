@@ -114,7 +114,7 @@
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>
             <span
-                class="profile-modal__error-text profile-modal__error-text_input-error"
+                class="profile-modal__error-text profile-modal__error-text_input-error_email"
                 v-if="$v.email.$error"
             >Ошибка при вводе данных</span>
         </label>
