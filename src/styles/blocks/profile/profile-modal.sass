@@ -21,21 +21,32 @@
         &:hover
             fill: $icon-grey
     &__label-text
-        @extend .label-typo
+        @extend .text-3
         position: absolute
-        top: -.375rem
+        top: .75rem
         left: 1rem
         width: initial
-        padding: 1px .5rem
-        background-color: $white
         color: $light-grey
-        opacity: 0
         z-index: 2
+        transition: 200ms
+
         &_up
-            opacity: 1
-            animation: labelUp 200ms
+            @extend .label-typo
+            top: -.375rem
+            left: 1rem
+            padding: 1px .5rem
+            background-color: $white
+            transition: 200ms
     &__input
         @extend .input-modal
+        &:focus ~ .profile-modal__label-text
+            @extend .label-typo
+            // opacity: 1
+            top: -.375rem
+            left: 1rem
+            padding: 1px .5rem
+            background-color: $white
+            transition: 200ms
         &_dots
             font-size: 2rem
             line-height: 2.5rem

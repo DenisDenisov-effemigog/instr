@@ -2,9 +2,6 @@
     <form class="profile-modal__form"
           @submit.prevent="submit">
         <label name="name" class="profile-modal__label">
-            <span class="profile-modal__label-text"
-                  :class="{'profile-modal__label-text_up': $v.name.required}"
-            >Контактное лицо</span>
             <input
                 class="profile-modal__input"
                 :class="{'profile-modal__input_error': $v.name.$error}"
@@ -13,20 +10,19 @@
                 id="name"
                 autocomplete="name"
                 autocorrect="off"
-                placeholder="Контактное лицо"
                 v-model.trim="$v.name.$model">
+            <span class="profile-modal__label-text"
+                  :class="{'profile-modal__label-text_up': $v.name.required}"
+            >Контактное лицо</span>
             <svg
                 viewBox="0 0 24 24"
                 class="profile-modal__label-icon"
                 v-if="$v.name.required"
                 @click="$v.name.$model = ''">
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
-            </svg>
+            </svg>   
         </label>
         <label name="company" class="profile-modal__label">
-            <span class="profile-modal__label-text"
-                  :class="{'profile-modal__label-text_up': $v.company.required}"
-            >Компания</span>
             <input
                 class="profile-modal__input"
                 :class="{'profile-modal__input_error': $v.company.$error}"
@@ -35,8 +31,10 @@
                 id="company"
                 autocomplete="organization"
                 autocorrect="off"
-                placeholder="Компания"
                 v-model.trim="$v.company.$model">
+            <span class="profile-modal__label-text"
+                  :class="{'profile-modal__label-text_up': $v.company.required}"
+            >Компания</span>
             <svg
                 viewBox="0 0 24 24"
                 class="profile-modal__label-icon"
@@ -46,17 +44,16 @@
             </svg>
         </label>
         <label name="code" class="profile-modal__label">
-            <span class="profile-modal__label-text"
-                  :class="{'profile-modal__label-text_up': $v.code.required}"
-            >Код доступа</span>
             <input
                 class="profile-modal__input"
                 :class="{'profile-modal__input_error': $v.code.$error}"
                 type="text"
                 name="code"
                 id="code"
-                placeholder="Код доступа"
                 v-model.trim="$v.code.$model">
+            <span class="profile-modal__label-text"
+                  :class="{'profile-modal__label-text_up': $v.code.required}"
+            >Код доступа</span>
             <svg
                 viewBox="0 0 24 24"
                 class="profile-modal__label-icon"
@@ -66,9 +63,6 @@
             </svg>
         </label>
         <label name="phone" class="profile-modal__label profile-modal__label_column">
-            <span class="profile-modal__label-text"
-                  :class="{'profile-modal__label-text_up': $v.phone.required}"
-            >Номер телефона</span>
             <the-mask
                 class="profile-modal__input"
                 :class="{'profile-modal__input_error': $v.phone.$error}"
@@ -79,8 +73,10 @@
                 id="phone"
                 autocomplete="tel"
                 autocorrect="off"
-                placeholder="Номер телефона"
                 v-model.trim="$v.phone.$model"/>
+            <span class="profile-modal__label-text"
+                  :class="{'profile-modal__label-text_up': $v.phone.required}"
+            >Номер телефона</span>
             <svg
                 viewBox="0 0 24 24"
                 class="profile-modal__label-icon"
@@ -94,9 +90,6 @@
             >Ошибка при вводе данных</span>
         </label>
         <label name="email" class="profile-modal__label profile-modal__label_column">
-            <span class="profile-modal__label-text"
-                  :class="{'profile-modal__label-text_up': $v.email.required}"
-            >Email</span>
             <input
                 class="profile-modal__input"
                 :class="{'profile-modal__input_error': $v.email.$error}"
@@ -106,8 +99,10 @@
                 autocomplete="email"
                 autocorrect="off"
                 autocapitalize="off"
-                placeholder="Email"
                 v-model.trim="$v.email.$model">
+            <span class="profile-modal__label-text"
+                  :class="{'profile-modal__label-text_up': $v.email.required}"
+            >Email</span>
             <svg
                 viewBox="0 0 24 24"
                 class="profile-modal__label-icon"
