@@ -4,6 +4,9 @@
 .user
     &__label
         @extend .profile-modal__label
+        flex-direction: column
+        &_row
+            flex-direction: row
     &__label-text
         @extend .profile-modal__label-text
         &_up
@@ -12,6 +15,8 @@
         @extend .profile-modal__input
         &_dots
             @extend .profile-modal__input_dots
+        &_error
+            @extend .input-modal_error
     &__button
         @extend .profile-modal__button   
     &__label-icon
@@ -19,7 +24,9 @@
     &__error-text
         @extend .profile-modal__error-text
         &_invalid
-            margin: .5rem 0 0 0 !important
+            margin: -.5rem 0 .5rem 0 !important
+        &_invalid_password
+            margin: -.5rem 0 1rem 0 !important
     &__checkbox-input
         @extend .checkbox
     &__checkbox-label
