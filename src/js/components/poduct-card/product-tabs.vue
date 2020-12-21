@@ -5,9 +5,11 @@
             <!--@touchstart="touchStart"
             @touchmove="touchMove"
             @touchend="touchEnd"-->
-            <div ref="tabs" class="product-tabs__tabs"
-                :class="{'product-tabs__tabs_center': currentTab === 'description', 
-                    'product-tabs__tabs_end': currentTab === 'questions'}">
+            <div class="product__tabs-wrapper">
+                <div ref="tabs" class="product-tabs__tabs"
+                    @touchmove="scrollTabs"
+                    @touchstart="touchStart"
+                >
                 <div
                     v-if="features"
                     class="product-tabs__tab"
@@ -32,6 +34,7 @@
                 >
                     Вопросы&nbsp;и&nbsp;ответы&nbsp;({{questions.length}})
                 </div>
+            </div>
             </div>
             <div class="product-tabs__content">
                 <div v-if="currentTab === 'features'" class="product-tabs_content__container">
@@ -66,6 +69,7 @@
             return {
                 startTouch:0,
                 moveTouch:0,
+                scrollDigit: 1,
                 currentTab: this.description ? 'features' : 'description',
             }
         },
@@ -111,6 +115,26 @@
                         case 'features':
                             break;
                     }
+                }
+            },
+            scrollTabs(e){
+                let tabsW = this.$refs.tabs.clientWidth
+                let windowW = window.innerWidth
+                if(windowW < 440){
+                    if(this.startTouch > e.changedTouches[0].pageX){
+                        if(this.scrollDigit >= 440 - windowW){
+                            this.scrollDigit = 440 - windowW
+                        }else{
+                            this.scrollDigit +=3
+                        }
+                    }else{
+                        if(this.scrollDigit == 1){
+                            this.scrollDigit = 1
+                        }else{
+                            this.scrollDigit -=3
+                        }
+                    }
+                    this.$refs.tabs.style.transform = `translateX(-${this.scrollDigit}px)`
                 }
             }
         },
