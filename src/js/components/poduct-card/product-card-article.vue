@@ -32,7 +32,6 @@ export default {
                 element = this.$refs.art
             }else{
                 element = this.$refs.number
-                let tooltip = document.querySelector('.product-card__article-tooltip')
                 element.classList.add('product-card__article-number--copy')
                 setTimeout(() => {
                     this.openFlag = false
