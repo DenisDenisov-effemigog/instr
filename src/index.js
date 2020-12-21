@@ -4,9 +4,11 @@ import VueSlickCarousel from 'vue-slick-carousel';
 import store from './js/store';
 import router from './js/router';
 import HelpersMixin from './js/mixins/helper';
+import Vuelidate from 'vuelidate';
 
 Vue.use(VueAgile)
 Vue.mixin(HelpersMixin)
+Vue.use(Vuelidate)
 
 Vue.prototype.$eventBus = new Vue();
 
