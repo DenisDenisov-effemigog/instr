@@ -39,6 +39,8 @@
         &_dots
             font-size: 2rem
             line-height: 2.5rem
+        &_error
+            @extend .input-modal_error
     &__button
         @extend .button-primary
         padding: .625rem
@@ -78,5 +80,7 @@
             color: $light-grey
     &__error-text
         @extend .text-3
-        margin-bottom: 1rem
+        margin: .5rem 0 1rem 0
         color: $primary-red
+        &_input-error
+            margin: -.5rem 0 .5rem 0
