@@ -62,7 +62,7 @@ export default {
           person: [
               {'title': 'Контактное лицо', 'icon': 'user-profile', 'index': 'contact', 'personType': 1},
               {'title': 'Телефон', 'icon': 'call', 'index': 'phone', 'personType': 1},
-              {'title': 'Код доступа', 'icon': 'edit', 'index': 'code', 'personType': 2},
+              {'title': 'ИНН', 'icon': 'edit', 'index': 'code', 'personType': 2},
               {'title': 'Компания', 'icon': '3d', 'index': 'company', 'personType': 2},
               {'title': 'Электронная почта', 'icon': 'mail', 'index': 'email', 'personType': 1},
               {'title': 'Юридический адрес', 'icon': 'location', 'index': 'address', 'personType': 2},
