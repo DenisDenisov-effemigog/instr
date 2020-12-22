@@ -33,7 +33,12 @@
                  @mouseleave="hoverOff"
             >
                 <img @mouseenter="hoverOn" :src="productImage.img" alt="">
-                <div @mousemove="zoomImg" class="product-card-slider__zoom" :class="{'product-card-slider__zoom--open': flag}" :style="`background-image:url(${productImage.img}); background-position:${x}% ${y}%`"></div>
+                <div class="product-card-slider__zoom"
+                     :class="{'product-card-slider__zoom--open': openZoom}"
+                     ref="zoom"
+                     @mousemove="zoomImg" 
+                     :style="`background-image:url(${productImage.img}); background-position:${x}% ${y}%`"
+                ></div>
             </div>
         </VueSlickCarousel>
     </div>
@@ -54,7 +59,8 @@ export default {
         return {
             x:0,
             y:0,
-            flag: false,
+            openZoom: false,
+            sliderHeader: 0,
             settings: {
                 dots: false,
                 arrows: false,
@@ -95,34 +101,36 @@ export default {
         },
         hoverOn(){
             if(window.innerWidth > 768) {
-                this.flag = true
-                let productStickers = document.querySelector('.product-card__stickers')
-                productStickers.classList.add('product-card__stickers--close')
+                this.openZoom = true
+                this.$eventBus.$emit('showStickers')
             }
-            
         },
         hoverOff(){
             if(window.innerWidth > 768) {
-                this.flag = false
-                let productStickers = document.querySelector('.product-card__stickers')
-                productStickers.classList.remove('product-card__stickers--close')
+                this.openZoom = false
+                this.$eventBus.$emit('hideStickers')
             }
             this.x = 0
             this.y = 0
         },
         zoomImg(e){
             if(window.innerWidth > 768) {
-                let zoomSlide = document.querySelector('.product-card-slider__zoom')
+                let zoomSlide = this.$refs.zoom
                 let zoomSlideTop = zoomSlide.getBoundingClientRect().top + window.pageYOffset
-                let slideHeader = document.querySelector('.product-card__slider_header').getBoundingClientRect().left
                 let zoomSlideWidth = zoomSlide.getBoundingClientRect().width
                 let zoomSlideHeight = zoomSlide.getBoundingClientRect().height
                 let mY = e.pageY - zoomSlideTop
-                let mX = e.pageX - slideHeader
+                let mX = e.pageX - this.sliderHeader
                 this.x = mX/zoomSlideWidth * 100
                 this.y = mY/zoomSlideHeight * 100
             }
+        },
+        sliderHeaderPosition(sliderHeader){
+            this.sliderHeader = sliderHeader
         }
+    },
+    created() {
+        this.$eventBus.$on('sliderHeader', this.sliderHeaderPosition)
     },
     mounted() {
         this.$nextTick(this.$forceUpdate);
