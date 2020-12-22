@@ -40,18 +40,6 @@
                 openedMenu: false,
             }
         },
-        computed: {
-            // isActive() {
-            //     const page = document.querySelector('.page');
-            //     if (this.active) {
-            //         page.classList.add('page_hide-main');
-            //         page.classList.add('page_hide-footer');
-            //     } else {
-            //         page.classList.remove('page_hide-main');
-            //         page.classList.remove('page_hide-footer');
-            //     }
-            // }
-        },
         created() {
             this.$eventBus.$on("exitSearch", this.closeMenu);
             this.$eventBus.$on("close-catalogue", this.close);
@@ -61,7 +49,7 @@
                 this.active = !this.active;
                 this.$eventBus.$emit('open-catalogue', this.active);
                 if (!this.active) {
-                    document.querySelector('html').style.overflow = 'auto';
+                    this.toggleHtmlOverflow('auto')
                 }
             },
             close(state) {

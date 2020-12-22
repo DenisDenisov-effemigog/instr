@@ -38,13 +38,13 @@ export default {
     },
     methods:{
         openMenuModal(link){
-            document.querySelector('html').style.overflow = 'hidden';
+            this.toggleHtmlOverflow('hidden')
             this.openModal = true;
             this.menuLink = link;
             this.$eventBus.$emit('notActiveButton');
         },
         closeMenuModal(){
-            document.querySelector('html').style.overflow = 'auto';
+            this.toggleHtmlOverflow('auto')
             this.openModal = false;
         },
         closeOutside(event) {
