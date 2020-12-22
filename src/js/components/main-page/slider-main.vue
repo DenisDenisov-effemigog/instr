@@ -1,6 +1,9 @@
 <template>
     <div class="slider-main">
-        <agile :options="options" @after-change="showCurrentSlide($event)">
+        <agile :options="options" 
+               @after-change="showCurrentSlide($event)" 
+               ref="mainSlider"
+        >
             <slot></slot>
             
             <template slot="prevButton">
@@ -54,9 +57,9 @@
         },
         methods: {
             showCurrentSlide(event) {
-                let arrLeft = document.querySelector('.slider-main .agile__nav-button--prev')
+                let arrLeft = this.$refs.mainSlider.$refs.prevButton
                 this.slideCurrent = event.currentSlide;
-                if (arrLeft !== null) {
+                if (arrLeft !== undefined) {
                     if (this.slideCurrent !== 0) {
                         arrLeft.style.display = 'flex'
                     } else {
