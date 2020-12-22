@@ -5,7 +5,13 @@ export default {
         },
         spriteSvg(name) {
             return this.templatePath + 'images/sprite.svg#' + name;
-        }
+        },
+        toggleHtmlOverflow: function (style){
+            let html = document.querySelector('html')
+            let body = document.querySelector('body')
+            html.style.overflowY = style
+            body.style.overflowY = style
+        },
     },
     computed: {
         templatePath() {

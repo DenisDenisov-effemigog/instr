@@ -91,7 +91,7 @@ export default {
     },
     methods:{
         openModal(modal, props, modalSize){
-            document.querySelector('html').style.overflowY = 'hidden';
+            this.toggleHtmlOverflow('hidden')
             this.open = true
             this.modal = modal
             this.props = props
@@ -103,7 +103,7 @@ export default {
             this.props = []
             this.modalBigger = false
             this.$eventBus.$emit("deleteActive");
-            document.querySelector('html').style.overflow = 'auto';
+            this.toggleHtmlOverflow('auto')
         },
         closeOutside(event) {
             if(event.toElement.className !== '') {
