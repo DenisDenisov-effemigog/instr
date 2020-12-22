@@ -2,17 +2,20 @@
     margin-bottom: 2.5rem
     +tablet
         margin-bottom: 3.5rem
+    &__wrapper
+        border-bottom: 1px solid #dcdcdc
     &__tabs
         @extend .tabs
-        +mobile
-            -ms-overflow-style: none
-            overflow: -moz-scrollbars-none
-            // overflow-x: scroll
-            &::-webkit-scrollbar
-                width: 0 !important
-                height: 0
-                display: none !important
-                background: transparent
+        border: none
+        // +mobile
+        //     -ms-overflow-style: none
+        //     overflow: -moz-scrollbars-none
+        //     // overflow-x: scroll
+        //     &::-webkit-scrollbar
+        //         width: 0 !important
+        //         height: 0
+        //         display: none !important
+        //         background: transparent
         &_center
             @media screen and (max-width: 450px)
                 justify-content: center
