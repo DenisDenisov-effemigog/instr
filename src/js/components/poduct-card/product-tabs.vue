@@ -9,32 +9,33 @@
                 <div ref="tabs" class="product-tabs__tabs"
                     @touchmove="scrollTabs"
                     @touchstart="touchStart"
+                    @touchend="touchEnd"
                 >
-                <div
-                    v-if="features"
-                    class="product-tabs__tab"
-                    :class="{'product-tabs__tab_active': currentTab === 'features'}"
-                    @click.prevent="showTab('features')"
-                >
-                        Характеристики
+                    <div
+                        v-if="features"
+                        class="product-tabs__tab"
+                        :class="{'product-tabs__tab_active': currentTab === 'features'}"
+                        @click.prevent="showTab('features')"
+                    >
+                            Характеристики
+                    </div>
+                    <div
+                        v-if="description"
+                        class="product-tabs__tab"
+                        :class="{'product-tabs__tab_active': currentTab === 'description'}"
+                        @click.prevent="showTab('description')"
+                    >
+                        Описание
+                    </div>
+                    <div
+                        v-if="questions"
+                        class="product-tabs__tab"
+                        :class="{'product-tabs__tab_active': currentTab === 'questions'}"
+                        @click.prevent="showTab('questions')"
+                    >
+                        Вопросы&nbsp;и&nbsp;ответы&nbsp;({{questions.length}})
+                    </div>
                 </div>
-                <div
-                    v-if="description"
-                    class="product-tabs__tab"
-                    :class="{'product-tabs__tab_active': currentTab === 'description'}"
-                    @click.prevent="showTab('description')"
-                >
-                    Описание
-                </div>
-                <div
-                    v-if="questions"
-                    class="product-tabs__tab"
-                    :class="{'product-tabs__tab_active': currentTab === 'questions'}"
-                    @click.prevent="showTab('questions')"
-                >
-                    Вопросы&nbsp;и&nbsp;ответы&nbsp;({{questions.length}})
-                </div>
-            </div>
             </div>
             <div class="product-tabs__content">
                 <div v-if="currentTab === 'features'" class="product-tabs_content__container">
@@ -71,6 +72,7 @@
                 moveTouch:0,
                 scrollDigit: 1,
                 currentTab: this.description ? 'features' : 'description',
+                lastTabPosition: 0
             }
         },
         methods: {
@@ -87,55 +89,33 @@
                 this.showTab('features')
             },
             touchStart(e){
+                let tabs = this.$refs.tabs.children
+                let lastTab = tabs[tabs.length - 1]
+                this.lastTabPosition = lastTab.clientWidth + lastTab.getBoundingClientRect().left
                 this.startTouch = e.changedTouches[0].pageX
             },
-            touchMove(e){
-                this.moveTouch = e.changedTouches[0].pageX
-            },
+            
             touchEnd(){
-                if(this.startTouch > this.moveTouch){
-                    switch(this.currentTab){
-                        case 'features':
-                            this.currentTab = 'description';
-                            break;
-                        case 'description':
-                            this.currentTab = 'questions';
-                            break;
-                        case 'questions':
-                            break;
-                    }
-                }else{
-                    switch(this.currentTab){
-                        case 'questions':
-                            this.currentTab = 'description';
-                            break;
-                        case 'description':
-                            this.currentTab = 'features';
-                            break;
-                        case 'features':
-                            break;
-                    }
-                }
             },
             scrollTabs(e){
-                let tabsW = this.$refs.tabs.clientWidth
+                console.log(this.lastTabPosition)
                 let windowW = window.innerWidth
-                if(windowW < 440){
-                    if(this.startTouch > e.changedTouches[0].pageX){
-                        if(this.scrollDigit >= 440 - windowW){
-                            this.scrollDigit = 440 - windowW
+                if(this.startTouch > e.changedTouches[0].pageX){
+                    if(windowW < this.lastTabPosition){
+                        if(this.scrollDigit >= this.lastTabPosition - windowW){
+                            this.scrollDigit = this.lastTabPosition - windowW
                         }else{
                             this.scrollDigit +=3
                         }
-                    }else{
-                        if(this.scrollDigit == 1){
-                            this.scrollDigit = 1
-                        }else{
-                            this.scrollDigit -=3
-                        }
                     }
-                    this.$refs.tabs.style.transform = `translateX(-${this.scrollDigit}px)`
+                }else{
+                    if(this.scrollDigit <= 1){
+                        this.scrollDigit = 1
+                    }else{
+                        this.scrollDigit -=3
+                    }
                 }
+                this.$refs.tabs.style.transform = `translateX(-${this.scrollDigit}px)`
             }
         },
         computed: {

@@ -53,7 +53,7 @@
                 v-model.trim="$v.code.$model">
             <span class="profile-modal__label-text"
                   :class="{'profile-modal__label-text_up': $v.code.required}"
-            >Код доступа</span>
+            >ИНН</span>
             <svg
                 viewBox="0 0 24 24"
                 class="profile-modal__label-icon"
