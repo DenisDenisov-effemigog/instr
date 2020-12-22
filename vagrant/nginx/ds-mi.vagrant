@@ -10,7 +10,7 @@ server
     index index.html index.htm;
     
     location ~ ^/account/$ {
-        rewrite ^/account/(.*)$ /pages_13_personal_authorized.html;
+        rewrite ^/account/(.*)$ /pages_03_profile.html;
     }
     
     location ~ ^/account/(.+\.(?:js|css|png|jpg|ico|woff|eot|woff2|svg))$ {        
