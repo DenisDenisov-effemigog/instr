@@ -1,0 +1,19 @@
+server
+{
+    listen 80;
+    server_name ds-mi.vagrant;
+
+    access_log off;
+    error_log /var/log/nginx/ds-mi.error.log;
+
+    root /var/www/ds-mi/public;
+    index index.html index.htm;
+    
+    location ~ ^/account/$ {
+        rewrite ^/account/(.*)$ /pages_03_profile.html;
+    }
+    
+    location ~ ^/account/(.+\.(?:js|css|png|jpg|ico|woff|eot|woff2|svg))$ {        
+        rewrite ^/account/(.*)$ /$1 break;
+    }
+}
