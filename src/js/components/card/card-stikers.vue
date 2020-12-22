@@ -2,7 +2,7 @@
     <div class="card__stickers_sticker-wrap"
         @mouseenter="openTooltip"
         @mouseleave="closeTooltip"
-        @click="openTooltip"
+        @click="openTooltipClick"
     >
         <div
             class="card__stickers_sticker card__stickers_sticker--new"
@@ -10,7 +10,11 @@
         >
             <span>{{ tooltip.title }}</span>
         </div>
-        <div class="card__stickers_sticker-tooltip" :class="{'card__stickers_sticker-tooltip-open': open}"
+        <div class="card__stickers_sticker-tooltip" 
+             :class="{'card__stickers_sticker-tooltip-open': open, 
+             'card__stickers_sticker-tooltip--rigth': moveTooltip,
+             'card__stickers_sticker-tooltip--left': moveTooltipLeft,}"
+             ref="tooltip"
         >
             <div>
                 <div>{{ tooltip.text }}</div>
@@ -30,7 +34,9 @@ export default {
         return{
             tooltipId: 0,
             currentIndex: 0,
-            open: false
+            open: false,
+            moveTooltip: false,
+            moveTooltipLeft: false,
         }
     },
     props:{
@@ -38,23 +44,33 @@ export default {
             type: Object,
             required: true,
         },
-        index:{
+        cardPosition:{
             type: Number
         }
     },
     methods:{
         openTooltip(){
             this.open = true
-            /*let tooltip = this.tooltip
+            
+            if(this.cardPosition < 2070) {
+                this.moveTooltipLeft = true
+            }
+            
+        },
+        closeTooltip(){
+            this.open = false
+            this.moveTooltip = false
+            this.moveTooltipLeft = false
+        },
+        openTooltipClick() {
+            this.open = true
+            let tooltip = this.$refs.tooltip
             let c = tooltip.getBoundingClientRect()
             let tooltipX = c.left + c.width
             let windowWidth = window.screen.availWidth
             if(windowWidth < tooltipX){
-                tooltip.classList.add('card__stickers_sticker-tooltip--rigth')
-            }*/
-        },
-        closeTooltip(){
-            this.open = false
+                this.moveTooltip = true
+            }
         },
     }
 }

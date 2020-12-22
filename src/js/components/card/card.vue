@@ -1,16 +1,14 @@
 <template>
-    <div class="card">
+    <div class="card" ref="card">
         <div 
             class="card__header" 
             :class="{'card__header--short-card': cardSize === 'short'}"
         >
             <div class="card__stickers">
-<!--                <div class="card__stickers_sticker-wrap">-->
-                    <card-stikers v-for="tooltip in product.tooltips"
-                                  :tooltip="tooltip"
-                                  :index="product.id"
-                    ></card-stikers>
-<!--                </div>-->
+                <card-stikers v-for="tooltip in product.tooltips"
+                              :tooltip="tooltip"
+                              :cardPosition="cardPosition"
+                ></card-stikers>
             </div>
             <component class="card__header_in-favorite" is="in-favorite"></component>
         </div>
@@ -84,7 +82,8 @@ export default {
         return {
             menuTooltip: false,
             productId: 0,
-            tooltipId: 0
+            tooltipId: 0,
+            cardPosition: 0
         }
     },
     methods: {
@@ -92,5 +91,10 @@ export default {
             console.log(e.target)
         }
     },
+    mounted() {
+        let card = this.$refs.card
+        let c = card.getBoundingClientRect()
+        this.cardPosition = c.left + c.width
+    }
 }
 </script>

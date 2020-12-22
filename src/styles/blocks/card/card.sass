@@ -91,6 +91,11 @@
                     fill: $icon-medium-grey
             &-open
                 display: flex
+            &--left
+                left: -16px
+                transform: translate(0)
+                &::before
+                    left: calc(20% - 8px)
             &--rigth
                 left: auto
                 right: 0
