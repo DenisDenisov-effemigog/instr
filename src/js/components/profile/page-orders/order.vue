@@ -17,9 +17,11 @@
                 </div>
             </div>
             <div class="order__arrow" :class="{'order__arrow--open': opened}">
-                <svg @click.stop="clickArrow">
-                    <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-down'"></use>
-                </svg>
+                <div class="order__arrow_wrap" @click.stop="clickArrow">
+                    <svg>
+                        <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-down'"></use>
+                    </svg>
+                </div>
             </div>
         </div>
         <order-product-list :products="order.product" :orderIndex="index" :opened="opened"></order-product-list>
