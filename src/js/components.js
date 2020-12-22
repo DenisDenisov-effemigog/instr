@@ -32,6 +32,7 @@ import addToCart from './components/card/add-to-cart.vue';
 import cardStikers from './components/card/card-stikers.vue';
 /*product-card*/
 import productCardSlider from './components/poduct-card/product-card-slider.vue';
+import productCardHeader from './components/poduct-card/product-card-header.vue';
 import productTabs from './components/poduct-card/product-tabs.vue';
 import productTabsQuestions from './components/poduct-card/product-tabs-questions.vue';
 import stickyCard from './components/poduct-card/sticky-card.vue';
@@ -78,6 +79,7 @@ export default {
         modal,
         stickyMobileButton,
         productCardSlider,
+        productCardHeader,
         productTabs,
         productTabsQuestions,
         VueSlickCarousel,

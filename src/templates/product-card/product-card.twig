@@ -11,19 +11,8 @@
 	</div>
 	<div class="product-card__content">
 		<div class="product-card__slider">
-            <div class="product-card__slider_header">
-                <div class="card__stickers">
-                    {% for tooltip in product.tooltips %}
-                            <component is="card-stikers"
-                                       :tooltip = "{{ tooltip|json_encode()|e('html_attr') }}"
-                            ></component>
-                    {% endfor %}
-                </div>
-                <div class="product-card__actions">
-                    <component is="to-compare"></component>
-                    <component is="in-favorite"></component>
-                </div>
-            </div>
+            <component is="product-card-header" 
+                       :tooltips="{{ product.tooltips|json_encode()|e('html_attr') }}"></component>
 			<component is="product-card-slider"
                        :product-images="{{ product.images|json_encode()|e('html_attr') }}" 
             ></component>
