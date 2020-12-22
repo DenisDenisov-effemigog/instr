@@ -55,7 +55,7 @@ export default {
                     this.$eventBus.$emit("closeCountry")
                 } 
             }
-            document.querySelector('html').style.overflow = 'auto';
+            this.toggleHtmlOverflow('auto')
         },
         choiceCountry(country){
             this.currentLink = this.countries.indexOf(country)
@@ -64,9 +64,9 @@ export default {
         openCountry(){
             this.openedCountry = !this.openedCountry
             if(this.openedCountry === true){
-                document.querySelector('html').style.overflow = 'hidden';
+                this.toggleHtmlOverflow('hidden')
             }else{
-                document.querySelector('html').style.overflow = 'auto';
+                this.toggleHtmlOverflow('auto')
             }
         }
     },

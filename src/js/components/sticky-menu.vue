@@ -77,7 +77,7 @@ export default {
                 // this.$eventBus.$emit('exitSearch', false);
             } else {
                 this.$eventBus.$emit("close-catalogue", false);
-                document.querySelector('html').style.overflow = 'auto';
+                this.toggleHtmlOverflow('auto')
             }
         },
         notActiveButton() {

@@ -61,7 +61,7 @@
             openCatalogue(state) {
                 this.active = state;
                 this.hovered = 0;
-                document.querySelector('html').style.overflow = 'hidden';
+                this.toggleHtmlOverflow('hidden')
             },
             closeCatalogue(event) {
                 let vm = this;
@@ -71,7 +71,7 @@
                         event.toElement.className.animVal !=='header__catalog-btn-icon') {
                         vm.active = false;
                         this.$eventBus.$emit('close-catalogue', vm.active);
-                        document.querySelector('html').style.overflow = 'auto';
+                        this.toggleHtmlOverflow('auto')
                     }
                 }
             },

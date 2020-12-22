@@ -1,5 +1,5 @@
 <template>
-    <div class="page-order">
+    <div class="page-order" ref="content">
         <div class="page-order__head">
             <div class="page-order__info">
                 <div class="page-order__number">Заказ #{{ order.number }}</div>
@@ -73,7 +73,10 @@
                             <div class="page-order__desc-order_price page-order__desc-order_price--total">{{ order.priceTotal }} &#8381;</div>
                         </li>
                     </ul>
-                    <div @click.stop="openModal('repeat-order')" ref="mobileBtn" class="page-order__desc-order_btn">
+                    <div class="page-order__desc-order_btn" 
+                         :class="{'page-order__desc-order_btn--fixed': fixedButton}" 
+                         @click.stop="openModal('repeat-order')" 
+                    >
                         <div class="page-order__desc-order_btn_wrapper">
                             <div class="page-order__desc-order_btn_icon">
                                 <svg>
@@ -108,6 +111,7 @@ export default {
             points:['Загрузить еще что-нибудь','Загрузить счет-фактуру'],
             flag: true,
             selectFlag: false,
+            fixedButton: false,
             icon:'icons__download',
             deliveryInfo:[
                 {
@@ -132,14 +136,8 @@ export default {
         mouseWheel(){
             if(window.innerWidth < 768) {
                 let windowPosition = (window.pageYOffset + window.innerHeight).toFixed(0)
-                let pcH = document.querySelector('.profile__content').clientHeight.toFixed(0)
-                if(pcH > windowPosition){
-                    this.$refs.mobileBtn.classList.add('page-order__desc-order_btn--fixed')
-                }else{
-                    if(this.$refs.mobileBtn.classList.contains('page-order__desc-order_btn--fixed')){
-                        this.$refs.mobileBtn.classList.remove('page-order__desc-order_btn--fixed')
-                    }
-                }
+                let pcH = this.$refs.content.clientHeight.toFixed(0)
+                this.fixedButton = pcH > windowPosition;
             }
             
         },
