@@ -5,8 +5,9 @@
         @click="openTooltipClick"
     >
         <div
-            class="card__stickers_sticker card__stickers_sticker--new"
+            class="card__stickers_sticker"
             :class="'card__stickers_sticker--' + tooltip.status"
+            
         >
             <span>{{ tooltip.title }}</span>
         </div>
