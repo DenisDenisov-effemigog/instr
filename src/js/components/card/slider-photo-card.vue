@@ -1,11 +1,10 @@
 <template>
     <div class="slider-photo-card"
          :class="{'slider-photo-card--short-card': cardSize === 'short'}">
-            <div
-            @touchstart="touchStart"
+            <!-- @touchstart="touchStart"
             @touchmove="touchMove"
-            @touchend="touchEnd"
-            class="slider-photo-card__slide">
+            @touchend="touchEnd" -->
+            <div class="slider-photo-card__slide">
                 <img class="slider-photo-card__slide_image" v-for="slide in showSlide" :src="slide.img">
             </div>
             <div class="slider-photo-card__markers" @mouseleave="outSlide">
@@ -45,40 +44,41 @@ export default {
     },
     methods: {
         hoverSlide(id){
-            this.images.forEach(item => {
-                if(id == item.id){
-                    this.currentSlide = item.id
-                }
-            })
-            this.activeDot
-            return this.currentSlide
-            
+            if(window.innerWidth > 768) {
+                this.images.forEach(item => {
+                    if(id == item.id){
+                        this.currentSlide = item.id
+                    }
+                })
+                this.activeDot
+                return this.currentSlide
+            }
         },
         outSlide(){
             this.activeDot
             return this.currentSlide = 1
         },
-        touchStart(e){
-            this.startTouch = e.changedTouches[0].pageX
-        },
-        touchMove(e){
-            this.moveTouch = e.changedTouches[0].pageX
-        },
-        touchEnd(){
-            if(this.startTouch > this.moveTouch){
-                if(this.currentSlide >= this.images.length ){
-                    this.currentSlide = 1
-                }else{
-                    this.currentSlide++
-                }
-            }else{
-                if(this.currentSlide <= 1){
-                    this.currentSlide =  this.images.length
-                }else{
-                    this.currentSlide--
-                }
-            }
-        }
+        // touchStart(e){
+        //     this.startTouch = e.changedTouches[0].pageX
+        // },
+        // touchMove(e){
+        //     this.moveTouch = e.changedTouches[0].pageX
+        // },
+        // touchEnd(){
+        //     if(this.startTouch > this.moveTouch){
+        //         if(this.currentSlide >= this.images.length ){
+        //             this.currentSlide = 1
+        //         }else{
+        //             this.currentSlide++
+        //         }
+        //     }else{
+        //         if(this.currentSlide <= 1){
+        //             this.currentSlide =  this.images.length
+        //         }else{
+        //             this.currentSlide--
+        //         }
+        //     }
+        // }
     },
     computed:{
         showSlide: function(){
