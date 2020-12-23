@@ -40,6 +40,7 @@
                        :size="'big'"
                        :productId="product.id"
                        :maxAmount="product.stock"
+                       :productOrderPosition="productOrderPosition"
             ></component>
         </div>
     </div>
@@ -63,27 +64,26 @@ export default {
         return{
             showStickyCard: false,
             showButton: false,
+            productOrderPosition: 0,
         }
     },
     methods:{
         mouseWheel(){
              if(window.innerWidth > 768) {
-                let productOrder = document.querySelector('.product-order__wrapper')
-                if(productOrder !== null){
-                    let headerHeigth = document.querySelector('.header').offsetHeight
-                    let productOrderPosition = productOrder.offsetTop + productOrder.clientHeight
-                    let windowPosition = window.pageYOffset
+                let windowPosition = window.pageYOffset
 
-                    if(windowPosition > productOrderPosition){
-                        this.showStickyCard = true
+                if(windowPosition > this.productOrderPosition){
+                    this.showStickyCard = true
 
-                        this.$eventBus.$emit('openStickyCard')
-                    }else{
-                        this.showStickyCard = false
-                        this.$eventBus.$emit('closeStickyCard')
-                    }
+                    this.$eventBus.$emit('openStickyCard')
+                } else{
+                    this.showStickyCard = false
+                    this.$eventBus.$emit('closeStickyCard')
                 }
              }
+        },
+        productOrderBlockPosition(productOrderBlockPosition) {
+            this.productOrderPosition = productOrderBlockPosition
         },
         sowButton() {
             this.showButton = true
@@ -96,6 +96,7 @@ export default {
         window.addEventListener('scroll', this.mouseWheel);
         this.$eventBus.$on("openStickyButton", this.sowButton);
         this.$eventBus.$on("closeStickyButton", this.hideButton);
+        this.$eventBus.$on("productOrderBlockPosition", this.productOrderBlockPosition);
     },
 }
 </script>

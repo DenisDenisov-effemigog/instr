@@ -39,6 +39,7 @@ import stickyCard from './components/poduct-card/sticky-card.vue';
 import productCardArticle from './components/poduct-card/product-card-article.vue';
 import photoModal from './components/poduct-card/photo-modal.vue';
 import productInfoAll from './components/poduct-card/product-info-all.vue';
+import productOrderBlock from './components/poduct-card/product-order-block.vue';
 /*profile*/
 import profile from './components/profile/profile.vue';
 import profileMenuMobile from './components/profile/profile-menu-mobile.vue';
@@ -89,6 +90,7 @@ export default {
         productInfoAll,
         stickyCard,
         sliderPromoModal,
+        productOrderBlock,
         inFavorite,
         toCompare,
         mediaButton,

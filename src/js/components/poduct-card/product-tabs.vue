@@ -82,9 +82,9 @@
                 }
             },
             scroll(){
-                var target = this.$refs.tabs;
-                let headerHeigth = document.querySelector('.header').offsetHeight
-                let targetOffsetTop = target.offsetTop - headerHeigth;    
+                let target = this.$refs.tabs;
+                let stickyCardHeight = 80;
+                let targetOffsetTop = target.offsetTop - stickyCardHeight;    
                 window.scroll({top: targetOffsetTop, behavior: 'smooth'});
                 this.showTab('features')
             },
@@ -98,7 +98,6 @@
             touchEnd(){
             },
             scrollTabs(e){
-                console.log(this.lastTabPosition)
                 let windowW = window.innerWidth
                 if(this.startTouch > e.changedTouches[0].pageX){
                     if(windowW < this.lastTabPosition){
