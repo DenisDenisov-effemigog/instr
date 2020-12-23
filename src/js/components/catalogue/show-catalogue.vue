@@ -11,12 +11,11 @@
             </svg>
         </div>
         <div class="header__catalog-btn" @click.prevent="open">
-            <svg class="header__catalog-btn-icon" viewBox="0 0 24 24" v-if="active">
-                <use :xlink:href="templatePath + 'images/sprite.svg#icons__times'"></use>
-            </svg>
-            <svg class="header__catalog-btn-icon" viewBox="0 0 24 24" v-else>
-                <use :xlink:href="templatePath + 'images/sprite.svg#icons__ham'"></use>
-            </svg>
+            <span class="header__catalog-btn_lines" :class="{'header__catalog-btn_lines--active': active}">
+                <span class="header__catalog-btn_line"></span>
+                <span class="header__catalog-btn_line"></span>
+                <span class="header__catalog-btn_line"></span>
+            </span>
             Каталог
         </div>
     </div>

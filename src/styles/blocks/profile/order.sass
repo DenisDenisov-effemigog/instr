@@ -110,12 +110,20 @@
             & > .order__btn-icon svg 
                 fill: $primary-hover
     &__arrow
-        height: 2rem
+        +tablet
+            height: 2rem
         &_wrap
+            width: 2rem
             display: flex
             justify-content: center
-            width: 2rem
-            cursor: pointer
+            +tablet
+                align-items: center
+                width: 3rem
+                height: 100%
+                cursor: pointer
+                &:hover
+                    & svg
+                        fill: $grey
         +mobile
             order: 6
         +tablet

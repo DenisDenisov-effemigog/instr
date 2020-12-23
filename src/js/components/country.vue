@@ -1,6 +1,6 @@
 <template>
     <div class="country" :class="{'country-open': openedCountry}">
-        <div @click="closeChoiceCountry" class="country__bg" :class="{'country__bg-open': openedCountry}"></div>
+        <div @click="closeChoiceCountry" class="country__bg" :class="{'country__bg-open': openedCountry, 'country__bg-display': openedCountry}"></div>
         <div class="country__wrapper" :class="{'country__wrapper-open': openedCountry}"> 
             <div class="country-container">
                 <div class="country__choice">
