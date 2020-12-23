@@ -158,11 +158,6 @@
                     this.saveChanges();
                 }
             },
-            closeOutside(event) {
-                if(event.toElement.className !== '') {
-                    this.closeModal()
-                }
-            },
             saveChanges() {
                this.person.contact = this.$v.name.$model;
                this.person.company = this.$v.company.$model;
