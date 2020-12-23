@@ -61,7 +61,7 @@
                 {% if product.avalible %}
 				    <div class="product-order__stock">В наличии</div>
                 {% endif %}
-				<div class="product-order__wrapper">
+				<component is="product-order-block" class="product-order__wrapper">
 					<ul class="product-order__list">
                         {% for price in product.prices %}
                             <li class="product-order__item product-order__item--{% if price.base == 1 %}retail{% elseif price.base == 2 %}base{% elseif price.base == 0 %}discount-green{% elseif price.base == 3 %}total{% endif %}">
@@ -99,7 +99,7 @@
                                :product-id="{{ product.id }}"
                                :max-amount="{{ product.stock }}"
                     ></component>
-				</div>
+				</component>
 			</div>
 		</div>
 	</div>

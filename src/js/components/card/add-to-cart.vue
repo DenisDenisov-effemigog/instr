@@ -91,6 +91,11 @@
                 default: '',
                 required: false,
             },
+            productOrderPosition: {
+                type: Number,
+                default: 0,
+                required: false,
+            },
         },
         data() {
             return {
@@ -202,18 +207,15 @@
             },
             mobileScroll(){
                 if(window.innerWidth < 768) {
-                    let productOrder = document.querySelector('.product-order__wrapper')
-                    if(productOrder !== null){
-                        let productOrderPosition = productOrder.offsetTop + (productOrder.clientHeight - 24)
-                        let windowPosition = window.pageYOffset
-                        if(windowPosition > productOrderPosition){
-                            this.$eventBus.$emit('openStickyButton', 'Добавить в корзину')
-                        }else{
-                            this.$eventBus.$emit('closeStickyButton')
-                        }
+                    let windowPosition = window.pageYOffset
+                    let orderPosition = this.productOrderPosition - 24
+                    if(windowPosition > orderPosition){
+                        this.$eventBus.$emit('openStickyButton', 'Добавить в корзину')
+                    } else{
+                        this.$eventBus.$emit('closeStickyButton')
                     }
                 }
-            }
+            },
         }
     }
 </script>
