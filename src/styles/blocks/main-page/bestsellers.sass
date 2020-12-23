@@ -7,8 +7,6 @@
     &__block
         display: flex
         flex-direction: column
-        +desktop
-            flex-direction: row
     &__banner
         width: 328px
         height: 64px
@@ -28,9 +26,11 @@
         justify-content: space-between
         margin-left: -16px
         margin-right: -16px
-        +desktop
-            margin-left: -12px
-            margin-right: -12px
+        +tablet
+            display: none
         & .card
             +desktop
                 margin: 12px
+    & .slider-cards
+        +mobile
+            display: none

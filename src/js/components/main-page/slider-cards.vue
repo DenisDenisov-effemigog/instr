@@ -33,10 +33,16 @@
                     navButtons: false,
                     responsive: [
                         {
-                            breakpoint: 768,
+                            breakpoint: 1200,
+                            settings: {
+                                slidesToShow: 5,
+                            }
+                        },
+                        {
+                            breakpoint: 650,
                             settings: {
                                 navButtons: true,
-                                slidesToShow: 5,
+                                slidesToShow: 4,
                                 dots: this.dots,
                                 unagile: false,
                             }

@@ -1,9 +1,6 @@
 <div class="bestsellers">
     <div class="bestsellers__title">Хиты продаж</div>
     <div class="bestsellers__block">
-        {#<div class="bestsellers__banner">
-            <img src="{{ templatePath }}demo_images/banners/promo4.png" alt="">
-        </div>#}
         <div class="bestsellers__cards">
             {% for product in bestsellers %}
                 <component
@@ -15,5 +12,23 @@
                 </component>
             {% endfor %}
         </div>
+    </div>
+    <div class="slider-cards slider-cards--short-card">
+        <component
+                is="slider-cards"
+                :dots="false"
+            >
+                {% for product in noveltys %}
+                    <div class="slider-cards__slide">
+                        <card
+                            :change-icon="true"
+                            :card-size="'short'"
+                            :product="{{ product|json_encode()|e('html_attr') }}"
+                        >
+                            {% include '../partials/card.twig' with {'product': product} %}
+                        </card>
+                    </div>
+                {% endfor %}
+            </component>
     </div>
 </div>

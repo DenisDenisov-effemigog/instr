@@ -9,16 +9,16 @@
     z-index: 8
     +desktop
         z-index: 1
-    +tablet
+    +desktop-small
         height: calc(100vh - 80px - 48px)
         top: 8rem
     //&_active
     & .catalogue_mobile
         display: block
-        +tablet
+        +desktop-small
             display: none
     & .catalogue_tablet
-        +tablet
+        +desktop-small
             display: block
     &_tablet
         display: none
@@ -50,7 +50,7 @@
         position: relative
         width: 100%
         height: 100%
-        +tablet
+        +desktop-small
             width: 25%
             padding: 2.5rem 0
     &__categories-bg
@@ -62,7 +62,7 @@
         background-color: $light
         z-index: inherit
     &__category
-        +tablet
+        +desktop-small
             &:hover,
             &--hovered
                 background-color: $white
@@ -87,7 +87,7 @@
         padding: 1.125rem 1.5rem 1.125rem 0
         color: $grey
         border-bottom: 1px solid $border-color_2
-        +tablet
+        +desktop-small
             padding: 1rem 2.9375rem 1rem 1.8125rem
             margin: 0 1px 0 -1.8125rem
             font:
@@ -102,7 +102,7 @@
             fill: $icon-grey
             width: $size_5
             height: $size_8-33
-            +tablet
+            +desktop-small
                 right: 1.5rem
     &__subcategories
         @extend .columns
