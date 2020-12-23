@@ -19,6 +19,10 @@
     @media screen and (min-width: $tablet) and (max-width: $desktop - 1px)
         @content
 
+=desktop-small
+    @media screen and (min-width: $desktop-small), print
+        @content
+
 =desktop
     @media screen and (min-width: $desktop), print
         @content

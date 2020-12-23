@@ -51,10 +51,16 @@
                     navButtons: false,
                     responsive: [
                         {
-                            breakpoint: 768,
+                            breakpoint: 1024,
+                            settings: {
+                                slidesToShow: 6,
+                            }
+                        },
+                        {
+                            breakpoint: 600,
                             settings: {
                                 navButtons: true,
-                                slidesToShow: 6,
+                                slidesToShow: 5,
                                 dots: false,
                             }
                         },

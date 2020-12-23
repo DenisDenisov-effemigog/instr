@@ -8,7 +8,7 @@
     transform: translateZ(0)
     transition: transform .35s
     min-width: 100vw
-    +tablet
+    +desktop-small
         position: fixed
         &::after
             content: ''
@@ -32,13 +32,13 @@
         align-items: center
         justify-content: space-between
         padding: .75rem 0
-        +tablet
+        +desktop-small
             padding: 1rem 0
     &__logo
         order: 2
         padding-right: 2rem
         height: 2rem
-        +tablet
+        +desktop-small
             order: 0
             height: 100%
             max-height: 2.5rem
@@ -46,18 +46,18 @@
             fill: $primary-red
             width: 141px
             height: 33px
-            +desktop
+            +desktop-small
                 width: 176px
                 height: 43px
     &__catalog
         order: 1
         padding-right: 1.5rem
-        +tablet
+        +desktop-small
             order: 0
     &__catalog-btn
         @extend .button-catalogue
         display: none
-        +tablet
+        +desktop-small
             display: flex
             cursor: pointer
     &__catalog-btn-icon
@@ -67,7 +67,7 @@
         height: $size_24
     &__catalog-mobile
         display: flex
-        +tablet
+        +desktop-small
             display: none
     &__catalog-mobile-icon
         fill: $grey
@@ -78,14 +78,16 @@
             padding-left: 6px
     &__menu
         display: none
-        +tablet
+        +desktop-small
             display: flex
             align-items: center
         &_mobile
             display: flex
             justify-content: space-between
-            padding: .75rem 1.65rem
+            padding: .75rem 2rem
             box-shadow: 0px -2px 8px 0px rgba(0, 0, 0, .08)
+            +tablet
+                padding: .75rem 7.65rem
             .header__menu-item
                 padding: 0
             .header__menu-link
@@ -108,7 +110,7 @@
         flex-direction: column
         justify-content: space-between
         align-items: center
-        +tablet
+        +desktop-small
             height: 3rem
         &:hover
             & > .header__menu-icon
@@ -154,13 +156,13 @@
     &__search
         @extend .text-2
         order: 3
-        +tablet
+        +desktop-small
             padding-right: 1.625rem
             order: 0
             flex: 1
     &__search-mobile
         display: flex
-        +tablet
+        +desktop-small
             display: none
     &__search-mobile-icon
         width: $size_18
@@ -170,7 +172,7 @@
         height: 2.5rem
         position: relative
         display: none
-        +tablet
+        +desktop-small
             display: flex
         &-icon
             fill: $primary-red
