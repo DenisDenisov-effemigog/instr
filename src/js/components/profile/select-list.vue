@@ -1,5 +1,5 @@
 <template>
-<div class="select" @click="flag =!flag">
+<div class="select" @click="flag = !flag" v-click-outside="closeOutside">
     <div class="select__button" :class="{'select__button--active':flag}">
         <span v-if="selectFlag">{{points[currentPoint]}}</span>
         <span v-else>Документы</span>
@@ -21,6 +21,8 @@
 </template>
 
 <script>
+import ClickOutside from "vue-click-outside";
+
 export default {
     name: "select-list",
     props:{
@@ -45,7 +47,16 @@ export default {
         clickPoint(data){
             let index = this.points.indexOf(data)
             this.currentPoint = index
+        },
+        closeOutside() {
+            this.flag = false
         }
-    }
+    },
+    mounted() {
+        this.popupItem = this.$el
+    },
+    directives: {
+        ClickOutside
+    },
 }
 </script>

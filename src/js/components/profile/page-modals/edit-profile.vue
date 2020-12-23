@@ -31,17 +31,11 @@
                 id="company"
                 autocomplete="organization"
                 autocorrect="off"
-                v-model.trim="$v.company.$model">
+                v-model.trim="$v.company.$model"
+                readonly="readonly">
             <span class="profile-modal__label-text"
                   :class="{'profile-modal__label-text_up': $v.company.required}"
             >Компания</span>
-            <svg
-                viewBox="0 0 24 24"
-                class="profile-modal__label-icon"
-                v-if="$v.company.required"
-                @click="$v.company.$model = ''">
-                <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
-            </svg>
         </label>
         <label name="code" class="profile-modal__label">
             <input
@@ -50,17 +44,11 @@
                 type="text"
                 name="code"
                 id="code"
-                v-model.trim="$v.code.$model">
+                v-model.trim="$v.code.$model"
+                readonly="readonly">
             <span class="profile-modal__label-text"
                   :class="{'profile-modal__label-text_up': $v.code.required}"
             >ИНН</span>
-            <svg
-                viewBox="0 0 24 24"
-                class="profile-modal__label-icon"
-                v-if="$v.code.required"
-                @click="$v.code.$model = ''">
-                <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
-            </svg>
         </label>
         <label name="phone" class="profile-modal__label profile-modal__label_column">
             <the-mask
@@ -168,11 +156,6 @@
                 this.$v.$touch();
                 if (!this.$v.$invalid) {
                     this.saveChanges();
-                }
-            },
-            closeOutside(event) {
-                if(event.toElement.className !== '') {
-                    this.closeModal()
                 }
             },
             saveChanges() {
