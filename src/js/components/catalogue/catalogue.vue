@@ -65,7 +65,6 @@
             },
             closeCatalogue(event) {
                 let vm = this;
-                
                 if(window.innerWidth > 760) {
                     if(event.toElement.className !== 'header__catalog-btn' && 
                         event.toElement.className.animVal !=='header__catalog-btn-icon') {
