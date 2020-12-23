@@ -38,6 +38,7 @@
                                 navButtons: true,
                                 slidesToShow: 5,
                                 dots: this.dots,
+                                unagile: false,
                             }
                         },
                     ]

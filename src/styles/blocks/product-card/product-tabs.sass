@@ -145,6 +145,8 @@
         &_description
             +tablet
                 width: percentage(2 / 3)
+            +tablet-only
+                width: 100%
     &__content-grid
         @extend .columns
         margin: -0.5rem
@@ -170,7 +172,8 @@
         +tablet
             flex-direction: row
             height: 100%
-            max-height: 11.875rem
+        +tablet-only
+            max-height: 100%
     &__feature-img
         width: 100%
         object-fit: cover
