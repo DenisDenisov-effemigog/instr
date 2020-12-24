@@ -1,19 +1,21 @@
-<div class="slider-cards slider-cards--short-card">
+<section  class="some-items">
     <div class="slider-cards__title">Еще одна интересная подборка со скроллом</div>
-    <component
-        is="slider-cards"
-        :dots="false"
-    >
-        {% for product in products %}
-            <div class="slider-cards__slide">
-                <card
-                    :change-icon="true"
-                    :card-size="'short'"
-                    :product="{{ product|json_encode()|e('html_attr') }}"
-                >
-                    {% include '../partials/card.twig' with {'product': product} %}
-                </card>
-            </div>
-        {% endfor %}
-    </component>
-</div>
+    <div class="slider-cards slider-cards--short-card">
+        <component
+            is="slider-cards"
+            :dots="false"
+        >
+            {% for product in products %}
+                <div class="slider-cards__slide">
+                    <card
+                        :change-icon="true"
+                        :card-size="'short'"
+                        :product="{{ product|json_encode()|e('html_attr') }}"
+                    >
+                        {% include '../partials/card.twig' with {'product': product} %}
+                    </card>
+                </div>
+            {% endfor %}
+        </component>
+    </div>
+</section>
