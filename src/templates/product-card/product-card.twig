@@ -64,7 +64,7 @@
 				<component is="product-order-block" class="product-order__wrapper">
 					<ul class="product-order__list">
                         {% for price in product.prices %}
-                            <li class="product-order__item product-order__item--{% if price.base == 1 %}retail{% elseif price.base == 2 %}base{% elseif price.base == 0 %}discount-green{% elseif price.base == 3 %}total{% endif %}">
+                            <li class="product-order__item product-order__item--{% if price.base == 1 %}retail{% elseif price.base == 2 %}base{% elseif price.base == 0 %}discount-{% if price.discount >= 10 %}green{% else %}blue{% endif %}{% elseif price.base == 3 %}total{% endif %}">
                                 <p class="product-order__name" >
                                     {% if price.base == 1 %}
                                         Розничная цена
@@ -76,7 +76,6 @@
                                         Ваша цена
                                     {% endif %}
                                     {% if price.discount %}
-                                        {#TODO починить цвет скодки#}
                                         {{ price.discount }}%
                                     {% endif %}
                                 </p>
