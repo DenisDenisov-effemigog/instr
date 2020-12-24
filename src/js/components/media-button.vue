@@ -34,7 +34,7 @@ export default {
     methods:{
         openAction() {
             this.active = true;
-            this.$eventBus.$emit("openModal", this.action, this.link, true)
+            this.$eventBus.$emit("openModal", this.action, this.link, true, true)
         },
         deleteActive() {
             this.active = false;

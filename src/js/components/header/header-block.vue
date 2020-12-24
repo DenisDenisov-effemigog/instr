@@ -87,7 +87,7 @@ export default {
             this.flag = data
         },
         openModal(modal, props) {
-            this.$eventBus.$emit("openModal", modal, props, false)
+            this.$eventBus.$emit("openModal", modal, props, false, true)
         },
     }
     

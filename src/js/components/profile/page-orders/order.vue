@@ -116,7 +116,7 @@ export default {
                     'orderNumber': vm.order.number
                 }
 
-                this.$eventBus.$emit("openModal", modal, repeatOrder, false)
+                this.$eventBus.$emit("openModal", modal, repeatOrder, false, false)
                 
             }).catch((error) => {
                 //this.$router.push('/account/orders/');
