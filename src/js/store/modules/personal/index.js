@@ -39,7 +39,9 @@ const state = {
         max: 0,
         current: 0
     },*/
-    orders: []
+    checkData: [],
+    orders: [],
+    addresses: []
 };
 
 const mutations = {
@@ -56,37 +58,17 @@ const mutations = {
     [types.PERSONAL_APPLY_ORDERS](state, orders) {
         state.orders = orders;
     },
+    [types.PERSONAL_APPLY_CHECKS](state, checkData) {
+        console.log('mut', checkData);
+        state.checkData = checkData;
+    },
+    [types.PERSONAL_ADDRESSES](state, addresses) {
+        console.log('mut', addresses);
+        state.addresses = addresses;
+    },
 };
 
 const actions = {
-    personalUpdateShortProfile: ({commit, dispatch}) => { //TODO not used yet
-        api.personalProfileSummary().then((answer) => {
-            if(answer.base) {
-                commit(types.PERSONAL_APPLY_SHORT_PROFILE, {
-                    fullname: answer.base.fullname,
-                    company: answer.base.company.name,
-                    avatar: answer.base.avatar['50'],
-                });
-            }
-            /*
-            if(answer.addresses) {
-                commit(types.ADDRESS_APPLY_ADDRESSES, answer.addresses);
-            }
-            if(answer.orders) {
-                commit(types.PERSONAL_APPLY_SHORT_ORDERS, answer.orders);
-            }
-            if(answer.contract) {
-                commit(types.PERSONAL_APPLY_CONTRACT, answer.contract);
-            }
-            if(answer.dept) {
-                commit(types.PERSONAL_APPLY_PAYMENT_LIMIT, answer.dept);
-            }
-            if(answer.pricing) {
-                commit(types.PERSONAL_APPLY_PRICING_LEVEL, answer.pricing);
-            }
-            */
-        });
-    },
     personalUpdateProfile: ({commit, dispatch}) => {
         api.personalProfile().then((profile) => {
             commit(types.PERSONAL_APPLY_PROFILE, profile);
@@ -98,6 +80,21 @@ const actions = {
             if(answer.orders) {
                 commit(types.PERSONAL_APPLY_ORDERS, answer.orders);
             }
+        });
+    },
+    personalUpdateCheckData: ({commit}) => {
+        api.personalChecks().then((answer) => {
+            if(answer.checkData) {
+                commit(types.PERSONAL_APPLY_CHECKS, answer.checkData);
+            }
+        });
+    },
+    personalUpdateAddresses: ({commit}) => {
+        api.personalAddressList().then((addresses) => {
+            //debugger;
+            //if(answer.addresses) {
+                commit(types.PERSONAL_ADDRESSES, addresses);
+            //}
         });
     },
 }
