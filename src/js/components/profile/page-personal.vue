@@ -85,5 +85,8 @@ export default {
             this.$eventBus.$emit("openModal", modal, this.profile, false, false)
         } 
     },
+    mounted() {
+        this.$eventBus.$emit('hideMenu')
+    }
 }
 </script>

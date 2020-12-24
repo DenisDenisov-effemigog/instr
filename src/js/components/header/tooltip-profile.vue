@@ -45,14 +45,14 @@
                     },
                     {
                         title: 'Мой счет',
-                        url: '/account/orders', 
+                        url: '/account/check', 
                         personType: 2, 
                         external: true,
                         icon: 'card'
                     },
                     {
                         title: 'Адреса доставки',
-                        url: '/account/orders',
+                        url: '/account/adresses',
                         personType: 2, 
                         external: true,
                         icon: 'delivery'
