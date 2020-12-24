@@ -127,6 +127,61 @@ for(let i = 0; i < 5; ++i) {
     });
 }
 
+let checkData = [];
+for(let i = 0; i < 6; ++i) {
+
+    let operation = ['Пополнение баланса', 'Оплата заказа'].sort(function (a, b) {
+        return 0.5 - Math.random()
+    }).pop();
+
+    let operationCode = ['23064560-0006', '23064560-0007'].sort(function (a, b) {
+        return 0.5 - Math.random()
+    }).pop();
+
+    let status = [true, false].sort(function (a, b) {
+        return 0.5 - Math.random()
+    }).pop();
+    
+    checkData.push({
+        id: i+1,
+        'sum': '1000000',
+        'date': '23.12.2020',
+        'time': '24:10',
+        'operation': operation,
+        'operationNumber': 3895347+i,
+        'code': operationCode,
+        'order': 325214+i,
+        'status': status
+    });
+}
+
+let demoAddressList = [
+    {
+        'id': 12828,
+        'order': '1',
+        'address': '1062 Budapest, V1 Bajzautca, 35 1062 Budapest, V1 Bajzautca, 35 1062 Budapest, V1 Bajzautca, 35 Bajzautca',
+        'status': 'сonfirmed',
+        'statusPrint': 'Подтверждён',
+        'statusDesc': '',
+    },
+    {
+        'id': 12829,
+        'order': '2',
+        'address': 'II., FrankelLeóút 22 1062 Budapest, V1 Bajzautca, 351062 Budapest, V1 Bajzautca, 35',
+        'status': 'submitted',
+        'statusPrint': 'Отправлен на подтверждение',
+        'statusDesc': 'В данный момент адрес проходит проверку модератора. Следить за статусом адреса вы можете тут',
+    },
+    {
+        'id': 12830,
+        'order': '3',
+        'address': 'XXI., Áruháztér 8',
+        'status': 'not-сonfirmed',
+        'statusPrint': 'Не подтвержден',
+        'statusDesc': 'К сожалению, адрес не прошел проверку модератора. Подробнее по горячей линии: 8 800-765-87-51',
+    }
+];
+
 //console.log(demoOrders);
 
 function demoSetBasketQuantity(productId, quantity) {
@@ -209,6 +264,32 @@ window.runAction = function (action, config) {
                         data: {
                             status: 1,
                             answer: demoProfile
+                        }
+                    }
+                });
+                break;
+            case 'instrum:main.api.user.address.get':
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                            answer: demoCloneOverJson(demoAddressList)
+                        }
+                    }
+                });
+                break;    
+            case 'instrum:main.api.user.checks.list':
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                            answer: {
+                                checkData: checkData,
+                                pagination: {
+                                    current: 1,
+                                    total: 5
+                                }
+                            },
                         }
                     }
                 });

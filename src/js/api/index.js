@@ -89,6 +89,13 @@ class Api {
             id: id
         });
     }
+    personalChecks() {
+        return this._promiseBitrixRequest('instrum:main.api.user.checks.list', {});
+    }
+    personalAddressList() {
+        return this._promiseBitrixRequest('instrum:main.api.user.address.get', {});
+    }
+    
 }
 
 let instance = new Api();

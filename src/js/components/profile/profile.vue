@@ -110,13 +110,27 @@ export default {
                 },
                 {
                     title: 'Список заказов',
-                    url: '/account/orders',
+                    url: '/account/orders/',
                     //'pageName': 'order-list', 
                     personType: 1,
                     //external: true
                 },
-                {title: 'Мой счет', 'pageName': 'my-check', personType: 2, external: true},
-                {title: 'Адреса доставки', 'pageName': 'delivery-list', personType: 2, external: true},
+                {
+                    title: 'Мой счет',
+                    url: '/account/check/',
+                    //'pageName': 'order-list', 
+                    personType: 2,
+                    //external: true
+                },
+                {
+                    title: 'Адреса доставки',
+                    url: '/account/adresses/',
+                    //'pageName': 'order-list', 
+                    personType: 2,
+                    //external: true
+                },
+                //{title: 'Мой счет', 'pageName': 'my-check', personType: 2, external: true},
+                //{title: 'Адреса доставки', 'pageName': 'delivery-list', personType: 2, external: true},
                 /*
                 {
                     title: 'Список заказов',
@@ -155,10 +169,10 @@ export default {
                 {'title': 'Выйти', 'icon': 'exit'},
             ],
             profileContent: [
-                {'name': 'my-profile', 'component': 'page-personal', 'data': this.profile.personal},
+                /*{'name': 'my-profile', 'component': 'page-personal', 'data': this.profile.personal},
                 {'name': 'order-list', 'component': 'page-orders', 'data': this.profile.orders},
                 {'name': 'my-check', 'component': 'page-check', 'data': this.profile.check},
-                {'name': 'delivery-list', 'component': 'page-delivery', 'data': this.profile.addresses},
+                {'name': 'delivery-list', 'component': 'page-delivery', 'data': this.profile.addresses},*/
             ],
         };
     },
