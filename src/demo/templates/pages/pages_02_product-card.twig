@@ -803,6 +803,7 @@
     'name' : 'Ivan',
     'last_name' : 'Sidorov',
     'personType': 2,
+    'authorized': false,
 }%}
 {% set product = {
     'id': 556,
@@ -816,8 +817,8 @@
     'prices': [
         {'id': 1, 'base': 1, 'price': '3 819', 'text': ''},
         {'id': 2, 'base': 2, 'price': '3 819', 'text': ''},
-        {'id': 3, 'base': 0, 'discount': 10, 'price': '819', 'text': 'Информация о скидке'},
-        {'id': 4, 'base': 0, 'discount': 5, 'price': '19', 'text': 'Информация о скидке'},
+        {'id': 3, 'base': 0, 'discount': 10, 'price': '819', 'text': 'Информация о скидке', 'discountColor': 'green'},
+        {'id': 4, 'base': 0, 'discount': 5, 'price': '19', 'text': 'Информация о скидке', 'discountColor': 'blue'},
         {'id': 5, 'base': 3, 'price': '3 819', 'text': ''}
     ],
     'guarantee': 3,
@@ -1129,7 +1130,7 @@
 
 {% block content %}
 
-    {% include '../../../templates/header/header.twig' with {'categories': categories} %}
+    {% include '../../../templates/header/header.twig' with {'categories': categories, 'user': user} %}
     {% include '../../../templates/breadcrumbs.twig' with {
         'breadcrumbs': [
             {
@@ -1158,6 +1159,6 @@
         'banner': '/demo_images/banners/product-card.png', 
         'bannerMobile': '/demo_images/banners/mob-banner.png'
     } %}
-    {% include '../../../templates/footer/footer.twig'  with {'countries': countries} %}
+    {% include '../../../templates/footer/footer.twig'  with {'countries': countries, 'user': user} %}
     
 {% endblock %}

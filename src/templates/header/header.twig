@@ -42,6 +42,9 @@
         </div>
     </template>
     <template slot="header">
-        <component :categories="{{ categories|json_encode()|e('html_attr') }}" is="header-block"></component>
+        <component is="header-block" 
+                   :categories="{{ categories|json_encode()|e('html_attr') }}"
+                   :user="{{ user|json_encode()|e('html_attr') }}"
+        ></component>
     </template>
 </component>

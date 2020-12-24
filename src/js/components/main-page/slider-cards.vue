@@ -1,5 +1,5 @@
 <template>
-    <agile :options="options">
+    <agile :options="options" @click="doStopScroll" ref="sliderCard">
         <slot></slot>
         <template slot="nextButton">
             <svg>
@@ -36,6 +36,7 @@
                             breakpoint: 1200,
                             settings: {
                                 slidesToShow: 5,
+                                dots: this.dots,
                             }
                         },
                         {
@@ -43,8 +44,6 @@
                             settings: {
                                 navButtons: true,
                                 slidesToShow: 4,
-                                dots: this.dots,
-                                unagile: false,
                             }
                         },
                     ]
@@ -52,6 +51,12 @@
             }
         },
         methods: {
-        }
+            doStopScroll(event) {
+                console.log('event.type')
+            }
+        },
+        mounted() {
+            // this.$refs.sliderCard.removeEventListener('touchmove', this.handleMouseMove)
+        },
     }
 </script>

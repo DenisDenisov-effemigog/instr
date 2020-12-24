@@ -1,5 +1,5 @@
 <template>
-    <agile :options="options">
+    <agile :options="options" class="agile_centered">
 
         <div @click="openModal" class="slider-promo__slide" v-for="slide in promoBanners">
             <div class="slider-promo__slide_content" 
@@ -57,7 +57,7 @@
                             }
                         },
                         {
-                            breakpoint: 600,
+                            breakpoint: 768,
                             settings: {
                                 navButtons: true,
                                 slidesToShow: 5,

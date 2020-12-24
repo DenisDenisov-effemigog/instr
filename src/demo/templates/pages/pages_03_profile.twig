@@ -409,6 +409,12 @@
 
 {% set countries = ['Белоруссия','Казахстан','Румыния','Болгария','Польша','США','Венгрия','Россия','Украина'] %}
 
+{% set user = {
+    'name' : 'Ivan',
+    'last_name' : 'Sidorov',
+    'personType': 2,
+    'authorized': true,
+}%}
 {% set products = [
     {
         'id': 1,
@@ -979,8 +985,8 @@
 
 {% block content %}
 
-    {% include '../../../templates/header/header.twig' with {'categories': categories} %}
+    {% include '../../../templates/header/header.twig' with {'categories': categories, 'user': user} %}
     {% include '../../../templates/profile/profile.twig' with {'profile': profile} %}
-    {% include '../../../templates/footer/footer.twig'  with {'countries': countries} %}
+    {% include '../../../templates/footer/footer.twig'  with {'countries': countries, 'user': user} %}
     
 {% endblock %}

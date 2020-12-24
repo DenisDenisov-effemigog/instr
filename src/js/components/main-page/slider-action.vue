@@ -1,6 +1,6 @@
 <template>
     <div class="slider-action">
-        <agile :options="options">
+        <agile :options="options" class="agile_centered">
 
             <slot></slot>
 
