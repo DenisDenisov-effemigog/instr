@@ -34,6 +34,7 @@ export default {
     },
     mounted() {
         this.$store.dispatch('personalUpdateCheckData');
+        this.$eventBus.$emit('hideMenu')
     },
     computed: {
         checkDataAll() {

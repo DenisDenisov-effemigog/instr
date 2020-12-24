@@ -8,39 +8,19 @@
                 </p>
             </div>
             <ul class="profile__menu-list">
-                <template v-for="item in computedLinks" v-show="profile.personal.personType === item.personType && profile.personal.personType !== 2 || profile.personal.personType === 2">
-                    
-                    <li v-if="item.external" @click.prevent="openPage(item.pageName)" class="profile__menu-link"
-                        :class="{'profile__menu-link_active': currentPage === item.pageName}"
-                        v-show="profile.personal.personType === item.personType && profile.personal.personType !== 2 || profile.personal.personType === 2"
+                <template v-for="item in computedLinks">
+                    <router-link tag="li" 
+                                 class="profile__menu-link" 
+                                 :exact="!!item.exact" 
+                                 active-class="profile__menu-link_active" 
+                                 :to="item.url"
                     >
                         <span>{{ item.title }}</span>
                         <svg class="" viewBox="0 0 6 10">
                             <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                         </svg>
-                    </li>
-                    <router-link v-else tag="li" class="profile__menu-link" :exact="!!item.exact" active-class="profile__menu-link_active" :to="item.url">
-                   
-                    <span>{{ item.title }}</span>
-                    <svg class="" viewBox="0 0 6 10">
-                        <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
-                    </svg>
                     </router-link>
-                    
                 </template>    
-                
-                 
-<!--                <li v-for="link in menu"
-                    class="profile__menu-link"
-                    :class="{'profile__menu-link_active': currentPage === link.pageName}"
-                    @click.prevent="openPage(link.pageName)"
-                    v-show="profile.personal.personType === link.personType && profile.personal.personType !== 2 || profile.personal.personType === 2"
-                >
-                    <span>{{ link.title }}</span>
-                    <svg class="" viewBox="0 0 6 10">
-                        <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
-                    </svg>
-                </li>-->
             </ul>
             <div class="profile__menu-mobile">
                 <div class="profile__menu-mobile_link" v-for="link in menuMobile">
@@ -52,39 +32,17 @@
             </div>
         </div>
         
-        <div class="profile__content">
-            <template v-if="currentPage == 'my-profile'">
-                <transition name="fade" mode="out-in">
-                    <router-view></router-view>
-                </transition>
-            </template>
-            <template v-else>
-                <div v-for="content in profileContent"
-                     v-show="currentPage === content.name && !mobile" class="profile__page">
-                    <div class="breadcrumbs" v-if="!showMenu  && details == false" @click="goBack">
-                        <svg class="breadcrumbs__back" viewBox="0 0 18 15">
-                            <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
-                        </svg>
-                        <span>Назад</span>
-                    </div>
-                    <component :is="content.component"
-                               :profile="content.data"
-                    ></component>
-                </div>
-            </template>
-           
-<!--            <div v-for="content in profileContent" 
-                 v-show="currentPage === content.name && !mobile" class="profile__page">
-                <div class="breadcrumbs" v-if="!showMenu  && details == false" @click="goBack">
-                    <svg class="breadcrumbs__back" viewBox="0 0 18 15">
-                        <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
-                    </svg>
-                    <span>Назад</span>
-                </div>
-                <component :is="content.component"
-                           :profile="content.data"
-                ></component>
-            </div>-->
+        <div class="profile__content" v-show="!showMenu && mobile || !mobile">
+            <div class="breadcrumbs" @click="goBack" v-if="!showMenu && mobile">
+                <svg class="breadcrumbs__back" viewBox="0 0 18 15">
+                    <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
+                </svg>
+                <span>Назад</span>
+            </div>
+
+            <transition name="fade" mode="out-in">
+                <router-view></router-view>
+            </transition>
         </div>
     </div>
 </template>
@@ -106,84 +64,49 @@ export default {
                     title: 'Мой профиль',
                     url: '/account/',
                     exact: true,
-                    personType: 1
+                    personType: [1,2],
                 },
                 {
                     title: 'Список заказов',
-                    url: '/account/orders/',
-                    //'pageName': 'order-list', 
-                    personType: 1,
+                    url: '/account/orders/', 
+                    personType: [1,2],
                     //external: true
                 },
                 {
                     title: 'Мой счет',
-                    url: '/account/check/',
-                    //'pageName': 'order-list', 
-                    personType: 2,
+                    url: '/account/check/', 
+                    personType: [2],
                     //external: true
                 },
                 {
                     title: 'Адреса доставки',
                     url: '/account/adresses/',
-                    //'pageName': 'order-list', 
-                    personType: 2,
+                    personType: [2],
                     //external: true
                 },
-                //{title: 'Мой счет', 'pageName': 'my-check', personType: 2, external: true},
-                //{title: 'Адреса доставки', 'pageName': 'delivery-list', personType: 2, external: true},
-                /*
-                {
-                    title: 'Список заказов',
-                    url: '/account/orders/',
-                    personType: 1
-                },
-                
-                {
-                    title: 'Details',
-                    url: '/account/details/'
-                },
-                
-                {
-                    title: 'Recently viewed',
-                    url: '/account/viewed/',
-                },
-                {
-                    title: 'Shopping cart',
-                    url: '/cart/',
-                    external: true
-                },*/
             ],
             currentPage: 'my-profile',
             mobile: false,
             showMenu: true,
             details: false,
-            menu: [
-                {'title': 'Мой профиль', 'pageName': 'my-profile', 'personType': 1},
-                {'title': 'Список заказов', 'pageName': 'order-list', 'personType': 1},
-                {'title': 'Мой счет', 'pageName': 'my-check', 'personType': 2},
-                {'title': 'Адреса доставки', 'pageName': 'delivery-list', 'personType': 2},
-            ],
             menuMobile: [
                 {'title': '+4 0371 166 478', 'icon': 'phone'},
                 {'title': 'Москва', 'icon': 'pin'},
                 {'title': 'Выйти', 'icon': 'exit'},
-            ],
-            profileContent: [
-                /*{'name': 'my-profile', 'component': 'page-personal', 'data': this.profile.personal},
-                {'name': 'order-list', 'component': 'page-orders', 'data': this.profile.orders},
-                {'name': 'my-check', 'component': 'page-check', 'data': this.profile.check},
-                {'name': 'delivery-list', 'component': 'page-delivery', 'data': this.profile.addresses},*/
             ],
         };
     },
     computed: {
         computedLinks() {
             let result = [];
+            let type = 0;
             let vm = this;
             this.links.forEach(item => {
                 if (item.url) {
                     item.active = vm.trimPath(vm.$route.path) === vm.trimPath(item.url);
                 }
+                type = item.personType.filter(type => this.profile.personal.personType === type)
+                // console.log(type)
                 result.push(item);
             });
             return result;
@@ -203,34 +126,25 @@ export default {
         this.updateWidth()
         this.$eventBus.$on("closeDetails", this.closeOrders)
         this.$eventBus.$on("openDetails", this.openDetails)
+        if(window.innerWidth < 760) {
+            this.$eventBus.$on("hideMenu", this.openPage)
+        }
+    },
+    beforeDestroy(){
+        this.$eventBus.$off('hideMenu');
     },
     methods: {
         trimPath(value) {
             return value.replace(/^\/+|\/+$/g, '');
         },
-        openPage(code) {
-            console.log('this.currentPage' , this.currentPage);
-            if (this.currentPage !== code) {
-                this.currentPage = code
-                if(window.innerWidth < 760) {
-                    this.mobile = false
-                    this.showMenu = false
-                }
-            }
-            this.$eventBus.$emit("allOrders");
+        openPage() {
+            this.showMenu = false
         },
         goBack() {
-            this.mobile = true
             this.showMenu = true
-            this.currentPage = ''
         },
         updateWidth() {
-            this.mobile = window.innerWidth < 760
-            if (this.mobile){
-                this.currentPage = ''
-            } else {
-                this.currentPage = 'my-profile'
-            }
+            this.mobile = window.innerWidth < 1024
         },
         closeOrders() {
             this.details = false

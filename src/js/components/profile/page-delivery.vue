@@ -66,6 +66,7 @@ export default {
     mounted() {
         console.log('his.$store.dispatch(');
         this.$store.dispatch('personalUpdateAddresses');
+        this.$eventBus.$emit('hideMenu')
     },
     methods: {
         openModal(modal) {
