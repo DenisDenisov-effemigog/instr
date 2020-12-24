@@ -184,7 +184,7 @@
             increase() {
                 if (this.amount < this.maxAmount) {
                     this.amount++;
-                    if(this.changeIcon) {
+                    if(this.changeIcon && this.width < 760) {
                         this.disabled = true
                     }
                     this.startSetAmount();
