@@ -15,6 +15,7 @@
             </div>
         </div>
         <div v-if="profile.length > 0">
+
             <ul class="delivery__list">
                 <li class="delivery__item" v-for="order in profile">
                     <div class="delivery__desc">
@@ -37,13 +38,22 @@
                             </div>
                         </div>
                     </div>
-                    <div class="delivery__icon">
+                    <div class="delivery__icon" @click.prevent="openModal('delete-address')">
                         <svg v-if="order.status !== 'not confirmed'">
                             <use :xlink:href="templatePath + 'images/sprite.svg#icons__del'"></use>
                         </svg>
                     </div>
                 </li>
+                <div class="delivery__add-address-btn delivery__add-address-btn_mobile"
+                    @click.prevent="openModal('new-address')"
+                >
+                    <svg viewBox="0 0 20 20">
+                        <use :xlink:href="templatePath + 'images/sprite.svg#icons__plus-small'"></use>
+                    </svg>
+                    <span>Добавить адрес</span>
+                </div>
             </ul>
+
         </div>
     </div>
 </template>
@@ -64,7 +74,7 @@ export default {
     },
     methods: {
         openModal(modal) {
-            this.$eventBus.$emit("openModal", modal, '', false)
+            this.$eventBus.$emit("openModal", modal, '', false, false)
         },
         openTooltip(data){
             this.showToltip = data
