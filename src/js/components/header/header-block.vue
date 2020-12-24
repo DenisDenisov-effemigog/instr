@@ -12,12 +12,12 @@
         ></header-search>
         <ul class="header__menu">
             <li class="header__menu-item">
-                <a href="#" class="header__menu-link">
+                <div class="header__menu-link">
                     <svg class="header__menu-icon" viewBox="-2 0 19 20">
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__user'"></use>
                     </svg>
-                    <p class="header__menu-text">Войти</p>
-                    <div class="header__menu-tooltip">
+                    <p class="header__menu-text" v-if="!user.authorized">Войти</p>
+                    <div class="header__menu-tooltip" v-if="!user.authorized">
                         <div @click.prevent="openModal('user', 'login')"  href="#" class="header__menu-tooltip-layout">
                             <svg class="" viewBox="0 0 16 16">
                                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__entrance'"></use>
@@ -31,45 +31,9 @@
                             Регистрация
                         </div>
                     </div>
-                    <!-- Tooltip для залогиненных пользователей -->
-                    <!-- <div class="header__menu-tooltip">
-                        <div href="#" class="header__menu-tooltip-layout">
-                            <svg>
-                                <use :xlink:href="templatePath + 'images/sprite.svg#icons__home'"></use>
-                            </svg>
-                            Мой профиль
-                        </div>
-                        <div href="#" class="header__menu-tooltip-layout">
-                            <svg>
-                                <use :xlink:href="templatePath + 'images/sprite.svg#icons__order'"></use>
-                            </svg>
-                            Список заказов
-                        </div>
-                        <div href="#" class="header__menu-tooltip-layout">
-                            <svg>
-                                <use :xlink:href="templatePath + 'images/sprite.svg#icons__card'"></use>
-                            </svg>
-                            Мой счет
-                        </div>
-                        <div href="#" class="header__menu-tooltip-layout">
-                            <svg>
-                                <use :xlink:href="templatePath + 'images/sprite.svg#icons__delivery'"></use>
-                            </svg>
-                            Адреса доставки
-                        </div>
-                        <div href="#" class="header__menu-tooltip-layout">
-                                <use :xlink:href="templatePath + 'images/sprite.svg#icons__sale'"></use>
-                            </svg>
-                            Акции
-                        </div>
-                        <div href="#" class="header__menu-tooltip-layout">
-                            <svg>
-                                <use :xlink:href="templatePath + 'images/sprite.svg#icons__exit'"></use>
-                            </svg>
-                            Выход
-                        </div>
-                    </div> -->
-                </a>
+                    <p class="header__menu-text" v-if="user.authorized">Профиль</p>
+                    <component is="tooltip-profile" v-if="user.authorized"></component>
+                </div>
             </li>
             <li class="header__menu-item">
                 <a href="#" class="header__menu-link">
@@ -97,15 +61,18 @@
 <script>
     import showCatalogue from '../catalogue/show-catalogue.vue';
     import headerSearch from './header-search.vue';
+    import tooltipProfile from './tooltip-profile.vue';
 
 export default {
     name: "header-block",
     components:{
         headerSearch,
+        tooltipProfile,
         showCatalogue
     },
     props: {
-        categories: {required: true}
+        categories: {required: true},
+        user: {required: true},
     },
     data(){
         return{

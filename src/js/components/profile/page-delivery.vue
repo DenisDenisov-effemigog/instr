@@ -1,10 +1,10 @@
 <template>
     <div class="delivery">
         <div class="delivery__header" 
-             :class="{'delivery__header_column': profile.length === 0}"
+             :class="{'delivery__header_column': addresses.length === 0}"
         >
             <h2 class="profile__title">Адреса доставки</h2>
-            <p class="delivery__no-address" v-if="profile.length === 0">У вас пока нет ни одного адреса.</p>
+            <p class="delivery__no-address" v-if="addresses.length === 0">У вас пока нет ни одного адреса.</p>
             <div class="delivery__add-address-btn"
                  @click.prevent="openModal('new-address')"
             >
@@ -14,10 +14,10 @@
                 <span>Добавить адрес</span>
             </div>
         </div>
-        <div v-if="profile.length > 0">
-
+      
+        <div v-if="addresses.length > 0">
             <ul class="delivery__list">
-                <li class="delivery__item" v-for="order in profile">
+                <li class="delivery__item" v-for="order in addresses">
                     <div class="delivery__desc">
                         <div class="delivery__order">Адрес № {{order.order}}</div>
                         <div class="delivery__address">{{order.address}}</div>
@@ -62,15 +62,19 @@
 export default {
     name:"page-delivery",
     props:{
-        profile: {
+        /*profile: {
             required: true,
             type: Array,
-        },
+        },*/
     },
     data(){
         return{
             showToltip: 0,
         }
+    },
+    mounted() {
+        console.log('his.$store.dispatch(');
+        this.$store.dispatch('personalUpdateAddresses');
     },
     methods: {
         openModal(modal) {
@@ -83,5 +87,11 @@ export default {
             this.showToltip = 0
         }
     },
+    computed: {
+        addresses() {
+            console.log('this.$store.state.personal.addresses', this.$store.state.personal.addresses);
+            return this.$store.state.personal.addresses;
+        },
+    }
 }
 </script>

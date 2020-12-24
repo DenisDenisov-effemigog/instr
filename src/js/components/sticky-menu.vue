@@ -21,15 +21,15 @@
                     <p class="header__menu-text">Избранное</p>
                 </a>
             </li>
-            <!--<li class="header__menu-item">
+            <li class="header__menu-item" v-if="!user.authorized">
                 <a href="#" class="header__menu-link">
                     <svg class="header__menu-icon">
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__user'"></use>
                     </svg>
                     <p class="header__menu-text">Войти</p>
                 </a>
-            </li>-->
-            <li class="header__menu-item">
+            </li>
+            <li class="header__menu-item" v-if="user.authorized">
                 <a 
                     class="header__menu-link"
                     :class="{'header__menu-link_active': menuLink === 'profile' || menuLink === 'search'}"
@@ -57,6 +57,9 @@
 
 export default {
     name: "sticky-menu",
+    props: {
+        user: {required: true},
+    },
     data(){
         return{
             menuLink: ''
