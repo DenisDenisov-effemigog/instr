@@ -1,6 +1,19 @@
 <section class="new-items">
+    <div class="slider-cards__title">Новинки от производителя</div>
+    <div class="new-items__block">
+        <div class="new-items__cards">
+            {% for product in bestsellers %}
+                <component
+                    is="card"
+                    :card-size="'short'"
+                    :product="{{ product|json_encode()|e('html_attr') }}"
+                >
+                    {% include '../partials/card.twig' with {'product': product} %}
+                </component>
+            {% endfor %}
+        </div>
+    </div>
     <div class="slider-cards slider-cards--short-card">
-        <div class="slider-cards__title">Новинки от производителя</div>
         <component
             is="slider-cards"
             :dots="false"

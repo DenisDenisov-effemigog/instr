@@ -8,7 +8,7 @@
             <div class="order__none_text">У вас пока еще нет заказов</div>
             <div class="order__none_btn">Перейти в каталог</div>
         </div>
-        <div class="order__info" v-if="!details">
+        <div class="order__info" v-if="!details && ordersAll.length !== 0">
             <div class="order__info-icon">
                 <svg>
                     <use :xlink:href="templatePath + 'images/sprite.svg#icons__wanted'"></use>
@@ -18,7 +18,7 @@
                 В этом разделе вы найдете информацию о заказах, сделанных на сайте
             </div>
         </div>
-        <div class="order__info-select" v-if="!details">
+        <div class="order__info-select" v-if="!details && ordersAll.length !== 0">
             <select-list
                 :points="points"
                 :icon="icon"
