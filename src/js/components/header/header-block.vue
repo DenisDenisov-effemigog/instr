@@ -32,44 +32,7 @@
                         </div>
                     </div>
                     <p class="header__menu-text" v-if="user.authorized">Профиль</p>
-                     <div class="header__menu-tooltip" v-if="user.authorized">
-                        <div href="#" class="header__menu-tooltip-layout">
-                            <svg>
-                                <use :xlink:href="templatePath + 'images/sprite.svg#icons__home'"></use>
-                            </svg>
-                            Мой профиль
-                        </div>
-                        <div href="#" class="header__menu-tooltip-layout">
-                            <svg>
-                                <use :xlink:href="templatePath + 'images/sprite.svg#icons__order'"></use>
-                            </svg>
-                            Список заказов
-                        </div>
-                        <div href="#" class="header__menu-tooltip-layout">
-                            <svg>
-                                <use :xlink:href="templatePath + 'images/sprite.svg#icons__card'"></use>
-                            </svg>
-                            Мой счет
-                        </div>
-                        <div href="#" class="header__menu-tooltip-layout">
-                            <svg>
-                                <use :xlink:href="templatePath + 'images/sprite.svg#icons__delivery'"></use>
-                            </svg>
-                            Адреса доставки
-                        </div>
-                        <div href="#" class="header__menu-tooltip-layout">
-                            <svg>
-                                <use :xlink:href="templatePath + 'images/sprite.svg#icons__sale'"></use>
-                            </svg>
-                            Акции
-                        </div>
-                        <div href="#" class="header__menu-tooltip-layout">
-                            <svg>
-                                <use :xlink:href="templatePath + 'images/sprite.svg#icons__exit'"></use>
-                            </svg>
-                            Выход
-                        </div>
-                    </div> 
+                    <component is="tooltip-profile" v-if="user.authorized"></component>
                 </div>
             </li>
             <li class="header__menu-item">
@@ -98,11 +61,13 @@
 <script>
     import showCatalogue from '../catalogue/show-catalogue.vue';
     import headerSearch from './header-search.vue';
+    import tooltipProfile from './tooltip-profile.vue';
 
 export default {
     name: "header-block",
     components:{
         headerSearch,
+        tooltipProfile,
         showCatalogue
     },
     props: {
