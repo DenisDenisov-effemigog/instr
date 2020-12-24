@@ -7,16 +7,15 @@
     display: flex
     flex-direction: column
     transition: .35s
-    +tablet
+    +desktop
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08)
         display: block
         height: 80vh
         overflow: auto
-    +desktop
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08)
     &-open
         opacity: 1
         top: 4.2rem
-        +tablet
+        +desktop
             top: 3rem
     &-result
         order: 2
@@ -29,7 +28,7 @@
             display: flex
             justify-content: space-between
             align-items: center
-            +tablet
+            +desktop
                 display: block
                 cursor: pointer
                 &:hover
@@ -41,14 +40,14 @@
             padding: 0.75rem 1rem
             display: flex
             justify-content: center
-            +tablet
+            +desktop
                 justify-content: space-between
             &-text
                 order: 2
                 padding-left: 0.5rem
                 color: $blue
                 font-weight: 600
-                +tablet
+                +desktop
                     padding-left: 0
                     order: 1
                     &:hover
@@ -57,7 +56,7 @@
                 
             &-pic
                 order: 1
-                +tablet
+                +desktop
                     order: 2
                 &-icon
                     fill: $blue
@@ -70,7 +69,7 @@
                 width: $size_18
                 height: $size_18
                 fill: $black
-            +tablet
+            +desktop
                 display: none
     &-category
         order: 1
@@ -79,12 +78,12 @@
             border-bottom: 1px solid $border-color_2
         &__title
             display: none
-            +tablet
+            +desktop
                 display: block
             font-size: $font-size_3
             color: $black
         &__list
-            +tablet
+            +desktop
                 padding-top: 1.5rem
                 padding-left: 1rem 
                 padding-right: 0.5rem 
@@ -111,7 +110,7 @@
                     font-weight: 600
     &-items
         display: none
-        +tablet
+        +desktop
             display: block
         &__title
             padding-top: 1rem

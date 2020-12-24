@@ -19,10 +19,12 @@
                     Повторить заказ
                 </div>
             </div>
-            <div class="order__arrow_wrap" @click.stop="clickArrow">
-                <svg>
-                    <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-down'"></use>
-                </svg>
+            <div class="order__arrow" :class="{'order__arrow--open': opened}">
+                <div class="order__arrow_wrap" @click.stop="clickArrow">
+                    <svg>
+                        <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-down'"></use>
+                    </svg>
+                </div>
             </div>
         </div>
         <order-product-list :orderId="order.id" :products="products" :orderIndex="index" :opened="opened"></order-product-list>
