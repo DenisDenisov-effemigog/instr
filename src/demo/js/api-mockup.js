@@ -9,9 +9,12 @@ let demoMockupBasket = [
         url: '/product/gumky-bagazhni-450-600-900-mm-3-sht-sparta/',
         sku: '543345',
         images: [
-            '/demo_images/img-1_2.png'
+            '/demo_images/product/image_51.png'
         ],
         price: 33.01,
+        discount: 10,
+        allPrice: '910',
+        totalPrice: '810',
         available: true,
         stock: 15,
         basket_quantity: 1
@@ -22,10 +25,13 @@ let demoMockupBasket = [
         url: '/product/pavuk-bagazhnyy-gumovyy-8-gakiv-sparta/',
         sku: '543305',
         images: [
-            '/demo_images/img-2_1.jpg',
-            '/demo_images/img-2_2.jpg'
+            '/demo_images/product/image_51.png',
+            '/demo_images/product/image_52.png'
         ],
         price: 43.34,
+        allPrice: '9170',
+        totalPrice: '810',
+        discount: 10,
         available: true,
         stock: 35,
         basket_quantity: 2
@@ -36,11 +42,13 @@ let demoMockupBasket = [
         url: '/product/gumky-bagazhni-posyleni-2-sht-1000-mm-stels/',
         sku: '54361',
         images: [
-            '/demo_images/img-3_1.jpg',
-            '/demo_images/img-3_2.jpg'
+            '/demo_images/product/image_51.png',
+            '/demo_images/product/image_52.png'
         ],
         price: 53.51,
-        available: true,
+        allPrice: '9170',
+        totalPrice: '810',
+        available: false,
         stock: 14,
         basket_quantity: 3
     },
@@ -50,11 +58,13 @@ let demoMockupBasket = [
         url: '/product/pavuk-bagazhnyy-posylenyy-8-gakiv-stels/',
         sku: '54364',
         images: [
-            '/demo_images/img-4_1.jpg',
-            '/demo_images/img-4_2.jpg'
+            '/demo_images/product/image_51.png',
+            '/demo_images/product/image_52.png'
         ],
         price: 13.8,
-        available: true,
+        allPrice: '9170',
+        totalPrice: '810',
+        available: false,
         stock: 7,
         basket_quantity: 8
     },
@@ -64,10 +74,12 @@ let demoMockupBasket = [
         url: '/product/domkrat-gidravlichnyy-pidkatnyy-3-t-h-pidyomu-130-410-mm-povorotna-ruchka-mtx/',
         sku: '5103459',
         images: [
-            '/demo_images/img-5_1.jpg',
-            '/demo_images/img-5_2.jpg'
+            '/demo_images/product/image_51.png',
+            '/demo_images/product/image_52.png'
         ],
         price: 3.12,
+        allPrice: '9170',
+        totalPrice: '810',
         available: true,
         stock: 55,
         basket_quantity: 2
@@ -84,6 +96,38 @@ let demoProfile = {
     'email': 'konstantynopolsky@gmail.com',
     'address': 'Название адреса'
 };
+
+let demoOrders = [];
+//let baseOrderDate = new Date('2020-02-14');
+for(let i = 0; i < 5; ++i) {
+    /*let newOrderDate = new Date(baseOrderDate.valueOf());
+    newOrderDate.setDate(newOrderDate.getDate() + i);
+    newOrderDate = Math.round(newOrderDate.getTime()/1000);*/
+
+    let newOrdeStatus = ['Выполнен', 'В процессе', 'Отменен'].sort(function (a, b) {
+        return 0.5 - Math.random()
+    }).pop();
+
+    demoOrders.push({
+        id: i+1,
+        number: 3254+i,
+        date: '31.12.2020',
+        status: newOrdeStatus,
+        paid: Math.random() > 0.5,
+        count: Math.floor(99 * Math.random()),//оставить одно
+        qty: 8,
+        discount: '10',
+        economy: '1 000',
+        price: '1 001 819',
+        priceTotal: '1 000 819',
+        
+        address: 'Москва, Трехгорный Вал 3, ст. 26',
+        client: 'Константин Константинопольский konstantynopolsky@gmail.com +7 (910) 872-92-89',
+        payment: 'Оплата онлайн по карте',
+    });
+}
+
+//console.log(demoOrders);
 
 function demoSetBasketQuantity(productId, quantity) {
     let found = false;
@@ -165,6 +209,84 @@ window.runAction = function (action, config) {
                         data: {
                             status: 1,
                             answer: demoProfile
+                        }
+                    }
+                });
+                break;
+            case 'instrum:main.api.user.order.list':
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                            answer: {
+                                orders: demoOrders,
+                                pagination: {
+                                    current: 1,
+                                    total: 5
+                                }
+                            },
+                        }
+                    }
+                });
+                break;
+            case 'instrum:main.api.user.order.get':
+                //debugger;
+                if (!config.data || !config.data.id) {
+                    reject(new Error('Wrong config'));
+                }
+
+                let foundOrder = demoOrders.find(item => item.id == config.data.id);
+
+                if(!foundOrder) {
+                    resolve({
+                        data: {
+                            data: {
+                                status: 0,
+                                errors: [
+                                    {
+                                        code: 'not_found',
+                                        message: 'Order with such ID not found'
+                                    }
+                                ]
+                            }
+                        }
+                    });
+                    break;
+                }
+
+                let returnOrder = {
+                    
+                    id: foundOrder.id,
+                    number: foundOrder.number,
+                    date: foundOrder.date,
+                    address: foundOrder.address,
+                    status: foundOrder.status,
+                    client: foundOrder.client,
+                    paid: foundOrder.paid,
+                    discount: foundOrder.discount,
+                    economy: foundOrder.economy,
+                    count: foundOrder.count,
+                    payment: foundOrder.payment,
+                    price: foundOrder.price,
+                    priceTotal: foundOrder.priceTotal,
+                    qty: foundOrder.qty,
+                    /*prices: {
+                        base: foundOrder.prices.base,
+                        tax: 0.2 * foundOrder.prices.base,
+                        delivery: 0
+                    },
+                    payment: {
+                        id: 113,
+                        name: 'NayPay'
+                    },*/
+                    basket: demoMockupBasket,
+                };
+
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                            answer: returnOrder
                         }
                     }
                 });

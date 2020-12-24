@@ -11,11 +11,11 @@
                     v-for="product in products.products"
                 >
                     <div class="order-modal__special_img">
-                        <img :src="product.img" alt="">
+                        <img :src="productImg(product)" alt="">
                     </div>
                     <div class="order-modal__special_info">
-                        <div class="order-modal__special_article">Артикул: {{ product.art }}</div>
-                        <div class="order-modal__special_desc"> {{ product.desc }} </div>
+                        <div class="order-modal__special_article">Артикул: {{ product.sku }}</div>
+                        <div class="order-modal__special_desc"> {{ product.name }} </div>
                     </div>
                 </li>
             </ul>
@@ -33,5 +33,22 @@ export default {
             type: Object
         }  
     },
+    created() {
+        //console.log(' this.products ' , this.products);
+    },
+    methods: {
+        productImg(product) {//.images
+            //console.log(' product images' , product.images);
+            //console.log('product.images[0]' , product.images[0]);
+            if (product.images.length)
+                return product.images[0];
+            else
+                return '';
+        },
+    },
+    computed: {
+        
+    
+    }
 }
 </script>

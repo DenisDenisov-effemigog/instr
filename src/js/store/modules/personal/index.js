@@ -53,6 +53,9 @@ const mutations = {
         state.email = data.email;
         state.address = data.address;
     },
+    [types.PERSONAL_APPLY_ORDERS](state, orders) {
+        state.orders = orders;
+    },
 };
 
 const actions = {
@@ -89,7 +92,14 @@ const actions = {
             commit(types.PERSONAL_APPLY_PROFILE, profile);
         });
     },
-    
+
+    personalUpdateOrders: ({commit}) => {
+        api.personalOrders().then((answer) => {
+            if(answer.orders) {
+                commit(types.PERSONAL_APPLY_ORDERS, answer.orders);
+            }
+        });
+    },
 }
 
 const getters = {

@@ -81,6 +81,14 @@ class Api {
     personalProfile() {
         return this._promiseBitrixRequest('instrum:main.api.user.base.get', {});
     }
+    personalOrders() {
+        return this._promiseBitrixRequest('instrum:main.api.user.order.list', {});
+    }
+    personalOrder(id) {
+        return this._promiseBitrixRequest('instrum:main.api.user.order.get', {
+            id: id
+        });
+    }
 }
 
 let instance = new Api();
