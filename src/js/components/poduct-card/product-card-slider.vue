@@ -34,10 +34,10 @@
             >
                 <img @mouseenter="hoverOn" :src="productImage.img" alt="">
                 <div class="product-card-slider__zoom"
-                     :class="{'product-card-slider__zoom--open': openZoom}"
-                     ref="zoom"
-                     @mousemove="zoomImg" 
-                     :style="`background-image:url(${productImage.img}); background-position:${x}% ${y}%`"
+                    :class="{'product-card-slider__zoom--open': openZoom}"
+                    ref="zoom"
+                    @mousemove="zoomImg" 
+                    :style="`background-image:url(${productImage.img}); background-position:${x}% ${y}%`"
                 ></div>
             </div>
         </VueSlickCarousel>
@@ -100,13 +100,13 @@ export default {
             this.$eventBus.$emit("openModal", 'product-card', this.productImages, true)
         },
         hoverOn(){
-            if(window.innerWidth > 768) {
+            if(window.innerWidth > 1024) {
                 this.openZoom = true
                 this.$eventBus.$emit('showStickers')
             }
         },
         hoverOff(){
-            if(window.innerWidth > 768) {
+            if(window.innerWidth > 1024) {
                 this.openZoom = false
                 this.$eventBus.$emit('hideStickers')
             }
@@ -114,7 +114,7 @@ export default {
             this.y = 0
         },
         zoomImg(e){
-            if(window.innerWidth > 768) {
+            if(window.innerWidth > 1024) {
                 let zoomSlide = this.$refs.zoom
                 let zoomSlideTop = zoomSlide.getBoundingClientRect().top + window.pageYOffset
                 let zoomSlideWidth = zoomSlide.getBoundingClientRect().width
