@@ -108,8 +108,13 @@ export default {
                     exact: true,
                     personType: 1
                 },
-                
-                {title: 'Список заказов', 'pageName': 'order-list', personType: 1, external: true},
+                {
+                    title: 'Список заказов',
+                    url: '/account/orders',
+                    //'pageName': 'order-list', 
+                    personType: 1,
+                    //external: true
+                },
                 {title: 'Мой счет', 'pageName': 'my-check', personType: 2, external: true},
                 {title: 'Адреса доставки', 'pageName': 'delivery-list', personType: 2, external: true},
                 /*

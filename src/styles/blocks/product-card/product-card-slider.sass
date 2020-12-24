@@ -1,12 +1,16 @@
 .product-card-slider
     width: 100%
     display: flex
+    +tablet-only
+        align-items: center
     &__main
         width: 328px
         margin: 0 auto
         +desktop
             width: 504px
             margin: 0
+        +tablet-only
+            width: 53%
         &_slide
             outline: none
             position: relative

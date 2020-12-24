@@ -2,12 +2,12 @@
     <div class="personalcab">
         <div class="personalcab__layout">
             <div class="personalcab__personal-data">
-                <h2 class="profile__title">Личные данные</h2>
+                <h2 class="profile__title">{{ h1 }}</h2>
             </div>
             <div class="personalcab__company">
                 <div class="profile__company">
-                    <h3 class="profile__company-name">{{profile.company}}</h3>
-                    <p class="profile__company-type">{{profile.personTypePrint}}</p>
+                    <h3 class="profile__company-name">{{ profile.company }}</h3>
+                    <p class="profile__company-type">{{ profile.personTypePrint }}</p>
                 </div>
             </div>
             <ul class="personalcab__columns">
@@ -75,6 +75,9 @@ export default {
             let profile = this.cloneOverJson(this.$store.state.personal);
             //contract.effective_date = this.when(contract.effective_date);
             return profile;
+        },
+        h1() {
+            return this.$store.state.layout.h1;
         },
     },
     methods: {
