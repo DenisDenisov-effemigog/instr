@@ -2,17 +2,17 @@
     <ul class="order__product-list" :class="{'order__product-list--open': opened}">
         <li v-for="(product, index) in products" 
             class="order__product-item" 
-            v-if="index < 20 && !showAll || showAll"
+            v-if="index < 3 && !showAll || showAll"
         >
-            <div class="order__product-number"><span>Артикул:</span>{{product.art}}</div>
+            <div class="order__product-number"><span>Артикул:</span>{{product.sku}}</div>
             <div class="order__product-desc">
-                <span>{{product.desc}}</span>
+                <span>{{product.name}}</span>
                 <div class="order__product-desc_tooltip">
-                    {{product.desc}}
+                    {{product.name}}
                 </div>
             </div>
-            <div class="order__product-qty">{{product.qty}}<span>шт.</span></div>
-            <div class="order__product-item-price">{{product.itemPrice}} &#8381;</div>
+            <div class="order__product-qty">{{product.basket_quantity}}<span>шт.</span></div>
+            <div class="order__product-item-price">{{product.price}} &#8381;</div>
             <div class="order__product-all-price">{{product.allPrice}} &#8381;</div>
             <div class="order__product-discount">
                 <span v-if="product.discount > 0">{{product.discount}}%</span>
@@ -20,7 +20,7 @@
             <div class="order__product-total-price">{{product.totalPrice}} &#8381;</div>
         </li>
         
-        <li class="order__product-item--all" v-if="products.length > 20 && !showAll">
+        <li class="order__product-item--all" v-if="products.length > 3 && !showAll">
             <a @click.prevent="openDetails"> 
                 Больше информации о заказе
             </a>
@@ -48,15 +48,23 @@ export default {
             type: Number,
             default: null
         },
+        orderId:{
+            type: Number,
+            default: null
+        },
     },
     data(){
         return{
             
         }
     },
+    created() {
+        //console.log('this.orderId ', this.orderId)
+    },
     methods:{
         openDetails() {
-            this.$eventBus.$emit("detailOrder", this.orderIndex);
+            this.$router.push('/account/orders/' + this.orderId + '/');
+            //this.$eventBus.$emit("detailOrder", this.orderIndex);
         },
     }
 }

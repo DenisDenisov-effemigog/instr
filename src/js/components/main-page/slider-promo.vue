@@ -57,7 +57,7 @@
                             }
                         },
                         {
-                            breakpoint: 600,
+                            breakpoint: 768,
                             settings: {
                                 navButtons: true,
                                 slidesToShow: 5,

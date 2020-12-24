@@ -1,19 +1,10 @@
 <template>
     <div class="order">
-        <div 
-            v-show="details"
-            class="breadcrumbs" 
-            @click="allOrders"
-        >
-            <svg class="breadcrumbs__back" viewBox="0 0 18 15">
-                <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
-            </svg>
-            <span>Назад</span>
-        </div>
+        
         <div class="order__header">
             <h2 class="profile__title">Список заказов</h2>
         </div>
-        <div v-if="profile.length === 0" class="order__none">
+        <div v-if="ordersAll.length === 0" class="order__none">
             <div class="order__none_text">У вас пока еще нет заказов</div>
             <div class="order__none_btn">Перейти в каталог</div>
         </div>
@@ -34,7 +25,7 @@
             ></select-list>
         </div>
         <div class="order__main">
-            <order-list v-model.trim="details" :orders="profile"></order-list>
+            <order-list v-model.trim="details" :orders="ordersAll"></order-list>
         </div>
     </div>
 </template>
@@ -49,25 +40,31 @@
          },
         name:"page-orders",
         props:{
-            profile: {
-                required: true,
-                type: Array,
-            },
+            
         },
         data(){
             return{
+                profile: [],
                 points:['Выполнен','В ожидании оплаты','Отменен'],
                 details: false,
                 icon:'check'
             }
         },
+        mounted() {
+            this.$store.dispatch('personalUpdateOrders');
+        },
         created(){
             this.$eventBus.$on("allOrders", this.allOrders)
         },
         methods:{
-            allOrders() {
+            /*allOrders() {
                 this.details = false
                 this.$eventBus.$emit('closeDetails')
+            },*/
+        },
+        computed: {
+            ordersAll() {
+                return this.$store.state.personal.orders;
             },
         }
     }

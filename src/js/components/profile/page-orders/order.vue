@@ -1,15 +1,13 @@
 <template>
-    <div>
+    <div>        
         <div class="order__desc" @click.stop="openDetails(index)">
             <div class="order__number">#{{order.number}}</div>
             <div class="order__date">{{order.date}}</div>
             <div class="order__status">{{order.status}}</div>
-            <div class="order__qty">
-                {{order.qty}} 
-                <span v-if="(order.qty % 10) == 1">товар</span>
-                <span v-else-if="orderQnty(order.qty)">товаров</span>
-                <span v-else>товара</span>
-            </div>
+            {{order.qty}}
+            <span v-if="(order.qty % 10) == 1">товар</span>
+            <span v-else-if="orderQnty(order.qty)">товаров</span>
+            <span v-else>товара</span>
             <div class="order__price">{{order.priceTotal}} &#8381;</div>
             <div @click.stop="openModal('repeat-order')" class="order__btn">
                 <div class="order__btn-icon">
@@ -21,20 +19,23 @@
                     Повторить заказ
                 </div>
             </div>
-            <div class="order__arrow" :class="{'order__arrow--open': opened}">
-                <div class="order__arrow_wrap" @click.stop="clickArrow">
-                    <svg>
-                        <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-down'"></use>
-                    </svg>
-                </div>
+            <div class="order__arrow_wrap" @click.stop="clickArrow">
+                <svg>
+                    <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-down'"></use>
+                </svg>
             </div>
         </div>
-        <order-product-list :products="order.product" :orderIndex="index" :opened="opened"></order-product-list>
+        <order-product-list :orderId="order.id" :products="products" :orderIndex="index" :opened="opened"></order-product-list>
     </div>
 </template>
 
 <script>
 import orderProductList from './order-product-list.vue'
+
+import * as Api from '../../../api/index';
+
+let api = Api.getInstance();
+
 export default {
     components: {
         orderProductList,
@@ -52,31 +53,74 @@ export default {
     },
     data(){
         return{
+            products: [],
             opened: false,
         }
     },
     created(){
         this.$eventBus.$on("detailOrder", this.openDetails)
     },
-    methods:{
+    methods: {
+        getOrderProducts(cb){
+            //console.log('this.order ', this.order);
+            if (this.products.length == 0) {
+                return api.personalOrder(this.order.id).then((order) => {
+                    //debugger;
+                    //this.order = order;
+                    this.products = order.basket;
+                    //console.log('this.products', this.products);
+                    /*if (cb) {
+                        setTimeout(cb, 0);
+                    }*/
+                }).catch((error) => {
+                    this.$router.push('/account/orders/');
+                });
+            } else {
+                return new Promise((resolve, reject) => {
+                    //debugger;                    
+                    resolve();
+                });
+            }
+        },
         clickArrow(){
-            this.opened = !this.opened
+            
+            this.getOrderProducts();
+            
+            this.opened = !this.opened;
         },
         openDetails(index){
-            this.$eventBus.$emit("openDetails", index)
+            //this.$eventBus.$emit("openDetails", index)
+            this.$router.push('/account/orders/' + this.order.id + '/');
         },
         openModal(modal) {
             let vm = this;
+            //debugger;
+            this.getOrderProducts().then(() => {
+                //debugger;
+                //this.order = order;
+                //this.products = order.basket;
+                //console.log('this.products', this.products);
+                /*if (cb) {
+                    setTimeout(cb, 0);
+                }*/
+
+                let result = vm.products.filter(function (item) {
+                    //debugger;
+                    return item.available === false
+                })
+                console.log('vm.products' , vm.products, 'result' , result);
+                let repeatOrder = {
+                    'products': result,
+                    'orderNumber': vm.order.number
+                }
+
+                this.$eventBus.$emit("openModal", modal, repeatOrder, false)
+                
+            }).catch((error) => {
+                //this.$router.push('/account/orders/');
+            });
+            //debugger;
             
-            let result = vm.order.product.filter(function (item) {
-                return item.available === false
-            })
-            let repeatOrder = {
-                'products': result, 
-                'orderNumber': vm.order.number
-            }
-            
-            this.$eventBus.$emit("openModal", modal, repeatOrder, false)
         },
         orderQnty(value) {
             if (value % 10 > 4 || value % 10 == 0 || value > 10 && value < 15) {
