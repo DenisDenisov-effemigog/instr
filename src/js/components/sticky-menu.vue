@@ -42,11 +42,14 @@
                 </a>
             </li>
             <li class="header__menu-item">
-                <a href="#" class="header__menu-link">
+                <a href="#" class="header__menu-link header__menu-link_cart_active">
                     <svg class="header__menu-icon">
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__cart'"></use>
                     </svg>
                     <p class="header__menu-text">Корзина</p>
+                    <span class="header__mini-cart" v-if="productsQuantity > 0">
+                        {{productsQuantity}}
+                    </span>
                 </a>
             </li>
         </ul>
@@ -77,7 +80,7 @@ export default {
                 this.$eventBus.$emit('exitSearch', true);
             } else if (this.menuLink === 'profile') {
                 if (this.user.authorized) {
-                    window.location.replace('account')
+                    window.location.replace('/account')
                 } else {
                     this.$eventBus.$emit("openModal", 'user', 'login', false, true)
                 }
@@ -90,5 +93,11 @@ export default {
             this.menuLink = ''
         },
     },
+    computed: {
+        productsQuantity() {
+            const basketData = this.$store.getters.basketProductsSummary;
+            return basketData.quantity;
+        },
+    }
 }
 </script>

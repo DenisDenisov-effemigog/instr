@@ -4,7 +4,9 @@
             <use :xlink:href="templatePath + 'images/sprite.svg#icons__cart'"></use>
         </svg>
         <p class="header__menu-text">Корзина</p>
-        <span class="header__mini-cart">{{productsQuantity}}</span>
+        <span class="header__mini-cart" v-if="productsQuantity > 0">
+            {{productsQuantity}}
+        </span>
     </a>
 </template>
 
