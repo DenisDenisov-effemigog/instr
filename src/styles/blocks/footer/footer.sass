@@ -22,8 +22,16 @@
             width: 141px
             height: 33px
             +desktop
-                width: 176px
-                height: 43px
+                // width: 176px
+                // height: 43px
+                width: 148px
+                height: 48px
+        &_mobile
+            +desktop
+                display: none
+        &_desktop
+            +until($desktop)
+                display: none
 
     &__logo
         text-transform: uppercase

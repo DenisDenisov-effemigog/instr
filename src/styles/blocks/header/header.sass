@@ -38,17 +38,29 @@
         order: 2
         padding-right: 2rem
         height: 2rem
+        align-self: baseline
         +desktop-small
             order: 0
             height: 100%
             max-height: 2.5rem
         & svg
             fill: $primary-red
-            width: 141px
-            height: 33px
+            // width: 141px
+            // height: 33px
+            width: 137px
+            height: 32px
             +desktop-small
-                width: 176px
-                height: 43px
+                // width: 176px
+                // height: 43px
+                width: 148px
+                height: 48px
+        &_mobile
+            +desktop-small
+                display: none
+        &_desktop
+            margin-top: -.25rem
+            +until($desktop-small)
+                display: none
     &__catalog
         order: 1
         padding-right: 1.5rem

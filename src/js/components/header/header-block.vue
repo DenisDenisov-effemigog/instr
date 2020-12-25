@@ -1,8 +1,19 @@
 <template>
     <div class="container">
-        <a href="#" class="header__logo" v-show="!flag">
-            <svg viewBox="0 0 650 150">
+        <a href="#" class="header__logo header__logo_desktop" v-show="!flag">
+            <!-- <svg viewBox="0 0 650 150">
                 <use :xlink:href="templatePath + 'images/sprite.svg#logo'"></use>
+            </svg> -->
+            <svg viewBox="0 0 148 48">
+                <use :xlink:href="templatePath + 'images/sprite.svg#wt'"></use>
+            </svg>
+        </a>
+        <a href="#" class="header__logo header__logo_mobile" v-show="!flag">
+            <!-- <svg viewBox="0 0 650 150">
+                <use :xlink:href="templatePath + 'images/sprite.svg#logo'"></use>
+            </svg> -->
+            <svg viewBox="0 0 137 32">
+                <use :xlink:href="templatePath + 'images/sprite.svg#tw'"></use>
             </svg>
         </a>
         <show-catalogue :categories="categories" v-show="!flag"></show-catalogue>
