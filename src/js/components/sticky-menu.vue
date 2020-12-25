@@ -22,7 +22,7 @@
                 </a>
             </li>
             <li class="header__menu-item" v-if="!user.authorized">
-                <a href="#" class="header__menu-link">
+                <a href="#" class="header__menu-link" @click.prevent="clickMenu('profile')">
                     <svg class="header__menu-icon">
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__user'"></use>
                     </svg>
@@ -76,8 +76,11 @@ export default {
                 this.$eventBus.$emit("open-catalogue", true);
                 this.$eventBus.$emit('exitSearch', true);
             } else if (this.menuLink === 'profile') {
-                // this.$eventBus.$emit('open-menu', menu);
-                // this.$eventBus.$emit('exitSearch', false);
+                if (this.user.authorized) {
+                    window.location.replace('account')
+                } else {
+                    this.$eventBus.$emit("openModal", 'user', 'login', false, true)
+                }
             } else {
                 this.$eventBus.$emit("close-catalogue", false);
                 this.toggleHtmlOverflow('auto')
