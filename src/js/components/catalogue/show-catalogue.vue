@@ -11,10 +11,10 @@
             </svg>
         </div>
         <div class="header__catalog-btn" @click.prevent="open">
-            <span class="header__catalog-btn_lines" :class="{'header__catalog-btn_lines--active': active}">
-                <span class="header__catalog-btn_line"></span>
-                <span class="header__catalog-btn_line"></span>
-                <span class="header__catalog-btn_line"></span>
+            <span class="header__catalog-btn-lines" :class="{'header__catalog-btn-lines_active': active}">
+                <span class="header__catalog-btn-line"></span>
+                <span class="header__catalog-btn-line"></span>
+                <span class="header__catalog-btn-line"></span>
             </span>
             Каталог
         </div>
