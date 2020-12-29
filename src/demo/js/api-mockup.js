@@ -2,6 +2,12 @@ function demoCloneOverJson(obj) {
     return JSON.parse(JSON.stringify(obj));
 }
 
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min; //Максимум не включается, минимум включается
+}
+
 let demoMockupBasket = [
     {
         id: 10,
@@ -115,7 +121,7 @@ for(let i = 0; i < 5; ++i) {
         status: newOrdeStatus,
         paid: Math.random() > 0.5,
         count: Math.floor(99 * Math.random()),//оставить одно
-        qty: 8,
+        qty: getRandomInt(2,8),
         discount: '10',
         economy: '1 000',
         price: '1 001 819',
