@@ -22,6 +22,7 @@
         background: #fff
         width: 100%
         top: 0
+        overflow: hidden
         transform: translateY(-120%)
         transition: .35s
         &-open
@@ -29,19 +30,28 @@
     &-container
         @extend .container
         display: flex
+        justify-content: space-between
         padding: 2.761rem 0
     &__choice
-        flex: 1
+        //flex: 1
         &-title
             @extend .title-2
             padding-top: 1.25rem
         &-list
             display: flex
+            flex-direction: column
             flex-wrap: wrap
+            max-height: 15rem
             padding-top: 2.5rem
-        &-item 
-            width: 30%
+            margin-bottom: 2.5rem
+            +tablet
+                max-height: 10rem
+        &-item
+            flex: 1
+            width: 9rem
             padding-bottom: 1rem
+            +tablet
+                width: 15rem
         &-link
             cursor: pointer
             @extend .text-1
@@ -56,7 +66,14 @@
                 border-color: $primary-red
                 color: $black
     &__map
-        padding-right: 4.6875rem
+        //padding-right: 4.6875rem
+        position: absolute
+        right: 0
+        bottom: -.4375rem
+        z-index: -1
+        svg
+            width: 920px
+            height: 340px
     &__close
         align-self: flex-end
         display: flex
