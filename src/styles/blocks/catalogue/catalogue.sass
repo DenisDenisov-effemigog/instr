@@ -19,7 +19,15 @@
             display: none
     & .catalogue_tablet
         +desktop-small
+            position: relative
             display: block
+            &::before
+                content: ''
+                position: absolute
+                top: -2rem
+                width: 100%
+                height: 2rem
+                background-color: $white
     &_tablet
         display: none
         height: 63.375rem
