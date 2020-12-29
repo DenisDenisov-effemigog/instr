@@ -1,8 +1,10 @@
 <template>
-    <div class="header__search" v-click-outside="clickOutside">
+    <div class="header__search"
+        :class="{'header__search_split': flag}"
+        v-click-outside="clickOutside"
+    >
         <div class="header__search-mobile">
-            <img v-show="!flag" @click="searchClick" :src="templatePath + 'images/header/icons/mag.svg'" alt="" class="header__search-mobile-icon">
-            <div class="mobile-search" v-show="flag">
+            <div class="mobile-search" v-if="flag">
                 <div @click='clickClose' class="mobile-search__pic">
                     <svg class="mobile-search__pic-icon">
                         <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-left'"></use>
@@ -13,6 +15,9 @@
                     <button class="mobile-search__btn">Найти</button>
                      <search :focused=focused></search> 
                 </form>
+            </div>
+            <div class="header__search-mobile-btn" v-else @click="searchClick">
+                <img :src="templatePath + 'images/header/icons/mag.svg'" alt="" class="header__search-mobile-icon">
             </div>
         </div>
         <form action="" class="header__search-form">
@@ -56,26 +61,26 @@ export default {
             this.focused = false
         },
         searchClick(){
-            this.flag = true
-            this.focused = true
-            this.$eventBus.$emit("open-menu", 'search')
-            this.$eventBus.$emit("hide-button")
-            this.$eventBus.$emit('open-catalogue', this.active)
+            this.flag = true;
+            this.focused = true;
+            this.$eventBus.$emit("open-menu", 'search');
+            this.$eventBus.$emit("hide-button");
+            this.$eventBus.$emit('open-catalogue', this.active);
             this.$emit("searchClick", this.flag)
         },
         clickClose(){
-            this.flag = false
-            this.focused = false
-            this.$eventBus.$emit('exitSearch', true)
+            this.flag = false;
+            this.focused = false;
+            this.$eventBus.$emit('exitSearch', true);
             this.$emit("clickClose", this.flag)
         },
         exitSearch() {
-            this.flag = false
-            this.focused = false
+            this.flag = false;
+            this.focused = false;
             this.$emit("clickClose", this.flag)
         },
         clickOutside() {
-            let vm = this
+            let vm = this;
             if(window.innerWidth > 760 && vm.focused) {
                 vm.clickClose()
             }
