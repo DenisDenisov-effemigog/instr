@@ -5,7 +5,8 @@
             <input
                 type="radio"
                 name="reason"
-                value="1">
+                value="1"
+                v-model="picked">
             <span class="profile-modal__check"></span>
             <span class="profile-modal__radio-label">Причина № 1</span>
         </label>
@@ -13,7 +14,8 @@
             <input
                 type="radio"
                 name="reason"
-                value="2">
+                value="2"
+                v-model="picked">
             <span class="profile-modal__check"></span>
             <span class="profile-modal__radio-label">Причина № 2</span>
         </label>
@@ -21,7 +23,8 @@
             <input
                 type="radio"
                 name="reason"
-                value="3">
+                value="3"
+                v-model="picked">
             <span class="profile-modal__check"></span>
             <span class="profile-modal__radio-label">Причина № 3</span>
         </label>
@@ -30,20 +33,22 @@
                 <input
                     type="radio"
                     name="reason"
-                    value="">
+                    value="Другая причина"
+                    v-model="picked">
                 <span class="profile-modal__check"></span>
                 <span class="profile-modal__radio-label">Другая причина</span>
             </span>
             <textarea
+                v-show="picked == 'Другая причина'"
                 class="profile-modal__textarea"
                 :class="{'profile-modal__textarea_error': $v.message.$error}"
                 name="reason"
                 v-model.trim="$v.message.$model"
             ></textarea>
-            <span class="profile-modal__label-text"
+            <span v-show="picked == 'Другая причина'" class="profile-modal__label-text"
                 :class="{'profile-modal__label-text_up': $v.message.required}"
             >Сообщение</span>
-            <span class="profile-modal__error-text" v-if="$v.message.$error">*Обязательное поле для заполнения</span>
+            <span class="profile-modal__error-text" v-if="$v.message.$error && picked == 'Другая причина'">*Обязательное поле для заполнения</span>
         </label>
         <input type="submit" class="profile-modal__button" value="Удалить профиль">
     </form>
@@ -65,18 +70,28 @@
         },
         data() {
             return {
-                message: ''
+                message: '',
+                picked: '',
+                checkedVal: ''
             }
         },
         methods: {
             submit() {
                 this.$v.$touch();
-                if (!this.$v.$invalid) {
+                if (this.picked != 'Другая причина') {
                     this.saveChanges();
+                }else if(!this.$v.$invalid){
+                    this.saveChanges()
                 }
             },
             saveChanges() {
-                
+                if(this.message){
+                    this.message = this.$v.message.$model;
+                }
+                this.checkedVal = this.picked
+                console.log(this.checkedVal)
+                console.log(this.message)
+
             }
         },
     }
