@@ -33,7 +33,7 @@
         </div>
         
         <div class="profile__content" v-show="!showMenu && mobile || !mobile">
-            <div class="breadcrumbs" @click="goBack" v-if="!showMenu && mobile && !listOpened">
+            <div class="breadcrumbs" @click="goBack" v-if="!showMenu && mobile">
                 <svg class="breadcrumbs__back" viewBox="0 0 18 15">
                     <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
                 </svg>
@@ -94,7 +94,6 @@ export default {
                 {'title': 'Москва', 'icon': 'pin'},
                 {'title': 'Выйти', 'icon': 'exit'},
             ],
-            listOpened: false
         };
     },
     computed: {
@@ -129,7 +128,6 @@ export default {
         this.$eventBus.$on("openDetails", this.openDetails)
         if(window.innerWidth < 760) {
             this.$eventBus.$on("hideMenu", this.openPage)
-            this.$eventBus.$on("hideBreadcrumbs", this.openList)
         }
     },
     beforeDestroy(){
@@ -154,9 +152,6 @@ export default {
         openDetails() {
             this.details = true
         },
-        openList(value) {
-            this.listOpened = value
-        }
     }
 }
 </script>

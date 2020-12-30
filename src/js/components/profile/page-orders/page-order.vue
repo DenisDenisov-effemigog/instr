@@ -191,7 +191,6 @@ export default {
             this.$router.go(-1)
             //this.details = false
             //this.$eventBus.$emit('closeDetails')
-            this.$eventBus.$emit('hideBreadcrumbs', false)
         },
         prepareOrder(orderId) {
             api.personalOrder(this.$route.params.id).then((order) => {
@@ -204,7 +203,6 @@ export default {
         mouseWheel(){
             if(window.innerWidth < 768) {
                 let windowPosition = (window.pageYOffset + window.innerHeight).toFixed(0)
-                console.log(this.$refs.content.clientHeight)
                 let pcH = this.$refs.content.clientHeight.toFixed(0)
                 this.fixedButton = pcH > windowPosition;
             }
