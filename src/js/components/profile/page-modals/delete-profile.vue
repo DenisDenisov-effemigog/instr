@@ -89,8 +89,6 @@
                     this.message = this.$v.message.$model;
                 }
                 this.checkedVal = this.picked
-                console.log(this.checkedVal)
-                console.log(this.message)
 
             }
         },

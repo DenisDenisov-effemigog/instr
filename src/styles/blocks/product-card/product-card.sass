@@ -88,6 +88,12 @@
             z-index: 1
             +desktop
                 left: 75px
+            .card__stickers_sticker
+                &::before
+                    height: 22px
+            .card__stickers_sticker-wrap:first-child > div:first-child:after
+                    height: 22px
+                    
         &_media
             position: absolute
             bottom: 40px
