@@ -15,53 +15,65 @@
         display: flex
         padding: 1rem
         border-bottom: 1px solid $border-color
-        +mobile
-            flex-wrap: wrap
-            justify-content: space-between
+        flex-wrap: wrap
+        justify-content: space-between
+        +desktop
+            flex-wrap: nowrap
+            justify-content: normal
         &--head
             background: #F9FAFB
             border: none
-            +mobile
-                display: none
+            display: none
+            +desktop
+                display: flex
     &__sum
+        order: 1
+        flex: 1
         &--red
             color: $primary-hover
-        +tablet
+        +tablet-only
+            width: 50%
+            flex: none
+        +desktop
             flex: 1
             max-width: 9.813rem
-        +mobile
-            order: 1
-            width: 30%
+            order: 0
+            width: auto
+           
     &__date
-        +tablet
+        order: 3
+        font-size: $font-size_4
+        width: 75%
+        padding-top: 0.5rem
+        color: $light-grey
+        +desktop
+            width: auto
+            padding-top: 0
             flex: 1
             max-width: 14.875rem
-        +mobile
-            order: 3
-            font-size: $font-size_4
-            width: 45%
-            padding-top: 0.5rem
-            color: $light-grey
+            order: 0
+            
     &__operation
-        +tablet
+        order: 2
+        +desktop
             flex: 1
-        +mobile
-            order: 2
+            order: 0
+            
     &__code
+        display: none
         color: $blue
         &--head
             color: $black
-        +tablet
+        +desktop
             flex: 1
             display: flex
             justify-content: flex-end
-        +mobile
-            display: none
+            
     &__order
         order: 4
         color: $blue
         padding-top: 0.5rem
-        +tablet
+        +desktop
             display: none
 
     
