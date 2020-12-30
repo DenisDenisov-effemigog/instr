@@ -36,15 +36,11 @@
             background: #fff
             max-width: 208px
     &__all
+        @extend .link-blue
         font-weight: $font-weight_semibold
-        color: $blue
         padding-top: 1.125rem
         cursor: pointer
-        max-width: 9.563rem
-        +tablet
-            &:hover
-                text-decoration: underline
-                text-decoration-color: $blue
+        max-width: 9.25rem
         +mobile
             order: 3
     &__brand
