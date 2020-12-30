@@ -203,8 +203,14 @@ export default {
         mouseWheel(){
             if(window.innerWidth < 768) {
                 let windowPosition = (window.pageYOffset + window.innerHeight).toFixed(0)
-                let pcH = this.$refs.content.clientHeight.toFixed(0)
-                this.fixedButton = pcH > windowPosition;
+                let pcH = (this.$refs.content.clientHeight).toFixed(0)
+                if(pcH > windowPosition){
+                    this.fixedButton = true
+                }else{
+                    this.fixedButton = false
+                }
+                console.log(pcH)
+                console.log(windowPosition)
             }
         },
         openModal(modal) {

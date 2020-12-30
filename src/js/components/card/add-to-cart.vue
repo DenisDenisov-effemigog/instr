@@ -208,7 +208,7 @@
             mobileScroll(){
                 if(window.innerWidth < 768) {
                     let windowPosition = window.pageYOffset
-                    let orderPosition = this.productOrderPosition - 24
+                    let orderPosition = this.productOrderPosition
                     if(windowPosition > orderPosition){
                         this.$eventBus.$emit('openStickyButton', 'Добавить в корзину')
                     } else{
