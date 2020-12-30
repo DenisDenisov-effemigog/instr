@@ -39,13 +39,13 @@
                 <span class="profile-modal__radio-label">Другая причина</span>
             </span>
             <textarea
-                v-show="picked == 'Другая причина'"
                 class="profile-modal__textarea"
-                :class="{'profile-modal__textarea_error': $v.message.$error}"
+                :class="{'profile-modal__textarea_error': $v.message.$error && picked == 'Другая причина'}"
                 name="reason"
                 v-model.trim="$v.message.$model"
+                :disabled="picked != 'Другая причина'"
             ></textarea>
-            <span v-show="picked == 'Другая причина'" class="profile-modal__label-text"
+            <span class="profile-modal__label-text"
                 :class="{'profile-modal__label-text_up': $v.message.required}"
             >Сообщение</span>
             <span class="profile-modal__error-text" v-if="$v.message.$error && picked == 'Другая причина'">*Обязательное поле для заполнения</span>
@@ -89,9 +89,6 @@
                     this.message = this.$v.message.$model;
                 }
                 this.checkedVal = this.picked
-                console.log(this.checkedVal)
-                console.log(this.message)
-
             }
         },
     }
