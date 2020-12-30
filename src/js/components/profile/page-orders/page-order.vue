@@ -211,6 +211,9 @@ export default {
                 this.fixedButton = +pcH > +windowPosition
             }
         },
+        closeStickyBtn(){
+            this.fixedButton = false
+        },
         openModal(modal) {
 
             let vm = this;
@@ -232,6 +235,7 @@ export default {
     },
     created () {
         window.addEventListener('scroll', this.mouseWheel);
+        this.$eventBus.$on("closeStickyButton", this.closeStickyBtn);
     },
 }
 </script>
