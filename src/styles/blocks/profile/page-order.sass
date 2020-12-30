@@ -85,86 +85,93 @@
             padding-top: 2.5rem
             display: flex
             justify-content: space-between
-        &_list
-            +tablet
-                max-width: 21rem
-                padding-top: 0
-            padding-top: 1.375rem
-        &_item
-            display: flex
-            align-items: center
-            padding-top: 1rem
-            &:first-child
-                padding-top: 0
-        &_icon
-            align-self: flex-start
-            & svg
-                width: 23px
-                height: $size_20  
-            margin-right: 1.188rem    
-        &_subtitle
-            padding-bottom: 0.25rem
-            color: $grey
-            @extend .text-3   
-    &__desc-order
-        height: 19.063rem
+    &__desc-list
         +tablet
-            height: auto
+            max-width: 21rem
             padding-top: 0
-        padding-top: 2.5rem
-        &_title
-            @extend .title-5
-        &_list
-            padding-top: 1rem
-        &_item
-            display: flex
-            justify-content: space-between
-            padding-top: 0.5rem
-            &:first-child
-                padding-top: 0
-            &--delivery
-                padding-bottom: 0.5rem
-                border-bottom: 1px solid $border-color_4
-                +tablet
-                    padding-top: 2.5rem
-                    padding-bottom: 1rem
-            &--total
-                padding-top: 1.25rem
-        &_price
-            &--discount
-                color: #049004
-            &--total
-                font-size: $font-size_8
-                line-height: $line-height_8
-                font-weight: bold
-        &_btn
-            &--fixed
-                position: fixed
-                bottom: 64px
-                left: 0
-                width: 100%
-                z-index: 1000
-                padding: 1rem
-            display: flex
-            background: rgba(255, 255, 255, 0.88)
-            width: 100%
-            max-height: 4.75rem
-            padding: 1rem 0
+        padding-top: 1.375rem
+    &__desc-item
+        display: flex
+        align-items: center
+        padding-top: 1rem
+        &:first-child
+            padding-top: 0
+    &__desc-icon
+        align-self: flex-start
+        margin-right: 1.188rem    
+        & svg
+            width: 23px
+            height: $size_20  
+            fill: $icon-grey
             +tablet
-                display: none
-            &_wrapper
-                padding: 0.75rem 0
-                background: $primary-red
-                display: flex
-                justify-content: center
-                align-items: center
-                width: 100%
-                border-radius: 4px
-                color: $white
-            &_icon
-                padding-right: 0.688rem
-                height: $size_18
-                & svg
-                    fill: $white
-                    width: $size_18
-                    height: $size_18
+                fill: $light-grey
+    &__desc-subtitle
+        padding-bottom: 0.25rem
+        color: $grey
+        @extend .text-3
+        +tablet
+            color: $light-grey
+    // &__desc-order
+    //     height: 19.063rem
+    //     +tablet
+    //         height: auto
+    //         padding-top: 0
+    //     padding-top: 2.5rem
+    //     &_title
+    //         @extend .title-5
+    //     &_list
+    //         padding-top: 1rem
+    //     &_item
+    //         display: flex
+    //         justify-content: space-between
+    //         padding-top: 0.5rem
+    //         &:first-child
+    //             padding-top: 0
+    //         &--delivery
+    //             padding-bottom: 0.5rem
+    //             border-bottom: 1px solid $border-color_4
+    //             +tablet
+    //                 padding-top: 2.5rem
+    //                 padding-bottom: 1rem
+    //         &--total
+    //             padding-top: 1.25rem
+    //     &_name
+
+    //     &_price
+    //         &--discount
+    //             color: #049004
+    //         &--total
+    //             font-size: $font-size_8
+    //             line-height: $line-height_8
+    //             font-weight: bold
+    //     &_btn
+    //         &--fixed
+    //             position: fixed
+    //             bottom: 64px
+    //             left: 0
+    //             width: 100%
+    //             z-index: 1000
+    //             padding: 1rem
+    //         display: flex
+    //         background: rgba(255, 255, 255, 0.88)
+    //         width: 100%
+    //         max-height: 4.75rem
+    //         padding: 1rem 0
+    //         +tablet
+    //             display: none
+    //         &_wrapper
+    //             padding: 0.75rem 0
+    //             background: $primary-red
+    //             display: flex
+    //             justify-content: center
+    //             align-items: center
+    //             width: 100%
+    //             border-radius: 4px
+    //             color: $white
+    //         &_icon
+    //             padding-right: 0.688rem
+    //             height: $size_18
+    //             & svg
+    //                 fill: $white
+    //                 width: $size_18
+    //                 height: $size_18

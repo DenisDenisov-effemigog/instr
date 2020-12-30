@@ -54,9 +54,9 @@
                 </div>
                 <order-product-list :orderId="order.id" :showAll="true" :opened="true" :products="order.basket"></order-product-list>
                 <div class="page-order__desc">
-                    <ul class="page-order__desc_list">
-                        <li class="page-order__desc_item" v-for="(item, index) in deliveryInfo">
-                            <div class="page-order__desc_icon">
+                    <ul class="page-order__desc-list">
+                        <li class="page-order__desc-item" v-for="(item, index) in deliveryInfo">
+                            <div class="page-order__desc-icon">
                                 <svg v-if="index == 1">
                                     <use :xlink:href="templatePath + `images/sprite.svg#icons__${item.icon}`"></use>
                                 </svg>
@@ -64,47 +64,47 @@
                                     <use :xlink:href="templatePath + `images/sprite.svg#icons__${item.icon}`"></use>
                                 </svg>
                             </div>
-                            <div class="page-order__desc_info">
-                                <div class="page-order__desc_subtitle">
+                            <div class="page-order__desc-info">
+                                <div class="page-order__desc-subtitle">
                                     {{item.title}}
                                 </div>
-                                <div class="page-order__desc_desc">
+                                <div class="page-order__desc-desc">
                                     {{item.desc}}
                                 </div>
                             </div>
                         </li>
                     </ul>
-                    <div class="page-order__desc-order">
-                        <h3 class="page-order__desc-order_title">Стоимость заказа</h3>
-                        <ul class="page-order__desc-order_list">
-                            <li class="page-order__desc-order_item">
-                                <div class="page-order__desc-order_name">Цена</div>
-                                <div class="page-order__desc-order_price">{{ order.price }} &#8381;</div>
+                    <div class="order-desc">
+                        <h3 class="order-desc__title">Стоимость заказа</h3>
+                        <ul class="order-desc__list">
+                            <li class="order-desc__item">
+                                <div class="order-desc__name">Цена</div>
+                                <div class="order-desc__price">{{ order.price }} &#8381;</div>
                             </li>
-                            <li class="page-order__desc-order_item page-order__desc-order_item--discount">
-                                <div class="page-order__desc-order_name">Скидка</div>
-                                <div class="page-order__desc-order_price page-order__desc-order_price--discount">{{ order.discount }} &#8381;</div>
+                            <li class="order-desc__item order-desc__item_discount">
+                                <div class="order-desc__name">Скидка</div>
+                                <div class="order-desc__price order-desc__price_discount">{{ order.discount }} &#8381;</div>
                             </li>
-                            <li class="page-order__desc-order_item page-order__desc-order_item--delivery">
-                                <div class="page-order__desc-order_name">Экономия</div>
-                                <div class="page-order__desc-order_price">+{{ order.economy }} &#8381;</div>
+                            <li class="order-desc__item order-desc__item_delivery">
+                                <div class="order-desc__name">Экономия</div>
+                                <div class="order-desc__price">+{{ order.economy }} &#8381;</div>
                             </li>
-                            <li class="page-order__desc-order_item page-order__desc-order_item--total">
-                                <div class="page-order__desc-order_name">Ваша цена</div>
-                                <div class="page-order__desc-order_price page-order__desc-order_price--total">{{ order.priceTotal }} &#8381;</div>
+                            <li class="order-desc__item order-desc__item_total">
+                                <div class="order-desc__name order-desc__name_total">Ваша цена</div>
+                                <div class="order-desc__price order-desc__price_total">{{ order.priceTotal }} &#8381;</div>
                             </li>
                         </ul>
-                        <div class="page-order__desc-order_btn"
-                             :class="{'page-order__desc-order_btn--fixed': fixedButton}"
+                        <div class="order-desc__btn"
+                             :class="{'order-desc__btn_fixed': fixedButton}"
                              @click.stop="openModal('repeat-order')"
                         >
-                            <div class="page-order__desc-order_btn_wrapper">
-                                <div class="page-order__desc-order_btn_icon">
+                            <div class="order-desc__btn-wrapper">
+                                <div class="order-desc__btn-icon">
                                     <svg>
                                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__repeat'"></use>
                                     </svg>
                                 </div>
-                                <div class="page-order__desc-order_btn_text">
+                                <div class="order-desc__btn-text">
                                     Повторить заказ
                                 </div>
                             </div>
