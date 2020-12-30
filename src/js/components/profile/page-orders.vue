@@ -52,15 +52,11 @@
         },
         mounted() {
             this.$store.dispatch('personalUpdateOrders');
+            this.$eventBus.$emit('hideMenu')
         },
         created(){
-            this.$eventBus.$on("allOrders", this.allOrders)
         },
         methods:{
-            /*allOrders() {
-                this.details = false
-                this.$eventBus.$emit('closeDetails')
-            },*/
         },
         computed: {
             ordersAll() {

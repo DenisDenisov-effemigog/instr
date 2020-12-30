@@ -4,10 +4,8 @@
             <div class="order__number">#{{order.number}}</div>
             <div class="order__date">{{order.date}}</div>
             <div class="order__status">{{order.status}}</div>
-            {{order.qty}}
-            <span v-if="(order.qty % 10) == 1">товар</span>
-            <span v-else-if="orderQnty(order.qty)">товаров</span>
-            <span v-else>товара</span>
+            
+            <span>{{ $tc('products', order.qty) }}</span>
             <div class="order__price">{{order.priceTotal}} &#8381;</div>
             <div @click.stop="openModal('repeat-order')" class="order__btn">
                 <div class="order__btn-icon">
@@ -116,20 +114,13 @@ export default {
                     'orderNumber': vm.order.number
                 }
 
-                this.$eventBus.$emit("openModal", modal, repeatOrder, false)
+                this.$eventBus.$emit("openModal", modal, repeatOrder, false, false)
                 
             }).catch((error) => {
                 //this.$router.push('/account/orders/');
             });
             //debugger;
             
-        },
-        orderQnty(value) {
-            if (value % 10 > 4 || value % 10 == 0 || value > 10 && value < 15) {
-                return true
-            } else {
-                return false
-            }
         }
     }
 }

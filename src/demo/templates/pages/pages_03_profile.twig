@@ -407,11 +407,17 @@
     }
 ] %}
 
-{% set countries = ['Белоруссия','Казахстан','Румыния','Болгария','Польша','США','Венгрия','Россия','Украина'] %}
+{% set countries = ['Белоруссия','Болгария','Венгрия','Казахстан','Польша','Россия','Румыния','США','Украина'] %}
 
+{% set user = {
+    'name' : 'Ivan',
+    'last_name' : 'Sidorov',
+    'personType': 2,
+    'authorized': true,
+}%}
 {% set products = [
     {
-        'id': 1,
+        'id': 51,
         'title': 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
         'link': '',
         'code': 717950,
@@ -437,7 +443,7 @@
         ]
     },
     {
-        'id': 1,
+        'id': 52,
         'title': 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
         'link': '',
         'code': 717950,
@@ -463,7 +469,7 @@
         ]
     },
     {
-        'id': 1,
+        'id': 53,
         'title': 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
         'link': '',
         'code': 717950,
@@ -489,7 +495,7 @@
         ]
     },
     {
-        'id': 1,
+        'id': 54,
         'title': 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
         'link': '',
         'code': 717950,
@@ -515,7 +521,7 @@
         ]
     },
     {
-        'id': 1,
+        'id': 55,
         'title': 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
         'link': '',
         'code': 717950,
@@ -541,7 +547,7 @@
         ]
     },
     {
-        'id': 1,
+        'id': 56,
         'title': 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
         'link': '',
         'code': 717950,
@@ -572,7 +578,7 @@
     'personal': {
         'company': 'Компания «Инструменты Будущего»',
         'contact': 'Константин Дзю',
-        'personType': 2,
+        'personType': 1,
         'personTypePrint': 'Юридическое лицо',
         'phone': '+7 (910) 872-92-89',
         'code': 'RO7434924042',
@@ -979,8 +985,8 @@
 
 {% block content %}
 
-    {% include '../../../templates/header/header.twig' with {'categories': categories} %}
+    {% include '../../../templates/header/header.twig' with {'categories': categories, 'user': user} %}
     {% include '../../../templates/profile/profile.twig' with {'profile': profile} %}
-    {% include '../../../templates/footer/footer.twig'  with {'countries': countries} %}
+    {% include '../../../templates/footer/footer.twig'  with {'countries': countries, 'user': user} %}
     
 {% endblock %}

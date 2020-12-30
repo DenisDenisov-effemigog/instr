@@ -1,6 +1,6 @@
 <template>
     <div class="header__catalog">
-        <div  class="header__catalog-mobile" @click.prevent="openMenu" v-if="!openedMenu">
+        <!-- <div  class="header__catalog-mobile" @click.prevent="openMenu" v-if="!openedMenu">
             <svg class="header__catalog-mobile-icon" viewBox="0 0 24 24">
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__ham'"></use>
             </svg>
@@ -9,12 +9,19 @@
             <svg class="header__catalog-mobile-icon header__catalog-mobile-icon--close">
                 <use :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
             </svg>
+        </div> -->
+        <div  class="header__catalog-mobile" @click.prevent="openMenu">
+            <span class="header__catalog-btn-lines" :class="{'header__catalog-btn-lines_active': openedMenu}">
+                <span class="header__catalog-btn-line"></span>
+                <span class="header__catalog-btn-line"></span>
+                <span class="header__catalog-btn-line"></span>
+            </span>
         </div>
         <div class="header__catalog-btn" @click.prevent="open">
-            <span class="header__catalog-btn_lines" :class="{'header__catalog-btn_lines--active': active}">
-                <span class="header__catalog-btn_line"></span>
-                <span class="header__catalog-btn_line"></span>
-                <span class="header__catalog-btn_line"></span>
+            <span class="header__catalog-btn-lines" :class="{'header__catalog-btn-lines_active': active}">
+                <span class="header__catalog-btn-line"></span>
+                <span class="header__catalog-btn-line"></span>
+                <span class="header__catalog-btn-line"></span>
             </span>
             Каталог
         </div>
@@ -55,11 +62,20 @@
                 this.active = state;
                 this.$eventBus.$emit('open-catalogue', this.active)
             },
+            // openMenu() {
+            //     this.openedMenu = true;
+            //     this.$eventBus.$emit('open-catalogue', this.active)
+            //     this.$eventBus.$emit('open-menu', 'home');
+            //     this.$eventBus.$emit("hide-button");
+            // },
             openMenu() {
-                this.openedMenu = true;
+                this.openedMenu = !this.openedMenu;
                 this.$eventBus.$emit('open-catalogue', this.active)
                 this.$eventBus.$emit('open-menu', 'home');
                 this.$eventBus.$emit("hide-button");
+                if (this.openedMenu == false) {
+                    this.$eventBus.$emit('close-menu')
+                }
             },
             closeMenu(action) {
                 this.openedMenu = false;

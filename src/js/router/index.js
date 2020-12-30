@@ -33,6 +33,22 @@ const router = new Router({
                 h1: null,
             }
         },
+        {
+            path: '/account/check',
+            component: require('../components/profile/page-check.vue'),
+            meta: {
+                title: 'Личный кабинет - Мой счет',
+                h1: 'Мой счет'
+            }
+        },
+        {
+            path: '/account/adresses',
+            component: require('../components/profile/page-delivery.vue'),
+            meta: {
+                title: 'Личный кабинет - Адреса доставки',
+                h1: 'Адреса доставки'
+            }
+        },
     ]
 });
 

@@ -11,7 +11,7 @@
                         class="catalogue__category"
                         v-for="(category, index) in categories"
                         @mouseover="hovered = index"
-                        :class="{'catalogue__category--hovered': hovered === index}"
+                        :class="{'catalogue__category_hovered': hovered === index}"
                     >
                         <div>
                             <a href="#" class="catalogue__category-link">
@@ -73,9 +73,8 @@
                         this.toggleHtmlOverflow('auto')
                     }
                 }
-            },
-        },
-
+            }
+        }
     }
 </script>
 

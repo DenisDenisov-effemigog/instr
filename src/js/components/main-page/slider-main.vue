@@ -67,6 +67,16 @@
                     }
                 }
             },
+            onlySlide() {
+                if (this.mainSlides.length === 1) {
+                    this.options.dots = false;
+                    this.options.responsive[0].settings.dots = false;
+                    this.options.responsive[0].settings.navButtons = false
+                }
+            }
+        },
+        created() {
+            this.onlySlide()
         }
     }
 </script>

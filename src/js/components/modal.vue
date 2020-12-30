@@ -2,9 +2,14 @@
     <div v-show="open" class="modal">
         <div class="modal-bg" @click="closeOutside"></div>
         <div class="modal-wrapper"
-             :class="{'modal-wrapper--big': modalBigger}"
+             :class="{'modal-wrapper_big': modalBigger, 'modal-wrapper_profile': !showCloseBtn}"
         >
-            
+            <div class="breadcrumbs" v-if="!showCloseBtn" @click="closeModal">
+                <svg class="breadcrumbs__back" viewBox="0 0 18 15">
+                    <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
+                </svg>
+                <span>Назад</span>
+            </div>
             <div class="modal-desc" v-if="modal === 'promo'">
                 <h3 class="modal-title">Третий в подарок!</h3>
                 <div class="modal-text">Здесь отображена текстовая информация об условиях акции, ее сроках, товарах, которые принимают участие, а так же что-нибудь еще.</div>
@@ -16,31 +21,36 @@
             <div class="modal__video" v-else-if="modal === 'openVideo'">
                 <iframe :src="props" frameborder="0" allowfullscreen></iframe>
             </div>
-            <div class="modal__profile-edit" v-else-if="modal === 'profile-edit'">
+            <div class="modal_profile-edit" v-else-if="modal === 'profile-edit'">
                 <h3 class="modal-title modal-title_centered">Изменение данных</h3>
                 <component is="edit-profile" :person="props"></component>
             </div>
-            <div class="modal__profile-edit" v-else-if="modal === 'profile-password'">
+            <div class="modal_profile-edit" v-else-if="modal === 'profile-password'">
                 <h3 class="modal-title modal-title_centered">Изменение пароля</h3>
                 <component is="change-password"></component>
             </div>
-            <div class="modal__profile-edit" v-else-if="modal === 'profile-delete'">
+            <div class="modal_profile-edit" v-else-if="modal === 'profile-delete'">
                 <h3 class="modal-title">Выберите причину удаления профиля:</h3>
                 <component is="delete-profile"></component>
             </div>
-            <div class="modal__profile-edit" v-else-if="modal === 'new-address'">
+            <div class="modal_profile-edit" v-else-if="modal === 'new-address'">
                 <h3 class="modal-title">Добавление нового адреса доставки</h3>
                 <component is="add-address"></component>
             </div>
-            <div class="modal__profile-edit" v-else-if="modal === 'repeat-order'">
+            <div class="modal_profile-edit" v-else-if="modal === 'delete-address'">
+                <h3 class="modal-title modal-title_centered">Удаление адреса</h3>
+                <div class="modal-text">Отправьте запрос, чтобы удалить адрес.</div>
+                <div @click="closeModal" class="modal-btn">Отправить запрос</div>
+            </div>
+            <div class="modal_profile-edit" v-else-if="modal === 'repeat-order'">
                 <component is="repeat-order" :products="props"></component>
             </div>
-            <div class="modal__profile-edit" v-else-if="modal === 'user'">
+            <div class="modal_profile-edit" v-else-if="modal === 'user'">
                 <h3 class="modal-title modal-title_centered">Авторизация</h3>
                 <component is="user" :selected="props"></component>
             </div>
             
-            <div class="modal__close" @click="closeModal">
+            <div class="modal__close" @click="closeModal" v-if="showCloseBtn">
                 <span v-if="modalBigger">Закрыть</span>
                 <svg 
                     class="modal__close-icon" 
@@ -81,6 +91,7 @@ export default {
             modal: '',
             props: [],
             modalBigger: false,
+            showCloseBtn: true
         }
     },
     created(){
@@ -90,12 +101,16 @@ export default {
         this.$eventBus.$off('openModal');
     },
     methods:{
-        openModal(modal, props, modalSize){
+        // closeBtn use for mobile modal window, если нужно заменить крестик на хлебную крошку назад
+        openModal(modal, props, modalSize, closeBtn){
             this.toggleHtmlOverflow('hidden')
             this.open = true
             this.modal = modal
             this.props = props
             this.modalBigger = modalSize
+            if (window.innerWidth < 1024) {
+                this.showCloseBtn = closeBtn
+            }
         },
         closeModal(){
             this.open = false

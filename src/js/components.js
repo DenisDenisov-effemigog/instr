@@ -15,6 +15,7 @@ import cartMini from './components/header/cart-mini.vue';
 import headerBlock from './components/header/header-block.vue';
 import stickyHeader from './components/header/sticky-header.vue';
 import user from './components/header/header-modal/user.vue';
+import tooltipProfile from './components/header/tooltip-profile.vue';
 import homeMenu from './components/header/mobile/home-menu.vue';
 import topnavSwitch from './components/topnav/topnav-switch.vue';
 /*main-page*/
@@ -111,6 +112,7 @@ export default {
         pageOrder,
         repeatOrder,
         user,
+        tooltipProfile,
         cardStikers,
     },
 }

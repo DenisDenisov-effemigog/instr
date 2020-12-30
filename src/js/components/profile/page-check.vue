@@ -9,7 +9,7 @@
                     <div class="my-check__operation">Операция</div>
                     <div class="my-check__code my-check__code--head">Код операции</div>
                 </li>
-                <li v-for="item in profile" class="my-check__item">
+                <li v-for="item in checkDataAll" class="my-check__item">
                     <div class="my-check__sum" 
                          :class="{'my-check__sum--red': item.status}" 
                     ><span v-if="item.status">-</span><span v-else>+</span>{{item.sum}} &#8381;</div>
@@ -30,10 +30,19 @@
 export default {
     name:"page-check",
     props:{
-        profile: {
+        /*profile: {
             required: true,
             type: Array,
-        },
+        },*/
     },
+    mounted() {
+        this.$store.dispatch('personalUpdateCheckData');
+        this.$eventBus.$emit('hideMenu')
+    },
+    computed: {
+        checkDataAll() {
+            return this.$store.state.personal.checkData;
+        },
+    }
 }
 </script>

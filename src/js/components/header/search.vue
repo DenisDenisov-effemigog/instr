@@ -1,5 +1,5 @@
 <template>
-    <div class="search" :class="{'search-open': focused}">
+    <div class="search" :class="{'search_opened': focused}">
         <div class="search-result" :class="{'search-result__close': flag}">
             <ul class="search-result__list">
                 <li v-for="item in resultArr" :key="item" class="search-result__item">

@@ -19,6 +19,7 @@
             display: none
     & .catalogue_tablet
         +desktop-small
+            position: relative
             display: block
     &_tablet
         display: none
@@ -64,7 +65,7 @@
     &__category
         +desktop-small
             &:hover,
-            &--hovered
+            &_hovered
                 background-color: $white
                 color: $black
                 & .catalogue__subcategories

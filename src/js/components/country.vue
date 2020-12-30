@@ -13,15 +13,19 @@
                         </li>
                     </ul>
                 </div>
-                <div class="country__map">
+                <!-- <div class="country__map">
                     <img :src="templatePath + 'images/country/map.png'" alt="" class="country__map-pic">
-                </div>
+                </div> -->
                 <div @click="closeChoiceCountry" class="country__close">
                     <div class="country__close-text">Закрыть</div>
                     <svg class="country__close-pic" viewBox="0 0 12 12">
                         <use :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
                     </svg>
                 </div>
+            </div>
+            <div class="country__map">
+                <!-- <img :src="templatePath + 'images/country/globus.png'" alt="" class="country__map-pic"> -->
+                <img :src="templatePath + 'images/country/map-dots.png'" alt="" class="country__map-pic">
             </div>
         </div>
     </div>

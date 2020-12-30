@@ -21,15 +21,15 @@
                     <p class="header__menu-text">Избранное</p>
                 </a>
             </li>
-            <!--<li class="header__menu-item">
-                <a href="#" class="header__menu-link">
+            <li class="header__menu-item" v-if="!user.authorized">
+                <a href="#" class="header__menu-link" @click.prevent="clickMenu('profile')">
                     <svg class="header__menu-icon">
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__user'"></use>
                     </svg>
                     <p class="header__menu-text">Войти</p>
                 </a>
-            </li>-->
-            <li class="header__menu-item">
+            </li>
+            <li class="header__menu-item" v-if="user.authorized">
                 <a 
                     class="header__menu-link"
                     :class="{'header__menu-link_active': menuLink === 'profile' || menuLink === 'search'}"
@@ -42,11 +42,14 @@
                 </a>
             </li>
             <li class="header__menu-item">
-                <a href="#" class="header__menu-link">
+                <a href="#" class="header__menu-link header__menu-link_cart_active">
                     <svg class="header__menu-icon">
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__cart'"></use>
                     </svg>
                     <p class="header__menu-text">Корзина</p>
+                    <span class="header__mini-cart" v-if="productsQuantity > 0">
+                        {{productsQuantity}}
+                    </span>
                 </a>
             </li>
         </ul>
@@ -57,6 +60,9 @@
 
 export default {
     name: "sticky-menu",
+    props: {
+        user: {required: true},
+    },
     data(){
         return{
             menuLink: ''
@@ -73,8 +79,11 @@ export default {
                 this.$eventBus.$emit("open-catalogue", true);
                 this.$eventBus.$emit('exitSearch', true);
             } else if (this.menuLink === 'profile') {
-                // this.$eventBus.$emit('open-menu', menu);
-                // this.$eventBus.$emit('exitSearch', false);
+                if (this.user.authorized) {
+                    window.location.replace('/account')
+                } else {
+                    this.$eventBus.$emit("openModal", 'user', 'login', false, true)
+                }
             } else {
                 this.$eventBus.$emit("close-catalogue", false);
                 this.toggleHtmlOverflow('auto')
@@ -84,5 +93,11 @@ export default {
             this.menuLink = ''
         },
     },
+    computed: {
+        productsQuantity() {
+            const basketData = this.$store.getters.basketProductsSummary;
+            return basketData.quantity;
+        },
+    }
 }
 </script>

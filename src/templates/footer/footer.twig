@@ -1,4 +1,4 @@
-<component is="sticky-menu"></component>
+<component is="sticky-menu" :user="{{ user|json_encode()|e('html_attr') }}"></component>
 <component is="country" 
            :countries="{{ countries|json_encode()|e('html_attr') }}"
 ></component>
@@ -21,9 +21,19 @@
 <footer class="footer">
     <div class="container">
 
-        <div class="footer__layout">
-            <svg viewBox="0 0 650 150">
+        <div class="footer__layout footer__layout_desktop">
+            {# <svg viewBox="0 0 650 150">
                 <use xlink:href="{{ templatePath }}images/sprite.svg#logo"></use>
+            </svg> #}
+            <svg viewBox="0 0 148 48">
+                <use xlink:href="{{ templatePath }}images/sprite.svg#wt"></use>
+            </svg>
+            <div class="footer__company footer__company_desktop">&#169; 2020 ООО «МИР ИНСТРУМЕНТА»</div>
+            <a href="#" class="footer__agreement footer__agreement_desktop">Пользовательское соглашение</a>
+        </div>
+        <div class="footer__layout footer__layout_mobile">
+            <svg viewBox="0 0 137 32">
+                <use xlink:href="{{ templatePath }}images/sprite.svg#tw"></use>
             </svg>
             <div class="footer__company footer__company_desktop">&#169; 2020 ООО «МИР ИНСТРУМЕНТА»</div>
             <a href="#" class="footer__agreement footer__agreement_desktop">Пользовательское соглашение</a>
