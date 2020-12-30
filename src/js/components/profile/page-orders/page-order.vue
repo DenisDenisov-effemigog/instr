@@ -160,7 +160,7 @@ export default {
             points:['Загрузить еще что-нибудь','Загрузить счет-фактуру'],
             flag: true,
             selectFlag: false,
-            fixedButton: false,
+            fixedButton: true,
             icon:'icons__download'
         }
     },
@@ -207,8 +207,8 @@ export default {
         mouseWheel(){
             if(window.innerWidth < 768) {
                 let windowPosition = (window.pageYOffset + window.innerHeight).toFixed(0)
-                let pcH = this.$refs.content.clientHeight.toFixed(0)
-                this.fixedButton = pcH > windowPosition;
+                let pcH = (this.$refs.content.clientHeight).toFixed(0)
+                this.fixedButton = +pcH > +windowPosition
             }
         },
         openModal(modal) {

@@ -76,6 +76,7 @@
                 if (this.openedMenu == false) {
                     this.$eventBus.$emit('close-menu')
                 }
+                this.$eventBus.$emit('closeStickyButton')
             },
             closeMenu(action) {
                 this.openedMenu = false;
