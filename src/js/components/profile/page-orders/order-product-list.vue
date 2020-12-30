@@ -65,6 +65,7 @@ export default {
         openDetails() {
             this.$router.push('/account/orders/' + this.orderId + '/');
             //this.$eventBus.$emit("detailOrder", this.orderIndex);
+            this.$eventBus.$emit('hideBreadcrumbs', true);
         },
     }
 }
