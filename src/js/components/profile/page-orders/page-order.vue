@@ -55,9 +55,12 @@
                 <order-product-list :orderId="order.id" :showAll="true" :opened="true" :products="order.basket"></order-product-list>
                 <div class="page-order__desc">
                     <ul class="page-order__desc_list">
-                        <li class="page-order__desc_item" v-for="item in deliveryInfo">
+                        <li class="page-order__desc_item" v-for="(item, index) in deliveryInfo">
                             <div class="page-order__desc_icon">
-                                <svg>
+                                <svg v-if="index == 1">
+                                    <use :xlink:href="templatePath + `images/sprite.svg#icons__${item.icon}`"></use>
+                                </svg>
+                                <svg viewBox="-3 -5 20 20" v-else>
                                     <use :xlink:href="templatePath + `images/sprite.svg#icons__${item.icon}`"></use>
                                 </svg>
                             </div>
