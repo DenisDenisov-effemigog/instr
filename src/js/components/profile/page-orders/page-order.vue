@@ -191,6 +191,7 @@ export default {
             this.$router.go(-1)
             //this.details = false
             //this.$eventBus.$emit('closeDetails')
+            this.$eventBus.$emit('hideBreadcrumbs', false)
         },
         prepareOrder(orderId) {
             api.personalOrder(this.$route.params.id).then((order) => {
