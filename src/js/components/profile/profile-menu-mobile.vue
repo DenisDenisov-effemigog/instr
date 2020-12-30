@@ -53,7 +53,7 @@
         </ul>
         <div class="profile-menu-mobile__info">
             <div class="profile-menu-mobile__info_link">
-                <svg viewBox="0 0 15 15">
+                <svg viewBox="0 0 16 16">
                     <use :xlink:href="templatePath + 'images/sprite.svg#icons__phone'"></use>
                 </svg>
                 <span>+4 0371 166 478</span>
