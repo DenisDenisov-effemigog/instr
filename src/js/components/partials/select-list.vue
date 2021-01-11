@@ -1,15 +1,14 @@
 <template>
-<div class="select" @click="flag = !flag" v-click-outside="closeOutside">
-    <div class="select__button" :class="{'select__button--active':flag}">
-        <span v-if="selectFlag">{{points[currentPoint]}}</span>
-        <span v-else>Документы</span>
+<div class="select" @click="openSelect = !openSelect" v-click-outside="closeOutside">
+    <div class="select__button" :class="{'select__button--active':openSelect}">
+        <span>{{currentPoint}}</span>
         <svg>
             <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-down'"></use>
         </svg>
     </div>
-    <div v-show="flag" class="select__dropdown">
+    <div v-show="openSelect" class="select__dropdown">
         <ul class="select__list">
-            <li @click="clickPoint(point)" class="select__item" :class="{'select__item--active':currentPoint == points.indexOf(point)}" v-for="point in points">
+            <li @click="clickPoint(key)" class="select__item" :class="{'select__item--active':currentPoint === points[key]}" v-for="(point, key) in points">
                 <span>{{point}}</span>
                 <svg>
                     <use :xlink:href="templatePath + `images/sprite.svg#${icon}`"></use>
@@ -32,26 +31,25 @@ export default {
         },
         icon:{
             type:String,
-            required: true,
+            default: 'check',
         },
-        selectFlag:{
-            type: Boolean,
-            default: true,
+        selectopenSelect:{
+            type: String,
+            required: true,
         }
     },
     data(){
         return{
-            flag:false,
-            currentPoint:0
+            openSelect:false,
+            currentPoint:this.selectopenSelect
         }
     },
     methods:{
         clickPoint(data){
-            let index = this.points.indexOf(data)
-            this.currentPoint = index
+            this.currentPoint = this.points[data]
         },
         closeOutside() {
-            this.flag = false
+            this.openSelect = false
         }
     },
     mounted() {

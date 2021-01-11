@@ -28,7 +28,7 @@
                     <select-list
                         :points="points"
                         :icon="icon"
-                        :selectFlag="selectFlag"
+                        :selectopenSelect="selectopenSelect"
                     ></select-list>
                 </div>
                 <div @click.stop="openModal('repeat-order')" class="page-order__btn">
@@ -157,9 +157,9 @@ export default {
                 payment: '',
                 basket: []
             },
-            points:['Загрузить еще что-нибудь','Загрузить счет-фактуру'],
+            points:['Документы','Загрузить еще что-нибудь','Загрузить счет-фактуру'],
             flag: true,
-            selectFlag: false,
+            selectopenSelect: 'Документы',
             fixedButton: true,
             icon:'icons__download'
         }

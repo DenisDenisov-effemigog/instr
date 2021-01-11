@@ -17,10 +17,11 @@
             <div class="listing__actions">
                 <component is="select-list"
                            :points="{{ sort_types|json_encode|e('html_attr') }}"
-                           :icon="'check'"
+                           :selectopen-select="{{ sort_type|json_encode|e('html_attr') }}"
                 ></component>
-                {#            компонент смены сетки с карточками#}
+                {#компонент смены сетки с карточками#}
             </div>
+            {#добавить стики блок для мобилки#}
             <div class="listing__grid">
                 {% for product in products %}
                     <div class="listing__card">
