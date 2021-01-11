@@ -24,7 +24,7 @@
         position: relative
         z-index: 1
         margin-bottom: 16px
-        &--short-card
+        &_short-card
             margin-bottom: 0
         &_in-favorite
             +mobile
@@ -107,8 +107,10 @@
         margin: 16px auto
         +desktop
             width: 100%
-        &--short-card
+        &_short-card
             margin: -15px auto 8px
+        &_horiz
+            display: none
     &__code
         @extend .text-2
         color: $light-grey
@@ -123,6 +125,9 @@
         &:hover
             color: $black
             text-decoration: underline
+    &__price
+        .card__header_in-favorite
+            display: none
     &__price-block
         &_old-price
             @extend .text-2
@@ -170,6 +175,10 @@
                 margin-right: 0
         +desktop    
             display: none
+    &__description-horiz
+        & > .card__code,
+        & > .card__header
+            display: none
     &_grid
         width: 100% 
         +mobile
@@ -182,4 +191,3 @@
                 padding: 6px
             +widescreen
                 padding: 6px 34px
-            

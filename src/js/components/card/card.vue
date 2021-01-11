@@ -1,11 +1,11 @@
 <template>
     <div class="card" 
-        :class="{'card_grid': cardGrid === 'grid'}"
+        :class="{'card_grid': cardGrid === 'grid',}"
         ref="card" 
     >
         <div 
             class="card__header" 
-            :class="{'card__header--short-card': cardSize === 'short'}"
+            :class="{'card__header_short-card': cardSize === 'short'}"
         >
             <div class="card__stickers">
                 <card-stikers v-for="tooltip in product.tooltips"
@@ -16,36 +16,68 @@
             <component class="card__header_in-favorite" is="in-favorite"></component>
         </div>
         <div class="card__image-block" 
-             :class="{'card__image-block--short-card': cardSize === 'short'}"
+             :class="{'card__image-block_short-card': cardSize === 'short'}"
         >
             <component is="slider-photo-card" 
                        :cardSize="cardSize"
                        :images="product.images"
             ></component>
+<!-- фото для горизонтальной карточки -->
+            <img class="card__image-block_horiz" :src="this.product.images[0].img" alt="фото товара">
+<!--  -->
         </div>
-        <slot></slot>
-        <div class="card__button-block">
-            <component is="add-to-cart" :productId="product.id" :max-amount="product.stock" :changeIcon="changeIcon" ></component>
-            <component class="card__button-block_to-compare" is="to-compare"></component>
-            <div @click="menuTooltip = !menuTooltip" class="card__menu-btn">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <div v-show="menuTooltip" class="card__menu-tooltip">
-                <div>
-                    <component is="in-favorite"
-                               :text="true"
-                               :mobile="true"
-                    ></component>
-                    <component is="to-compare"
-                               :text="true"
-                               :mobile="true"
-                    ></component>
+        <div class="card__code">{{ product.code}}</div>
+<!-- описание горизонтальной карточки -->
+        <div class="card__description-horiz">
+            <div class="card__code">{{ product.code}}</div>
+            <div 
+                class="card__header" 
+                :class="{'card__header_short-card': cardSize === 'short'}"
+            >
+                <div class="card__stickers">
+                    <card-stikers v-for="tooltip in product.tooltips"
+                                :tooltip="tooltip"
+                                :cardPosition="cardPosition"
+                    ></card-stikers>
                 </div>
-                <svg class="card__menu-tooltip-close" @click="menuTooltip = false" viewBox="0 0 12 12">
-                    <use @click.stop :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
-                </svg>
+            </div>
+            <slot></slot>
+        </div>
+<!-- конец описания горизонтальной карточки -->
+
+        <div class="card__price-horiz">
+            <div class="card__price">
+                <div class="card__price-block">
+                    <div class="card__price-block_old-price">{{ product.oldPrice }} &#8381;</div>
+                    <div class="card__price-block_current-price">{{ product.newPrice }} &#8381;</div>
+                </div>
+<!-- кнопка добавления в избранные для горизонтальной карточки -->
+                <component class="card__header_in-favorite" is="in-favorite"></component>
+<!--  -->
+            </div>
+            <div class="card__button-block">
+                <component is="add-to-cart" :productId="product.id" :max-amount="product.stock" :changeIcon="changeIcon" ></component>
+                <component class="card__button-block_to-compare" is="to-compare"></component>
+                <div @click="menuTooltip = !menuTooltip" class="card__menu-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div v-show="menuTooltip" class="card__menu-tooltip">
+                    <div>
+                        <component is="in-favorite"
+                                :text="true"
+                                :mobile="true"
+                        ></component>
+                        <component is="to-compare"
+                                :text="true"
+                                :mobile="true"
+                        ></component>
+                    </div>
+                    <svg class="card__menu-tooltip-close" @click="menuTooltip = false" viewBox="0 0 12 12">
+                        <use @click.stop :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
+                    </svg>
+                </div>
             </div>
         </div>
     </div>
