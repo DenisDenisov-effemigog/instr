@@ -39,24 +39,18 @@
             &:hover
                 color: $primary-hover
     &-blue
-        position: relative
+        display: inline-flex
         cursor: pointer
         color: $blue
-        transition: .35s
-        &::after
-            content: ''
-            position: absolute
-            left: 0
-            bottom: 2px
-            width: 100%
-            height: 1px
-            background-color: $blue
-            opacity: 0
-            transition: .35s
+        text-decoration: none;
+        background-image: linear-gradient(currentColor, currentColor);
+        background-position: 0% 100%;
+        background-repeat: no-repeat;
+        background-size: 0% 2px;
+        transition: background-size .3s;
         &:hover
+            background-size: 100% 2px;
             color: $blue
-        &:hover::after
-            opacity: 1
     &-more
         display: flex
         padding-bottom: 2.5rem
