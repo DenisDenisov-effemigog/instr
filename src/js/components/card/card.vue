@@ -26,10 +26,10 @@
             <img class="card__image-block_horiz" :src="this.product.images[0].img" alt="фото товара">
 <!--  -->
         </div>
-        <div class="card__code">{{ product.code}}</div>
+        <slot name="code"></slot>
 <!-- описание горизонтальной карточки -->
         <div class="card__description-horiz">
-            <div class="card__code">{{ product.code}}</div>
+            <slot name="code"></slot>
             <div 
                 class="card__header" 
                 :class="{'card__header_short-card': cardSize === 'short'}"
@@ -41,16 +41,13 @@
                     ></card-stikers>
                 </div>
             </div>
-            <slot></slot>
+            <slot name="description"></slot>
         </div>
 <!-- конец описания горизонтальной карточки -->
 
         <div class="card__price-horiz">
             <div class="card__price">
-                <div class="card__price-block">
-                    <div class="card__price-block_old-price">{{ product.oldPrice }} &#8381;</div>
-                    <div class="card__price-block_current-price">{{ product.newPrice }} &#8381;</div>
-                </div>
+                <slot name="price"></slot>
 <!-- кнопка добавления в избранные для горизонтальной карточки -->
                 <component class="card__header_in-favorite" is="in-favorite"></component>
 <!--  -->

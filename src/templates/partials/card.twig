@@ -1,8 +1,15 @@
-{# <div class="card__code">{{ product.code}}</div> #}
-<a href="{{ product.link }}" class="card__name">
-    {{ product.title }}
-</a>
-{# <div class="card__price-block">
-    <div class="card__price-block_old-price">{{ product.oldPrice }} &#8381;</div>
-    <div class="card__price-block_current-price">{{ product.newPrice }} &#8381;</div>
-</div> #}
+<template v-slot:code>
+    <div class="card__code">{{ product.code}}</div>
+</template>
+<template v-slot:description>
+    <a href="{{ product.link }}" class="card__name">
+        {{ product.title }}
+    </a>
+</template>
+<template v-slot:price>
+    <div class="card__price-block">
+        <div class="card__price-block_old-price">{{ product.oldPrice }} &#8381;</div>
+        <div class="card__price-block_current-price">{{ product.newPrice }} &#8381;</div>
+    </div>
+</template>
+
