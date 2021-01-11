@@ -1,5 +1,5 @@
 <template>
-    <div class="catalogue" v-if="active" v-click-outside="closeCatalogue">
+    <div class="catalogue" v-if="active" v-click-outside="closeCatalog">
 
         <catalogue-mobile :categories="categories"></catalogue-mobile>
 
@@ -55,22 +55,28 @@
             }
         },
         created() {
-            this.$eventBus.$on("open-catalogue", this.openCatalogue);
+            this.$eventBus.$on("toggle-catalog", this.toggleCatalog);
         },
         methods: {
-            openCatalogue(state) {
+            toggleCatalog(state) {
                 this.active = state;
                 this.hovered = 0;
-                this.toggleHtmlOverflow('hidden')
+                
+                if (!this.active) {
+                    this.toggleHtmlOverflow('auto')
+                } else {
+                    this.toggleHtmlOverflow('hidden')
+                }
             },
-            closeCatalogue(event) {
+            closeCatalog(event) {
                 let vm = this;
                 if(window.innerWidth > 760) {
-                    if(event.toElement.className !== 'header__catalog-btn' && 
-                        event.toElement.className.animVal !=='header__catalog-btn-icon') {
-                        vm.active = false;
-                        this.$eventBus.$emit('close-catalogue', vm.active);
-                        this.toggleHtmlOverflow('auto')
+                    console.log(event)
+                    console.log(event.target)
+                    console.log(event.target.className)
+                    if(event.target.className !== 'header__catalog-btn' && 
+                        event.target.className !=='header__catalog-btn-line') {
+                        vm.$eventBus.$emit('close-catalog'); // закрываем деск.каталог по клику снаружи
                     }
                 }
             }

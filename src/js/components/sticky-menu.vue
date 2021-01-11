@@ -74,19 +74,20 @@ export default {
     methods:{
         clickMenu(menu) {
             this.menuLink = menu
-            this.$eventBus.$emit("closeSearch");
+            this.$eventBus.$emit("closeSearch"); // закрываем поиск
+            
             if (this.menuLink === 'catalog') {
-                this.$eventBus.$emit("open-catalogue", true);
-                this.$eventBus.$emit('exitSearch', true);
-            } else if (this.menuLink === 'profile') {
+                this.$eventBus.$emit("toggle-catalog", true); //открываем мобильный каталог
+            } else {
+                this.$eventBus.$emit("close-catalog"); //закрываем моб.каталог по клику на любую другую кнопку
+            }
+            
+            if (this.menuLink === 'profile') {
                 if (this.user.authorized) {
                     window.location.replace('/account')
                 } else {
                     this.$eventBus.$emit("openModal", 'user', 'login', false, true)
                 }
-            } else {
-                this.$eventBus.$emit("close-catalogue", false);
-                this.toggleHtmlOverflow('auto')
             }
         },
         notActiveButton() {
