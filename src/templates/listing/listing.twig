@@ -14,23 +14,27 @@
             {#Темплейт фильтров#}
         </div>
         <div class="listing__products">
-            <div class="listing__products_actions">
+            <div class="listing__actions">
                 <component is="select-list"
                            :points="{{ sort_types|json_encode|e('html_attr') }}"
                            :icon="'check'"
                 ></component>
                 {#            компонент смены сетки с карточками#}
             </div>
-            <div class="listing__products_grid">
+            <div class="listing__grid">
                 {% for product in products %}
-                    <card
-                        :product="{{ product|json_encode()|e('html_attr') }}"
-                    >
-                        {% include '../partials/card.twig' with {'product': product} %}
-                    </card>
+                    <div class="listing__card">
+                        <card
+                            :change-icon="false"
+                            :card-grid="'grid'"
+                            :product="{{ product|json_encode()|e('html_attr') }}"
+                        >
+                            {% include '../partials/card.twig' with {'product': product} %}
+                        </card>
+                    </div>
                 {% endfor %}
             </div>
-            <div class="listing__products_pagination">
+            <div class="listing__pagination">
                 {#компонент с кнопкой "загрузить ещё"#}
                 {#Компонент с пагинацией#}
             </div>
