@@ -1,0 +1,36 @@
+.pagination
+    padding-top: 1rem
+    +tablet
+        padding-top: 0
+    display: flex
+    align-items: center
+    &_list
+        width: 100%
+        display: flex
+        justify-content: space-between
+        +tablet
+            justify-content: normal
+        padding: 0 .5rem
+    &_arrow
+        cursor: pointer
+        & svg
+            width: $size_12
+            height: $size_12
+            fill: $border-color
+    &_link
+        @extend .text-2
+        font-weight: 400
+        color: $light-grey
+    &_item
+        width: 40px
+        height: 40px
+        display: flex
+        align-items: center
+        justify-content: center
+        border: 1px solid transparent
+        border-radius: 4px
+        &--current
+            border-color: $black
+            & .pagination_link
+                color: $black
+                font-weight: 600

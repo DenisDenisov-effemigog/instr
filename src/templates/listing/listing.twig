@@ -31,8 +31,8 @@
                 {% endfor %}
             </div>
             <div class="listing__products_pagination">
-                {#компонент с кнопкой "загрузить ещё"#}
-                {#Компонент с пагинацией#}
+                {% include './listing-pagination/listing-pagination-btn.twig' %}
+                {% include './listing-pagination/listing-pagination.twig' %}
             </div>
         </div>
     </div>
