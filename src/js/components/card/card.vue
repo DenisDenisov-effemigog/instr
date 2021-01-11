@@ -1,5 +1,8 @@
 <template>
-    <div class="card" ref="card">
+    <div class="card" 
+        :class="{'card_grid': cardGrid === 'grid'}"
+        ref="card" 
+    >
         <div 
             class="card__header" 
             :class="{'card__header--short-card': cardSize === 'short'}"
@@ -70,6 +73,10 @@ export default {
             default: false,
         },
         cardSize: {
+            type: String,
+            default: '',
+        },
+        cardGrid: {
             type: String,
             default: '',
         },

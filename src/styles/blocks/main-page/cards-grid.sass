@@ -1,0 +1,40 @@
+.cards-grid
+    @extend .new-items
+    &__title
+        @extend .new-items__title
+    &__layout
+        @extend .columns
+    &__sidebar
+        @extend .column
+        display: none
+        flex: none
+        +desktop
+            display: block
+            width: 25%
+    &__content
+        @extend .column
+        display: flex
+        flex: none
+        width: 100%
+        +desktop
+            width: 75%
+    &__grid
+        @extend .columns
+        flex-wrap: wrap
+        +mobile
+            display: flex
+            flex: auto
+            margin-left: -1rem
+            margin-right: -1rem
+    &__card
+        @extend .column
+        @extend .column_width-mobile_6
+        @extend .column_width-tablet_4
+        @extend .column_width-desktop_3
+        +mobile
+            border: 1px solid $border-color
+            border-right: none
+            margin-top: -1px
+        &:nth-child(odd)
+            +mobile
+                border-left: none
