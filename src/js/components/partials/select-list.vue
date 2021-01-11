@@ -27,14 +27,16 @@ export default {
     name: "select-list",
     props:{
         points:{
-            type: Array
+            type: Array,
+            required: true,
         },
         icon:{
-            type:String
+            type:String,
+            required: true,
         },
         selectFlag:{
             type: Boolean,
-            default: true
+            default: true,
         }
     },
     data(){

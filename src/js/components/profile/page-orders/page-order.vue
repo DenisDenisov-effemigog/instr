@@ -119,7 +119,7 @@
 </template>
 
 <script>
-import selectList from '../select-list.vue'
+import selectList from '../../partials/select-list.vue'
 import OrderProductList from './order-product-list.vue'
 
 import * as Api from '../../../api';

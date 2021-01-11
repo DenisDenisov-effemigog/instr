@@ -1,0 +1,39 @@
+<div class="listing">
+    <div class="listing__header">
+        <h1 class="listing__title">Автомобильный инструмент</h1>
+        <div class="items-cont">12 210 товаров</div>
+    </div>
+    <div class="listing__shields">
+        {% for shield in shields %}
+            <div class="listing__shield">{{ shield }}</div>
+        {% endfor %}
+    </div>
+    <div class="listing__content">
+        <div class="listing__sidebar">
+            {#Темплейт категорий#}
+            {#Темплейт фильтров#}
+        </div>
+        <div class="listing__products">
+            <div class="listing__products_actions">
+                <component is="select-list"
+                           :points="{{ sort_types|json_encode|e('html_attr') }}"
+                           :icon="'check'"
+                ></component>
+                {#            компонент смены сетки с карточками#}
+            </div>
+            <div class="listing__products_grid">
+                {% for product in products %}
+                    <card
+                        :product="{{ product|json_encode()|e('html_attr') }}"
+                    >
+                        {% include '../partials/card.twig' with {'product': product} %}
+                    </card>
+                {% endfor %}
+            </div>
+            <div class="listing__products_pagination">
+                {#компонент с кнопкой "загрузить ещё"#}
+                {#Компонент с пагинацией#}
+            </div>
+        </div>
+    </div>
+</div>

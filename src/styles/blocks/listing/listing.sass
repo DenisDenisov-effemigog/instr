@@ -1,0 +1,34 @@
+.listing
+    @extend .container
+    
+    &__header
+        display: flex
+        
+    &__title
+        @extend .title-2
+        
+    &__shields
+        display: flex
+        flex-wrap: wrap
+        
+    &__shield
+        
+    &__content
+        @extend .columns
+        
+    &__sidebar
+        @extend .column_width_3
+        
+    &__products
+        @extend .column_width_9
+        
+        &_actions
+            +flex-container
+            
+        &_grid
+            display: flex
+            flex-wrap: wrap
+            
+        &_pagination
+            +flex-container
+            

@@ -31,7 +31,7 @@
 </template>
 
 <script>
-    import selectList from './select-list.vue'
+    import selectList from '../partials/select-list.vue'
     import orderList from './page-orders/order-list.vue'
     export default {
          components: { 
