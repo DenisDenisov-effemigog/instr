@@ -6,12 +6,14 @@
         
     &__title
         @extend .title-2
+
+// .search-category__list и .search-category__link нужно выделить в отдельный стиль
         
     &__shields
-        display: flex
-        flex-wrap: wrap
+        @extend .search-category__list
         
     &__shield
+        @extend .search-category__link
         
     &__content
         @extend .columns
