@@ -50,7 +50,7 @@ import pageOrder from './components/profile/page-orders/page-order.vue';
 import orderList from './components/profile/page-orders/order-list.vue';
 import order from './components/profile/page-orders/order.vue';
 import orderProductList from './components/profile/page-orders/order-product-list.vue';
-import selectList from './components/profile/select-list.vue';
+import selectList from './components/partials/select-list.vue';
 import pageCheck from './components/profile/page-check.vue';
 import pageDelivery from './components/profile/page-delivery.vue';
 import editProfile from './components/profile/page-modals/edit-profile.vue';

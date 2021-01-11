@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <a href="#" class="header__logo header__logo_desktop" v-show="!flag">
+        <a href="#" class="header__logo header__logo_desktop" v-show="!activeSearch">
             <!-- <svg viewBox="0 0 650 150">
                 <use :xlink:href="templatePath + 'images/sprite.svg#logo'"></use>
             </svg> -->
@@ -8,7 +8,7 @@
                 <use :xlink:href="templatePath + 'images/sprite.svg#wt'"></use>
             </svg>
         </a>
-        <a href="#" class="header__logo header__logo_mobile" v-show="!flag">
+        <a href="#" class="header__logo header__logo_mobile" v-show="!activeSearch">
             <!-- <svg viewBox="0 0 650 150">
                 <use :xlink:href="templatePath + 'images/sprite.svg#logo'"></use>
             </svg> -->
@@ -16,10 +16,9 @@
                 <use :xlink:href="templatePath + 'images/sprite.svg#tw'"></use>
             </svg>
         </a>
-        <show-catalogue :categories="categories" v-show="!flag"></show-catalogue>
+        <show-catalogue :categories="categories" v-show="!activeSearch"></show-catalogue>
         <header-search
             @searchClick=searchClick
-            @clickClose=clickClose
         ></header-search>
         <ul class="header__menu">
             <li class="header__menu-item">
@@ -87,15 +86,12 @@ export default {
     },
     data(){
         return{
-            flag: false
+            activeSearch: false
         }
     },
     methods:{
         searchClick(data){
-            this.flag = data
-        },
-        clickClose(data){
-            this.flag = data
+            this.activeSearch = data
         },
         openModal(modal, props) {
             this.$eventBus.$emit("openModal", modal, props, false, true)

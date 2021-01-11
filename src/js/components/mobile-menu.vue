@@ -49,7 +49,8 @@ export default {
         },
         closeOutside(event) {
             if(event.toElement.className === 'mobile-menu') {
-                this.$eventBus.$emit("exitSearch", true)
+                this.$eventBus.$emit("change-menu-icon") // меняем иконку моб.меню на бкргер
+                this.closeMenuModal()
             }
         },
     },

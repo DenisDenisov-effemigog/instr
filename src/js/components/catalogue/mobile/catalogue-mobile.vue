@@ -125,7 +125,7 @@
                 this.$eventBus.$emit("sow-button", 'Показать', 1, 'товар' + this.ending(1));
             },
             closeCategory() {
-                this.$eventBus.$emit('open-catalogue', false);
+                this.$eventBus.$emit('toggle-catalog', false); //закрываем мобильный каталог
                 this.$eventBus.$emit("hide-button");
                 this.$eventBus.$emit('notActiveButton');
             },

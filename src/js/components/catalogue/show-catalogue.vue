@@ -47,42 +47,30 @@
             }
         },
         created() {
-            this.$eventBus.$on("exitSearch", this.closeMenu);
-            this.$eventBus.$on("close-catalogue", this.close);
+            this.$eventBus.$on("change-menu-icon", this.closeMenu);
+            this.$eventBus.$on("close-catalog", this.close);
         },
         methods: {
             open() {
                 this.active = !this.active;
-                this.$eventBus.$emit('open-catalogue', this.active);
-                if (!this.active) {
-                    this.toggleHtmlOverflow('auto')
-                }
+                this.$eventBus.$emit('toggle-catalog', this.active); //открываем/закрываем деск.каталог
             },
-            close(state) {
-                this.active = state;
-                this.$eventBus.$emit('open-catalogue', this.active)
+            close() {
+                this.active = false;
+                this.$eventBus.$emit('toggle-catalog', false) //закрываем каталог
             },
-            // openMenu() {
-            //     this.openedMenu = true;
-            //     this.$eventBus.$emit('open-catalogue', this.active)
-            //     this.$eventBus.$emit('open-menu', 'home');
-            //     this.$eventBus.$emit("hide-button");
-            // },
             openMenu() {
                 this.openedMenu = !this.openedMenu;
-                this.$eventBus.$emit('open-catalogue', this.active)
+                this.$eventBus.$emit("close-catalog"); //закрываем моб.каталог при открывании меню
                 this.$eventBus.$emit('open-menu', 'home');
                 this.$eventBus.$emit("hide-button");
-                if (this.openedMenu == false) {
-                    this.$eventBus.$emit('close-menu')
+                if (this.openedMenu === false) {
+                    this.$eventBus.$emit('close-menu') //закрываем моб.меню
                 }
                 this.$eventBus.$emit('closeStickyButton')
             },
-            closeMenu(action) {
+            closeMenu() {
                 this.openedMenu = false;
-                if (action) {
-                    this.$eventBus.$emit('close-menu');
-                }
             },
             
         },
