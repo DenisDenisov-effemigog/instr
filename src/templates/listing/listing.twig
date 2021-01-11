@@ -34,6 +34,19 @@
                     </div>
                 {% endfor %}
             </div>
+            <div class="listing__grid listing__grid_horiz">
+                {% for product in products %}
+                    <div class="listing__card">
+                        <card
+                            :change-icon="false"
+                            :card-grid="'grid'"
+                            :product="{{ product|json_encode()|e('html_attr') }}"
+                        >
+                            {% include '../partials/card.twig' with {'product': product} %}
+                        </card>
+                    </div>
+                {% endfor %}
+            </div>
             <div class="listing__pagination">
                 {#компонент с кнопкой "загрузить ещё"#}
                 {#Компонент с пагинацией#}

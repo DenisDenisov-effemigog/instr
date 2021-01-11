@@ -45,17 +45,16 @@
         &_horiz
             flex-direction: column
             flex: auto
-            width: 100%
-            .cards-grid__card
+            .listing__card
                 width: 100%
-                padding: 0 !important
-                &::after
-                    content: ''
-                    display: block
-                    margin-top: .5rem
+                padding-bottom: 1.5rem
+                border-bottom: 1px solid $border-color_4
+                +mobile
+                    border: none
                     border-bottom: 1px solid $border-color_4
             .card
                 display: flex
+                padding: 0 !important
                 border: none
                 &:nth-child(odd)
                     +tablet
@@ -64,9 +63,11 @@
                 display: none
             .card__image-block
                 order: -1
-                max-width: 7.5rem
                 height: 7.5rem
+                min-width: 7.5rem
                 margin: 0 1.5rem 0 0
+                +tablet
+                    max-width: 7.5rem
             .card__image-block_horiz
                 display: block
             .slider-photo-card,
@@ -87,7 +88,8 @@
                 display: flex
                 justify-content: space-between
                 .card__header_in-favorite
-                    display: block
+                    +desktop
+                        display: block
             .card_grid .add-to-cart
                 width: auto
             .add-to-cart__add
