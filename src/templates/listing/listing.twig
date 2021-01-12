@@ -21,17 +21,21 @@
                 :categories="{{ category[0].subcategories|json_encode()|e('html_attr') }}"
                 :class-name="{{'listing'|json_encode()|e('html_attr')}}"
             ></component>
-            {#Темплейт фильтров#}
+            <div class="listing__sidebar_filters">
+                {#TODO отобразить блок категорий, в котором находимся#}
+                {% include './filter.twig' with {'filters': filters} %}
+            </div>
         </div>
         <div class="listing__products">
             <div class="listing__actions">
+                <component is="filter-button"></component>
                 <component is="select-list"
                            :points="{{ sort_types|json_encode|e('html_attr') }}"
                            :selectopen-select="{{ sort_type|json_encode|e('html_attr') }}"
                 ></component>
-                {#компонент смены сетки с карточками#}
-            </div>
-            {#добавить стики блок для мобилки#}
+                <component is="displaying-cards"></component>
+            </div>{#TODO в моб.версии этот блок должен стать стики#}
+            
             <div class="listing__grid">
                 {% for product in products %}
                     <div class="listing__card">

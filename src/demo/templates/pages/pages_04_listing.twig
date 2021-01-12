@@ -437,6 +437,126 @@
     'Лебедки автомобильные', 'Масленки', 'Мебель гаражная', 'Моечные машины высокого давления', 'Домкраты', 'Насосы гидравлические', 'Аксессуары автомобильные', 'Перчатки', 'Поддоны для сбора масла', 'Подставки под машину регулируемые', 'Прессы гидравлические', 'Пробники автомобильные', 'Растяжки гидравлические', 'Пневмоинструмент', 'Тали',
 ] %}
 
+{% set filters = {
+    'page_count': 20,
+    'sort': 'popular',
+    'match': 13,
+    'hide_unavailable': true,
+    'section_id': 178500,
+    'hash': 'JnnUHIo**(&87868HHkjYUI@wewe',
+    'filters': [
+        {
+            title: "Цена",
+            code: "price_base",
+            type: "range",
+            values: {
+                min: 1,
+                max: 100,
+                from: 2,
+                to: 98
+            },
+
+        },
+        {
+            title: "Бренд",
+            code: "brand",
+            type: "checkbox",
+            values: [
+                {
+                    title: "Denzel",
+                    value: "denzel",
+                    checked: true,
+                    available: true,
+                    count: 7
+                },
+                {
+                    title: "Сибртех",
+                    value: "sibteh",
+                    checked: false,
+                    available: true,
+                    count: 6
+                },
+                {
+                    title: "Gross",
+                    value: "gross",
+                    checked: true,
+                    available: true,
+                    count: 7
+                },
+                {
+                    title: "Matrix",
+                    value: "matrix",
+                    checked: false,
+                    available: true,
+                    count: 6
+                },
+                {
+                    title: "Stels",
+                    value: "stels",
+                    checked: false,
+                    available: true,
+                    count: 5
+                },
+                {
+                    title: "Sparta",
+                    value: "sparta",
+                    checked: false,
+                    available: true,
+                    count: 6
+                },
+                {
+                    title: "Russia",
+                    value: "russia",
+                    checked: false,
+                    available: true,
+                    count: 7
+                },
+            ]
+        },
+        {
+            title: "Тип скидки",
+            code: "sale_type",
+            type: "checkbox",
+            values: [
+                {
+                    title: "Силовое без скидки",
+                    value: "sale_1",
+                    checked: false,
+                    available: true,
+                    count: 2
+                },
+                {
+                    title: "Силовое",
+                    value: "sale_2",
+                    checked: false,
+                    available: true,
+                    count: 1
+                },
+                {
+                    title: "Россия без скидки",
+                    value: "sale_3",
+                    checked: false,
+                    available: true,
+                    count: 3
+                },
+                {
+                    title: "Импорт без скидки",
+                    value: "sale_4",
+                    checked: false,
+                    available: true,
+                    count: 4
+                },
+            ]
+        },
+        {
+            title: "Наличие товара",
+            code: "classifier_again",
+            type: "checkbox",
+            values: []
+        }
+    ]
+}
+%}
 
 {% set products = [
     {
@@ -654,6 +774,7 @@
         'sort_type': sort_type,
         'shields': shields,
         'categories': categories,
+        'filters': filters,
     } %}
     {% include '../../../templates/footer/footer.twig'  with {'countries': countries, 'user': user} %}
     

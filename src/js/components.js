@@ -10,7 +10,7 @@ import toCompare from './components/to-compare.vue';
 import mediaButton from './components/media-button.vue';
 /*catalogue*/
 import catalogue from './components/catalogue/catalogue.vue';
-import catalogueЫubcategories from './components/catalogue/catalogue-subcategories.vue';
+import catalogueSubcategories from './components/catalogue/catalogue-subcategories.vue';
 /*header*/
 import cartMini from './components/header/cart-mini.vue';
 import headerBlock from './components/header/header-block.vue';
@@ -59,6 +59,11 @@ import changePassword from './components/profile/page-modals/change-password.vue
 import deleteProfile from './components/profile/page-modals/delete-profile.vue';
 import addAddress from './components/profile/page-modals/add-address.vue';
 import repeatOrder from './components/profile/page-modals/repeat-order.vue';
+/*listing*/
+import filters from './components/listing/filters/filters.vue';
+import filterBlock from './components/listing/filters/filter-block.vue';
+import displayingCards from './components/listing/displaying-cards.vue';
+import filterButton from './components/listing/filter-button.vue';
 
 export default {
     components: {
@@ -115,6 +120,10 @@ export default {
         user,
         tooltipProfile,
         cardStikers,
-        catalogueЫubcategories,
+        catalogueSubcategories,
+        filters,
+        filterBlock,
+        displayingCards,
+        filterButton,
     },
 }

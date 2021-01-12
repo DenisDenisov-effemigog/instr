@@ -16,6 +16,14 @@
             <li class="header__menu-item">
                 <a href="#" class="header__menu-link">
                     <svg class="header__menu-icon">
+                        <use :xlink:href="templatePath + 'images/sprite.svg#icons__graf'"></use>
+                    </svg>
+                    <p class="header__menu-text">Сравнить</p>
+                </a>
+            </li>
+            <li class="header__menu-item">
+                <a href="#" class="header__menu-link">
+                    <svg class="header__menu-icon">
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__heart'"></use>
                     </svg>
                     <p class="header__menu-text">Избранное</p>
