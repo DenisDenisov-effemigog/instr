@@ -20,13 +20,14 @@
         </div>
         <div class="listing__products">
             <div class="listing__actions">
+                <component is="filter-button"></component>
                 <component is="select-list"
                            :points="{{ sort_types|json_encode|e('html_attr') }}"
                            :selectopen-select="{{ sort_type|json_encode|e('html_attr') }}"
                 ></component>
-                {#TODO компонент смены сетки с карточками#}
-            </div>
-            {#TODO добавить стики блок для мобилки#}
+                <component is="displaying-cards"></component>
+            </div>{#TODO в моб.версии этот блок должен стать стики#}
+            
             <div class="listing__grid">
                 {% for product in products %}
                     <div class="listing__card">
