@@ -182,11 +182,16 @@
                 .card__header_in-favorite
                     +desktop
                         display: block
+            .card__button-block
+                justify-content: flex-start
             .card_grid .add-to-cart
                 width: auto
+                margin-right: 1rem
             .add-to-cart__add
-                width: 10rem
-                margin-right: 1.5rem
+                width: 8.375rem
+                +tablet
+                    width: 10rem
+                    margin-right: 1.5rem
 
     &__card
         @extend .column
