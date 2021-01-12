@@ -8,10 +8,12 @@
         @extend .title-2
         
     &__shields
-        @extend .search-category__list
+        @extend .shield
         
     &__shield
-        @extend .search-category__link
+        @extend .shield__item
+        &_active
+            @extend .shield__item_active
         
     &__content
         @extend .columns
@@ -54,26 +56,38 @@
         width: 100%
         +desktop
             width: 75%
-        &_pagination
-            padding-top: 1.875rem
-            +tablet
-                +flex-container
-            &_btn
-                @extend .text-2
-                cursor: pointer
-                width: 100%
-                max-width: auto
-                +tablet
-                    max-width: 13.5rem
-                color: $grey
-                border: 1px solid $grey
-                padding: 0.5625rem 0rem
-                border-radius: 4px
-                font-weight: 600
-                text-align: center
+    &__pagination
+        padding-top: 1.875rem
+        +tablet
+            +flex-container
+    &__pagination-btn
+        @extend .text-2
+        cursor: pointer
+        width: 100%
+        max-width: auto
+        +tablet
+            max-width: 13.5rem
+        color: $grey
+        border: 1px solid $grey
+        padding: 0.5625rem 0rem
+        border-radius: 4px
+        font-weight: 600
+        text-align: center
         
     &__actions
         +flex-container
+        height: 2.5rem
+        margin: .25rem 0 2rem 0
+
+    &__select
+        width: 100%
+        height: 2.5rem
+        +desktop
+            width: 13.5rem
+        & .select__arrow
+            fill: $icon-black
+            width: $size_8-33
+            height: $size_5
             
     &__grid
         @extend .columns
@@ -93,39 +107,75 @@
                 border-bottom: 1px solid $border-color_4
                 +mobile
                     border: none
-                    border-bottom: 1px solid $border-color_4
+                    padding: 0
             .card
                 display: flex
-                padding: 0 !important
                 border: none
+                border-bottom: 1px solid $border-color_4
+                padding: 1.1875rem 1rem 1.5rem 1rem
+                +tablet
+                    padding: 0 !important
+                    border: none
                 &:nth-child(odd)
                     +tablet
                         border-left: none
+            .card__top
+                display: flex
+                flex-direction: column
+                justify-content: center
+                align-items: center
+                margin-right: .5rem
+                +tablet
+                    margin-right: 1.5rem
             .card__header
                 display: none
             .card__image-block
-                order: -1
-                height: 7.5rem
-                min-width: 7.5rem
-                margin: 0 1.5rem 0 0
+                width: 5.875rem
+                height: 5.875rem
+                margin: 0.25rem 0 1.5rem 0
                 +tablet
+                    order: -1
+                    height: 7.5rem
                     max-width: 7.5rem
+                    margin: 0
             .card__image-block_horiz
-                display: block
-            .slider-photo-card,
+                +tablet
+                    display: block
+            .slider-photo-card
+                +tablet
+                    display: none
             .card__code
-                display: none
-            .card__description-horiz
-                margin-right: 1.5rem
+                order: -1
+                text-align: center
+                +tablet
+                    display: none
+                    text-align: left
+            .card__bottom
+                display: flex
+                flex-direction: column
                 width: inherit
-                & > .card__code,
+                +tablet
+                    flex-direction: row
+            .card__description-horiz
+                width: inherit
+                +tablet
+                    margin-right: 1.5rem
+                & > .card__code
+                    +tablet
+                        display: block
+                        margin-bottom: .5rem
                 & > .card__header
                     display: block
                     margin-bottom: .5rem
             .card__name
-                margin-bottom: 0
+                height: 2rem
+                margin-bottom: .5rem
+                +tablet
+                    margin-bottom: 0
+                    height: 3.75rem
             .card__price-horiz
-                align-self: flex-end
+                +tablet
+                    align-self: flex-end
             .card__price
                 display: flex
                 justify-content: space-between

@@ -86,7 +86,7 @@ export default {
         categoryClick(e){
             if(e.target.classList.contains('search-category__link')){
                 let a = e.target
-                a.classList.toggle('search-category__link-active')
+                a.classList.toggle('search-category__link_active')
             }
         }
     },

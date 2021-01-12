@@ -1,6 +1,6 @@
 .select
     position: relative
-    font-size: $size_12
+    font-size: $font-size_4
     width: 100%
     &__button
         background: #fff
@@ -8,7 +8,7 @@
         padding: 0.5rem 1rem
         border: 1px solid $border-color
         box-sizing: border-box
-        border-radius: 2px
+        border-radius: $border-radius_2
         display: flex
         align-items: center
         justify-content: space-between
@@ -18,7 +18,7 @@
                         fill: $grey
         & svg
             width: $size_14
-            height: 0.5rem
+            height: $size_8
             fill: $light-grey
         &--active
             & svg
@@ -29,7 +29,7 @@
         top: 0
         width: 100%
         box-shadow: 0px 14px 25px rgba(181, 195, 208, 0.4)
-        border-radius: 2px
+        border-radius: $border-radius_2
         background: #fff
         z-index: 2
     &__item
@@ -39,8 +39,8 @@
         align-items: center
         justify-content: space-between
         & svg
-            width: 1.125rem
-            height: 1.25rem
+            width: $size_18
+            height: $size_20
             fill: transparent
         +tablet
             &:hover

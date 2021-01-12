@@ -37,8 +37,10 @@
             <div class="listing__actions">
                 <component is="filter-button" :filters="{{ filters|json_encode|e('html_attr') }}"></component>
                 <component is="select-list"
+                           class="listing__select"
                            :points="{{ sort_types|json_encode|e('html_attr') }}"
                            :selectopen-select="{{ sort_type|json_encode|e('html_attr') }}"
+                           :viewbox="'0 0 16 7'"
                 ></component>
                 <component is="displaying-cards"></component>
             </div>{#TODO в моб.версии этот блок должен стать стики#}
@@ -69,7 +71,7 @@
                     </div>
                 {% endfor %}
             </div>
-            <div class="listing__products_pagination">
+            <div class="listing__pagination">
                 {% include './listing-pagination/listing-pagination-btn.twig' %}
                 {% include './listing-pagination/listing-pagination.twig' %}
             </div>
