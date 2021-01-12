@@ -11,6 +11,7 @@ import mediaButton from './components/media-button.vue';
 /*catalogue*/
 import catalogue from './components/catalogue/catalogue.vue';
 import catalogueSubcategories from './components/catalogue/catalogue-subcategories.vue';
+import furtherSubcategories from './components/catalogue/catalogue-further-subcategories.vue';
 /*header*/
 import cartMini from './components/header/cart-mini.vue';
 import headerBlock from './components/header/header-block.vue';
@@ -122,6 +123,7 @@ export default {
         tooltipProfile,
         cardStikers,
         catalogueSubcategories,
+        furtherSubcategories,
         filters,
         filterBlock,
         displayingCards,

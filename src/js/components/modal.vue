@@ -51,6 +51,8 @@
             </div>
             <div class="modal_filters" v-else-if="modal === 'filters'">
                 <h3 class="modal-title">Фильтры</h3><!--TODO сделать стики хэдер у модалки-->
+                <slot name="listingcat"></slot>
+                <!--TODO добавить странную кнопку "все категории"-->
                 <component is="filters" :filters="props"></component>
                 <component is="sticky-mobile-button"></component>
             </div>
@@ -126,6 +128,7 @@ export default {
             this.props = []
             this.modalBigger = false
             this.$eventBus.$emit("deleteActive");
+            this.$eventBus.$emit("hide-button");
             this.toggleHtmlOverflow('auto')
         },
         closeOutside(event) {
