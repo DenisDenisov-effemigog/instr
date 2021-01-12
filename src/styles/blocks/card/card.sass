@@ -112,16 +112,22 @@
         &_horiz
             display: none
     &__code
-        @extend .text-2
+        @extend .text-3
         color: $light-grey
         margin-bottom: 4px
+        +tablet
+            font-size: $font-size_3
+            line-height: $line-height_3
     &__name
-        @extend .text-2
+        @extend .text-3
         color: $black
         margin-bottom: 16px
         height: 60px
         overflow: hidden
         display: block
+        +tablet
+            font-size: $font-size_3
+            line-height: $line-height_3  
         &:hover
             color: $black
             text-decoration: underline
@@ -130,13 +136,15 @@
             display: none
     &__price-block
         &_old-price
-            @extend .text-2
+            @extend .text-3
             color: $light-grey
             text-decoration: line-through
             margin-bottom: 4px
+            +tablet
+                font-size: $font-size_3
+                line-height: $line-height_3
         &_current-price
-            @extend .title-4
-            font-size: 20px
+            @extend .title-6
             color: $black
             margin-bottom: 8px
     &__button-block
