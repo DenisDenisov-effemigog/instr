@@ -1,3 +1,8 @@
+{%  set category = [] %}
+{%  for st in categories %}
+        {% set category = category | merge([st]) %}
+{% endfor %}
+
 <div class="listing">
     <div class="listing__header">
         <h1 class="listing__title">Автомобильный инструмент</h1>
@@ -12,7 +17,10 @@
     </div>
     <div class="listing__content">
         <div class="listing__sidebar">
-            {#Темплейт категорий#}
+            <component is="catalogue-subcategories"
+                :categories="{{ category[0].subcategories|json_encode()|e('html_attr') }}"
+                :class-name="{{'listing'|json_encode()|e('html_attr')}}"
+            ></component>
             {#Темплейт фильтров#}
         </div>
         <div class="listing__products">
