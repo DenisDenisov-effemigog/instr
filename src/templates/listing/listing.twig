@@ -5,7 +5,9 @@
     </div>
     <div class="listing__shields">
         {% for shield in shields %}
-            <div class="listing__shield">{{ shield }}</div>
+            <div class="listing__shield">
+                {{ shield }}
+            </div>
         {% endfor %}
     </div>
     <div class="listing__content">
@@ -14,20 +16,38 @@
             {#Темплейт фильтров#}
         </div>
         <div class="listing__products">
-            <div class="listing__products_actions">
+            <div class="listing__actions">
                 <component is="select-list"
                            :points="{{ sort_types|json_encode|e('html_attr') }}"
-                           :icon="'check'"
+                           :selectopen-select="{{ sort_type|json_encode|e('html_attr') }}"
                 ></component>
-                {#            компонент смены сетки с карточками#}
+                {#компонент смены сетки с карточками#}
             </div>
-            <div class="listing__products_grid">
+            {#добавить стики блок для мобилки#}
+            <div class="listing__grid">
                 {% for product in products %}
-                    <card
-                        :product="{{ product|json_encode()|e('html_attr') }}"
-                    >
-                        {% include '../partials/card.twig' with {'product': product} %}
-                    </card>
+                    <div class="listing__card">
+                        <card
+                            :change-icon="false"
+                            :card-grid="'grid'"
+                            :product="{{ product|json_encode()|e('html_attr') }}"
+                        >
+                            {% include '../partials/card.twig' with {'product': product} %}
+                        </card>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="listing__grid listing__grid_horiz">
+                {% for product in products %}
+                    <div class="listing__card">
+                        <card
+                            :change-icon="false"
+                            :card-grid="'grid'"
+                            :product="{{ product|json_encode()|e('html_attr') }}"
+                        >
+                            {% include '../partials/card.twig' with {'product': product} %}
+                        </card>
+                    </div>
                 {% endfor %}
             </div>
             <div class="listing__products_pagination">

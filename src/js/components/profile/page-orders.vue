@@ -21,7 +21,7 @@
         <div class="order__info-select" v-if="!details && ordersAll.length !== 0">
             <select-list
                 :points="points"
-                :icon="icon"
+                :selectopenSelect="selectopenSelect"
             ></select-list>
         </div>
         <div class="order__main">
@@ -46,8 +46,8 @@
             return{
                 profile: [],
                 points:['Выполнен','В ожидании оплаты','Отменен'],
+                selectopenSelect: 'Выполнен',
                 details: false,
-                icon:'check'
             }
         },
         mounted() {
