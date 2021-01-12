@@ -27,7 +27,8 @@
             </div>
         </div>
         <div class="listing__products">
-            <div class="listing__actions">
+
+            <div class="listing__actions listing__actions_desktop">
                 <component is="filter-button" :filters="{{ filters|json_encode|e('html_attr') }}"></component>
                 <component is="select-list"
                            class="listing__select"
@@ -36,8 +37,13 @@
                            :viewbox="'0 0 16 7'"
                 ></component>
                 <component is="displaying-cards"></component>
-            </div>{#TODO в моб.версии этот блок должен стать стики#}
-            
+            </div>
+            <component is="sticky-listing-actions"
+                :filters="{{ filters|json_encode|e('html_attr') }}"
+                :points="{{ sort_types|json_encode|e('html_attr') }}"
+                :selectopen-select="{{ sort_type|json_encode|e('html_attr') }}"
+            ></component>
+
             <div class="listing__grid">
                 {% for product in products %}
                     <div class="listing__card">

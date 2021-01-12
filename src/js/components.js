@@ -64,6 +64,7 @@ import filters from './components/listing/filters/filters.vue';
 import filterBlock from './components/listing/filters/filter-block.vue';
 import displayingCards from './components/listing/displaying-cards.vue';
 import filterButton from './components/listing/filter-button.vue';
+import stickyListingActions from './components/listing/sticky-listing-actions.vue';
 
 export default {
     components: {
@@ -125,5 +126,6 @@ export default {
         filterBlock,
         displayingCards,
         filterButton,
+        stickyListingActions,
     },
 }

@@ -78,6 +78,20 @@
         +flex-container
         height: 2.5rem
         margin: .25rem 0 2rem 0
+        &_mobile
+            +desktop
+                display: none
+        &_desktop
+            +until($desktop)
+                display: none
+        &_sticky
+            position: fixed
+            top: 0
+            width: calc(100% - 2rem)
+            margin: .5rem 0
+            background-color: $white
+            z-index: 21
+            transition: .2s
 
     &__select
         width: 100%
@@ -88,6 +102,8 @@
             fill: $icon-black
             width: $size_8-33
             height: $size_5
+        & .select__button
+            padding: .4375rem 1rem
             
     &__grid
         @extend .columns
