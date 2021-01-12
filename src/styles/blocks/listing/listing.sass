@@ -8,10 +8,12 @@
         @extend .title-2
         
     &__shields
-        @extend .search-category__list
+        @extend .shield
         
     &__shield
-        @extend .search-category__link
+        @extend .shield__item
+        &_active
+            @extend .shield__item_active
         
     &__content
         @extend .columns
@@ -111,6 +113,3 @@
         
     &__pagination
         +flex-container
-            
-
-//TODO .search-category__list и .search-category__link нужно выделить в отдельный стиль
