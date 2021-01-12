@@ -49,6 +49,11 @@
                 <h3 class="modal-title modal-title_centered">Авторизация</h3>
                 <component is="user" :selected="props"></component>
             </div>
+            <div class="modal_filters" v-else-if="modal === 'filters'">
+                <h3 class="modal-title">Фильтры</h3><!--TODO сделать стики хэдер у модалки-->
+                <component is="filters" :filters="props"></component>
+                <component is="sticky-mobile-button"></component>
+            </div>
             
             <div class="modal__close" @click="closeModal" v-if="showCloseBtn">
                 <span v-if="modalBigger">Закрыть</span>
@@ -71,6 +76,8 @@
     import deleteProfile from './profile/page-modals/delete-profile.vue'
     import addAddress from './profile/page-modals/add-address.vue'
     import photoModal from "./poduct-card/photo-modal.vue"
+    import filters from "./listing/filters/filters.vue"
+    import stickyMobileButton from "./sticky-mobile-button.vue"
     import ClickOutside from "vue-click-outside"
 
 export default {
@@ -81,6 +88,8 @@ export default {
         changePassword,
         deleteProfile,
         addAddress,
+        filters,
+        stickyMobileButton,
     },
     directives: {
         ClickOutside
@@ -101,15 +110,14 @@ export default {
         this.$eventBus.$off('openModal');
     },
     methods:{
-        // closeBtn use for mobile modal window, если нужно заменить крестик на хлебную крошку назад
         openModal(modal, props, modalSize, closeBtn){
             this.toggleHtmlOverflow('hidden')
             this.open = true
-            this.modal = modal
-            this.props = props
-            this.modalBigger = modalSize
+            this.modal = modal //Название модального окна, которое должно открыться
+            this.props = props //передаём нужные пропсы
+            this.modalBigger = modalSize //передаём true, если нужно большое модальное окно
             if (window.innerWidth < 1024) {
-                this.showCloseBtn = closeBtn
+                this.showCloseBtn = closeBtn //передаём true, если хотим чтобы вместо хлебных крошек был крестик
             }
         },
         closeModal(){

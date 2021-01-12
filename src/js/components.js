@@ -10,6 +10,7 @@ import toCompare from './components/to-compare.vue';
 import mediaButton from './components/media-button.vue';
 /*catalogue*/
 import catalogue from './components/catalogue/catalogue.vue';
+import catalogueSubcategories from './components/catalogue/catalogue-subcategories.vue';
 /*header*/
 import cartMini from './components/header/cart-mini.vue';
 import headerBlock from './components/header/header-block.vue';
@@ -119,6 +120,7 @@ export default {
         user,
         tooltipProfile,
         cardStikers,
+        catalogueSubcategories,
         filters,
         filterBlock,
         displayingCards,

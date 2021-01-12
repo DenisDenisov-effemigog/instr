@@ -25,7 +25,31 @@
         +desktop
             display: block
             width: 25%
-        
+    &__subcategory
+        padding-bottom: 1.5rem
+    &__subcategory-link
+        @extend .text-1
+        font-weight: 700
+        +tablet
+            &:hover
+                color: $blue
+    &__further-subcategories li
+        padding-bottom: 1rem
+    &__further-subcategory
+        @extend .text-2
+        font-weight: 400
+        color: $grey
+        +tablet
+            &:hover
+                color: $black
+    &__subcategory-btn
+        padding-bottom: 0
+        margin-bottom: 1rem
+        & a
+            @extend .profile__link
+            margin-top: 0
+    &__further-subcategories
+        padding-top: 16px
     &__products
         @extend .column
         flex: none
