@@ -22,8 +22,10 @@
             <div class="listing__actions">
                 <component is="filter-button"></component>
                 <component is="select-list"
+                           class="listing__select"
                            :points="{{ sort_types|json_encode|e('html_attr') }}"
                            :selectopen-select="{{ sort_type|json_encode|e('html_attr') }}"
+                           :viewbox="'0 0 16 7'"
                 ></component>
                 <component is="displaying-cards"></component>
             </div>{#TODO в моб.версии этот блок должен стать стики#}
