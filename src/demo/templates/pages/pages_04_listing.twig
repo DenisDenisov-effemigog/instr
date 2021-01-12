@@ -660,6 +660,11 @@
         'categoryTitle': categories[0].title,
         'filters': filters,
     } %}
-    {% include '../../../templates/footer/footer.twig'  with {'countries': countries, 'user': user} %}
+    {% include '../../../templates/footer/footer.twig'  with {
+        'countries': countries,
+        'user': user,
+        'categories': categories[0],
+        'categoryTitle': categories[0].title,
+    } %}
     
 {% endblock %}

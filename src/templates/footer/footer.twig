@@ -8,7 +8,22 @@
 <component is="mobile-menu" 
            :countries="{{ countries|json_encode()|e('html_attr') }}"
 ></component>
-<component is="modal"></component>
+<component is="modal">
+    <template v-slot:listingcat>
+        {% if filters is not empty %}
+            <div class="listing__categories__title">{{ categoryTitle }}</div>{#TODO оформить тайтл#}
+            <component is="further-subcategories"
+                       :categories="{{ categories.subcategories|json_encode()|e('html_attr') }}"
+                       :class-name="'listing'"
+            ></component>{#TODO вынести из компоненты#}
+        {% else %}
+        <component is="catalogue-subcategories"
+                   :categories="{{ categories.subcategories|json_encode()|e('html_attr') }}"
+                   :class-name="'listing'"
+        ></component>{#TODO вынести из компоненты#}
+        {% endif %}
+    </template>
+</component>
 <component is="sticky-mobile-button"></component>
 {% if showStickyCard %}
 <component is="sticky-card" 

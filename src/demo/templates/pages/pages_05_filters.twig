@@ -813,6 +813,11 @@
         'categoryTitle': listingCategories[0].title,
         'filters': filters,
     } %}
-    {% include '../../../templates/footer/footer.twig'  with {'countries': countries, 'user': user} %}
+    {% include '../../../templates/footer/footer.twig'  with {
+        'countries': countries, 
+        'user': user,
+        'categories': listingCategories[0],
+        'categoryTitle': listingCategories[0].title,
+    } %}
     
 {% endblock %}
