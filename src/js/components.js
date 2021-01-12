@@ -58,6 +58,9 @@ import changePassword from './components/profile/page-modals/change-password.vue
 import deleteProfile from './components/profile/page-modals/delete-profile.vue';
 import addAddress from './components/profile/page-modals/add-address.vue';
 import repeatOrder from './components/profile/page-modals/repeat-order.vue';
+/*listing*/
+import filters from './components/listing/filters/filters.vue';
+import filterBlock from './components/listing/filters/filter-block.vue';
 
 export default {
     components: {
@@ -114,5 +117,7 @@ export default {
         user,
         tooltipProfile,
         cardStikers,
+        filters,
+        filterBlock,
     },
 }

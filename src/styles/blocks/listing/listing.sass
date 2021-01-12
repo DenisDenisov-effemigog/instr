@@ -32,6 +32,23 @@
         width: 100%
         +desktop
             width: 75%
+    &__pagination
+        padding-top: 1.875rem
+        +tablet
+            +flex-container
+    &__pagination-btn
+        @extend .text-2
+        cursor: pointer
+        width: 100%
+        max-width: auto
+        +tablet
+            max-width: 13.5rem
+        color: $grey
+        border: 1px solid $grey
+        padding: 0.5625rem 0rem
+        border-radius: 4px
+        font-weight: 600
+        text-align: center
         
     &__actions
         +flex-container
@@ -41,6 +58,7 @@
         flex-wrap: wrap
         +mobile
             display: flex
+            flex-wrap: wrap
             flex: auto
             margin-left: -1rem
             margin-right: -1rem
@@ -147,5 +165,3 @@
             +mobile
                 border-left: none
         
-    &__pagination
-        +flex-container
