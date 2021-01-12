@@ -13,7 +13,10 @@
     <div class="listing__content">
         <div class="listing__sidebar">
             {#Темплейт категорий#}
-            {#Темплейт фильтров#}
+            <div class="listing__sidebar_filters">
+                {#TODO отобразить блок категорий, в котором находимся#}
+                {% include './filter.twig' with {'filters': filters} %}
+            </div>
         </div>
         <div class="listing__products">
             <div class="listing__actions">
@@ -21,9 +24,9 @@
                            :points="{{ sort_types|json_encode|e('html_attr') }}"
                            :selectopen-select="{{ sort_type|json_encode|e('html_attr') }}"
                 ></component>
-                {#компонент смены сетки с карточками#}
+                {#TODO компонент смены сетки с карточками#}
             </div>
-            {#добавить стики блок для мобилки#}
+            {#TODO добавить стики блок для мобилки#}
             <div class="listing__grid">
                 {% for product in products %}
                     <div class="listing__card">
