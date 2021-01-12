@@ -25,12 +25,15 @@ export default {
     methods:{
         sowButton(firstPart, items, secondPart) {
             this.showButton = true
-            this.items = items
-            this.titlePartFirst = firstPart
-            this.titlePartSecond = secondPart
+            this.items = items //передаём количество товаров
+            this.titlePartFirst = firstPart //передаём текст кнопки, который пишется в первом ряду
+            this.titlePartSecond = secondPart //передаём текст кнопки, который пишется во втором ряду
         },
         hideButton() {
             this.showButton = false
+            this.items = 0
+            this.titlePartFirst = ''
+            this.titlePartSecond = ''
         }
     },
 }

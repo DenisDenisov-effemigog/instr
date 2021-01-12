@@ -20,7 +20,7 @@
         </div>
         <div class="listing__products">
             <div class="listing__actions">
-                <component is="filter-button"></component>
+                <component is="filter-button" :filters="{{ filters|json_encode|e('html_attr') }}"></component>
                 <component is="select-list"
                            :points="{{ sort_types|json_encode|e('html_attr') }}"
                            :selectopen-select="{{ sort_type|json_encode|e('html_attr') }}"
