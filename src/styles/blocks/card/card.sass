@@ -1,12 +1,12 @@
 .card
     width: 50%
     border: 1px solid $border-color
-    padding: 16px
+    padding: 1rem
     border-right: none
     margin-bottom: -1px
     +tablet
-        width: 246px
-        border-radius: 4px
+        width: 15.375rem
+        border-radius: $border-radius
         border-right: 1px solid $border-color
         margin-bottom: 0
         transition: .35s
@@ -23,7 +23,7 @@
         align-items: center
         position: relative
         z-index: 1
-        margin-bottom: 16px
+        margin-bottom: 1rem
         &_short-card
             margin-bottom: 0
         &_in-favorite
@@ -35,7 +35,7 @@
         +tablet
             padding: 1rem
         right: 0
-        bottom: 46px
+        bottom: 2.875rem
         display: flex
         width: 100%
         justify-content: space-between
@@ -46,10 +46,10 @@
             width: 0.5rem
             height: 0.5rem
             flex-shrink: 0
-            //margin-left: 16px
+            //margin-left: 1rem
             cursor: pointer
         &::before
-            left: calc(96% - 8px)
+            left: calc(96% - .5rem)
             bottom: -.5625rem
             top: auto
         &::after
@@ -63,17 +63,17 @@
 
         &_sticker-tooltip
             @extend .tooltip
-            top: 38px
+            top: 2.375rem
             left: 50%
             transform: translateX(-50%)
             +mobile
                 left: 0
                 transform: translateX(0%)
                 &::before
-                    left: calc(10% - 8px)
-            font-size: 14px
-            line-height: 20px
-            width: 240px
+                    left: calc(10% - .5rem)
+            font-size: $font-size_3
+            line-height: $line-height_3
+            width: 15rem
             & a
                 color: $blue
                 &:hover
@@ -84,7 +84,7 @@
                 width: $size_12
                 height: $size_12
                 flex-shrink: 0
-                margin-left: 16px
+                margin-left: 1rem
                 cursor: pointer
                 +tablet
                     display: none
@@ -93,36 +93,36 @@
             &-open
                 display: flex
             &--left
-                left: -16px
+                left: -1rem
                 transform: translate(0)
                 &::before
-                    left: calc(20% - 8px)
+                    left: calc(20% - .5rem)
             &--rigth
                 left: auto
                 right: 0
                 &::before
-                    left: calc(90% - 8px)
+                    left: calc(90% - .5rem)
     &__image-block
         max-width: 9.75rem
-        margin: 16px auto
+        margin: 1rem auto
         +desktop
             width: 100%
         &_short-card
-            margin: -15px auto 8px
+            margin: -.9375rem auto .5rem
         &_horiz
             display: none
     &__code
         @extend .text-3
         color: $light-grey
-        margin-bottom: 4px
+        margin-bottom: .25rem
         +tablet
             font-size: $font-size_3
             line-height: $line-height_3
     &__name
         @extend .text-3
         color: $black
-        margin-bottom: 16px
-        height: 60px
+        margin-bottom: 1rem
+        height: 3.75rem
         overflow: hidden
         display: block
         +tablet
@@ -139,14 +139,14 @@
             @extend .text-3
             color: $light-grey
             text-decoration: line-through
-            margin-bottom: 4px
+            margin-bottom: .25rem
             +tablet
                 font-size: $font-size_3
                 line-height: $line-height_3
         &_current-price
             @extend .title-6
             color: $black
-            margin-bottom: 8px
+            margin-bottom: .5rem
     &__button-block
         position: relative
         display: flex
@@ -157,15 +157,15 @@
                 display: none !important
         & .add-to-cart
             +mobile
-                width: calc(100% - 40px)
+                width: calc(100% - 2.5rem)
     &__menu-btn
-        width: 32px
-        height: 32px
+        width: 2rem
+        height: 2rem
         display: flex
         align-items: center
         justify-content: center
         background: $pre-white
-        border-radius: 2px
+        border-radius: $border-radius_2
         cursor: pointer
         z-index: 2
         &:hover
@@ -174,11 +174,11 @@
                 background: $black
         & span
             z-index: -1
-            width: 5px
-            height: 5px
+            width: .3125rem
+            height: .3125rem
             border-radius: 100%
             background: $grey
-            margin-right: 4px
+            margin-right: .25rem
             &:last-child
                 margin-right: 0
         +desktop    
@@ -191,11 +191,11 @@
         width: 100% 
         +mobile
             border: none
-            padding: 12px
+            padding: .75rem
         .add-to-cart
             width: 70%
         .add-to-cart__add
             +desktop-only
-                padding: 6px
+                padding: .375rem
             +widescreen
-                padding: 6px 34px
+                padding: .375rem 2.125rem

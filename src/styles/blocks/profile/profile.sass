@@ -4,8 +4,8 @@
     flex-direction: column
     +desktop
         flex-direction: row
-        margin-top: 56px
-        margin-bottom: 104px
+        margin-top: 3.5rem
+        margin-bottom: 6.5rem
     &__menu
         width: calc(100% + 2rem)
         margin: 0 -1rem
@@ -45,8 +45,8 @@
             position: absolute
             top: 1.4375rem
             right: 1rem
-            width: 6px
-            height: 10px
+            width: .375rem
+            height: .625rem
             fill: $icon-grey
     &__menu-mobile
         +desktop
@@ -55,13 +55,13 @@
             display: flex
             align-items: center
             color: $grey
-            font-size: 14px
-            padding: 18px
+            font-size: $font-size_3
+            padding: 1.125rem
             & svg
                 fill: $icon-grey
-                width: 15px
-                height: 15px
-                margin-right: 11px
+                width: $size_15
+                height: $size_15
+                margin-right: .6875rem
     &__content
         @extend .column_width_9
         +until($desktop)

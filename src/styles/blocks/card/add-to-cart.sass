@@ -1,15 +1,15 @@
 .add-to-cart
-    margin-right: 8px   
+    margin-right: .5rem   
     &--big
         padding-right: 0
         & .add-to-cart__button
-            width: 56px
+            width: 3.5rem
             height: 100%
         & .add-to-cart__in-cart
             border: 1px solid #e5e5e5
-            height: 56px
+            height: 3.5rem
         &  .add-to-cart__add
-            padding: 18px 34px
+            padding: 1.125rem 2.125rem
         & .add-to-cart__amount
             width: 100%
             font-weight: 600
@@ -22,8 +22,8 @@
         background: $white
     &__button
         @extend .button
-        width: 32px
-        height: 32px
+        width: 2rem
+        height: 2rem
         background: $primary-red
         flex-shrink: 0
         &:hover
@@ -32,14 +32,14 @@
             border-top-right-radius: 0
             border-bottom-right-radius: 0
             & svg
-                width: 16px
+                width: $size_16
                 height: 2px
         &_increase
             border-top-left-radius: 0
             border-bottom-left-radius: 0
             & svg
-                width: 24px
-                height: 24px
+                width: $size_24
+                height: $size_24
         & svg
             fill: $icon-white
 
@@ -48,25 +48,25 @@
         flex-direction: column
         justify-content: center
         text-align: center
-        font-size: 14px
-        width: 52px
+        font-size: $font-size_3
+        width: 3.25rem
         +desktop
-            width: 81px
+            width: 5.0625rem
 
     &__amount-input
         @extend .add-to-cart__amount
         background: $white
-        width: 52px
+        width: 3.25rem
         +desktop
-            width: 81px
+            width: 5.0625rem
 
     &__add
         @extend .button
         cursor: pointer
         white-space: nowrap
-        padding: 6px 19px
+        padding: .375rem 1.1875rem
         +desktop
-            padding: 6px 34px
+            padding: .375rem 2.125rem
         +tablet
             display: block
         &--smaller

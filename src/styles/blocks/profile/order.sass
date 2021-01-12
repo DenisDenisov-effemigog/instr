@@ -17,7 +17,7 @@
         background: $pre-white
         padding: 0.75rem 1.188rem
         display: flex
-        border-radius: 4px
+        border-radius: $border-radius
         +mobile
             margin-top: 1rem
             align-items: center
@@ -74,7 +74,7 @@
         +tablet
             flex: 1
             max-width: 7.5rem
-        color: #049004
+        color: $green
     &__qty
         +mobile
             order: 2
@@ -97,7 +97,7 @@
         display: flex
         border: 1px solid $light-grey
         padding: 0.5rem
-        border-radius: 4px
+        border-radius: $border-radius
         cursor: pointer
         &-icon
             padding-right: 0.625rem
@@ -132,7 +132,7 @@
             display: flex
             align-items: center
             justify-content: flex-end
-            max-width: 100px
+            max-width: 6.25rem
         & svg
             width: $size_14
             height: 0.5rem
@@ -175,7 +175,7 @@
             & span
                 display: none
         +mobile
-            font-size: 0.75rem
+            font-size: $font-size_4
             width: 100%
             color: $grey
     &__product-desc
@@ -192,7 +192,7 @@
             width: 100%
             padding-top: 0.25rem
         & span
-            max-width: 210px
+            max-width: 13.125rem
             overflow: hidden
             text-overflow: ellipsis
             white-space: nowrap
@@ -232,7 +232,7 @@
             flex: 1
         +mobile
             display: none
-        color: #049004
+        color: $green
 .order-modal
     &__title
         @extend .modal-title
@@ -253,9 +253,9 @@
             content: ''
             position: absolute
             bottom: 0
-            background: #fff
+            background: $white
             width: 100%
-            height: 25px
+            height: 1.5625rem
             opacity: 0.6
         &_title
             @extend .text-2
@@ -263,15 +263,15 @@
         &_list
             padding-top: 1rem
             opacity: .5
-            height: 210px
+            height: 13.125rem
             overflow: auto
             &::-webkit-scrollbar 
-                width: 4px
+                width: .25rem
             &::-webkit-scrollbar-track 
-                background: #F3F5F6
+                background: $pre-white
             &::-webkit-scrollbar-thumb 
-                background: #D0D6DC
-                height: 85px
+                background: $border-colo
+                height: 5.3125rem
 
         &_item
             display: flex
