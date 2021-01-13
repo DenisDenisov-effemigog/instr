@@ -18,19 +18,53 @@
                     <component is="further-subcategories"
                                :categories="{{ listingCategories.subcategories|json_encode()|e('html_attr') }}"
                                :class-name="'listing'"
-                    ></component>{#TODO вынести из компоненты#}
-                    {#{% for category in categories.subcategories %}
-                        <a href="{{ category.url }}" class="listing__categories_sabcategory">{{ category.title }}</a>
-                    {% endfor %}#}
+                    >
+                        <template v-slot:subcategory-listing-part>
+                            {% for subsubcategory in listingCategories.subcategories|slice(0, 5) %}
+                                <li>
+                                    <a href="#" class="listing__further-subcategory">{{ subsubcategory.title }}</a>
+                                </li>
+                            {% endfor %}
+                        </template>
+                        <template v-slot:subcategory-listing-all>
+                            {% for subsubcategory in listingCategories.subcategories %}
+                                <li>
+                                    <a href="#" class="listing__further-subcategory">{{ subsubcategory.title }}</a>
+                                </li>
+                            {% endfor %}
+                        </template>
+                    </component>
                 </div>
                 <div class="listing__sidebar_filters">  
                     {% include './filter.twig' with {'filters': filters} %}
                 </div>
             {% else %}
-                <component is="catalogue-subcategories"
-                           :categories="{{ listingCategories.subcategories|json_encode()|e('html_attr') }}"
-                           :class-name="'listing'"
-                ></component>{#TODO вынести из компоненты#}
+                <div class="listing__subcategories">
+                    {% for subcategory in listingCategories.subcategories %}
+                        <div class="listing__subcategory">
+                            <a href="{{ subcategory.url }}" class="listing__subcategory-link">{{subcategory.title}}</a>
+                            <component is="further-subcategories"
+                                       :categories="{{ subcategory.subcategories|json_encode()|e('html_attr') }}"
+                                       :class-name="'listing'"
+                            >
+                                <template v-slot:subcategory-listing-part>
+                                    {% for subsubcategory in subcategory.subcategories|slice(0, 5) %}
+                                        <li>
+                                            <a href="#" class="listing__further-subcategory">{{ subsubcategory.title }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </template>
+                                <template v-slot:subcategory-listing-all>
+                                    {% for subsubcategory in subcategory.subcategories %}
+                                        <li>
+                                            <a href="#" class="listing__further-subcategory">{{ subsubcategory.title }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </template>
+                            </component>
+                        </div>
+                    {% endfor %}
+                </div>
             {% endif %}
         </div>
         <div class="listing__products">
