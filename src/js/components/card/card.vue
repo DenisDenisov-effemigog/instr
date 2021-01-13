@@ -1,12 +1,12 @@
 <template>
     <div class="card" 
-        :class="{'card_grid': cardGrid === 'grid',}"
+        :class="{'card--grid': cardGrid === 'grid',}"
         ref="card" 
     >
         <div class="card__top">
             <div 
                 class="card__header" 
-                :class="{'card__header_short-card': cardSize === 'short'}"
+                :class="{'card__header--short-card': cardSize === 'short'}"
             >
                 <div class="card__stickers">
                     <card-stikers v-for="tooltip in product.tooltips"
@@ -17,14 +17,14 @@
                 <component class="card__header_in-favorite" is="in-favorite"></component>
             </div>
             <div class="card__image-block" 
-                :class="{'card__image-block_short-card': cardSize === 'short'}"
+                :class="{'card__image-block--short-card': cardSize === 'short'}"
             >
                 <component is="slider-photo-card" 
                         :cardSize="cardSize"
                         :images="product.images"
                 ></component>
     <!-- фото для горизонтальной карточки в десктопе -->
-                <img class="card__image-block_horiz" :src="this.product.images[0].img" alt="фото товара">
+                <img class="card__image-block--horiz" :src="this.product.images[0].img" alt="фото товара">
     <!--  -->
             </div>
             <slot name="code"></slot>
@@ -36,7 +36,7 @@
                 <slot name="code"></slot>
                 <div 
                     class="card__header" 
-                    :class="{'card__header_short-card': cardSize === 'short'}"
+                    :class="{'card__header--short-card': cardSize === 'short'}"
                 >
                     <div class="card__stickers">
                         <card-stikers v-for="tooltip in product.tooltips"
