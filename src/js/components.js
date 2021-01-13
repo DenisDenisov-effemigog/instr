@@ -67,6 +67,8 @@ import filterControlRange from './components/listing/filters/filter-control-rang
 import displayingCards from './components/listing/displaying-cards.vue';
 import filterButton from './components/listing/filter-button.vue';
 import stickyListingActions from './components/listing/sticky-listing-actions.vue';
+/*cart*/
+import cart from './components/cart/cart.vue';
 
 export default {
     components: {
@@ -131,5 +133,6 @@ export default {
         filterButton,
         filterControlRange,
         stickyListingActions,
+        cart,
     },
 }
