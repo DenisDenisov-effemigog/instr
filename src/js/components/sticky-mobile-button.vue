@@ -1,5 +1,6 @@
 <template>
     <div class="sticky-mobile-button" v-if="showButton">
+        <div class="sticky-mobile-button__bg"></div>
         <a href="" class="sticky-mobile-button__button">{{ titlePartFirst }} <span>{{ items }}&nbsp;{{ titlePartSecond }}</span></a>
     </div>
     
