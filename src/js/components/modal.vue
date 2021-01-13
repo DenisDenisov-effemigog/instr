@@ -1,5 +1,7 @@
 <template>
-    <div v-show="open" class="modal">
+    <div v-show="open" class="modal"
+        :class="{'modal--long': scrollable}"
+    >
         <div class="modal-bg" @click="closeOutside"></div>
         <div class="modal-wrapper"
              :class="{'modal-wrapper_big': modalBigger, 'modal-wrapper_profile': !showCloseBtn}"
@@ -50,7 +52,15 @@
                 <component is="user" :selected="props"></component>
             </div>
             <div class="modal_filters" v-else-if="modal === 'filters'">
-                <h3 class="modal-title">Фильтры</h3><!--TODO сделать стики хэдер у модалки-->
+                <div class="modal_filters-sticky">
+                    <div class="modal_filters-sticky__icon" @click="closeModal">
+                        <svg>
+                            <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-left'"></use>
+                        </svg>
+                    </div>
+                    <h3 class="modal-title">Фильтры</h3><!--TODO сделать стики хэдер у модалки-->
+                    <filter-clear-btn :mobileFlag=true></filter-clear-btn>
+                </div>
                 <slot name="listingcat"></slot>
                 <!--TODO добавить странную кнопку "все категории"-->
                 <component is="filters" :filters="props"></component>
@@ -81,6 +91,7 @@
     import filters from "./listing/filters/filters.vue"
     import stickyMobileButton from "./sticky-mobile-button.vue"
     import ClickOutside from "vue-click-outside"
+import FilterClearBtn from './listing/filters/filter-clear-btn.vue'
 
 export default {
     name: 'modal',
@@ -92,6 +103,7 @@ export default {
         addAddress,
         filters,
         stickyMobileButton,
+        FilterClearBtn
     },
     directives: {
         ClickOutside
@@ -102,7 +114,8 @@ export default {
             modal: '',
             props: [],
             modalBigger: false,
-            showCloseBtn: true
+            showCloseBtn: true,
+            scrollable: false
         }
     },
     created(){
@@ -112,7 +125,7 @@ export default {
         this.$eventBus.$off('openModal');
     },
     methods:{
-        openModal(modal, props, modalSize, closeBtn){
+        openModal(modal, props, modalSize, closeBtn, scroll){
             this.toggleHtmlOverflow('hidden')
             this.open = true
             this.modal = modal //Название модального окна, которое должно открыться
@@ -121,6 +134,7 @@ export default {
             if (window.innerWidth < 1024) {
                 this.showCloseBtn = closeBtn //передаём true, если хотим чтобы вместо хлебных крошек был крестик
             }
+            this.scrollable = scroll //передаем true, если модальное окно длинное и должно скроллиться
         },
         closeModal(){
             this.open = false

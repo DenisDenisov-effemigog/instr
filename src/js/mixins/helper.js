@@ -9,8 +9,17 @@ export default {
         toggleHtmlOverflow: function (style){
             let html = document.querySelector('html')
             let body = document.querySelector('body')
+            let listing = document.querySelector('.listing__actions')
             html.style.overflowY = style
             body.style.overflowY = style
+            if (!!listing) {
+                if (style === 'hidden') {
+                    listing.style.zIndex = 0
+                } else {
+                    listing.style.zIndex = 12
+                }
+            }
+            // не уверена насчет .listing__actions, что думаете? не придумала, как скрыть его
         },
     },
     computed: {
