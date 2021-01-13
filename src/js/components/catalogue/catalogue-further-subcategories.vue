@@ -1,13 +1,12 @@
 <template>
     <ul :class="className + '__further-subcategories'" v-if="subcategories">
-        <li v-if="subcategoryShowAll || className !== 'listing'" v-for="category in subcategories">
-            <a href="#" :class="className + '__further-subcategory'">{{category.title}}</a>
+        <slot v-if="className === 'listing' && !subcategoryShowAll" name="subcategory-listing-part"></slot>
+        <slot v-else-if="className === 'listing' && subcategoryShowAll" name="subcategory-listing-all"></slot>
+        <li v-else v-for="category in subcategories">
+            <a href="#" class="catalogue__further-subcategory">{{category.title}}</a>
         </li>
-        <li  v-for="(category, index) in subcategories" v-show="index < 5 && !subcategoryShowAll">
-            <a href="#" :class="className + '__further-subcategory'">{{category.title}}</a>
-        </li>
-        <li v-show="!subcategoryShowAll && className ==='listing' && subcategories.length > 5" class="listing__subcategory-btn">
-            <a href="#" @click="subcategoryShowAll = true">Показать еще</a>
+        <li v-if="!subcategoryShowAll && className ==='listing' && subcategories.length > 5" class="listing__subcategory-btn">
+            <a href="" @click.prevent="subcategoryShowAll = true">Показать еще</a>
         </li>
     </ul>
 </template>
@@ -27,6 +26,7 @@
             },
             className:{
                 type: String,
+                default: 'catalogue',
                 required: false
             }
         },
