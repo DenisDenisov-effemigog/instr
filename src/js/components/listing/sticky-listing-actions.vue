@@ -1,6 +1,6 @@
 <template>
-    <div class="listing__actions listing__actions_mobile"
-        :class="{'listing__actions_sticky': fixed}">
+    <div class="listing__actions"
+        :class="{'listing__actions--sticky': fixed}">
         <component is="filter-button" :filters="filersMobile"></component>
         <component is="select-list"
                     class="listing__select"
@@ -37,16 +37,24 @@
         },
         methods: {
             mouseWheel(){
-                let windowPosition = window.pageYOffset
-                windowPosition > this.scrollOffset ? this.fixed = true : this.fixed = false
+                if (window.innerWidth < 988) {
+                    let windowPosition = window.pageYOffset
+                    windowPosition > this.scrollOffset ? this.fixed = true : this.fixed = false
+                } else {
+                    this.fixed = false
+                }
             },
-            getPosition(element) {
+            getPosition() {
+                let element = document.querySelector('.listing__grid');
                 let yPosition = 0;
                 while(element) {
-                    yPosition += (element.offsetTop - element.scrollTop + element.clientTop);
+                        //34 - (высота + отступ ) пополам элемента .listing__actions (56px + 12px)/2 = 34px
+                    yPosition += (element.offsetTop - element.scrollTop + element.clientTop - 34);
                     element = element.offsetParent;
                 }
-                return yPosition
+                this.scrollOffset = yPosition
+                this.mouseWheel()
+                return this.scrollOffset
             }
         },
         computed: {
@@ -57,11 +65,12 @@
                 return this.points
             }
         },
-        mounted() {
-            this.scrollOffset = this.getPosition(this.$el)
-        },
         created() {
             window.addEventListener('scroll', this.mouseWheel);
+            window.addEventListener('resize', this.getPosition);
+        },
+        mounted() {
+            this.getPosition()
         }
     }
 </script>

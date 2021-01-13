@@ -24,7 +24,7 @@
         position: relative
         z-index: 1
         margin-bottom: 1rem
-        &_short-card
+        &--short-card
             margin-bottom: 0
         &_in-favorite
             +mobile
@@ -107,9 +107,9 @@
         margin: 1rem auto
         +desktop
             width: 100%
-        &_short-card
+        &--short-card
             margin: -.9375rem auto .5rem
-        &_horiz
+        &--horiz
             display: none
     &__code
         @extend .text-3
@@ -187,7 +187,7 @@
         & > .card__code,
         & > .card__header
             display: none
-    &_grid
+    &--grid
         width: 100% 
         +mobile
             border: none

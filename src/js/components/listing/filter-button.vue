@@ -1,5 +1,6 @@
 <template>
-    <div class="filter-button" @click="openModal">
+    <div class="filter-button filter-button--active" @click="openModal">
+    <!-- TODO добавление класса .filter-button--active при применении фильтров -->
         <svg class="filter-button__icon filter-button__icon_active">
             <use :xlink:href="templatePath + 'images/sprite.svg#icons__filter'"></use>
         </svg>

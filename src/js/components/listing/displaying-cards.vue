@@ -1,11 +1,11 @@
 <template>
     <div class="displaying">
-        <div class="displaying__block displaying__block_mobile">
+        <div class="displaying__block displaying__block--mobile">
             <div class="displaying__button"
                 :class="{'displaying__button--active': activeDisplaying === 'grid'}"
                 @click="changeDisplaying('list')"
             >
-                <svg class="displaying__icon displaying__icon_grid">
+                <svg class="displaying__icon">
                     <use :xlink:href="templatePath + 'images/sprite.svg#icons__view-grid'"></use>
                 </svg>
             </div>
@@ -13,17 +13,17 @@
                 :class="{'displaying__button--active': activeDisplaying === 'list'}"
                 @click="changeDisplaying('grid')"
             >
-                <svg class="displaying__icon displaying__icon_rows">
+                <svg class="displaying__icon">
                     <use :xlink:href="templatePath + 'images/sprite.svg#icons__view-rows'"></use>
                 </svg>
             </div>
         </div>
-        <div class="displaying__block displaying__block_desktop">
+        <div class="displaying__block displaying__block--desktop">
             <div class="displaying__button"
                 :class="{'displaying__button--active': activeDisplaying === 'grid'}"
                 @click="changeDisplaying('grid')"
             >
-                <svg class="displaying__icon displaying__icon_grid">
+                <svg class="displaying__icon">
                     <use :xlink:href="templatePath + 'images/sprite.svg#icons__view-grid'"></use>
                 </svg>
             </div>
@@ -31,7 +31,7 @@
                 :class="{'displaying__button--active': activeDisplaying === 'list'}"
                 @click="changeDisplaying('list')"
             >
-                <svg class="displaying__icon displaying__icon_rows">
+                <svg class="displaying__icon">
                     <use :xlink:href="templatePath + 'images/sprite.svg#icons__view-rows'"></use>
                 </svg>
             </div>

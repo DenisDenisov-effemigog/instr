@@ -3,10 +3,10 @@
     margin-left: 1rem
     &__block
         +flex-container
-        &_mobile
+        &--mobile
             +desktop
                 display: none
-        &_desktop
+        &--desktop
             +until($desktop)
                 display: none
     
@@ -25,7 +25,7 @@
         
         &--active
             +until($desktop)
-                display: block
+                +flex-container-center
             & .displaying__icon
                 fill: $icon-blue
     

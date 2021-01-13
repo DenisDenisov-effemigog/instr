@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueAgile from 'vue-agile';
 import VueSlickCarousel from 'vue-slick-carousel';
 import store from './js/store';
+import ivSlider from 'iv-slider';
 import router from './js/router';
 import HelpersMixin from './js/mixins/helper';
 import Vuelidate from 'vuelidate';
@@ -13,6 +14,7 @@ Vue.use(VueAgile);
 Vue.mixin(HelpersMixin);
 Vue.use(Vuelidate);
 Vue.use(VueTheMask);
+Vue.use(ivSlider);
 
 function loadLocaleMessages () {
     let messages = [];
