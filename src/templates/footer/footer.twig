@@ -13,12 +13,12 @@
         {% if filters is not empty %}
             <div class="listing__categories__title">{{ categoryTitle }}</div>{#TODO оформить тайтл#}
             <component is="further-subcategories"
-                       :categories="{{ categories.subcategories|json_encode()|e('html_attr') }}"
+                       :categories="{{ listingCategories.subcategories|json_encode()|e('html_attr') }}"
                        :class-name="'listing'"
             ></component>{#TODO вынести из компоненты#}
         {% else %}
         <component is="catalogue-subcategories"
-                   :categories="{{ categories.subcategories|json_encode()|e('html_attr') }}"
+                   :categories="{{ listingCategories.subcategories|json_encode()|e('html_attr') }}"
                    :class-name="'listing'"
         ></component>{#TODO вынести из компоненты#}
         {% endif %}

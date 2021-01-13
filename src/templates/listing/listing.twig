@@ -1,6 +1,6 @@
 <div class="listing">
     <div class="listing__header">
-        <h1 class="listing__title">{{ categoryTitle }}</h1>
+        <h1 class="listing__title">{{ listingCategoryTitle }}</h1>
         <div class="items-cont">12 210 товаров</div>
     </div>
     <div class="listing__shields">
@@ -14,9 +14,9 @@
         <div class="listing__sidebar">
             {% if filters is not empty %}
                 <div class="listing__categories">
-                    <div class="listing__categories__title">{{ categoryTitle }}</div>{#TODO оформить тайтл#}
+                    <div class="listing__categories__title">{{ listingCategoryTitle }}</div>{#TODO оформить тайтл#}
                     <component is="further-subcategories"
-                               :categories="{{ categories.subcategories|json_encode()|e('html_attr') }}"
+                               :categories="{{ listingCategories.subcategories|json_encode()|e('html_attr') }}"
                                :class-name="'listing'"
                     ></component>{#TODO вынести из компоненты#}
                     {#{% for category in categories.subcategories %}
@@ -28,7 +28,7 @@
                 </div>
             {% else %}
                 <component is="catalogue-subcategories"
-                           :categories="{{ categories.subcategories|json_encode()|e('html_attr') }}"
+                           :categories="{{ listingCategories.subcategories|json_encode()|e('html_attr') }}"
                            :class-name="'listing'"
                 ></component>{#TODO вынести из компоненты#}
             {% endif %}
