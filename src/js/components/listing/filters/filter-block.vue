@@ -1,14 +1,14 @@
 <template>
     <div class="filter-block">
-        <div class="filter-block__header" @click='openFilterFlag = !openFilterFlag'>
+        <div class="filter-block__header" :class="{'filter-block__header--open': openFilter}" @click='openFilter = !openFilter'>
             <div class="filter-block__title">{{ filter.title }}</div>
-            <div class="filter-block__arrow" :class="{'filter-block__arrow--rotate': openFilterFlag}">
+            <div class="filter-block__arrow" :class="{'filter-block__arrow--rotate': openFilter}">
                 <svg viewBox="0 0 12 10">
                     <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-down'"></use>
                 </svg>
             </div>
         </div>
-        <div class="filter-block__content" v-if="filter.type === 'range'" v-show="openFilterFlag">
+        <div class="filter-block__content" v-if="filter.type === 'range'" v-show="openFilter">
             <div>Базовая цена</div>
             <filter-control-range></filter-control-range>
 
@@ -30,7 +30,7 @@
                 <span class="user-reg__checkbox-label">Новинки</span>
             </label>
         </div>
-        <div class="filter-block__content" v-else-if="filter.type === 'checkbox'" v-show="openFilterFlag">
+        <div class="filter-block__content" v-else-if="filter.type === 'checkbox'" v-show="openFilter">
             <div v-for="checkbox in filter.values"> 
                 <!--TODO перебить классы, плюс в css чекбоксы и лэбл вынести в отдельные компоненты-->
                 <label name="agreement" class="user__label user__label_row">
@@ -58,20 +58,31 @@ import FilterControlRange from './filter-control-range.vue'
     export default {
         name: "filter-block",
         components: {
-                FilterControlRange
+                FilterControlRange,
         },
         props: {
             filter: {
                 type: Object,
                 required: true
+            },
+            collapsed: {
+                type: Boolean,
+                required: false,
+                default: false
             }
         },
         data(){
             return{
-                openFilterFlag: false
+                openFilter: true
+            }
+        },
+        created() {
+            if (this.collapsed) {
+                this.openFilter = false;
             }
         },
         methods:{
         },
+        
     }
 </script>
