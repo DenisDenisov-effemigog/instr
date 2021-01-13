@@ -77,21 +77,23 @@
     &__actions
         +flex-container
         height: 2.5rem
-        margin: .25rem 0 2rem 0
-        &_mobile
-            +desktop
-                display: none
-        &_desktop
-            +until($desktop)
-                display: none
-        &_sticky
+        margin: .25rem 0 1.5rem 0
+        +until($desktop)
+            position: relative
+            height: 3.5rem
+            margin-left: -1rem
+            margin-right: -1rem
+            padding: 1rem
+            background-color: $white
+            box-shadow: 0px 2px 8px rgba($shadow, .25)
+            z-index: 21
+        &--sticky
             position: fixed
             top: 0
-            width: calc(100% - 2rem)
-            margin: .5rem 0
-            background-color: $white
-            z-index: 21
-            transition: .2s
+            width: 100%
+            margin: 0 -1rem
+            & ~ .listing__grid
+                margin-top: 4.25rem
 
     &__select
         width: 100%
@@ -114,7 +116,7 @@
             flex: auto
             margin-left: -1rem
             margin-right: -1rem
-        &_horiz
+        &--horiz
             flex-direction: column
             flex: auto
             .listing__card
@@ -154,7 +156,7 @@
                     height: 7.5rem
                     max-width: 7.5rem
                     margin: 0
-            .card__image-block_horiz
+            .card__image-block--horiz
                 +tablet
                     display: block
             .slider-photo-card
@@ -200,7 +202,7 @@
                         display: block
             .card__button-block
                 justify-content: flex-start
-            .card_grid .add-to-cart
+            .card--grid .add-to-cart
                 width: auto
                 margin-right: 1rem
             .add-to-cart__add
