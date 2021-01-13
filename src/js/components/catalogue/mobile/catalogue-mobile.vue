@@ -47,15 +47,15 @@
             </ul>
             <ul class="catalogue__further-subcategories" v-if="subcategories">
                 <li 
-                    v-for="category in currentSubategory.categories"
-                    @click="selectCategory(category)"
+                    v-for="category in currentSubategory.subcategories"
+                    @click="selectCategory(category.title)"
                 >
                     <a 
                         href="#" 
                         class="catalogue__further-subcategory"
-                        :class="{'catalogue__further-subcategory_active': selectedCategory === category}"
-                    >{{category}}</a>
-                    <svg v-if="selectedCategory === category">
+                        :class="{'catalogue__further-subcategory_active': selectedCategory === category.title}"
+                    >{{category.title}}</a>
+                    <svg v-if="selectedCategory === category.title">
                         <use :xlink:href="templatePath + 'images/sprite.svg#check'"></use>
                     </svg>
                 </li>
@@ -118,7 +118,7 @@
                 this.subcategory = false;
                 this.title = item.title;
                 this.currentSubategory = item;
-                this.$eventBus.$emit("sow-button", 'Показать', item.categories.length, 'товар' + this.ending(item.categories.length));
+                this.$eventBus.$emit("sow-button", 'Показать', item.subcategories.length, 'товар' + this.ending(item.subcategories.length));
             },
             selectCategory(category) {
                 this.selectedCategory = category;

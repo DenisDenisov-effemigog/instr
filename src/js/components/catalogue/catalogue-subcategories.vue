@@ -2,7 +2,7 @@
     <div :class="className + '__subcategories'">
         <div :class="className + '__subcategory'" v-for="subcategory in subcategories">
             <a href="#" :class="className + '__subcategory-link'">{{subcategory.title}}</a>
-            <furtherSubcategories :className=className :categories="subcategory.categories"></furtherSubcategories>
+            <furtherSubcategories :className=className :categories="subcategory.subcategories"></furtherSubcategories>
         </div>
     </div>
 </template>
