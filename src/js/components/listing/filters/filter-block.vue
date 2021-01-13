@@ -1,16 +1,15 @@
 <template>
     <div class="filter-block">
-        <div class="filter-block__header"> <!--TODO оформить стили, реализовать открытие/закрытие-->
+        <div class="filter-block__header" @click='openFilterFlag = !openFilterFlag'>
             <div class="filter-block__title">{{ filter.title }}</div>
-            <div class="filter-block__arrow">
-                <svg viewBox="0 0 12 10" style="width: 12px"><!--TODO не забыть убрать width-->
+            <div class="filter-block__arrow" :class="{'filter-block__arrow--rotate': openFilterFlag}">
+                <svg viewBox="0 0 12 10">
                     <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-down'"></use>
                 </svg>
             </div>
         </div>
-        <div class="filter-block__content" v-if="filter.type === 'range'">
-            <div>Базовая цена</div><!--TODO оформить-->
-            
+        <div class="filter-block__content" v-if="filter.type === 'range'" v-show="openFilterFlag">
+            <div>Базовая цена</div>
             <filter-control-range></filter-control-range>
 
             <!--TODO перебить классы, плюс в css рефактор-->
@@ -31,7 +30,7 @@
                 <span class="user-reg__checkbox-label">Новинки</span>
             </label>
         </div>
-        <div class="filter-block__content" v-else-if="filter.type === 'checkbox'">
+        <div class="filter-block__content" v-else-if="filter.type === 'checkbox'" v-show="openFilterFlag">
             <div v-for="checkbox in filter.values"> 
                 <!--TODO перебить классы, плюс в css чекбоксы и лэбл вынести в отдельные компоненты-->
                 <label name="agreement" class="user__label user__label_row">
@@ -69,6 +68,7 @@ import FilterControlRange from './filter-control-range.vue'
         },
         data(){
             return{
+                openFilterFlag: false
             }
         },
         methods:{

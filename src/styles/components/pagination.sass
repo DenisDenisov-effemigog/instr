@@ -13,6 +13,10 @@
         padding: 0 .5rem
     &__arrow
         cursor: pointer
+        +tablet
+            &:hover
+                & svg
+                    fill: $black
         & svg
             width: $size_12
             height: $size_12
@@ -21,6 +25,8 @@
         @extend .text-2
         font-weight: 400
         color: $light-grey
+        &:hover
+            color: $light-grey
     &__item
         width: 40px
         height: 40px
@@ -29,6 +35,10 @@
         justify-content: center
         border: 1px solid transparent
         border-radius: 4px
+        cursor: pointer
+        +tablet
+            &:hover
+                background: $pre-white
         &_current
             border-color: $black
             & .pagination__link
