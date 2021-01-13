@@ -27,6 +27,8 @@
     "gulp-svgstore": "^7.0.1",
     "gulp-terser": "^1.4.1",
     "gulp-twig": "^1.2.0",
+    "iv-slider": "^1.0.3",
+    "less": "^4.1.0",
     "locutus": "^2.0.14",
     "minireset.css": "0.0.6",
     "path": "^0.12.7",

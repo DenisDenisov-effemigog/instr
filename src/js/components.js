@@ -62,6 +62,7 @@ import repeatOrder from './components/profile/page-modals/repeat-order.vue';
 /*listing*/
 import filters from './components/listing/filters/filters.vue';
 import filterBlock from './components/listing/filters/filter-block.vue';
+import filterControlRange from './components/listing/filters/filter-control-range.vue';
 import displayingCards from './components/listing/displaying-cards.vue';
 import filterButton from './components/listing/filter-button.vue';
 
@@ -125,5 +126,6 @@ export default {
         filterBlock,
         displayingCards,
         filterButton,
+        filterControlRange,
     },
 }

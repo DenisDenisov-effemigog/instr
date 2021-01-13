@@ -11,7 +11,7 @@
         <div class="filter-block__content" v-if="filter.type === 'range'">
             <div>Базовая цена</div><!--TODO оформить-->
             
-            <!--TODO реализовать рандж слайдер-->
+            <filter-control-range></filter-control-range>
 
             <!--TODO перебить классы, плюс в css рефактор-->
             <label name="taxPayer" class="user-reg__checkbox">
@@ -55,9 +55,11 @@
 </template>
 
 <script>
+import FilterControlRange from './filter-control-range.vue'
     export default {
         name: "filter-block",
         components: {
+                FilterControlRange
         },
         props: {
             filter: {
