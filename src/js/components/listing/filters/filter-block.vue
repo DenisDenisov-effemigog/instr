@@ -14,21 +14,21 @@
             <filter-control-range></filter-control-range>
 
             <!--TODO перебить классы, плюс в css рефактор-->
-            <label name="taxPayer" class="user-reg__checkbox">
+            <label name="bestsellers" class="filter-block__checkbox">
                 <input
-                    class="user-reg__checkbox-input"
+                    class="filter-block__checkbox-input"
                     type="checkbox"
-                    name="taxPayer">
-                <span class="user-reg__checkbox-slider"></span>
-                <span class="user-reg__checkbox-label">Бестселлеры</span>
+                    name="bestsellers">
+                <span class="filter-block__checkbox-slider"></span>
+                <span class="filter-block__checkbox-label">Бестселлеры</span>
             </label>
-            <label name="news" class="user-reg__checkbox">
+            <label name="newItems" class="filter-block__checkbox">
                 <input
-                    class="user-reg__checkbox-input"
+                    class="filter-block__checkbox-input"
                     type="checkbox"
-                    name="news">
-                <span class="user-reg__checkbox-slider"></span>
-                <span class="user-reg__checkbox-label">Новинки</span>
+                    name="newItems">
+                <span class="filter-block__checkbox-slider"></span>
+                <span class="filter-block__checkbox-label">Новинки</span>
             </label>
         </div>
         <div class="filter-block__content" v-else-if="filter.type === 'checkbox'">

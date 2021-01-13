@@ -1,0 +1,15 @@
+.filter-block
+    &__content
+    &__checkbox
+        @extend .checkbox-switch
+    &__checkbox-input
+        @extend .checkbox-switch
+        &:checked + .filter-block__checkbox-slider
+            background-color: rgba($primary-red, .56)
+        &:checked + .filter-block__checkbox-slider:before
+            background-color: $primary-red
+            transform: translateX(1rem)
+    &__checkbox-slider
+        @extend .checkbox-switch__slider
+    &__checkbox-label
+        @extend .checkbox-switch__label
