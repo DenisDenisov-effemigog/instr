@@ -1726,6 +1726,8 @@
 
 {% set sort_type = 'По популярности' %}
 
+{% set view_type = 'mode': 'horizview' %}
+
 {% set shields = [
     'Лебедки автомобильные', 'Масленки', 'Мебель гаражная', 'Моечные машины высокого давления', 'Домкраты', 'Насосы гидравлические', 'Аксессуары автомобильные', 'Перчатки', 'Поддоны для сбора масла', 'Подставки под машину регулируемые', 'Прессы гидравлические', 'Пробники автомобильные', 'Растяжки гидравлические', 'Пневмоинструмент', 'Тали',
 ] %}
@@ -1951,6 +1953,7 @@
         'listingCategories': listingCategories[0],
         'listingCategoryTitle': listingCategories[0].title,
         'filters': filters,
+        'view_type': view_type,
     } %}
     {% include '../../../templates/footer/footer.twig'  with {
         'countries': countries,
