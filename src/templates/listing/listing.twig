@@ -1,11 +1,6 @@
-{%  set category = [] %}
-{%  for st in categories %}
-        {% set category = category | merge([st]) %}
-{% endfor %}
-
 <div class="listing">
     <div class="listing__header">
-        <h1 class="listing__title">Автомобильный инструмент</h1>
+        <h1 class="listing__title">{{ listingCategoryTitle }}</h1>
         <div class="items-cont">12 210 товаров</div>
     </div>
     <div class="listing__shields">
@@ -17,25 +12,35 @@
     </div>
     <div class="listing__content">
         <div class="listing__sidebar">
-            <component is="catalogue-subcategories"
-                :categories="{{ category[0].subcategories|json_encode()|e('html_attr') }}"
-                :class-name="{{'listing'|json_encode()|e('html_attr')}}"
-            ></component>
-            <div class="listing__sidebar_filters">
-                {#TODO отобразить блок категорий, в котором находимся#}
-                {% include './filter.twig' with {'filters': filters} %}
-            </div>
+            {% if filters is not empty %}
+                <div class="listing__categories">
+                    <div class="listing__categories__title">{{ listingCategoryTitle }}</div>{#TODO оформить тайтл#}
+                    <component is="further-subcategories"
+                               :categories="{{ listingCategories.subcategories|json_encode()|e('html_attr') }}"
+                               :class-name="'listing'"
+                    ></component>{#TODO вынести из компоненты#}
+                    {#{% for category in categories.subcategories %}
+                        <a href="{{ category.url }}" class="listing__categories_sabcategory">{{ category.title }}</a>
+                    {% endfor %}#}
+                </div>
+                <div class="listing__sidebar_filters">  
+                    {% include './filter.twig' with {'filters': filters} %}
+                </div>
+            {% else %}
+                <component is="catalogue-subcategories"
+                           :categories="{{ listingCategories.subcategories|json_encode()|e('html_attr') }}"
+                           :class-name="'listing'"
+                ></component>{#TODO вынести из компоненты#}
+            {% endif %}
         </div>
         <div class="listing__products">
-            <div class="listing__actions">
-                <component is="filter-button"></component>
-                <component is="select-list"
-                           :points="{{ sort_types|json_encode|e('html_attr') }}"
-                           :selectopen-select="{{ sort_type|json_encode|e('html_attr') }}"
-                ></component>
-                <component is="displaying-cards"></component>
-            </div>{#TODO в моб.версии этот блок должен стать стики#}
-            
+
+            <component is="sticky-listing-actions"
+                :filters="{{ filters|json_encode|e('html_attr') }}"
+                :points="{{ sort_types|json_encode|e('html_attr') }}"
+                :selectopen-select="{{ sort_type|json_encode|e('html_attr') }}"
+            ></component>
+
             <div class="listing__grid">
                 {% for product in products %}
                     <div class="listing__card">
@@ -49,7 +54,7 @@
                     </div>
                 {% endfor %}
             </div>
-            <div class="listing__grid listing__grid_horiz">
+            <div class="listing__grid listing__grid--horiz">
                 {% for product in products %}
                     <div class="listing__card">
                         <card
@@ -62,7 +67,7 @@
                     </div>
                 {% endfor %}
             </div>
-            <div class="listing__products_pagination">
+            <div class="listing__pagination">
                 {% include './listing-pagination/listing-pagination-btn.twig' %}
                 {% include './listing-pagination/listing-pagination.twig' %}
             </div>

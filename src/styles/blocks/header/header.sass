@@ -23,7 +23,7 @@
     position: fixed
     width: 100%
     background-color: $white
-    box-shadow: 0 2px 8px rgba(0, 0, 0, .08)
+    box-shadow: 0 2px 8px rgba($shadow, .25)
     transform: translateZ(0)
     transition: transform .35s
     z-index: 2
@@ -47,13 +47,13 @@
             fill: $primary-red
             // width: 141px
             // height: 33px
-            width: 137px
-            height: 32px
+            width: 8.5625rem
+            height: 2rem
             +desktop-small
                 // width: 176px
                 // height: 43px
-                width: 148px
-                height: 48px
+                width: 9.25rem
+                height: 3rem
         &_mobile
             +desktop-small
                 display: none
@@ -76,7 +76,7 @@
     &__catalog-btn-lines
         margin-right: 0.5rem
         width: $size_18
-        height: 0.9375rem
+        height: $size_15
         display: flex
         flex-direction: column
         &_active
@@ -100,8 +100,8 @@
         background: $white
         display: block
         width: 100%
-        height: 3px
-        margin-top: 4px
+        height: .1875rem
+        margin-top: .25rem
         &:first-child
             margin-top: 0
     &__catalog-mobile
@@ -126,11 +126,11 @@
             background: $grey
     &__catalog-mobile-icon
         fill: $grey
-        width: 24px
-        height: 24px
+        width: $size_24
+        height: $size_24
         &--close
-            height: 12px
-            padding-left: 6px
+            height: .75rem
+            padding-left: .375rem
     &__menu
         display: none
         +desktop-small
@@ -183,7 +183,7 @@
                 justify-content: center
                 align-items: center
                 height: 1rem
-                border-radius: 8px
+                border-radius: $border-radius_3
                 padding: 0 0.5rem
                 background-color: $primary-red
                 color: $white
@@ -191,7 +191,7 @@
                 z-index: 4
                 font-family: $font-montserrat-semibold
                 +desktop-small
-                    top: -0.9375rem
+                    top: -.9375rem
                     right: 0
 
     &__menu-icon

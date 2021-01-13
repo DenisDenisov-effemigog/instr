@@ -1,5 +1,5 @@
 .product-info
-    font-size: $size_14
+    font-size: $font-size_3
     flex: 1
     +mobile
         order: 2
@@ -20,21 +20,21 @@
             max-width: 100%
             padding-right: 4rem
     &__desc
-        width: 114px
+        width: 7.125rem
         margin-top: auto
     &__name
         color: $light-grey
         position: relative
-        width: calc(100% - 118px)
+        width: calc(100% - 7.375rem)
         &_dash
             background: linear-gradient(90deg, $border-color_4 100%, transparent 0) repeat-x
             background-size: 3px 1px
             background-position: 0 calc(100% - 1px)
             +tablet
-                background-position: 0 calc(100% - 3px)
+                background-position: 0 calc(100% - .1875rem)
         &_label
             background: #fff
-            max-width: 208px
+            max-width: 13rem
     &__all
         @extend .link-blue
         font-weight: $font-weight_semibold

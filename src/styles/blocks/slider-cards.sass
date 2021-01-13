@@ -1,25 +1,25 @@
 .slider-cards
     @extend .container
     margin-right: 0
-    margin-bottom: 56px
+    margin-bottom: 3.5rem
     +desktop
         margin-right: auto
     & > .agile > .agile__list
         +desktop
-            width: calc(100% - 90px)
+            width: calc(100% - 5.625rem)
     &__title
         @extend .title-3
-        margin-bottom: 32px
+        margin-bottom: 2rem
     &__slide
-        padding: 0 12px
+        padding: 0 .75rem
         position: relative
         & .card
             width: 100%
             +mobile
                 border: none
     & .agile
-        margin-left: -10px
-        margin-right: -10px
+        margin-left: -.625rem
+        margin-right: -.625rem
     & .agile__nav-button
         background: $pre-white
         &--prev
@@ -28,9 +28,9 @@
             top: 0
             right: 0
             transform: translate(0)
-            border-radius: 4px
-            width: 66px
-            height: 494px
+            border-radius: $border-radius
+            width: 4.125rem
+            height: 30.875rem
             display: none
             +desktop
                 display: block
@@ -41,10 +41,10 @@
                     fill: $icon-black
             & svg
                 fill: $icon-grey
-                width: 6px
-    &_short-card .agile__nav-button
+                width: .375rem
+    &--short-card .agile__nav-button
         &--next
-            height: 416px
+            height: 26rem
     & .card
         +mobile
             padding: 0

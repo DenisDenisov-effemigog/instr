@@ -1,17 +1,17 @@
 .media-button
-    width: 48px
-    height: 48px
+    width: 3rem
+    height: 3rem
     background: rgba($light-grey, .42)
-    border-radius: 4px
-    margin-right: 8px
+    border-radius: $border-radius
+    margin-right: .5rem
     +flex-container-center
     &:last-child
         margin-right: 0
     +desktop
-        width: 56px
-        height: 56px
+        width: 3.5rem
+        height: 3.5rem
         background: transparent
-        margin-bottom: 16px
+        margin-bottom: 1rem
         margin-right: 0
         cursor: pointer
         &:last-child
@@ -23,8 +23,8 @@
         background: $border-color
         outline: none
     & svg
-        width: 38px
-        height: 38px
+        width: 2.375rem
+        height: 2.375rem
         fill: $icon-white
         +desktop
             fill: $icon-black

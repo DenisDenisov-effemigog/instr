@@ -2,13 +2,17 @@
 <div class="select" @click="openSelect = !openSelect" v-click-outside="closeOutside">
     <div class="select__button" :class="{'select__button--active':openSelect}">
         <span>{{currentPoint}}</span>
-        <svg>
+        <svg :viewBox="viewbox" class="select__arrow">
             <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-down'"></use>
         </svg>
     </div>
     <div v-show="openSelect" class="select__dropdown">
         <ul class="select__list">
-            <li @click="clickPoint(key)" class="select__item" :class="{'select__item--active':currentPoint === points[key]}" v-for="(point, key) in points">
+            <li @click="clickPoint(key)"
+                class="select__item"
+                :class="{'select__item--active':currentPoint === points[key]}"
+                v-for="(point, key) in points"
+            >
                 <span>{{point}}</span>
                 <svg>
                     <use :xlink:href="templatePath + `images/sprite.svg#${icon}`"></use>
@@ -36,6 +40,9 @@ export default {
         selectopenSelect:{
             type: String,
             required: true,
+        },
+        viewbox: {
+            type: String
         }
     },
     data(){

@@ -1,10 +1,36 @@
 .displaying
+    +flex-container-center
+    margin-left: 1rem
+    &__block
+        +flex-container
+        &--mobile
+            +desktop
+                display: none
+        &--desktop
+            +until($desktop)
+                display: none
     
     &__button
-        +mobile
+        cursor: pointer
+        &:first-of-type
+            margin-right: .5rem
+            +until($desktop)
+                margin-right: 0
+        +until($desktop)
             display: none
+
+        &:hover
+            .displaying__icon
+                fill: $icon-blue
         
         &--active
-            +mobile
+            +until($desktop)
                 display: block
-            
+            & .displaying__icon
+                fill: $icon-blue
+    
+    &__icon
+        fill: $light-grey
+        width: $size_24
+        height: $size_24
+        transition: .35s

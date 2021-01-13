@@ -11,6 +11,7 @@ import mediaButton from './components/media-button.vue';
 /*catalogue*/
 import catalogue from './components/catalogue/catalogue.vue';
 import catalogueSubcategories from './components/catalogue/catalogue-subcategories.vue';
+import furtherSubcategories from './components/catalogue/catalogue-further-subcategories.vue';
 /*header*/
 import cartMini from './components/header/cart-mini.vue';
 import headerBlock from './components/header/header-block.vue';
@@ -65,6 +66,7 @@ import filterBlock from './components/listing/filters/filter-block.vue';
 import filterControlRange from './components/listing/filters/filter-control-range.vue';
 import displayingCards from './components/listing/displaying-cards.vue';
 import filterButton from './components/listing/filter-button.vue';
+import stickyListingActions from './components/listing/sticky-listing-actions.vue';
 
 export default {
     components: {
@@ -122,10 +124,12 @@ export default {
         tooltipProfile,
         cardStikers,
         catalogueSubcategories,
+        furtherSubcategories,
         filters,
         filterBlock,
         displayingCards,
         filterButton,
         filterControlRange,
+        stickyListingActions,
     },
 }

@@ -1,6 +1,6 @@
 <template>
     <div class="slider-photo-card"
-         :class="{'slider-photo-card_short-card': cardSize === 'short'}">
+         :class="{'slider-photo-card--short-card': cardSize === 'short'}">
             <!-- @touchstart="touchStart"
             @touchmove="touchMove"
             @touchend="touchEnd" -->
