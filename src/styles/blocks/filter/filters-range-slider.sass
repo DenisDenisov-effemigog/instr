@@ -1,31 +1,43 @@
 .filters-range-slider
+    margin-top: 1rem
     &__inputs
         display: flex
     &__input-wrap
         position: relative
         padding-right: 1rem
+        width: 100%
         &:last-child
             padding-right: 0
+        +desktop
+            width: auto
     &__input
         @extend .text-3
         padding: 0.5rem 0.875rem
+        padding-left: 20%
+        text-align: center
         border: 1px solid $border-color
         box-sizing: border-box
         border-radius: 4px
-        max-width: 7.3125rem
-        padding-left: 2.5rem
         &::-webkit-outer-spin-button,
         &::-webkit-inner-spin-button
             -webkit-appearance: none
+        +desktop
+            max-width: 7.3125rem
+            padding-left: 3rem
+            text-align: left
+
     &__label
         @extend .text-3
         position: absolute
+        left: 20%
         top: 50%
         transform: translate(0, -50%)
-        left: 1rem
+        color: $light-grey
+        +desktop
+            left: 1.625rem
 
 .v-slider-wrap
-    width: calc(100% - 2rem)!important
+    // width: calc(100% - 2rem)!important
     display: inline-block
     background-color:  $border-color!important
     border-radius: 4px

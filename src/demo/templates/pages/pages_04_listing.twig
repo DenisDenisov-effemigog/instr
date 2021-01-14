@@ -1930,6 +1930,10 @@
     },
 ] %}
 
+{% set pagination = {
+}
+%}
+
 {% block content %}
 
     {% include '../../../templates/header/header.twig' with {'categories': categories, 'user': user} %}
@@ -1954,6 +1958,7 @@
         'listingCategoryTitle': listingCategories[0].title,
         'filters': filters,
         'view_type': view_type,
+        'pagination': pagination,
     } %}
     {% include '../../../templates/footer/footer.twig'  with {
         'countries': countries,

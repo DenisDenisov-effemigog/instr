@@ -40,7 +40,6 @@
 </template>
 
 <script>
-    import config from "../../config";
     
     export default {
         name: "displaying-cards",
@@ -56,13 +55,9 @@
                 changedView: 'gridview'
             }
         },
-        model: {
-            prop: 'value',
-            event: 'change',
-        },
         computed: {
             activeDisplaying() {
-                return this.$store.state.listing.view_mode/*TODO почему-то не работает при загрузке*/
+                return this.$store.state.listing.view_mode
             },
         },
         mounted() {
@@ -72,7 +67,6 @@
             changeDisplaying(item){
                 this.changedView = item
                 this.$store.dispatch('listingSetViewMode', this.changedView);
-                this.$eventBus.$emit(config.bus.applyView, this.changedView);
             },
         },
     }

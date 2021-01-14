@@ -5,39 +5,18 @@
             display: flex
             flex-direction: column
     &__label
-        position: relative
-        display: flex
+        @extend .form__label
         &_column
             display: flex
             flex-direction: column
     &__label-icon
-        position: absolute
-        top: .5rem
-        right: 1rem
-        width: $size_24
-        height: $size_24
-        fill: $light-grey
-        cursor: pointer
-        &:hover
-            fill: $icon-grey
+        @extend .form__label-icon
     &__label-text
-        @extend .text-3
-        position: absolute
-        top: .75rem
-        left: 1rem
-        width: initial
-        color: $light-grey
-        z-index: 2
-        transition: .2s
+        @extend .form__label-text
         &_up
-            @extend .label-typo
-            top: -.375rem
-            left: 1rem
-            padding: 1px .5rem
-            background-color: $white
-            transition: .2s
+            @extend .form__label-text--up
     &__input
-        @extend .input-modal
+        @extend .form__input
         &:focus ~ .profile-modal__label-text
             @extend .label-typo
             top: -.375rem
@@ -46,18 +25,13 @@
             background-color: $white
             transition: .2s
         &_dots
-            @extend .dot-font
+            @extend .form__input--dots
         &_error
-            @extend .input-modal_error
+            @extend .form__input--error
     &__button
-        @extend .button-primary
-        padding: .625rem
-        margin: 1rem auto 0 auto
-        +tablet
-            width: 12.1825rem
+        @extend .form__button
     &__text
-        @extend .text-3
-        margin-bottom: 1rem
+        @extend .form__text
 
     &__radio
         @extend .radio
@@ -75,7 +49,6 @@
         margin-bottom: 1rem
     &__check
         @extend .radio__check
-        cursor: pointer     
     &__radio-label
         @extend .radio__label
     &__textarea
@@ -99,10 +72,8 @@
                 background-color: $white
                 transition: .2s  
     &__error-text
-        @extend .text-3
-        margin-bottom: 1rem
-        color: $primary-hover
+        @extend .form__error-text
         &_invalid
-            margin: -.5rem 0 .5rem 0
+            @extend .form__error-text--invalid
         &_invalid_email
-            margin: -.5rem 0 1rem 0
+            @extend .form__error-text--invalid-email

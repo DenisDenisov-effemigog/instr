@@ -1,7 +1,7 @@
 <div class="listing">
     <div class="listing__header">
         <h1 class="listing__title">{{ listingCategoryTitle }}</h1>
-        <div class="items-cont">12 210 товаров</div>
+        <span class="listing__items-cont">12 210 товаров</span>
     </div>
     <div class="listing__shields">
         {% for shield in shields %}
@@ -13,8 +13,8 @@
     <div class="listing__content">
         <div class="listing__sidebar">
             {% if filters is not empty %}
-                <div class="listing__categories">
-                    <div class="listing__categories__title">{{ listingCategoryTitle }}</div>{#TODO оформить тайтл#}
+                <div class="listing__subcategories">
+                    <div class="listing__subcategory-link">{{ listingCategoryTitle }}</div>{#TODO оформить тайтл#}
                     <component is="further-subcategories"
                                :categories="{{ listingCategories.subcategories|json_encode()|e('html_attr') }}"
                                :class-name="'listing'"
@@ -75,8 +75,7 @@
                        :selectopen-select="{{ sort_type|json_encode|e('html_attr') }}"
                        :view="{{ view_type|json_encode|e('html_attr') }}"
             ></component>
-            
-            <div class="listing__grid {% if view_type == 'horizview' %}listing__grid--horiz{% endif %}">
+            <component is="listing-content">
                 {% for product in products %}
                     <div class="listing__card">
                         <card
@@ -88,11 +87,13 @@
                         </card>
                     </div>
                 {% endfor %}
-            </div>
-            <div class="listing__pagination">
-                {% include './listing-pagination/listing-pagination-btn.twig' %}
-                {% include './listing-pagination/listing-pagination.twig' %}
-            </div>
+            </component>
+            {% if pagination is not empty %}
+                <div class="listing__pagination">
+                    {% include './listing-pagination/listing-pagination-btn.twig' %}
+                    {% include './listing-pagination/listing-pagination.twig' with {'pagination': pagination} %}
+                </div>
+            {% endif %}
         </div>
     </div>
 </div>

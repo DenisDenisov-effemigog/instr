@@ -34,15 +34,15 @@ import sliderPhotoDots from './components/card/slider-photo-dots.vue';
 import addToCart from './components/card/add-to-cart.vue';
 import cardStikers from './components/card/card-stikers.vue';
 /*product-card*/
-import productCardSlider from './components/poduct-card/product-card-slider.vue';
-import productCardHeader from './components/poduct-card/product-card-header.vue';
-import productTabs from './components/poduct-card/product-tabs.vue';
-import productTabsQuestions from './components/poduct-card/product-tabs-questions.vue';
-import stickyCard from './components/poduct-card/sticky-card.vue';
-import productCardArticle from './components/poduct-card/product-card-article.vue';
-import photoModal from './components/poduct-card/photo-modal.vue';
-import productInfoAll from './components/poduct-card/product-info-all.vue';
-import productOrderBlock from './components/poduct-card/product-order-block.vue';
+import productCardSlider from './components/product-card/product-card-slider.vue';
+import productCardHeader from './components/product-card/product-card-header.vue';
+import productTabs from './components/product-card/product-tabs.vue';
+import productTabsQuestions from './components/product-card/product-tabs-questions.vue';
+import stickyCard from './components/product-card/sticky-card.vue';
+import productCardArticle from './components/product-card/product-card-article.vue';
+import photoModal from './components/product-card/photo-modal.vue';
+import productInfoAll from './components/product-card/product-info-all.vue';
+import productOrderBlock from './components/product-card/product-order-block.vue';
 /*profile*/
 import profile from './components/profile/profile.vue';
 import profileMenuMobile from './components/profile/profile-menu-mobile.vue';
@@ -69,6 +69,7 @@ import filterControlRange from './components/listing/filters/filter-control-rang
 import displayingCards from './components/listing/displaying-cards.vue';
 import filterButton from './components/listing/filter-button.vue';
 import stickyListingActions from './components/listing/sticky-listing-actions.vue';
+import listingContent from './components/listing/listing-content.vue';
 /*cart*/
 import cart from './components/cart/cart.vue';
 
@@ -135,6 +136,7 @@ export default {
         filterButton,
         filterControlRange,
         stickyListingActions,
+        listingContent,
         filterClearBtn,
         cart,
         listingSubcategoryTitle,

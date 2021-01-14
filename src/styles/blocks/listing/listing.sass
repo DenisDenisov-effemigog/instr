@@ -1,11 +1,27 @@
 .listing
     @extend .container
+    margin-bottom: 5rem
+    +desktop
+        margin-bottom: 6.5rem
     
     &__header
-        display: flex
+        display: inline-block
+        margin: 1.5rem 0
+        +desktop
+            margin-bottom: 0
         
     &__title
-        @extend .title-2
+        @extend .title-3
+        display: inline
+        +desktop
+            font-size: $font-size_5
+            line-height: $line-height_5
+    
+    &__items-cont
+        font-size: $font-size_3
+        line-height: $line-height_8
+        color: $grey
+        margin-left: 1rem
         
     &__shields
         @extend .shield
@@ -17,6 +33,9 @@
         
     &__content
         @extend .columns
+        margin-top: -.25rem
+        +desktop
+            margin-top: .75rem
         
     &__sidebar
         @extend .column
@@ -34,8 +53,8 @@
         +tablet
             padding-bottom: 1.5rem
     &__subcategory-link
-        @extend .text-1
-        font-weight: 700
+        @extend .title-4
+        transition: .2s
         +tablet
             &:hover
                 color: $blue
@@ -54,11 +73,12 @@
         border-bottom: 1px solid $border-color_4
         +tablet
             border: none
+    &__further-subcategories
+        padding-top: 1rem
     &__further-subcategories li
         padding-bottom: 1rem
     &__further-subcategory
         @extend .text-2
-        font-weight: 400
         color: $grey
         +tablet
             &:hover
@@ -68,8 +88,6 @@
         & a
             @extend .profile__link
             margin-top: 0
-    &__further-subcategories
-        padding-top: 16px
         
     &__products
         @extend .column
@@ -98,7 +116,7 @@
     &__actions
         +flex-container
         height: 2.5rem
-        margin: .25rem 0 1.5rem 0
+        margin-bottom: 1.5rem
         +until($desktop)
             position: relative
             height: 3.5rem
@@ -178,11 +196,13 @@
                     max-width: 7.5rem
                     margin: 0
             .card__image-block--horiz
-                +tablet
-                    display: block
+                display: block
+                // +tablet
+                //     display: block
             .slider-photo-card
-                +tablet
-                    display: none
+                display: none
+                // +tablet
+                //     display: none
             .card__code
                 order: -1
                 text-align: center
