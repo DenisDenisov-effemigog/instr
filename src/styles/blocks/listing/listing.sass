@@ -1,9 +1,14 @@
 .listing
     @extend .container
+    margin-bottom: 5rem
+    +desktop
+        margin-bottom: 6.5rem
     
     &__header
         display: inline-block
         margin: 1.5rem 0
+        +desktop
+            margin-bottom: 0
         
     &__title
         @extend .title-3
