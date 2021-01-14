@@ -1,32 +1,28 @@
 <div class="pagination">
-    <div class="pagination__arrow pagination__arrow-prev">
+    <a  href="{{ pagination.url_previous }}" class="pagination__arrow pagination__arrow-prev">
         <svg>
             <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-left'"></use>
         </svg>
-    </div>
+    </a>
     <ul class="pagination__list">
-        <li class="pagination__item pagination__item_current">
-            <a href="#" class="pagination__link">1</a>
+        <li class="pagination__item{% if pagination.current == 1 %} pagination__item_current{% endif %}">
+            <a href="{{ pagination.url_first }}" class="pagination__link">1</a>
         </li>
+        {% for link in pagination.urls %}
+            <li class="pagination__item{% if pagination.current == link.title %} pagination__item_current{% endif %}">
+                <a href="{{ link.url }}" class="pagination__link">{{ link.title }}</a>
+            </li>
+        {% endfor %}
         <li class="pagination__item">
-            <a href="#" class="pagination__link">2</a>
+            <div class="pagination__link">...</div>
         </li>
-        <li class="pagination__item">
-            <a href="#" class="pagination__link">3</a>
-        </li>
-        <li class="pagination__item">
-            <a href="#" class="pagination__link">4</a>
-        </li>
-        <li class="pagination__item">
-            <a href="#" class="pagination__link">...</a>
-        </li>
-        <li class="pagination__item">
-            <a href="#" class="pagination__link">106</a>
+        <li class="pagination__item{% if pagination.current == pagination.total %} pagination__item_current{% endif %}">
+            <a href="{{ pagination.url_last }}" class="pagination__link">{{ pagination.total }}</a>
         </li>
     </ul>
-    <div class="pagination__arrow pagination__arrow_next">
+    <a  href="{{ pagination.url_next }}" class="pagination__arrow pagination__arrow_next">
         <svg>
             <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
         </svg>
-    </div>
+    </a>
 </div>

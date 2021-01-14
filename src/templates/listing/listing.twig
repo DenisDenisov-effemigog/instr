@@ -88,10 +88,12 @@
                     </div>
                 {% endfor %}
             </component>
-            <div class="listing__pagination">
-                {% include './listing-pagination/listing-pagination-btn.twig' %}
-                {% include './listing-pagination/listing-pagination.twig' %}
-            </div>
+            {% if pagination is not empty %}
+                <div class="listing__pagination">
+                    {% include './listing-pagination/listing-pagination-btn.twig' %}
+                    {% include './listing-pagination/listing-pagination.twig' with {'pagination': pagination} %}
+                </div>
+            {% endif %}
         </div>
     </div>
 </div>
