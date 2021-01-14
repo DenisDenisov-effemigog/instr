@@ -9,7 +9,9 @@
 
 <script>
     import filterBlock from './filter-block.vue';
-import FilterClearBtn from './filter-clear-btn.vue';
+    import FilterClearBtn from './filter-clear-btn.vue';
+    import config from "../../../config";
+    
     export default {
         name: "filters",
         components: {

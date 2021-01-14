@@ -8,7 +8,7 @@
                     :selectopen-select="selectopenSelect"
                     :viewbox="'0 0 16 7'"
         ></component>
-        <component is="displaying-cards" :activeView="activeView"></component>
+        <component is="displaying-cards" :activeView="view"></component>
     </div>
 </template>
 
@@ -19,7 +19,6 @@
             return {
                 fixed: false,
                 scrollOffset: 0,
-                activeView: 'gritview'
             }
         },
         props: {
@@ -76,7 +75,6 @@
         },
         mounted() {
             this.getPosition()
-            this.activeView = this.view
         }
     }
 </script>

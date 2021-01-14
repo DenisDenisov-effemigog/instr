@@ -62,7 +62,7 @@
         },
         computed: {
             activeDisplaying() {
-                return this.$store.state.listing.view_mode/*TODO почему-то не работает при загрузке*/
+                return this.$store.state.listing.view_mode
             },
         },
         mounted() {
