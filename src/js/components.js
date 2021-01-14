@@ -8,6 +8,7 @@ import stickyMobileButton from './components/sticky-mobile-button.vue';
 import inFavorite from './components/in-favorite.vue';
 import toCompare from './components/to-compare.vue';
 import mediaButton from './components/media-button.vue';
+import paginationBtn from './components/partials/pagination-btn.vue';
 /*catalogue*/
 import catalogue from './components/catalogue/catalogue.vue';
 import catalogueSubcategories from './components/catalogue/catalogue-subcategories.vue';
@@ -110,6 +111,7 @@ export default {
         inFavorite,
         toCompare,
         mediaButton,
+        paginationBtn,
         profile,
         profileMenuMobile,
         pagePersonal,

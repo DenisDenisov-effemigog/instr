@@ -95,6 +95,9 @@ class Api {
     personalAddressList() {
         return this._promiseBitrixRequest('instrum:main.api.user.address.get', {});
     }
+    getMoreListing() {
+        return this._promiseBitrixRequest('instrum:main.api.catalog.get', {});
+    }
     
 }
 

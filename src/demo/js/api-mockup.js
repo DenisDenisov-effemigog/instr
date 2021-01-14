@@ -432,6 +432,17 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
+            case 'instrum:main.api.catalog.get':
+
+                resolve({
+                    data: {
+                        status: 1,
+                        answer: {
+                            output: 'больше карточек'
+                        }
+                    }
+                });
+                break;
         }
     });    
 };
