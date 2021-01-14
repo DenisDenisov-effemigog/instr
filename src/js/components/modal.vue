@@ -52,7 +52,15 @@
                 <component is="user" :selected="props"></component>
             </div>
             <div class="modal_filters" v-else-if="modal === 'filters'">
-                <h3 class="modal-title">Фильтры</h3><!--TODO сделать стики хэдер у модалки-->
+                <div class="modal_filters-sticky">
+                    <div class="modal_filters-sticky__icon" @click="closeModal">
+                        <svg>
+                            <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-left'"></use>
+                        </svg>
+                    </div>
+                    <h3 class="modal-title">Фильтры</h3><!--TODO сделать стики хэдер у модалки-->
+                    <filter-clear-btn :mobileFlag=true></filter-clear-btn>
+                </div>
                 <slot name="listingcat"></slot>
                 <!--TODO добавить странную кнопку "все категории"-->
                 <component is="filters" :filters="props"></component>
@@ -83,6 +91,7 @@
     import filters from "./listing/filters/filters.vue"
     import stickyMobileButton from "./sticky-mobile-button.vue"
     import ClickOutside from "vue-click-outside"
+import FilterClearBtn from './listing/filters/filter-clear-btn.vue'
 
 export default {
     name: 'modal',
@@ -94,6 +103,7 @@ export default {
         addAddress,
         filters,
         stickyMobileButton,
+        FilterClearBtn
     },
     directives: {
         ClickOutside

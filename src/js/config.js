@@ -8,6 +8,10 @@ export default {
     },
     phoneMask: '+7 (F##) ###-##-##',
 
-    passwordPattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,}$/
+    passwordPattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,}$/,
+
+    bus: {
+        applyView: 'apply-view',
+    },
 
 }

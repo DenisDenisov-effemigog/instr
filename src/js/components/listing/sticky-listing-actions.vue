@@ -1,14 +1,14 @@
 <template>
     <div class="listing__actions"
         :class="{'listing__actions--sticky': fixed}">
-        <component is="filter-button" :filters="filersMobile"></component>
+        <component is="filter-button" :filters="filersMobile" v-if="filersMobile.filters"></component>
         <component is="select-list"
                     class="listing__select"
                     :points="pointsMobile"
                     :selectopen-select="selectopenSelect"
                     :viewbox="'0 0 16 7'"
         ></component>
-        <component is="displaying-cards"></component>
+        <component is="displaying-cards" :activeView="view"></component>
     </div>
 </template>
 
@@ -18,7 +18,7 @@
         data() {
             return {
                 fixed: false,
-                scrollOffset: 0
+                scrollOffset: 0,
             }
         },
         props: {
@@ -31,6 +31,10 @@
                 required: true,
             },
             selectopenSelect:{
+                type: String,
+                required: true,
+            },
+            view:{
                 type: String,
                 required: true,
             }

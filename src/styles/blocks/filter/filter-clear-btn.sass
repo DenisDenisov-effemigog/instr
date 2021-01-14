@@ -1,6 +1,7 @@
 .filter-clear-btn
-    display: inline-flex
-    margin-top: 1rem
+    display: none
+    +tablet
+        display: inline-flex
     @extend .link-blue
     &__icon
         margin-right: 0.75rem
@@ -12,3 +13,7 @@
         @extend .text-2
         color: $blue
         font-weight: 600
+    &--mobile
+        display: inline-flex
+        +tablet
+            display: none

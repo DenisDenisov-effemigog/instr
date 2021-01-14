@@ -70,25 +70,13 @@
         <div class="listing__products">
 
             <component is="sticky-listing-actions"
-                :filters="{{ filters|json_encode|e('html_attr') }}"
-                :points="{{ sort_types|json_encode|e('html_attr') }}"
-                :selectopen-select="{{ sort_type|json_encode|e('html_attr') }}"
+                       :filters="{{ filters|json_encode|e('html_attr') }}"
+                       :points="{{ sort_types|json_encode|e('html_attr') }}"
+                       :selectopen-select="{{ sort_type|json_encode|e('html_attr') }}"
+                       :view="{{ view_type|json_encode|e('html_attr') }}"
             ></component>
-
-            <div class="listing__grid">
-                {% for product in products %}
-                    <div class="listing__card">
-                        <card
-                            :change-icon="false"
-                            :card-grid="'grid'"
-                            :product="{{ product|json_encode()|e('html_attr') }}"
-                        >
-                            {% include '../partials/card.twig' with {'product': product} %}
-                        </card>
-                    </div>
-                {% endfor %}
-            </div>
-            <div class="listing__grid listing__grid--horiz">
+            
+            <div class="listing__grid {% if view_type == 'horizview' %}listing__grid--horiz{% endif %}">
                 {% for product in products %}
                     <div class="listing__card">
                         <card

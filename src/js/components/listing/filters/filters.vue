@@ -9,7 +9,9 @@
 
 <script>
     import filterBlock from './filter-block.vue';
-import FilterClearBtn from './filter-clear-btn.vue';
+    import FilterClearBtn from './filter-clear-btn.vue';
+    import config from "../../../config";
+    
     export default {
         name: "filters",
         components: {
@@ -23,10 +25,47 @@ import FilterClearBtn from './filter-clear-btn.vue';
             },
         },
         data(){
-            return{
+            return {
+                internalView: 'gridview',
             }
         },
+        created() {
+            // this.$eventBus.$on(config.bus.applyView, this.applyView);
+        },
+        beforeDestroy() {
+            this.$eventBus.$off(config.bus.applyView);
+        },
         methods:{
+            applyFilters(changeState) {
+                let vm = this;
+                let params = vm.getPayloadParams();
+
+                vm.dirty = false;
+
+                api.listingContents(this.internal.hash, params).then(answer => {
+
+                    let contents = base64.decode(answer.output);
+                    vm.$eventBus.$emit(config.bus.applyListing, contents);
+                    if(changeState) {
+                        /*window.history.pushState({ пока пришло false
+                            output: contents
+                        },'', answer.url);
+
+                        this.toggleBodyClass('page_sort-modal-closed', true);
+                        setTimeout(() => {
+                            this.toggleBodyClass('page_filter-modal-shown', false);
+                            this.toggleBodyClass('page_sort-modal-closed', false);
+                            document.querySelector('html').style.overflow = 'auto';
+                        }, 300)
+
+                        this.scrollTop('.breadcrumbs');*/
+                    }
+                });
+            },
+            applyView(value) {
+                this.internalView = value;
+                this.applyFilters(false);
+            },
         },
     }
 </script>
