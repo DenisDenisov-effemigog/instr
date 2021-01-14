@@ -25,8 +25,8 @@
         methods:{
             openModal(){
                 this.$eventBus.$emit("openModal", 'filters', this.filters, false, true);
-                this.$eventBus.$emit("sow-button", 'Посмотреть', 8, 'товар');
-                /*TODO в компоненте catalogue-mobile есть функция окончаний, сделать её глобальной и вызвать тут + передать кол-во итемов*/
+                this.$eventBus.$emit("sow-button", 'Посмотреть', 8, 'товар' + this.ending(8));
+                /*TODO передать кол-во итемов*/
             },
         },
     }
