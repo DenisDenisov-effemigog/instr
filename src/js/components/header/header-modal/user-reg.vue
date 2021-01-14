@@ -107,6 +107,10 @@
                 @click="$v.code.$model = ''">
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>
+            <div class="user__error-text user__error-text_invalid"
+                v-if="$v.company.$error">
+                Ошибка при вводе данных
+            </div>
         </label>
         <label name="phone" class="user__label">
             <the-mask

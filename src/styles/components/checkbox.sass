@@ -12,6 +12,7 @@
     &__label
         position: relative
         display: block
+        margin-top: .125rem
         padding-left: 2rem
         cursor: pointer
         &::before
@@ -36,3 +37,6 @@
         transform: scale(0)
         z-index: 2
         transition: all .2s ease
+    &__text
+        @extend .text-2
+        display: block
