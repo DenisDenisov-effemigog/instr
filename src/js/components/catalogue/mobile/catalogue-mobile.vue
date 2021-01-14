@@ -128,20 +128,7 @@
                 this.$eventBus.$emit('toggle-catalog', false); //закрываем мобильный каталог
                 this.$eventBus.$emit("hide-button");
                 this.$eventBus.$emit('notActiveButton');
-            },
-            ending(value) {
-                let end = '';
-                
-                if (value % 10 > 4 || value % 10 == 0 || value > 10 && value < 15) {
-                    end = 'ов'
-                } else if ((value % 10) === 1) {
-                    end = ''
-                } else {
-                    end = 'а'
-                }
-
-                return end
-            },
+            }
         }
     }
 </script>

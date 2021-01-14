@@ -23,13 +23,15 @@
         },
         computed: {
             showHideHeader() {
-                const page = document.querySelector('.page');
-                if (this.hidden) {
-                    page.classList.remove('page_header-hidden');
-                    page.classList.add('page_header-shown');
-                } else {
-                    page.classList.add('page_header-hidden');
-                    page.classList.remove('page_header-shown');
+                if (window.innerWidth > 988) {
+                    const page = document.querySelector('.page');
+                    if (this.hidden) {
+                        page.classList.remove('page_header-hidden');
+                        page.classList.add('page_header-shown');
+                    } else {
+                        page.classList.add('page_header-hidden');
+                        page.classList.remove('page_header-shown');
+                    }
                 }
             }
         },

@@ -52,8 +52,7 @@
                 let element = document.querySelector('.listing__grid');
                 let yPosition = 0;
                 while(element) {
-                        //34 - (высота + отступ ) пополам элемента .listing__actions (56px + 12px)/2 = 34px
-                    yPosition += (element.offsetTop - element.scrollTop + element.clientTop - 34);
+                    yPosition += (element.offsetTop - element.scrollTop + element.clientTop - 39);
                     element = element.offsetParent;
                 }
                 this.scrollOffset = yPosition
