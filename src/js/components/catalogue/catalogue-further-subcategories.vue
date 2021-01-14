@@ -34,6 +34,7 @@
         computed: {
             subcategories() {
                 return this.categories
+                // TODO добавить автобус, который добавит класс .listing__subcategory--open
             },
         },
     }

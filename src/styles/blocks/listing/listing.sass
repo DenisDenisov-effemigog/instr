@@ -44,14 +44,20 @@
         +desktop
             display: block
             width: 25%
-    &__subcategories
-        border-bottom: 1px solid $border-color_4
-        +tablet
-            border: none
+    // &__subcategories
+    //     border-bottom: 1px solid $border-color_4
+    //     +tablet
+    //         border: none
     &__subcategory
-        padding-bottom: 1rem
-        +tablet
+        padding: 1rem 0
+        +desktop
+            padding-top: 0
             padding-bottom: 1.5rem
+        &--opened
+            border-bottom: 1px solid $border-color_4
+            +desktop
+                border-bottom: none
+
     &__subcategory-link
         @extend .title-4
         transition: .2s
@@ -69,25 +75,32 @@
         &--open
             & svg
                 transform: rotate(180deg)
-    &__further-subcategories
-        border-bottom: 1px solid $border-color_4
-        +tablet
-            border: none
+    // &__further-subcategories
+    //     border-bottom: 1px solid $border-color_4
+    //     +tablet
+    //         border: none
     &__further-subcategories
         padding-top: 1rem
-    &__further-subcategories li
-        padding-bottom: 1rem
+        & li
+            margin-left: 1.5rem
+            padding-bottom: 1rem
+            +desktop
+                margin-left: 0
+        & .listing__subcategory-btn
+            padding-bottom: 0
     &__further-subcategory
         @extend .text-2
         color: $grey
         +tablet
             &:hover
                 color: $black
-    &__subcategory-btn
-        padding-bottom: 0
-        & a
-            @extend .profile__link
-            margin-top: 0
+    &__subcategory-btn a
+        @extend .profile__link
+        margin-top: 0
+
+    &__all-categories-ctrl
+        @extend .profile__link
+        margin-top: 0
         
     &__products
         @extend .column
