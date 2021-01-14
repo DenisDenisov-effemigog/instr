@@ -1,5 +1,5 @@
 <template>
-    <div class="filter-section">
+    <div class="filters">
         <template v-for="(filter, index) in filters.filters">
             <filter-block :filter="filter" :collapsed="index > 2"></filter-block>
         </template>
