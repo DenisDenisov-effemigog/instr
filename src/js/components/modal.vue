@@ -85,7 +85,7 @@
     import changePassword from './profile/page-modals/change-password.vue'
     import deleteProfile from './profile/page-modals/delete-profile.vue'
     import addAddress from './profile/page-modals/add-address.vue'
-    import photoModal from "./poduct-card/photo-modal.vue"
+    import photoModal from "./product-card/photo-modal.vue"
     import filters from "./listing/filters/filters.vue"
     import stickyMobileButton from "./sticky-mobile-button.vue"
     import ClickOutside from "vue-click-outside"

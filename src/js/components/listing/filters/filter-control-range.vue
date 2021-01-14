@@ -1,27 +1,25 @@
 <template>
-    <div class="filters__section-content">
-        <div class="filters__section-block">
-            <div class="filters-range-slider__inputs">
-                <div class="filters-range-slider__input-wrap">
-                    <input type="number" class="filters-range-slider__input" id="minPrice" v-model="rangeValueFrom">
-                    <label for="minPrice" class="filters-range-slider__label" >от</label>
-                </div>
-                <div class="filters-range-slider__input-wrap">
-                    <input type="number" class="filters-range-slider__input" id="maxPrice" v-model="rangeValueTo">
-                    <label for="maxPrice" class="filters-range-slider__label">до</label>
-                </div>
+    <div class="filters-range-slider">
+        <div class="filters-range-slider__inputs">
+            <div class="filters-range-slider__input-wrap">
+                <input type="number" class="filters-range-slider__input" id="minPrice" v-model="rangeValueFrom">
+                <label for="minPrice" class="filters-range-slider__label" >от</label>
             </div>
-            <div class="filters-range-slider">
-                <iv-slider
-                    v-model="rangeValue"
-                    :min="filterInternal.min"
-                    :max="filterInternal.max"
-                    :step="rangeStep"
-                    range
-                    showTip="never"
-                    accordingToStep
-                ></iv-slider>
+            <div class="filters-range-slider__input-wrap">
+                <input type="number" class="filters-range-slider__input" id="maxPrice" v-model="rangeValueTo">
+                <label for="maxPrice" class="filters-range-slider__label">до</label>
             </div>
+        </div>
+        <div class="filters-range-slider">
+            <iv-slider
+                v-model="rangeValue"
+                :min="filterInternal.min"
+                :max="filterInternal.max"
+                :step="rangeStep"
+                range
+                showTip="never"
+                accordingToStep
+            ></iv-slider>
         </div>
     </div>
 </template>
