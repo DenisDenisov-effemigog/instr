@@ -25,15 +25,35 @@
         +desktop
             display: block
             width: 25%
-            
+    &__subcategories
+        border-bottom: 1px solid $border-color_4
+        +tablet
+            border: none
     &__subcategory
-        padding-bottom: 1.5rem
+        padding-bottom: 1rem
+        +tablet
+            padding-bottom: 1.5rem
     &__subcategory-link
         @extend .text-1
         font-weight: 700
         +tablet
             &:hover
                 color: $blue
+    &__subcategory-head
+        display: flex
+        justify-content: space-between
+        align-items: center
+    &__subcategory-icon
+        & svg
+            width: $size_14
+            height: $size_8
+        &--open
+            & svg
+                transform: rotate(180deg)
+    &__further-subcategories
+        border-bottom: 1px solid $border-color_4
+        +tablet
+            border: none
     &__further-subcategories li
         padding-bottom: 1rem
     &__further-subcategory
@@ -45,7 +65,6 @@
                 color: $black
     &__subcategory-btn
         padding-bottom: 0
-        margin-bottom: 1rem
         & a
             @extend .profile__link
             margin-top: 0

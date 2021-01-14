@@ -1,5 +1,5 @@
 <template>
-    <ul :class="className + '__further-subcategories'" v-if="subcategories">
+    <ul :class="className + '__further-subcategories'" v-if="subcategories.length > 0 && index === catIndex">
         <slot v-if="className === 'listing' && !subcategoryShowAll" name="subcategory-listing-part"></slot>
         <slot v-else-if="className === 'listing' && subcategoryShowAll" name="subcategory-listing-all"></slot>
         <li v-else v-for="category in subcategories">
@@ -16,7 +16,8 @@
         name: "further-subcategories",
         data(){
             return{
-                subcategoryShowAll: false
+                subcategoryShowAll: false,
+                index: 0,
             }
         },
         props: {
@@ -28,11 +29,24 @@
                 type: String,
                 default: 'catalogue',
                 required: false
+            },
+            catIndex:{
+                type: Number,
+                required: true,
+                default: 0,
             }
         },
         computed: {
             subcategories() {
                 return this.categories
+            }
+        },
+        created(){
+            this.$eventBus.$on("openSubcategory", this.openSubcategory)
+        },
+        methods:{
+            openSubcategory(index){
+                this.index = index
             }
         }
     }
