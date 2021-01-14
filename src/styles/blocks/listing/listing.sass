@@ -2,10 +2,21 @@
     @extend .container
     
     &__header
-        display: flex
+        display: inline-block
+        margin: 1.5rem 0
         
     &__title
-        @extend .title-2
+        @extend .title-3
+        display: inline
+        +desktop
+            font-size: $font-size_5
+            line-height: $line-height_5
+    
+    &__items-cont
+        font-size: $font-size_3
+        line-height: $line-height_8
+        color: $grey
+        margin-left: 1rem
         
     &__shields
         @extend .shield
