@@ -62,7 +62,8 @@ import addAddress from './components/profile/page-modals/add-address.vue';
 import repeatOrder from './components/profile/page-modals/repeat-order.vue';
 /*listing*/
 import filters from './components/listing/filters/filters.vue';
-import listingSubcategoryTitle from './components/listing/filters/listing-subcategory-title.vue';
+import allCategories from './components/listing/all-categories.vue';
+import listingSubcategories from './components/listing/listing-subcategories.vue';
 import filterBlock from './components/listing/filters/filter-block.vue';
 import filterClearBtn from './components/listing/filters/filter-clear-btn.vue';
 import filterControlRange from './components/listing/filters/filter-control-range.vue';
@@ -139,6 +140,7 @@ export default {
         listingContent,
         filterClearBtn,
         cart,
-        listingSubcategoryTitle,
+        allCategories,
+        listingSubcategories,
     },
 }

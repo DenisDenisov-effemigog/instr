@@ -12,35 +12,14 @@
     <template v-slot:listingcat>
         {% if filters is not empty %}
             <div class="listing__subcategories">
-                {% for key, subcategory in listingCategories.subcategories %}
-                    <div class="listing__subcategory">
-                        <component is="listing-subcategory-title"
-                            :cat-index="{{key|json_encode()|e('html_attr') }}"
-                        >
-                            <a href="{{ subcategory.url }}" class="listing__subcategory-link">{{subcategory.title}}</a>
-                        </component>
-                        <component is="further-subcategories"
-                                    :cat-index="{{key|json_encode()|e('html_attr') }}"
-                                    :categories="{{ subcategory.subcategories|json_encode()|e('html_attr') }}"
-                                    :class-name="'listing'"
-                        >
-                            <template v-slot:subcategory-listing-part>
-                                {% for subsubcategory in subcategory.subcategories|slice(0, 5) %}
-                                    <li>
-                                        <a href="#" class="listing__further-subcategory">{{ subsubcategory.title }}</a>
-                                    </li>
-                                {% endfor %}
-                            </template>
-                            <template v-slot:subcategory-listing-all>
-                                {% for subsubcategory in subcategory.subcategories %}
-                                    <li>
-                                        <a href="#" class="listing__further-subcategory">{{ subsubcategory.title }}</a>                                        
-                                    </li>
-                                {% endfor %}
-                            </template>
-                        </component>
-                    </div>
+                {% for subcategory in listingCategories.subcategories|slice(0, 1) %}
+                    {% include '../listing/listing-subcategories.twig' with {'subcategory': subcategory, 'main': true} %}
                 {% endfor %}
+                <component is="all-categories">
+                    {% for subcategory in listingCategories.subcategories|slice(1) %}
+                        {% include '../listing/listing-subcategories.twig' with {'subcategory': subcategory, 'main': false} %}
+                    {% endfor %}
+                </component>
             </div>
         {% endif %}
     </template>

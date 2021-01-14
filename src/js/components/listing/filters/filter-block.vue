@@ -29,7 +29,6 @@
             </div>
         </div>
         <div class="filter-block__content" v-else-if="filter.type === 'checkbox'" v-show="openFilter">
-                <!--TODO перебить классы, плюс в css чекбоксы и лэбл вынести в отдельные компоненты-->
             <label :name=checkbox.value class="filter-block__label" v-for="checkbox in filter.values">
                 <input
                     class="filter-block__checkbox"

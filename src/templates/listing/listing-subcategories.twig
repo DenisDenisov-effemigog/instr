@@ -1,0 +1,26 @@
+<component is="listing-subcategories" :subcat-total="{{ subcategory.subcategories|length }}" :main="{{ main|json_encode()|e('html_attr') }}">
+    <template v-slot:listing-subcategory-title>
+        <a href="{{ subcategory.url }}" class="listing__subcategory-link">{{subcategory.title}}</a>
+    </template>
+    <template v-slot:subcategories-content>
+        <component is="further-subcategories"
+                   :categories="{{ subcategory.subcategories|json_encode()|e('html_attr') }}"
+                   :class-name="'listing'"
+        >
+            <template v-slot:subcategory-listing-part>
+                {% for subsubcategory in subcategory.subcategories|slice(0, 5) %}
+                    <li>
+                        <a href="#" class="listing__further-subcategory">{{ subsubcategory.title }}</a>
+                    </li>
+                {% endfor %}
+            </template>
+            <template v-slot:subcategory-listing-all>
+                {% for subsubcategory in subcategory.subcategories %}
+                    <li>
+                        <a href="#" class="listing__further-subcategory">{{ subsubcategory.title }}</a>
+                    </li>
+                {% endfor %}
+            </template>
+        </component>
+    </template>
+</component>

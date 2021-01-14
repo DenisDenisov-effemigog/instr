@@ -56,7 +56,7 @@
                             <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-left'"></use>
                         </svg>
                     </div>
-                    <h3 class="modal-title">Фильтры</h3><!--TODO сделать стики хэдер у модалки-->
+                    <h3 class="modal-title">Фильтры</h3>
                     <filter-clear-btn :mobileFlag=true></filter-clear-btn>
                 </div>
                 <slot name="listingcat"></slot>

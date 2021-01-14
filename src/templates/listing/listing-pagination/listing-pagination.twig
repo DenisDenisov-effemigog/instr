@@ -5,9 +5,6 @@
         </svg>
     </a>
     <ul class="pagination__list">
-        <li class="pagination__item{% if pagination.current == 1 %} pagination__item_current{% endif %}">
-            <a href="{{ pagination.url_first }}" class="pagination__link">1</a>
-        </li>
         {% for link in pagination.urls %}
             <li class="pagination__item{% if pagination.current == link.title %} pagination__item_current{% endif %}">
                 <a href="{{ link.url }}" class="pagination__link">{{ link.title }}</a>
