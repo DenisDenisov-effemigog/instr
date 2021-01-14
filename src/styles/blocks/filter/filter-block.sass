@@ -1,13 +1,16 @@
 .filter-block
+    margin-top: 1rem
     &__title
+        @extend .title-4
+    &__subtitle
         @extend .text-2
-        font-weight: 700
+        margin-top: 1rem
     &__header
         cursor: pointer
         display: flex
         justify-content: space-between
-        padding-bottom: 1rem
         &--open
+            padding-bottom: 1rem
             border-bottom: 1px solid $pre-white
     &__arrow
         & svg
@@ -18,17 +21,38 @@
                 transition: .3s 
                 transform: rotate(180deg)
     &__content
-        margin-top: 1rem
-    &__checkbox
+        margin-bottom: 2.5rem
+
+    &__switch
         @extend .checkbox-switch
-    &__checkbox-input
+        margin-bottom: 1rem
+    &__switch-input
         @extend .checkbox-switch
-        &:checked + .filter-block__checkbox-slider
+        &:checked + .filter-block__switch-slider
             background-color: rgba($primary-red, .56)
-        &:checked + .filter-block__checkbox-slider:before
+        &:checked + .filter-block__switch-slider:before
             background-color: $primary-red
             transform: translateX(1rem)
-    &__checkbox-slider
+    &__switch-slider
         @extend .checkbox-switch__slider
-    &__checkbox-label
+    &__switch-label
         @extend .checkbox-switch__label
+        @extend .title-4
+    
+    &__label
+        @extend .form__label
+        @extend .form__label--row
+        margin-top: 1rem
+        &:first-of-type
+            margin-top: 1.125rem
+    &__checkbox
+        @extend .checkbox
+    &__checkbox-label
+        @extend .checkbox__label
+        svg
+            @extend .checkbox__label-svg
+    &__checkbox-text
+        @extend .checkbox__text
+        +desktop
+            font-size: $font-size
+            line-height: $line-height

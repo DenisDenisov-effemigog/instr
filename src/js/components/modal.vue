@@ -1,7 +1,5 @@
 <template>
-    <div v-show="open" class="modal"
-        :class="{'modal--long': scrollable}"
-    >
+    <div v-show="open" class="modal">
         <div class="modal-bg" @click="closeOutside"></div>
         <div class="modal-wrapper"
              :class="{'modal-wrapper_big': modalBigger, 'modal-wrapper_profile': !showCloseBtn}"
@@ -114,8 +112,7 @@ export default {
             modal: '',
             props: [],
             modalBigger: false,
-            showCloseBtn: true,
-            scrollable: false
+            showCloseBtn: true
         }
     },
     created(){
@@ -125,7 +122,7 @@ export default {
         this.$eventBus.$off('openModal');
     },
     methods:{
-        openModal(modal, props, modalSize, closeBtn, scroll){
+        openModal(modal, props, modalSize, closeBtn){
             this.toggleHtmlOverflow('hidden')
             this.open = true
             this.modal = modal //Название модального окна, которое должно открыться
@@ -134,7 +131,6 @@ export default {
             if (window.innerWidth < 1024) {
                 this.showCloseBtn = closeBtn //передаём true, если хотим чтобы вместо хлебных крошек был крестик
             }
-            this.scrollable = scroll //передаем true, если модальное окно длинное и должно скроллиться
         },
         closeModal(){
             this.open = false

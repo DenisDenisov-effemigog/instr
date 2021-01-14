@@ -1,0 +1,65 @@
+.form
+    &__label
+        position: relative
+        display: flex
+        &--column
+            flex-direction: column
+        &--row
+            flex-direction: row
+    &__label-icon
+        position: absolute
+        top: .5rem
+        right: 1rem
+        width: $size_24
+        height: $size_24
+        fill: $light-grey
+        cursor: pointer
+        &:hover
+            fill: $icon-grey
+    &__label-text
+        @extend .text-3
+        position: absolute
+        top: .75rem
+        left: 1rem
+        width: initial
+        color: $light-grey
+        z-index: 2
+        transition: .2s
+        &--up
+            @extend .label-typo
+            top: -.375rem
+            left: 1rem
+            padding: 1px .5rem
+            background-color: $white
+            transition: .2s
+    &__input
+        @extend .input-modal
+        &:focus ~ .form__label-text
+            @extend .label-typo
+            top: -.375rem
+            left: 1rem
+            padding: 1px .5rem
+            background-color: $white
+            transition: .2s
+        &--dots
+            @extend .dot-font
+        &--error
+            @extend .input-modal_error
+    &__button
+        @extend .button-primary
+        padding: .625rem
+        margin: 1rem auto 0 auto
+        +tablet
+            width: 12.1825rem
+    &__text
+        @extend .text-3
+        margin-bottom: 1rem
+    &__error-text
+        @extend .text-3
+        margin-bottom: 1rem
+        color: $primary-hover
+        &--invalid
+            margin: -.5rem 0 .5rem 0
+        &--invalid-email
+            margin: -.5rem 0 1rem 0
+    

@@ -3,30 +3,31 @@
 @import './user-reg'
 .user
     &__label
-        @extend .profile-modal__label
+        @extend .form__label
         flex-direction: column
         &_row
             flex-direction: row
     &__label-text
-        @extend .profile-modal__label-text
+        @extend .form__label-text
         &_up
-            @extend .profile-modal__label-text_up
+            @extend .form__label-text--up
     &__input
-        @extend .profile-modal__input
+        @extend .form__input
         &_dots
-            @extend .profile-modal__input_dots
+            @extend .form__input--dots
         &_error
             @extend .input-modal_error
     &__button
-        @extend .profile-modal__button   
+        @extend .form__button   
     &__label-icon
-        @extend .profile-modal__label-icon
+        @extend .form__label-icon
     &__error-text
-        @extend .profile-modal__error-text
+        @extend .form__error-text
         &_invalid
-            margin: -.5rem 0 .5rem 0 !important
+            @extend .form__error-text--invalid
         &_invalid_password
-            margin: -.5rem 0 1rem 0 !important
+            @extend .form__error-text--invalid-email
+
     &__checkbox-input
         @extend .checkbox
     &__checkbox-label
@@ -35,5 +36,4 @@
         svg
             @extend .checkbox__label-svg
     &__checkbox-text
-        display: block
-        @extend .text-2
+        @extend .checkbox__text
