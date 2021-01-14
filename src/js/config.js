@@ -10,8 +10,4 @@ export default {
 
     passwordPattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,}$/,
 
-    bus: {
-        applyView: 'apply-view',
-    },
-
 }

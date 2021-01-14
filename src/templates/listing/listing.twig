@@ -75,8 +75,7 @@
                        :selectopen-select="{{ sort_type|json_encode|e('html_attr') }}"
                        :view="{{ view_type|json_encode|e('html_attr') }}"
             ></component>
-            
-            <div class="listing__grid {% if view_type == 'horizview' %}listing__grid--horiz{% endif %}">
+            <component is="listing-content">
                 {% for product in products %}
                     <div class="listing__card">
                         <card
@@ -88,7 +87,7 @@
                         </card>
                     </div>
                 {% endfor %}
-            </div>
+            </component>
             <div class="listing__pagination">
                 {% include './listing-pagination/listing-pagination-btn.twig' %}
                 {% include './listing-pagination/listing-pagination.twig' %}
