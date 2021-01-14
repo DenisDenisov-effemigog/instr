@@ -90,7 +90,7 @@
             </component>
             {% if pagination is not empty %}
                 <div class="listing__pagination">
-                    {% include './listing-pagination/listing-pagination-btn.twig' %}
+                    <component is="pagination-btn"></component>
                     {% include './listing-pagination/listing-pagination.twig' with {'pagination': pagination} %}
                 </div>
             {% endif %}
