@@ -11,8 +11,8 @@
 <component is="modal">
     <template v-slot:listingcat>
         {% if filters is not empty %}
-            <div class="listing__categories">
-                <div class="listing__categories__title">{{ listingCategoryTitle }}</div>{#TODO оформить тайтл#}
+            <div class="listing__subcategories">
+                <div class="listing__subcategory-link">{{ listingCategoryTitle }}</div>{#TODO оформить тайтл#}
                 <component is="further-subcategories"
                            :categories="{{ listingCategories.subcategories|json_encode()|e('html_attr') }}"
                            :class-name="'listing'"

@@ -17,6 +17,9 @@
         
     &__content
         @extend .columns
+        margin-top: -.25rem
+        +desktop
+            margin-top: .75rem
         
     &__sidebar
         @extend .column
@@ -29,16 +32,17 @@
     &__subcategory
         padding-bottom: 1.5rem
     &__subcategory-link
-        @extend .text-1
-        font-weight: 700
+        @extend .title-4
+        transition: .2s
         +tablet
             &:hover
                 color: $blue
+    &__further-subcategories
+        padding-top: 1rem
     &__further-subcategories li
         padding-bottom: 1rem
     &__further-subcategory
         @extend .text-2
-        font-weight: 400
         color: $grey
         +tablet
             &:hover
@@ -49,8 +53,6 @@
         & a
             @extend .profile__link
             margin-top: 0
-    &__further-subcategories
-        padding-top: 16px
         
     &__products
         @extend .column
@@ -79,7 +81,7 @@
     &__actions
         +flex-container
         height: 2.5rem
-        margin: .25rem 0 1.5rem 0
+        margin-bottom: 1.5rem
         +until($desktop)
             position: relative
             height: 3.5rem
