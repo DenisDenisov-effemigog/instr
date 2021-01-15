@@ -80,10 +80,6 @@
         @extend .text-2
         font-weight: 700
         padding-right: 0.6875rem
-    &__tooltip
-        @extend .tooltip
-        top: 1.875rem
-        left: -5rem
     &__icon
         position: relative
         cursor: pointer
@@ -91,9 +87,27 @@
             width: $size_18
             height: $size_18
             fill: $light-grey
-        &:hover
-            .cart-search__tooltip
-                display: block
+    &__tooltip
+        @extend .tooltip
+        width: 15rem
+        top: 1.875rem
+        left: -12rem
+        &::before
+                left: calc(84% - .5rem);
+        +tablet
+            left: -7rem
+            &::before
+                left: calc(50% - .5rem)
+        & svg
+            fill: $light-grey
+            width: 0.75rem
+            height: 0.75rem
+            flex-shrink: 0
+            margin-left: 1rem
+            +tablet
+                display: none
+        &--open
+            display: flex
     &__form
         padding-top: 1.125rem
     &__textarea
@@ -117,4 +131,7 @@
         font-weight: 600
         cursor: pointer
         border-radius: 4px
-    
+        +tablet
+            &:hover
+                border-color: $primary-hover
+                color: $primary-hover
