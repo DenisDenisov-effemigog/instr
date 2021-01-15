@@ -2,12 +2,20 @@
     <div class="cart-search">
         <div class="cart-search__head">
             <div class="cart-search__title">Добавить товар по артикулу</div>
-            <div class="cart-search__icon">
-                <svg>
+            <div class="cart-search__icon" 
+                @mouseenter="openTooltip = true"
+                @mouseleave="openTooltip = false"
+                >
+                <svg @click=" openTooltip = true ">
                     <use xlink:href="/images/sprite.svg#icons__info"></use>
                 </svg>
-                <div class="cart-search__tooltip">
-                    Введите артикул товара каждый с новой строки. На строке должен находиться только артикул и количество товара. Максимум 100 строк.
+                <div class="cart-search__tooltip" :class="{'cart-search__tooltip--open':openTooltip}">
+                    <p>Введите артикул товара каждый с новой строки. На строке должен находиться только артикул и количество товара. Максимум 100 строк.</p>
+                    <div @click=" openTooltip = false ">
+                        <svg viewBox="0 0 12 12">
+                            <use xlink:href="/images/sprite.svg#close"></use>
+                        </svg> 
+                    </div>               
                 </div>
             </div>
         </div>
@@ -24,6 +32,11 @@
 
 <script>
 export default {
-    name: "cart-search"
+    name: "cart-search",
+    data(){
+        return{
+            openTooltip: false
+        }
+    }
 }
 </script>
