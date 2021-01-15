@@ -46,7 +46,7 @@ class Api {
                 data: payload
             })
             .then((response) => {
-                //debugger;
+                // debugger;
                 console.log('[response]', response);
                 if (response && response.data) {
                     response = response.data;
@@ -96,7 +96,7 @@ class Api {
         return this._promiseBitrixRequest('instrum:main.api.user.address.get', {});
     }
     getMoreListing() {
-        return this._promiseBitrixRequest('instrum:main.api.catalog.get', {});
+        return this._promiseBitrixRequest('instrum:main.api.catalog.get');
     }
     
 }

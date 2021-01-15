@@ -1,6 +1,16 @@
 function demoCloneOverJson(obj) {
     return JSON.parse(JSON.stringify(obj));
 }
+function demoBase64EncodeUnicode(str) {
+    // first we use encodeURIComponent to get percent-encoded UTF-8,
+    // then we convert the percent encodings into raw bytes which
+    // can be fed into btoa.
+    
+    return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g,
+        function toSolidBytes(match, p1) {
+            return String.fromCharCode('0x' + p1);
+        }));
+}
 
 function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -187,6 +197,12 @@ let demoAddressList = [
         'statusDesc': 'К сожалению, адрес не прошел проверку модератора. Подробнее по горячей линии: 8 800-765-87-51',
     }
 ];
+
+let demoListingResult= `
+    <div>
+        больше контента и новая пагинация
+    </div>
+    `;
 
 //console.log(demoOrders);
 
@@ -436,9 +452,12 @@ window.runAction = function (action, config) {
 
                 resolve({
                     data: {
-                        status: 1,
-                        answer: {
-                            output: 'больше карточек'
+                        data: {
+                            answer: {
+                                content: demoListingResult /*demoBase64EncodeUnicode()*/,
+                                url: '',
+                            },
+                            status: 1,
                         }
                     }
                 });

@@ -17,9 +17,9 @@
         },
         methods:{
             loadMore() {
-                console.log('load more')
+                let vm = this;
                 api.getMoreListing().then(answer => {
-                    answer.output
+                    vm.$eventBus.$emit('apply-listing', answer.content);
                 });
             },
         },
