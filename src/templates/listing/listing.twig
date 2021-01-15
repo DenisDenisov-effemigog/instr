@@ -1,7 +1,9 @@
 <div class="listing">
     <div class="listing__header">
         <h1 class="listing__title">{{ listingCategoryTitle }}</h1>
-        <span class="listing__items-cont">12 210 товаров</span>
+        <component is="listing-items-quantity" 
+                   :items-quantity="{{ filters.match|json_encode()|e('html_attr') }}"
+        ></component>
     </div>
     <div class="listing__shields">
         {% for shield in shields %}
@@ -12,28 +14,36 @@
     </div>
     <div class="listing__content">
         <div class="listing__sidebar">
-            {% if filters is not empty %}
+            {% if filters.filters is not empty %}
                 <div class="listing__subcategories">
-                    <div class="listing__subcategory-link">{{ listingCategoryTitle }}</div>{#TODO оформить тайтл#}
-                    <component is="further-subcategories"
-                               :categories="{{ listingCategories.subcategories|json_encode()|e('html_attr') }}"
-                               :class-name="'listing'"
-                    >
-                        <template v-slot:subcategory-listing-part>
-                            {% for subsubcategory in listingCategories.subcategories|slice(0, 5) %}
-                                <li>
-                                    <a href="#" class="listing__further-subcategory">{{ subsubcategory.title }}</a>
-                                </li>
-                            {% endfor %}
-                        </template>
-                        <template v-slot:subcategory-listing-all>
-                            {% for subsubcategory in listingCategories.subcategories %}
-                                <li>
-                                    <a href="#" class="listing__further-subcategory">{{ subsubcategory.title }}</a>
-                                </li>
-                            {% endfor %}
-                        </template>
-                    </component>
+                    <div class="listing__subcategory-link">{{ listingCategoryTitle }}</div>
+                    {% for subcategory in listingCategories.subcategories|slice(0, 1) %}
+                        <component is="further-subcategories"
+                                   :categories="{{ listingCategories.subcategories|json_encode()|e('html_attr') }}"
+                                   :class-name="'listing'"
+                        >
+                            <template v-slot:subcategory-listing-part>
+                                {% for subsubcategory in subcategory.subcategories|slice(0, 5) %}
+                                    <li>
+                                        {% if subsubcategory.checked == true %}
+                                            <span>+</span>
+                                        {% endif %}
+                                        <a href="#" class="listing__further-subcategory">{{ subsubcategory.title }}</a>
+                                    </li>
+                                {% endfor %}
+                            </template>
+                            <template v-slot:subcategory-listing-all>
+                                {% for subsubcategory in subcategory.subcategories %}
+                                    <li>
+                                        {% if subsubcategory.checked == true %}
+                                            <span>+</span>
+                                        {% endif %}
+                                        <a href="#" class="listing__further-subcategory">{{ subsubcategory.title }}</a>
+                                    </li>
+                                {% endfor %}
+                            </template>
+                        </component>
+                    {% endfor %}
                 </div>
                 <div class="listing__sidebar_filters">  
                     {% include './filter.twig' with {'filters': filters} %}

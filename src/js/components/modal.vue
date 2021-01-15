@@ -60,7 +60,6 @@
                     <filter-clear-btn :mobileFlag=true></filter-clear-btn>
                 </div>
                 <slot name="listingcat"></slot>
-                <!--TODO добавить странную кнопку "все категории"-->
                 <component is="filters" :filters="props"></component>
                 <component is="sticky-mobile-button"></component>
             </div>

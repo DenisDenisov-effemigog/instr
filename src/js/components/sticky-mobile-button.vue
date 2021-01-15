@@ -32,21 +32,21 @@ export default {
     },
     methods:{
         sowButton(firstPart, items, secondPart) {
-            this.showButton = true;
-            this.items = items; //передаём количество товаров
-            this.titlePartFirst = firstPart; //передаём текст кнопки, который пишется в первом ряду
-            this.titlePartSecond = secondPart; //передаём текст кнопки, который пишется во втором ряду
-            this.isDisabled()
+            this.showButton = true
+            this.items = items //передаём количество товаров
+            this.titlePartFirst = firstPart //передаём текст кнопки, который пишется в первом ряду
+            this.titlePartSecond = secondPart //передаём текст кнопки, который пишется во втором ряду
+            if (this.items === 0) {
+                this.disabled = true
+            }
         },
         hideButton() {
-            this.showButton = false;
-            this.items = 0;
-            this.titlePartFirst = '';
-            this.titlePartSecond = '';
-        },
-        isDisabled() {
-            this.items == 0 ? this.disabled = true : this.disabled = false
+            this.showButton = false
+            this.items = 0
+            this.titlePartFirst = ''
+            this.titlePartSecond = ''
+            this.disabled = false
         }
-    }
+    },
 }
 </script>

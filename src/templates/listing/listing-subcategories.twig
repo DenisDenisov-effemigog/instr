@@ -10,6 +10,9 @@
             <template v-slot:subcategory-listing-part>
                 {% for subsubcategory in subcategory.subcategories|slice(0, 5) %}
                     <li>
+                        {% if subsubcategory.checked == true %}
+                            <span>+</span>
+                        {% endif %}
                         <a href="#" class="listing__further-subcategory">{{ subsubcategory.title }}</a>
                     </li>
                 {% endfor %}
@@ -17,6 +20,9 @@
             <template v-slot:subcategory-listing-all>
                 {% for subsubcategory in subcategory.subcategories %}
                     <li>
+                        {% if subsubcategory.checked == true %}
+                            <span>+</span>
+                        {% endif %}
                         <a href="#" class="listing__further-subcategory">{{ subsubcategory.title }}</a>
                     </li>
                 {% endfor %}
