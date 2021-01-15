@@ -25,7 +25,7 @@
         methods:{
             openModal(){
                 this.$eventBus.$emit("openModal", 'filters', this.filters, false, true);
-                this.$eventBus.$emit("sow-button", 'Посмотреть', 8, 'товар' + this.ending(8));
+                this.$eventBus.$emit("sow-button", 'Посмотреть', 0, 'товар' + this.ending(0));
                 /*TODO передать кол-во итемов*/
             },
         },

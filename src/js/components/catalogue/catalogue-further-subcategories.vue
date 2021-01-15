@@ -34,7 +34,6 @@
         computed: {
             subcategories() {
                 return this.categories
-                this.$eventBus.$emit
             },
         },
     }
