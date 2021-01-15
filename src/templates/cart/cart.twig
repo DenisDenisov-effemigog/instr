@@ -1,1 +1,7 @@
-<component is="cart" :items="{{ products|json_encode()|e('html_attr') }}"></component>
+<div class="cart">
+    <div class="container">
+        <h2 class="cart__title">Корзина пуста</h2>
+        <component is="cart-search"></component>
+        <component is="cart" :items="{{ products|json_encode()|e('html_attr') }}"></component>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+.cart
+    &__title
+        @extend .title-5
+        font-weight: 700
+        padding-top: 2.25rem
+
+.cart-search
+    padding-top: 1.625rem 
+    &__head
+        display: flex
+    &__title
+        @extend .text-2
+        font-weight: 700
+        padding-right: 0.6875rem
+    &__tooltip
+        @extend .tooltip
+        top: 1.875rem
+        left: -5rem
+    &__icon
+        position: relative
+        cursor: pointer
+        & svg
+            width: $size_18
+            height: $size_18
+            fill: $light-grey
+        &:hover
+            .cart-search__tooltip
+                display: block
+    &__form
+        padding-top: 1.125rem
+    &__textarea
+        border: 1px solid $border-color
+        border-radius: 2px
+        padding: .75rem 1rem
+        max-width: auto
+        +tablet
+            max-width: 21rem
+        @extend .text-3
+        color: $light-grey
+    &__btn
+        margin-top: 1rem
+        padding: 0.4375rem 0
+        text-align: center
+        max-width: auto
+        +tablet
+            max-width: 7.5rem
+        border: 1px solid $primary-red
+        color: $primary-red
+        font-weight: 600
+        cursor: pointer
+        border-radius: 4px
+    

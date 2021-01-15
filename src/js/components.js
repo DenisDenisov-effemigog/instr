@@ -75,6 +75,7 @@ import listingContent from './components/listing/listing-content.vue';
 import listingItemsQuantity from './components/listing/listing-items-quantity.vue';
 /*cart*/
 import cart from './components/cart/cart.vue';
+import cartSearch from './components/cart/cart-search.vue';
 
 export default {
     components: {
@@ -146,5 +147,6 @@ export default {
         cart,
         allCategories,
         listingSubcategories,
+        cartSearch,
     },
 }
