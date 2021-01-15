@@ -41,7 +41,11 @@
         color: $white
         background-color: $border-color
         cursor: not-allowed
-        pointer-events: all !important
+        & a
+            color: $white
+            pointer-events: none
+        &:hover
+            background-color: $border-color
             
     &-card
         @extend .button

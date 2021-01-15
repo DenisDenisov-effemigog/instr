@@ -18,11 +18,13 @@
     &__button
         @extend .button
         @extend .text-2
-        display: flex
-        flex-direction: column
-        padding: .625rem 7rem
         &--disabled
             @extend .button--disabled
+        & a
+            display: flex
+            flex-direction: column
+            padding: .625rem 7rem
+
     &__text-scnd
         @extend .text-2
     .add-to-cart

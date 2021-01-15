@@ -1,11 +1,13 @@
 <template>
     <div class="sticky-mobile-button" v-if="showButton">
         <div class="sticky-mobile-button__bg"></div>
-        <a href="" class="sticky-mobile-button__button"
-                   :class="{'sticky-mobile-button__button--disabled': disabled}"
+        <div class="sticky-mobile-button__button"
+             :class="{'sticky-mobile-button__button--disabled': disabled}"
         >
-            {{ titlePartFirst }} <span class="sticky-mobile-button__text-scnd">{{ items }}&nbsp;{{ titlePartSecond }}</span>
-        </a>
+            <a href="" >
+                {{ titlePartFirst }} <span class="sticky-mobile-button__text-scnd">{{ items }}&nbsp;{{ titlePartSecond }}</span>
+            </a>
+        </div>
     </div>
     
 </template>
