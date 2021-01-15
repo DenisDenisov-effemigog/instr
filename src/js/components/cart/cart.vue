@@ -1,6 +1,13 @@
 <template>
     <section class="cart">
-        <div class="cart__content">
+        <div class="cart__content" v-if="empty">
+            <div class="cart__purchases-wrapper">
+                <div class="cart__header">
+                    <div class="cart__title">Корзина пуста</div>
+                </div>
+            </div>
+        </div>
+        <div class="cart__content" v-else>
             <div class="cart__purchases-wrapper">
                 <div class="cart__border-right">
                     <div class="cart__header">
@@ -52,7 +59,7 @@
         },
         data(){
             return{
-                
+                empty: false
             }
         },
         methods:{
