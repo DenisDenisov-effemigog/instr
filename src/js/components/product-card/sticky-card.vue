@@ -34,6 +34,7 @@
             </div>
         </div>
         <div class="sticky-mobile-button" v-if="showButton">
+            <div class="sticky-mobile-button__bg"></div>
             <component is="add-to-cart"
                        :text="'В корзине'"
                        :button-title="'Добавить в корзину'"

@@ -46,7 +46,7 @@
                 <svg viewBox="-2 -1 12 12" v-else-if="amount > 0 && disabled">
                     <use :xlink:href="templatePath + 'images/sprite.svg#check'"></use>
                 </svg>
-              <template v-else>{{ $tc(buttonTitle) }}</template>  
+              <template v-else>{{ buttonTitle }}</template>  
             </div>
 		</div>
     </div>
@@ -83,7 +83,7 @@
             },
             buttonTitle: {
                 type: String,
-                default: 'add_to_cart',
+                default: 'В корзину',
                 required: false,
             },
             size: {
