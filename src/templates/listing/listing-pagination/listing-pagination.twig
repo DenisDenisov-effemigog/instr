@@ -6,14 +6,14 @@
     </a>
     <ul class="pagination__list">
         {% for link in pagination.urls %}
-            <li class="pagination__item{% if pagination.current == link.title %} pagination__item_current{% endif %}">
+            <li class="pagination__item{% if pagination.current == link.title %} pagination__item--current{% endif %}">
                 <a href="{{ link.url }}" class="pagination__link">{{ link.title }}</a>
             </li>
         {% endfor %}
-        <li class="pagination__item">
+        <li class="pagination__item pagination__item--dots">
             <div class="pagination__link">...</div>
         </li>
-        <li class="pagination__item{% if pagination.current == pagination.total %} pagination__item_current{% endif %}">
+        <li class="pagination__item{% if pagination.current == pagination.total %} pagination__item--current{% endif %}">
             <a href="{{ pagination.url_last }}" class="pagination__link">{{ pagination.total }}</a>
         </li>
     </ul>

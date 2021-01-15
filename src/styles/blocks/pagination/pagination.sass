@@ -23,24 +23,33 @@
             fill: $border-color
     &__link
         @extend .text-2
-        font-weight: 400
+        +flex-container-center
+        height: 100%
         color: $light-grey
         &:hover
             color: $light-grey
     &__item
         width: 40px
         height: 40px
-        display: flex
-        align-items: center
-        justify-content: center
         border: 1px solid transparent
         border-radius: 4px
         cursor: pointer
         +tablet
             &:hover
                 background: $pre-white
-        &_current
+        &--current
             border-color: $black
             & .pagination__link
                 color: $black
                 font-weight: 600
+            &:hover
+                background-color: transparent
+                cursor: auto
+                & a
+                    pointer-events: none
+        &--dots:hover
+            background-color: transparent
+            cursor: auto
+            & a
+                pointer-events: none
+
