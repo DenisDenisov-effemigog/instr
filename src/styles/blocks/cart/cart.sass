@@ -1,8 +1,76 @@
 .cart
+    @extend .container
+    margin-bottom: 5rem
+    +desktop
+        margin-bottom: 6.5rem
+    
+    &__content
+        @extend .columns
+
+    &__sidebar-wrapper
+        @extend .column--sidebar
+    
+    &__sidebar
+        padding-left: 1.75rem
+    
+    &__purchases-wrapper
+        @extend .column--content
+    &__purchases
+        margin-top: .5rem
+        +desktop
+            margin-top: 2rem
+            margin-right: 1.5rem
+
+    &__border-right
+        border-right: 1px solid $border-color_4
+        +desktop
+            margin-right: -1.5rem
+
+    &__header
+        +flex-container
+        margin-top: 1.5rem
+        +desktop
+            margin-top: 2.25rem
+            margin-right: 1.5rem
+    &__header-layout
+        display: flex
+
     &__title
         @extend .title-5
-        font-weight: 700
-        padding-top: 2.25rem
+    
+    &__view-switcher
+        display: flex
+        align-items: center
+        width: 12rem
+        margin-right: 1rem
+
+    &__view-switch
+        @extend .checkbox-switch
+        display: none
+        margin-bottom: 0
+        +desktop
+            display: flex
+    &__view-switch-input
+        @extend .checkbox-switch
+        &:checked + .cart__view-switch-slider
+            background-color: rgba($primary-red, .56)
+        &:checked + .cart__view-switch-slider:before
+            background-color: $primary-red
+            transform: translateX(1rem)
+    &__view-switch-slider
+        @extend .checkbox-switch__slider
+    &__view-switch-label
+        @extend .checkbox-switch__label
+        @extend .text-2
+
+    &__clear-btn
+        @extend .link-blue
+        @extend .subtitle-2
+        & svg
+            fill: $blue
+            width: $size_16
+            height: $size_18
+            margin-right: .5rem
 
 .cart-search
     padding-top: 1.625rem 

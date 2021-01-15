@@ -38,12 +38,8 @@
             margin-top: .75rem
         
     &__sidebar
-        @extend .column
-        display: none
-        flex: none
-        +desktop
-            display: block
-            width: 25%
+        @extend .column--sidebar
+        
     &__subcategories
         &--filter
             & .listing__further-subcategories li
@@ -112,11 +108,8 @@
         border-top: 1px solid $border-color_4
         
     &__products
-        @extend .column
-        flex: none
-        width: 100%
-        +desktop
-            width: 75%
+        @extend .column--content
+        
     &__pagination
         padding-top: 1.875rem
         +tablet
