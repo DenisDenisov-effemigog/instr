@@ -15,7 +15,7 @@
     <div class="listing__content">
         <div class="listing__sidebar">
             {% if filters.filters is not empty %}
-                <div class="listing__subcategories">
+                <div class="listing__subcategories listing__subcategories--filter">
                     <div class="listing__subcategory-link">{{ listingCategoryTitle }}</div>
                     {% for subcategory in listingCategories.subcategories|slice(0, 1) %}
                         <component is="further-subcategories"
@@ -26,7 +26,9 @@
                                 {% for subsubcategory in subcategory.subcategories|slice(0, 5) %}
                                     <li>
                                         {% if subsubcategory.checked == true %}
-                                            <span>+</span>
+                                            <svg viewBox="-2 -1 12 12" class="listing__further-sc-icon">
+                                                <use :xlink:href="templatePath + 'images/sprite.svg#check'"></use>
+                                            </svg>
                                         {% endif %}
                                         <a href="#" class="listing__further-subcategory">{{ subsubcategory.title }}</a>
                                     </li>
@@ -36,7 +38,9 @@
                                 {% for subsubcategory in subcategory.subcategories %}
                                     <li>
                                         {% if subsubcategory.checked == true %}
-                                            <span>+</span>
+                                            <svg viewBox="-2 -1 12 12" class="listing__further-sc-icon">
+                                                <use :xlink:href="templatePath + 'images/sprite.svg#check'"></use>
+                                            </svg>
                                         {% endif %}
                                         <a href="#" class="listing__further-subcategory">{{ subsubcategory.title }}</a>
                                     </li>

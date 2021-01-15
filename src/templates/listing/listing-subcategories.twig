@@ -11,7 +11,9 @@
                 {% for subsubcategory in subcategory.subcategories|slice(0, 5) %}
                     <li>
                         {% if subsubcategory.checked == true %}
-                            <span>+</span>
+                            <svg viewBox="-2 -1 12 12" class="listing__further-sc-icon">
+                                <use :xlink:href="templatePath + 'images/sprite.svg#check'"></use>
+                            </svg>
                         {% endif %}
                         <a href="#" class="listing__further-subcategory">{{ subsubcategory.title }}</a>
                     </li>
@@ -21,7 +23,9 @@
                 {% for subsubcategory in subcategory.subcategories %}
                     <li>
                         {% if subsubcategory.checked == true %}
-                            <span>+</span>
+                            <svg viewBox="-2 -1 12 12" class="listing__further-sc-icon">
+                                <use :xlink:href="templatePath + 'images/sprite.svg#check'"></use>
+                            </svg>
                         {% endif %}
                         <a href="#" class="listing__further-subcategory">{{ subsubcategory.title }}</a>
                     </li>

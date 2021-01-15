@@ -44,10 +44,12 @@
         +desktop
             display: block
             width: 25%
-    // &__subcategories
-    //     border-bottom: 1px solid $border-color_4
-    //     +tablet
-    //         border: none
+    &__subcategories
+        &--filter
+            & .listing__further-subcategories li
+                position: relative
+                margin-left: 1.5rem
+
     &__subcategory
         padding: 1rem 0
         +desktop
@@ -80,10 +82,7 @@
     &__further-subcategories
         padding-top: 1rem
         & li
-            margin-left: 1.5rem
             padding-bottom: 1rem
-            +desktop
-                margin-left: 0
         & .listing__subcategory-btn
             padding-bottom: 0
     &__further-subcategory
@@ -92,6 +91,14 @@
         +tablet
             &:hover
                 color: $black
+    &__further-sc-icon
+        position: absolute
+        top: 7px
+        left: -20px
+        fill: $icon-grey
+        width: $size_12
+        height: $size_12
+        
     &__subcategory-btn a
         @extend .link-blue
         @extend .show-more
