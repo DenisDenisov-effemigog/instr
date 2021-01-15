@@ -35,7 +35,6 @@
             subcategories() {
                 return this.categories
                 this.$eventBus.$emit
-                // TODO добавить автобус, который добавит класс .listing__subcategory--open
             },
         },
     }

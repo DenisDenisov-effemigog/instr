@@ -1,5 +1,7 @@
 <template>
-    <div class="listing__subcategory">
+    <div class="listing__subcategory"
+         :class="{'listing__subcategory--opened': sownSubcategory && subcatTotal}"
+    >
         <div class="listing__subcategory-head">
             <slot name="listing-subcategory-title"></slot>
             <div class="listing__subcategory-icon"
