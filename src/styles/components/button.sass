@@ -36,6 +36,16 @@
             background-color: transparent
             color: $primary-hover
             border-color: $primary-hover
+    &--disabled
+        @extend .button
+        color: $white
+        background-color: $border-color
+        cursor: not-allowed
+        & a
+            color: $white
+            pointer-events: none
+        &:hover
+            background-color: $border-color
             
     &-card
         @extend .button

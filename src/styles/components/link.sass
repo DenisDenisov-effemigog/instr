@@ -19,7 +19,8 @@
         &:hover
             color: $black
         &:hover::after
-            opacity: 1
+            +desktop
+                opacity: 1
     &-2
         @extend .text-2
         color: $grey
@@ -42,15 +43,16 @@
         display: inline-flex
         cursor: pointer
         color: $blue
-        text-decoration: none;
-        background-image: linear-gradient(currentColor, currentColor);
-        background-position: 0% 100%;
-        background-repeat: no-repeat;
-        background-size: 0% 2px;
-        transition: background-size .15s;
+        text-decoration: none
+        background-image: linear-gradient(currentColor, currentColor)
+        background-position: 0% 100%
+        background-repeat: no-repeat
+        background-size: 0% 2px
+        transition: background-size .15s
         &:hover
-            background-size: 100% 2px;
-            color: $blue
+            +desktop
+                background-size: 100% 2px
+                color: $blue
     &-more
         display: flex
         padding-bottom: 2.5rem
