@@ -29,7 +29,6 @@ export default {
     created() {
         this.$eventBus.$on("sow-button", this.sowButton);
         this.$eventBus.$on("hide-button", this.hideButton);
-        this.isDisabled
     },
     methods:{
         sowButton(firstPart, items, secondPart) {
@@ -37,20 +36,17 @@ export default {
             this.items = items //передаём количество товаров
             this.titlePartFirst = firstPart //передаём текст кнопки, который пишется в первом ряду
             this.titlePartSecond = secondPart //передаём текст кнопки, который пишется во втором ряду
+            if (this.items === 0) {
+                this.disabled = true
+            }
         },
         hideButton() {
             this.showButton = false
             this.items = 0
             this.titlePartFirst = ''
             this.titlePartSecond = ''
+            this.disabled = false
         }
     },
-    computed: {
-        isDisabled() {
-            if (this.items == 0) {
-                this.disabled = true
-            }
-        }
-    }
 }
 </script>
