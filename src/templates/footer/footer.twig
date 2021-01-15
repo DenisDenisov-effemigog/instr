@@ -10,7 +10,7 @@
 ></component>
 <component is="modal">
     <template v-slot:listingcat>
-        {% if filters is not empty %}
+        {% if filters.filters is not empty %}
             <div class="listing__subcategories">
                 {% for subcategory in listingCategories.subcategories|slice(0, 1) %}
                     {% include '../listing/listing-subcategories.twig' with {'subcategory': subcategory, 'main': true} %}
