@@ -91,8 +91,5 @@ export default {
                 console.log(newVal)
             }
     },
-    computed:{
-
-    }
 }
 </script>
