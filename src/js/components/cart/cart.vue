@@ -87,11 +87,13 @@
 <script>
 import CartOrderHead from './cart-order-head.vue'
 import CartOrder from './cart-order.vue'
+import CartCard from './cart-card.vue'
     export default {
         name: "cart",
         components: {
             CartOrder,
-            CartOrderHead   
+            CartOrderHead,
+            CartCard 
         },
         props: {
             items: {
