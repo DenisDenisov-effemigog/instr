@@ -8,7 +8,9 @@ import HelpersMixin from './js/mixins/helper';
 import Vuelidate from 'vuelidate';
 import VueTheMask from 'vue-the-mask';
 import VueI18n from 'vue-i18n';
+import TextareaAutosize from 'vue-textarea-autosize';
 
+Vue.use(TextareaAutosize)
 Vue.use(VueI18n);
 Vue.use(VueAgile);
 Vue.mixin(HelpersMixin);
