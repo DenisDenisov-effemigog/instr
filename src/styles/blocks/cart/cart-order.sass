@@ -1,0 +1,98 @@
+.cart-order
+    margin-top: 2.5rem
+    +tablet
+        margin-top: 0
+    &__head
+        padding: 0.5rem 1rem
+        background: $pre-white
+        border-radius: 2px
+        display: none
+        +tablet
+            display: flex
+        &--active
+            display: flex
+            +tablet
+                display: none
+    &__head-shape
+        position: absolute
+        width: 100%
+        top: 0
+        left: 0
+    &__head-icon
+        position: absolute
+        width: 100%
+        top: -15%
+        left: 5%
+        transform: rotate(-90deg)
+        & svg
+            width: $size_15
+            height: $size_15
+            fill: $grey
+    &__head-circle
+        min-width: 2rem
+        height: 2rem
+        position: relative
+        margin-right: 0.5rem
+        transform: rotate(90deg)
+        &--under
+            fill: transparent
+            stroke-width: 0.1rem
+            stroke: $border-color_4
+        &--above
+            fill: transparent
+            stroke-width: 0.1rem
+            stroke-dasharray: 251
+            stroke-dashoffset: 150
+            stroke: $green
+    &__head-text
+        @extend .text-3
+        font-weight: 400
+    &__content
+        +tablet
+            padding-top: 1rem
+    &__title
+        @extend .title-5
+    &__list
+        padding-top: 1rem
+        padding-bottom: 1.125rem
+        border-bottom: 1px solid $border-color_4
+    &__item
+        padding-top: 0.5rem
+        display: flex
+        justify-content: space-between
+        &--total
+            padding-top: 1.125rem
+    &__text
+        @extend .text-2
+        font-weight: 400
+        color: $grey
+        &--total
+            color: $black
+    &__price
+        @extend .text-2
+        color: $black
+        &--green
+            color: $green
+    &__total-price
+        @extend .text-1
+        font-weight: 700
+    &__info
+        padding-top: 1rem
+        @extend .text-3
+        font-weight: 400
+        color: $light-grey
+    &__btn-wrap
+        margin: 1rem 0
+        background: #fff
+        &--fixed
+            position: fixed
+            width: 100%
+            padding: 1rem
+            bottom: 64px
+            left: 0
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0) -50.04%, #FFFFFF 36.02%)
+    &__btn 
+        @extend .button-catalogue
+        width: 100%
+    
+
