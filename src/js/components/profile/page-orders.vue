@@ -40,13 +40,18 @@
          },
         name:"page-orders",
         props:{
-            
+            points:{
+                type: Array,
+                required: true,
+            },
+            selectopenSelect:{
+                type: Object,
+                required: true,
+            },
         },
         data(){
             return{
                 profile: [],
-                points:['Выполнен','В ожидании оплаты','Отменен'],
-                selectopenSelect: 'Выполнен',
                 details: false,
             }
         },

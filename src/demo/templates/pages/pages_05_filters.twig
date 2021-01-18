@@ -1098,22 +1098,25 @@
     'authorized': true,
 }%}
 
-{% set sort_types = ['По популярности', 'Со скидкой', 'По убыванию цены'
+{% set sort_types = [
+    {
+        'label': 'По популярности',
+        'value': 'popular'
+    },
+    {
+        'label': 'По скидке',
+        'value': 'discount'
+    },
+    {
+        'label': 'По убыванию цены',
+        'value': 'price_desc'
+    }
 ] %}
-{#{
-'label': 'По популярности',
-'value': 'popular'
-},
-{
-'label': 'По убыванию цены',
-'value': 'discount'
-},
-{
-'label': 'По убыванию цены',
-'value': 'price_desc'
-},#}
 
-{% set sort_type = 'По популярности' %}
+{% set sort_type = {
+    'label': 'По популярности',
+    'value': 'popular'
+} %}
 
 {% set view_type = 'gridview' %}
 
