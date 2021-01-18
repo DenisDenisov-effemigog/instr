@@ -1,12 +1,13 @@
 <template>
     <div class="listing__actions"
         :class="{'listing__actions--sticky': fixed}">
-        <component is="filter-button" :filters="filersMobile" v-if="filersMobile.filters"></component>
+        <component is="filter-button" :filters="filersMobile" v-if="filersMobile.filters.length"></component>
         <component is="select-list"
-                    class="listing__select"
-                    :points="pointsMobile"
-                    :selectopen-select="selectopenSelect"
-                    :viewbox="'0 0 16 7'"
+                   class="listing__select"
+                   :points="pointsMobile"
+                   :selectopen-select="selectopenSelect"
+                   :viewbox="'0 0 16 7'"
+                   :sorting-page="'listing'"
         ></component>
         <component is="displaying-cards" :activeView="view"></component>
     </div>
@@ -31,7 +32,7 @@
                 required: true,
             },
             selectopenSelect:{
-                type: String,
+                type: Object,
                 required: true,
             },
             view:{

@@ -1018,6 +1018,26 @@
     },
 ] %}
 
+{% set sort_types = [
+    {
+        'label': 'Выполнен',
+        'value': 'done'
+    },
+    {
+        'label': 'В ожидании оплаты',
+        'value': 'vaiting'
+    },
+    {
+        'label': 'Отменен',
+        'value': 'closed'
+    }
+] %}
+
+{% set sort_type = {
+    'label': 'Выполнен',
+    'value': 'done'
+} %}
+
 {% set profile = {
     'personal': {
         'company': 'Компания «Инструменты Будущего»',
@@ -1043,6 +1063,26 @@
             'address': 'Москва, Трехгорный Вал 3, ст. 26',
             'client': 'Константин Константинопольский konstantynopolsky@gmail.com +7 (910) 872-92-89',
             'payment': 'Оплата онлайн по карте',
+            'documents': 
+            [
+                {
+                    'label': 'Документы',
+                    'value': 'documents'
+                },
+                {
+                    'label': 'Загрузить еще что-нибудь',
+                    'value': 'something'
+                },
+                {
+                    'label': 'Загрузить счет-фактуру',
+                    'value': 'check'
+                }
+            ],
+            'currentDocument': 
+            {
+                'label': 'Документы',
+                'value': 'documents'
+            },
             'product': [
                 {
                     'art': '11111',
@@ -1323,6 +1363,26 @@
             'address': 'Москва, Трехгорный Вал 3, ст. 26',
             'client': 'Константин Константинопольский konstantynopolsky@gmail.com +7 (910) 872-92-89',
             'payment': 'Оплата онлайн по карте',
+            'documents':
+            [
+                {
+                    'label': 'Документы',
+                    'value': 'documents'
+                },
+                {
+                    'label': 'Загрузить еще что-нибудь',
+                    'value': 'something'
+                },
+                {
+                    'label': 'Загрузить счет-фактуру',
+                    'value': 'check'
+                }
+            ],
+            'currentDocument':
+            {
+                'label': 'Документы',
+                'value': 'documents'
+            },
             'product':
             [
                 {
@@ -1430,7 +1490,11 @@
 {% block content %}
 
     {% include '../../../templates/header/header.twig' with {'categories': categories, 'user': user} %}
-    {% include '../../../templates/profile/profile.twig' with {'profile': profile} %}
+    {% include '../../../templates/profile/profile.twig' with {
+        'profile': profile,
+        'sort_types': sort_types,
+        'sort_type': sort_type,
+    } %}
     {% include '../../../templates/footer/footer.twig'  with {'countries': countries, 'user': user} %}
     
 {% endblock %}

@@ -41,7 +41,10 @@
             </div>
 
             <transition name="fade" mode="out-in">
-                <router-view></router-view>
+                <router-view
+                    :points="points"
+                    :selectopenSelect="selectopenSelect"
+                ></router-view>
             </transition>
         </div>
     </div>
@@ -55,6 +58,14 @@ export default {
         profile: {
             required: true,
             type: Object,
+        },
+        points:{
+            type: Array,
+            required: true,
+        },
+        selectopenSelect:{
+            type: Object,
+            required: true,
         },
     },
     data() {

@@ -19,7 +19,7 @@
             loadMore() {
                 let vm = this;
                 api.getMoreListing().then(answer => {
-                    vm.$eventBus.$emit('apply-listing', answer.content);
+                    vm.$eventBus.$emit('load-listing', answer.content);
                 });
             },
         },

@@ -137,6 +137,15 @@ for(let i = 0; i < 5; ++i) {
         price: '1 001 819',
         priceTotal: '1 000 819',
         
+        documents:
+            [
+                {label: 'Документы', value: 'documents'},
+                {label: 'Загрузить еще что-нибудь', value: 'something'},
+                {label: 'Загрузить счет-фактуру', value: 'check'}
+            ],
+        currentDocument:
+            {label: 'Документы', value: 'documents'},
+        
         address: 'Москва, Трехгорный Вал 3, ст. 26',
         client: 'Константин Константинопольский konstantynopolsky@gmail.com +7 (910) 872-92-89',
         payment: 'Оплата онлайн по карте',
@@ -373,6 +382,8 @@ window.runAction = function (action, config) {
                     price: foundOrder.price,
                     priceTotal: foundOrder.priceTotal,
                     qty: foundOrder.qty,
+                    documents: foundOrder.documents,
+                    currentDocument: foundOrder.currentDocument,
                     /*prices: {
                         base: foundOrder.prices.base,
                         tax: 0.2 * foundOrder.prices.base,
@@ -448,14 +459,31 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
-            case 'instrum:main.api.catalog.get':
+            case 'instrum:main.api.listing.get':
 
                 resolve({
                     data: {
                         data: {
                             answer: {
                                 content: demoListingResult /*demoBase64EncodeUnicode()*/,
+                                //получаем больше контента, приходит новая пагинация. Сортировка, сетка и фильтры сохраняются
                                 url: '',
+                            },
+                            status: 1,
+                        }
+                    }
+                });
+                break;
+
+            case 'instrum:main.api.sortListing.get':
+
+                resolve({
+                    data: {
+                        data: {
+                            answer: {
+                                url: '/i/have/filtered/listing',
+                                output: 'отсортированный листинг' 
+                                //получить новый листинг и пагинацию. Фильтры и сетка сохраняются
                             },
                             status: 1,
                         }
