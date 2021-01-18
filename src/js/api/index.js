@@ -96,7 +96,17 @@ class Api {
         return this._promiseBitrixRequest('instrum:main.api.user.address.get', {});
     }
     getMoreListing() {
-        return this._promiseBitrixRequest('instrum:main.api.catalog.get');
+        return this._promiseBitrixRequest('instrum:main.api.listing.get');
+    }
+
+    sortListing(params) {
+        return this._promiseBitrixRequest('instrum:main.api.sortListing.get', {
+            params: params
+        });
+    }
+
+    listingFilter(filtersPayload) {
+        return this._promiseBitrixRequest('instrum:main.api.catalog.filter', filtersPayload);
     }
     
 }

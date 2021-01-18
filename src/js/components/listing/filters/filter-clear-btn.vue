@@ -1,5 +1,8 @@
 <template>
-    <div class="filter-clear-btn" :class="{'filter-clear-btn--mobile': mobileFlag}">
+    <div class="filter-clear-btn" 
+         :class="{'filter-clear-btn--mobile': mobileFlag}"
+         @click="clearFilters"
+    >
         <div class="filter-clear-btn__icon">
             <svg>
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__delete'"></use>
@@ -21,6 +24,11 @@ export default {
         mobileFlag:{
             type: Boolean,
             default: false
+        }
+    },
+    methods: {
+        clearFilters() {
+            this.$eventBus.$emit('clear-filters')
         }
     }
 }

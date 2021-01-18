@@ -137,6 +137,15 @@ for(let i = 0; i < 5; ++i) {
         price: '1 001 819',
         priceTotal: '1 000 819',
         
+        documents:
+            [
+                {label: 'Документы', value: 'documents'},
+                {label: 'Загрузить еще что-нибудь', value: 'something'},
+                {label: 'Загрузить счет-фактуру', value: 'check'}
+            ],
+        currentDocument:
+            {label: 'Документы', value: 'documents'},
+        
         address: 'Москва, Трехгорный Вал 3, ст. 26',
         client: 'Константин Константинопольский konstantynopolsky@gmail.com +7 (910) 872-92-89',
         payment: 'Оплата онлайн по карте',
@@ -373,6 +382,8 @@ window.runAction = function (action, config) {
                     price: foundOrder.price,
                     priceTotal: foundOrder.priceTotal,
                     qty: foundOrder.qty,
+                    documents: foundOrder.documents,
+                    currentDocument: foundOrder.currentDocument,
                     /*prices: {
                         base: foundOrder.prices.base,
                         tax: 0.2 * foundOrder.prices.base,
@@ -448,16 +459,174 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
-            case 'instrum:main.api.catalog.get':
+            case 'instrum:main.api.listing.get':
 
                 resolve({
                     data: {
                         data: {
                             answer: {
                                 content: demoListingResult /*demoBase64EncodeUnicode()*/,
+                                //получаем больше контента, приходит новая пагинация. Сортировка, сетка и фильтры сохраняются
                                 url: '',
                             },
                             status: 1,
+                        }
+                    }
+                });
+                break;
+
+            case 'instrum:main.api.sortListing.get':
+
+                resolve({
+                    data: {
+                        data: {
+                            answer: {
+                                url: '/i/have/filtered/listing',
+                                output: 'отсортированный листинг' 
+                                //получить новый листинг и пагинацию. Фильтры и сетка сохраняются
+                            },
+                            status: 1,
+                        }
+                    }
+                });
+                break;case 'instrum:main.api.catalog.filter':
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                            answer: {
+                                match: 8,
+                                filters: [
+                                    {
+                                        title: "Цена",
+                                        code: "price_base",
+                                        type: "range",
+                                        values: {
+                                            min: 1,
+                                            max: 100,
+                                            from: 12,
+                                            to: 100
+                                        },
+
+                                    },
+                                    {
+                                        title: "",
+                                        code: "switch_toggle",
+                                        type: "switch",
+                                        values: [
+                                            {
+                                                title: "Бестселлеры",
+                                                value: "bestsellers",
+                                                checked: true
+                                            },
+                                            {
+                                                title: "Новинки",
+                                                value: "news",
+                                                checked: false
+                                            },
+                                        ]
+
+                                    },
+                                    {
+                                        title: "Бренд",
+                                        code: "brand",
+                                        type: "checkbox",
+                                        values: [
+                                            {
+                                                title: "Denzel",
+                                                value: "denzel",
+                                                checked: true,
+                                                available: true,
+                                                count: 7
+                                            },
+                                            {
+                                                title: "Сибртех",
+                                                value: "sibteh",
+                                                checked: true,
+                                                available: true,
+                                                count: 6
+                                            },
+                                            {
+                                                title: "Gross",
+                                                value: "gross",
+                                                checked: false,
+                                                available: true,
+                                                count: 7
+                                            },
+                                            {
+                                                title: "Matrix",
+                                                value: "matrix",
+                                                checked: false,
+                                                available: true,
+                                                count: 6
+                                            },
+                                            {
+                                                title: "Stels",
+                                                value: "stels",
+                                                checked: false,
+                                                available: true,
+                                                count: 5
+                                            },
+                                            {
+                                                title: "Sparta",
+                                                value: "sparta",
+                                                checked: false,
+                                                available: true,
+                                                count: 6
+                                            },
+                                            {
+                                                title: "Russia",
+                                                value: "russia",
+                                                checked: false,
+                                                available: true,
+                                                count: 7
+                                            },
+                                        ]
+                                    },
+                                    {
+                                        title: "Тип скидки",
+                                        code: "sale_type",
+                                        type: "checkbox",
+                                        values: [
+                                            {
+                                                title: "Силовое без скидки",
+                                                value: "sale_1",
+                                                checked: false,
+                                                available: true,
+                                                count: 2
+                                            },
+                                            {
+                                                title: "Силовое",
+                                                value: "sale_2",
+                                                checked: false,
+                                                available: true,
+                                                count: 1
+                                            },
+                                            {
+                                                title: "Россия без скидки",
+                                                value: "sale_3",
+                                                checked: false,
+                                                available: true,
+                                                count: 3
+                                            },
+                                            {
+                                                title: "Импорт без скидки",
+                                                value: "sale_4",
+                                                checked: false,
+                                                available: true,
+                                                count: 4
+                                            },
+                                        ]
+                                    },
+                                    {
+                                        title: "Наличие товара",
+                                        code: "classifier_again",
+                                        type: "checkbox",
+                                        values: []
+                                    }
+                                ],
+                                hash: 'newhash',
+                            }
                         }
                     }
                 });

@@ -68,6 +68,8 @@ import listingSubcategories from './components/listing/listing-subcategories.vue
 import filterBlock from './components/listing/filters/filter-block.vue';
 import filterClearBtn from './components/listing/filters/filter-clear-btn.vue';
 import filterControlRange from './components/listing/filters/filter-control-range.vue';
+import FilterControlsCheckbox from './components/listing/filters/filter-controls-checkbox.vue';
+import FilterControlsSwitch from './components/listing/filters/filter-controls-switch.vue';
 import displayingCards from './components/listing/displaying-cards.vue';
 import filterButton from './components/listing/filter-button.vue';
 import stickyListingActions from './components/listing/sticky-listing-actions.vue';
@@ -75,6 +77,8 @@ import listingContent from './components/listing/listing-content.vue';
 import listingItemsQuantity from './components/listing/listing-items-quantity.vue';
 /*cart*/
 import cart from './components/cart/cart.vue';
+import cartOrder from './components/cart/cart-order.vue';
+import cartOrderHead from './components/cart/cart-order-head.vue';
 import cartSearch from './components/cart/cart-search.vue';
 
 export default {
@@ -140,6 +144,8 @@ export default {
         displayingCards,
         filterButton,
         filterControlRange,
+        FilterControlsCheckbox,
+        FilterControlsSwitch,
         stickyListingActions,
         listingContent,
         listingItemsQuantity,
@@ -148,5 +154,7 @@ export default {
         allCategories,
         listingSubcategories,
         cartSearch,
+        cartOrder,
+        cartOrderHead,
     },
 }

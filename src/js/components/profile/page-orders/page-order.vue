@@ -26,9 +26,9 @@
                 </div>
                 <div class="page-order__select">
                     <select-list
-                        :points="points"
+                        :points="order.documents"
                         :icon="icon"
-                        :selectopenSelect="selectopenSelect"
+                        :selectopenSelect="order.currentDocument"
                     ></select-list>
                 </div>
                 <div @click.stop="openModal('repeat-order')" class="page-order__btn">
@@ -57,7 +57,7 @@
                     <ul class="page-order__desc-list">
                         <li class="page-order__desc-item" v-for="(item, index) in deliveryInfo">
                             <div class="page-order__desc-icon">
-                                <svg v-if="index == 1">
+                                <svg v-if="index === 1">
                                     <use :xlink:href="templatePath + `images/sprite.svg#icons__${item.icon}`"></use>
                                 </svg>
                                 <svg viewBox="-3 -5 20 20" v-else>
@@ -149,17 +149,13 @@ export default {
                     tax: 0,
                     delivery: 0
                 },
-                /*payment: {
-                    id: 0,
-                    name: ''
-                },*/
                 client: '',
                 payment: '',
+                documents: [],
+                currentDocument: {},
                 basket: []
             },
-            points:['Документы','Загрузить еще что-нибудь','Загрузить счет-фактуру'],
             flag: true,
-            selectopenSelect: 'Документы',
             fixedButton: true,
             icon:'icons__download'
         }
@@ -199,6 +195,7 @@ export default {
         prepareOrder(orderId) {
             api.personalOrder(this.$route.params.id).then((order) => {
                 this.order = order;
+                this.$eventBus.$emit('change-current-point', order.currentDocument)
                 console.log('this.order', this.order);
             }).catch((error) => {
                 this.$router.push('/account/orders/');

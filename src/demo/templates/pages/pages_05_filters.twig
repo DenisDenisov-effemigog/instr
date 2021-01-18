@@ -1098,22 +1098,25 @@
     'authorized': true,
 }%}
 
-{% set sort_types = ['По популярности', 'Со скидкой', 'По убыванию цены'
+{% set sort_types = [
+    {
+        'label': 'По популярности',
+        'value': 'popular'
+    },
+    {
+        'label': 'По скидке',
+        'value': 'discount'
+    },
+    {
+        'label': 'По убыванию цены',
+        'value': 'price_desc'
+    }
 ] %}
-{#{
-'label': 'По популярности',
-'value': 'popular'
-},
-{
-'label': 'По убыванию цены',
-'value': 'discount'
-},
-{
-'label': 'По убыванию цены',
-'value': 'price_desc'
-},#}
 
-{% set sort_type = 'По популярности' %}
+{% set sort_type = {
+    'label': 'По популярности',
+    'value': 'popular'
+} %}
 
 {% set view_type = 'gridview' %}
 
@@ -1136,8 +1139,8 @@
             values: {
                 min: 1,
                 max: 100,
-                from: 2,
-                to: 98
+                from: 1,
+                to: 100
             },
 
         },
@@ -1167,7 +1170,7 @@
                 {
                     title: "Denzel",
                     value: "denzel",
-                    checked: true,
+                    checked: false,
                     available: true,
                     count: 7
                 },
@@ -1181,7 +1184,7 @@
                 {
                     title: "Gross",
                     value: "gross",
-                    checked: true,
+                    checked: false,
                     available: true,
                     count: 7
                 },

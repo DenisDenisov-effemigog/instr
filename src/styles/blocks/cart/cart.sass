@@ -1,17 +1,22 @@
 .cart
-    @extend .container
     margin-bottom: 5rem
     +desktop
         margin-bottom: 6.5rem
     
     &__content
         @extend .columns
-
+        flex-direction: column
+        +tablet
+            flex-direction: row
     &__sidebar-wrapper
         @extend .column--sidebar
+        display: block
     
     &__sidebar
-        padding-left: 1.75rem
+        +tablet
+            padding-left: 1.75rem
+            position: sticky
+            top: 10%
     
     &__purchases-wrapper
         @extend .column--content
@@ -114,16 +119,32 @@
             display: flex
     &__form
         padding-top: 1.125rem
-    &__textarea
+    &__textarea-wrapper
         border: 1px solid $border-color
         border-radius: 2px
-        padding: .75rem 1rem
+        padding: 0.5rem
         max-width: auto
         +tablet
             max-width: 21rem
+    &__textarea
+        padding: .75rem 1rem
         @extend .text-3
         color: $light-grey
+        &::-webkit-scrollbar-button
+            none
+        &::-webkit-scrollbar
+            width: 0.25rem
+            padding: 0.5rem
+        &::-webkit-scrollbar-thumb
+            background: $border-color
+            border-radius: 2px
+        &::-webkit-scrollbar-track
+            background: $pre-white
+            border-radius: 2px
     &__btn
+        width: 100%
+        background: #fff
+        outline: none
         margin-top: 1rem
         padding: 0.4375rem 0
         text-align: center

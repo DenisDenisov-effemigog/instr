@@ -1,19 +1,19 @@
 <template>
 <div class="select" @click="openSelect = !openSelect" v-click-outside="closeOutside">
     <div class="select__button" :class="{'select__button--active':openSelect}">
-        <span>{{currentPoint}}</span>
+        <span>{{ currentPoint.label }}</span>
         <svg :viewBox="viewbox" class="select__arrow">
             <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-down'"></use>
         </svg>
     </div>
     <div v-show="openSelect" class="select__dropdown">
         <ul class="select__list">
-            <li @click="clickPoint(key)"
+            <li @click="clickPoint(point)"
                 class="select__item"
-                :class="{'select__item--active':currentPoint === points[key]}"
-                v-for="(point, key) in points"
+                :class="{'select__item--active':currentPoint.value === point.value}"
+                v-for="point in points"
             >
-                <span>{{point}}</span>
+                <span>{{ point.label }}</span>
                 <svg>
                     <use :xlink:href="templatePath + `images/sprite.svg#${icon}`"></use>
                 </svg>
@@ -25,42 +25,61 @@
 
 <script>
 import ClickOutside from "vue-click-outside";
+import * as Api from '../../api';
+
+let api = Api.getInstance();
 
 export default {
     name: "select-list",
     props:{
-        points:{
+        points:{ //массив пунктов в селекте
             type: Array,
             required: true,
         },
-        icon:{
+        icon:{ //иконка
             type:String,
             default: 'check',
         },
-        selectopenSelect:{
-            type: String,
+        selectopenSelect:{ //текущий активный пункт
+            type: Object,
             required: true,
         },
-        viewbox: {
+        viewbox: { //размер иконки
             type: String
+        },
+        sortingPage: { //передаём название страницы, если там происходит сортировка
+            type: String,
+            default: null
         }
     },
     data(){
         return{
-            openSelect:false,
-            currentPoint:this.selectopenSelect
+            openSelect: false,
+            currentPoint: {}
         }
+    },
+    created() {
+        this.$eventBus.$on('change-current-point', this.changeCurrentPoint)
     },
     methods:{
         clickPoint(data){
-            this.currentPoint = this.points[data]
+            this.currentPoint = data
+            if (this.sortingPage === 'listing') {
+                let vm = this;
+                api.sortListing(this.currentPoint).then(answer => {
+                    vm.$eventBus.$emit('apply-listing', answer.output);
+                });
+            }
         },
         closeOutside() {
             this.openSelect = false
+        },
+        changeCurrentPoint(item) {
+            this.currentPoint = item
         }
     },
     mounted() {
-        this.popupItem = this.$el
+        this.currentPoint = this.selectopenSelect;
     },
     directives: {
         ClickOutside

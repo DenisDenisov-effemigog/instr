@@ -32,6 +32,11 @@
                             </div>
                         </div>
                     </div>
+                    <cart-order-head 
+                        :mobileFlag="true"
+                        :currentPrice=6920
+                    ></cart-order-head>
+                    
                     <div class="cart__purchases" :class="{'cart__purchases--table': table}">
                         <div class="table-header" v-if="table">
                             <div class="table-header__code">Артикул</div>
@@ -71,7 +76,7 @@
             </div>
             <div class="cart__sidebar-wrapper">
                 <div class="cart__sidebar">
-                    Кнопка оформления заказов
+                    <cart-order></cart-order>
                 </div>
 
             </div>
@@ -80,17 +85,18 @@
 </template>
 
 <script>
-    import CartCard from './cart-card.vue'
-
+import CartOrderHead from './cart-order-head.vue'
+import CartOrder from './cart-order.vue'
     export default {
         name: "cart",
         components: {
-            CartCard
+            CartOrder,
+            CartOrderHead   
         },
         props: {
             items: {
                 type: Array,
-                required: true
+                required: false
             },
         },
         data(){

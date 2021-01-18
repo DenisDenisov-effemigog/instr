@@ -13,8 +13,8 @@
         <div class="filters-range-slider">
             <iv-slider
                 v-model="rangeValue"
-                :min="filterInternal.min"
-                :max="filterInternal.max"
+                :min="filterInternal.values.min"
+                :max="filterInternal.values.max"
                 :step="rangeStep"
                 range
                 showTip="never"
@@ -27,15 +27,15 @@
 <script>
     export default {
         name: "filter-controls-range",
-        data(){
-            return{
-                value: {
-                    "min": 1,
-                    "max": 100,
-                    "from": 2,
-                    "to": 98
-                }
+        props: {
+            value: {
+                required: true,
+                type: Object
             }
+        },
+        model: {
+            prop: 'value',
+            event: 'change'
         },
         computed:{
             filterInternal: {
@@ -48,41 +48,41 @@
             },
             rangeValueFrom: {
                 get: function () {
-                    return this.filterInternal.from;
+                    return this.filterInternal.values.from;
                 },
                 set: function(newValue) {
                     let filter = this.filterInternal;
-                    filter.from = newValue;
+                    filter.values.from = newValue;
                     this.filterInternal = filter;
                 }
             },
             rangeValueTo: {
                 get: function () {
-                    return this.filterInternal.to;
+                    return this.filterInternal.values.to;
                 },
                 set: function(newValue) {
                     let filter = this.filterInternal;
-                    filter.to = newValue;
+                    filter.values.to = newValue;
                     this.filterInternal = filter;
                 }
             },
             rangeValue: {
                 get: function () {
                     return [
-                        this.filterInternal.from,
-                        this.filterInternal.to
+                        this.filterInternal.values.from,
+                        this.filterInternal.values.to
                     ];
                 },
                 set: function (newValue) {
                     let filter = this.filterInternal;
-                    filter.from = newValue[0]; 
-                    filter.to = newValue[1];
+                    filter.values.from = newValue[0]; 
+                    filter.values.to = newValue[1];
                     this.filterInternal = filter;
                 }
             },
             rangeStep() {
                 let step = 1;
-                let value = this.filterInternal.from;
+                let value = this.filterInternal.values.from;
                 if (Math.floor(value * 100) === value * 100) {
                     step = 0.01
                 } else if (Math.floor(value * 10) === value * 10) {
