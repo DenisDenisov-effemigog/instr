@@ -1,20 +1,20 @@
 <template>
-    <div class="card__stickers_sticker-wrap"
+    <div class="card__stickers-wrap"
         @mouseenter="openTooltip"
         @mouseleave="closeTooltip"
         @click="openTooltipClick"
     >
         <div
-            class="card__stickers_sticker"
-            :class="'card__stickers_sticker--' + tooltip.status"
+            class="card__stickers-sticker"
+            :class="'card__stickers-sticker--' + tooltip.status"
             
         >
             <span>{{ tooltip.title }}</span>
         </div>
-        <div class="card__stickers_sticker-tooltip" 
-             :class="{'card__stickers_sticker-tooltip-open': open, 
-             'card__stickers_sticker-tooltip--rigth': moveTooltip,
-             'card__stickers_sticker-tooltip--left': moveTooltipLeft,}"
+        <div class="card__sticker-tooltip" 
+             :class="{'card__sticker-tooltip-open': open, 
+             'card__sticker-tooltip--rigth': moveTooltip,
+             'card__sticker-tooltip--left': moveTooltipLeft,}"
              ref="tooltip"
         >
             <div>
