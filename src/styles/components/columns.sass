@@ -32,6 +32,21 @@
       &_offset-desktop_#{$i}
         margin-left: percentage($i / 12)
 
+  &--sidebar
+    @extend .column
+    display: none
+    flex: none
+    +desktop
+      display: block
+      width: 25%
+
+  &--content
+    @extend .column
+    flex: none
+    width: 100%
+    +desktop
+      width: 75%
+
 .columns
   margin-left: (-$column-gap)
   margin-right: (-$column-gap)
