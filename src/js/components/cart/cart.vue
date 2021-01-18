@@ -31,6 +31,10 @@
                             </div>
                         </div>
                     </div>
+                    <cart-order-head 
+                        :mobileFlag="true"
+                        :currentPrice=6920
+                    ></cart-order-head>
                     <div class="cart__purchases">
                         Карточки товаров для корзины
                     </div>
@@ -38,7 +42,7 @@
             </div>
             <div class="cart__sidebar-wrapper">
                 <div class="cart__sidebar">
-                    Кнопка оформления заказов
+                    <cart-order></cart-order>
                 </div>
 
             </div>
@@ -47,19 +51,23 @@
 </template>
 
 <script>
+import CartOrderHead from './cart-order-head.vue'
+import CartOrder from './cart-order.vue'
     export default {
         name: "cart",
         components: {
+            CartOrder,
+            CartOrderHead   
         },
         props: {
             products: {
                 type: Array,
-                required: true
+                required: false
             },
         },
         data(){
             return{
-                empty: false
+                empty: false,
             }
         },
         methods:{
