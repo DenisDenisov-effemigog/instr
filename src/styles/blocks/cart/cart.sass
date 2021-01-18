@@ -16,27 +16,31 @@
     &__purchases-wrapper
         @extend .column--content
     &__purchases
-        margin-top: .5rem
+        margin-bottom: 1rem
         +desktop
-            margin-top: 2rem
             margin-right: 1.5rem
-
+            margin-bottom: 2rem
+    
     &__border-right
-        border-right: 1px solid $border-color_4
         +desktop
             margin-right: -1.5rem
+            border-right: 1px solid $border-color_4
 
     &__header
         +flex-container
-        margin-top: 1.5rem
+        margin: 1.5rem 0 .5rem 0
         +desktop
-            margin-top: 2.25rem
-            margin-right: 1.5rem
+            margin: 2.25rem 1.5rem 2rem 0
     &__header-layout
         display: flex
 
     &__title
         @extend .title-5
+        +desktop
+        &--out-of-stock
+            margin: 3.5rem 0 .5rem 0
+            +desktop
+                margin-bottom: 2rem
     
     &__view-switcher
         display: flex
@@ -73,7 +77,7 @@
             margin-right: .5rem
 
 .cart-search
-    padding-top: 1.625rem 
+    padding-top: 1.5rem
     &__head
         display: flex
     &__title

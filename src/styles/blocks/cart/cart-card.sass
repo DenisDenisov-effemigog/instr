@@ -1,0 +1,118 @@
+.cart-card
+    width: 100%
+    display: flex
+    padding: 1.5rem 0 1rem 0
+    border-bottom: 1px solid $border-color_4
+    transition: .25s
+   
+    &__image-block
+        max-width: 4.5rem
+        margin-right: 1.5rem
+
+    &__species
+        width: 100%
+           
+    &__description
+
+    &__block
+        display: flex
+        justify-content: space-between
+        width: 100%
+        
+    &__code
+        @extend .text-3
+        color: $light-grey
+        margin-bottom: .25rem
+
+    &__name
+        @extend .text-2
+        display: block
+        color: $black
+        max-width: 32.625rem
+        height: 2.5rem
+        margin: 0 2.5rem .5rem 0
+        overflow: hidden
+        &:hover
+            color: $black
+            text-decoration: underline
+
+    &__name-dots
+        position: absolute
+        top: 0
+        right: 0
+        background-color: $white
+
+    &__stickers
+        +stickers
+        &-wrap
+            display: flex
+
+    &__price-block
+        width: 8.375rem
+        margin-right: 2.5rem
+
+    &__old-price-element
+        display: flex
+
+    &__old-price
+        @extend .card__old-price
+
+    &__current-price
+        @extend .card__current-price
+
+    &__discount
+        @extend .subtitle-2
+        color: $green
+        margin-left: .5rem
+
+    &__button-block
+        display: flex
+        flex-direction: column
+        align-items: flex-end
+        & .add-to-cart
+            margin-right: 0
+
+    &__price-per-one
+        @extend .text-3
+        margin-top: .375rem
+        color: $light-grey
+        
+    &__delete
+        margin-left: 2.75rem
+        svg
+            fill: $light-grey
+            width: $size_16
+            height: $size_18
+            cursor: pointer
+
+    &--out-of-stock
+        .cart-card__image-block,
+        .cart-card__description,
+        .table-header__code,
+        .table-header__dscr
+            opacity: .6
+        .table-header__code
+            width: 8.25%
+        .table-header__dscr
+            width: 100%
+            margin-right: 0
+        .cart-card__block
+            justify-content: unset
+        .cart-card__name-dots
+            display: none
+
+    &--table
+        @extend .text-2
+        display: flex
+        color: $black
+        padding: .625rem 1rem
+        .cart-card__block div
+            height: 1.25rem
+        .cart-card__name
+            position: relative
+            width: auto
+            height: 1.25rem
+            margin: 0
+        .table-header__new-price
+            color: $green
+            

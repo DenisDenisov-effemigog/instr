@@ -1,6 +1,6 @@
 <template>
     <section class="cart">
-        <div class="cart__content" v-if="empty">
+        <div class="cart__content" v-if="products.length == 0">
             <div class="cart__purchases-wrapper">
                 <div class="cart__header">
                     <div class="cart__title">Корзина пуста</div>
@@ -18,7 +18,8 @@
                                     <input
                                         class="cart__view-switch-input"
                                         type="checkbox"
-                                        name="mode">
+                                        name="mode"
+                                        v-model="table">
                                     <span class="cart__view-switch-slider"></span>
                                     <span class="cart__view-switch-label">Табличный&nbsp;режим</span>
                                 </label>
@@ -31,9 +32,41 @@
                             </div>
                         </div>
                     </div>
-                    <div class="cart__purchases">
-                        Карточки товаров для корзины
+                    <div class="cart__purchases" :class="{'cart__purchases--table': table}">
+                        <div class="table-header" v-if="table">
+                            <div class="table-header__code">Артикул</div>
+                            <div class="table-header__dscr">Название</div>
+                            <div class="table-header__qnty">Кол-во</div>
+                            <div class="table-header__price">Цена/шт.</div>
+                            <div class="table-header__old-price">Старая цена</div>
+                            <div class="table-header__discount">Скидка</div>
+                            <div class="table-header__new-price">Новая цена</div>
+                        </div>
+                        <div class="cart__in-stock">
+                            <cart-card
+                                v-for="product in products"
+                                v-if="product.available"
+                                :product="product"
+                                :table="table"
+                            ></cart-card>
+                        </div>
+                        <div class="cart__purchases-out-of-stock" v-if="notAvailable">
+                            <div class="cart__title cart__title--out-of-stock">Нет в наличии</div>
+                            <div class="table-header" v-if="table">
+                                <div class="table-header__code">Артикул</div>
+                                <div class="table-header__dscr">Название</div>
+                            </div>
+                            <div class="cart__out-of-stock">
+                                <cart-card
+                                    v-for="product in products"
+                                    v-if="!product.available"
+                                    :product="product"
+                                    :table="table"
+                                ></cart-card>
+                            </div>
+                        </div>
                     </div>
+                    <component is="cart-search"></component>
                 </div>
             </div>
             <div class="cart__sidebar-wrapper">
@@ -47,22 +80,42 @@
 </template>
 
 <script>
+    import CartCard from './cart-card.vue'
+
     export default {
         name: "cart",
         components: {
+            CartCard
         },
         props: {
-            products: {
+            items: {
                 type: Array,
                 required: true
             },
         },
         data(){
             return{
-                empty: false
+                empty: false,
+                table: false,
+                notAvailable: false
             }
         },
         methods:{
+            },
+        computed: {
+            products() {
+                return this.items
+            },
+            notAvailableTitle() {
+                this.items.forEach(element => {
+                    if (element.available) {
+                        this.notAvailable = true
+                    }
+                });
+            }
         },
+        created() {
+            this.notAvailableTitle
+        }
     }
 </script>
