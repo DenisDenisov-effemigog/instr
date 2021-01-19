@@ -1,16 +1,6 @@
 function demoCloneOverJson(obj) {
     return JSON.parse(JSON.stringify(obj));
 }
-function demoBase64EncodeUnicode(str) {
-    // first we use encodeURIComponent to get percent-encoded UTF-8,
-    // then we convert the percent encodings into raw bytes which
-    // can be fed into btoa.
-    
-    return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g,
-        function toSolidBytes(match, p1) {
-            return String.fromCharCode('0x' + p1);
-        }));
-}
 
 function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -207,11 +197,195 @@ let demoAddressList = [
     }
 ];
 
-let demoListingResult= `
-    <div>
-        больше контента и новая пагинация
-    </div>
-    `;
+let demoListingResult= {
+    products: [
+        {
+            'id': 1,
+            'title': 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
+            'link': '',
+            'code': 717950,
+            'available': true,
+            'stock': 100,
+            'oldPrice': '3 819',
+            'newPrice': '2 819',
+            'images': [
+                {id: 1, img: './demo_images/product/image_50.png'},
+                {id: 2, img: './demo_images/product/image_51.png'},
+                {id: 3, img: './demo_images/product/image_52.png'},
+                {id: 4, img: './demo_images/product/image_53.png'},
+            ],
+            'tooltips': [
+                {
+                    'id': 1,
+                    'title': 'Новинка',
+                    'text': 'Товар находится в акционной категории товаров “Новинка”',
+                    'link': '',
+                    'status': 'new',
+                },
+                {
+                    'id': 2,
+                    'title': 'Акция',
+                    'text': 'Товар участвует в акции “Акция”',
+                    'link': '',
+                    'status': 'promo',
+                },
+            ]
+        },
+        {
+            'id': 2,
+            'title': 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
+            'link': '',
+            'code': 717950,
+            'available': true,
+            'stock': 100,
+            'oldPrice': '3 819',
+            'newPrice': '2 819',
+            'images': [
+                {id: 1, img: './demo_images/product/image_50.png'},
+                {id: 2, img: './demo_images/product/image_51.png'},
+                {id: 3, img: './demo_images/product/image_52.png'},
+                {id: 4, img: './demo_images/product/image_53.png'},
+            ],
+            'tooltips': [
+                {
+                    'id': 1,
+                    'title': 'Новинка',
+                    'text': 'Товар находится в акционной категории товаров “Новинка”',
+                    'link': '',
+                    'status': 'new',
+                },
+                {
+                    'id': 2,
+                    'title': 'Акция',
+                    'text': 'Товар участвует в акции “Акция”',
+                    'link': '',
+                    'status': 'promo',
+                },
+            ]
+        },
+    ],
+    pagination: {
+        'total': 93,
+        'current': 5,
+        'url_previous': '/some/category/page/4',
+        'url_next': '/some/category/page/6',
+        'url_last': '/some/category/page/last',
+        'urls':
+            [
+                {title: '5', url: '/some/category/page/5'},
+                {title: '6', url: '/some/category/page/6'},
+                {title: '7', url: '/some/category/page/7'},
+                {title: '8', url: '/some/category/page/8'},
+            ]
+    }
+};
+
+let demoSortingListing = {
+    products: [
+        {
+            'id': 1,
+            'title': 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
+            'link': '',
+            'code': 717950,
+            'available': true,
+            'stock': 100,
+            'oldPrice': '3 819',
+            'newPrice': '2 819',
+            'images': [
+                {id: 1, img: './demo_images/product/image_50.png'},
+                {id: 2, img: './demo_images/product/image_51.png'},
+                {id: 3, img: './demo_images/product/image_52.png'},
+                {id: 4, img: './demo_images/product/image_53.png'},
+            ],
+            'tooltips': [
+                {
+                    'id': 1,
+                    'title': 'Новинка',
+                    'text': 'Товар находится в акционной категории товаров “Новинка”',
+                    'link': '',
+                    'status': 'new',
+                },
+                {
+                    'id': 2,
+                    'title': 'Акция',
+                    'text': 'Товар участвует в акции “Акция”',
+                    'link': '',
+                    'status': 'promo',
+                },
+            ]
+        },
+        {
+            'id': 2,
+            'title': 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
+            'link': '',
+            'code': 717950,
+            'available': true,
+            'stock': 100,
+            'oldPrice': '3 819',
+            'newPrice': '2 819',
+            'images': [
+                {id: 1, img: './demo_images/product/image_50.png'},
+                {id: 2, img: './demo_images/product/image_51.png'},
+                {id: 3, img: './demo_images/product/image_52.png'},
+                {id: 4, img: './demo_images/product/image_53.png'},
+            ],
+            'tooltips': [
+                {
+                    'id': 1,
+                    'title': 'Новинка',
+                    'text': 'Товар находится в акционной категории товаров “Новинка”',
+                    'link': '',
+                    'status': 'new',
+                },
+                {
+                    'id': 2,
+                    'title': 'Акция',
+                    'text': 'Товар участвует в акции “Акция”',
+                    'link': '',
+                    'status': 'promo',
+                },
+            ]
+        },
+    ]
+};
+
+let demoFilteredListing = {
+    products: [
+        {
+            'id': 1,
+            'title': 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
+            'link': '',
+            'code': 717950,
+            'available': true,
+            'stock': 100,
+            'oldPrice': '3 819',
+            'newPrice': '2 819',
+            'images': [
+                {id: 1, img: './demo_images/product/image_50.png'},
+                {id: 2, img: './demo_images/product/image_51.png'},
+                {id: 3, img: './demo_images/product/image_52.png'},
+                {id: 4, img: './demo_images/product/image_53.png'},
+            ],
+            'tooltips': [
+                {
+                    'id': 1,
+                    'title': 'Новинка',
+                    'text': 'Товар находится в акционной категории товаров “Новинка”',
+                    'link': '',
+                    'status': 'new',
+                },
+                {
+                    'id': 2,
+                    'title': 'Акция',
+                    'text': 'Товар участвует в акции “Акция”',
+                    'link': '',
+                    'status': 'promo',
+                },
+            ]
+        },
+    ],
+    pagination: {}
+};
 
 //console.log(demoOrders);
 
@@ -465,31 +639,45 @@ window.runAction = function (action, config) {
                     data: {
                         data: {
                             answer: {
-                                content: demoListingResult /*demoBase64EncodeUnicode()*/,
+                                content: demoListingResult,
                                 //получаем больше контента, приходит новая пагинация. Сортировка, сетка и фильтры сохраняются
-                                url: '',
                             },
                             status: 1,
                         }
                     }
                 });
                 break;
-
             case 'instrum:main.api.sortListing.get':
 
                 resolve({
                     data: {
                         data: {
                             answer: {
-                                url: '/i/have/filtered/listing',
-                                output: 'отсортированный листинг' 
-                                //получить новый листинг и пагинацию. Фильтры и сетка сохраняются
+                                url: '',
+                                output: demoSortingListing,
+                                //получить новый листинг. Фильтры, сетка и пагинация сохраняются
                             },
                             status: 1,
                         }
                     }
                 });
-                break;case 'instrum:main.api.catalog.filter':
+                break;
+            case 'instrum:main.api.filteredListing.get':
+
+                resolve({
+                    data: {
+                        data: {
+                            answer: {
+                                url: '',
+                                output: demoFilteredListing,
+                                //получить новый листинг по фильтрам и пагинацию. Сортировка и сетка сохраняются
+                            },
+                            status: 1,
+                        }
+                    }
+                });
+                break;
+            case 'instrum:main.api.catalog.filter':
                 resolve({
                     data: {
                         data: {

@@ -2,14 +2,11 @@
     +flex-container-center
     margin-right: 1rem
     display: none
+    +until($desktop)
+        display: flex
     &__icon
-        fill: $light-grey
+        fill: $icon-blue
         width: $size_24
         height: $size_24
         transition: .35s
         cursor: pointer
-        &_active
-            fill: $icon-blue
-    &--active
-        +until($desktop)
-            display: flex
