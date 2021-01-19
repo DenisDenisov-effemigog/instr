@@ -85,12 +85,10 @@
             font-size: $font-size_3
             color: $black
         &__list
+            @extend .shield
             +desktop
-                padding-top: 1.5rem
                 padding-left: 1rem 
-                padding-right: 0.5rem 
-            display: flex
-            flex-wrap: wrap
+                padding-right: 0.5rem
         &__item
         &__link
             @extend .shield__item
