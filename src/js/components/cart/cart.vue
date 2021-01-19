@@ -5,6 +5,9 @@
                 <div class="cart__header">
                     <div class="cart__title">Корзина пуста</div>
                 </div>
+                <div class="cart__purchases">
+                    <component is="cart-search"></component>
+                </div>
             </div>
         </div>
         <div class="cart__content" v-else>
@@ -103,7 +106,6 @@ import CartCard from './cart-card.vue'
         },
         data(){
             return{
-                empty: false,
                 table: false,
                 notAvailable: false
             }

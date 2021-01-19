@@ -52,7 +52,7 @@ export default {
     methods:{
         openTooltip(){
             this.open = true
-            if(this.cardPosition < 2800) {
+            if(this.cardPosition < 2600) {
                 this.moveTooltipLeft = true
             }
             

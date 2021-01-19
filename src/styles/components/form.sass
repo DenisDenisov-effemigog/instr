@@ -27,20 +27,31 @@
         transition: .2s
         &--up
             @extend .label-typo
-            top: -.375rem
+            top: -.5625rem
             left: 1rem
             padding: 1px .5rem
             background-color: $white
             transition: .2s
+            +tablet
+                top: -.375rem
+        // добавить стили для псевдоэлемента - серого фона - для плейсхолдера нередактируемого поля
+        &--up-grey
+            content: ''
+            position: absolute
+            top: 50%
+            left: 0
+            display: block
+            width: 100%
+            height: .8125rem
+            z-index: -1
+            background-color: $pre-white
+            +tablet
+                height: .625rem
+                top: 44%
     &__input
         @extend .input-modal
         &:focus ~ .form__label-text
-            @extend .label-typo
-            top: -.375rem
-            left: 1rem
-            padding: 1px .5rem
-            background-color: $white
-            transition: .2s
+            @extend .form__label-text--up
         &--dots
             @extend .dot-font
         &--error
