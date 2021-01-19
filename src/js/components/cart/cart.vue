@@ -128,7 +128,6 @@ import CartCard from './cart-card.vue'
             tableMode() {
                 if (window.innerWidth < 988) {
                     this.table = false
-                    console.log(this.table)
                 }
             }
         },

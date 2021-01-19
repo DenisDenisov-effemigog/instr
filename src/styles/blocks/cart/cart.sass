@@ -6,14 +6,14 @@
     &__content
         @extend .columns
         flex-direction: column
-        +tablet
+        +desktop
             flex-direction: row
     &__sidebar-wrapper
         @extend .column--sidebar
         display: block
     
     &__sidebar
-        +tablet
+        +desktop
             padding-left: 1.75rem
             position: sticky
             top: 10%
@@ -48,17 +48,17 @@
                 margin-bottom: 2rem
     
     &__view-switcher
-        display: flex
+        display: none
         align-items: center
         width: 12rem
         margin-right: 1rem
+        +desktop-small
+            display: flex
 
     &__view-switch
         @extend .checkbox-switch
-        display: none
+        display: flex
         margin-bottom: 0
-        +desktop-small
-            display: flex
     &__view-switch-input
         @extend .checkbox-switch
         &:checked + .cart__view-switch-slider
@@ -80,83 +80,3 @@
             width: $size_16
             height: $size_18
             margin-right: .5rem
-
-.cart-search
-    padding-top: 1.5rem
-    &__head
-        display: flex
-    &__title
-        @extend .text-2
-        font-weight: 700
-        padding-right: 0.6875rem
-    &__icon
-        position: relative
-        cursor: pointer
-        & svg
-            width: $size_18
-            height: $size_18
-            fill: $light-grey
-    &__tooltip
-        @extend .tooltip
-        width: 15rem
-        top: 1.875rem
-        left: -12rem
-        &::before
-                left: calc(84% - .5rem);
-        +tablet
-            left: -7rem
-            &::before
-                left: calc(50% - .5rem)
-        & svg
-            fill: $light-grey
-            width: 0.75rem
-            height: 0.75rem
-            flex-shrink: 0
-            margin-left: 1rem
-            +tablet
-                display: none
-        &--open
-            display: flex
-    &__form
-        padding-top: 1.125rem
-    &__textarea-wrapper
-        border: 1px solid $border-color
-        border-radius: 2px
-        padding: 0.5rem
-        max-width: auto
-        +tablet
-            max-width: 21rem
-    &__textarea
-        padding: .75rem 1rem
-        @extend .text-3
-        color: $light-grey
-        &::-webkit-scrollbar-button
-            none
-        &::-webkit-scrollbar
-            width: 0.25rem
-            padding: 0.5rem
-        &::-webkit-scrollbar-thumb
-            background: $border-color
-            border-radius: 2px
-        &::-webkit-scrollbar-track
-            background: $pre-white
-            border-radius: 2px
-    &__btn
-        width: 100%
-        background: #fff
-        outline: none
-        margin-top: 1rem
-        padding: 0.4375rem 0
-        text-align: center
-        max-width: auto
-        +tablet
-            max-width: 7.5rem
-        border: 1px solid $primary-red
-        color: $primary-red
-        font-weight: 600
-        cursor: pointer
-        border-radius: 4px
-        +tablet
-            &:hover
-                border-color: $primary-hover
-                color: $primary-hover
