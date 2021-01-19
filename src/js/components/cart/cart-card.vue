@@ -1,13 +1,13 @@
 <template>
     <div class="cart-card"
          :class="{'cart-card--out-of-stock': !product.available,
-                   'cart-card--table': tableMode}"
+                   'cart-card--table': table}"
     >
-        <div class="cart-card__image-block" v-if="!tableMode">
+        <div class="cart-card__image-block" v-if="!table">
             <img class="cart-card__image" :src="this.product.images[0].img" alt="фото товара">
         </div>
 
-        <div class="cart-card__species" v-if="!tableMode">
+        <div class="cart-card__species" v-if="!table">
             <div class="cart-card__code">Артикул: {{ product.code }}</div>
 
             <div class="cart-card__block">
@@ -98,7 +98,6 @@
         data() {
             return {
                 amount: 0,
-                tableMode: false
             }
         },
         computed: {
@@ -108,39 +107,14 @@
             thisAmount() {
                 this.amount = this.storeAmount
             },
-            tableView() {
-                if (window.innerWidth < 988) {
-                    this.tableMode = false
-                    console.log(this.tableMode)
-                } else {
-                    this.tableMode = this.table
-                    console.log(this.tableMode)
-                }
-            }
-        },
-        methods: {
-            tableVue() {
-                if (window.innerWidth < 988) {
-                    this.tableMode = false
-                    console.log(this.tableMode)
-                } else {
-                    this.tableMode = this.table
-                    console.log(this.tableMode)
-                }
-            }
         },
         watch: {
             storeAmount(newValue) {
                 this.amount = newValue;
             },
-            tableView(value) {
-                this.tableMode = value;
-            }
         },
         created() {
             this.storeAmount;
-            window.addEventListener('resize', tableVue());
-            this.tableView;
         }
     }
 </script>
