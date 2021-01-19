@@ -3,6 +3,7 @@
         @mouseenter="openTooltip"
         @mouseleave="closeTooltip"
         @click="openTooltipClick"
+         ref="stickers"
     >
         <div
             class="card__stickers-sticker"
@@ -14,7 +15,8 @@
         <div class="card__sticker-tooltip" 
              :class="{'card__sticker-tooltip-open': open, 
              'card__sticker-tooltip--rigth': moveTooltip,
-             'card__sticker-tooltip--left': moveTooltipLeft,}"
+             'card__sticker-tooltip--left': moveTooltipLeft,
+             'card__sticker-tooltip--right-desc': moveTooltipRight,}"
              ref="tooltip"
         >
             <div>
@@ -38,6 +40,7 @@ export default {
             open: false,
             moveTooltip: false,
             moveTooltipLeft: false,
+            moveTooltipRight: false,
         }
     },
     props:{
@@ -52,8 +55,15 @@ export default {
     methods:{
         openTooltip(){
             this.open = true
-            if(this.cardPosition < 2600) {
+            let tooltip = this.$refs.stickers
+            let c = tooltip.getBoundingClientRect()
+            let tooltipX = c.left + c.width
+            if (tooltipX < 350) {
                 this.moveTooltipLeft = true
+                this.moveTooltipRight = false
+            } else if (tooltipX > 1490) {
+                this.moveTooltipLeft = false
+                this.moveTooltipRight = true
             }
             
         },
@@ -61,6 +71,7 @@ export default {
             this.open = false
             this.moveTooltip = false
             this.moveTooltipLeft = false
+            this.moveTooltipRight = false
         },
         openTooltipClick() {
             this.open = true
