@@ -2,6 +2,7 @@
     <div class="filter-clear-btn" 
          :class="{'filter-clear-btn--mobile': mobileFlag}"
          @click="clearFilters"
+         v-if="dirty"
     >
         <div class="filter-clear-btn__icon">
             <svg>
@@ -26,9 +27,21 @@ export default {
             default: false
         }
     },
+    data() {
+      return {
+          dirty: false,
+      }  
+    },
+    created() {
+        this.$eventBus.$on('show-clear-filters-btn', this.showButton)
+    },
     methods: {
         clearFilters() {
+            this.dirty = false;
             this.$eventBus.$emit('clear-filters')
+        },
+        showButton() {
+            this.dirty = true;
         }
     }
 }
