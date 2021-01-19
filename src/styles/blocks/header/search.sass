@@ -1,24 +1,30 @@
 .search
     position: absolute
     background: #fff
-    top: -70rem
+    top: 3.5rem
     left: 0
     opacity: 0
     display: flex
     flex-direction: column
-    transition: .35s
+    -webkit-transition: max-height .35s
+    transition: max-height .35s
+    max-height: 0
     +desktop
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08)
         display: block
-        height: 80vh
-        overflow: auto
-    &_opened
-        opacity: 1
-        top: 3.5rem
-        margin: 0 -1rem
-        +desktop-small
+    +desktop-small
             top: 3rem
             margin: 0
+    &::-webkit-scrollbar
+        width: 0
+    overflow: hidden
+    &_opened
+        max-height: 100vh
+        +tablet
+            max-height: 80vh
+        opacity: 1
+        margin: 0 -1rem
+        overflow: auto
     &-result
         order: 2
         padding-bottom: 1rem
