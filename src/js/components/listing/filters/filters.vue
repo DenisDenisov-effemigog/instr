@@ -3,7 +3,7 @@
         <template v-for="(filter, index) in internal.filters">
             <filter-block v-model="internal.filters[index]" :key="filter.code" @change="onFiltersChange" :collapsed="index > 3"></filter-block>
         </template>
-        <filter-clear-btn v-if="dirty"></filter-clear-btn>
+        <filter-clear-btn></filter-clear-btn>
     </div>
 </template>
 
@@ -28,9 +28,11 @@
         },
         data(){
             return {
-                dirty: false,
                 internal: {
-                    filters: []
+                    filters: [],
+                    match: 0,
+                    hash: '',
+                    sort: '',
                 },
                 _debounce_timer: null
             }
@@ -38,13 +40,66 @@
         mounted() {
             this.applyExternalData(this.filters);
         },
+        computed: {
+            emptyPayload() {
+                return {
+                    filters: {},
+                };
+            },
+            payload() {
+                let result = {
+                    // section_id: this.internal.section_id,
+                    filters: {},
+                    params: this.getPayloadParams()
+                };
+
+                this.internal.filters.forEach((item, index) => {
+                    if (item.type === 'range') {
+                        if (item.values.from !== item.values.min || item.values.to !== item.values.max) {
+                            result.filters[item.code] = {
+                                min: item.values.from,
+                                max: item.values.to,
+                            };
+                        }
+                    } else {
+                        let vals = [];
+                        item.values.forEach((val) => {
+                            if (val.checked) {
+                                vals.push(val.value);
+                            }
+                        });
+                        if (vals.length > 0) {
+                            result.filters[item.code] = vals;
+                        }
+                    }
+                });
+                return result;
+            },
+        },
         created() {
           this.$eventBus.$on('clear-filters', this.clearFilters)  
+          this.$eventBus.$on('add-sorting', this.changeSort)  
         },
         methods: {
 
+            getPayloadParams() {
+                return {
+                    sort: this.internal.sort,
+                    // view: this.internalView
+                }
+            },
+
             applyExternalData(data, add) {
                 let vm = this;
+
+                if(!add) {
+                    // this.internal.page_count = data.page_count;
+                    this.internal.sort = data.sort;
+                    // this.internal.section_id = data.section_id;
+                }
+
+                this.internal.hash = data.hash;
+                this.internal.match = data.match;
                 
                 let filters = data.filters;
                 filters.forEach((item, index) => {
@@ -108,8 +163,11 @@
             },
 
             clearFilters() {
-                this.dirty = false;
-                /*TODO очистить фильтры*/
+                let vm = this;
+                api.listingFilter(vm.emptyPayload).then((newFilters) => {
+                    vm.applyExternalData(newFilters, true);
+                    this.applyFilters(true);
+                });
             },
 
             onFiltersChange() {
@@ -121,7 +179,6 @@
                 this._debounce_timer = setTimeout(function () {
                     vm.lookupFilters();
                 }, 300);
-                // this.scrollTop('.filter-modal')
             },
             
             lookupFilters() {
@@ -129,11 +186,43 @@
                 
                 api.listingFilter(this.payload).then((newFilters) => {
                     vm.applyExternalData(newFilters, true);
-                    vm.dirty = true;
+                    this.$eventBus.$emit('show-clear-filters-btn')
                     window.dispatchEvent(new Event('click'));
-                    /*TODO подгрузить новый листинг*/
+                    this.applyFilters(true);
                 });
             },
+
+            applyFilters(changeState) {
+                let vm = this;
+                let params = vm.getPayloadParams();
+
+                api.filteredListing(this.internal.hash, params).then(answer => {
+
+                    vm.$eventBus.$emit('apply-listing', answer.output, 'filter');
+                    if(changeState) {
+                        window.history.pushState({
+                            output: answer.output
+                        },'', answer.url);
+                        
+                        if (window.innerWidth > 767) {
+                            this.scrollTop('.breadcrumbs');
+                        } else {
+                            this.scrollTop('.listing__actions');
+                        }
+                    }
+                });
+            },
+            changeSort(value) {
+                this.internal.sort = value;
+            },
+
+            scrollTop(element) {
+                let topScroll = document.querySelector(element).offsetTop
+                if (window.innerWidth > 767) {
+                    topScroll = topScroll - 171
+                }
+                window.scroll({ top: topScroll, behavior: 'smooth'})
+            }
         },
     }
 </script>

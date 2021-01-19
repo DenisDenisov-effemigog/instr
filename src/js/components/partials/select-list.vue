@@ -63,11 +63,15 @@ export default {
     },
     methods:{
         clickPoint(data){
-            this.currentPoint = data
-            if (this.sortingPage === 'listing') {
-                let vm = this;
-                api.sortListing(this.currentPoint).then(answer => {
+            let vm = this;
+            vm.currentPoint = data
+            if (vm.sortingPage === 'listing') {
+                vm.$eventBus.$emit('add-sorting', vm.currentPoint);
+                api.sortListing(vm.currentPoint).then(answer => {
                     vm.$eventBus.$emit('apply-listing', answer.output);
+                    window.history.pushState({
+                        output: answer.output
+                    },'', answer.url);
                 });
             }
         },

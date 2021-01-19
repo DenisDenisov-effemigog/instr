@@ -105,6 +105,13 @@ class Api {
         });
     }
 
+    filteredListing(hash, params) {
+        return this._promiseBitrixRequest('instrum:main.api.filteredListing.get', {
+            hash: hash,
+            params: params
+        });
+    }
+
     listingFilter(filtersPayload) {
         return this._promiseBitrixRequest('instrum:main.api.catalog.filter', filtersPayload);
     }

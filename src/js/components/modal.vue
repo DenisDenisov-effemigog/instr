@@ -61,7 +61,6 @@
                 </div>
                 <slot name="listingcat"></slot>
                 <component is="filters" :filters="props"></component>
-                <component is="sticky-mobile-button"></component>
             </div>
             
             <div class="modal__close" @click="closeModal" v-if="showCloseBtn">
