@@ -4,20 +4,33 @@
     padding: 1.5rem 0 1rem 0
     border-bottom: 1px solid $border-color_4
     transition: .25s
+    +mobile
+        position: relative
+
+    &__header
+        +mobile
+            margin-right: 1.5rem
    
     &__image-block
-        max-width: 4.5rem
-        margin-right: 1.5rem
+        width: 4.5rem
+        +tablet
+            margin-right: 1.5rem
 
     &__species
         width: 100%
+        +mobile
+            min-width: 10.5rem
+            margin-right: 4rem
            
     &__description
 
     &__block
         display: flex
-        justify-content: space-between
+        flex-direction: column
         width: 100%
+        +tablet
+            flex-direction: row
+            justify-content: space-between
         
     &__code
         @extend .text-3
@@ -30,8 +43,10 @@
         color: $black
         max-width: 32.625rem
         height: 2.5rem
-        margin: 0 2.5rem .5rem 0
+        margin-bottom: 1rem
         overflow: hidden
+        +tablet
+            margin: 0 2.5rem .5rem 0
         &:hover
             color: $black
             text-decoration: underline
@@ -44,21 +59,52 @@
 
     &__stickers
         +stickers
+        display: none
+        margin-bottom: .5rem
+        +tablet
+            display: block
+            margin-bottom: 0
         &-wrap
-            display: flex
+            display: block
+            +tablet
+                display: flex
+        &-sticker
+            width: fit-content
+            +mobile
+                margin-right: 0
+            &:not(:last-of-type)
+                +mobile
+                    margin-bottom: .5rem
+        &--mobile
+            display: block
+            +tablet
+                display: none
 
     &__price-block
         width: 8.375rem
         margin-right: 2.5rem
+        +mobile
+            display: flex
+            flex-direction: column
 
     &__old-price-element
         display: flex
+        +mobile
+            order: 0
 
     &__old-price
-        @extend .card__old-price
+        @extend .text-2
+        color: $light-grey
+        text-decoration: line-through
+        +tablet
+            margin-bottom: .25rem
 
     &__current-price
-        @extend .card__current-price
+        @extend .title-7
+        margin-bottom: 1rem
+        order: 1
+        +tablet
+            margin-bottom: .5rem
 
     &__discount
         @extend .subtitle-2
@@ -68,12 +114,13 @@
     &__button-block
         display: flex
         flex-direction: column
-        align-items: flex-end
+        +tablet
+            align-items: flex-end
         & .add-to-cart
             margin-right: 0
         & .add-to-cart__in-cart,
         & .add-to-cart__add
-            width: 9.125rem
+            width: 9.0625rem
 
     &__price-per-one
         @extend .text-3
@@ -82,6 +129,10 @@
         
     &__delete
         margin-left: 2.75rem
+        +mobile
+            position: absolute
+            top: 1.5rem
+            right: 0
         svg
             fill: $light-grey
             width: $size_16
