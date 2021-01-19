@@ -18,18 +18,16 @@
     &__input
         @extend .form__input
         &:focus ~ .profile-modal__label-text
-            @extend .label-typo
-            top: -.375rem
-            left: 1rem
-            padding: 1px .5rem
-            background-color: $white
-            transition: .2s
+            @extend .form__label-text--up
         &_dots
             @extend .form__input--dots
         &_error
             @extend .form__input--error
     &__input:read-only
-        opacity: .5
+        background-color: $pre-white
+        & ~ .profile-modal__label-text_up::after
+            @extend .form__label-text--up-grey
+            
     &__button
         @extend .form__button
     &__text
