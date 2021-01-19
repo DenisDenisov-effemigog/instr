@@ -63,6 +63,7 @@
 
     &__sticker-tooltip
         @extend .tooltip
+        @extend .text-2
         top: 2.375rem
         left: 50%
         transform: translateX(-50%)
@@ -71,8 +72,6 @@
             transform: translateX(0%)
             &::before
                 left: calc(10% - .5rem)
-        font-size: $font-size_3
-        line-height: $line-height_3
         width: 15rem
         & a
             color: $blue
