@@ -22,8 +22,8 @@
                 <div v-show='value == "new"' class="checkout__option-one">
                     Вариант 1
                 </div>
-                <div v-show='value == "experienced"' class="checkout__option-two">
-                    Вариант 2
+                <div v-show='value == "experienced"' class="checkout__login">
+                   <user-login></user-login>
                 </div>
             </div>
         </div>
@@ -36,9 +36,10 @@
 <script>
 
     import cartOrder from '../cart/cart-order.vue'
+import UserLogin from '../header/header-modal/user-login.vue'
 
     export default {
-    components: { cartOrder },
+    components: { cartOrder, UserLogin },
         name: "checkout",
         data(){
             return {
