@@ -1,6 +1,9 @@
 .product-info
+    width: 100%
     +tablet
-        margin: 0 1rem
+        width: 50%
+    +desktop
+        margin: 0 1rem 0 2rem
     font-size: $font-size_3
     flex: 1
     +mobile
@@ -13,14 +16,13 @@
         align-items: flex-start
         margin-top: 1.125rem
     &__list
-        max-width: 21.5rem
-        +mobile
-            max-width: 100%
-            +mobile
-                order: 2
-        +tablet-only
+        order: 2
+        +tablet
             max-width: 100%
             padding-right: 4rem
+        +specialscreen
+            max-width: 21.5rem
+            padding-right: 0
     &__desc
         width: 7.125rem
         margin-top: auto

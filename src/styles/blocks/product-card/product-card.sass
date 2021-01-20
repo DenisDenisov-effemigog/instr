@@ -64,18 +64,15 @@
                 color: $primary-hover
 
     &__content
-        display: flex
-        margin-top: 3.5rem
-        +mobile
+        margin-top: 0
+        +desktop
             margin-top: 1.375rem
-            flex-direction: column
-        +tablet-only
-            flex-direction: column
-            margin-top: 0
+        +specialscreen
+            display: flex
     &__slider
         margin-bottom: 1.625rem
         position: relative
-        +desktop
+        +specialscreen
             width: 45%
             margin: 0
         &_header
@@ -126,9 +123,8 @@
 
     &__description
         display: flex
-        width: 55%
+        width: 100%
         +mobile
-            width: 100%
             flex-direction: column
-        +tablet-only
-            width: 100%
+        +specialscreen
+            width: 55%

@@ -1,4 +1,8 @@
 .product-order
+    width: 100%
+    +tablet
+        width: 50%
+        max-width: 336px;
     &__stock
         padding-left: 1.125rem
         position: relative
@@ -67,6 +71,4 @@
         &--throut
             text-decoration: line-through
     .add-to-cart
-        +tablet
-            width: 18rem
         margin-right: 0
