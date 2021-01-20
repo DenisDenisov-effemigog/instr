@@ -10,86 +10,110 @@ function getRandomInt(min, max) {
 
 let demoMockupBasket = [
     {
-        id: 10,
-        name: 'Гумки багажні, 450-600-900 мм, 3 шт.// SPARTA',
+        id: 1010,
+        name: 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
         url: '/product/gumky-bagazhni-450-600-900-mm-3-sht-sparta/',
         sku: '543345',
         images: [
-            '/demo_images/product/image_51.png'
+            {id: 1, img: './demo_images/product/image_50.png'},
+            {id: 2, img: './demo_images/product/image_51.png'},
+            {id: 3, img: './demo_images/product/image_52.png'},
+            {id: 4, img: './demo_images/product/image_53.png'},
         ],
-        price: 33.01,
-        discount: 10,
-        allPrice: '910',
-        totalPrice: '810',
+        price: 2819,
+        discount: 26,
+        allPrice: '3 819',
+        totalPrice: '2 819',
         available: true,
         stock: 15,
-        basket_quantity: 1
+        basket_quantity: 1,
+        tooltips: [
+            {
+                id: 1,
+                title: 'Новинка',
+                text: 'Товар находится в акционной категории товаров “Новинка”',
+                link: '',
+                status: 'new',
+            },
+            {
+                id: 2,
+                title: 'Акция',
+                text: 'Товар участвует в акции “Акция”',
+                link: '',
+                status: 'promo',
+            },
+        ]
     },
     {
-        id: 12,
-        name: 'Павук багажний гумовий, 8 гаків// SPARTA',
-        url: '/product/pavuk-bagazhnyy-gumovyy-8-gakiv-sparta/',
-        sku: '543305',
+        id: 101010,
+        name: 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
+        url: '/product/gumky-bagazhni-450-600-900-mm-3-sht-sparta/',
+        sku: '543345',
         images: [
-            '/demo_images/product/image_51.png',
-            '/demo_images/product/image_52.png'
+            {id: 1, img: './demo_images/product/image_50.png'},
+            {id: 2, img: './demo_images/product/image_51.png'},
+            {id: 3, img: './demo_images/product/image_52.png'},
+            {id: 4, img: './demo_images/product/image_53.png'},
         ],
-        price: 43.34,
-        allPrice: '9170',
-        totalPrice: '810',
-        discount: 10,
+        price: 19,
+        discount: 26,
+        allPrice: '3 819',
+        totalPrice: '2 819',
         available: true,
-        stock: 35,
-        basket_quantity: 2
+        stock: 15,
+        basket_quantity: 4,
+        tooltips: [
+            {
+                id: 1,
+                title: 'Новинка',
+                text: 'Товар находится в акционной категории товаров “Новинка”',
+                link: '',
+                status: 'new',
+            },
+            {
+                id: 2,
+                title: 'Акция',
+                text: 'Товар участвует в акции “Акция”',
+                link: '',
+                status: 'promo',
+            },
+        ]
     },
     {
-        id: 13,
-        name: 'Гумки багажні посилені 2 шт, 1000 мм// STELS',
-        url: '/product/gumky-bagazhni-posyleni-2-sht-1000-mm-stels/',
-        sku: '54361',
+        id: 101010101010,
+        name: 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
+        url: '/product/gumky-bagazhni-450-600-900-mm-3-sht-sparta/',
+        sku: '543345',
         images: [
-            '/demo_images/product/image_51.png',
-            '/demo_images/product/image_52.png'
+            {id: 1, img: './demo_images/product/image_50.png'},
+            {id: 2, img: './demo_images/product/image_51.png'},
+            {id: 3, img: './demo_images/product/image_52.png'},
+            {id: 4, img: './demo_images/product/image_53.png'},
         ],
-        price: 53.51,
-        allPrice: '9170',
-        totalPrice: '810',
+        price: 19,
+        discount: 26,
+        allPrice: '3 819',
+        totalPrice: '2 819',
         available: false,
-        stock: 14,
-        basket_quantity: 3
+        stock: 15,
+        basket_quantity: 4,
+        tooltips: [
+            {
+                id: 1,
+                title: 'Новинка',
+                text: 'Товар находится в акционной категории товаров “Новинка”',
+                link: '',
+                status: 'new',
+            },
+            {
+                id: 2,
+                title: 'Акция',
+                text: 'Товар участвует в акции “Акция”',
+                link: '',
+                status: 'promo',
+            },
+        ]
     },
-    {
-        id: 14,
-        name: 'Павук багажний посилений, 8 гаків // STELS',
-        url: '/product/pavuk-bagazhnyy-posylenyy-8-gakiv-stels/',
-        sku: '54364',
-        images: [
-            '/demo_images/product/image_51.png',
-            '/demo_images/product/image_52.png'
-        ],
-        price: 13.8,
-        allPrice: '9170',
-        totalPrice: '810',
-        available: false,
-        stock: 7,
-        basket_quantity: 8
-    },
-    {
-        id: 15,
-        name: 'Домкрат гідравлічний підкатний, 3 т, h підйому 130-410 мм, поворотна ручка// MTX',
-        url: '/product/domkrat-gidravlichnyy-pidkatnyy-3-t-h-pidyomu-130-410-mm-povorotna-ruchka-mtx/',
-        sku: '5103459',
-        images: [
-            '/demo_images/product/image_51.png',
-            '/demo_images/product/image_52.png'
-        ],
-        price: 3.12,
-        allPrice: '9170',
-        totalPrice: '810',
-        available: true,
-        stock: 55,
-        basket_quantity: 2
-    }
 ];
 
 let demoProfile = {

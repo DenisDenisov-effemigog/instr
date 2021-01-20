@@ -79,9 +79,10 @@
             </div>
             <div class="cart__sidebar-wrapper">
                 <div class="cart__sidebar">
-                    <cart-order></cart-order>
+                    <cart-order
+                        :productsPrice="productsPrice"
+                    ></cart-order>
                 </div>
-
             </div>
         </div>
     </section>
@@ -98,31 +99,36 @@ import CartCard from './cart-card.vue'
             CartOrderHead,
             CartCard 
         },
-        props: {
-            items: {
-                type: Array,
-                required: false
-            },
-        },
         data(){
             return{
                 table: false,
                 notAvailable: false
             }
         },
-        methods:{
-            },
         computed: {
             products() {
-                return this.items
-            },
-            notAvailableTitle() {
-                this.items.forEach(element => {
-                    if (element.available) {
+                return this.$store.state.basket.products.filter((product) => {
+                    if (product.available) {
                         this.notAvailable = true
                     }
+                    return product.basket_quantity > 0;
                 });
-            }
+            },
+            /*loaded() {
+                return this.$store.state.basket.loaded
+            },
+            productsQuantity() {
+                const basketData = this.$store.getters.basketProductsSummary;
+                
+                return basketData.quantity;
+            },*/
+            productsPrice() {
+                const basketData = this.$store.getters.basketProductsSummary;
+                return parseFloat((basketData.price).toFixed(3));
+            },
+            /*deliveryCost() {
+                return this.productsPrice > this.delivery_treshold ? 0 : this.delivery_price;
+            },*/
         },
         methods: {
             tableMode() {
@@ -136,7 +142,6 @@ import CartCard from './cart-card.vue'
             },
         },
         created() {
-            this.notAvailableTitle;
             window.addEventListener('resize', this.tableMode)
         }
     }

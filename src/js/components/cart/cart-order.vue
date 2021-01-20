@@ -7,6 +7,13 @@
             <h2 class="cart-order__title">Корзина</h2>
             <div class="cart-order__desc">
                 <ul class="cart-order__list">
+                    <li class="cart-order__item">
+                        <div class="cart-order__text">Цена без скидки</div>
+                        <div class="cart-order__price">
+                            {{ productsPrice }}
+                            <span>₽</span>
+                        </div>
+                    </li>
                     <li class="cart-order__item" v-for="item in cartOrderArr">
                         <div class="cart-order__text">{{item.text}}</div>
                         <div class="cart-order__price" :class="{'cart-order__price--green' :item.discount}">
@@ -38,13 +45,15 @@ import cartOrderHead from './cart-order-head.vue'
 export default {
   components: { cartOrderHead },
     name:"cart-order",
+    props: {
+        productsPrice: {
+            required: true,
+            type: Number
+        }
+    },
     data(){
         return{
             cartOrderArr:[
-                {
-                    "text": "Цена без скидки",
-                    "price": 6920
-                },
                  {
                     "text": "Скидка",
                     "price": 918,
@@ -66,13 +75,12 @@ export default {
     },
     computed:{
         getTotalPrice(){
-            if(this.cartOrderArr.length == 1){
-                return this.cartOrderArr.price
-            }else{
-                let totalPrice = this.cartOrderArr[0].price
-                for(let i = 1; i < this.cartOrderArr.length; i++){
-                    totalPrice = totalPrice - this.cartOrderArr[i].price
-                }
+            let vm = this
+            if(!vm.cartOrderArr.length){
+                return vm.productsPrice
+            } else{
+                let totalPrice = vm.productsPrice - vm.cartOrderArr[0].price + vm.cartOrderArr[1].price + vm.cartOrderArr[2].price
+                
                 if(String(totalPrice).length > 3){
                     totalPrice = String(totalPrice)[0] + ' ' + String(totalPrice).slice(1, String(totalPrice).length)
                 }
@@ -90,8 +98,6 @@ export default {
             if(window.innerWidth < 1024) {
                 let windowPosition = window.pageYOffset + window.innerHeight
                 let cartInfoPosition = this.$refs.cartOrderInfo.offsetTop + this.$refs.cartOrderInfo.offsetHeight + 64
-                console.log('windowPosition ' + windowPosition)
-                console.log('cartInfoPosition ' + cartInfoPosition)
                 if(windowPosition < cartInfoPosition){
                     this.fixedFlag = true
                 }else{

@@ -28,9 +28,13 @@ const actions = {
                 sku: product.sku,
                 images: product.images,
                 price: product.price,
+                discount: product.discount,
+                allPrice: product.allPrice,
+                totalPrice: product.totalPrice,
                 available: product.available,
                 stock: product.stock,
                 basket_quantity: product.basket_quantity,
+                tooltips: product.tooltips,
 
                 basket_confirmed: true
             });
@@ -117,7 +121,7 @@ const getters = {
         let quantity = 0;
         let price = 0;
         state.products.every((product) => {
-            if (product.basket_confirmed) {
+            if (product.basket_confirmed && product.available) {
                 quantity += product.basket_quantity;
                 price += product.price * product.basket_quantity;
             }

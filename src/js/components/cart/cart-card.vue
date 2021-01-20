@@ -22,12 +22,12 @@
         </div>
 
         <div class="cart-card__species" v-if="!table && !deleteItem">
-            <div class="cart-card__code">Артикул: {{ product.code }}</div>
+            <div class="cart-card__code">Артикул: {{ product.sku }}</div>
 
             <div class="cart-card__block">
                 <div class="cart-card__description">
-                    <a :href="product.link" class="cart-card__name">
-                        {{ product.title }}
+                    <a :href="product.url" class="cart-card__name">
+                        {{ product.name }}
                     </a>
                     <div class="cart-card__stickers" v-if="product.available">
                         <div class="cart-card__stickers-wrap">
@@ -43,21 +43,21 @@
                 </div>
                 <div class="cart-card__price-block" v-if="product.available">
                     <div class="cart-card__current-price">
-                        {{ currency(product.newPrice * amount) }}&nbsp;&#8381;
+                        {{ currency(product.price * amount) }}&nbsp;&#8381; <!--поменять переменную-->
                     </div>
                     <div class="cart-card__old-price-element">
                         <div class="cart-card__old-price">
-                            {{ currency(product.oldPrice * amount) }}&nbsp;&#8381;
+                            {{ currency(product.price * amount) }}&nbsp;&#8381;
                         </div>
-                        <div class="cart-card__discount">{{ Math.round(product.newPrice / product.oldPrice * 100) - 100 }}%</div>
+                        <div class="cart-card__discount">{{ product.discount }}%</div>
                     </div>
                 </div>
                 <div class="cart-card__button-block" v-if="product.available">
                     <component is="add-to-cart"
                                 :productId="product.id"
                                 :max-amount="product.stock">
-                    </component>
-                    <div class="cart-card__price-per-one">{{ product.newPrice }}&nbsp;&#8381;&nbsp;/&nbsp;шт.</div>
+                    </component> <!--TODO передать параметр чтобы сделать кнопку не активной + сделать кнопку не активной в компоненте по условию-->
+                    <div class="cart-card__price-per-one">{{ product.price }}&nbsp;&#8381;&nbsp;/&nbsp;шт.</div>
                 </div>
                 <div class="cart-card__delete" @click="removeItem">
                     <svg viewBox="1 1 16 18">
@@ -74,7 +74,7 @@
                     ref="textBlock"
                 >
                     <span class="cart-card__name-message">Удален: </span>
-                    <span class="cart-card__name-title" ref="textSpan">{{ product.title }}</span>
+                    <span class="cart-card__name-title" ref="textSpan">{{ product.name }}</span>
                     <span class="cart-card__name-dots">...</span>
                 </a>
             </div>
@@ -92,24 +92,24 @@
         </div>
 
         <div class="cart-card__block" v-else-if="table">
-            <div class="table-header__code">{{ product.code }}</div>
+            <div class="table-header__code">{{ product.sku }}</div>
             <div class="table-header__dscr">
-                <a :href="product.link" class="cart-card__name">
-                    {{ product.title }}<span class="cart-card__name-dots">...</span>
+                <a :href="product.url" class="cart-card__name">
+                    {{ product.name }}<span class="cart-card__name-dots">...</span>
                 </a>
             </div>
             <div class="table-header__qnty" v-if="product.available">
-                <span v-if="!deleteItem">{{ amount }}</span>
+                <span v-if="!deleteItem">{{ amount }}</span><!--TODO творится что-то странное-->
             </div>
             <div class="table-header__price" v-if="product.available">
-                <span v-if="!deleteItem">{{ product.newPrice }}&nbsp;&#8381;&nbsp;/&nbsp;шт.</span>
+                <span v-if="!deleteItem">{{ product.price }}&nbsp;&#8381;&nbsp;/&nbsp;шт.</span>
             </div>
             <div class="table-header__old-price" v-if="product.available">
-                <span v-if="!deleteItem">{{ currency(product.oldPrice * amount) }}&nbsp;&#8381;</span>
+                <span v-if="!deleteItem">{{ currency(product.price * amount) }}&nbsp;&#8381;</span>
             </div>
             <div class="table-header__discount" v-if="product.available || deleteItem">
                 <span v-if="!deleteItem">
-                    {{ 100 - Math.round(product.newPrice / product.oldPrice * 100) }}%
+                    {{ product.discount }}%
                 </span>
                 <span class="cart-card__in-favorite"
                     @click="toFav"
@@ -117,7 +117,7 @@
                 >Добавить&nbsp;в&nbsp;избранное</span>
             </div>
             <div class="table-header__new-price" v-if="product.available || deleteItem">
-                <span v-if="!deleteItem">{{ currency(product.newPrice * amount) }}&nbsp;&#8381;</span>
+                <span v-if="!deleteItem">{{ currency(product.allPrice * amount) }}&nbsp;&#8381;</span><!--посмотреть-->
                 <span class="cart-card__cancel-delete"
                     @click="deleteItem = false"
                     v-else-if="product.available"
