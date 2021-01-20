@@ -43,11 +43,11 @@
                 </div>
                 <div class="cart-card__price-block" v-if="product.available">
                     <div class="cart-card__current-price">
-                        {{ currency(product.price * amount) }}&nbsp;&#8381; <!--поменять переменную-->
+                        {{ currency(product.price * amount) }}&nbsp;&#8381;
                     </div>
                     <div class="cart-card__old-price-element">
                         <div class="cart-card__old-price">
-                            {{ currency(product.price * amount) }}&nbsp;&#8381;
+                            {{ currency(product.price*amount/(100-product.discount)*100) }}&nbsp;&#8381;
                         </div>
                         <div class="cart-card__discount">{{ product.discount }}%</div>
                     </div>
@@ -105,7 +105,7 @@
                 <span v-if="!deleteItem">{{ product.price }}&nbsp;&#8381;&nbsp;/&nbsp;шт.</span>
             </div>
             <div class="table-header__old-price" v-if="product.available">
-                <span v-if="!deleteItem">{{ currency(product.price * amount) }}&nbsp;&#8381;</span>
+                <span v-if="!deleteItem">{{ currency(product.price*amount/(100-product.discount)*100) }}&nbsp;&#8381;</span>
             </div>
             <div class="table-header__discount" v-if="product.available || deleteItem">
                 <span v-if="!deleteItem">
@@ -117,7 +117,7 @@
                 >Добавить&nbsp;в&nbsp;избранное</span>
             </div>
             <div class="table-header__new-price" v-if="product.available || deleteItem">
-                <span v-if="!deleteItem">{{ currency(product.allPrice * amount) }}&nbsp;&#8381;</span><!--посмотреть-->
+                <span v-if="!deleteItem">{{ currency(product.price * amount) }}&nbsp;&#8381;</span>
                 <span class="cart-card__cancel-delete"
                     @click="deleteItem = false"
                     v-else-if="product.available"
@@ -150,7 +150,6 @@
         },
         data() {
             return {
-                amount: 0,
                 deleteItem: false,
                 prompt: false,
             }
@@ -159,8 +158,8 @@
             storeAmount() {
                 return this.$store.getters.basketProductQuantity(this.product.id);
             },
-            thisAmount() {
-                this.amount = this.storeAmount
+            amount() {
+                return this.storeAmount
             },
         },
         methods: {
@@ -188,13 +187,5 @@
 
             }
         },
-        watch: {
-            storeAmount(newValue) {
-                this.amount = newValue;
-            },
-        },
-        created() {
-            this.storeAmount;
-        }
     }
 </script>
