@@ -80,6 +80,8 @@ import cart from './components/cart/cart.vue';
 import cartOrder from './components/cart/cart-order.vue';
 import cartOrderHead from './components/cart/cart-order-head.vue';
 import cartSearch from './components/cart/cart-search.vue';
+/*checkout*/
+import checkout from './components/checkout/checkout.vue'
 
 export default {
     components: {
@@ -156,5 +158,6 @@ export default {
         cartSearch,
         cartOrder,
         cartOrderHead,
+        checkout,
     },
 }
