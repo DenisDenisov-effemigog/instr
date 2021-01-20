@@ -10,11 +10,12 @@
             height: 3.5rem
         &  .add-to-cart__add
             padding: 1.125rem 2.125rem
-        & .add-to-cart__amount
-            width: 100%
-            font-weight: 600
-            & > span
+        & .add-to-cart__input
+            @extend .subtitle-2
+            & > .add-to-cart__input-text
                 color: $grey
+            input
+                @extend .subtitle-2
     &__in-cart
         display: flex
         flex-direction: row
@@ -44,10 +45,8 @@
             fill: $icon-white
 
     &__input
-        display: flex
+        +flex-container-center
         flex-direction: column
-        justify-content: center
-        text-align: center
         font-size: $font-size_3
         // width: 3.25rem
         // +desktop
@@ -66,7 +65,7 @@
         text-align: start
 
     &__amount-input
-        display: flex
+        +flex-container-center
         input
             width: 50%
             font-size: $font-size_3
