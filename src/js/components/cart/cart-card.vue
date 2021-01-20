@@ -67,7 +67,7 @@
             </div>
         </div>
 
-        <div class="cart-card__block" v-else-if="deleteItem">
+        <div class="cart-card__block" v-else-if="!table && deleteItem">
             <div class="table-header__dscr">
                 <a :href="product.link" class="cart-card__name"
                     :class="{'cart-card__name--prompt': prompt}"
@@ -77,8 +77,10 @@
                     <span class="cart-card__name-dots">...</span>
                 </a>
             </div>
-            <div class="cart-card__in-favorite">Добавить в избранное</div>
-            <div class="cart-card__cancel-delete" @click="deleteItem = false">Отменить</div>
+            <div class="cart-card__in-favorite" @click="toFav">Добавить&nbsp;в&nbsp;избранное</div>
+            <div class="cart-card__cancel-delete" @click="deleteItem = false">
+                <span v-if="product.available">Отменить</span>
+            </div>
             <div class="cart-card__delete" @click="clearItem(product.id)">
                 <svg>
                     <use :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
@@ -93,21 +95,36 @@
                     {{ product.title }}<span class="cart-card__name-dots">...</span>
                 </a>
             </div>
-            <div class="table-header__qnty" v-if="product.available">{{ amount }}</div>
+            <div class="table-header__qnty" v-if="product.available">
+                <span v-if="!deleteItem">{{ amount }}</span>
+            </div>
             <div class="table-header__price" v-if="product.available">
-                {{ product.newPrice }}&nbsp;&#8381;&nbsp;/&nbsp;шт.
+                <span v-if="!deleteItem">{{ product.newPrice }}&nbsp;&#8381;&nbsp;/&nbsp;шт.</span>
             </div>
             <div class="table-header__old-price" v-if="product.available">
-                {{ currency(number(product.oldPrice) * amount) }}&nbsp;&#8381;
+                <span v-if="!deleteItem">{{ currency(number(product.oldPrice) * amount) }}&nbsp;&#8381;</span>
             </div>
-            <div class="table-header__discount" v-if="product.available">
-                {{ 100 - Math.round(number(product.newPrice) / number(product.oldPrice) * 100) }}%
+            <div class="table-header__discount" v-if="product.available || deleteItem">
+                <span v-if="!deleteItem">
+                    {{ 100 - Math.round(number(product.newPrice) / number(product.oldPrice) * 100) }}%
+                </span>
+                <span class="cart-card__in-favorite"
+                    @click="toFav"
+                    v-else
+                >Добавить&nbsp;в&nbsp;избранное</span>
             </div>
-            <div class="table-header__new-price" v-if="product.available">
-                {{ currency(number(product.newPrice) * amount) }}&nbsp;&#8381;
+            <div class="table-header__new-price" v-if="product.available || deleteItem">
+                <span v-if="!deleteItem">{{ currency(number(product.newPrice) * amount) }}&nbsp;&#8381;</span>
+                <span class="cart-card__cancel-delete"
+                    @click="deleteItem = false"
+                    v-else-if="product.available"
+                >Отменить</span>
             </div>
-            <div class="cart-card__delete" @click="removeItem">
-                <svg viewBox="1 1 16 18">
+            <div class="cart-card__delete">
+                <svg v-if="deleteItem" @click="clearItem(product.id)">
+                    <use :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
+                </svg>
+                <svg viewBox="1 1 16 18" v-else @click="removeItem">
                     <use :xlink:href="templatePath + 'images/sprite.svg#icons__delete'"></use>
                 </svg>
             </div>
@@ -164,6 +181,9 @@
                     
                 });
             },
+            toFav() {
+
+            }
         },
         watch: {
             storeAmount(newValue) {

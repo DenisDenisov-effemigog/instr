@@ -31,8 +31,6 @@
         +tablet
             flex-direction: row
             justify-content: space-between
-        &--deleted
-
         
     &__code
         @extend .text-3
@@ -139,6 +137,7 @@
     &__cancel-delete
         @extend .link-blue
         @extend .text-3
+        width: 3.875rem
         background-position: 0% 80%
         
     &__delete
@@ -160,7 +159,7 @@
         .table-header__dscr
             opacity: .6
         .table-header__code
-            width: 8.25%
+            width: 5.25%
         .table-header__dscr
             width: 100%
             margin-right: 0
@@ -172,6 +171,17 @@
             width: 100%
         .cart-card__name
             max-width: 100%
+    &--out-of-stock.cart-card--table.cart-card--deleted
+        .cart-card__block
+            justify-content: space-between
+            div
+                height: 1.25rem
+            .table-header__code
+                width: auto
+            .table-header__dscr
+                width: 100%
+                justify-content: flex-start
+        
 
     &--table
         @extend .text-2
@@ -187,6 +197,22 @@
             margin: 0
         .table-header__new-price
             color: $green
+    &--table.cart-card--deleted
+        .table-header__code
+            margin-right: 2.5rem
+        .cart-card__block
+            //justify-content: flex-start
+            div:not(:last-of-type)
+                margin-right: 2.5rem
+            .table-header__dscr
+                width: 20.83%
+                margin-right: 2.5rem
+            div
+                +flex-container-center
+            .cart-card__in-favorite,
+            .cart-card__cancel-delete
+                background-position: 0% 100%
+
     &--deleted
         @extend .text-2
         display: flex
