@@ -1,0 +1,44 @@
+.checkout
+    @extend .container
+    +tablet
+        display: flex
+    margin-top: 2.25rem
+    &__main
+        +tablet
+            width: 75%
+            border-right: 1px solid $border-color_4
+            margin-right: 1.75rem
+    &__order
+        +tablet
+            width: 25%
+    &__title
+        @extend .title-5
+        font-weight: 700
+    &__contnet
+        padding-top: 1.5rem
+        +tablet
+            padding-top: 2.5rem
+
+.checkout-choice
+    padding-top: 2rem
+    +tablet
+        padding-top: 2.25rem
+    &__title
+        @extend .title-6
+        font-weight: 700
+    &__form
+        display: flex
+        flex-direction: column
+        padding-top: 1.5rem
+        +tablet
+            padding-top: 2rem
+    &__radio
+        @extend .radio
+        margin-top: 1rem
+    &__check
+        @extend .radio__check
+    &__radio-label
+        @extend .radio__label
+        @extend .text-5
+        font-weight: 40
+    
