@@ -43,13 +43,13 @@
                 </div>
                 <div class="cart-card__price-block" v-if="product.available">
                     <div class="cart-card__current-price">
-                        {{ currency(number(product.newPrice) * amount) }}&nbsp;&#8381;
+                        {{ currency(product.newPrice * amount) }}&nbsp;&#8381;
                     </div>
                     <div class="cart-card__old-price-element">
                         <div class="cart-card__old-price">
-                            {{ currency(number(product.oldPrice) * amount) }}&nbsp;&#8381;
+                            {{ currency(product.oldPrice * amount) }}&nbsp;&#8381;
                         </div>
-                        <div class="cart-card__discount">{{ Math.round(number(product.newPrice) / number(product.oldPrice) * 100) - 100 }}%</div>
+                        <div class="cart-card__discount">{{ Math.round(product.newPrice / product.oldPrice * 100) - 100 }}%</div>
                     </div>
                 </div>
                 <div class="cart-card__button-block" v-if="product.available">
@@ -73,12 +73,15 @@
                     :class="{'cart-card__name--prompt': prompt}"
                     ref="textBlock"
                 >
+                    <span class="cart-card__name-message">Удален: </span>
                     <span class="cart-card__name-title" ref="textSpan">{{ product.title }}</span>
                     <span class="cart-card__name-dots">...</span>
                 </a>
             </div>
             <div class="cart-card__in-favorite" @click="toFav">Добавить&nbsp;в&nbsp;избранное</div>
-            <div class="cart-card__cancel-delete" @click="deleteItem = false">
+            <div class="cart-card__cancel-delete"
+                :class="{'cart-card__cancel-delete--out-of-stock': !product.available}"
+                @click="deleteItem = false">
                 <span v-if="product.available">Отменить</span>
             </div>
             <div class="cart-card__delete" @click="clearItem(product.id)">
@@ -102,11 +105,11 @@
                 <span v-if="!deleteItem">{{ product.newPrice }}&nbsp;&#8381;&nbsp;/&nbsp;шт.</span>
             </div>
             <div class="table-header__old-price" v-if="product.available">
-                <span v-if="!deleteItem">{{ currency(number(product.oldPrice) * amount) }}&nbsp;&#8381;</span>
+                <span v-if="!deleteItem">{{ currency(product.oldPrice * amount) }}&nbsp;&#8381;</span>
             </div>
             <div class="table-header__discount" v-if="product.available || deleteItem">
                 <span v-if="!deleteItem">
-                    {{ 100 - Math.round(number(product.newPrice) / number(product.oldPrice) * 100) }}%
+                    {{ 100 - Math.round(product.newPrice / product.oldPrice * 100) }}%
                 </span>
                 <span class="cart-card__in-favorite"
                     @click="toFav"
@@ -114,7 +117,7 @@
                 >Добавить&nbsp;в&nbsp;избранное</span>
             </div>
             <div class="table-header__new-price" v-if="product.available || deleteItem">
-                <span v-if="!deleteItem">{{ currency(number(product.newPrice) * amount) }}&nbsp;&#8381;</span>
+                <span v-if="!deleteItem">{{ currency(product.newPrice * amount) }}&nbsp;&#8381;</span>
                 <span class="cart-card__cancel-delete"
                     @click="deleteItem = false"
                     v-else-if="product.available"
