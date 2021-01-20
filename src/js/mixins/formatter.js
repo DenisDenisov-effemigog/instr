@@ -1,12 +1,5 @@
 export default {
     methods: {
-        number: function (value) {
-            let str = value
-                .replace(' ', '');
-
-            return parseInt(str);
-        },
-
         currency: function (value) {
             let str = value
                 .toFixed(0);
