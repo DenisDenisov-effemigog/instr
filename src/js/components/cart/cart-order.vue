@@ -83,10 +83,11 @@ export default {
     },
     created(){
         window.addEventListener('scroll', this.mobileScroll)
+        window.addEventListener('resize', this.mobileScroll)
     },
     methods:{
         mobileScroll(){
-            if(window.innerWidth < 768) {
+            if(window.innerWidth < 1024) {
                 let windowPosition = window.pageYOffset + window.innerHeight
                 let cartInfoPosition = this.$refs.cartOrderInfo.offsetTop + this.$refs.cartOrderInfo.offsetHeight + 64
                 console.log('windowPosition ' + windowPosition)
@@ -96,6 +97,8 @@ export default {
                 }else{
                     this.fixedFlag = false
                 }
+            } else {
+                this.fixedFlag = false
             }
         }
     }

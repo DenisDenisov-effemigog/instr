@@ -124,8 +124,16 @@ import CartCard from './cart-card.vue'
                 });
             }
         },
+        methods: {
+            tableMode() {
+                if (window.innerWidth < 988) {
+                    this.table = false
+                }
+            }
+        },
         created() {
-            this.notAvailableTitle
+            this.notAvailableTitle;
+            window.addEventListener('resize', this.tableMode)
         }
     }
 </script>
