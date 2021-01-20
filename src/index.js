@@ -5,6 +5,7 @@ import store from './js/store';
 import ivSlider from 'iv-slider';
 import router from './js/router';
 import HelpersMixin from './js/mixins/helper';
+import FormatterMixin from './js/mixins/formatter';
 import Vuelidate from 'vuelidate';
 import VueTheMask from 'vue-the-mask';
 import VueI18n from 'vue-i18n';
@@ -14,6 +15,7 @@ Vue.use(TextareaAutosize)
 Vue.use(VueI18n);
 Vue.use(VueAgile);
 Vue.mixin(HelpersMixin);
+Vue.mixin(FormatterMixin);
 Vue.use(Vuelidate);
 Vue.use(VueTheMask);
 Vue.use(ivSlider);
