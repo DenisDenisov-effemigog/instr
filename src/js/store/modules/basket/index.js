@@ -70,6 +70,45 @@ const actions = {
             );
         });
     },
+
+    // TODO не работает удаление товара из корзины
+
+    basketSetQuantity: ({commit, dispatch, state}, params) => {
+
+        let productFound = false;
+        let existingProducts = JSON.parse(JSON.stringify(state.products));
+
+        let productId = params.productId;
+        let quantity = params.quantity;
+
+        existingProducts.every((product, index) => {
+            if (product.id == productId) {
+                productFound = true;
+
+                existingProducts[index].basket_quantity = quantity;
+                existingProducts[index].basket_confirmed = false;
+                return false;
+            }
+            return true;
+        });
+
+        if (!productFound) {
+            existingProducts.push({
+                id: productId,
+                basket_quantity: quantity,
+                basket_confirmed: false
+            });
+        }
+        commit(types.BASKET_APPLY_PRODUCTS, existingProducts);
+    },
+
+    // TODO не работает очистка корзины
+
+    basketClear: ({commit, state}) => {
+        api.clearBasket().then(() => {
+            commit(types.BASKET_APPLY_PRODUCTS, []);
+        });
+    }
 }
 
 const getters = {

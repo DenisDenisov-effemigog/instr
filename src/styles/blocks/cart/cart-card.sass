@@ -31,6 +31,8 @@
         +tablet
             flex-direction: row
             justify-content: space-between
+        &--deleted
+
         
     &__code
         @extend .text-3
@@ -50,6 +52,8 @@
         &:hover
             color: $black
             text-decoration: underline
+        &--prompt
+            position: relative
 
     &__name-dots
         position: absolute
@@ -126,6 +130,16 @@
         @extend .text-3
         margin-top: .375rem
         color: $light-grey
+
+    &__in-favorite
+        @extend .link-blue
+        @extend .text-3
+        background-position: 0% 80%
+
+    &__cancel-delete
+        @extend .link-blue
+        @extend .text-3
+        background-position: 0% 80%
         
     &__delete
         margin-left: 2.75rem
@@ -173,4 +187,22 @@
             margin: 0
         .table-header__new-price
             color: $green
-            
+    &--deleted
+        @extend .text-2
+        display: flex
+        color: $black
+        .cart-card__block div
+            height: 1.5rem
+            margin: 0
+        .cart-card__block
+            .table-header__dscr
+                width: 64%
+                margin-right: 3.5rem
+            .cart-card__in-favorite
+                margin-right: 2.5rem
+            .cart-card__cancel-delete
+                margin-right: 3.5rem
+        .cart-card__name
+            max-width: 100%
+            height: 1.25rem
+            margin: 0

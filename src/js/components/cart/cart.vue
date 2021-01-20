@@ -27,7 +27,7 @@
                                     <span class="cart__view-switch-label">Табличный&nbsp;режим</span>
                                 </label>
                             </div>
-                            <div class="cart__clear-btn">
+                            <div class="cart__clear-btn" @click="clearCart">
                                 <svg>
                                     <use :xlink:href="templatePath + 'images/sprite.svg#icons__delete'"></use>
                                 </svg>
@@ -129,7 +129,11 @@ import CartCard from './cart-card.vue'
                 if (window.innerWidth < 988) {
                     this.table = false
                 }
-            }
+            },
+            clearCart() {
+                // TODO не удалось очистить корзину в Api 
+                this.$store.dispatch('basketClear');
+            },
         },
         created() {
             this.notAvailableTitle;
