@@ -11,17 +11,17 @@
                 </svg>
 			</div>
             
-            <input 
-                v-if="allowNull === false" 
-                type="number" 
-                class="add-to-cart__amount-input" 
-                @change="changeVal($event.target.value)" 
-                :value="amount"
-            > 
-            <span v-else class="add-to-cart__amount">
-                <span v-if="text">{{ text }}</span>
-                <template>{{ amount }} шт.</template>
-            </span>
+            <div class="add-to-cart__input">
+                <div v-if="text">{{ text }}</div>
+                <div class="add-to-cart__amount-input">
+                    <input 
+                        type="number"
+                        @change="changeVal($event.target.value)" 
+                        v-model="amount"
+                    > 
+                    <span class="add-to-cart__amount">&nbsp;шт.</span>
+                </div>
+            </div>
             
 			<div
 				class="add-to-cart__button add-to-cart__button_increase"
