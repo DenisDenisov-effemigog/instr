@@ -43,22 +43,34 @@
         & svg
             fill: $icon-white
 
-    &__amount
+    &__input
         display: flex
         flex-direction: column
         justify-content: center
         text-align: center
         font-size: $font-size_3
-        width: 3.25rem
-        +desktop
-            width: 5.0625rem
+        // width: 3.25rem
+        // +desktop
+        //     width: 5.0625rem
+
+    &__amount
+        // display: flex
+        // flex-direction: column
+        // justify-content: center
+        // text-align: center
+        // font-size: $font-size_3
+        // width: 3.25rem
+        // +desktop
+        //     width: 5.0625rem
+        width: 50%
+        text-align: start
 
     &__amount-input
-        @extend .add-to-cart__amount
-        background: $white
-        width: 3.25rem
-        +desktop
-            width: 5.0625rem
+        display: flex
+        input
+            width: 50%
+            font-size: $font-size_3
+            text-align: end
 
     &__add
         @extend .button
