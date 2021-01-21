@@ -10,21 +10,21 @@
                     <li class="cart-order__item">
                         <div class="cart-order__text">Цена без скидки</div>
                         <div class="cart-order__price">
-                            {{ productsPrice }}
+                            {{ currency(productsPrice) }}
                             <span>₽</span>
                         </div>
                     </li>
                     <li class="cart-order__item" v-for="item in cartOrderArr">
                         <div class="cart-order__text">{{item.text}}</div>
                         <div class="cart-order__price" :class="{'cart-order__price--green' :item.discount}">
-                            {{item.price}}
+                            {{ currency(item.price) }}
                             <span>₽</span>
                         </div>
                     </li>
                     <li class="cart-order__item cart-order__item--total">
                         <div class="cart-order__text cart-order__text--total">Ваша цена</div>
                         <div class="cart-order__total-price">
-                            {{getTotalPrice}}
+                            {{ currency(getTotalPrice) }}
                             <span>₽</span>
                             </div>
                     </li>
@@ -34,7 +34,8 @@
                 *Здесь может находиться какой нибудь поясняющий текст или предупреждающий.
             </div>
             <div class="cart-order__btn-wrap" :class="{'cart-order__btn-wrap--fixed': fixedFlag}">
-                <div class="cart-order__btn">Оформить заказ</div>
+                <!-- TODO добавить ссылку на чекаут -->
+                <a href="#checkout" class="cart-order__btn">Оформить заказ</a>
             </div>
         </div>
     </div>
@@ -80,10 +81,6 @@ export default {
                 return vm.productsPrice
             } else{
                 let totalPrice = vm.productsPrice - vm.cartOrderArr[0].price + vm.cartOrderArr[1].price + vm.cartOrderArr[2].price
-                
-                if(String(totalPrice).length > 3){
-                    totalPrice = String(totalPrice)[0] + ' ' + String(totalPrice).slice(1, String(totalPrice).length)
-                }/*TODO починить для тысячных больше 10*/
                 return totalPrice
             }
             

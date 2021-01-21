@@ -40,8 +40,8 @@
                         :currentPrice="productsPrice"
                     ></cart-order-head>
                     
-                    <div class="cart__purchases" :class="{'cart__purchases--table': view === 'table_cards'}">
-                        <div class="table-header" v-if="view === 'table_cards'">
+                    <div class="cart__purchases" :class="{'cart__purchases--table': changedView === 'table_cards'}">
+                        <div class="table-header" v-if="changedView === 'table_cards'">
                             <div class="table-header__code">Артикул</div>
                             <div class="table-header__dscr">Название</div>
                             <div class="table-header__qnty">Кол-во</div>
@@ -58,9 +58,9 @@
                                 :view="changedView"
                             ></cart-card>
                         </div>
-                        <div class="cart__purchases-out-of-stock" v-if="notAvailable">
+                        <div class="cart__purchases-out-of-stock" v-if="notAvailable.length > 0">
                             <div class="cart__title cart__title--out-of-stock">Нет в наличии</div>
-                            <div class="table-header" v-if="view === 'table_cards'">
+                            <div class="table-header" v-if="changedView === 'table_cards'">
                                 <div class="table-header__code">Артикул</div>
                                 <div class="table-header__dscr">Название</div>
                             </div>
@@ -109,14 +109,15 @@ import CartCard from './cart-card.vue'
             return{
                 table: false,
                 changedView: this.view,
-                notAvailable: false
+                notAvailable: []
             }
         },
         computed: {
             products() {
+                this.notAvailable = [];
                 return this.$store.state.basket.products.filter((product) => {
-                    if (product.available) {
-                        this.notAvailable = true
+                    if (!product.available && product.basket_quantity) {
+                        this.notAvailable.push(product.basket_quantity)
                     }
                     return product.basket_quantity > 0;
                 });
