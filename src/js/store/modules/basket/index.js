@@ -115,6 +115,19 @@ const actions = {
         api.clearBasket().then(() => {
             commit(types.BASKET_APPLY_PRODUCTS, []);
         });
+    },
+
+    searchItem: ({commit, dispatch, state}, arr) => {
+        return new Promise((resolve, reject) => {
+            api.searchItem(arr).then(
+                (data) => {
+                    // debugger;
+                    dispatch('basketApplyResponseProducts', data);
+                    resolve();
+                },
+                () => reject()
+            );
+        });
     }
 }
 

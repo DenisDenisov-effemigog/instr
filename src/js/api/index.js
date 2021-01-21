@@ -78,6 +78,11 @@ class Api {
     clearBasket() {
         return this._promiseBitrixRequest('instrum:main.api.basket.clear');
     }
+    searchItem(arr) {
+        return this._promiseBitrixRequest('instrum:main.api.basket.searchItem',
+            {arr: arr}
+    );
+    }
     /*personalProfileSummary() {
         return this._promiseBitrixRequest('instrum:main.api.user.get', {});
     }*/
