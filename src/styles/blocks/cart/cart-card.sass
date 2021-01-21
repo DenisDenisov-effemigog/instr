@@ -128,12 +128,15 @@
         +tablet
             align-items: flex-end
         & .add-to-cart
+            @extend .subtitle-2
             margin-right: 0
         & .add-to-cart__in-cart,
         & .add-to-cart__add
             width: 9.0625rem
             +desktop
                 width: 10rem
+        & input
+            @extend .subtitle-2
 
     &__price-per-one
         @extend .text-3
