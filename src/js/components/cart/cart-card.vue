@@ -57,7 +57,7 @@
                                 :productId="product.id"
                                 :max-amount="product.stock"
                                 :isCart="true">
-                    </component> <!--TODO передать параметр чтобы сделать кнопку не активной + сделать кнопку не активной в компоненте по условию-->
+                    </component>
                     <div class="cart-card__price-per-one">{{ product.price }}&nbsp;&#8381;&nbsp;/&nbsp;шт.</div>
                 </div>
                 <div class="cart-card__delete" @click="removeItem">
@@ -176,7 +176,7 @@
                 // }
             },
             clearItem(productId) {
-                // TODO не получилось создать удаление товара
+                this.deleteItem = false;
                 this.$store.dispatch('basketSetQuantity', {
                     productId: productId,
                     quantity: 0

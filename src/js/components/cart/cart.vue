@@ -143,8 +143,7 @@ import CartCard from './cart-card.vue'
                     this.table = false
                 }
             },
-            clearCart() {
-                // TODO не удалось очистить корзину в Api 
+            clearCart() { 
                 this.$store.dispatch('basketClear');
             },
             changeView(){

@@ -462,6 +462,17 @@ window.runAction = function (action, config) {
     return new Promise((resolve, reject) => {
         //debugger;
         switch (action) {
+            case 'instrum:main.api.basket.clear':
+                demoMockupBasket = [];
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                            answer: demoCloneOverJson(demoMockupBasket)
+                        }
+                    }
+                });
+                break;
             case 'instrum:main.api.basket.get':
                 resolve({
                     data: {
