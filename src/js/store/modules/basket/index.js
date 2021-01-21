@@ -5,7 +5,8 @@ let api = Api.getInstance();
 
 const state = {
     products: [],
-    loaded: false
+    loaded: false,
+    view_mode: 'horiz_cards'
 };
 
 const mutations = {
@@ -13,9 +14,15 @@ const mutations = {
         state.products = data;
         state.loaded = true;
     },
+    [types.CART_APPLY_VIEW_MODE](state, newMode) {
+        state.view_mode = newMode;
+    }
 };
 
 const actions = {
+    cartSetViewMode({commit}, newMode) {
+        commit(types.CART_APPLY_VIEW_MODE, newMode);
+    },
     
     basketApplyResponseProducts: ({commit, dispatch}, data) => {
         //debugger;

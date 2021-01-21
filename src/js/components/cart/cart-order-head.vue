@@ -30,7 +30,7 @@ export default {
     name:"cart-order-head",
     data(){
         return{
-            rightPrice: 7500, /*вывести из базы*/
+            rightPrice: 7500, /*TODO вывести из базы ???*/
             progress: 0,
             progressText: 'Внимание! Добавьте товар на сумму '+this.getPrice+' ₽, чтобы доставка стала бесплатной',
             progressIcon: 'icons__cube',

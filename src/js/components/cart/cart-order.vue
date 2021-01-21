@@ -83,7 +83,7 @@ export default {
                 
                 if(String(totalPrice).length > 3){
                     totalPrice = String(totalPrice)[0] + ' ' + String(totalPrice).slice(1, String(totalPrice).length)
-                }
+                }/*TODO починить для тысячных больше 10*/
                 return totalPrice
             }
             

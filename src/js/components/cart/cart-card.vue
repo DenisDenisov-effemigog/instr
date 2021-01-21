@@ -2,9 +2,9 @@
     <div class="cart-card"
          :class="{'cart-card--out-of-stock': !product.available,
                    'cart-card--deleted': deleteItem,
-                   'cart-card--table': table}"
+                   'cart-card--table': view === 'table_cards'}"
     >
-        <div class="cart-card__header" v-if="!table && !deleteItem">
+        <div class="cart-card__header" v-if="view === 'horiz_cards' && !deleteItem">
             <div class="cart-card__stickers cart-card__stickers--mobile" v-if="product.available">
                 <div class="cart-card__stickers-wrap">
                     <div
@@ -21,7 +21,7 @@
             </div>
         </div>
 
-        <div class="cart-card__species" v-if="!table && !deleteItem">
+        <div class="cart-card__species" v-if="view === 'horiz_cards' && !deleteItem">
             <div class="cart-card__code">Артикул: {{ product.sku }}</div>
 
             <div class="cart-card__block">
@@ -67,7 +67,7 @@
             </div>
         </div>
 
-        <div class="cart-card__block" v-else-if="!table && deleteItem">
+        <div class="cart-card__block" v-else-if="view === 'horiz_cards' && deleteItem">
             <div class="table-header__dscr">
                 <a :href="product.link" class="cart-card__name"
                     :class="{'cart-card__name--prompt': prompt}"
@@ -91,7 +91,7 @@
             </div>
         </div>
 
-        <div class="cart-card__block" v-else-if="table">
+        <div class="cart-card__block" v-else-if="view === 'table_cards'">
             <div class="table-header__code">{{ product.sku }}</div>
             <div class="table-header__dscr">
                 <a :href="product.url" class="cart-card__name">
@@ -143,8 +143,8 @@
                 type: Object,
                 required: true,
             },
-            table: {
-                type: Boolean,
+            view: {
+                type: String,
                 required: true,
             }
         },
