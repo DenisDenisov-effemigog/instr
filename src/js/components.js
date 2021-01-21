@@ -82,6 +82,7 @@ import cartOrderHead from './components/cart/cart-order-head.vue';
 import cartSearch from './components/cart/cart-search.vue';
 /*checkout*/
 import checkout from './components/checkout/checkout.vue'
+import checkoutReg from './components/checkout/checkout-reg.vue'
 
 export default {
     components: {
@@ -159,5 +160,6 @@ export default {
         cartOrder,
         cartOrderHead,
         checkout,
+        checkoutReg
     },
 }
