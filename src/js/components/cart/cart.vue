@@ -17,7 +17,7 @@
                         <div class="cart__title">Корзина</div>
                         <div class="cart__header-layout">
                             <div class="cart__view-switcher">
-                                <label name="mode" class="cart__view-switch">
+                                <label name="mode" class="cart__view-switch" @click="changeView()">
                                     <input
                                         class="cart__view-switch-input"
                                         type="checkbox"
@@ -37,11 +37,11 @@
                     </div>
                     <cart-order-head 
                         :mobileFlag="true"
-                        :currentPrice=6920
+                        :currentPrice="productsPrice"
                     ></cart-order-head>
                     
-                    <div class="cart__purchases" :class="{'cart__purchases--table': table}">
-                        <div class="table-header" v-if="table">
+                    <div class="cart__purchases" :class="{'cart__purchases--table': view === 'table_cards'}">
+                        <div class="table-header" v-if="view === 'table_cards'">
                             <div class="table-header__code">Артикул</div>
                             <div class="table-header__dscr">Название</div>
                             <div class="table-header__qnty">Кол-во</div>
@@ -55,12 +55,12 @@
                                 v-for="product in products"
                                 v-if="product.available"
                                 :product="product"
-                                :table="table"
+                                :view="changedView"
                             ></cart-card>
                         </div>
                         <div class="cart__purchases-out-of-stock" v-if="notAvailable">
                             <div class="cart__title cart__title--out-of-stock">Нет в наличии</div>
-                            <div class="table-header" v-if="table">
+                            <div class="table-header" v-if="view === 'table_cards'">
                                 <div class="table-header__code">Артикул</div>
                                 <div class="table-header__dscr">Название</div>
                             </div>
@@ -69,7 +69,7 @@
                                     v-for="product in products"
                                     v-if="!product.available"
                                     :product="product"
-                                    :table="table"
+                                    :view="changedView"
                                 ></cart-card>
                             </div>
                         </div>
@@ -99,9 +99,16 @@ import CartCard from './cart-card.vue'
             CartOrderHead,
             CartCard 
         },
+        props: {
+            view:{
+                type: String,
+                required: true,
+            }  
+        },
         data(){
             return{
                 table: false,
+                changedView: this.view,
                 notAvailable: false
             }
         },
@@ -140,9 +147,20 @@ import CartCard from './cart-card.vue'
                 // TODO не удалось очистить корзину в Api 
                 this.$store.dispatch('basketClear');
             },
+            changeView(){
+                if(this.table){
+                    this.changedView = 'horiz_cards'
+                } else {
+                    this.changedView = 'table_cards'
+                }
+                this.$store.dispatch('cartSetViewMode', this.changedView);
+            }
         },
         created() {
             window.addEventListener('resize', this.tableMode)
-        }
+        },
+        mounted() {
+            this.$store.dispatch('cartSetViewMode', this.view);
+        },
     }
 </script>

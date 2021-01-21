@@ -853,6 +853,8 @@
 
 {% set countries = ['Белоруссия','Болгария','Венгрия','Казахстан','Польша','Россия','Румыния','США','Украина'] %}
 
+{% set view_type = 'horiz_cards' %}
+
 {% set user = {
     'name' : 'Ivan',
     'last_name' : 'Sidorov',
@@ -879,6 +881,7 @@
     {% include '../../../templates/footer/footer.twig'  with {
         'countries': countries, 
         'user': user,
+        'view_type': view_type,
     } %}
     
 {% endblock %}

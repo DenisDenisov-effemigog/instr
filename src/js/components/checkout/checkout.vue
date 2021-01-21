@@ -18,9 +18,9 @@
                     </label>
                 </form>
             </div>
-            <div class="checkout__contnet">
-                <div v-show='value == "new"' class="checkout__option-one">
-                    Вариант 1
+            <div class="checkout__content">
+                <div v-show='value == "new"' class="checkout__desc">
+                    <checkout-reg></checkout-reg>
                 </div>
                 <div v-show='value == "experienced"' class="checkout__login">
                    <user-login></user-login>
@@ -34,12 +34,12 @@
 </template>
 
 <script>
-
     import cartOrder from '../cart/cart-order.vue'
-import UserLogin from '../header/header-modal/user-login.vue'
+    import UserLogin from '../header/header-modal/user-login.vue'
+import CheckoutReg from './checkout-reg.vue'
 
     export default {
-    components: { cartOrder, UserLogin },
+    components: { cartOrder, UserLogin, CheckoutReg },
         name: "checkout",
         data(){
             return {

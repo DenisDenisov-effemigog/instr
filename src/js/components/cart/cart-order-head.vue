@@ -1,20 +1,27 @@
 <template>
     <div class="cart-order__head" :class="{'cart-order__head--active': mobileFlag}">
-        <pre>{{getPercent}}</pre>
         <div class="cart-order__head-circle">
-            <svg viewBox="0 0 100 100" class="cart-order__head-shape">
-                <circle cx="50" cy="50" r="40" class="cart-order__head-circle--under"></circle>
-                <circle ref="circleAbove" cx="50" cy="50" r="40" stroke="#049004" transform="rotate(180 50 50)" class="cart-order__head-circle--above"></circle>
-            </svg>
-            <div class="cart-order__head-icon">
-                <svg>
-                    <use :xlink:href="templatePath + 'images/sprite.svg#icons__cube'"></use>
+            <vue-ellipse-progress
+                :progress="progressPrice"
+                :color="'#049004'"
+                empty-color="rgba(145, 148, 152, 0.16)"
+                :size="32"
+                :thickness="1"
+                :empty-thickness="1"
+                animation="default 700 1000"
+                fontSize="1.5rem"
+                :legend="false"
+                line="round"
+            >
+                <svg class="cart-order__head-icon"
+                     slot="legend-caption"
+                     :viewBox="progressIconSize"
+                >
+                    <use :xlink:href="templatePath + 'images/sprite.svg#' + progressIcon"></use>
                 </svg>
-            </div>
+            </vue-ellipse-progress>
         </div>
-        <div class="cart-order__head-text">
-            Внимание! Добавьте товар на сумму {{getPrice}} ₽, чтобы доставка стала бесплатной
-        </div>
+        <div class="cart-order__head-text">{{ progressText }}</div>
     </div>
 </template>
 
@@ -23,7 +30,11 @@ export default {
     name:"cart-order-head",
     data(){
         return{
-            rightPrice: 7500
+            rightPrice: 7500, /*TODO вывести из базы ???*/
+            progress: 0,
+            progressText: 'Внимание! Добавьте товар на сумму '+this.getPrice+' ₽, чтобы доставка стала бесплатной',
+            progressIcon: 'icons__cube',
+            progressIconSize: '0 0 24 24'
         }
     },
     props:{
@@ -33,23 +44,24 @@ export default {
         },
         currentPrice:{
             type: Number,
-
+            required: true
         }
     },
     computed:{
-        getPercent(){
-            setTimeout(() => {
-                let percentPrice =( this.currentPrice * 100) / this.rightPrice
-                const circle = this.$refs.circleAbove;
-                console.log(circle)
-                const dashArray = parseInt(
-                    getComputedStyle(circle).getPropertyValue("stroke-dasharray")
-                );
-                const percent = (dashArray / 100) * (100 - percentPrice);
-                return circle.style.strokeDashoffset = percent;
-                console.log(dashArray)
-                console.log(percent)
-            }, 1000);
+        progressPrice() {
+            if (this.currentPrice > 7500) {
+                this.progress = 100;
+                this.progressText = 'Ура! Теперь доставка для вас бесплатная.';
+                this.progressIcon = 'check';
+                this.progressIconSize = '-1 -2 12 12';
+            } else {
+                this.progress = this.currentPrice/7500*100;
+                this.progressText = 'Внимание! Добавьте товар на сумму '+this.getPrice+' ₽, чтобы доставка стала бесплатной';
+                this.progressIcon = 'icons__cube';
+                this.progressIconSize = '0 0 24 24';
+            }
+
+            return this.progress
         },
         getPrice(){
             return this.rightPrice - this.currentPrice

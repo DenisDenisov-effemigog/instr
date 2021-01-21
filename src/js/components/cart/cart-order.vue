@@ -1,7 +1,7 @@
 <template>
     <div class="cart-order">
         <cart-order-head
-            :currentPrice="cartOrderArr[0].price"
+            :currentPrice="productsPrice"
         ></cart-order-head>
         <div class="cart-order__content">
             <h2 class="cart-order__title">Корзина</h2>
@@ -83,7 +83,7 @@ export default {
                 
                 if(String(totalPrice).length > 3){
                     totalPrice = String(totalPrice)[0] + ' ' + String(totalPrice).slice(1, String(totalPrice).length)
-                }
+                }/*TODO починить для тысячных больше 10*/
                 return totalPrice
             }
             
