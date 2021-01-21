@@ -34,7 +34,8 @@
                 *Здесь может находиться какой нибудь поясняющий текст или предупреждающий.
             </div>
             <div class="cart-order__btn-wrap" :class="{'cart-order__btn-wrap--fixed': fixedFlag}">
-                <div class="cart-order__btn">Оформить заказ</div>
+                <!-- TODO добавить ссылку на чекаут -->
+                <a href="#checkout" class="cart-order__btn">Оформить заказ</a>
             </div>
         </div>
     </div>
