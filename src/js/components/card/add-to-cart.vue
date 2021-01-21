@@ -2,7 +2,7 @@
     <div class="add-to-cart" :class="{'add-to-cart--big': size==='big'}">
         <div class="add-to-cart__in-cart" v-if="amount > 0 && !disabled">
 			<div
-				class="add-to-cart__button add-to-cart__button_decrease"
+				class="add-to-cart__button add-to-cart__button--decrease"
 				:disabled="decreaseDisabled"
 				@click="decrease"
 			>
@@ -17,14 +17,14 @@
                     <input 
                         type="number"
                         @change="changeVal($event.target.value)" 
-                        v-model="amount"
+                        :value="amount"
                     > 
                     <span class="add-to-cart__amount">&nbsp;шт.</span>
                 </div>
             </div>
             
 			<div
-				class="add-to-cart__button add-to-cart__button_increase"
+				class="add-to-cart__button add-to-cart__button--increase"
 				:disabled="increaseDisabled"
 				@click="increase"
 			>
@@ -67,10 +67,11 @@
                 required: false,
                 default: 100
             },
-            allowNull:{
+            // принимаем значение из корзины, чтобы задизейблить минус
+            isCart:{
                 type:Boolean,
                 required: false,
-                default: true
+                default: false
             },
             changeIcon: {
                 type: Boolean,
@@ -118,7 +119,7 @@
                 return this.amount <= this.allowedDecreaseAmount;
             },
             allowedDecreaseAmount() {
-                return this.allowNull ? 0 : 1;
+                return this.isCart ? 1 : 0;
             },
         },
         watch: {
@@ -193,17 +194,16 @@
             changeVal(e){
                 this.amount = Number(e)
                 if (this.amount <= this.maxAmount && this.amount >= this.allowedDecreaseAmount){
-                    return
+                    this.amount = Number(e)
                 }else{
                     if (this.amount >= this.maxAmount){
                         this.amount = this.maxAmount
-                        return
                     }
                     if (this.amount <= this.allowedDecreaseAmount){
                         this.amount = this.allowedDecreaseAmount
-                        return
                     }
                 }
+                this.startSetAmount()
             },
             mobileScroll(){
                 if(window.innerWidth < 768) {

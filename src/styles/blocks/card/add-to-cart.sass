@@ -7,6 +7,7 @@
             height: 100%
         & .add-to-cart__in-cart
             border: 1px solid #e5e5e5
+            border-radius: $border-radius
             height: 3.5rem
         &  .add-to-cart__add
             padding: 1.125rem 2.125rem
@@ -25,24 +26,21 @@
         @extend .button
         width: 2rem
         height: 2rem
-        background: $primary-red
         flex-shrink: 0
-        &:hover
-            background: $primary-hover
-        &_decrease
-            border-top-right-radius: 0
-            border-bottom-right-radius: 0
+        &--decrease
+            border-radius: $border-radius 0 0 $border-radius !important
             & svg
                 width: $size_16
                 height: 2px
-        &_increase
-            border-top-left-radius: 0
-            border-bottom-left-radius: 0
+        &--increase
+            border-radius: 0 $border-radius $border-radius 0 !important
             & svg
                 width: $size_24
                 height: $size_24
         & svg
             fill: $icon-white
+        &[disabled]
+            @extend .button--disabled
 
     &__input
         +flex-container-center

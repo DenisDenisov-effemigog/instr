@@ -55,7 +55,8 @@
                 <div class="cart-card__button-block" v-if="product.available">
                     <component is="add-to-cart"
                                 :productId="product.id"
-                                :max-amount="product.stock">
+                                :max-amount="product.stock"
+                                :isCart="true">
                     </component> <!--TODO передать параметр чтобы сделать кнопку не активной + сделать кнопку не активной в компоненте по условию-->
                     <div class="cart-card__price-per-one">{{ product.price }}&nbsp;&#8381;&nbsp;/&nbsp;шт.</div>
                 </div>
