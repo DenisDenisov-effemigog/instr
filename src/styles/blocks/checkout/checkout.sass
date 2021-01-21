@@ -27,6 +27,26 @@
         margin-top: 2rem
         +tablet
             margin-top: 2.5rem
+            max-width: 43.5rem
+            margin-right: 1.5rem
+    &__tabs
+        display: flex
+        text-align: center
+    &__tab
+        padding-bottom: 0.625rem
+        width: 50%
+        @extend .text-5
+        border-bottom: 2px solid $pre-white
+        font-weight: 600
+        color: $light-grey
+        +tablet
+            cursor: pointer
+            &:hover
+                color: $black
+        &--active
+            color: $primary-red
+            border-color: $primary-red
+
 
 .checkout-choice
     padding-top: 2rem

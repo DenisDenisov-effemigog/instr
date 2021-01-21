@@ -1,15 +1,5 @@
 <template>
     <div class="checkout-reg">
-        <div class="checkout-reg__tabs">
-            <div class="checkout-reg__tab"
-                :class="{'checkout-reg__tab--active': currentTab == 'individual'}"
-                @click="showTab('individual')"
-            >Физическое лицо</div>
-            <div class="checkout-reg__tab"
-                :class="{'checkout-reg__tab--active': currentTab == 'corporate'}"
-                @click="showTab('corporate')"
-            >Юридическое лицо</div>
-        </div>
         <div class="checkout-reg__content">
             <form class="checkout-reg__form">
                 <label name="name" class="checkout-reg__label">
@@ -181,10 +171,18 @@ export default {
             email
         }
     },
+    props:{
+        currentTab:{
+            type:String,
+            required: true
+        },
+        IndividualFlag:{
+            type:Boolean,
+            required: true
+        }
+    },
     data(){
         return{
-            IndividualFlag: false,
-            currentTab: "corporate",
             name: '',
             company: '',
             code: '',
@@ -193,16 +191,7 @@ export default {
         }
     },
     methods:{
-        showTab(code) {
-            if (this.currentTab !== code) {
-                this.currentTab = code;
-                if(code == "corporate"){
-                    this.IndividualFlag = false
-                }else{
-                    this.IndividualFlag = true
-                }
-            }
-        },
+        
     }
     
 }

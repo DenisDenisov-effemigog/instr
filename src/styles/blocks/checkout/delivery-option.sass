@@ -1,0 +1,66 @@
+.delivery-option
+    display: flex
+    flex-direction: column
+    +tablet
+        flex-direction: row
+        flex-wrap: wrap
+        justify-content: space-between
+    &__wrap
+        margin-top: 1.5rem
+        padding: 1rem
+        padding-top: 2rem
+        border: 1px solid $border-color
+        border-radius: $border-radius
+        display: flex
+        flex-wrap: wrap
+        position: relative
+        +tablet
+            cursor: pointer
+            width: calc(100% / 2 - 12px)
+        &--active
+            border-color: $primary-red
+            .delivery-option__sale
+                display: block
+    &__wrap-delivery
+        order: 1
+    &__wrap-receive
+        order: 3
+        +tablet
+            order: 2
+    &__sale
+        display: none
+        @extend .text-3
+        position: absolute
+        top: -1px
+        right: -1px
+        font-weight: 600
+        color: $white
+        padding: 0.25rem 0.625rem
+        background: $primary-red
+        border-radius: $border-radius
+        max-width: 5.8125rem
+    &__title
+        @extend .text-1
+        font-weight: 700
+        width: 100%
+    &__text
+        @extend .text-2
+        font-weight: 400
+        color: $grey
+        padding-top: 0.5rem
+        width: 100%
+    &__date
+        @extend .text-3
+        font-weight: 400
+        width: 50%
+        padding-top: 0.5rem
+    &__price
+        @extend .text-2
+        font-weight: 700
+        width: 50%
+        padding-top: 0.5rem
+        text-align: right
+        &--green
+            color: $green
+
+     

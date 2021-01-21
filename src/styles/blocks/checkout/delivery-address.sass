@@ -1,0 +1,18 @@
+.delivery-address
+    padding-top: 1rem
+    order: 2
+    width: 100%
+    +tablet
+        order: 3
+    &__form
+        +tablet
+            display: flex
+            justify-content: space-between
+            flex-wrap: wrap
+            & .custom__label
+                width: calc(100% / 2 - 12px)
+            & .custom__label:nth-child(1)
+                width: 100%
+            & .custom__label:nth-child(2)
+                width: 100%
+            
