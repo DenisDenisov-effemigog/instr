@@ -21,74 +21,76 @@
             </div>
         </div>
 
-        <div class="cart-card__species" v-if="view === 'horiz_cards' && !deleteItem">
-            <div class="cart-card__code">Артикул: {{ product.sku }}</div>
+        <div class="cart-card__species" v-if="view === 'horiz_cards'">
+            <div class="cart-card__code" v-if="!deleteItem">Артикул: {{ product.sku }}</div>
 
             <div class="cart-card__block">
-                <div class="cart-card__description">
-                    <a :href="product.url" class="cart-card__name">
-                        {{ product.name }}
-                    </a>
-                    <div class="cart-card__stickers" v-if="product.available">
-                        <div class="cart-card__stickers-wrap">
-                            <div
-                                class="cart-card__stickers-sticker"
-                                v-for="tooltip in product.tooltips"
-                                :class="'cart-card__stickers-sticker--' + tooltip.status"
-                            >
-                                <span>{{ tooltip.title }}</span>
+                <div class="cart-card__block" v-if="!deleteItem">
+                    <div class="cart-card__description">
+                        <a :href="product.url" class="cart-card__name">
+                            {{ product.name }}
+                        </a>
+                        <div class="cart-card__stickers" v-if="product.available">
+                            <div class="cart-card__stickers-wrap">
+                                <div
+                                    class="cart-card__stickers-sticker"
+                                    v-for="tooltip in product.tooltips"
+                                    :class="'cart-card__stickers-sticker--' + tooltip.status"
+                                >
+                                    <span>{{ tooltip.title }}</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="cart-card__price-block" v-if="product.available">
-                    <div class="cart-card__current-price">
-                        {{ currency(product.price * amount) }}&nbsp;&#8381;
-                    </div>
-                    <div class="cart-card__old-price-element">
-                        <div class="cart-card__old-price">
-                            {{ currency(product.price*amount/(100-product.discount)*100) }}&nbsp;&#8381;
+                    <div class="cart-card__price-block" v-if="product.available">
+                        <div class="cart-card__current-price">
+                            {{ currency(product.price * amount) }}&nbsp;&#8381;
                         </div>
-                        <div class="cart-card__discount">{{ product.discount }}%</div>
+                        <div class="cart-card__old-price-element">
+                            <div class="cart-card__old-price">
+                                {{ currency(product.price*amount/(100-product.discount)*100) }}&nbsp;&#8381;
+                            </div>
+                            <div class="cart-card__discount">{{ product.discount }}%</div>
+                        </div>
+                    </div>
+                    <div class="cart-card__button-block" v-if="product.available">
+                        <component is="add-to-cart"
+                                    :productId="product.id"
+                                    :max-amount="product.stock"
+                                    :isCart="true">
+                        </component>
+                        <div class="cart-card__price-per-one">{{ product.price }}&nbsp;&#8381;&nbsp;/&nbsp;шт.</div>
+                    </div>
+
+                </div>
+
+                <div class="cart-card__block" v-else>
+                    <div class="table-header__dscr">
+                        <a :href="product.link" class="cart-card__name"
+                            :class="{'cart-card__name--prompt': prompt}"
+                            ref="textBlock"
+                        >
+                            <span class="cart-card__name-message">Удален: </span>
+                            <span class="cart-card__name-title" ref="textSpan">{{ product.name }}</span>
+                            <span class="cart-card__name-dots">...</span>
+                        </a>
+                    </div>
+                    <div class="cart-card__in-favorite" @click="toFav">Добавить&nbsp;в&nbsp;избранное</div>
+                    <div class="cart-card__cancel-delete"
+                        :class="{'cart-card__cancel-delete--out-of-stock': !product.available}"
+                        @click="deleteItem = false">
+                        Отменить
                     </div>
                 </div>
-                <div class="cart-card__button-block" v-if="product.available">
-                    <component is="add-to-cart"
-                                :productId="product.id"
-                                :max-amount="product.stock"
-                                :isCart="true">
-                    </component>
-                    <div class="cart-card__price-per-one">{{ product.price }}&nbsp;&#8381;&nbsp;/&nbsp;шт.</div>
-                </div>
+
                 <div class="cart-card__delete" @click="removeItem">
-                    <svg viewBox="1 1 16 18">
+                    <svg v-if="deleteItem" @click="clearItem(product.id)">
+                        <use :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
+                    </svg>
+                    <svg viewBox="1 1 16 18" v-else @click="removeItem">
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__delete'"></use>
                     </svg>
                 </div>
-            </div>
-        </div>
-
-        <div class="cart-card__block" v-else-if="view === 'horiz_cards' && deleteItem">
-            <div class="table-header__dscr">
-                <a :href="product.link" class="cart-card__name"
-                    :class="{'cart-card__name--prompt': prompt}"
-                    ref="textBlock"
-                >
-                    <span class="cart-card__name-message">Удален: </span>
-                    <span class="cart-card__name-title" ref="textSpan">{{ product.name }}</span>
-                    <span class="cart-card__name-dots">...</span>
-                </a>
-            </div>
-            <div class="cart-card__in-favorite" @click="toFav">Добавить&nbsp;в&nbsp;избранное</div>
-            <div class="cart-card__cancel-delete"
-                :class="{'cart-card__cancel-delete--out-of-stock': !product.available}"
-                @click="deleteItem = false">
-                Отменить
-            </div>
-            <div class="cart-card__delete" @click="clearItem(product.id)">
-                <svg>
-                    <use :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
-                </svg>
             </div>
         </div>
 
