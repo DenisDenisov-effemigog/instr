@@ -37,6 +37,8 @@
         margin: 1.5rem 0 .5rem 0
         +desktop
             margin: 2.25rem 1.5rem 2rem 0
+        &--empty
+            margin-bottom: 0
     &__header-layout
         display: flex
 
@@ -76,6 +78,7 @@
     &__clear-btn
         @extend .link-blue
         @extend .subtitle-2
+        line-height: 1.4375rem
         & svg
             fill: $blue
             width: $size_16

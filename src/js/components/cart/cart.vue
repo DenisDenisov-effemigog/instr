@@ -2,7 +2,7 @@
     <section class="cart">
         <div class="cart__content" v-if="products.length == 0">
             <div class="cart__purchases-wrapper">
-                <div class="cart__header">
+                <div class="cart__header cart__header--empty">
                     <div class="cart__title">Корзина пуста</div>
                 </div>
                 <div class="cart__purchases">

@@ -83,7 +83,7 @@
             <div class="cart-card__cancel-delete"
                 :class="{'cart-card__cancel-delete--out-of-stock': !product.available}"
                 @click="deleteItem = false">
-                <span v-if="product.available">Отменить</span>
+                Отменить
             </div>
             <div class="cart-card__delete" @click="clearItem(product.id)">
                 <svg>
@@ -121,7 +121,7 @@
                 <span v-if="!deleteItem">{{ currency(product.price * amount) }}&nbsp;&#8381;</span>
                 <span class="cart-card__cancel-delete"
                     @click="deleteItem = false"
-                    v-else-if="product.available"
+                    v-else
                 >Отменить</span>
             </div>
             <div class="cart-card__delete">
