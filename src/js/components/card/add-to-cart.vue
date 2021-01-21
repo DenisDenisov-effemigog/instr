@@ -12,7 +12,7 @@
 			</div>
             
             <div class="add-to-cart__input">
-                <div v-if="text">{{ text }}</div>
+                <div class="add-to-cart__input-text" v-if="text">{{ text }}</div>
                 <div class="add-to-cart__amount-input">
                     <input 
                         type="number"
