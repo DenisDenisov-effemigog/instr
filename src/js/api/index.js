@@ -75,9 +75,13 @@ class Api {
             quantity: quantity
         });
     }
-    // TODO не работает очистка корзины
     clearBasket() {
         return this._promiseBitrixRequest('instrum:main.api.basket.clear');
+    }
+    searchItem(arr) {
+        return this._promiseBitrixRequest('instrum:main.api.basket.searchItem',
+            {arr: arr}
+    );
     }
     /*personalProfileSummary() {
         return this._promiseBitrixRequest('instrum:main.api.user.get', {});

@@ -82,8 +82,6 @@ const actions = {
         });
     },
 
-    // TODO не работает удаление товара из корзины
-
     basketSetQuantity: ({commit, dispatch, state}, params) => {
 
         let productFound = false;
@@ -113,11 +111,22 @@ const actions = {
         commit(types.BASKET_APPLY_PRODUCTS, existingProducts);
     },
 
-    // TODO не работает очистка корзины
-
     basketClear: ({commit, state}) => {
         api.clearBasket().then(() => {
             commit(types.BASKET_APPLY_PRODUCTS, []);
+        });
+    },
+
+    searchItem: ({commit, dispatch, state}, arr) => {
+        return new Promise((resolve, reject) => {
+            api.searchItem(arr).then(
+                (data) => {
+                    // debugger;
+                    dispatch('basketApplyResponseProducts', data);
+                    resolve();
+                },
+                () => reject()
+            );
         });
     }
 }
