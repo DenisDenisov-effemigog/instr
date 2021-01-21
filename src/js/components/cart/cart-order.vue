@@ -1,7 +1,7 @@
 <template>
     <div class="cart-order">
         <cart-order-head
-            :currentPrice="cartOrderArr[0].price"
+            :currentPrice="productsPrice"
         ></cart-order-head>
         <div class="cart-order__content">
             <h2 class="cart-order__title">Корзина</h2>
