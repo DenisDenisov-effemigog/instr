@@ -47,9 +47,7 @@
             </div>
         </div>
         <div class="checkout__order">
-            <cart-order
-                :productsPrice=2600
-            ></cart-order>
+            <cart-order :productsPrice="productsPrice" :place="'checkout'"></cart-order>
         </div>
     </div>
 </template>
@@ -61,7 +59,7 @@
     import CheckoutReg from './checkout-reg.vue'
 import DeliveryComment from './delivery-comment.vue'
     import DeliveryDate from './delivery-date.vue'
-import DeliveryPayment from './delivery-payment.vue'
+    import DeliveryPayment from './delivery-payment.vue'
 
     export default {
         components: { cartOrder, UserLogin, CheckoutReg, CheckoutDelivery, DeliveryDate, DeliveryPayment, DeliveryComment },
@@ -73,6 +71,12 @@ import DeliveryPayment from './delivery-payment.vue'
                 IndividualFlag: false,
                 currentTab: "corporate",
             }
+        },
+        computed: {
+            productsPrice() {
+                const basketData = this.$store.getters.basketProductsSummary;
+                return parseFloat((basketData.price).toFixed(3));
+            },
         },
         methods:{
             showTab(code) {
