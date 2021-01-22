@@ -89,6 +89,7 @@ import checkoutDelivery from './components/checkout/checkout-delivery.vue'
 import deliveryOption from './components/checkout/delivery-option.vue'
 import deliveryAddress from './components/checkout/delivery-address.vue'
 import deliveryDate from './components/checkout/delivery-date.vue'
+import deliveryComment from './components/checkout/delivery-comment.vue'
 import receiveAddress from './components/checkout/receive-address.vue'
 
 export default {
@@ -174,6 +175,7 @@ export default {
         addAddressBtn,
         customInput,
         receiveAddress,
-        deliveryDate
+        deliveryDate,
+        deliveryComment
     },
 }

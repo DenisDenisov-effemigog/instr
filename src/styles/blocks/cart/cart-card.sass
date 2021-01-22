@@ -46,6 +46,7 @@
 
     &__name
         @extend .text-2
+        position: relative
         color: $black
         max-width: 32.625rem
         height: 2.5rem
@@ -60,18 +61,16 @@
             color: $black
             text-decoration: underline
 
-    &__name-dots
-        position: absolute
-        top: 1.25rem
-        right: 0
-        background-color: $white
-        +tablet
-            top: 0
-
     &__name-message
         color: $light-grey
         +tablet
             display: none
+
+    &__name-tooltip
+        @extend .tooltip
+        width: 100%
+        max-width: 15rem
+        top: 2rem
 
     &__stickers
         +stickers
@@ -182,8 +181,6 @@
         .table-header__code,
         .table-header__dscr
             opacity: .6
-        .table-header__code
-            width: 5.25%
         .table-header__dscr
             width: 100%
             margin-right: 0
@@ -215,6 +212,7 @@
         .cart-card__block div
             height: 1.25rem
         .cart-card__name
+            display: block
             width: auto
             height: 1.25rem
             margin: 0
@@ -222,7 +220,10 @@
             text-overflow: ellipsis
             white-space: nowrap
         .table-header__dscr
-            overflow: hidden   
+            position: relative
+            &:hover
+                .cart-card__name-tooltip
+                    display: flex
         .table-header__new-price
             color: $green
     &--table.cart-card--deleted
@@ -238,6 +239,8 @@
             .table-header__dscr
                 width: 20.83%
                 margin-right: 2.5rem
+            .table-header__new-price
+                margin-right: 0
             div
                 +flex-container-center
             .cart-card__in-favorite,
@@ -257,7 +260,7 @@
                 height: 1.5rem
         .cart-card__block
             .cart-card__content
-                width: calc(100% - 1.5rem)
+                width: calc(100% - 5rem)
             .table-header__dscr
                 width: 100%
                 height: 2.5rem
@@ -278,8 +281,6 @@
                         white-space: nowrap
             .cart-card__in-favorite
                 margin-right: 2.5rem
-            .cart-card__cancel-delete
-                margin-right: 3.5rem
         .cart-card__name
             max-width: 100%
             height: 2.5rem
