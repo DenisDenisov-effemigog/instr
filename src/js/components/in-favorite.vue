@@ -4,16 +4,13 @@
         :class="{'in-favorite_active': inFavorite, 'in-favorite--mobile': mobile}"
         @click="inFavorite = !inFavorite"
     >
-        <!--<svg viewbox="0 0 18 15">
-            <use xlink:href="./images/sprite.svg#icons__heart"></use>
-        </svg>-->
         <svg v-if="!inFavorite" viewBox="0 0 18 16">
             <use :xlink:href="templatePath + 'images/sprite.svg#icons__heart'"></use>
         </svg>
         <svg v-else viewBox="0 0 18 16">
             <use :xlink:href="templatePath + 'images/sprite.svg#icons__heart-full'"></use>
         </svg>
-            <span v-if="text">В избранное</span>
+            <span v-if="text">{{ $tc('link.in_favorite') }}</span>
     </div>
 </template>
 

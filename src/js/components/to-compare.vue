@@ -4,13 +4,10 @@
         :class="{'to-compare_active': inCompare, 'to-compare--mobile': mobile}"
         @click="inCompare = !inCompare"
     >
-        <!-- <svg viewBox="0 0 18 15">
-            <use :xlink:href="templatePath + 'images/sprite.svg#icons__graf'"></use>
-        </svg> -->
         <svg viewBox="0 0 14 18">
             <use :xlink:href="templatePath + 'images/sprite.svg#icons__graph'"></use>
         </svg>
-        <span v-if="text">Сравнить</span>
+        <span v-if="text">{{ $tc('link.to_compare') }}</span>
     </div>
 </template>
 

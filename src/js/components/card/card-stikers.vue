@@ -21,7 +21,7 @@
         >
             <div>
                 <div>{{ tooltip.text }}</div>
-                <a :href="tooltip.link">Подробнее</a>
+                <a :href="tooltip.link">{{ $tc('link.details') }}</a>
             </div>
             <svg @click.stop="closeTooltip" viewBox="0 0 12 12">
                 <use :xlink:href="templatePath + 'images/sprite.svg#close'"></use>

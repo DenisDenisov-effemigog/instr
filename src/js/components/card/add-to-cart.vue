@@ -12,14 +12,14 @@
 			</div>
             
             <div class="add-to-cart__input">
-                <div class="add-to-cart__input-text" v-if="text">{{ text }}</div>
+                <div class="add-to-cart__input-text" v-if="text">{{ $tc(text) }}</div>
                 <div class="add-to-cart__amount-input">
                     <input 
                         type="number"
                         @change="changeVal($event.target.value)" 
                         :value="amount"
                     > 
-                    <span class="add-to-cart__amount">&nbsp;шт.</span>
+                    <span class="add-to-cart__amount">&nbsp;{{ $tc('input.text.count') }}</span>
                 </div>
             </div>
             

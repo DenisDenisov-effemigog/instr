@@ -7,7 +7,7 @@
             {{answer}}
         </div>
         <span class="product-tabs__text-prompt">
-            … <span @click="expanded = true">Читать полностью</span>
+            … <span @click="expanded = true">{{ $tc('product_card.link.read_all') }}</span>
         </span>
     </div>   
 </template>
