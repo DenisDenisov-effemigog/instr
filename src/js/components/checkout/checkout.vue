@@ -1,6 +1,23 @@
 <template>
     <div ref="checkout" class="checkout">
         <div class="checkout__main">
+            <h2 class="checkout__title">Ваш заказ принят</h2>
+            <div class="checkout-success">
+                <div class="checkout-success__text">
+                    Когда адрес пройдет верификацию, заказ будет подтвержден.
+                </div>
+                <div class="checkout-success__number">
+                    <span class="checkout-success__number-text">Номер заказа:</span>
+                    <span>123456789009876</span>
+                </div>
+                <div class="checkout-success__date">
+                    <span class="checkout-success__date-title">Дата:</span>
+                    <span>12.10.2020</span>
+                </div>
+                <div class="checkout-success__btn">
+                    Перейти в каталог
+                </div>
+            </div>
             <h2 v-show='value == "experienced"' class="checkout__title">Авторизация</h2>
             <h2 v-show='value == "new"' class="checkout__title">Оформление заказа</h2>
             <div class="checkout-choice">
@@ -42,7 +59,7 @@
                     <delivery-comment></delivery-comment>
                     <div class="checkout__btn-wrap">
                         <div class="checkout__btn">
-                            Оформить заказ
+                            Перейти к оплате
                         </div>
                     </div>
                     <div class="checkout__info">
@@ -60,7 +77,7 @@
                 :class="{'checkout__btn-wrap--fixed': fixedFlag}"
             >
                 <div class="checkout__btn">
-                    Оформить заказ
+                    Перейти к оплате
                 </div>
             </div>
         </div>
