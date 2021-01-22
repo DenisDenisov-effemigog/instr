@@ -95,13 +95,16 @@
 
         <div class="cart-card__block" v-else-if="view === 'table_cards'">
             <div class="table-header__code">{{ product.sku }}</div>
-            <div class="table-header__dscr">
-                <a :href="product.url" class="cart-card__name">
-                    {{ product.name }}<span class="cart-card__name-dots">...</span>
-                </a>
-            </div>
+            <a class="table-header__dscr">
+                <span :href="product.url" class="cart-card__name">
+                    {{ product.name }}
+                </span>
+                <span class="cart-card__name-tooltip">
+                    {{product.name}}
+                </span>
+            </a>
             <div class="table-header__qnty" v-if="product.available">
-                <span v-if="!deleteItem">{{ amount }}</span><!--TODO творится что-то странное-->
+                <span v-if="!deleteItem">{{ amount }}</span>
             </div>
             <div class="table-header__price" v-if="product.available">
                 <span v-if="!deleteItem">{{ product.price }}&nbsp;&#8381;&nbsp;/&nbsp;шт.</span>
@@ -158,7 +161,6 @@
         data() {
             return {
                 deleteItem: false,
-                prompt: false,
             }
         },
         computed: {
@@ -172,14 +174,6 @@
         methods: {
             removeItem() {
                 this.deleteItem = true;
-                // TODO не получилось добавить многотичие в тексте описания товара, если текст длиннее/шире блока 
-                // if (this.deleteItem) {
-                //     if (this.$refs.textSpan.offsetWidth > this.$refs.offsetWidth - 9) {
-                //         this.prompt = true;
-                //     } else {
-                //         this.prompt = false;
-                //     }
-                // }
             },
             clearItem(productId) { 
                 this.deleteItem = false;

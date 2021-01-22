@@ -141,7 +141,9 @@ import CartCard from './cart-card.vue'
         methods: {
             tableMode() {
                 if (window.innerWidth < 988) {
-                    this.table = false
+                    this.table = false;
+                    this.changedView = 'horiz_cards';
+                    this.$store.dispatch('cartSetViewMode', this.changedView);
                 }
             },
             clearCart() { 
