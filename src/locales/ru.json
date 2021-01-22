@@ -1,7 +1,9 @@
 {
-    "products": "0 товаров | {n} товар | {n} товара | {n} товаров",
-    "add_to_cart": "В корзину",
+    "orders_listing.items": "0 товаров | {n} товар | {n} товара | {n} товаров",
+    "button.add_to_cart.short": "В корзину",
+    "button.add_to_cart.long": "Добавить в корзину",
+    "input.text.in_cart": "В корзине",
     
-    "footer.purchase": "Пользовательское соглашение",
+    "footer.purchase.ff": "Пользовательское соглашение",
     "basket.clear": "Очистить корзину"
 }

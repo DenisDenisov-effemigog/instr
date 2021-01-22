@@ -46,7 +46,7 @@
                 <svg viewBox="-2 -1 12 12" v-else-if="amount > 0 && disabled">
                     <use :xlink:href="templatePath + 'images/sprite.svg#check'"></use>
                 </svg>
-              <template v-else>{{ buttonTitle }}</template>  
+              <template v-else>{{ $tc(buttonTitle) }}</template>  
             </div>
 		</div>
     </div>
@@ -84,7 +84,7 @@
             },
             buttonTitle: {
                 type: String,
-                default: 'В корзину',
+                default: 'button.add_to_cart.short',
                 required: false,
             },
             size: {
@@ -210,7 +210,7 @@
                     let windowPosition = window.pageYOffset
                     let orderPosition = this.productOrderPosition
                     if(windowPosition > orderPosition){
-                        this.$eventBus.$emit('openStickyButton', 'Добавить в корзину')
+                        this.$eventBus.$emit('openStickyButton', 'button.add_to_cart.long')
                     } else{
                         this.$eventBus.$emit('closeStickyButton')
                     }
