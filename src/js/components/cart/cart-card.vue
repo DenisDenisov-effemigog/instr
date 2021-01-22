@@ -83,7 +83,7 @@
                     </div>
                 </div>
 
-                <div class="cart-card__delete" @click="removeItem">
+                <div class="cart-card__delete">
                     <svg v-if="deleteItem" @click="clearItem(product.id)">
                         <use :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
                     </svg>
@@ -178,7 +178,6 @@
                 // }
             },
             clearItem(productId) { 
-                /*TODO после удаления товара он добавляется обратно, если изменить количество оставшегося товара*/
                 this.deleteItem = false;
                 this.$store.dispatch('basketSetQuantity', {
                     productId: productId,
