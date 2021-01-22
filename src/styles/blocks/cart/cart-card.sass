@@ -46,15 +46,15 @@
 
     &__name
         @extend .text-2
-        position: relative
-        display: block
         color: $black
         max-width: 32.625rem
         height: 2.5rem
         margin-bottom: 1rem
+        display: -webkit-box
+        -webkit-line-clamp: 2
+        -webkit-box-orient: vertical
         overflow: hidden
         +tablet
-            position: static
             margin: 0 2.5rem .5rem 0
         &:hover
             color: $black
@@ -259,13 +259,16 @@
             .cart-card__content
                 width: calc(100% - 1.5rem)
             .table-header__dscr
-                display: block
                 width: 100%
                 height: 2.5rem
                 margin-bottom: .5rem
+                display: -webkit-box
+                -webkit-line-clamp: 2
+                -webkit-box-orient: vertical
                 overflow: hidden
                 text-overflow: ellipsis
                 +tablet
+                    display: block
                     width: 64%
                     height: 1.5rem
                     margin-right: 3.5rem
