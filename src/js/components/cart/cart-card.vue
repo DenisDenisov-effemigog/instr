@@ -25,7 +25,7 @@
             <div class="cart-card__code" v-if="!deleteItem">Артикул: {{ product.sku }}</div>
 
             <div class="cart-card__block">
-                <div class="cart-card__block" v-if="!deleteItem">
+                <div class="cart-card__content" v-if="!deleteItem">
                     <div class="cart-card__description">
                         <a :href="product.url" class="cart-card__name">
                             {{ product.name }}
@@ -64,17 +64,11 @@
 
                 </div>
 
-                <div class="cart-card__block" v-else>
-                    <div class="table-header__dscr">
-                        <a :href="product.link" class="cart-card__name"
-                            :class="{'cart-card__name--prompt': prompt}"
-                            ref="textBlock"
-                        >
-                            <span class="cart-card__name-message">Удален: </span>
-                            <span class="cart-card__name-title" ref="textSpan">{{ product.name }}</span>
-                            <span class="cart-card__name-dots">...</span>
-                        </a>
-                    </div>
+                <div class="cart-card__content" v-else>
+                    <a :href="product.link" class="table-header__dscr">
+                        <span class="cart-card__name-message">Удален: </span>
+                        <span class="cart-card__name-title">{{ product.name }}</span>
+                    </a>
                     <div class="cart-card__in-favorite" @click="toFav">Добавить&nbsp;в&nbsp;избранное</div>
                     <div class="cart-card__cancel-delete"
                         :class="{'cart-card__cancel-delete--out-of-stock': !product.available}"
@@ -83,11 +77,16 @@
                     </div>
                 </div>
 
-                <div class="cart-card__delete">
+                <div class="cart-card__delete"  v-if="product.available">
                     <svg v-if="deleteItem" @click="clearItem(product.id)">
                         <use :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
                     </svg>
-                    <svg viewBox="1 1 16 18" v-else @click="removeItem">
+                    <svg viewBox="2 2 16 18" v-else @click="removeItem">
+                        <use :xlink:href="templatePath + 'images/sprite.svg#icons__delete'"></use>
+                    </svg>
+                </div>
+                <div class="cart-card__delete" v-else>
+                    <svg viewBox="2 2 16 18" @click="clearItem(product.id)">
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__delete'"></use>
                     </svg>
                 </div>
@@ -126,11 +125,16 @@
                     v-else
                 >Отменить</span>
             </div>
-            <div class="cart-card__delete">
+            <div class="cart-card__delete" v-if="product.available">
                 <svg v-if="deleteItem" @click="clearItem(product.id)">
                     <use :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
                 </svg>
-                <svg viewBox="1 1 16 18" v-else @click="removeItem">
+                <svg viewBox="2 2 16 18" v-else @click="removeItem">
+                    <use :xlink:href="templatePath + 'images/sprite.svg#icons__delete'"></use>
+                </svg>
+            </div>
+            <div class="cart-card__delete" v-else>
+                <svg viewBox="2 2 16 18" @click="clearItem(product.id)">
                     <use :xlink:href="templatePath + 'images/sprite.svg#icons__delete'"></use>
                 </svg>
             </div>
