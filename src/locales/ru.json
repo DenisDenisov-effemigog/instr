@@ -2,6 +2,27 @@
     "products": "0 товаров | {n} товар | {n} товара | {n} товаров",
     "add_to_cart": "В корзину",
     
-    "footer.purchase": "Пользовательское соглашение",
+    "footer.company": "&#169; 2020 ООО «МИР ИНСТРУМЕНТА»",
+    "footer.user_agreement": "Пользовательское соглашение",
+    "footer.navbar.title.about": "О&nbsp;компании",
+    "footer.navbar.title.help": "Помощь",
+    "footer.navbar.title.to_costumer": "Покупателю",
+    "footer.navbar.title.contacts": "Контакты",
+    "footer.navbar.branches": "Филиалы",
+    "footer.navbar.brands": "Бренды",
+    "footer.navbar.guarantee": "Гарантия",
+    "footer.navbar.news": "Новости",
+    "footer.navbar.discounts": "Акции",
+    "footer.navbar.volume_discounts": "Оптовые&nbsp;скидки",
+    "footer.navbar.catalog": "Каталог&nbsp;товаров",
+    "footer.navbar.points_of_purchases": "Где купить",
+    "footer.navbar.service_warranty": "Сервис&nbsp;и&nbsp;гарантия",
+    "footer.navbar.feedback": "Обратная&nbsp;связь",
+    "footer.navbar.policy": "Политика&nbsp;обработки персональных&nbsp;данных",
+    "footer.navbar.tel": "8&nbsp;(800)&nbsp;200-49-49",
+    "footer.navbar.schedule": "пн-пт&nbsp;2-18&nbsp;(мск)",
+    "footer.navbar.email": "почта@mail.ru",
+    "footer.navbar.address": "г.Москва,&nbsp;ул.&nbsp;Трехгорный&nbsp;Вал&nbsp;3",
+
     "basket.clear": "Очистить корзину"
 }

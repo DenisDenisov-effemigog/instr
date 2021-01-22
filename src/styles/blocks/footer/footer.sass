@@ -60,8 +60,9 @@
         span
             @extend .link-1
         &_mobile
-            @extend .text-2
-            margin: 2rem 0
+            margin: 1.75rem 0
+            span
+                @extend .text-2
             +tablet
                 font-size: $font-size
                 line-height: $line-height
@@ -86,7 +87,7 @@
         //margin-top: 1.5rem
         &_mobile
             display: flex
-            margin-bottom: 2rem
+            margin-bottom: 1.75rem
             +tablet
                 display: none
             & > ul
@@ -98,7 +99,7 @@
 
     &__menu-title
         height: 1.25rem
-        margin-bottom: 1rem
+        margin-bottom: .75rem
         & > a
             @extend .link-1
             @extend .text-2
@@ -107,24 +108,27 @@
                 line-height: $line-height
 
     &__menu-item
+        @extend .link-2
+        max-width: 10.35rem
         color: $light-grey
         font-size: $font-size_4
+        line-height: $line-height
+        white-space: nowrap
         +tablet
             font-size: $font-size_3
-            line-height: $line-height_3
-        &:not(:last-of-type)
-            margin-bottom: .5rem
+            line-height: $line-height_8
         & > a
             @extend .link-2
-            font-size: $font-size_4
             color: $light-grey
+            font-size: $font-size_4
+            line-height: $line-height
+            white-space: break-spaces
             +tablet
                 font-size: $font-size_3
-                line-height: $line-height_3
-            & > div:not(:last-of-type)
-                margin-bottom: .5rem
+                line-height: $line-height_8
         &_img
             @extend .link-2
+            max-width: 100%
             display: flex
             align-items: center
             &:hover > svg
