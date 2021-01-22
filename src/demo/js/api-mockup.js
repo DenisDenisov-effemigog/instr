@@ -582,7 +582,7 @@ window.runAction = function (action, config) {
                             },
                         ]
                     },
-                ];
+                ]; /*TODO выводить цены не строкой, а числом. Пробел ставить функцией*/
                 for (let i = 0; i < config.data.arr.length; i++) {
                     let demoMockupItem = demoMockupItems.find(item => item.sku === config.data.arr[i][0])
                     let quantity = config.data.arr[i][1]
