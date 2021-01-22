@@ -1,5 +1,5 @@
 <template>
-    <div class="checkout">
+    <div ref="checkout" class="checkout">
         <div class="checkout__main">
             <h2 v-show='value == "experienced"' class="checkout__title">Авторизация</h2>
             <h2 v-show='value == "new"' class="checkout__title">Оформление заказа</h2>
@@ -40,6 +40,14 @@
                     <delivery-date></delivery-date>
                     <delivery-payment></delivery-payment>
                     <delivery-comment></delivery-comment>
+                    <div class="checkout__btn-wrap">
+                        <div class="checkout__btn">
+                            Оформить заказ
+                        </div>
+                    </div>
+                    <div class="checkout__info">
+                        Нажимая «Перейти к оплате», вы соглашаетесь с <a href="#" class="checkout__info-link"> условиями использования</a> нашего магазина. С подробными условиями доставки можно ознакомиться на <a href="#" class="checkout__info-link">странице о доставке</a>.
+                    </div>
                 </div>
                 <div v-show='value == "experienced"' class="checkout__login">
                    <user-login></user-login>
@@ -48,6 +56,13 @@
         </div>
         <div class="checkout__order">
             <cart-order :productsPrice="productsPrice" :place="'checkout'"></cart-order>
+            <div class="checkout__btn-wrap checkout__btn-wrap--mobile"
+                :class="{'checkout__btn-wrap--fixed': fixedFlag}"
+            >
+                <div class="checkout__btn">
+                    Оформить заказ
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -70,6 +85,7 @@ import DeliveryComment from './delivery-comment.vue'
                 value:'new',
                 IndividualFlag: false,
                 currentTab: "corporate",
+                fixedFlag:false
             }
         },
         computed: {
@@ -78,6 +94,10 @@ import DeliveryComment from './delivery-comment.vue'
                 return parseFloat((basketData.price).toFixed(3));
             },
         },
+        created(){
+            window.addEventListener('scroll', this.mobileScroll)
+        },
+        
         methods:{
             showTab(code) {
                 if (this.currentTab !== code) {
@@ -89,6 +109,21 @@ import DeliveryComment from './delivery-comment.vue'
                     }
                 }
             },
+            mobileScroll(){
+                if(window.innerWidth < 768) {
+                    let windowPosition = window.pageYOffset + window.innerHeight
+                    let checkoutPosition = this.$refs.checkout.offsetTop + this.$refs.checkout.offsetHeight - 64
+                    console.log('windowPosition ' + windowPosition)
+                    console.log('checkoutPosition ' + checkoutPosition)
+                    if(windowPosition < checkoutPosition){
+                        this.fixedFlag = true
+                    }else{
+                        this.fixedFlag = false
+                    }
+                } else {
+                    this.fixedFlag = false
+                }
+            }
         },
     }
 </script>
