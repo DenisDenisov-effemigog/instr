@@ -356,6 +356,14 @@ gulp.task('demo:templates:build', function () {
                     func: function (value) {
                         return php_strings.number_format(value, 2, '.', ',');
                     }
+                },/*TODO это функция преобразования чисел из дензела*/
+                {
+                    name: 'trans',
+                    func: function (value) {
+                        let translations = require('./src/locales/ru');
+                        let result = translations[value];
+                        return result === null ? value : result;
+                    }
                 }
             ]
         }))

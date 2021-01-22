@@ -33,9 +33,11 @@
             <div ref="cartOrderInfo" class="cart-order__info">
                 *Здесь может находиться какой нибудь поясняющий текст или предупреждающий.
             </div>
-            <div class="cart-order__btn-wrap" :class="{'cart-order__btn-wrap--fixed': fixedFlag}">
-                <!-- TODO добавить ссылку на чекаут -->
-                <a href="#checkout" class="cart-order__btn">Оформить заказ</a>
+            <div class="cart-order__btn-wrap" 
+                 :class="{'cart-order__btn-wrap--fixed': fixedFlag}" 
+                 v-if="place === 'cart'"
+            >
+                <a :href="checkoutLink" class="cart-order__btn">Оформить заказ</a>
             </div>
         </div>
     </div>
@@ -43,6 +45,8 @@
 
 <script>
 import cartOrderHead from './cart-order-head.vue'
+import config from "../../config";
+
 export default {
   components: { cartOrderHead },
     name:"cart-order",
@@ -50,6 +54,11 @@ export default {
         productsPrice: {
             required: true,
             type: Number
+        },
+        place: {
+            required: false,
+            type: String,
+            default: 'cart'
         }
     },
     data(){
@@ -71,7 +80,8 @@ export default {
                     "discount": true
                 }
             ],
-            fixedFlag: false
+            fixedFlag: false,
+            checkoutLink: config.links.checkout
         }
     },
     computed:{

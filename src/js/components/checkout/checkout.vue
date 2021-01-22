@@ -39,6 +39,7 @@
                     ></checkout-delivery>
                     <delivery-date></delivery-date>
                     <delivery-payment></delivery-payment>
+                    <delivery-comment></delivery-comment>
                 </div>
                 <div v-show='value == "experienced"' class="checkout__login">
                    <user-login></user-login>
@@ -46,7 +47,7 @@
             </div>
         </div>
         <div class="checkout__order">
-            <cart-order></cart-order>
+            <cart-order :productsPrice="productsPrice" :place="'checkout'"></cart-order>
         </div>
     </div>
 </template>
@@ -56,11 +57,12 @@
     import UserLogin from '../header/header-modal/user-login.vue'
     import CheckoutDelivery from './checkout-delivery.vue'
     import CheckoutReg from './checkout-reg.vue'
+import DeliveryComment from './delivery-comment.vue'
     import DeliveryDate from './delivery-date.vue'
-import DeliveryPayment from './delivery-payment.vue'
+    import DeliveryPayment from './delivery-payment.vue'
 
     export default {
-        components: { cartOrder, UserLogin, CheckoutReg, CheckoutDelivery, DeliveryDate, DeliveryPayment },
+        components: { cartOrder, UserLogin, CheckoutReg, CheckoutDelivery, DeliveryDate, DeliveryPayment, DeliveryComment },
         name: "checkout",
         data(){
             return {
@@ -69,6 +71,12 @@ import DeliveryPayment from './delivery-payment.vue'
                 IndividualFlag: false,
                 currentTab: "corporate",
             }
+        },
+        computed: {
+            productsPrice() {
+                const basketData = this.$store.getters.basketProductsSummary;
+                return parseFloat((basketData.price).toFixed(3));
+            },
         },
         methods:{
             showTab(code) {
