@@ -59,7 +59,7 @@
 			</div>
 			<div class="product-order">
                 {% if product.avalible %}
-				    <div class="product-order__stock">В наличии</div>
+				    <div class="product-order__stock">{{ 'product_card.in_stock'|trans }}</div>
                 {% endif %}
 				<component is="product-order-block" class="product-order__wrapper">
 					<ul class="product-order__list">
@@ -67,13 +67,13 @@
                             <li class="product-order__item product-order__item--{% if price.base == 1 %}retail{% elseif price.base == 2 %}base{% elseif price.base == 0 %}discount-{% if price.discount >= 10 %}green{% else %}blue{% endif %}{% elseif price.base == 3 %}total{% endif %}">
                                 <p class="product-order__name" >
                                     {% if price.base == 1 %}
-                                        Розничная цена
+                                        {{ 'product_card.price.retail'|trans }}
                                     {% elseif price.base == 2 %}
-                                        Базовая цена
+                                        {{ 'product_card.price.base'|trans }}
                                     {% elseif price.base == 0 %}
-                                        Скидка
+                                        {{ 'product_card.price.discount'|trans }}
                                     {% elseif price.base == 3 %}
-                                        Ваша цена
+                                        {{ 'product_card.price.yours'|trans }}
                                     {% endif %}
                                     {% if price.discount %}
                                         {{ price.discount }}%
@@ -92,8 +92,8 @@
                         {% endfor %}
 					</ul>
 					<component is="add-to-cart" 
-                               :text="'В корзине'" 
-                               :button-title="'Добавить в корзину'" 
+                               :text="'input.text.in_cart'" 
+                               :button-title="'button.add_to_cart.long'"
                                :size="'big'"
                                :product-id="{{ product.id }}"
                                :max-amount="{{ product.stock }}"

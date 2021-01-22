@@ -1,16 +1,16 @@
 <template>
     <div @mouseenter="openTooltip" @click="copyArticle" @mouseleave="closeTooltip" class="product-card__article">
-        <span ref="art">Артикул:&nbsp;
+        <span ref="art">{{ $tc('product_card.articul') }}:&nbsp;
             <span ref="number" class="product-card__article-number">
                 <slot></slot>
             </span>
         </span>
         <div v-show="openFlag">
             <div v-if="copyFlag" class="product-card__article-tooltip">
-                Скопировать
+                {{ $tc('product_card.link.copy') }}
             </div>
             <div v-else class="product-card__article-tooltip product-card__article-tooltip--copy">
-                Скопирован в буфер обмена
+                {{ $tc('product_card.copied') }}
             </div>
         </div>
     </div>
