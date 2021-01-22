@@ -80,6 +80,41 @@ let demoMockupBasket = [
         ]
     },
     {
+        id: 1012220,
+        name: 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
+        url: '/product/gumky-bagazhni-450-600-900-mm-3-sht-sparta/',
+        sku: '11111',
+        images: [
+            {id: 1, img: './demo_images/product/image_50.png'},
+            {id: 2, img: './demo_images/product/image_51.png'},
+            {id: 3, img: './demo_images/product/image_52.png'},
+            {id: 4, img: './demo_images/product/image_53.png'},
+        ],
+        price: 19,
+        discount: 26,
+        allPrice: '3 819',
+        totalPrice: '2 819',
+        available: true,
+        stock: 15,
+        basket_quantity: 15,
+        tooltips: [
+            {
+                id: 1,
+                title: 'Новинка',
+                text: 'Товар находится в акционной категории товаров “Новинка”',
+                link: '',
+                status: 'new',
+            },
+            {
+                id: 2,
+                title: 'Акция',
+                text: 'Товар участвует в акции “Акция”',
+                link: '',
+                status: 'promo',
+            },
+        ]
+    },
+    {
         id: 101010101010,
         name: 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
         url: '/product/gumky-bagazhni-450-600-900-mm-3-sht-sparta/',
@@ -553,12 +588,24 @@ window.runAction = function (action, config) {
                     let quantity = config.data.arr[i][1]
                     
                     if(demoMockupItem !== undefined){
-                        if (demoMockupItem.stock >= quantity){
-                            demoMockupItem.basket_quantity = quantity
+                        let demoMockupBasketItem = demoMockupBasket.find(item => item.sku === demoMockupItem.sku)
+                        if(demoMockupBasketItem !== undefined && demoMockupBasketItem.sku === demoMockupItem.sku){
+                           if(demoMockupBasketItem.basket_quantity <= demoMockupBasketItem.stock){
+                               demoMockupBasketItem.basket_quantity = String(Number(quantity) + Number(demoMockupBasketItem.basket_quantity))
+                               if(demoMockupBasketItem.basket_quantity >= demoMockupBasketItem.stock) {
+                                   demoMockupBasketItem.basket_quantity = demoMockupBasketItem.stock
+                               }
+                           } else {
+                               demoMockupBasketItem.basket_quantity = demoMockupBasketItem.stock
+                           }
                         } else {
-                            demoMockupItem.basket_quantity = demoMockupItem.stock
-                        }/*TODO подсчёт идёт не правильный + нужно объединять товары, если они уже есть*/
-                        demoMockupBasket.push(demoMockupItem)
+                            if (demoMockupItem.stock >= quantity){
+                                demoMockupItem.basket_quantity = quantity
+                            } else {
+                                demoMockupItem.basket_quantity = demoMockupItem.stock
+                            }
+                            demoMockupBasket.push(demoMockupItem)
+                        }
                     }
                 }
                 resolve({

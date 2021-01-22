@@ -12,7 +12,7 @@
                         <span class="checkout-choice__radio-label">Я новый клиент</span>
                     </label>
                     <label name="choice" class="checkout-choice__radio">
-                        <input name="choice" type="radio" value="experienced"  v-model="value">
+                        <input name="choice" type="radio" value="experienced" v-model="value">
                         <span class="checkout-choice__check"></span>
                         <span class="checkout-choice__radio-label">Я уже заказывал ранее и у меня есть учетная запись</span>
                     </label>
@@ -37,6 +37,8 @@
                     <checkout-delivery
                         :currentTab="currentTab"
                     ></checkout-delivery>
+                    <delivery-date></delivery-date>
+                    <delivery-payment></delivery-payment>
                 </div>
                 <div v-show='value == "experienced"' class="checkout__login">
                    <user-login></user-login>
@@ -52,11 +54,13 @@
 <script>
     import cartOrder from '../cart/cart-order.vue'
     import UserLogin from '../header/header-modal/user-login.vue'
-import CheckoutDelivery from './checkout-delivery.vue'
-import CheckoutReg from './checkout-reg.vue'
+    import CheckoutDelivery from './checkout-delivery.vue'
+    import CheckoutReg from './checkout-reg.vue'
+    import DeliveryDate from './delivery-date.vue'
+import DeliveryPayment from './delivery-payment.vue'
 
     export default {
-    components: { cartOrder, UserLogin, CheckoutReg, CheckoutDelivery },
+        components: { cartOrder, UserLogin, CheckoutReg, CheckoutDelivery, DeliveryDate, DeliveryPayment },
         name: "checkout",
         data(){
             return {

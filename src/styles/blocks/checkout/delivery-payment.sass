@@ -1,0 +1,36 @@
+.delivery-payment
+    margin-top: 2rem
+    +tablet
+        margin-top: 3.5rem
+    &__title
+        @extend .title-6
+        font-weight: 700
+    &__form
+        margin-top: 1.5rem
+        +tablet
+            max-width: 21rem
+    &__radio
+        @extend .radio
+        width: 100%
+        align-items: flex-start
+        margin-top: 1rem
+    &__check
+        @extend .radio__check
+        min-width: 1.25rem
+        height: 1.25rem
+        &::before
+            width: 0.625rem!important
+            height: 0.625rem!important
+    &__radio-label
+        font-weight: 400
+        display: flex
+        flex-direction: column
+    &__radio-title
+        @extend .text-2
+    &__radio-text
+        @extend .text-3
+        padding-top: 0.25rem
+        color: $light-grey
+
+
+    
