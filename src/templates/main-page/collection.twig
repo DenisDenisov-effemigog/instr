@@ -1,13 +1,13 @@
 <section class="collection">
 	<div class="link-more">
 		<a class="link-more__text">
-            Больше товаров тут
+            {{ 'main_page.link.more_products'|trans }}
 			<svg class="link-more__icon" viewbox="0 0 12 10">
 				<use xlink:href="./images/sprite.svg#arrows__arrow-right"></use>
 			</svg>
         </a>
 	</div>
-	<h2 class="collection__title">Популярные категории</h2>
+	<h2 class="collection__title">{{ 'main_page.collection.title'|trans }}</h2>
 	<div class="collection__content collection__content_desktop">
 		{% for collection in collections %}
 			<a class="collection__block" href="{{ collection.link }}">

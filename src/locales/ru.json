@@ -3,7 +3,14 @@
     "button.add_to_cart.short": "В корзину",
     "button.add_to_cart.long": "Добавить в корзину",
     "input.text.in_cart": "В корзине",
-    
+
+    "main_page.promo.title": "Промо моменты",
+    "main_page.bestsellers.title": "Хиты продаж",
+    "main_page.collection.title": "Популярные категории",
+    "main_page.new_items.title": "Новинки от производителя",
+    "main_page.stock.title": "Акции",
+    "main_page.selection.title": "Еще одна интересная подборка со скроллом",
+    "main_page.link.more_products": "Больше товаров тут",
     "footer.purchase.ff": "Пользовательское соглашение",
     "basket.clear": "Очистить корзину"
 }
