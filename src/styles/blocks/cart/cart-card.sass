@@ -31,6 +31,13 @@
         +tablet
             flex-direction: row
             justify-content: space-between
+
+    &__content
+        display: flex
+        flex-direction: column
+        +tablet
+            flex-direction: row
+            justify-content: space-between
         
     &__code
         @extend .text-3
@@ -52,8 +59,6 @@
         &:hover
             color: $black
             text-decoration: underline
-        &--prompt
-            position: relative
 
     &__name-dots
         position: absolute
@@ -190,16 +195,16 @@
             width: 100%
         .cart-card__name
             max-width: 100%
-    &--out-of-stock.cart-card--table.cart-card--deleted
-        .cart-card__block
-            justify-content: space-between
-            div
-                height: 1.25rem
-            .table-header__code
-                width: auto
-            .table-header__dscr
-                width: 100%
-                justify-content: flex-start
+    // &--out-of-stock.cart-card--deleted
+    //     .cart-card__block
+    //         justify-content: space-between
+    //         div
+    //             height: 1.25rem
+    //         .table-header__code
+    //             width: auto
+    //         .table-header__dscr
+    //             width: 100%
+    //             justify-content: flex-start
         
 
     &--table
@@ -210,19 +215,26 @@
         .cart-card__block div
             height: 1.25rem
         .cart-card__name
-            position: relative
             width: auto
             height: 1.25rem
             margin: 0
+            overflow: hidden
+            text-overflow: ellipsis
+            white-space: nowrap
+        .table-header__dscr
+            overflow: hidden   
         .table-header__new-price
             color: $green
     &--table.cart-card--deleted
         .table-header__code
             margin-right: 2.5rem
         .cart-card__block
-            //justify-content: flex-start
+            height: 1.25rem
+            align-items: center
             div:not(:last-of-type)
                 margin-right: 2.5rem
+            .table-header__code
+                justify-content: flex-start
             .table-header__dscr
                 width: 20.83%
                 margin-right: 2.5rem
@@ -236,19 +248,31 @@
         @extend .text-2
         display: flex
         color: $black
+        .cart-card__species
+            +mobile
+                margin-right: 2rem
         .cart-card__block div
-            height: 1.5rem
             margin: 0
+            +tablet
+                height: 1.5rem
         .cart-card__block
+            .cart-card__content
+                width: calc(100% - 1.5rem)
             .table-header__dscr
-                width: 85%
+                display: block
+                width: 100%
                 height: 2.5rem
                 margin-bottom: .5rem
+                overflow: hidden
+                text-overflow: ellipsis
                 +tablet
                     width: 64%
                     height: 1.5rem
                     margin-right: 3.5rem
                     margin-bottom: 0
+                .cart-card__name-title
+                    +tablet
+                        white-space: nowrap
             .cart-card__in-favorite
                 margin-right: 2.5rem
             .cart-card__cancel-delete
