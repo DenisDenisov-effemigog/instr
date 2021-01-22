@@ -1,5 +1,5 @@
 <template>
-    <div @click="click" class="product-info__all">Все характеристики</div>
+    <div @click="click" class="product-info__all">{{ $tc('product_card.link.all_specifications') }}</div>
 </template>
 
 <script>

@@ -5,16 +5,16 @@
 >
     <template v-slot:features>
         <div class="product-tabs__content-layout">
-            <div class="product-tabs__content-title">Основные характеристики</div>
+            <div class="product-tabs__content-title">{{ 'product_card.tabs.main_features'|trans }}</div>
             <ul class="product-tabs__features product-tabs__features_main">
                 <li class="product-tabs__features-item">
                     <div class="product-tabs__features-term">
                         <div class="product-tabs__features-term-dash">
-                            <span class="product-tabs__features-term-label">Гарантия</span>
+                            <span class="product-tabs__features-term-label">{{ 'product_card.tabs.guarantee'|trans }}</span>
                         </div>
                     </div>
                     <div class="product-tabs__features-value">
-                        <a href="#">{{ product.guarantee }} года</a>
+                        <a href="#">{{ product.guarantee }} {{ 'product_card.tabs.years'|trans }}</a>
                     </div>
                 </li>
                 {% for feature in product.features.main %}
@@ -41,7 +41,7 @@
             </ul>
         </div>
         <div class="product-tabs__content-layout">
-            <div class="product-tabs__content-title">Параметры упаковки</div>
+            <div class="product-tabs__content-title">{{ 'product_card.tabs.parameters'|trans }}</div>
             <ul class="product-tabs__features product-tabs__features_packaging">
                 {% for feature in product.features.packaging %}
                     <li class="product-tabs__features-item">
@@ -56,7 +56,7 @@
             </ul>
         </div>
         <div class="product-tabs__content-layout">
-            <div class="product-tabs__content-title">Комплектация товара</div>
+            <div class="product-tabs__content-title">{{ 'product_card.tabs.options'|trans }}</div>
             <ul class="product-tabs__features product-tabs__features_equipment">
                 {% for feature in product.features.equipment %}
                     <li class="product-tabs__features-item">
@@ -73,11 +73,11 @@
     </template>
     <template v-slot:description>
         <div class="product-tabs__content-layout">
-            <div class="product-tabs__content-title">Описание товара</div>
+            <div class="product-tabs__content-title">{{ 'product_card.tabs.desc'|trans }}</div>
             <p class="product-tabs__content-text product-tabs__content-text_description">{{product.description.description}}</p>
         </div>
         <div class="product-tabs__content-layout">
-            <div class="product-tabs__content-title">Особенности</div>
+            <div class="product-tabs__content-title">{{ 'product_card.tabs.some_features'|trans }}</div>
             <div class="product-tabs__content-grid">
                 {% for feature in product.description.features %}
                     <div class="product-tabs__content-grid-item">
@@ -93,7 +93,7 @@
             </div>
         </div>
         <div class="product-tabs__content-layout">
-            <div class="product-tabs__content-title">Преимущества</div>
+            <div class="product-tabs__content-title">{{ 'product_card.tabs.advantages'|trans }}</div>
             <ul class="product-tabs__content-list">
                 {% for advantage in product.description.advantages %}
                     <li>{{advantage}}</li>
@@ -101,7 +101,7 @@
             </ul>
         </div>
     </template>
-    {# <template v-slot:questions>
+    {# <template v-slot:questions> 
         <div class="product-tabs__content-answer">
             <form class="product-tabs__form">
                 <div class="product-tabs__content-title">Задайте вопрос о товаре</div>
@@ -112,5 +112,5 @@
         </div>
         <component is="product-tabs-questions" :questions="{{ product.questions|json_encode()|e('html_attr') }}">
         <component>
-    </template> #}
+    </template> #}{#TODO это нужный кусок?#}
 </component>

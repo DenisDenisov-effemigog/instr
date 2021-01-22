@@ -1,6 +1,6 @@
 <template>
     <div class="photo-modal">
-        <div class="photo-modal__title">Просмотр фотографий</div>
+        <div class="photo-modal__title">{{ $tc('product_card.photo_modal.title') }}</div>
         <VueSlickCarousel
             class="photo-modal__main"
             v-bind="settings"

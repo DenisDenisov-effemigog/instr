@@ -4,7 +4,7 @@
             :class="{'product-tabs__form_expanded': formExpanded}"
             @submit.prevent="addQuestion"
             @click="formExpanded = true">
-            <div class="product-tabs__content-title">Задайте вопрос о товаре</div>
+            <div class="product-tabs__content-title">{{ $tc('product_card.form.title') }}</div>
             <textarea class="product-tabs__input"
                 type="text"
                 placeholder="Напишите свой вопрос"
@@ -33,10 +33,10 @@
             </span>
             <!-- <span class="product-tabs__form-error"
                 :class="{'product-tabs__form-error_show': error}">
-                Заполните все поля</span> -->
+                Заполните все поля</span> --> <!--TODO это нужный кусок?-->
         </form>
         <div class="product-tabs__answer" v-for="(question, index) in qAs">
-            <span class="product-tabs__new-badge" v-if="newBadge === index">Новый вопрос</span>
+            <span class="product-tabs__new-badge" v-if="newBadge === index">{{ $tc('product_card.questions.badge') }}</span>
             <div class="product-tabs__content-title" v-show="question.name">{{question.name}}</div>
             <div class="product-tabs__question">
                 <svg  viewBox="0 0 18 18">
@@ -48,9 +48,7 @@
             </product-tabs-answer>    
         </div>
         <div class="product-tabs__answers-all" @click="expand" v-if="!expanded && quantity > 3">
-            Посмотреть все {{quantity}} 
-            <span v-if="quantity < 5">вопроса</span>
-            <span v-else>вопросов</span>
+            {{ $tc('product_card.link.see_all') }} {{quantity}} {{ $tc('product_card.link.see_all_question')+ending(quantity) }}
         </div>
     </div>
 </template>
@@ -114,7 +112,7 @@
             questionsQuantity() {
                 return this.quantity = this.questions.length
             },
-            newQuestionItem() {
+            newQuestionItem() { /*TODO принимать значения из бд*/
                 if (this.email == 'moymir@mail.ru') {
                     this.newItem.name = 'Роман Сычев'
                 } else {
