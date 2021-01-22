@@ -80,16 +80,21 @@ export default {
             
         },
         submit() {
-                this.$v.$touch();
-                if (!this.$v.$invalid) {
-                    this.saveChanges();
-                }
-            },
-            saveChanges() {
-                this.value = this.$v.value.$model;
-                let newVal = this.value.split('\n')
-                console.log(newVal)
+            this.$v.$touch();
+            if (!this.$v.$invalid) {
+                this.saveChanges();
             }
+        },
+        saveChanges() {
+            this.value = this.$v.value.$model;
+            let newVal = this.value.split('\n')
+            let arr = []
+            for (let i = 0; i < newVal.length; i++){
+                arr.push(newVal[i].split(' '))
+            }
+            
+            this.$store.dispatch('searchItem', arr);
+        }
     },
 }
 </script>

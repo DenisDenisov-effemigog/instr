@@ -20,7 +20,23 @@
             </div>
             <div class="checkout__content">
                 <div v-show='value == "new"' class="checkout__desc">
-                    <checkout-reg></checkout-reg>
+                     <div class="checkout__tabs">
+                        <div class="checkout__tab"
+                            :class="{'checkout__tab--active': currentTab == 'individual'}"
+                            @click="showTab('individual')"
+                        >Физическое лицо</div>
+                        <div class="checkout__tab"
+                            :class="{'checkout__tab--active': currentTab == 'corporate'}"
+                            @click="showTab('corporate')"
+                        >Юридическое лицо</div>
+                    </div>
+                    <checkout-reg
+                        :IndividualFlag="IndividualFlag"
+                        :currentTab="currentTab"
+                    ></checkout-reg>
+                    <checkout-delivery
+                        :currentTab="currentTab"
+                    ></checkout-delivery>
                 </div>
                 <div v-show='value == "experienced"' class="checkout__login">
                    <user-login></user-login>
@@ -36,18 +52,31 @@
 <script>
     import cartOrder from '../cart/cart-order.vue'
     import UserLogin from '../header/header-modal/user-login.vue'
+import CheckoutDelivery from './checkout-delivery.vue'
 import CheckoutReg from './checkout-reg.vue'
 
     export default {
-    components: { cartOrder, UserLogin, CheckoutReg },
+    components: { cartOrder, UserLogin, CheckoutReg, CheckoutDelivery },
         name: "checkout",
         data(){
             return {
                 choiseFlag: true,
-                value:'new'
+                value:'new',
+                IndividualFlag: false,
+                currentTab: "corporate",
             }
         },
         methods:{
+            showTab(code) {
+                if (this.currentTab !== code) {
+                    this.currentTab = code;
+                    if(code == "corporate"){
+                        this.IndividualFlag = false
+                    }else{
+                        this.IndividualFlag = true
+                    }
+                }
+            },
         },
     }
 </script>

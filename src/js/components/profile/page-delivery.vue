@@ -5,14 +5,7 @@
         >
             <h2 class="profile__title">Адреса доставки</h2>
             <p class="delivery__no-address" v-if="addresses.length === 0">У вас пока нет ни одного адреса.</p>
-            <div class="delivery__add-address-btn"
-                 @click.prevent="openModal('new-address')"
-            >
-                <svg viewBox="0 0 20 20">
-                    <use :xlink:href="templatePath + 'images/sprite.svg#icons__plus-small'"></use>
-                </svg>
-                <span>Добавить адрес</span>
-            </div>
+            <add-address-btn></add-address-btn>
         </div>
       
         <div v-if="addresses.length > 0">
@@ -44,6 +37,7 @@
                         </svg>
                     </div>
                 </li>
+                <add-address-btn :mobile=true></add-address-btn>
                 <div class="delivery__add-address-btn delivery__add-address-btn_mobile"
                     @click.prevent="openModal('new-address')"
                 >
@@ -59,8 +53,12 @@
 </template>
 
 <script>
+import AddAddressBtn from '../add-address-btn.vue';
 export default {
     name:"page-delivery",
+    components:{
+        AddAddressBtn
+    },
     props:{
         /*profile: {
             required: true,

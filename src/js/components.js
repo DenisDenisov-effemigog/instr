@@ -1,6 +1,8 @@
 import VueSlickCarousel from "vue-slick-carousel";
 /*elements*/
 import country from './components/country.vue';
+import customInput from './components/custom-input.vue';
+import addAddressBtn from './components/add-address-btn.vue';
 import modal from './components/modal.vue';
 import mobileMenu from './components/mobile-menu.vue';
 import stickyMenu from './components/sticky-menu.vue';
@@ -83,6 +85,10 @@ import cartSearch from './components/cart/cart-search.vue';
 /*checkout*/
 import checkout from './components/checkout/checkout.vue'
 import checkoutReg from './components/checkout/checkout-reg.vue'
+import checkoutDelivery from './components/checkout/checkout-delivery.vue'
+import deliveryOption from './components/checkout/delivery-option.vue'
+import deliveryAddress from './components/checkout/delivery-address.vue'
+import receiveAddress from './components/checkout/receive-address.vue'
 
 export default {
     components: {
@@ -160,6 +166,12 @@ export default {
         cartOrder,
         cartOrderHead,
         checkout,
-        checkoutReg
+        checkoutReg,
+        checkoutDelivery,
+        deliveryOption,
+        deliveryAddress,
+        addAddressBtn,
+        customInput,
+        receiveAddress
     },
 }

@@ -177,7 +177,8 @@
                 //     }
                 // }
             },
-            clearItem(productId) {
+            clearItem(productId) { 
+                /*TODO после удаления товара он добавляется обратно, если изменить количество оставшегося товара*/
                 this.deleteItem = false;
                 this.$store.dispatch('basketSetQuantity', {
                     productId: productId,
