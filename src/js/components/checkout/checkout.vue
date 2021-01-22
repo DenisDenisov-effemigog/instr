@@ -37,6 +37,7 @@
                     <checkout-delivery
                         :currentTab="currentTab"
                     ></checkout-delivery>
+                    <delivery-date></delivery-date>
                 </div>
                 <div v-show='value == "experienced"' class="checkout__login">
                    <user-login></user-login>
@@ -54,9 +55,10 @@
     import UserLogin from '../header/header-modal/user-login.vue'
 import CheckoutDelivery from './checkout-delivery.vue'
 import CheckoutReg from './checkout-reg.vue'
+import DeliveryDate from './delivery-date.vue'
 
     export default {
-    components: { cartOrder, UserLogin, CheckoutReg, CheckoutDelivery },
+    components: { cartOrder, UserLogin, CheckoutReg, CheckoutDelivery, DeliveryDate },
         name: "checkout",
         data(){
             return {
