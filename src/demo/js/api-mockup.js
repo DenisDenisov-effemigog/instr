@@ -13,7 +13,7 @@ let demoMockupBasket = [
         id: 1010,
         name: 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
         url: '/product/gumky-bagazhni-450-600-900-mm-3-sht-sparta/',
-        sku: '543345',
+        sku: 543345,
         images: [
             {id: 1, img: './demo_images/product/image_50.png'},
             {id: 2, img: './demo_images/product/image_51.png'},
@@ -22,8 +22,8 @@ let demoMockupBasket = [
         ],
         price: 2819,
         discount: 26,
-        allPrice: '3 819',
-        totalPrice: '2 819',
+        allPrice: 3819,
+        totalPrice: 2819,
         available: true,
         stock: 15,
         basket_quantity: 1,
@@ -48,7 +48,7 @@ let demoMockupBasket = [
         id: 101010,
         name: 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
         url: '/product/gumky-bagazhni-450-600-900-mm-3-sht-sparta/',
-        sku: '543345',
+        sku: 543345,
         images: [
             {id: 1, img: './demo_images/product/image_50.png'},
             {id: 2, img: './demo_images/product/image_51.png'},
@@ -57,8 +57,8 @@ let demoMockupBasket = [
         ],
         price: 19,
         discount: 26,
-        allPrice: '3 819',
-        totalPrice: '2 819',
+        allPrice: 3819,
+        totalPrice: 2819,
         available: true,
         stock: 15,
         basket_quantity: 4,
@@ -83,7 +83,7 @@ let demoMockupBasket = [
         id: 1012220,
         name: 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
         url: '/product/gumky-bagazhni-450-600-900-mm-3-sht-sparta/',
-        sku: '11111',
+        sku: 11111,
         images: [
             {id: 1, img: './demo_images/product/image_50.png'},
             {id: 2, img: './demo_images/product/image_51.png'},
@@ -92,8 +92,8 @@ let demoMockupBasket = [
         ],
         price: 19,
         discount: 26,
-        allPrice: '3 819',
-        totalPrice: '2 819',
+        allPrice: 3819,
+        totalPrice: 2819,
         available: true,
         stock: 15,
         basket_quantity: 15,
@@ -118,7 +118,7 @@ let demoMockupBasket = [
         id: 101010101010,
         name: 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
         url: '/product/gumky-bagazhni-450-600-900-mm-3-sht-sparta/',
-        sku: '543345',
+        sku: 543345,
         images: [
             {id: 1, img: './demo_images/product/image_50.png'},
             {id: 2, img: './demo_images/product/image_51.png'},
@@ -127,8 +127,8 @@ let demoMockupBasket = [
         ],
         price: 19,
         discount: 26,
-        allPrice: '3 819',
-        totalPrice: '2 819',
+        allPrice: 3819,
+        totalPrice: 2819,
         available: false,
         stock: 15,
         basket_quantity: 4,
@@ -515,7 +515,7 @@ window.runAction = function (action, config) {
                         id: 1515,
                         name: 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
                         url: '/product/gumky-bagazhni-450-600-900-mm-3-sht-sparta/',
-                        sku: '12345',
+                        sku: 12345,
                         images: [
                             {id: 1, img: './demo_images/product/image_50.png'},
                             {id: 2, img: './demo_images/product/image_51.png'},
@@ -524,8 +524,8 @@ window.runAction = function (action, config) {
                         ],
                         price: 2819,
                         discount: 26,
-                        allPrice: '3 819',
-                        totalPrice: '2 819',
+                        allPrice: 3819,
+                        totalPrice: 2819,
                         available: false,
                         stock: 15,
                         basket_quantity: 1,
@@ -551,7 +551,7 @@ window.runAction = function (action, config) {
                         id: 15151515,
                         name: 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
                         url: '/product/gumky-bagazhni-450-600-900-mm-3-sht-sparta/',
-                        sku: '54321',
+                        sku: 54321,
                         images: [
                             {id: 1, img: './demo_images/product/image_50.png'},
                             {id: 2, img: './demo_images/product/image_51.png'},
@@ -560,8 +560,8 @@ window.runAction = function (action, config) {
                         ],
                         price: 2819,
                         discount: 26,
-                        allPrice: '3 819',
-                        totalPrice: '2 819',
+                        allPrice: 3819,
+                        totalPrice: 2819,
                         available: true,
                         stock: 15,
                         basket_quantity: 1,
@@ -582,7 +582,7 @@ window.runAction = function (action, config) {
                             },
                         ]
                     },
-                ]; /*TODO выводить цены не строкой, а числом. Пробел ставить функцией*/
+                ];
                 for (let i = 0; i < config.data.arr.length; i++) {
                     let demoMockupItem = demoMockupItems.find(item => item.sku === config.data.arr[i][0])
                     let quantity = config.data.arr[i][1]
@@ -591,7 +591,7 @@ window.runAction = function (action, config) {
                         let demoMockupBasketItem = demoMockupBasket.find(item => item.sku === demoMockupItem.sku)
                         if(demoMockupBasketItem !== undefined && demoMockupBasketItem.sku === demoMockupItem.sku){
                            if(demoMockupBasketItem.basket_quantity <= demoMockupBasketItem.stock){
-                               demoMockupBasketItem.basket_quantity = String(Number(quantity) + Number(demoMockupBasketItem.basket_quantity))
+                               demoMockupBasketItem.basket_quantity = quantity + demoMockupBasketItem.basket_quantity
                                if(demoMockupBasketItem.basket_quantity >= demoMockupBasketItem.stock) {
                                    demoMockupBasketItem.basket_quantity = demoMockupBasketItem.stock
                                }
