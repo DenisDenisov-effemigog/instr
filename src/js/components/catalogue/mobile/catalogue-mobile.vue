@@ -69,7 +69,7 @@
         name: 'catalogue-mobile',
         data() {
             return {
-                title: 'Каталог',
+                title: 'header.catalogue',
                 prevTitle: '',
                 subcategory: false,
                 subcategories: false,
@@ -95,7 +95,7 @@
             goBack() {
                 if (this.subcategory) {
                     this.subcategory = false;
-                    this.title = 'Каталог';
+                    this.title = 'header.catalogue';
                     this.currentCategory = false;
                     this.$eventBus.$emit("hide-button");
                 } else {

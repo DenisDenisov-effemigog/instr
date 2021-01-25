@@ -27,6 +27,7 @@
     "input.text.count": "шт.",
     "title.entrance": "Вход",
     "title.registration": "Регистрация",
+    
     "nav.title.about": "О компании",
     "nav.title.help": "Помощь",
     "nav.title.to_costumer": "Покупателю",
@@ -49,18 +50,7 @@
     "nav.email": "почта@mail.ru",
     "nav.address": "г.Москва, ул. Трехгорный Вал 3",
     "nav.cooperation": "Условия сотрудничества",
-    "product_card.link.all_specifications": "Все характеристики",
-    "product_card.link.copy": "Скопировать",
-    "product_card.link.read_all": "Читать полностью",
-    "product_card.link.see_all": "Посмотреть все",
-    "product_card.link.see_all_question": "вопрос",
-    "product_card.copied": "Скопирован в буфер обмена",
-    "product_card.photo_modal.title": "Просмотр фотографий",
-    "product_card.tabs.features": "Характеристики",
-    "product_card.tabs.description": "Описание",
-    "product_card.tabs.questions": "Вопросы и ответы",
-    "product_card.form.title": "Задайте вопрос о товаре",
-    "product_card.questions.badge": "Новый вопрос",
+
     "profile_personal.link.edit_data": "Изменить данные",
     "profile_personal.link.edit_password": "Изменить пароль",
     "profile_personal.link.delete_profile": "Удалить профиль",
@@ -82,6 +72,7 @@
     "profile_orders.title.price": "Стоимость заказа",
     "profile_orders.title.recipient": "Получатель",
     "profile_orders.title.payment": "Оплата",
+
     "header.menu.enter": "Войти",
     "header.menu.profile": "Профиль",
     "header.menu.compare": "Сравнить",
@@ -101,7 +92,7 @@
     "header.search.show_all": "Показать все результаты",
     "header.catalogue": "Каталог",
     "header.catalogue.show_more": "Показать ещё",
-
+    
     "main_page.promo.title": "Промо моменты",
     "main_page.bestsellers.title": "Хиты продаж",
     "main_page.collection.title": "Популярные категории",
@@ -109,6 +100,19 @@
     "main_page.stock.title": "Акции",
     "main_page.selection.title": "Еще одна интересная подборка со скроллом",
     "main_page.link.more_products": "Больше товаров тут",
+
+    "product_card.link.all_specifications": "Все характеристики",
+    "product_card.link.copy": "Скопировать",
+    "product_card.link.read_all": "Читать полностью",
+    "product_card.link.see_all": "Посмотреть все",
+    "product_card.link.see_all_question": "вопрос",
+    "product_card.copied": "Скопирован в буфер обмена",
+    "product_card.photo_modal.title": "Просмотр фотографий",
+    "product_card.tabs.features": "Характеристики",
+    "product_card.tabs.description": "Описание",
+    "product_card.tabs.questions": "Вопросы и ответы",
+    "product_card.form.title": "Задайте вопрос о товаре",
+    "product_card.questions.badge": "Новый вопрос",
     "product_card.in_stock": "В наличии",
     "product_card.price.retail": "Розничная цена",
     "product_card.same_products.title": "Похожие товары",
@@ -121,6 +125,7 @@
     "product_card.tabs.desc": "Описание товара",
     "product_card.tabs.some_features": "Особенности",
     "product_card.tabs.advantages": "Преимущества",
+
     "footer.company": "&#169; 2020 ООО «МИР ИНСТРУМЕНТА»",
     "footer.user_agreement": "Пользовательское соглашение"
 }
