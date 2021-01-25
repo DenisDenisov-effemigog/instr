@@ -5,18 +5,17 @@
                     <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-top'"></use>
                 </svg>
             </div>
-            <div @click="clickToCountry" class="topnav__switch-text">{{ $tc(country) }}</div>
+            <div @click="clickToCountry" class="topnav__switch-text">{{ country }}</div>
     </div>
 </template>
 
 <script>
-import country from '../country.vue';
 
 export default {
     name: 'topnav-switch',
     data(){
         return{
-            country: 'nav.active_country',
+            country: 'Россия',
             openedModal: false
             
         }

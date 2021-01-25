@@ -55,7 +55,7 @@
                     :class="{'home-menu__link--opened': showCountry}"
                     @click="openCountry"
                 >
-                    <span>{{ $tc(activeCountry) }}</span>
+                    <span>{{ activeCountry }}</span>
                     <svg viewBox="0 0 6 10">
                         <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                     </svg>
@@ -103,7 +103,7 @@
         data(){
             return{
                 showCountry: false,
-                activeCountry: 'nav.active_country',
+                activeCountry: 'Румыния',
             }
         },
         methods: {
