@@ -54,10 +54,10 @@ export default {
     data() {
       return {
           person: [
-              {'title': 'profile_personal.title.person', 'icon': 'user-profile', 'index': 'contact', 'personType': 1},
-              {'title': 'profile_personal.title.phone', 'icon': 'call', 'index': 'phone', 'personType': 1},
-              {'title': 'profile_personal.title.inn', 'icon': 'edit', 'index': 'code', 'personType': 2},
-              {'title': 'profile_personal.title.company', 'icon': '3d', 'index': 'company', 'personType': 2},
+              {'title': 'title.person', 'icon': 'user-profile', 'index': 'contact', 'personType': 1},
+              {'title': 'title.phone', 'icon': 'call', 'index': 'phone', 'personType': 1},
+              {'title': 'title.inn', 'icon': 'edit', 'index': 'code', 'personType': 2},
+              {'title': 'title.company', 'icon': '3d', 'index': 'company', 'personType': 2},
               {'title': 'profile_personal.title.mail', 'icon': 'mail', 'index': 'email', 'personType': 1},
               {'title': 'profile_personal.title.address', 'icon': 'location', 'index': 'address', 'personType': 2},
           ]

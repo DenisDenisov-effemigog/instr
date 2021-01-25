@@ -6,7 +6,7 @@
         </div>
         <div v-if="ordersAll.length === 0" class="order__none">
             <div class="order__none_text">{{ $tc('profile_orders.empty_text') }}</div>
-            <div class="order__none_btn">{{ $tc('profile_orders.link.go_catalog') }}</div>
+            <div class="order__none_btn">{{ $tc('button.go_catalog') }}</div>
         </div>
         <div class="order__info" v-if="!details && ordersAll.length !== 0">
             <div class="order__info-icon">

@@ -13,7 +13,7 @@
                 v-model.trim="$v.name.$model">
             <span class="profile-modal__label-text"
                   :class="{'profile-modal__label-text_up': $v.name.required}"
-            >{{ $tc('profile_personal.title.person') }}</span>
+            >{{ $tc('title.person') }}</span>
             <svg
                 viewBox="0 0 24 24"
                 class="profile-modal__label-icon"
@@ -35,7 +35,7 @@
                 readonly="readonly">
             <span class="profile-modal__label-text"
                   :class="{'profile-modal__label-text_up': $v.company.required}"
-            >{{ $tc('profile_personal.title.company') }}</span>
+            >{{ $tc('title.company') }}</span>
         </label>
         <label for="code" class="profile-modal__label">
             <input
@@ -48,7 +48,7 @@
                 readonly="readonly">
             <span class="profile-modal__label-text"
                   :class="{'profile-modal__label-text_up': $v.code.required}"
-            >{{ $tc('profile_personal.title.inn') }}</span>
+            >{{ $tc('title.inn') }}</span>
         </label>
         <label for="phone" class="profile-modal__label profile-modal__label_column">
             <the-mask
@@ -64,7 +64,7 @@
                 v-model.trim="$v.phone.$model"/>
             <span class="profile-modal__label-text"
                   :class="{'profile-modal__label-text_up': $v.phone.required}"
-            >{{ $tc('profile_personal.title.phone_number') }}</span>
+            >{{ $tc('title.phone_number') }}</span>
             <svg
                 viewBox="0 0 24 24"
                 class="profile-modal__label-icon"
@@ -90,7 +90,7 @@
                 v-model.trim="$v.email.$model">
             <span class="profile-modal__label-text"
                   :class="{'profile-modal__label-text_up': $v.email.required}"
-            >{{ $tc('profile_personal.title.email') }}</span>
+            >{{ $tc('title.email') }}</span>
             <svg
                 viewBox="0 0 24 24"
                 class="profile-modal__label-icon"
