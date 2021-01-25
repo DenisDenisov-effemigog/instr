@@ -3,8 +3,8 @@
         <div class="delivery__header" 
              :class="{'delivery__header_column': addresses.length === 0}"
         >
-            <h2 class="profile__title">Адреса доставки</h2>
-            <p class="delivery__no-address" v-if="addresses.length === 0">У вас пока нет ни одного адреса.</p>
+            <h2 class="profile__title">{{ $tc('link.my_addresses') }}</h2>
+            <p class="delivery__no-address" v-if="addresses.length === 0">{{ $tc('profile_delivery.empty_text') }}</p>
             <add-address-btn></add-address-btn>
         </div>
       
@@ -12,7 +12,7 @@
             <ul class="delivery__list">
                 <li class="delivery__item" v-for="order in addresses">
                     <div class="delivery__desc">
-                        <div class="delivery__order">Адрес № {{order.order}}</div>
+                        <div class="delivery__order">{{ $tc('text.address') }} № {{order.order}}</div>
                         <div class="delivery__address">{{order.address}}</div>
                         <div class="delivery__status"
                              :class="'delivery__status--' + order.status"
@@ -50,12 +50,6 @@ export default {
     name:"page-delivery",
     components:{
         AddAddressBtn
-    },
-    props:{
-        /*profile: {
-            required: true,
-            type: Array,
-        },*/
     },
     data(){
         return{

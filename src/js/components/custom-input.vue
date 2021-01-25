@@ -17,9 +17,7 @@
             <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
         </svg>
         <div class="custom__error-text custom__error-text_invalid"
-            v-if="$v.item.name.$error">
-            Ошибка при вводе данных
-        </div>
+            v-if="$v.item.name.$error">{{ $tc('text.error') }}</div>
     </label>
 </template>
 
