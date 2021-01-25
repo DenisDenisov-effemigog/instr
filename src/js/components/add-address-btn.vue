@@ -1,5 +1,5 @@
 <template>
-    <div class="add-address-btn" :class="{'add-address-btn--mobile': mobile}"
+    <div class="add-address-btn"
         @click.prevent="openModal('new-address')"
     >
         <svg viewBox="0 0 20 20">
@@ -12,12 +12,6 @@
 <script>
 export default {
     name:"add-address-btn",
-    props:{
-        mobile:{
-            type: Boolean,
-            default: false
-        }
-    },
     methods:{
         openModal(modal) {
             console.log(modal)

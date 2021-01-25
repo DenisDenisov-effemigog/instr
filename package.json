@@ -43,6 +43,7 @@
     "vue-slick-carousel": "^1.0.6",
     "vue-textarea-autosize": "^1.1.1",
     "vue-the-mask": "^0.11.1",
+    "vue2-datepicker": "^3.8.2",
     "vueify": "^9.4.1",
     "vuelidate": "^0.7.6",
     "vuex": "^3.5.1"
