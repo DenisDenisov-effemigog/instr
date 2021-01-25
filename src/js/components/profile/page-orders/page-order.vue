@@ -7,7 +7,7 @@
             <svg class="breadcrumbs__back" viewBox="0 0 18 15">
                 <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
             </svg>
-            <span>{{ $tc('breadcrumbs.back') }}</span>
+            <span>{{ $tc('link.back') }}</span>
         </div>
         <div class="order__header">
             <h2 class="profile__title">Список заказов</h2>
