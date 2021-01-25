@@ -3,11 +3,11 @@
         <div class="filters-range-slider__inputs">
             <div class="filters-range-slider__input-wrap">
                 <input type="number" class="filters-range-slider__input" id="minPrice" v-model="rangeValueFrom">
-                <label for="minPrice" class="filters-range-slider__label" >от</label>
+                <label for="minPrice" class="filters-range-slider__label">{{ $tc('text.from') }}</label>
             </div>
             <div class="filters-range-slider__input-wrap">
                 <input type="number" class="filters-range-slider__input" id="maxPrice" v-model="rangeValueTo">
-                <label for="maxPrice" class="filters-range-slider__label">до</label>
+                <label for="maxPrice" class="filters-range-slider__label">{{ $tc('text.to') }}</label>
             </div>
         </div>
         <div class="filters-range-slider">

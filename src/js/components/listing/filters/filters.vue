@@ -1,7 +1,11 @@
 <template>
     <div class="filters">
         <template v-for="(filter, index) in internal.filters">
-            <filter-block v-model="internal.filters[index]" :key="filter.code" @change="onFiltersChange" :collapsed="index > 3"></filter-block>
+            <filter-block v-model="internal.filters[index]" 
+                          :key="filter.code" 
+                          @change="onFiltersChange" 
+                          :collapsed="index > 3"
+            ></filter-block>
         </template>
         <filter-clear-btn></filter-clear-btn>
     </div>

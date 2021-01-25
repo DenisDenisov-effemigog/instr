@@ -10,7 +10,7 @@
                     <svg class="header__menu-icon">
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__catalog'"></use>
                     </svg>
-                    <p class="header__menu-text">Каталог</p>
+                    <p class="header__menu-text">{{ $tc('header.catalogue') }}</p>
                 </a>
             </li>
             <li class="header__menu-item">
@@ -18,7 +18,7 @@
                     <svg class="header__menu-icon">
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__graf'"></use>
                     </svg>
-                    <p class="header__menu-text">Сравнить</p>
+                    <p class="header__menu-text">{{ $tc('link.to_compare') }}</p>
                 </a>
             </li>
             <li class="header__menu-item">
@@ -26,7 +26,7 @@
                     <svg class="header__menu-icon">
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__heart'"></use>
                     </svg>
-                    <p class="header__menu-text">Избранное</p>
+                    <p class="header__menu-text">{{ $tc('header.menu.favorite') }}</p>
                 </a>
             </li>
             <li class="header__menu-item" v-if="!user.authorized">
@@ -34,7 +34,7 @@
                     <svg class="header__menu-icon">
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__user'"></use>
                     </svg>
-                    <p class="header__menu-text">Войти</p>
+                    <p class="header__menu-text">{{ $tc('header.menu.enter') }}</p>
                 </a>
             </li>
             <li class="header__menu-item" v-if="user.authorized">
@@ -46,7 +46,7 @@
                     <svg class="header__menu-icon">
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__user'"></use>
                     </svg>
-                    <p class="header__menu-text">Профиль</p>
+                    <p class="header__menu-text">{{ $tc('header.menu.profile') }}</p>
                 </a>
             </li>
             <li class="header__menu-item">
@@ -54,7 +54,7 @@
                     <svg class="header__menu-icon">
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__cart'"></use>
                     </svg>
-                    <p class="header__menu-text">Корзина</p>
+                    <p class="header__menu-text">{{ $tc('header.menu.cart') }}</p>
                     <span class="header__mini-cart" v-if="productsQuantity > 0">
                         {{productsQuantity}}
                     </span>

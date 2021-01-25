@@ -5,7 +5,7 @@
         <svg viewBox="0 0 20 20">
             <use :xlink:href="templatePath + 'images/sprite.svg#icons__plus-small'"></use>
         </svg>
-        <span>Добавить адрес</span>
+        <span>{{ $tc('link.add_address') }}</span>
     </div>
 </template>
 
