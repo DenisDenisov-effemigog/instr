@@ -5,7 +5,7 @@
              :class="{'sticky-mobile-button__button--disabled': disabled}"
         >
             <a href="" >
-                {{ titlePartFirst }} <span class="sticky-mobile-button__text-scnd">{{ items }}&nbsp;{{ titlePartSecond }}</span>
+                {{ $tc(titlePartFirst) }} <span class="sticky-mobile-button__text-scnd">{{ items }}&nbsp;{{ $tc(titlePartSecond) }}{{ ends }}</span>
             </a>
         </div>
     </div>
@@ -32,7 +32,8 @@ export default {
     },
     methods:{
         sowButton(firstPart, items, secondPart) {
-            this.showButton = true
+            this.showButton = true;
+            this.disabled = false;
             this.items = items //передаём количество товаров
             this.titlePartFirst = firstPart //передаём текст кнопки, который пишется в первом ряду
             this.titlePartSecond = secondPart //передаём текст кнопки, который пишется во втором ряду
@@ -48,5 +49,10 @@ export default {
             this.disabled = false
         }
     },
+    computed: {
+        ends() {
+            return this.ending(this.items)
+        }
+    }
 }
 </script>

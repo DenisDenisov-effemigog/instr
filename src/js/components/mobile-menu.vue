@@ -8,20 +8,17 @@
                        :countries="countries" 
                        v-if="menuLink === 'home'"
             ></component>
-<!--            <component is="profile-menu-mobile" v-if="menuLink === 'profile'"></component>-->
         </div>
     </div>
 </template>
 
 <script>
 import homeMenu from './header/mobile/home-menu.vue'
-import profileMenuMobile from './profile/profile-menu-mobile.vue'
 
 export default {
     name: "mobile-menu",
     components: {
         homeMenu,
-        profileMenuMobile,
     },
     props: {
         countries: {required: true}

@@ -16,7 +16,7 @@
                 </svg>
                 <span>{{ $tc('link.back') }}</span>
             </div>
-            <h3 class="catalogue__title">{{title}}</h3>
+            <h3 class="catalogue__title">{{ $tc(title)}}</h3>
             <ul class="catalogue__categories" v-if="!subcategory && !subcategories">
                 <li 
                     class="catalogue__category" 
@@ -69,7 +69,7 @@
         name: 'catalogue-mobile',
         data() {
             return {
-                title: 'Каталог',
+                title: 'header.catalogue',
                 prevTitle: '',
                 subcategory: false,
                 subcategories: false,
@@ -95,7 +95,7 @@
             goBack() {
                 if (this.subcategory) {
                     this.subcategory = false;
-                    this.title = 'Каталог';
+                    this.title = 'header.catalogue';
                     this.currentCategory = false;
                     this.$eventBus.$emit("hide-button");
                 } else {
@@ -103,7 +103,7 @@
                     this.subcategory = true;
                     this.title = this.prevTitle;
                     this.currentSubategory = false;
-                    this.$eventBus.$emit("sow-button", 'Показать', 2, 'товар' + this.ending(2));
+                    this.$eventBus.$emit("sow-button", 'text.show', 2, 'text.product');
                 }
             },
             openSubcategory(item) {
@@ -111,18 +111,18 @@
                 this.title = item.title;
                 this.prevTitle = this.title;
                 this.currentCategory = item;
-                this.$eventBus.$emit("sow-button", 'Показать', item.subcategories.length, 'товар' + this.ending(item.subcategories.length));
+                this.$eventBus.$emit("sow-button", 'text.show', item.subcategories.length, 'text.product');
             },
             openSubSubcategory(item) {
                 this.subcategories = true;
                 this.subcategory = false;
                 this.title = item.title;
                 this.currentSubategory = item;
-                this.$eventBus.$emit("sow-button", 'Показать', item.subcategories.length, 'товар' + this.ending(item.subcategories.length));
+                this.$eventBus.$emit("sow-button", 'text.show', item.subcategories.length, 'text.product');
             },
             selectCategory(category) {
                 this.selectedCategory = category;
-                this.$eventBus.$emit("sow-button", 'Показать', 1, 'товар' + this.ending(1));
+                this.$eventBus.$emit("sow-button", 'text.show', 1, 'text.product');
             },
             closeCategory() {
                 this.$eventBus.$emit('toggle-catalog', false); //закрываем мобильный каталог

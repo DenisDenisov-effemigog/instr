@@ -22,9 +22,7 @@
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>
             <div class="user__error-text user__error-text_invalid"
-                v-if="$v.email.$error">
-                Ошибка при вводе данных
-            </div>
+                v-if="$v.email.$error">{{ $tc('text.error') }}</div>
         </label>
         <label name="password" class="user__label">
             <input
@@ -40,9 +38,7 @@
             >Пароль</span>
             <show-password v-model="passwordHidden"></show-password>
             <div class="user__error-text user__error-text_invalid_password"
-                v-if="$v.password.$error">
-                Ошибка при вводе данных
-            </div>
+                v-if="$v.password.$error">{{ $tc('text.error') }}</div>
         </label>
         <div class="user__error-text" v-if="$v.$error">*Обязательное поле для заполнения</div>
         <input type="submit" class="user__button" value="Войти">

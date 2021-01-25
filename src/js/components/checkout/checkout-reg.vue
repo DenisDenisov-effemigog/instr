@@ -37,9 +37,7 @@
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
                     </svg>
                     <div class="checkout-reg__error-text checkout-reg__error-text_invalid"
-                        v-if="$v.name.$error">
-                        Ошибка при вводе данных
-                    </div>
+                        v-if="$v.name.$error">{{ $tc('text.error') }}</div>
                 </label>
                 <label v-show="!IndividualFlag" class="checkout-reg__label">
                     <input
@@ -59,9 +57,7 @@
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
                     </svg>
                     <div class="checkout-reg__error-text checkout-reg__error-text_invalid"
-                        v-if="$v.company.$error">
-                        Ошибка при вводе данных
-                    </div>
+                        v-if="$v.company.$error">{{ $tc('text.error') }}</div>
                 </label>
                 <label v-show="!IndividualFlag" name="company" class="checkout-reg__label">
                     <input
@@ -84,9 +80,7 @@
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
                     </svg>
                     <div class="checkout-reg__error-text checkout-reg__error-text_invalid"
-                        v-if="$v.company.$error">
-                        Ошибка при вводе данных
-                    </div>
+                        v-if="$v.company.$error">{{ $tc('text.error') }}</div>
                 </label>
                 <label name="phone" class="checkout-reg__label">
                     <input
@@ -111,9 +105,7 @@
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
                     </svg>
                     <div class="checkout-reg__error-text checkout-reg__error-text_invalid"
-                        v-if="$v.phone.$error">
-                        Ошибка при вводе данных
-                    </div>
+                        v-if="$v.phone.$error">{{ $tc('text.error') }}</div>
                 </label>
                 <label name="email" class="checkout-reg__label">
                     <input
@@ -137,9 +129,7 @@
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
                     </svg>
                     <div class="checkout-reg__error-text checkout-reg__error-text_invalid"
-                        v-if="$v.newEmail.$error">
-                        Ошибка при вводе данных
-                    </div>
+                        v-if="$v.newEmail.$error">{{ $tc('text.error') }}</div>
                 </label>
                 <!-- <div class="checkout-reg__error-text" v-if="$v.error">*Обязательное поле для заполнения</div> -->
             </form>

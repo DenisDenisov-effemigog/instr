@@ -62,9 +62,7 @@
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>
             <div class="user__error-text user__error-text_invalid"
-                v-if="$v.name.$error">
-                Ошибка при вводе данных
-            </div>
+                v-if="$v.name.$error">{{ $tc('text.error') }}</div>
         </label>
         <label v-show="!IndividualFlag" name="company" class="user__label">
             <input
@@ -86,9 +84,7 @@
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>
             <div class="user__error-text user__error-text_invalid"
-                v-if="$v.company.$error">
-                Ошибка при вводе данных
-            </div>
+                v-if="$v.company.$error">{{ $tc('text.error') }}</div>
         </label>
         <label v-show="!IndividualFlag" name="code" class="user__label">
             <input
@@ -108,9 +104,7 @@
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>
             <div class="user__error-text user__error-text_invalid"
-                v-if="$v.company.$error">
-                Ошибка при вводе данных
-            </div>
+                v-if="$v.company.$error">{{ $tc('text.error') }}</div>
         </label>
         <label name="phone" class="user__label">
             <the-mask
@@ -134,9 +128,7 @@
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>
             <div class="user__error-text user__error-text_invalid"
-                v-if="$v.phone.$error">
-                Ошибка при вводе данных
-            </div>
+                v-if="$v.phone.$error">{{ $tc('text.error') }}</div>
         </label>
         <label name="email" class="user__label">
             <input
@@ -159,9 +151,7 @@
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>
             <div class="user__error-text user__error-text_invalid"
-                v-if="$v.newEmail.$error">
-                Ошибка при вводе данных
-            </div>
+                v-if="$v.newEmail.$error">{{ $tc('text.error') }}</div>
         </label>
         <div class="user__error-text" v-if="$v.error">*Обязательное поле для заполнения</div>
         <label name="agreement" class="user__label user__label_row">
