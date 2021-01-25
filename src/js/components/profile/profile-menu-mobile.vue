@@ -12,7 +12,7 @@
             </li>
             <li>
                 <a href="" class="profile-menu-mobile__link">
-                    <span>Список заказов</span>
+                    <span>{{ $tc('profile.title.orders_list') }}</span>
                     <svg viewBox="0 0 6 10">
                         <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                     </svg>

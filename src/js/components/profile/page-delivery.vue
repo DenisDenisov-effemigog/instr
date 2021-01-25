@@ -37,15 +37,7 @@
                         </svg>
                     </div>
                 </li>
-                <add-address-btn :mobile=true></add-address-btn>
-                <div class="delivery__add-address-btn delivery__add-address-btn_mobile"
-                    @click.prevent="openModal('new-address')"
-                >
-                    <svg viewBox="0 0 20 20">
-                        <use :xlink:href="templatePath + 'images/sprite.svg#icons__plus-small'"></use>
-                    </svg>
-                    <span>Добавить адрес</span>
-                </div>
+                <add-address-btn :mobile="true"></add-address-btn>
             </ul>
 
         </div>

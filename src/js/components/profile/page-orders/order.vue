@@ -5,7 +5,7 @@
             <div class="order__date">{{order.date}}</div>
             <div class="order__status">{{order.status}}</div>
             
-            <span>{{ $tc('orders_listing.items', order.qty) }}</span>
+            <span>{{ $tc('profile_orders.items', order.qty) }}</span>
             <div class="order__price">{{order.priceTotal}} &#8381;</div>
             <div @click.stop="openModal('repeat-order')" class="order__btn">
                 <div class="order__btn-icon">
@@ -13,9 +13,7 @@
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__repeat'"></use>
                     </svg>
                 </div>
-                <div class="order__btn-text">
-                    Повторить заказ
-                </div>
+                <div class="order__btn-text">{{ $tc('profile_orders.link.repeat') }}</div>
             </div>
             <div class="order__arrow" :class="{'order__arrow--open': opened}">
                 <div class="order__arrow_wrap" @click.stop="clickArrow">
@@ -61,17 +59,10 @@ export default {
         this.$eventBus.$on("detailOrder", this.openDetails)
     },
     methods: {
-        getOrderProducts(cb){
-            //console.log('this.order ', this.order);
-            if (this.products.length == 0) {
+        getOrderProducts(){
+            if (this.products.length === 0) {
                 return api.personalOrder(this.order.id).then((order) => {
-                    //debugger;
-                    //this.order = order;
                     this.products = order.basket;
-                    //console.log('this.products', this.products);
-                    /*if (cb) {
-                        setTimeout(cb, 0);
-                    }*/
                 }).catch((error) => {
                     this.$router.push('/account/orders/');
                 });
@@ -89,7 +80,6 @@ export default {
             this.opened = !this.opened;
         },
         openDetails(index){
-            //this.$eventBus.$emit("openDetails", index)
             this.$router.push('/account/orders/' + this.order.id + '/');
             this.$eventBus.$emit('hideBreadcrumbs', true);
         },
@@ -97,13 +87,6 @@ export default {
             let vm = this;
             //debugger;
             this.getOrderProducts().then(() => {
-                //debugger;
-                //this.order = order;
-                //this.products = order.basket;
-                //console.log('this.products', this.products);
-                /*if (cb) {
-                    setTimeout(cb, 0);
-                }*/
 
                 let result = vm.products.filter(function (item) {
                     //debugger;
@@ -118,7 +101,6 @@ export default {
                 this.$eventBus.$emit("openModal", modal, repeatOrder, false, false)
                 
             }).catch((error) => {
-                //this.$router.push('/account/orders/');
             });
             //debugger;
             

@@ -72,25 +72,25 @@ export default {
         return {
             links: [
                 {
-                    title: 'profile.link.my_profile',
+                    title: 'profile.title.my_profile',
                     url: '/account/',
                     exact: true,
                     personType: [1,2],
                 },
                 {
-                    title: 'profile.link.orders_list',
+                    title: 'profile.title.orders_list',
                     url: '/account/orders/', 
                     personType: [1,2],
                     //external: true
                 },
                 {
-                    title: 'profile.link.my_check',
+                    title: 'profile.title.my_check',
                     url: '/account/check/', 
                     personType: [2],
                     //external: true
                 },
                 {
-                    title: 'profile.link.my_addresses',
+                    title: 'profile.title.my_addresses',
                     url: '/account/adresses/',
                     personType: [2],
                     //external: true
