@@ -50,7 +50,7 @@
             </ul>
             <div class="search-items__download">
                 <!-- Переход к результатам -->
-                <a href="#" class="search-items__download-text">Показать все результаты</a>
+                <a href="#" class="search-items__download-text">{{ $tc('header.search.show_all') }}</a>
                 <div class="search-items__download-pic">
                     <svg class="search-items__download-pic-icon" viewBox="0 0 12 10">
                         <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>

@@ -70,7 +70,7 @@
 
 <script>
     import showCatalogue from '../catalogue/show-catalogue.vue';
-    import headerSearch from './header-search.vue';
+    import headerSearch from './search/header-search.vue';
     import tooltipProfile from './tooltip-profile.vue';
 
 export default {

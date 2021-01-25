@@ -39,8 +39,9 @@
     "header.search.products": "Товары",
     "header.search.placeholder": "Поиск по сайту",
     "header.search.placeholder_mobile": "Найти",
+    "header.search.show_all": "Показать все результаты",
     "header.catalogue": "Каталог",
-    "header.catalogue.show_more": "Каталог",
+    "header.catalogue.show_more": "Показать ещё",
 
     "main_page.promo.title": "Промо моменты",
     "main_page.bestsellers.title": "Хиты продаж",
