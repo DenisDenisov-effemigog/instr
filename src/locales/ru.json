@@ -177,8 +177,20 @@
     "footer.navbar.schedule": "пн-пт&nbsp;2-18&nbsp;(мск)",
     "footer.navbar.email": "почта@mail.ru",
     "footer.navbar.address": "г.Москва,&nbsp;ул.&nbsp;Трехгорный&nbsp;Вал&nbsp;3",
+    "filters.title": "Фильтры",
     "filters.clear": "Сбросить все",
     "filters.clear_filters": "Сбросить все фильтры",
     "categories.show_all": "Все категории",
-    "categories.hide_all": "Скрыть все категории"
+    "categories.hide_all": "Скрыть все категории",
+    "modal.title.action": "Третий в подарок!",
+    "modal.text.action": "Здесь отображена текстовая информация об условиях акции, ее сроках, товарах, которые принимают участие, а так же что-нибудь еще.",
+    "modal.link.action": "Понятно!",
+    "modal.title.auth": "Авторизация",
+    "modal.title.profile_edit": "Изменение данных",
+    "modal.title.password_edit": "Изменение пароля",
+    "modal.title.profile_delete": "Выберите причину удаления профиля:",
+    "modal.title.address_add": "Добавление нового адреса доставки",
+    "modal.title.address_remove": "Удаление адреса",
+    "modal.text.address_remove": "Отправьте запрос, чтобы удалить адрес.",
+    "modal.link.address_remove": "Отправить запрос"
 }
