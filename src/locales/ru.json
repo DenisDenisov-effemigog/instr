@@ -11,6 +11,7 @@
     "link.my_addresses": "Адреса доставки",
     "link.go_cart": "Перейти в корзину",
     "link.close": "Закрыть",
+    "link.load_more": "Загрузить еще",
     "input.text.in_cart": "В корзине",
     "text.count": "шт.",
     "text.articul": "Артикул",
@@ -32,6 +33,8 @@
     "text.required": "Обязательное поле для заполнения",
     "text.error": "Ошибка при вводе данных",
     "text.in": "в",
+    "text.from": "от",
+    "text.to": "до",
     "title.entrance": "Вход",
     "title.registration": "Регистрация",
     
@@ -172,5 +175,9 @@
     "footer.navbar.tel": "8&nbsp;(800)&nbsp;200-49-49",
     "footer.navbar.schedule": "пн-пт&nbsp;2-18&nbsp;(мск)",
     "footer.navbar.email": "почта@mail.ru",
-    "footer.navbar.address": "г.Москва,&nbsp;ул.&nbsp;Трехгорный&nbsp;Вал&nbsp;3"
+    "footer.navbar.address": "г.Москва,&nbsp;ул.&nbsp;Трехгорный&nbsp;Вал&nbsp;3",
+    "filters.clear": "Сбросить все",
+    "filters.clear_filters": "Сбросить все фильтры",
+    "categories.show_all": "Все категории",
+    "categories.hide_all": "Скрыть все категории"
 }

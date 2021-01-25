@@ -1,7 +1,7 @@
 <template>
     <div class="listing__pagination-btn"
          @click="loadMore"
-    >Загрузить еще</div>
+    >{{ $tc('link.load_more') }}</div>
 </template>
 
 <script>
