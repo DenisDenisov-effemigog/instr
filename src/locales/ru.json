@@ -20,6 +20,7 @@
     "product_card.tabs.questions": "Вопросы и ответы",
     "product_card.form.title": "Задайте вопрос о товаре",
     "product_card.questions.badge": "Новый вопрос",
+    "breadcrumbs.back": "Назад",
     "header.menu.enter": "Войти",
     "header.menu.profile": "Профиль",
     "header.menu.compare": "Сравнить",
@@ -38,6 +39,8 @@
     "header.search.products": "Товары",
     "header.search.placeholder": "Поиск по сайту",
     "header.search.placeholder_mobile": "Найти",
+    "header.catalogue": "Каталог",
+    "header.catalogue.show_more": "Каталог",
 
     "main_page.promo.title": "Промо моменты",
     "main_page.bestsellers.title": "Хиты продаж",

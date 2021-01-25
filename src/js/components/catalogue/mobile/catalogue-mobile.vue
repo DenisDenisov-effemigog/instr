@@ -14,7 +14,7 @@
                 <svg class="breadcrumbs__back" viewBox="0 0 18 15">
                     <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
                 </svg>
-                <span>Назад</span>
+                <span>{{ $tc('breadcrumbs.back') }}</span>
             </div>
             <h3 class="catalogue__title">{{title}}</h3>
             <ul class="catalogue__categories" v-if="!subcategory && !subcategories">

@@ -7,7 +7,7 @@
             <a href="#" class="catalogue__further-subcategory">{{category.title}}</a>
         </li>
         <li v-if="!subcategoryShowAll && className ==='listing' && subcategories.length > 5" class="listing__subcategory-btn">
-            <a href="" @click.prevent="subcategoryShowAll = true">Показать еще</a>
+            <a href="" @click.prevent="subcategoryShowAll = true">{{ $tc('header.catalogue.show_more') }}</a>
         </li>
     </ul>
 </template>
