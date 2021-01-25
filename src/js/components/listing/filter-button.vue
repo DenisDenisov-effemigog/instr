@@ -24,7 +24,7 @@
         methods:{
             openModal(){
                 this.$eventBus.$emit("openModal", 'filters', this.filters, false, true);
-                this.$eventBus.$emit("sow-button", 'Посмотреть', this.filters.match, 'товар' + this.ending(this.filters.match));
+                this.$eventBus.$emit("sow-button", 'listing.filters.button', this.filters.match, 'text.product');
             },
         },
     }

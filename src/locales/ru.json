@@ -9,8 +9,6 @@
     "link.orders_list": "Список заказов",
     "link.my_check": "Мой счет",
     "link.my_addresses": "Адреса доставки",
-    "profile.title.my_own": "Личные данные",
-    "profile.link.exit": "Выйти",
     "input.text.in_cart": "В корзине",
     "text.count": "шт.",
     "text.articul": "Артикул",
@@ -24,6 +22,8 @@
     "text.price_new": "Новая цена",
     "text.discount": "Скидка",
     "text.delivery": "Доставка",
+    "text.show": "Показать",
+    "text.product": "товар",
     "input.text.count": "шт.",
     "title.entrance": "Вход",
     "title.registration": "Регистрация",
@@ -50,7 +50,9 @@
     "nav.email": "почта@mail.ru",
     "nav.address": "г.Москва, ул. Трехгорный Вал 3",
     "nav.cooperation": "Условия сотрудничества",
-
+    
+    "profile.title.my_own": "Личные данные",
+    "profile.link.exit": "Выйти",
     "profile_personal.link.edit_data": "Изменить данные",
     "profile_personal.link.edit_password": "Изменить пароль",
     "profile_personal.link.delete_profile": "Удалить профиль",
@@ -125,6 +127,8 @@
     "product_card.tabs.desc": "Описание товара",
     "product_card.tabs.some_features": "Особенности",
     "product_card.tabs.advantages": "Преимущества",
+
+    "listing.filters.button": "Посмотреть",
 
     "footer.company": "&#169; 2020 ООО «МИР ИНСТРУМЕНТА»",
     "footer.user_agreement": "Пользовательское соглашение"
