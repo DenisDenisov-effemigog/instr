@@ -59,7 +59,7 @@
                                     :max-amount="product.stock"
                                     :isCart="true">
                         </component>
-                        <div class="cart-card__price-per-one">{{ product.price }}&nbsp;&#8381;&nbsp;/&nbsp;шт.</div>
+                        <div class="cart-card__price-per-one">{{ product.price }}&nbsp;&#8381;&nbsp;/&nbsp;{{ $tc('text.count') }}</div>
                     </div>
 
                 </div>
@@ -107,7 +107,7 @@
                 <span v-if="!deleteItem">{{ amount }}</span>
             </div>
             <div class="table-header__price" v-if="product.available">
-                <span v-if="!deleteItem">{{ product.price }}&nbsp;&#8381;&nbsp;/&nbsp;шт.</span>
+                <span v-if="!deleteItem">{{ product.price }}&nbsp;&#8381;&nbsp;/&nbsp;{{ $tc('text.count') }}</span>
             </div>
             <div class="table-header__old-price" v-if="product.available">
                 <span v-if="!deleteItem">{{ currency(product.price*amount/(100-product.discount)*100) }}&nbsp;&#8381;</span>
