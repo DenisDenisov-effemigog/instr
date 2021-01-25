@@ -19,7 +19,7 @@
                         @change="changeVal($event.target.value)" 
                         :value="amount"
                     > 
-                    <span class="add-to-cart__amount">&nbsp;{{ $tc('input.text.count') }}</span>
+                    <span class="add-to-cart__amount">&nbsp;{{ $tc('text.count') }}</span>
                 </div>
             </div>
             

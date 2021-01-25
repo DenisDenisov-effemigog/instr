@@ -14,7 +14,7 @@ const router = new Router({
             component: require('../components/profile/page-personal.vue'),
             meta: {
                 title: 'Личный кабинет - Личные данные',
-                h1: 'Личные данные'
+                h1: 'profile.title.my_own'
             }
         },
         {
@@ -22,7 +22,7 @@ const router = new Router({
             component: require('../components/profile/page-orders.vue'),
             meta: {
                 title: 'Личный кабинет - Список заказов',
-                h1: 'Список заказов'
+                h1: 'link.orders_list'
             }
         },
         {
@@ -38,7 +38,7 @@ const router = new Router({
             component: require('../components/profile/page-check.vue'),
             meta: {
                 title: 'Личный кабинет - Мой счет',
-                h1: 'Мой счет'
+                h1: 'link.my_check'
             }
         },
         {
@@ -46,7 +46,7 @@ const router = new Router({
             component: require('../components/profile/page-delivery.vue'),
             meta: {
                 title: 'Личный кабинет - Адреса доставки',
-                h1: 'Адреса доставки'
+                h1: 'link.my_addresses'
             }
         },
     ]

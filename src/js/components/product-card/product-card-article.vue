@@ -1,6 +1,6 @@
 <template>
     <div @mouseenter="openTooltip" @click="copyArticle" @mouseleave="closeTooltip" class="product-card__article">
-        <span ref="art">{{ $tc('product_card.articul') }}:&nbsp;
+        <span ref="art">{{ $tc('text.articul') }}:&nbsp;
             <span ref="number" class="product-card__article-number">
                 <slot></slot>
             </span>

@@ -10,7 +10,7 @@
             <span>{{ $tc('link.back') }}</span>
         </div>
         <div class="order__header">
-            <h2 class="profile__title">Список заказов</h2>
+            <h2 class="profile__title">{{ $tc('link.orders_list') }}</h2>
         </div>
         
     <div class="order__main">
@@ -20,7 +20,7 @@
             
             <div class="page-order__head">
                 <div class="page-order__info">
-                    <div class="page-order__number">Заказ #{{ order.number }}</div>
+                    <div class="page-order__number">{{ $tc('text.order') }} #{{ order.number }}</div>
                     <div class="page-order__date">{{ order.date }}</div>
                     <div class="page-order__status">{{ order.status }}</div>
                 </div>
@@ -37,20 +37,18 @@
                             <use :xlink:href="templatePath + 'images/sprite.svg#icons__repeat'"></use>
                         </svg>
                     </div>
-                    <div class="page-order__btn-text">
-                        Повторить заказ
-                    </div>
+                    <div class="page-order__btn-text">{{ $tc('profile_orders.link.repeat') }}</div>
                 </div>
             </div>
             <div class="page-order__main">
                 <div class="page-order__table">
-                    <div class="page-order__article">Артикул</div>
-                    <div class="page-order__name">Название</div>
-                    <div class="page-order__qty">Кол-во</div>
-                    <div class="page-order__item-price">Цена/шт.</div>
-                    <div class="page-order__old-price">Старая цена</div>
-                    <div class="page-order__discount">Скидка</div>
-                    <div class="page-order__new-price">Новая цена</div>
+                    <div class="page-order__article">{{ $tc('text.articul') }}</div>
+                    <div class="page-order__name">{{ $tc('text.name') }}</div>
+                    <div class="page-order__qty">{{ $tc('text.quantity') }}</div>
+                    <div class="page-order__item-price">{{ $tc('text.price') }}/{{ $tc('text.count') }}</div>
+                    <div class="page-order__old-price">{{ $tc('text.price_old') }}</div>
+                    <div class="page-order__discount">{{ $tc('text.discount') }}</div>
+                    <div class="page-order__new-price">{{ $tc('text.price_new') }}</div>
                 </div>
                 <order-product-list :orderId="order.id" :showAll="true" :opened="true" :products="order.basket"></order-product-list>
                 <div class="page-order__desc">
@@ -66,7 +64,7 @@
                             </div>
                             <div class="page-order__desc-info">
                                 <div class="page-order__desc-subtitle">
-                                    {{item.title}}
+                                    {{ $tc(item.title) }}
                                 </div>
                                 <div class="page-order__desc-desc">
                                     {{item.desc}}
@@ -75,22 +73,22 @@
                         </li>
                     </ul>
                     <div class="order-desc">
-                        <h3 class="order-desc__title">Стоимость заказа</h3>
+                        <h3 class="order-desc__title">{{ $tc('profile_orders.title.price') }}</h3>
                         <ul class="order-desc__list">
                             <li class="order-desc__item">
-                                <div class="order-desc__name">Цена</div>
+                                <div class="order-desc__name">{{ $tc('text.price') }}</div>
                                 <div class="order-desc__price">{{ order.price }} &#8381;</div>
                             </li>
                             <li class="order-desc__item order-desc__item_discount">
-                                <div class="order-desc__name">Скидка</div>
+                                <div class="order-desc__name">{{ $tc('text.discount') }}</div>
                                 <div class="order-desc__price order-desc__price_discount">{{ order.discount }} &#8381;</div>
                             </li>
                             <li class="order-desc__item order-desc__item_delivery">
-                                <div class="order-desc__name">Экономия</div>
+                                <div class="order-desc__name">{{ $tc('profile_orders.economy') }}</div>
                                 <div class="order-desc__price">+{{ order.economy }} &#8381;</div>
                             </li>
                             <li class="order-desc__item order-desc__item_total">
-                                <div class="order-desc__name order-desc__name_total">Ваша цена</div>
+                                <div class="order-desc__name order-desc__name_total">{{ $tc('text.price_yours') }}</div>
                                 <div class="order-desc__price order-desc__price_total">{{ order.priceTotal }} &#8381;</div>
                             </li>
                         </ul>
@@ -104,9 +102,7 @@
                                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__repeat'"></use>
                                     </svg>
                                 </div>
-                                <div class="order-desc__btn-text">
-                                    Повторить заказ
-                                </div>
+                                <div class="order-desc__btn-text">{{ $tc('profile_orders.link.repeat') }}</div>
                             </div>
                         </div>
                     </div>
@@ -128,12 +124,6 @@ let api = Api.getInstance();
 export default {
     components: { selectList,OrderProductList},
     name:"page-order",
-    props: {
-        /*order: {
-            type: Object,
-            required: true
-        },*/
-    },
     data(){
         return {
             order: {
@@ -162,24 +152,23 @@ export default {
     },
     mounted() {
         this.prepareOrder(this.$route.params.id);
-        //this.$store.dispatch('addressUpdatePersons');
     },
     computed: {
         deliveryInfo() {
             return [
                 {
                     icon: 'car',
-                    title: 'Доставка',
+                    title: 'text.delivery',
                     desc: this.order.address
                 },
                 {
                     icon: 'user-profile',
-                    title: 'Получатель',
+                    title: 'profile_orders.title.recipient',
                     desc: this.order.client
                 },
                 {
                     icon: 'paycard',
-                    title: 'Оплата',
+                    title: 'profile_orders.title.payment',
                     desc: this.order.payment
                 },
             ]

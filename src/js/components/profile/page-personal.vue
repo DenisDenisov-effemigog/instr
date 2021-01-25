@@ -2,7 +2,7 @@
     <div class="personalcab">
         <div class="personalcab__layout">
             <div class="personalcab__personal-data">
-                <h2 class="profile__title">{{ h1 }}</h2>
+                <h2 class="profile__title">{{ $tc(h1) }}</h2>
             </div>
             <div class="personalcab__company">
                 <div class="profile__company">

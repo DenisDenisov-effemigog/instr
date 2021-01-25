@@ -4,14 +4,14 @@
             class="order__product-item" 
             v-if="index < 3 && !showAll || showAll"
         >
-            <div class="order__product-number"><span>Артикул:</span>{{product.sku}}</div>
+            <div class="order__product-number"><span>{{ $tc('text.articul') }}:</span>{{product.sku}}</div>
             <div class="order__product-desc">
                 <span>{{product.name}}</span>
                 <div class="order__product-desc_tooltip">
                     {{product.name}}
                 </div>
             </div>
-            <div class="order__product-qty">{{product.basket_quantity}}<span>шт.</span></div>
+            <div class="order__product-qty">{{product.basket_quantity}}<span>{{ $tc('text.count') }}</span></div>
             <div class="order__product-item-price">{{product.price}} &#8381;</div>
             <div class="order__product-all-price">{{product.allPrice}} &#8381;</div>
             <div class="order__product-discount">
@@ -21,9 +21,7 @@
         </li>
         
         <li class="order__product-item--all" v-if="products.length > 3 && !showAll">
-            <a @click.prevent="openDetails"> 
-                Больше информации о заказе
-            </a>
+            <a @click.prevent="openDetails">{{ $tc('profile_orders.link.more_info') }}</a>
         </li>
     </ul>
 </template>
@@ -58,13 +56,9 @@ export default {
             
         }
     },
-    created() {
-        //console.log('this.orderId ', this.orderId)
-    },
     methods:{
         openDetails() {
             this.$router.push('/account/orders/' + this.orderId + '/');
-            //this.$eventBus.$emit("detailOrder", this.orderIndex);
             this.$eventBus.$emit('hideBreadcrumbs', true);
         },
     }
