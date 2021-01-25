@@ -54,7 +54,7 @@ export default {
             this.$eventBus.$on("open-country", this.openCountry)
         },
     methods:{
-        closeChoiceCountry(){
+        closeChoiceCountry(event){
             if(window.innerWidth > 760) {
                 if(event.toElement.className !== 'topnav__switch-text') {
                     this.openedCountry = false

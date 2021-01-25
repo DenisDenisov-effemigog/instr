@@ -4,40 +4,40 @@
             :currentPrice="productsPrice"
         ></cart-order-head>
         <div class="cart-order__content">
-            <h2 class="cart-order__title">Корзина</h2>
+            <h2 class="cart-order__title">{{ $tc('cart.title.full') }}</h2>
             <div class="cart-order__desc">
                 <ul class="cart-order__list">
                     <li class="cart-order__item">
-                        <div class="cart-order__text">Цена без скидки</div>
+                        <div class="cart-order__text">{{ $tc('cart.order.all_price') }}</div>
                         <div class="cart-order__price">
                             {{ currency(productsPrice) }}
-                            <span>₽</span>
+                            <span>{{ $tc('text.currency') }}</span>
                         </div>
                     </li>
                     <li class="cart-order__item" v-for="item in cartOrderArr">
                         <div class="cart-order__text">{{item.text}}</div>
                         <div class="cart-order__price" :class="{'cart-order__price--green' :item.discount}">
                             {{ currency(item.price) }}
-                            <span>₽</span>
+                            <span>{{ $tc('text.currency') }}</span>
                         </div>
                     </li>
                     <li class="cart-order__item cart-order__item--total">
-                        <div class="cart-order__text cart-order__text--total">Ваша цена</div>
+                        <div class="cart-order__text cart-order__text--total">{{ $tc('cart.order.your_price')}}</div>
                         <div class="cart-order__total-price">
                             {{ currency(getTotalPrice) }}
-                            <span>₽</span>
+                            <span>{{ $tc('text.currency') }}</span>
                             </div>
                     </li>
                 </ul>
             </div>
             <div ref="cartOrderInfo" class="cart-order__info">
-                *Здесь может находиться какой нибудь поясняющий текст или предупреждающий.
+                {{ $tc('cart.order.info')}}
             </div>
             <div class="cart-order__btn-wrap" 
                  :class="{'cart-order__btn-wrap--fixed': fixedFlag}" 
                  v-if="place === 'cart'"
             >
-                <a :href="checkoutLink" class="cart-order__btn">Оформить заказ</a>
+                <a :href="checkoutLink" class="cart-order__btn">{{ $tc('cart.order.button') }}</a>
             </div>
         </div>
     </div>

@@ -1,7 +1,7 @@
 <template>
     <div class="cart-search">
         <div class="cart-search__head">
-            <div class="cart-search__title">Добавить товар по артикулу</div>
+            <div class="cart-search__title">{{ $tc('cart.search.title') }}</div>
             <div class="cart-search__icon" 
                 @mouseenter="openTooltip = true"
                 @mouseleave="openTooltip = false"
@@ -10,7 +10,7 @@
                     <use xlink:href="/images/sprite.svg#icons__info"></use>
                 </svg>
                 <div class="cart-search__tooltip" :class="{'cart-search__tooltip--open':openTooltip}">
-                    <p>Введите артикул товара каждый с новой строки. На строке должен находиться только артикул и количество товара. Максимум 100 строк.</p>
+                    <p>{{ $tc('cart.search.placeholder') }}</p>
                     <div @click=" openTooltip = false ">
                         <svg viewBox="0 0 12 12">
                             <use xlink:href="/images/sprite.svg#close"></use>
@@ -31,9 +31,9 @@
                         placeholder="Укажите артикул и количество товара в виде: 12334443 54"
                     ></textarea-autosize>
                 </div>
-                <span class="profile-modal__error-text" v-if="$v.$error">*Обязательное поле для заполнения</span>
+                <span class="profile-modal__error-text" v-if="$v.$error">*{{ $tc('text.required') }}</span>
             </label>
-            <button type="button" class="cart-search__btn" @click="submit">Добавить</button>
+            <button type="button" class="cart-search__btn" @click="submit">{{ $tc('cart.search.button') }}</button>
         </form>
     </div>
 </template>

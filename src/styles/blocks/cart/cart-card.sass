@@ -151,6 +151,7 @@
         @extend .link-blue
         @extend .text-3
         background-position: 0% 80%
+        white-space: nowrap
         +mobile
             display: none
 
@@ -182,26 +183,18 @@
         .table-header__dscr
             opacity: .6
         .table-header__dscr
-            width: 100%
+            width: 80%
             margin-right: 0
         .cart-card__block
             justify-content: unset
-        .cart-card__name-dots
-            display: none
         .cart-card__description
             width: 100%
         .cart-card__name
             max-width: 100%
-    // &--out-of-stock.cart-card--deleted
-    //     .cart-card__block
-    //         justify-content: space-between
-    //         div
-    //             height: 1.25rem
-    //         .table-header__code
-    //             width: auto
-    //         .table-header__dscr
-    //             width: 100%
-    //             justify-content: flex-start
+    &--out-of-stock.cart-card--table
+        .cart-card__block
+            justify-content: space-between
+
         
 
     &--table
@@ -273,7 +266,7 @@
                 +tablet
                     display: block
                     width: 64%
-                    height: 1.5rem
+                    height: 1.25rem
                     margin-right: 3.5rem
                     margin-bottom: 0
                 .cart-card__name-title

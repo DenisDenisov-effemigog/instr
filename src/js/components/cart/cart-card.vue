@@ -22,7 +22,7 @@
         </div>
 
         <div class="cart-card__species" v-if="view === 'horiz_cards'">
-            <div class="cart-card__code" v-if="!deleteItem">Артикул: {{ product.sku }}</div>
+            <div class="cart-card__code" v-if="!deleteItem">{{ $tc('cart.item.sku_text') }}{{ product.sku }}</div>
 
             <div class="cart-card__block">
                 <div class="cart-card__content" v-if="!deleteItem">
@@ -59,21 +59,21 @@
                                     :max-amount="product.stock"
                                     :isCart="true">
                         </component>
-                        <div class="cart-card__price-per-one">{{ product.price }}&nbsp;&#8381;&nbsp;/&nbsp;шт.</div>
+                        <div class="cart-card__price-per-one">{{ product.price }}&nbsp;&#8381;&nbsp;/&nbsp;{{ $tc('text.count') }}</div>
                     </div>
 
                 </div>
 
                 <div class="cart-card__content" v-else>
                     <a :href="product.link" class="table-header__dscr">
-                        <span class="cart-card__name-message">Удален: </span>
+                        <span class="cart-card__name-message">{{ $tc('cart.item.is_deleted') }}</span>
                         <span class="cart-card__name-title">{{ product.name }}</span>
                     </a>
-                    <div class="cart-card__in-favorite" @click="toFav">Добавить&nbsp;в&nbsp;избранное</div>
+                    <div class="cart-card__in-favorite" @click="toFav">{{ $tc('cart.item.add_to_favorite') }}</div>
                     <div class="cart-card__cancel-delete"
                         :class="{'cart-card__cancel-delete--out-of-stock': !product.available}"
                         @click="deleteItem = false">
-                        Отменить
+                        {{ $tc('cart.item.cancel_deletion') }}
                     </div>
                 </div>
 
@@ -107,7 +107,7 @@
                 <span v-if="!deleteItem">{{ amount }}</span>
             </div>
             <div class="table-header__price" v-if="product.available">
-                <span v-if="!deleteItem">{{ product.price }}&nbsp;&#8381;&nbsp;/&nbsp;шт.</span>
+                <span v-if="!deleteItem">{{ product.price }}&nbsp;&#8381;&nbsp;/&nbsp;{{ $tc('text.count') }}</span>
             </div>
             <div class="table-header__old-price" v-if="product.available">
                 <span v-if="!deleteItem">{{ currency(product.price*amount/(100-product.discount)*100) }}&nbsp;&#8381;</span>
@@ -119,14 +119,14 @@
                 <span class="cart-card__in-favorite"
                     @click="toFav"
                     v-else
-                >Добавить&nbsp;в&nbsp;избранное</span>
+                >{{ $tc('cart.item.add_to_favorite') }}</span>
             </div>
             <div class="table-header__new-price" v-if="product.available || deleteItem">
                 <span v-if="!deleteItem">{{ currency(product.price * amount) }}&nbsp;&#8381;</span>
                 <span class="cart-card__cancel-delete"
                     @click="deleteItem = false"
                     v-else
-                >Отменить</span>
+                >{{ $tc('cart.item.cancel_deletion') }}</span>
             </div>
             <div class="cart-card__delete" v-if="product.available">
                 <svg v-if="deleteItem" @click="clearItem(product.id)">
