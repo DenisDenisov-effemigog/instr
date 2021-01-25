@@ -4,11 +4,11 @@
             <div class="user-tabs__tab"
                 :class="{'user-tabs__tab_active': select == 'login'}"
                 @click="select = 'login'"
-            >Вход</div>
+            >{{ $tc('title.entrance') }}</div>
             <div class="user-tabs__tab"
                 :class="{'user-tabs__tab_active': select == 'reg'}"
                 @click="select = 'reg'"
-            >Регистрация</div>
+            >{{ $tc('title.registration') }}</div>
         </div>
         <div class="user-content">
             <div class="user-login" v-if="select == 'login'">

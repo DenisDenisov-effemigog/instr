@@ -3,7 +3,7 @@
         <ul class="home-menu__links">
             <li>
                 <a href="" class="home-menu__link">
-                    <span>О компании</span>
+                    <span>{{ $tc('nav.title.about') }}</span>
                     <svg viewBox="0 0 6 10">
                         <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                     </svg>
@@ -11,7 +11,7 @@
             </li>
             <li>
                 <a href="" class="home-menu__link">
-                    <span>Филиалы</span>
+                    <span>{{ $tc('nav.branches') }}</span>
                     <svg viewBox="0 0 6 10">
                         <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                     </svg>
@@ -19,7 +19,7 @@
             </li>
             <li>
                 <a href="" class="home-menu__link">
-                    <span>Где купить</span>
+                    <span>{{ $tc('nav.points_of_purchases') }}</span>
                     <svg viewBox="0 0 6 10">
                         <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                     </svg>
@@ -27,7 +27,7 @@
             </li>
             <li>
                 <a href="" class="home-menu__link">
-                    <span>Условия сотрудничества</span>
+                    <span>{{ $tc('nav.cooperation') }}</span>
                     <svg viewBox="0 0 6 10">
                         <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                     </svg>
@@ -35,7 +35,7 @@
             </li>
             <li>
                 <a href="" class="home-menu__link">
-                    <span>Бренды</span>
+                    <span>{{ $tc('nav.brands') }}</span>
                     <svg viewBox="0 0 6 10">
                         <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                     </svg>
@@ -43,7 +43,7 @@
             </li>
             <li>
                 <a href="" class="home-menu__link">
-                    <span>Акции</span>
+                    <span>{{ $tc('nav.discounts') }}</span>
                     <svg viewBox="0 0 6 10">
                         <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                     </svg>
@@ -82,13 +82,13 @@
                 <svg viewBox="0 0 16 16">
                     <use :xlink:href="templatePath + 'images/sprite.svg#icons__phone'"></use>
                 </svg>
-                <span>+4 0371 166 478</span>
+                <span>{{ $tc('nav.tel') }}</span>
             </div>
             <div class="home-menu__info_link">
                 <svg>
                     <use :xlink:href="templatePath + 'images/sprite.svg#icons__pin'"></use>
                 </svg>
-                <span>Москва</span>
+                <span>{{ $tc('nav.city') }}</span>
             </div>
         </div>
     </div>
@@ -103,7 +103,7 @@
         data(){
             return{
                 showCountry: false,
-                activeCountry: 'Румыния',
+                activeCountry: 'nav.active_country',
             }
         },
         methods: {

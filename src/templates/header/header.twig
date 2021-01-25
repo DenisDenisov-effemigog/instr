@@ -4,22 +4,22 @@
             <nav class="topnav__nav">
                 <ul class="topnav__nav-list">
                     <li class="topnav__nav-item">
-                        <a href="#" class="topnav__nav-link">О компании</a>
+                        <a href="#" class="topnav__nav-link">{{ 'nav.title.about'|trans }}</a>
                     </li>
                     <li class="topnav__nav-item">
-                        <a href="#" class="topnav__nav-link">Филиалы</a>
+                        <a href="#" class="topnav__nav-link">{{ 'nav.branches'|trans }}</a>
                     </li>
                     <li class="topnav__nav-item">
-                        <a href="#" class="topnav__nav-link">Где купить</a>
+                        <a href="#" class="topnav__nav-link">{{ 'nav.points_of_purchases'|trans }}</a>
                     </li>
                     <li class="topnav__nav-item">
-                        <a href="#" class="topnav__nav-link">Условия сотрудничества</a>
+                        <a href="#" class="topnav__nav-link">{{ 'nav.cooperation'|trans }}</a>
                     </li>
                     <li class="topnav__nav-item">
-                        <a href="#" class="topnav__nav-link">Бренды</a>
+                        <a href="#" class="topnav__nav-link">{{ 'nav.brands'|trans }}</a>
                     </li>
                     <li class="topnav__nav-item">
-                        <a href="#" class="topnav__nav-link">Акции</a>
+                        <a href="#" class="topnav__nav-link">{{ 'nav.discounts'|trans }}</a>
                     </li>
                 </ul>
             </nav>
@@ -28,15 +28,15 @@
                 <svg class="topnav__phone-icon" viewBox="0 0 15 15">
                     <use xlink:href="{{ templatePath }}images/sprite.svg#icons__phone"></use>
                 </svg>
-                +4 0371 166 478
+                {{ 'nav.tel'|trans }}
                 <div class="topnav__phone-tooltip">
                     <div class="topnav__phone-tooltip-layout">
                         <svg viewBox="0 0 12 12">
                             <use xlink:href="{{ templatePath }}images/sprite.svg#icons__clock"></use>
                         </svg>
-                        Пн-Пт: с 9:00 - 18:00
+                        {{ 'header.tooltip.schedule_weekdays'|trans }}
                     </div>
-                    <div class="topnav__phone-tooltip-layout">Сб-Вс: с 11:00 - 15:00</div>
+                    <div class="topnav__phone-tooltip-layout">{{ 'header.tooltip.schedule_weekend'|trans }}</div>
                 </div>
             </a>
         </div>

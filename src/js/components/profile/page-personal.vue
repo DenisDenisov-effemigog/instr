@@ -2,7 +2,7 @@
     <div class="personalcab">
         <div class="personalcab__layout">
             <div class="personalcab__personal-data">
-                <h2 class="profile__title">{{ h1 }}</h2>
+                <h2 class="profile__title">{{ $tc(h1) }}</h2>
             </div>
             <div class="personalcab__company">
                 <div class="profile__company">
@@ -19,30 +19,30 @@
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__' + data.icon"></use>
                     </svg>
                     <div>
-                        <p class="personalcab__data">{{data.title}}</p>
-                        <div class="personalcab__data-value">{{profile[data.index]}}</div>
+                        <p class="personalcab__data">{{ $tc(data.title) }}</p>
+                        <div class="personalcab__data-value">{{ profile[data.index] }}</div>
                     </div>
                 </li>
             </ul>
             <a class="profile__link"
                @click.prevent="openModal('profile-edit')"
-            >Изменить данные</a>
+            >{{ $tc('profile_personal.link.edit_data') }}</a>
         </div>
         <div class="personalcab__layout">
-            <h4 class="personalcab__title">Пароль и авторизация</h4>
+            <h4 class="personalcab__title">{{ $tc('profile_personal.title.auth') }}</h4>
             <a class="profile__link"
                @click.prevent="openModal('profile-password')"
-            >Изменить пароль</a>
+            >{{ $tc('profile_personal.link.edit_password') }}</a>
         </div>
         <div class="personalcab__layout">
-            <h4 class="personalcab__title">Удаление профиля</h4>
+            <h4 class="personalcab__title">{{ $tc('profile_personal.title.delete_profile') }}</h4>
             <a class="profile__link"
                @click.prevent="openModal('profile-delete')"
             >
                 <svg viewBox="0 0 20 20">
                     <use :xlink:href="templatePath + 'images/sprite.svg#icons__delete'"></use>
                 </svg>
-                Удалить профиль
+                {{ $tc('profile_personal.link.delete_profile') }}
             </a>
         </div>
     </div>
@@ -51,29 +51,21 @@
 <script>
 export default {
     name:"page-personal",
-    props:{
-        /*profile: {
-            required: true,
-            type: Object,
-        },*/
-    },
     data() {
       return {
           person: [
-              {'title': 'Контактное лицо', 'icon': 'user-profile', 'index': 'contact', 'personType': 1},
-              {'title': 'Телефон', 'icon': 'call', 'index': 'phone', 'personType': 1},
-              {'title': 'ИНН', 'icon': 'edit', 'index': 'code', 'personType': 2},
-              {'title': 'Компания', 'icon': '3d', 'index': 'company', 'personType': 2},
-              {'title': 'Электронная почта', 'icon': 'mail', 'index': 'email', 'personType': 1},
-              {'title': 'Юридический адрес', 'icon': 'location', 'index': 'address', 'personType': 2},
+              {'title': 'profile_personal.title.person', 'icon': 'user-profile', 'index': 'contact', 'personType': 1},
+              {'title': 'profile_personal.title.phone', 'icon': 'call', 'index': 'phone', 'personType': 1},
+              {'title': 'profile_personal.title.inn', 'icon': 'edit', 'index': 'code', 'personType': 2},
+              {'title': 'profile_personal.title.company', 'icon': '3d', 'index': 'company', 'personType': 2},
+              {'title': 'profile_personal.title.mail', 'icon': 'mail', 'index': 'email', 'personType': 1},
+              {'title': 'profile_personal.title.address', 'icon': 'location', 'index': 'address', 'personType': 2},
           ]
       }  
     },
     computed: {
-        profile() {
-            //console.log('this.$store.state.personal', this.$store.state.personal);            
+        profile() {         
             let profile = this.cloneOverJson(this.$store.state.personal);
-            //contract.effective_date = this.when(contract.effective_date);
             return profile;
         },
         h1() {

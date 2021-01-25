@@ -12,7 +12,7 @@
                 </li>
             </ul>
             <div @click="clearHistory" class="search-result__clear">
-                <p class="search-result__clear-text">Очистить историю</p>
+                <p class="search-result__clear-text">{{ $tc('header.search.clear_history') }}</p>
                 <div class="search-result__clear-pic">
                     <svg class="search-result__clear-pic-icon">
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__del'"></use>
@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="search-category">
-            <h2 class="search-category__title">Категории</h2>
+            <h2 class="search-category__title">{{ $tc('header.search.categories') }}</h2>
             <ul class="search-category__list">
                 <li @click="categoryClick" v-for="item in categoryArr" :key="item" class="search-category__item">
                     <a href="#" class="search-category__link">{{item}}</a>
@@ -29,7 +29,7 @@
             </ul>
         </div>
         <div class="search-items">
-            <h2 class="search-items__title">Товары</h2>
+            <h2 class="search-items__title">{{ $tc('header.search.products') }}</h2>
             <ul class="search-items__list">
                 <li v-for="item in itemArr" :key="item" class="search-items__item">
                     <div class="search-items__info">
@@ -50,7 +50,7 @@
             </ul>
             <div class="search-items__download">
                 <!-- Переход к результатам -->
-                <a href="#" class="search-items__download-text">Показать все результаты</a>
+                <a href="#" class="search-items__download-text">{{ $tc('header.search.show_all') }}</a>
                 <div class="search-items__download-pic">
                     <svg class="search-items__download-pic-icon" viewBox="0 0 12 10">
                         <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>

@@ -11,8 +11,8 @@
                     </svg>
                 </div>
                 <form action="" class="mobile-search__form">
-                    <input type="text" class="mobile-search__input" :class="{'header__search-input_focused': focused}" placeholder="Поиск">
-                    <button class="mobile-search__btn">Найти</button>
+                    <input type="text" class="mobile-search__input" :class="{'header__search-input_focused': focused}" :placeholder="$tc('header.search.placeholder_mobile')">
+                    <button class="mobile-search__btn">{{ $tc('header.search.btn_find') }}</button>
                      <search :focused=focused></search> 
                 </form>
             </div>
@@ -21,7 +21,7 @@
             </div>
         </div>
         <form action="" class="header__search-form">
-            <input @focus="focus" type="text" class="header__search-input" :class="{'header__search-input_focused': focused}" placeholder="Поиск по сайту">
+            <input @focus="focus" type="text" class="header__search-input" :class="{'header__search-input_focused': focused}" :placeholder="$tc('header.search.placeholder')">
                 <svg v-show="focused" class="header__search-form-icon">
                     <use :xlink:href="templatePath + 'images/sprite.svg#icons__mag'"></use>
                 </svg>

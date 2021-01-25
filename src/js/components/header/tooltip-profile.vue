@@ -14,7 +14,7 @@
             <svg>
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__exit'"></use>
             </svg>
-            Выход
+            {{ $tc('header.tooltip.exit') }}
         </div>
     </div>
 </template>
@@ -31,27 +31,27 @@
             return{
                 links: [
                     {
-                        title: 'Мой профиль',
+                        title: 'link.my_profile',
                         url: '/account/',
                         exact: true,
                         personType: 1,
                         icon: 'home'
                     },
                     {
-                        title: 'Список заказов',
+                        title: 'link.orders_list',
                         url: '/account/orders',
                         personType: 1,
                         icon: 'order'
                     },
                     {
-                        title: 'Мой счет',
+                        title: 'link.my_check',
                         url: '/account/check', 
                         personType: 2, 
                         external: true,
                         icon: 'card'
                     },
                     {
-                        title: 'Адреса доставки',
+                        title: 'link.my_addresses',
                         url: '/account/adresses',
                         personType: 2, 
                         external: true,

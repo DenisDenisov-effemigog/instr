@@ -69,11 +69,11 @@
                                     {% if price.base == 1 %}
                                         {{ 'product_card.price.retail'|trans }}
                                     {% elseif price.base == 2 %}
-                                        {{ 'product_card.price.base'|trans }}
+                                        {{ 'text.price_base'|trans }}
                                     {% elseif price.base == 0 %}
-                                        {{ 'product_card.price.discount'|trans }}
+                                        {{ 'text.discount'|trans }}
                                     {% elseif price.base == 3 %}
-                                        {{ 'product_card.price.yours'|trans }}
+                                        {{ 'text.price_yours'|trans }}
                                     {% endif %}
                                     {% if price.discount %}
                                         {{ price.discount }}%

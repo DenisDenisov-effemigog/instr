@@ -26,22 +26,22 @@
                     <svg class="header__menu-icon" viewBox="-2 0 19 20">
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__user'"></use>
                     </svg>
-                    <p class="header__menu-text" v-if="!user.authorized">Войти</p>
+                    <p class="header__menu-text" v-if="!user.authorized">{{ $tc('header.menu.enter') }}</p>
                     <div class="header__menu-tooltip" v-if="!user.authorized">
                         <div @click.prevent="openModal('user', 'login')"  href="#" class="header__menu-tooltip-layout">
                             <svg class="" viewBox="0 0 16 16">
                                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__entrance'"></use>
                             </svg>
-                            Вход
+                            {{ $tc('title.entrance') }}
                         </div>
                         <div @click.prevent="openModal('user', 'reg')" href="#" class="header__menu-tooltip-layout">
                             <svg class="" viewBox="0 0 16 16">
                                 <use :xlink:href="templatePath + 'images/sprite.svg#plus'"></use>
                             </svg>
-                            Регистрация
+                            {{ $tc('title.registration') }}
                         </div>
                     </div>
-                    <p class="header__menu-text" v-if="user.authorized">Профиль</p>
+                    <p class="header__menu-text" v-if="user.authorized">{{ $tc('header.menu.profile') }}</p>
                     <component is="tooltip-profile" v-if="user.authorized"></component>
                 </div>
             </li>
@@ -50,7 +50,7 @@
                     <svg class="header__menu-icon" viewBox="-2 0 19 20">
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__graf'" ></use>
                     </svg>
-                    <p class="header__menu-text">Сравнить</p>
+                    <p class="header__menu-text">{{ $tc('header.menu.compare') }}</p>
                 </a>
             </li>
             <li class="header__menu-item">
@@ -58,7 +58,7 @@
                     <svg class="header__menu-icon">
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__heart'"></use>
                     </svg>
-                    <p class="header__menu-text">Избранное</p>
+                    <p class="header__menu-text">{{ $tc('header.menu.favorite') }}</p>
                 </a>
             </li>
             <li class="header__menu-item">
@@ -70,7 +70,7 @@
 
 <script>
     import showCatalogue from '../catalogue/show-catalogue.vue';
-    import headerSearch from './header-search.vue';
+    import headerSearch from './search/header-search.vue';
     import tooltipProfile from './tooltip-profile.vue';
 
 export default {

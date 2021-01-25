@@ -4,7 +4,7 @@
         <ul class="profile-menu-mobile__links">
             <li>
                 <a href="" class="profile-menu-mobile__link">
-                    <span>Мой профиль</span>
+                    <span>{{ $tc('link.my_profile') }}</span>
                     <svg viewBox="0 0 6 10">
                         <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                     </svg>
@@ -12,7 +12,7 @@
             </li>
             <li>
                 <a href="" class="profile-menu-mobile__link">
-                    <span>Список заказов</span>
+                    <span>{{ $tc('link.orders_list') }}</span>
                     <svg viewBox="0 0 6 10">
                         <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                     </svg>
@@ -20,7 +20,7 @@
             </li>
             <li>
                 <a href="" class="profile-menu-mobile__link">
-                    <span>Мой счет</span>
+                    <span>{{ $tc('link.my_check') }}</span>
                     <svg viewBox="0 0 6 10">
                         <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                     </svg>
@@ -28,7 +28,7 @@
             </li>
             <li>
                 <a href="" class="profile-menu-mobile__link">
-                    <span>Адреса доставки</span>
+                    <span>{{ $tc('link.my_addresses') }}</span>
                     <svg viewBox="0 0 6 10">
                         <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                     </svg>

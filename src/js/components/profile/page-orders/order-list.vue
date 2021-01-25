@@ -11,17 +11,15 @@
                 ></component>
             </li>
         </ul>
-<!--        <page-order v-else :order="order"></page-order>-->
     </div>
 </template>
 
 <script>
 import order from './order.vue'
-//import PageOrder from './page-order.vue'
+
 export default {
      components: {
-         order,
-         //PageOrder, 
+         order, 
      },
      name: 'order-list',
      props: {
@@ -53,15 +51,7 @@ export default {
             }
         },
     },
-    created() {
-        //this.$eventBus.$on("openDetails", this.openDetails)
-    },
     methods: {
-
-        /*openDetails(index){
-            this.showDetails = true
-            this.order = this.orders[index]
-        },*/
     }
 }
 </script>

@@ -39,7 +39,6 @@
                 </li>
                 <add-address-btn></add-address-btn>
             </ul>
-
         </div>
     </div>
 </template>

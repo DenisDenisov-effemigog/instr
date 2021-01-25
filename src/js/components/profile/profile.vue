@@ -15,7 +15,7 @@
                                  active-class="profile__menu-link_active" 
                                  :to="item.url"
                     >
-                        <span>{{ item.title }}</span>
+                        <span>{{ $tc(item.title) }}</span>
                         <svg class="" viewBox="0 0 6 10">
                             <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                         </svg>
@@ -27,7 +27,7 @@
                     <svg viewBox="0 0 15 15">
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__' + link.icon"></use>
                     </svg>
-                    <span>{{link.title}}</span>
+                    <span>{{ $tc(link.title) }}</span>
                 </div>
             </div>
         </div>
@@ -37,7 +37,7 @@
                 <svg class="breadcrumbs__back" viewBox="0 0 18 15">
                     <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
                 </svg>
-                <span>Назад</span>
+                <span>{{ $tc('link.back') }}</span>
             </div>
 
             <transition name="fade" mode="out-in">
@@ -72,25 +72,25 @@ export default {
         return {
             links: [
                 {
-                    title: 'Мой профиль',
+                    title: 'link.my_profile',
                     url: '/account/',
                     exact: true,
                     personType: [1,2],
                 },
                 {
-                    title: 'Список заказов',
+                    title: 'link.orders_list',
                     url: '/account/orders/', 
                     personType: [1,2],
                     //external: true
                 },
                 {
-                    title: 'Мой счет',
+                    title: 'link.my_check',
                     url: '/account/check/', 
                     personType: [2],
                     //external: true
                 },
                 {
-                    title: 'Адреса доставки',
+                    title: 'link.my_addresses',
                     url: '/account/adresses/',
                     personType: [2],
                     //external: true
@@ -101,9 +101,9 @@ export default {
             showMenu: true,
             details: false,
             menuMobile: [
-                {'title': '+4 0371 166 478', 'icon': 'phone'},
-                {'title': 'Москва', 'icon': 'pin'},
-                {'title': 'Выйти', 'icon': 'exit'},
+                {'title': 'nav.tel', 'icon': 'phone'},
+                {'title': 'nav.city', 'icon': 'pin'},
+                {'title': 'profile.link.exit', 'icon': 'exit'},
             ],
             listOpened: false
         };
