@@ -55,7 +55,7 @@
                     :class="{'home-menu__link--opened': showCountry}"
                     @click="openCountry"
                 >
-                    <span>{{ activeCountry }}</span>
+                    <span>{{ $tc(activeCountry) }}</span>
                     <svg viewBox="0 0 6 10">
                         <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                     </svg>

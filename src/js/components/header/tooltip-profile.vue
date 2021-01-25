@@ -8,7 +8,7 @@
             <svg>
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__' + item.icon"></use>
             </svg>
-            <span>{{ item.title }}</span>
+            <span>{{ $tc(item.title) }}</span>
         </router-link>
         <div href="#" class="header__menu-tooltip-layout">
             <svg>

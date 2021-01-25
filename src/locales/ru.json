@@ -10,6 +10,7 @@
     "link.my_check": "Мой счет",
     "link.my_addresses": "Адреса доставки",
     "link.go_cart": "Перейти в корзину",
+    "link.close": "Закрыть",
     "input.text.in_cart": "В корзине",
     "text.count": "шт.",
     "text.articul": "Артикул",
@@ -114,6 +115,7 @@
     "header.search.show_all": "Показать все результаты",
     "header.catalogue": "Каталог",
     "header.catalogue.show_more": "Показать ещё",
+    "country.choose_country": "Выбор страны",
     
     "main_page.promo.title": "Промо моменты",
     "main_page.bestsellers.title": "Хиты продаж",

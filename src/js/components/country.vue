@@ -4,7 +4,7 @@
         <div class="country__wrapper"> 
             <div class="country-container">
                 <div class="country__choice">
-                    <h2 class="country__choice-title">Выбор страны</h2>
+                    <h2 class="country__choice-title">{{ $tc('country.choose_country') }}</h2>
                     <ul class="country__choice-list">
                         <li v-for="country in countries" class="country__choice-item">
                             <a @click="choiceCountry(country)" href="#" class="country__choice-link" :class="{'country__choice-link-active': currentLink == countries.indexOf(country)}">
@@ -17,7 +17,7 @@
                     <img :src="templatePath + 'images/country/map.png'" alt="" class="country__map-pic">
                 </div> -->
                 <div @click="closeChoiceCountry" class="country__close">
-                    <div class="country__close-text">Закрыть</div>
+                    <div class="country__close-text">{{ $tc('link.close') }}</div>
                     <svg class="country__close-pic" viewBox="0 0 12 12">
                         <use :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
                     </svg>
