@@ -48,7 +48,6 @@ import productInfoAll from './components/product-card/product-info-all.vue';
 import productOrderBlock from './components/product-card/product-order-block.vue';
 /*profile*/
 import profile from './components/profile/profile.vue';
-import profileMenuMobile from './components/profile/profile-menu-mobile.vue';
 import pagePersonal from './components/profile/page-personal.vue';
 import pageOrders from './components/profile/page-orders.vue';
 import pageOrder from './components/profile/page-orders/page-order.vue';
@@ -130,7 +129,6 @@ export default {
         mediaButton,
         paginationBtn,
         profile,
-        profileMenuMobile,
         pagePersonal,
         pageOrders,
         pageCheck,

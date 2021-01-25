@@ -1,7 +1,7 @@
 <template>
     <form class="profile-modal__form"
         @submit.prevent="submit">
-        <label name="address" class="profile-modal__label">
+        <label for="address" class="profile-modal__label">
             <input
                 class="profile-modal__input"
                 :class="{'profile-modal__input_error': $v.address.$error}"
@@ -13,9 +13,9 @@
                 v-model.trim="address">
             <span class="profile-modal__label-text"
                 :class="{'profile-modal__label-text_up': $v.address.required}"
-            >Адрес</span>
+            >{{ $tc('text.address') }}</span>
         </label>
-        <label name="message" class="profile-modal__label profile-modal__label_column">
+        <label for="message" class="profile-modal__label profile-modal__label_column">
             <textarea
                 class="profile-modal__textarea"
                 :class="{'profile-modal__textarea_error': $v.message.$error}"
@@ -25,8 +25,8 @@
             ></textarea>
             <span class="profile-modal__label-text"
                 :class="{'profile-modal__label-text_up': $v.message.required}"
-            >Сообщение</span>
-            <span class="profile-modal__error-text" v-if="$v.$error">*Обязательное поле для заполнения</span>
+            >{{ $tc('text.message') }}</span>
+            <span class="profile-modal__error-text" v-if="$v.$error">*{{ $tc('text.required') }}</span>
         </label>
         <input type="submit" class="profile-modal__button" value="Отправить запрос">
     </form>
