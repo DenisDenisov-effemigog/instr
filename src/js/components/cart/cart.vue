@@ -3,7 +3,7 @@
         <div class="cart__content" v-if="products.length == 0">
             <div class="cart__purchases-wrapper">
                 <div class="cart__header cart__header--empty">
-                    <div class="cart__title">Корзина пуста</div>
+                    <div class="cart__title">{{ $tc('cart.title.empty') }}</div>
                 </div>
                 <div class="cart__purchases">
                     <component is="cart-search"></component>
@@ -14,7 +14,7 @@
             <div class="cart__purchases-wrapper">
                 <div class="cart__border-right">
                     <div class="cart__header">
-                        <div class="cart__title">Корзина</div>
+                        <div class="cart__title">{{ $tc('cart.title.full') }}</div>
                         <div class="cart__header-layout">
                             <div class="cart__view-switcher">
                                 <label name="mode" class="cart__view-switch" @click="changeView()">
@@ -24,14 +24,14 @@
                                         name="mode"
                                         v-model="table">
                                     <span class="cart__view-switch-slider"></span>
-                                    <span class="cart__view-switch-label">Табличный&nbsp;режим</span>
+                                    <span class="cart__view-switch-label">{{ $tc('cart.view.table') }}</span>
                                 </label>
                             </div>
                             <div class="cart__clear-btn" @click="clearCart">
                                 <svg>
                                     <use :xlink:href="templatePath + 'images/sprite.svg#icons__delete'"></use>
                                 </svg>
-                                Очистить корзину
+                                {{ $tc('cart.clear') }}
                             </div>
                         </div>
                     </div>
@@ -42,13 +42,13 @@
                     
                     <div class="cart__purchases" :class="{'cart__purchases--table': changedView === 'table_cards'}">
                         <div class="table-header" v-if="changedView === 'table_cards'">
-                            <div class="table-header__code">Артикул</div>
-                            <div class="table-header__dscr">Название</div>
-                            <div class="table-header__qnty">Кол-во</div>
-                            <div class="table-header__price">Цена/шт.</div>
-                            <div class="table-header__old-price">Старая цена</div>
-                            <div class="table-header__discount">Скидка</div>
-                            <div class="table-header__new-price">Новая цена</div>
+                            <div class="table-header__code">{{ $tc('cart.title.sku') }}</div>
+                            <div class="table-header__dscr">{{ $tc('cart.title.name') }}</div>
+                            <div class="table-header__qnty">{{ $tc('cart.title.qty') }}</div>
+                            <div class="table-header__price">{{ $tc('cart.title.price') }}</div>
+                            <div class="table-header__old-price">{{ $tc('cart.title.all_price') }}</div>
+                            <div class="table-header__discount">{{ $tc('cart.title.discount') }}</div>
+                            <div class="table-header__new-price">{{ $tc('cart.title.total_price') }}</div>
                         </div>
                         <div class="cart__in-stock">
                             <cart-card
@@ -59,10 +59,10 @@
                             ></cart-card>
                         </div>
                         <div class="cart__purchases-out-of-stock" v-if="notAvailable.length > 0">
-                            <div class="cart__title cart__title--out-of-stock">Нет в наличии</div>
+                            <div class="cart__title cart__title--out-of-stock">{{ $tc('cart.title.out_of_stock') }}</div>
                             <div class="table-header" v-if="changedView === 'table_cards'">
-                                <div class="table-header__code">Артикул</div>
-                                <div class="table-header__dscr">Название</div>
+                                <div class="table-header__code">{{ $tc('cart.title.sku') }}</div>
+                                <div class="table-header__dscr">{{ $tc('cart.title.name') }}</div>
                             </div>
                             <div class="cart__out-of-stock">
                                 <cart-card

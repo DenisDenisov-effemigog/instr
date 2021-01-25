@@ -21,7 +21,8 @@
                 </svg>
             </vue-ellipse-progress>
         </div>
-        <div class="cart-order__head-text">{{ progressText }}</div>
+        <div class="cart-order__head-text" v-if="currentPrice > rightPrice">{{ $tc('cart.order.progress_success') }}</div>
+        <div class="cart-order__head-text" v-else>{{ $tc('cart.order.progress_text_start') }}{{ getPrice }}{{ $tc('cart.order.progress_text_end') }}</div>
     </div>
 </template>
 
@@ -32,7 +33,7 @@ export default {
         return{
             rightPrice: 7500, /*TODO вывести из базы ???*/
             progress: 0,
-            progressText: 'Внимание! Добавьте товар на сумму '+this.getPrice+' ₽, чтобы доставка стала бесплатной',
+            // progressText: 'Внимание! Добавьте товар на сумму '+this.getPrice+' ₽, чтобы доставка стала бесплатной',
             progressIcon: 'icons__cube',
             progressIconSize: '0 0 24 24'
         }
@@ -51,12 +52,12 @@ export default {
         progressPrice() {
             if (this.currentPrice > 7500) {
                 this.progress = 100;
-                this.progressText = 'Ура! Теперь доставка для вас бесплатная.';
+                // this.progressText = 'Ура! Теперь доставка для вас бесплатная.';
                 this.progressIcon = 'check';
                 this.progressIconSize = '-1 -2 12 12';
             } else {
                 this.progress = this.currentPrice/7500*100;
-                this.progressText = 'Внимание! Добавьте товар на сумму '+this.getPrice+' ₽, чтобы доставка стала бесплатной';
+                // this.progressText = 'Внимание! Добавьте товар на сумму '+this.getPrice+' ₽, чтобы доставка стала бесплатной';
                 this.progressIcon = 'icons__cube';
                 this.progressIconSize = '0 0 24 24';
             }

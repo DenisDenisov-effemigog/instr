@@ -22,7 +22,7 @@
         </div>
 
         <div class="cart-card__species" v-if="view === 'horiz_cards'">
-            <div class="cart-card__code" v-if="!deleteItem">Артикул: {{ product.sku }}</div>
+            <div class="cart-card__code" v-if="!deleteItem">{{ $tc('cart.item.sku_text') }}{{ product.sku }}</div>
 
             <div class="cart-card__block">
                 <div class="cart-card__content" v-if="!deleteItem">
@@ -66,14 +66,14 @@
 
                 <div class="cart-card__content" v-else>
                     <a :href="product.link" class="table-header__dscr">
-                        <span class="cart-card__name-message">Удален: </span>
+                        <span class="cart-card__name-message">{{ $tc('cart.item.is_deleted') }}</span>
                         <span class="cart-card__name-title">{{ product.name }}</span>
                     </a>
-                    <div class="cart-card__in-favorite" @click="toFav">Добавить&nbsp;в&nbsp;избранное</div>
+                    <div class="cart-card__in-favorite" @click="toFav">{{ $tc('cart.item.add_to_favorite') }}</div>
                     <div class="cart-card__cancel-delete"
                         :class="{'cart-card__cancel-delete--out-of-stock': !product.available}"
                         @click="deleteItem = false">
-                        Отменить
+                        {{ $tc('cart.item.cancel_deletion') }}
                     </div>
                 </div>
 
@@ -119,14 +119,14 @@
                 <span class="cart-card__in-favorite"
                     @click="toFav"
                     v-else
-                >Добавить&nbsp;в&nbsp;избранное</span>
+                >{{ $tc('cart.item.add_to_favorite') }}</span>
             </div>
             <div class="table-header__new-price" v-if="product.available || deleteItem">
                 <span v-if="!deleteItem">{{ currency(product.price * amount) }}&nbsp;&#8381;</span>
                 <span class="cart-card__cancel-delete"
                     @click="deleteItem = false"
                     v-else
-                >Отменить</span>
+                >{{ $tc('cart.item.cancel_deletion') }}</span>
             </div>
             <div class="cart-card__delete" v-if="product.available">
                 <svg v-if="deleteItem" @click="clearItem(product.id)">
