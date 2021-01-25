@@ -32,13 +32,13 @@
                             <svg class="" viewBox="0 0 16 16">
                                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__entrance'"></use>
                             </svg>
-                            {{ $tc('header.tooltip.enter') }}
+                            {{ $tc('title.entrance') }}
                         </div>
                         <div @click.prevent="openModal('user', 'reg')" href="#" class="header__menu-tooltip-layout">
                             <svg class="" viewBox="0 0 16 16">
                                 <use :xlink:href="templatePath + 'images/sprite.svg#plus'"></use>
                             </svg>
-                            {{ $tc('header.tooltip.register') }}
+                            {{ $tc('title.registration') }}
                         </div>
                     </div>
                     <p class="header__menu-text" v-if="user.authorized">{{ $tc('header.menu.profile') }}</p>
