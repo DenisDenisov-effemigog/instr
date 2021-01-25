@@ -5,6 +5,7 @@
     "link.in_favorite": "В избранное",
     "link.to_compare": "Сравнить",
     "link.details": "Подробнее",
+    "link.back": "Назад",
     "input.text.in_cart": "В корзине",
     "input.text.count": "шт.",
     "product_card.link.all_specifications": "Все характеристики",
@@ -20,6 +21,13 @@
     "product_card.tabs.questions": "Вопросы и ответы",
     "product_card.form.title": "Задайте вопрос о товаре",
     "product_card.questions.badge": "Новый вопрос",
+    "profile.link.my_profile": "Мой профиль",
+    "profile.link.orders_list": "Список заказов",
+    "profile.link.my_check": "Мой счет",
+    "profile.link.my_addresses": "Адреса доставки",
+    "profile.link.tel": "+4 0371 166 478",
+    "profile.link.moscow": "Москва",
+    "profile.link.exit": "Выйти",
 
     "main_page.promo.title": "Промо моменты",
     "main_page.bestsellers.title": "Хиты продаж",
@@ -63,5 +71,6 @@
     "footer.navbar.tel": "8&nbsp;(800)&nbsp;200-49-49",
     "footer.navbar.schedule": "пн-пт&nbsp;2-18&nbsp;(мск)",
     "footer.navbar.email": "почта@mail.ru",
-    "footer.navbar.address": "г.Москва,&nbsp;ул.&nbsp;Трехгорный&nbsp;Вал&nbsp;3",
+    "footer.navbar.address": "г.Москва,&nbsp;ул.&nbsp;Трехгорный&nbsp;Вал&nbsp;3"
+    
 }
