@@ -2,21 +2,25 @@
     <div class="delivery-date">
         <div class="delivery-date__title">Дата доставки</div>
         <div class="delivery-date__info">Дата доставки ориентировочная. Не обязательно к заполнению.</div>
-        <div class="delivery-date__select">
-            <select-list
-                :points="points"
-                :selectopenSelect="setPoint"
-            ></select-list>
+        <div class="delivery-date__calendar">
+            <date-picker v-model="time1">
+                <template v-slot:icon-calendar>
+                    <svg>
+                        <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-down'"></use>
+                    </svg>
+                </template>
+            </date-picker>
         </div>
     </div>
 </template>
 
 <script>
 import selectList from "../partials/select-list.vue"
+import DatePicker from 'vue2-datepicker';
 
 export default{
     name:"delivery-date",
-    components: { selectList },
+    components: { selectList, DatePicker },
     data(){
         return{
             points:[
@@ -33,6 +37,7 @@ export default{
                     label:"Не выбрано (не обязательно)",
                     value:"none"
                 },
+            time1: 'Не выбрано (не обязательно)',
         }
     }
 }

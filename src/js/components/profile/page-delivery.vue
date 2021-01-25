@@ -37,9 +37,8 @@
                         </svg>
                     </div>
                 </li>
-                <add-address-btn :mobile="true"></add-address-btn>
+                <add-address-btn></add-address-btn>
             </ul>
-
         </div>
     </div>
 </template>

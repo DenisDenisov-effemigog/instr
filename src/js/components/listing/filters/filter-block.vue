@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="filter-block__content" v-if="filterInternal.type === 'range'" v-show="openFilter">
-            <div class="filter-block__subtitle">Базовая цена</div>
+            <div class="filter-block__subtitle">{{ $tc('text.price_base') }}</div>
             <filter-control-range v-model="filterInternal"></filter-control-range>
         </div>
         <div class="filter-block__content"  v-else-if="filterInternal.type === 'switch'" v-show="openFilter">

@@ -1,5 +1,5 @@
 <template>
-    <span class="listing__items-cont">{{ itemsQuantity }} {{ $tc(text.product) }}{{ ending(itemsQuantity) }}</span>
+    <span class="listing__items-cont">{{ itemsQuantity }} {{ $tc('text.product') }}{{ ending(itemsQuantity) }}</span>
 </template>
 
 <script>

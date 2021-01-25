@@ -1,8 +1,8 @@
 <template>
     <div ref="checkout" class="checkout">
-        <div class="checkout__main">
-            <h2 class="checkout__title">Ваш заказ принят</h2>
-            <div class="checkout-success">
+        <div class="checkout__main" :class="{'checkout__main--border-none': successFlag=='success' || value != 'new'}">
+            <h2 v-show="successFlag=='success'" class="checkout__title">Ваш заказ принят</h2>
+            <div v-show="successFlag=='success'" class="checkout-success">
                 <div class="checkout-success__text">
                     Когда адрес пройдет верификацию, заказ будет подтвержден.
                 </div>
@@ -14,13 +14,15 @@
                     <span class="checkout-success__date-title">Дата:</span>
                     <span>12.10.2020</span>
                 </div>
-                <div class="checkout-success__btn">
+                <div class="checkout-success__btn"
+                    @click="successFlag='pay'"
+                >
                     Перейти в каталог
                 </div>
             </div>
-            <h2 v-show='value == "experienced"' class="checkout__title">Авторизация</h2>
-            <h2 v-show='value == "new"' class="checkout__title">Оформление заказа</h2>
-            <div class="checkout-choice">
+            <h2 v-show='value == "experienced" && successFlag=="pay"' class="checkout__title">Авторизация</h2>
+            <h2 v-show='value == "new" && successFlag=="pay"' class="checkout__title">Оформление заказа</h2>
+            <div  v-show="successFlag=='pay'" class="checkout-choice">
                 <div class="checkout-choice__title">Контактная информация</div>
                 <form action="" class="checkout-choice__form">
                     <label name="choice" class="checkout-choice__radio">
@@ -35,7 +37,7 @@
                     </label>
                 </form>
             </div>
-            <div class="checkout__content">
+            <div  v-show="successFlag=='pay'" class="checkout__content">
                 <div v-show='value == "new"' class="checkout__desc">
                      <div class="checkout__tabs">
                         <div class="checkout__tab"
@@ -58,7 +60,9 @@
                     <delivery-payment></delivery-payment>
                     <delivery-comment></delivery-comment>
                     <div class="checkout__btn-wrap">
-                        <div class="checkout__btn">
+                        <div class="checkout__btn"
+                            @click="successFlag='success'"
+                        >
                             Перейти к оплате
                         </div>
                     </div>
@@ -71,12 +75,14 @@
                 </div>
             </div>
         </div>
-        <div class="checkout__order">
+        <div v-show="successFlag=='pay' && value == 'new'" class="checkout__order">
             <cart-order :productsPrice="productsPrice" :place="'checkout'"></cart-order>
             <div class="checkout__btn-wrap checkout__btn-wrap--mobile"
                 :class="{'checkout__btn-wrap--fixed': fixedFlag}"
             >
-                <div class="checkout__btn">
+                <div class="checkout__btn"
+                    @click="successFlag='success'"
+                >
                     Перейти к оплате
                 </div>
             </div>
@@ -102,7 +108,8 @@ import DeliveryComment from './delivery-comment.vue'
                 value:'new',
                 IndividualFlag: false,
                 currentTab: "corporate",
-                fixedFlag:false
+                fixedFlag:false,
+                successFlag:"pay"
             }
         },
         computed: {

@@ -7,9 +7,11 @@
                     <h2 class="country__choice-title">{{ $tc('country.choose_country') }}</h2>
                     <ul class="country__choice-list">
                         <li v-for="country in countries" class="country__choice-item">
-                            <a @click="choiceCountry(country)" href="#" class="country__choice-link" :class="{'country__choice-link-active': currentLink == countries.indexOf(country)}">
-                                {{country}}
-                            </a>
+                            <a @click="choiceCountry(country)" 
+                               href="#" 
+                               class="country__choice-link" 
+                               :class="{'country__choice-link-active': currentLink == countries.indexOf(country)}"
+                            >{{country}}</a>
                         </li>
                     </ul>
                 </div>

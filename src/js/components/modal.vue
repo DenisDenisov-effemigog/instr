@@ -11,9 +11,9 @@
                 <span>{{ $tc('link.back') }}</span>
             </div>
             <div class="modal-desc" v-if="modal === 'promo'">
-                <h3 class="modal-title">Третий в подарок!</h3>
-                <div class="modal-text">Здесь отображена текстовая информация об условиях акции, ее сроках, товарах, которые принимают участие, а так же что-нибудь еще.</div>
-                <div @click="closeModal" class="modal-btn">Понятно!</div>
+                <h3 class="modal-title">{{ $tc('modal.title.action') }}</h3>
+                <div class="modal-text">{{ $tc('modal.text.action') }}</div>
+                <div @click="closeModal" class="modal-btn">{{ $tc('modal.link.action') }}</div>
             </div>
             <div class="modal-slider" v-else-if="modal === 'product-card'">
                 <component is="photo-modal" :productImages="props"></component>
@@ -22,31 +22,31 @@
                 <iframe :src="props" frameborder="0" allowfullscreen></iframe>
             </div>
             <div class="modal_profile-edit" v-else-if="modal === 'profile-edit'">
-                <h3 class="modal-title modal-title_centered">Изменение данных</h3>
+                <h3 class="modal-title modal-title_centered">{{ $tc('modal.title.profile_edit') }}</h3>
                 <component is="edit-profile" :person="props"></component>
             </div>
             <div class="modal_profile-edit" v-else-if="modal === 'profile-password'">
-                <h3 class="modal-title modal-title_centered">Изменение пароля</h3>
+                <h3 class="modal-title modal-title_centered">{{ $tc('modal.title.password_edit') }}</h3>
                 <component is="change-password"></component>
             </div>
             <div class="modal_profile-edit" v-else-if="modal === 'profile-delete'">
-                <h3 class="modal-title">Выберите причину удаления профиля:</h3>
+                <h3 class="modal-title">{{ $tc('modal.title.profile_delete') }}</h3>
                 <component is="delete-profile"></component>
             </div>
             <div class="modal_profile-edit" v-else-if="modal === 'new-address'">
-                <h3 class="modal-title">Добавление нового адреса доставки</h3>
+                <h3 class="modal-title">{{ $tc('modal.title.address_add') }}</h3>
                 <component is="add-address"></component>
             </div>
             <div class="modal_profile-edit" v-else-if="modal === 'delete-address'">
-                <h3 class="modal-title modal-title_centered">Удаление адреса</h3>
-                <div class="modal-text">Отправьте запрос, чтобы удалить адрес.</div>
-                <div @click="closeModal" class="modal-btn">Отправить запрос</div>
+                <h3 class="modal-title modal-title_centered">{{ $tc('modal.title.address_remove') }}</h3>
+                <div class="modal-text">{{ $tc('modal.text.address_remove') }}</div>
+                <div @click="closeModal" class="modal-btn">{{ $tc('modal.link.address_remove') }}</div>
             </div>
             <div class="modal_profile-edit" v-else-if="modal === 'repeat-order'">
                 <component is="repeat-order" :products="props"></component>
             </div>
             <div class="modal_profile-edit" v-else-if="modal === 'user'">
-                <h3 class="modal-title modal-title_centered">Авторизация</h3>
+                <h3 class="modal-title modal-title_centered">{{ $tc('modal.title.auth') }}</h3>
                 <component is="user" :selected="props"></component>
             </div>
             <div class="modal_filters" v-else-if="modal === 'filters'">
@@ -56,7 +56,7 @@
                             <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-left'"></use>
                         </svg>
                     </div>
-                    <h3 class="modal-title">Фильтры</h3>
+                    <h3 class="modal-title">{{ $tc('filters.title') }}</h3>
                     <filter-clear-btn :mobileFlag=true></filter-clear-btn>
                 </div>
                 <slot name="listingcat"></slot>
@@ -64,7 +64,7 @@
             </div>
             
             <div class="modal__close" @click="closeModal" v-if="showCloseBtn">
-                <span v-if="modalBigger">Закрыть</span>
+                <span v-if="modalBigger">{{ $tc('link.close') }}</span>
                 <svg 
                     class="modal__close-icon" 
                     :class="{'modal__close-icon--black': modalBigger}" 
