@@ -37,7 +37,7 @@
                 <svg class="breadcrumbs__back" viewBox="0 0 18 15">
                     <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
                 </svg>
-                <span>Назад</span>
+                <span>{{ $tc('breadcrumbs.back') }}</span>
             </div>
 
             <transition name="fade" mode="out-in">
