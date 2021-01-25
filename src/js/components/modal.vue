@@ -8,7 +8,7 @@
                 <svg class="breadcrumbs__back" viewBox="0 0 18 15">
                     <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
                 </svg>
-                <span>Назад</span>
+                <span>{{ $tc('link.back') }}</span>
             </div>
             <div class="modal-desc" v-if="modal === 'promo'">
                 <h3 class="modal-title">Третий в подарок!</h3>

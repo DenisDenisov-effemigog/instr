@@ -23,7 +23,7 @@
                 <span class="header__catalog-btn-line"></span>
                 <span class="header__catalog-btn-line"></span>
             </span>
-            Каталог
+            {{ $tc('header.catalogue') }}
         </div>
     </div>
 </template>

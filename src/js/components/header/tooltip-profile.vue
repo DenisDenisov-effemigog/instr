@@ -14,7 +14,7 @@
             <svg>
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__exit'"></use>
             </svg>
-            Выход
+            {{ $tc('header.tooltip.exit') }}
         </div>
     </div>
 </template>

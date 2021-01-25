@@ -3,7 +3,7 @@
         <svg class="header__menu-icon">
             <use :xlink:href="templatePath + 'images/sprite.svg#icons__cart'"></use>
         </svg>
-        <p class="header__menu-text">Корзина</p>
+        <p class="header__menu-text">{{ $tc('header.menu.cart') }}</p>
         <span class="header__mini-cart" v-if="productsQuantity > 0">
             {{productsQuantity}}
         </span>
