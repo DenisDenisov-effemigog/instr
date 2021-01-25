@@ -219,7 +219,6 @@
 
 .mx-calendar-content 
   position: relative
-  height: 224px
   box-sizing: border-box
   .cell 
     cursor: pointer
@@ -231,7 +230,8 @@
         vertical-align: sub   
     &.active 
       color: #fff
-      background-color: #1284e7 
+      background-color: $primary-red
+      border-radius: 2px 
     
     &.in-range 
       color: #73879c
@@ -264,6 +264,7 @@
   opacity: 0.5
 
 .mx-table 
+    display: block
     text-align: center!important
     table-layout: fixed
     border-collapse: separate
@@ -280,15 +281,40 @@
     td 
         padding: 0
 
+.mx-table thead
+    display: block
+
+.mx-table thead > tr
+    margin-top: 1rem
+    border-bottom: 1px solid $border-color_4
+    display: flex
+    width: 100%
+    justify-content: space-between
+
+.mx-table tbody,
+.mx-table tbody > tr
+    display: block
+    width: 100%
+
+.mx-table tbody
+    margin-top: 1rem
+
+.mx-table tbody > tr
+    display: flex
+    justify-content: space-between
+
 .mx-table-date 
   td,
   th 
     height: 32px
     font-size: 12px
-  .today 
-    color: #ccc
-  .cell.not-current-month 
-    color: #ccc;
+
+.mx-table-date th
+    height: 30px
+    .today 
+        color: #ccc
+    .cell.not-current-month 
+        color: #ccc;
 
 .mx-time 
   flex: 1
@@ -374,3 +400,10 @@
     cursor: not-allowed
     color: #ccc
     background-color: #f3f3f3
+
+.cell
+    display: flex
+    width: 32px
+    height: 32px
+    align-items: center
+    justify-content: center
