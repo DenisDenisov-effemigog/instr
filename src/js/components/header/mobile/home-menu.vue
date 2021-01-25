@@ -103,7 +103,7 @@
         data(){
             return{
                 showCountry: false,
-                activeCountry: 'Румыния',
+                activeCountry: 'nav.active_country',
             }
         },
         methods: {

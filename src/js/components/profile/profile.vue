@@ -72,25 +72,25 @@ export default {
         return {
             links: [
                 {
-                    title: 'profile.link.my_profile',
+                    title: 'link.my_profile',
                     url: '/account/',
                     exact: true,
                     personType: [1,2],
                 },
                 {
-                    title: 'profile.link.orders_list',
+                    title: 'link.orders_list',
                     url: '/account/orders/', 
                     personType: [1,2],
                     //external: true
                 },
                 {
-                    title: 'profile.link.my_check',
+                    title: 'link.my_check',
                     url: '/account/check/', 
                     personType: [2],
                     //external: true
                 },
                 {
-                    title: 'profile.link.my_addresses',
+                    title: 'link.my_addresses',
                     url: '/account/adresses/',
                     personType: [2],
                     //external: true
@@ -101,8 +101,8 @@ export default {
             showMenu: true,
             details: false,
             menuMobile: [
-                {'title': 'profile.link.tel', 'icon': 'phone'},
-                {'title': 'profile.link.moscow', 'icon': 'pin'},
+                {'title': 'nav.tel', 'icon': 'phone'},
+                {'title': 'nav.city', 'icon': 'pin'},
                 {'title': 'profile.link.exit', 'icon': 'exit'},
             ],
             listOpened: false
