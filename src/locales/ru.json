@@ -1,6 +1,9 @@
 {
     "button.add_to_cart.short": "В корзину",
     "button.add_to_cart.long": "Добавить в корзину",
+    "button.go_payment": "Перейти к оплате",
+    "button.go_catalog": "Перейти в каталог",
+    
     "link.in_favorite": "В избранное",
     "link.to_compare": "Сравнить",
     "link.details": "Подробнее",
@@ -13,7 +16,9 @@
     "link.close": "Закрыть",
     "link.load_more": "Загрузить еще",
     "link.add_address": "Добавить адрес",
+    
     "input.text.in_cart": "В корзине",
+    
     "text.count": "шт.",
     "text.articul": "Артикул",
     "text.order": "Заказ",
@@ -28,7 +33,6 @@
     "text.delivery": "Доставка",
     "text.show": "Показать",
     "text.product": "товар",
-    "input.text.count": "шт.",
     "text.address": "Адрес",
     "text.message": "Сообщение",
     "text.required": "Обязательное поле для заполнения",
@@ -37,8 +41,17 @@
     "text.from": "от",
     "text.to": "до",
     "text.currency": "₽",
+    
     "title.entrance": "Вход",
     "title.registration": "Регистрация",
+    "title.person_individual": "Физическое лицо",
+    "title.person_corporate": "Юридическое лицо",
+    "title.person": "Контактное лицо",
+    "title.phone": "Телефон",
+    "title.phone_number": "Номер телефона",
+    "title.inn": "ИНН",
+    "title.company": "Компания",
+    "title.email": "Email",
     
     "nav.title.about": "О компании",
     "nav.title.help": "Помощь",
@@ -63,6 +76,11 @@
     "nav.address": "г.Москва, ул. Трехгорный Вал 3",
     "nav.cooperation": "Условия сотрудничества",
     
+    "text.agreement": "Нажимая «Перейти к оплате», вы соглашаетесь с",
+    "link.agreement": "условиями использования",
+    "text.more_info": "нашего магазина. С подробными условиями доставки можно ознакомиться на",
+    "link.more_info": "странице о доставке",
+    
     "profile.title.my_own": "Личные данные",
     "profile.link.exit": "Выйти",
     "profile_personal.link.edit_data": "Изменить данные",
@@ -70,37 +88,33 @@
     "profile_personal.link.delete_profile": "Удалить профиль",
     "profile_personal.title.auth": "Пароль и авторизация",
     "profile_personal.title.delete_profile": "Удаление профиля",
-    "profile_personal.title.person": "Контактное лицо",
-    "profile_personal.title.phone": "Телефон",
-    "profile_personal.title.phone_number": "Номер телефона",
-    "profile_personal.title.inn": "ИНН",
-    "profile_personal.title.company": "Компания",
-    "profile_personal.title.email": "Email",
     "profile_personal.title.mail": "Электронная почта",
     "profile_personal.title.address": "Юридический адрес",
     "profile_orders.empty_text": "У вас пока еще нет заказов",
     "profile_orders.info_text": "В этом разделе вы найдете информацию о заказах, сделанных на сайте",
     "profile_orders.economy": "Экономия",
     "profile_orders.items": "0 товаров | {n} товар | {n} товара | {n} товаров",
-    "profile_orders.link.go_catalog": "Перейти в каталог",
     "profile_orders.link.repeat": "Повторить заказ",
     "profile_orders.link.more_info": "Больше информации о заказе",
     "profile_orders.title.price": "Стоимость заказа",
     "profile_orders.title.recipient": "Получатель",
     "profile_orders.title.payment": "Оплата",
-
     "profile_delivery.empty_text": "У вас пока нет ни одного адреса.",
     "profile_check.sum": "Сумма",
     "profile_check.date": "Время и дата",
     "profile_check.operation": "Операция",
     "profile_check.operation_code": "Код операции",
+    
     "change_pass.current": "Текущий пароль",
     "change_pass.new": "Новый пароль",
     "change_pass.text": "Пароль должен быть длиной от 6 символов и содержать как минимум одну цифру и одну заглавную букву",
+    
     "delete_profile.reason": "Причина",
     "delete_profile.reason_another": "Другая причина",
+    
     "repeat_order.text": "Все товары из этого заказа автоматически добавятся в корзину.",
     "repeat_order.not_available": "К сожалению этих товаров в данный момент нет в наличии",
+    
     "header.menu.enter": "Войти",
     "header.menu.profile": "Профиль",
     "header.menu.compare": "Сравнить",
@@ -205,11 +219,14 @@
     "footer.navbar.schedule": "пн-пт&nbsp;2-18&nbsp;(мск)",
     "footer.navbar.email": "почта@mail.ru",
     "footer.navbar.address": "г.Москва,&nbsp;ул.&nbsp;Трехгорный&nbsp;Вал&nbsp;3",
+    
     "filters.title": "Фильтры",
     "filters.clear": "Сбросить все",
     "filters.clear_filters": "Сбросить все фильтры",
+    
     "categories.show_all": "Все категории",
     "categories.hide_all": "Скрыть все категории",
+    
     "modal.title.action": "Третий в подарок!",
     "modal.text.action": "Здесь отображена текстовая информация об условиях акции, ее сроках, товарах, которые принимают участие, а так же что-нибудь еще.",
     "modal.link.action": "Понятно!",
@@ -220,5 +237,14 @@
     "modal.title.address_add": "Добавление нового адреса доставки",
     "modal.title.address_remove": "Удаление адреса",
     "modal.text.address_remove": "Отправьте запрос, чтобы удалить адрес.",
-    "modal.link.address_remove": "Отправить запрос"
+    "modal.link.address_remove": "Отправить запрос",
+    
+    "checkout.client_new": "Я новый клиент",
+    "checkout.client": "Я уже заказывал ранее и у меня есть учетная запись",
+    "checkout.title.contacts": "Контактная информация",
+    "checkout.title": "Оформление заказа",
+    "checkout.title.success": "Ваш заказ принят!",
+    "checkout.text.success": "Когда адрес пройдет верификацию, заказ будет подтвержден.",
+    "checkout.title.order_number": "Номер заказа",
+    "checkout.title.order_date": "Дата"
 }

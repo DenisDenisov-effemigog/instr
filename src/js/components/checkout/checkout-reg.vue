@@ -1,20 +1,9 @@
-<template>
+<template><!--{{ $tc('') }}-->
     <div class="checkout-reg">
         <div class="checkout-reg__content">
             <form class="checkout-reg__form">
-                <label name="name" class="checkout-reg__label">
+                <label for="name" class="checkout-reg__label">
                     <input
-                        v-if="!IndividualFlag"
-                        class="checkout-reg__input"
-                        :class="{'checkout-reg__input_error': $v.name.$error}"
-                        type="text"
-                        name="name"
-                        id="name"
-                        autocomplete="name"
-                        autocorrect="off"
-                        v-model.trim="$v.name.$model">
-                    <input
-                        v-else
                         class="checkout-reg__input"
                         :class="{'checkout-reg__input_error': $v.name.$error}"
                         type="text"
@@ -141,48 +130,48 @@
 
     import {required, email, helpers} from "vuelidate/lib/validators";
 
-export default {    
-    name:'checkout-reg',
-    validations: {
-        name: {
-            required
+    export default {    
+        name:'checkout-reg',
+        validations: {
+            name: {
+                required
+            },
+            company: {
+                required
+            },
+            code: {
+                required,
+            },
+            phone: {
+                required
+            },
+            newEmail: {
+                required,
+                email
+            }
         },
-        company: {
-            required
+        props:{
+            currentTab:{
+                type:String,
+                required: true
+            },
+            IndividualFlag:{
+                type:Boolean,
+                required: true
+            }
         },
-        code: {
-            required,
+        data(){
+            return{
+                name: '',
+                company: '',
+                code: '',
+                phone: '',
+                newEmail: '',
+            }
         },
-        phone: {
-            required
-        },
-        newEmail: {
-            required,
-            email
+        methods:{
+            
         }
-    },
-    props:{
-        currentTab:{
-            type:String,
-            required: true
-        },
-        IndividualFlag:{
-            type:Boolean,
-            required: true
-        }
-    },
-    data(){
-        return{
-            name: '',
-            company: '',
-            code: '',
-            phone: '',
-            newEmail: '',
-        }
-    },
-    methods:{
         
     }
-    
-}
 </script>

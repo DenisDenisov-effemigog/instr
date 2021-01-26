@@ -1,6 +1,6 @@
 <template>
     <div class="delivery-address">
-        <div v-if="currentTab == 'corporate'" class="delivery-address__corporate">
+        <div v-if="currentTab === 'corporate'" class="delivery-address__corporate">
             <div class="delivery-address__select">
                 <select-list
                     :points="[

@@ -1,7 +1,7 @@
 <template>
     <div class="delivery-option">
         <div class="delivery-option__wrap delivery-option__wrap-delivery"
-            :class="{'delivery-option__wrap--active': currentOption == 'delivery'}"
+            :class="{'delivery-option__wrap--active': currentOption === 'delivery'}"
             @click="currentOption = 'delivery'"
         >
             <div class="delivery-option__sale">Скидка -5%</div>
@@ -11,7 +11,7 @@
             <div class="delivery-option__price">1 564 ₽</div>
         </div>
         <div class="delivery-option__wrap delivery-option__wrap-receive"
-            :class="{'delivery-option__wrap--active': currentOption == 'receive'}"
+            :class="{'delivery-option__wrap--active': currentOption === 'receive'}"
             @click="currentOption = 'receive'"            
         >
             <div class="delivery-option__sale">Скидка -5%</div>
@@ -21,7 +21,7 @@
             <div class="delivery-option__price delivery-option__price--green">бесплатно</div>
         </div>
         <delivery-address 
-            v-if="currentOption == 'delivery'"
+            v-if="currentOption === 'delivery'"
             :currentTab="currentTab"
         ></delivery-address>
         <receive-address
