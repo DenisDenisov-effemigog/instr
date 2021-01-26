@@ -39,7 +39,9 @@
                         :mobileFlag="true"
                         :currentPrice="productsPrice"
                     ></cart-order-head>
-                    
+                    <selected-items
+                        :products="products"
+                    ></selected-items>
                     <div class="cart__purchases" :class="{'cart__purchases--table': changedView === 'table_cards'}">
                         <div class="table-header" v-if="changedView === 'table_cards'">
                             <div class="table-header__code">{{ $tc('cart.title.sku') }}</div>
@@ -92,12 +94,14 @@
 import CartOrderHead from './cart-order-head.vue'
 import CartOrder from './cart-order.vue'
 import CartCard from './cart-card.vue'
+import SelectedItems from './selected-items.vue'
     export default {
         name: "cart",
         components: {
             CartOrder,
             CartOrderHead,
-            CartCard 
+            CartCard,
+            SelectedItems 
         },
         props: {
             view:{

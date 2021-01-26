@@ -211,6 +211,10 @@
     "cart.item.is_deleted": "Удален: ",
     "cart.item.add_to_favorite": "Добавить в избранное",
     "cart.item.cancel_deletion": "Отменить",
+    "cart.selected_items.select_all": "Выбрать все",
+    "cart.selected_items.head_title": "Продукты, выбранные до авторизации на сайте",
+    "cart.selected_items.head_text": "Вы добавили некоторые продукты, когда не были авторизованы. Добавьте эти продукты в корзину",
+    "cart.selected_items.head_deploy": "Развернуть",
 
     "footer.company": "&#169; 2020 ООО «МИР ИНСТРУМЕНТА»",
     "footer.user_agreement": "Пользовательское соглашение",
