@@ -1,12 +1,5 @@
 <template>
     <div class="discount-info">
-        <!-- <div class="">
-            <svg>
-                <use :xlink:href="templatePath + 'images/sprite.svg#icons__info-square'"></use>
-            </svg>
-            <div></div>
-        </div>
-        <div>На товар не распространяется скидка по обороту</div> -->
         <div class="discount-info__progress">
             <div class="discount-info__progress-bar">
                 <vue-ellipse-progress 
@@ -23,19 +16,19 @@
                     <span class="discount-info__progress-discount"
                         slot="legend-caption"
                     >
-                        {{ discount }}%
+                        {{ discount[0].more_percent }}%
                     </span>
                 </vue-ellipse-progress>
             </div>
-            <div class="discount-info__progress-text">Добавьте в корзину товары категории <span>Силовое</span> на сумму 
-                <span>{{ currency(sum) }} RON</span> и скидка увеличится на <span class="discount-info__progress-text--discount">{{ discount }}%</span>
+            <div class="discount-info__progress-text">{{ $tc('product_card.progress.text_start') }} <span>{{ discount[0].category_name }}</span> {{ $tc('product_card.progress.text_middle') }} 
+                <span>{{ discount[0].remainder }} {{ $tc('text.currency') }}</span> {{ $tc('product_card.progress.text_end') }}&nbsp;<span class="discount-info__progress-text--discount">{{ discount[0].more_percent }}%</span>
             </div>
         </div>
         <div class="discount-info__link" @click="openModal">
             <svg>
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__link'"></use>
             </svg>
-            Подробнее о системе скидок
+            {{ $tc('product_card.link') }}
         </div>
     </div>
 </template>
@@ -44,12 +37,8 @@
 export default {
     name: 'product-discount-info',
     props: {
-        discount: {
-            Type: Number,
-            required: true
-        },
-        rightPrice: {
-            Type: Number,
+        productDiscounts: {
+            Type: Array,
             required: true
         }
     },
@@ -60,16 +49,23 @@ export default {
     },
     computed: {
         progressPrice() {
-            if (this.sum >= this.rightPrice) {
+            if (this.sum >= this.discount[0].next) {
                 this.progress = 100;
             } else {
-                this.progress = this.sum/this.rightPrice*100;
+                this.progress = this.sum/this.discount[0].next*100;
             }
             return this.progress
         },
         sum() {
-            const basketData = this.$store.getters.basketProductsSummary;
-            return parseFloat((basketData.price).toFixed(3));
+            return this.discount[0].next - this.discount[0].remainder
+        },
+        discount(){
+            return this.productDiscounts.filter(item => item.type === 'сategory')
+        },
+    },
+    methods: {
+        openModal(){
+            
         }
     }
 }
