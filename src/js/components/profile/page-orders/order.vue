@@ -6,7 +6,7 @@
             <div class="order__status">{{order.status}}</div>
             
             <span>{{ $tc('profile_orders.items', order.qty) }}</span>
-            <div class="order__price">{{order.priceTotal}} &#8381;</div>
+            <div class="order__price">{{order.priceTotal}} {{ $tc('text.currency') }}</div>
             <div @click.stop="openModal('repeat-order')" class="order__btn">
                 <div class="order__btn-icon">
                     <svg>

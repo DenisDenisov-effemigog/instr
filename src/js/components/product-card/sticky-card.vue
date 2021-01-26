@@ -21,11 +21,11 @@
                     <div v-for="price in product.prices"
                          v-if="price.base === 1"
                          class="sticky-card__price--old"
-                    >{{ price.price }} &#8381;</div>
+                    >{{ price.price }} {{ $tc('text.currency') }}</div>
                     <div v-for="price in product.prices"
                          v-if="price.base === 3"
                          class="sticky-card__price--total"
-                    >{{ price.price }} &#8381;</div>
+                    >{{ price.price }} {{ $tc('text.currency') }}</div>
                 </div>
                 <component is="add-to-cart"
                            :product-id="product.id"

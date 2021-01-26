@@ -14,7 +14,7 @@
                 v-model.trim="$v.email.$model">
             <span class="user__label-text"
                 :class="{'user__label-text_up': $v.email.required}"
-            >Email</span>
+            >{{ $tc('title.email') }}</span>
             <svg viewBox="0 0 24 24"
                 class="user__label-icon"
                 v-if="$v.email.required"
@@ -35,13 +35,13 @@
                 v-model.trim="$v.password.$model">
             <span class="user__label-text"
                 :class="{'user__label-text_up': $v.password.required}"
-            >Пароль</span>
+            >{{ $tc('user_login.password') }}</span>
             <show-password v-model="passwordHidden"></show-password>
             <div class="user__error-text user__error-text_invalid_password"
                 v-if="$v.password.$error">{{ $tc('text.error') }}</div>
         </label>
-        <div class="user__error-text" v-if="$v.$error">*Обязательное поле для заполнения</div>
-        <input type="submit" class="user__button" value="Войти">
+        <div class="user__error-text" v-if="$v.$error">*{{ $tc('text.required') }}</div>
+        <input type="submit" class="user__button" :value="$tc('title.enter')">
     </form>
 </template>
 

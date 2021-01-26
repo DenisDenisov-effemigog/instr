@@ -1,7 +1,7 @@
 <template>
     <div class="delivery-date">
-        <div class="delivery-date__title">Дата доставки</div>
-        <div class="delivery-date__info">Дата доставки ориентировочная. Не обязательно к заполнению.</div>
+        <div class="delivery-date__title">{{ $tc('checkout.title.date') }}</div>
+        <div class="delivery-date__info">{{ $tc('checkout.text.date') }}</div>
         <div class="delivery-date__calendar">
             <date-picker 
                 v-model="time1"

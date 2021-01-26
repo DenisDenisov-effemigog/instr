@@ -87,7 +87,7 @@
                                         <div class="product-order__item-tooltip">{{ price.text }}</div>
                                     {% endif %}
                                 </div>
-                                <p class="product-order__price {% if price.base == 1 and user.personType == 1 %}product-order__price--throut{% endif %}">{{ price.price }} &#8381;</p>
+                                <p class="product-order__price {% if price.base == 1 and user.personType == 1 %}product-order__price--throut{% endif %}">{{ price.price }} {{ 'text.currency'|trans }}</p>
                             </li>
                         {% endfor %}
 					</ul>
@@ -99,6 +99,10 @@
                                :max-amount="{{ product.stock }}"
                     ></component>
 				</component>
+                <component is="product-discount-info"
+                           :discount="12"
+                >
+                </component>
 			</div>
 		</div>
 	</div>

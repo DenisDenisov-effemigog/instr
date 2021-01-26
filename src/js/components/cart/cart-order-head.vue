@@ -50,7 +50,7 @@ export default {
     },
     computed:{
         progressPrice() {
-            if (this.currentPrice > 7500) {
+            if (this.currentPrice > this.rightPrice) {
                 this.progress = 100;
                 // this.progressText = 'Ура! Теперь доставка для вас бесплатная.';
                 this.progressIcon = 'check';

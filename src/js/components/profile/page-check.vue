@@ -12,7 +12,7 @@
                 <li v-for="item in checkDataAll" class="my-check__item">
                     <div class="my-check__sum" 
                          :class="{'my-check__sum--red': item.status}" 
-                    ><span v-if="item.status">-</span><span v-else>+</span>{{item.sum}} &#8381;</div>
+                    ><span v-if="item.status">-</span><span v-else>+</span>{{item.sum}} {{ $tc('text.currency') }}</div>
                     <div class="my-check__date">{{item.date}} {{ $tc('text.in') }} {{item.time}}</div>
                     <div class="my-check__operation">
                         <span>{{item.operation}}</span>

@@ -41,17 +41,25 @@
     "text.from": "от",
     "text.to": "до",
     "text.currency": "₽",
-    
+
+    "title.enter": "Войти",
     "title.entrance": "Вход",
     "title.registration": "Регистрация",
     "title.person_individual": "Физическое лицо",
     "title.person_corporate": "Юридическое лицо",
     "title.person": "Контактное лицо",
+    "title.person_name": "ФИО",
     "title.phone": "Телефон",
     "title.phone_number": "Номер телефона",
-    "title.inn": "ИНН",
+    "title.tin": "ИНН",
     "title.company": "Компания",
     "title.email": "Email",
+    "title.city": "Город",
+    "title.street": "Улица",
+    "title.house": "Дом",
+    "title.build": "Строение",
+    "title.floor": "Этаж",
+    "title.apart": "Офис/Квартира",
     
     "nav.title.about": "О компании",
     "nav.title.help": "Помощь",
@@ -104,6 +112,7 @@
     "profile_check.date": "Время и дата",
     "profile_check.operation": "Операция",
     "profile_check.operation_code": "Код операции",
+    "profile.delete_profile.another_reason": "Другая причина",
     
     "change_pass.current": "Текущий пароль",
     "change_pass.new": "Новый пароль",
@@ -115,7 +124,6 @@
     "repeat_order.text": "Все товары из этого заказа автоматически добавятся в корзину.",
     "repeat_order.not_available": "К сожалению этих товаров в данный момент нет в наличии",
     
-    "header.menu.enter": "Войти",
     "header.menu.profile": "Профиль",
     "header.menu.compare": "Сравнить",
     "header.menu.favorite": "Избранное",
@@ -135,6 +143,11 @@
     "header.catalogue": "Каталог",
     "header.catalogue.show_more": "Показать ещё",
     "country.choose_country": "Выбор страны",
+
+    "user_reg.name": "ФИО",
+    "user_reg.tax_payer": "Плательщик НДС",
+    "user_reg.agreement": "Я согласен с политикой обработки персональных данных",
+    "user_login.password": "Пароль",
     
     "main_page.promo.title": "Промо моменты",
     "main_page.bestsellers.title": "Хиты продаж",
@@ -143,6 +156,7 @@
     "main_page.stock.title": "Акции",
     "main_page.selection.title": "Еще одна интересная подборка со скроллом",
     "main_page.link.more_products": "Больше товаров тут",
+    "main_page.link.about_discount": "Подробнее об акции",
 
     "product_card.link.all_specifications": "Все характеристики",
     "product_card.link.copy": "Скопировать",
@@ -246,5 +260,10 @@
     "checkout.title.success": "Ваш заказ принят!",
     "checkout.text.success": "Когда адрес пройдет верификацию, заказ будет подтвержден.",
     "checkout.title.order_number": "Номер заказа",
-    "checkout.title.order_date": "Дата"
+    "checkout.title.order_date": "Дата",
+    "checkout.title.date": "Дата доставки",
+    "checkout.text.date": "Дата доставки ориентировочная. Не обязательно к заполнению.",
+    "checkout.title.payment": "Способ оплаты",
+    "checkout.title.comments": "Коментарии к заказу",
+    "checkout.checkbox_text": "Сообщать мне обо всяких акциях, новостях и тд и тп."
 }

@@ -1,16 +1,16 @@
 <template>
     <div class="delivery-payment">
-        <div class="delivery-payment__title">Способ оплаты</div>
+        <div class="delivery-payment__title">{{ $tc('checkout.title.payment') }}</div>
         <form action="" class="delivery-payment__form">
-            <label name="pay" class="delivery-payment__radio">
+            <label class="delivery-payment__radio">
                 <input name="pay" type="radio" value="advance" v-model="payMethod">
                 <span class="delivery-payment__check"></span>
-                <div class="delivery-payment__radio-label">
+                <div class="delivery-payment__radio-label"><!--TODO из базы-->
                     <span class="delivery-payment__radio-title">Предоплата</span>
                     <span class="delivery-payment__radio-text">Скидка 5% при оплате онлайн</span>
                 </div>
             </label>
-            <label name="pay" class="delivery-payment__radio">
+            <label class="delivery-payment__radio">
                 <input name="pay" type="radio" value="receipt" v-model="payMethod">
                 <span class="delivery-payment__check"></span>
                 <div class="delivery-payment__radio-label">
@@ -18,7 +18,7 @@
                     <span class="delivery-payment__radio-text">Скидка 5% при оплате онлайн</span>
                 </div>
             </label>
-            <label name="pay" class="delivery-payment__radio">
+            <label class="delivery-payment__radio">
                 <input name="pay" type="radio" value="contract" v-model="payMethod">
                 <span class="delivery-payment__check"></span>
                 <div class="delivery-payment__radio-label">
