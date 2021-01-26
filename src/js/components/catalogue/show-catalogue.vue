@@ -11,14 +11,14 @@
             </svg>
         </div> -->
         <div  class="header__catalog-mobile" @click.prevent="openMenu">
-            <span class="header__catalog-btn-lines" :class="{'header__catalog-btn-lines_active': openedMenu}">
+            <span class="header__catalog-btn-lines" :class="{'header__catalog-btn-lines--active': openedMenu}">
                 <span class="header__catalog-btn-line"></span>
                 <span class="header__catalog-btn-line"></span>
                 <span class="header__catalog-btn-line"></span>
             </span>
         </div>
         <div class="header__catalog-btn" @click.prevent="open">
-            <span class="header__catalog-btn-lines" :class="{'header__catalog-btn-lines_active': active}">
+            <span class="header__catalog-btn-lines" :class="{'header__catalog-btn-lines--active': active}">
                 <span class="header__catalog-btn-line"></span>
                 <span class="header__catalog-btn-line"></span>
                 <span class="header__catalog-btn-line"></span>

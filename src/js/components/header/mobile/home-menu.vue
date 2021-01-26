@@ -66,7 +66,7 @@
                 >
                     <div
                         class="home-menu__link_sublink"
-                        :class="{'home-menu__link_sublink_active': activeCountry === country}"
+                        :class="{'home-menu__link_sublink--active': activeCountry === country}"
                         @click="chooseCountry(country)"
                     >
                         <span>{{ country }}</span>
