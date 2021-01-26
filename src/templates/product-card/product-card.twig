@@ -152,8 +152,7 @@
                     ></component>
 				</component>
                 <component is="product-discount-info"
-                           :discount="12"
-                           :right-price="5000"
+                           :product-discounts="{{ product.discounts|json_encode()|e('html_attr') }}"
                 >
                 </component>
 			</div>
