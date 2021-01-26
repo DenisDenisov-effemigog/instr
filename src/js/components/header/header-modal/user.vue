@@ -2,11 +2,11 @@
     <div class="user">
         <div class="user-tabs">
             <div class="user-tabs__tab"
-                :class="{'user-tabs__tab_active': select == 'login'}"
+                :class="{'user-tabs__tab--active': select == 'login'}"
                 @click="select = 'login'"
             >{{ $tc('title.entrance') }}</div>
             <div class="user-tabs__tab"
-                :class="{'user-tabs__tab_active': select == 'reg'}"
+                :class="{'user-tabs__tab--active': select == 'reg'}"
                 @click="select = 'reg'"
             >{{ $tc('title.registration') }}</div>
         </div>
