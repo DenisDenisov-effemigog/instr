@@ -8,7 +8,7 @@
             v-model.trim="$v.item.name.$model">
         <span class="custom__label-text"
             :class="{'custom__label-text_up': $v.item.name.required}"
-        >{{item.title}}</span>
+        >{{ $tc(item.title) }}</span>
         <svg viewBox="0 0 24 24"
             class="custom__label-icon"
             v-if="$v.item.name.required"

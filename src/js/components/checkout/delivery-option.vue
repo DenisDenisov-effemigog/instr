@@ -3,7 +3,7 @@
         <div class="delivery-option__wrap delivery-option__wrap-delivery"
             :class="{'delivery-option__wrap--active': currentOption === 'delivery'}"
             @click="currentOption = 'delivery'"
-        >
+        ><!--TODO из базы всё-->
             <div class="delivery-option__sale">Скидка -5%</div>
             <div class="delivery-option__title">Курьерская доставка</div>
             <div class="delivery-option__text">Доставка курьером до вашего адреса. Выберите нужный</div>

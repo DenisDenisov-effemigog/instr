@@ -1,6 +1,6 @@
 <template>
     <div class="checkout-delivery">
-        <h2 class="checkout-delivery__title">Доставка</h2>
+        <h2 class="checkout-delivery__title">{{ $tc('text.delivery') }}</h2>
         <div class="checkout-delivery__content">
             <delivery-option
                 :currentTab="currentTab"
