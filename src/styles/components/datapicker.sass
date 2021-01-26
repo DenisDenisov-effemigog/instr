@@ -22,38 +22,6 @@
   text-align: left
   line-height: inherit
 
-.mx-icon-left:before,
-.mx-icon-right:before,
-.mx-icon-double-left:before,
-.mx-icon-double-right:before,
-.mx-icon-double-left:after,
-.mx-icon-double-right:after 
-  content: ''
-  position: relative
-  top: -1px
-  display: inline-block
-  width: 10px
-  height: 10px
-  vertical-align: middle
-  border-style: solid
-  border-color: currentColor
-  border-width: 2px 0 0 2px
-  border-radius: 1px
-  box-sizing: border-box
-  transform-origin: center
-  transform: rotate(-45deg) scale(0.7)
-
-.mx-icon-double-left:after 
-  left: -4px
-
-.mx-icon-double-right:before 
-  left: 4px
-
-.mx-icon-right:before,
-.mx-icon-double-right:before,
-.mx-icon-double-right:after 
-  transform: rotate(135deg) scale(0.7)
-
 .mx-datepicker 
   position: relative
   display: inline-block
@@ -191,11 +159,12 @@
     border-left: 1px solid #e8e8e8
 
 .mx-calendar-header 
-  box-sizing: border-box
-  height: 34px
-  line-height: 34px
-  text-align: center
-  overflow: hidden
+    position: relative
+    box-sizing: border-box
+    height: 34px
+    line-height: 34px
+    text-align: center
+    overflow: hidden
 
 .mx-btn-icon-left,
 .mx-btn-icon-double-left 
@@ -407,3 +376,23 @@
     height: 32px
     align-items: center
     justify-content: center
+    color: $black
+.cell.today
+  color: red
+.cell.not-current-month
+    color: $light-grey
+.mx-btn-icon-left,
+.mx-btn-icon-right
+    position: absolute
+    content: ''
+    width: 1.75rem
+    height: 1.75rem
+    background: url(../images/icons/datapicker-arrow.svg) center center no-repeat
+    top: 50%
+    transform: translateY(-50%)
+.mx-btn-icon-left
+    transform: rotate(180deg)
+    margin-top: -14px
+    left: 0
+.mx-btn-icon-right
+    right: 0
