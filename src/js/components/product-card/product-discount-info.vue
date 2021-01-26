@@ -1,5 +1,5 @@
 <template>
-    <div class="discount-info">
+    <div class="discount-info" v-if="authorized">
         <div class="discount-info__progress">
             <div class="discount-info__progress-bar">
                 <vue-ellipse-progress 
@@ -31,12 +31,22 @@
             {{ $tc('product_card.link') }}
         </div>
     </div>
+    <div class="discount-info" v-else>
+        <div class="discount-info__offer">
+            <div class="discount-info__offer-text">{{ $tc('product_card.offer.text') }}</div>
+            <a href="" class="discount-info__offer-btn">{{ $tc('product_card.offer.button') }}</a>
+        </div>
+    </div>
 </template>
 
 <script>
 export default {
     name: 'product-discount-info',
     props: {
+        authorized: {
+            Type: Boolean,
+            required: true
+        },
         productDiscounts: {
             Type: Array,
             required: true
