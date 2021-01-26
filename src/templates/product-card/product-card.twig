@@ -70,7 +70,7 @@
                                         <svg>
                                             <use xlink:href="{{ templatePath }}images/sprite.svg#icons__info"></use>
                                         </svg>
-                                        <div class="product-order__item-tooltip"></div>
+                                        <div class="product-order__tooltip"></div>
                                     </div>
                                 <p class="product-order__price">
                                     {{ product.price.retail }} {{ 'text.currency'|trans }}
@@ -128,7 +128,7 @@
                             </li>
                         {% endif %}
 					</ul>
-					<component is="add-to-cart" 
+                    <component is="add-to-cart"  
                                :text="'input.text.in_cart'" 
                                :button-title="'button.add_to_cart.long'"
                                :size="'big'"
@@ -138,6 +138,7 @@
 				</component>
                 <component is="product-discount-info"
                            :product-discounts="{{ product.discounts|json_encode()|e('html_attr') }}"
+                           :authorized="{{ user.authorized }}"
                 >
                 </component>
 			</div>
