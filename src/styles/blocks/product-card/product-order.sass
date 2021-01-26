@@ -26,9 +26,8 @@
         width: $size_20
         height: $size_20
         margin-right: 1.625rem
-        +tablet
-            &:hover .product-order__tooltip
-                display: block
+        &:hover .product-order__tooltip
+            display: block
     &__item
         padding-bottom: 0.5rem
         display: flex
@@ -61,32 +60,49 @@
     &__tooltip
         @extend .tooltip
         width: 20rem
-        top: -.5rem
-        left: -94%
-        &::before
-            
-        &::after
-            top: 0
-            right: 0
-            left: auto
-            width: 1rem
-            height: 100%
+        +mobile
+            bottom: -1.25rem
+            left: 0
+            &:before
+                left: calc(50% - 2.75rem)
+        +tablet
+            top: .5rem
+            left: -94%
+            &::before
+                top: 71%
+                right: -.5625rem
+                left: auto
+                
+            &::after
+                top: 66%
+                right: -111px
+                left: auto
+                width: 7rem
+                height: 3rem
     &__tooltip-item
-        @extend .tooltip__item
-        font-size: $font-size_3 !important
-        line-height: $line-height_3 !important
+        @extend .text-3
+        +flex-container
+        color: $grey
+        font-size: $font-size_3
+        line-height: $line-height_3
         justify-content: space-between
+        &:not(:last-of-type)
+            margin-bottom: .5rem
         &--promo
             color: $blue
-            margin-bottom: 1rem !important
+            margin-bottom: 1rem
     &__tooltip-total
         @extend .product-order__tooltip-item
         color: $green
         padding-top: 1rem
         border-top: 1px solid rgba($light-grey, .42)
+        font-weight: 600
     &__tooltip-note
-        @extend .tooltip__item
+        @extend .text-3
+        +flex-container
         color: $light-grey
+        &:not(:last-of-type)
+            margin-bottom: .5rem
 
     &__name
         padding-right: 0.375rem

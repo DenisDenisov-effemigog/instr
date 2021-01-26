@@ -116,15 +116,11 @@
                                             <svg>
                                                 <use xlink:href="{{ templatePath }}images/sprite.svg#icons__info"></use>
                                             </svg>
-                                            <div class="product-order__tooltip product-order__tooltip--prices">
+                                            <div class="product-order__tooltip">
                                                 {% for discount in product.discounts %}
                                                     {% if discount.type != 'сategory' and discount.type != 'total' %}
-                                                        <div class="product-order__tooltip-item
-                                                            {% if discount.type == 'action' %}
-                                                                product-order__tooltip-item--promo
-                                                            {% endif %}"
-                                                        >
-                                                            {{ discount.description }}<span>{{ discount.percent }}%</span>
+                                                        <div class="product-order__tooltip-item{% if discount.type == 'action' %} product-order__tooltip-item--promo{% endif %}"
+                                                        >{{ discount.description }}<span>{{ discount.percent }}%</span>
                                                         </div>
                                                     {% elseif discount.type == 'total'%}
                                                         <div class="product-order__tooltip-total">{{ discount.description }}<span>{{ discount.percent }}%</span></div>
