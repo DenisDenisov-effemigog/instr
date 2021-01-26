@@ -50,13 +50,13 @@ export default {
     },
     computed:{
         progressPrice() {
-            if (this.currentPrice > this.rightPrice) {
+            if (this.currentPrice >= this.rightPrice) {
                 this.progress = 100;
                 // this.progressText = 'Ура! Теперь доставка для вас бесплатная.';
                 this.progressIcon = 'check';
                 this.progressIconSize = '-1 -2 12 12';
             } else {
-                this.progress = this.currentPrice/7500*100;
+                this.progress = this.currentPrice/this.rightPrice*100;
                 // this.progressText = 'Внимание! Добавьте товар на сумму '+this.getPrice+' ₽, чтобы доставка стала бесплатной';
                 this.progressIcon = 'icons__cube';
                 this.progressIconSize = '0 0 24 24';
