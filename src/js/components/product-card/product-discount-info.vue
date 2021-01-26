@@ -42,15 +42,15 @@ export default {
         discount: {
             Type: Number,
             required: true
-        },
-        sum: {
-            Type: Number,
-            required: true
         }
     },
     data() {
         return {
+            sum: 0
         }
     },
+    computed: {
+
+    }
 }
 </script>
