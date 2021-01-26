@@ -21,7 +21,7 @@
                                             label:'Адрес №1: Будапешт 1062, V1 Бажаутса, 35',
                                             value:'1'    
                                         }"
-                ></select-list>
+                ></select-list><!--TODO из базы-->
                 <add-address-btn></add-address-btn>
                 <div class="delivery-address__add-address">
 
@@ -51,27 +51,27 @@ export default {
         return{
             inputArr:[
                 {
-                    title:"Город",
+                    title:"title.city",
                     name:"town"
                 },
                 {
-                    title:"Улица",
+                    title:"title.street",
                     name:"street"
                 },
                 {
-                    title:"Дом",
+                    title:"title.house",
                     name:"house"
                 },
                 {
-                    title:"Строение",
+                    title:"title.build",
                     name:"str"
                 },
                 {
-                    title:"Этаж",
+                    title:"title.floor",
                     name:"floor"
                 },
                 {
-                    title:"Офис/Квартира",
+                    title:"title.apart",
                     name:"apart"
                 }
             ]

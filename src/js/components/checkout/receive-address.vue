@@ -20,7 +20,7 @@
                                         label:'Пункт №1: Будапешт 1062, V1 Бажаутса, 35',
                                         value:'1'    
                                     }"
-            ></select-list>
+            ></select-list><!--TODO из базы-->
         </div>
     </div>
 </template>

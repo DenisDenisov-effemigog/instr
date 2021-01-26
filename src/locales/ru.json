@@ -48,11 +48,18 @@
     "title.person_individual": "Физическое лицо",
     "title.person_corporate": "Юридическое лицо",
     "title.person": "Контактное лицо",
+    "title.person_name": "ФИО",
     "title.phone": "Телефон",
     "title.phone_number": "Номер телефона",
     "title.tin": "ИНН",
     "title.company": "Компания",
     "title.email": "Email",
+    "title.city": "Город",
+    "title.street": "Улица",
+    "title.house": "Дом",
+    "title.build": "Строение",
+    "title.floor": "Этаж",
+    "title.apart": "Офис/Квартира",
     
     "nav.title.about": "О компании",
     "nav.title.help": "Помощь",
@@ -253,5 +260,10 @@
     "checkout.title.success": "Ваш заказ принят!",
     "checkout.text.success": "Когда адрес пройдет верификацию, заказ будет подтвержден.",
     "checkout.title.order_number": "Номер заказа",
-    "checkout.title.order_date": "Дата"
+    "checkout.title.order_date": "Дата",
+    "checkout.title.date": "Дата доставки",
+    "checkout.text.date": "Дата доставки ориентировочная. Не обязательно к заполнению.",
+    "checkout.title.payment": "Способ оплаты",
+    "checkout.title.comments": "Коментарии к заказу",
+    "checkout.checkbox_text": "Сообщать мне обо всяких акциях, новостях и тд и тп."
 }
