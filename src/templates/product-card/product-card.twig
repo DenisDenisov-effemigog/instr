@@ -116,14 +116,20 @@
                                             <svg>
                                                 <use xlink:href="{{ templatePath }}images/sprite.svg#icons__info"></use>
                                             </svg>
-                                            <div class="product-order__item-tooltip product-order__item-tooltip--prices">
+                                            <div class="product-order__tooltip product-order__tooltip--prices">
                                                 {% for discount in product.discounts %}
                                                     {% if discount.type != 'сategory' and discount.type != 'total' %}
-                                                        <div>{{ discount.description }}{{ discount.percent }}</div>
+                                                        <div class="product-order__tooltip-item
+                                                            {% if discount.type == 'action' %}
+                                                                product-order__tooltip-item--promo
+                                                            {% endif %}"
+                                                        >
+                                                            {{ discount.description }}<span>{{ discount.percent }}%</span>
+                                                        </div>
                                                     {% elseif discount.type == 'total'%}
-                                                        <div>{{ discount.description }}{{ discount.percent }}</div>
+                                                        <div class="product-order__tooltip-total">{{ discount.description }}<span>{{ discount.percent }}%</span></div>
                                                     {% elseif discount.type == 'сategory'%}
-                                                        <div>{{ discount.description }}{{ discount.category_name }}{{ discount.percent }}</div>
+                                                        <div class="product-order__tooltip-note">{{ discount.description }} {{ discount.category_name }} {{ discount.percent }}%</div>
                                                     {% endif %}
                                                 {% endfor %}
                                             </div>
