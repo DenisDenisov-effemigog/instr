@@ -46,6 +46,7 @@ import productCardArticle from './components/product-card/product-card-article.v
 import photoModal from './components/product-card/photo-modal.vue';
 import productInfoAll from './components/product-card/product-info-all.vue';
 import productOrderBlock from './components/product-card/product-order-block.vue';
+import productDiscountInfo from './components/product-card/product-discount-info.vue';
 /*profile*/
 import profile from './components/profile/profile.vue';
 import pagePersonal from './components/profile/page-personal.vue';
@@ -124,6 +125,7 @@ export default {
         stickyCard,
         sliderPromoModal,
         productOrderBlock,
+        productDiscountInfo,
         inFavorite,
         toCompare,
         mediaButton,
