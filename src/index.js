@@ -12,6 +12,7 @@ import VueI18n from 'vue-i18n';
 import TextareaAutosize from 'vue-textarea-autosize';
 import VueEllipseProgress from 'vue-ellipse-progress';
 
+
 Vue.use(TextareaAutosize)
 Vue.use(VueI18n);
 Vue.use(VueAgile);
