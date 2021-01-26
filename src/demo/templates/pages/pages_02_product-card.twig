@@ -1249,6 +1249,14 @@
     'personType': 2,
     'authorized': false,
 }%}
+
+{% set category_discount = {
+    title: 'Силовое',
+    total: 5000,
+    remainder: 3819.27,
+    discount: 12,
+}%}
+
 {% set product = {
     'id': 556,
     'name': 'Аккумуляторная бесщеточная дрель-шуруповерт DENZEL BLDL-IB-18-02, Li-Ion, 18 В, 1.5 А*ч, 2 аккумулятора',
@@ -1258,12 +1266,42 @@
     'url': '',
     'videoUrl': 'http://www.youtube.com/embed/ODEsC4Ijc2o',
     'threeDUrl': 'https://instrument.ru/info/3d_photo/14109/READY/3D.html',
-    'prices': [
-        {'id': 1, 'base': 1, 'price': '3 819', 'text': ''},
-        {'id': 2, 'base': 2, 'price': '3 819', 'text': ''},
-        {'id': 3, 'base': 0, 'discount': 10, 'price': '819', 'text': 'Информация о скидке', 'discountColor': 'green'},
-        {'id': 4, 'base': 0, 'discount': 5, 'price': '19', 'text': 'Информация о скидке', 'discountColor': 'blue'},
-        {'id': 5, 'base': 3, 'price': '3 819', 'text': ''}
+    'price': {
+        retail: 3819.27,
+        base: 3819.27,
+        sell: 3019.27
+    },
+    'discounts':
+    [
+        {
+            type: 'personal',
+            description: 'Персональная скидка',
+            percent: 16,
+            value: 214,
+        },
+        {
+            type: 'action',
+            description: 'Скидка по акции',
+            percent: 10,
+            value: 188,
+        },
+        {
+            type: 'total',
+            description: 'Общая скидка',
+            percent: 24,
+            value: 1066.81,
+        },
+        {
+            type: 'сategory',
+            description: 'Скидка для категории товаров',
+            category_name: 'Силовое',
+            percent: 24,
+            value: 38,
+
+            next: 5000,
+            more_percent: 20,
+            remainder: 3819.27,
+        },
     ],
     'guarantee': 3,
     'brand': {
@@ -1597,7 +1635,10 @@
     } %}
     {% include '../../../templates/product-card/product-card.twig' with {'product': product} %}
     {% include '../../../templates/product-card/same-products.twig' with {'productsSames': productsSames, 'user': user} %}
-    {% include '../../../templates/product-card/product-tabs.twig' with {'product': product} %}
+    {% include '../../../templates/product-card/product-tabs.twig' with {
+        'product': product,
+        'category_discount': category_discount
+    } %}
     {% include '../../../templates/product-card/recommend.twig' with {'productsRecommended': productsRecommended} %}
     {% include '../../../templates/product-card/banner.twig' with {
         'banner': '/demo_images/banners/product-card.png', 
