@@ -24,19 +24,15 @@
         margin-bottom: 2.5rem
 
     &__switch
-        @extend .checkbox-switch
+        +checkbox-switch
         margin-bottom: 1rem
     &__switch-input
-        @extend .checkbox-switch
         &:checked + .filter-block__switch-slider
             background-color: rgba($primary-red, .56)
         &:checked + .filter-block__switch-slider:before
             background-color: $primary-red
             transform: translateX(1rem)
-    &__switch-slider
-        @extend .checkbox-switch__slider
     &__switch-label
-        @extend .checkbox-switch__label
         @extend .title-4
     
     &__label

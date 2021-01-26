@@ -11,18 +11,12 @@
     &__radio-label
         display: block
     &__checkbox
-        @extend .checkbox-switch
+        +checkbox-switch
         margin-top: 1.125rem !important
     &__checkbox-input
-        @extend .checkbox-switch
         &:checked + .user-reg__checkbox-slider
             background-color: rgba($primary-red, .56)
         &:checked + .user-reg__checkbox-slider:before
             background-color: $primary-red
             transform: translateX(1rem)
-    &__checkbox-slider
-        @extend .checkbox-switch__slider
-    &__checkbox-label
-        @extend .checkbox-switch__label
-        white-space: nowrap
         

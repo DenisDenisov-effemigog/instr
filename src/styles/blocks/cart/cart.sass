@@ -59,22 +59,17 @@
             display: flex
 
     &__view-switch
-        @extend .checkbox-switch
+        +checkbox-switch
         display: flex
         margin-bottom: 0
     &__view-switch-input
-        @extend .checkbox-switch
         &:checked + .cart__view-switch-slider
             background-color: rgba($primary-red, .56)
         &:checked + .cart__view-switch-slider:before
             background-color: $primary-red
             transform: translateX(1rem)
-    &__view-switch-slider
-        @extend .checkbox-switch__slider
     &__view-switch-label
-        @extend .checkbox-switch__label
         @extend .text-2
-        white-space: nowrap
 
     &__clear-btn
         @extend .link-blue
