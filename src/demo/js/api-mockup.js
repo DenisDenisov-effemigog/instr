@@ -497,7 +497,7 @@ window.runAction = function (action, config) {
     return new Promise((resolve, reject) => {
         //debugger;
         switch (action) {
-            case 'instrum:main.api.basket.clear':
+            case 'instrument2:rest.api.basket.clear':
                 demoMockupBasket = [];
                 resolve({
                     data: {
@@ -508,7 +508,7 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
-            case 'instrum:main.api.basket.searchItem':
+            case 'instrument2:rest.api.basket.searchItem':
                 let demoMockupItems = [
                     {
 
@@ -617,7 +617,7 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
-            case 'instrum:main.api.basket.get':
+            case 'instrument2:rest.api.basket.get':
                 resolve({
                     data: {
                         data: {
@@ -627,7 +627,7 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
-            case 'instrum:main.api.basket.update':
+            case 'instrument2:rest.api.basket.update':
 
                 if (!config.data || !config.data.id) {
                     reject(new Error('Wrong config'));
@@ -642,7 +642,7 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
-            case 'instrum:main.api.user.base.get':
+            case 'instrument2:rest.api.user.base.get':
                 resolve({
                     data: {
                         data: {
@@ -652,7 +652,7 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
-            case 'instrum:main.api.user.address.get':
+            case 'instrument2:rest.api.user.address.get':
                 resolve({
                     data: {
                         data: {
@@ -662,7 +662,7 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;    
-            case 'instrum:main.api.user.checks.list':
+            case 'instrument2:rest.api.user.checks.list':
                 resolve({
                     data: {
                         data: {
@@ -678,7 +678,7 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
-            case 'instrum:main.api.user.order.list':
+            case 'instrument2:rest.api.user.order.list':
                 resolve({
                     data: {
                         data: {
@@ -694,7 +694,7 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
-            case 'instrum:main.api.user.order.get':
+            case 'instrument2:rest.api.user.order.get':
                 //debugger;
                 if (!config.data || !config.data.id) {
                     reject(new Error('Wrong config'));
@@ -758,7 +758,7 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;    
-            case 'instrum:main.api.user.get': //TODO not used yet
+            case 'instrument2:rest.api.user.get': //TODO not used yet
                 resolve({
                     data: {
                         data: {
@@ -812,7 +812,7 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
-            case 'instrum:main.api.listing.get':
+            case 'instrument2:rest.api.listing.get':
 
                 resolve({
                     data: {
@@ -826,7 +826,7 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
-            case 'instrum:main.api.sortListing.get':
+            case 'instrument2:rest.api.sortListing.get':
 
                 resolve({
                     data: {
@@ -841,7 +841,7 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
-            case 'instrum:main.api.filteredListing.get':
+            case 'instrument2:rest.api.filteredListing.get':
 
                 resolve({
                     data: {
@@ -856,7 +856,7 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
-            case 'instrum:main.api.catalog.filter':
+            case 'instrument2:rest.api.catalog.filter':
                 resolve({
                     data: {
                         data: {

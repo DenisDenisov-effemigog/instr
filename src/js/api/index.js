@@ -67,61 +67,61 @@ class Api {
         });   
     }
     getBasket() {
-        return this._promiseBitrixRequest('instrum:main.api.basket.get');
+        return this._promiseBitrixRequest('instrument2:rest.api.basket.get');
     }
     setBasketQuantity(productId, quantity) {
-        return this._promiseBitrixRequest(quantity === 0 ? 'instrum:main.api.basket.delete' :'instrum:main.api.basket.update', {
+        return this._promiseBitrixRequest(quantity === 0 ? 'instrument2:rest.api.basket.delete' :'instrument2:rest.api.basket.update', {
             id: productId,
             quantity: quantity
         });
     }
     clearBasket() {
-        return this._promiseBitrixRequest('instrum:main.api.basket.clear');
+        return this._promiseBitrixRequest('instrument2:rest.api.basket.clear');
     }
     searchItem(arr) {
-        return this._promiseBitrixRequest('instrum:main.api.basket.searchItem',
+        return this._promiseBitrixRequest('instrument2:rest.api.basket.searchItem',
             {arr: arr}
     );
     }
     /*personalProfileSummary() {
-        return this._promiseBitrixRequest('instrum:main.api.user.get', {});
+        return this._promiseBitrixRequest('instrument2:rest.api.user.get', {});
     }*/
     personalProfile() {
-        return this._promiseBitrixRequest('instrum:main.api.user.base.get', {});
+        return this._promiseBitrixRequest('instrument2:rest.api.user.base.get', {});
     }
     personalOrders() {
-        return this._promiseBitrixRequest('instrum:main.api.user.order.list', {});
+        return this._promiseBitrixRequest('instrument2:rest.api.user.order.list', {});
     }
     personalOrder(id) {
-        return this._promiseBitrixRequest('instrum:main.api.user.order.get', {
+        return this._promiseBitrixRequest('instrument2:rest.api.user.order.get', {
             id: id
         });
     }
     personalChecks() {
-        return this._promiseBitrixRequest('instrum:main.api.user.checks.list', {});
+        return this._promiseBitrixRequest('instrument2:rest.api.user.checks.list', {});
     }
     personalAddressList() {
-        return this._promiseBitrixRequest('instrum:main.api.user.address.get', {});
+        return this._promiseBitrixRequest('instrument2:rest.api.user.address.get', {});
     }
     getMoreListing() {
-        return this._promiseBitrixRequest('instrum:main.api.listing.get');
+        return this._promiseBitrixRequest('instrument2:rest.api.listing.get');
     }
 
     sortListing(params) {
-        return this._promiseBitrixRequest('instrum:main.api.sortListing.get', {
+        return this._promiseBitrixRequest('instrument2:rest.api.sortListing.get', {
             params: params
         });
     }
 
     filteredListing(hash, params) {
-        return this._promiseBitrixRequest('instrum:main.api.filteredListing.get', {
+        return this._promiseBitrixRequest('instrument2:rest.api.filteredListing.get', {
             hash: hash,
             params: params
         });
     }
 
     listingFilter(filtersPayload) {
-        return this._promiseBitrixRequest('instrum:main.api.catalog.filter', filtersPayload);
+        return this._promiseBitrixRequest('instrument2:rest.api.catalog.filter', filtersPayload);
     }
     
 }
