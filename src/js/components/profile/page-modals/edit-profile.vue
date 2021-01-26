@@ -48,7 +48,7 @@
                 readonly="readonly">
             <span class="profile-modal__label-text"
                   :class="{'profile-modal__label-text_up': $v.code.required}"
-            >{{ $tc('title.inn') }}</span>
+            >{{ $tc('title.tin') }}</span>
         </label>
         <label for="phone" class="profile-modal__label profile-modal__label_column">
             <the-mask

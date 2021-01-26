@@ -41,7 +41,8 @@
     "text.from": "от",
     "text.to": "до",
     "text.currency": "₽",
-    
+
+    "title.enter": "Войти",
     "title.entrance": "Вход",
     "title.registration": "Регистрация",
     "title.person_individual": "Физическое лицо",
@@ -49,7 +50,7 @@
     "title.person": "Контактное лицо",
     "title.phone": "Телефон",
     "title.phone_number": "Номер телефона",
-    "title.inn": "ИНН",
+    "title.tin": "ИНН",
     "title.company": "Компания",
     "title.email": "Email",
     
@@ -115,7 +116,6 @@
     "repeat_order.text": "Все товары из этого заказа автоматически добавятся в корзину.",
     "repeat_order.not_available": "К сожалению этих товаров в данный момент нет в наличии",
     
-    "header.menu.enter": "Войти",
     "header.menu.profile": "Профиль",
     "header.menu.compare": "Сравнить",
     "header.menu.favorite": "Избранное",
@@ -135,6 +135,11 @@
     "header.catalogue": "Каталог",
     "header.catalogue.show_more": "Показать ещё",
     "country.choose_country": "Выбор страны",
+
+    "user_reg.name": "ФИО",
+    "user_reg.tax_payer": "Плательщик НДС",
+    "user_reg.agreement": "Я согласен с политикой обработки персональных данных",
+    "user_login.password": "Пароль",
     
     "main_page.promo.title": "Промо моменты",
     "main_page.bestsellers.title": "Хиты продаж",

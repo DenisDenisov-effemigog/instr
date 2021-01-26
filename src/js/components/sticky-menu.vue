@@ -34,7 +34,7 @@
                     <svg class="header__menu-icon">
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__user'"></use>
                     </svg>
-                    <p class="header__menu-text">{{ $tc('header.menu.enter') }}</p>
+                    <p class="header__menu-text">{{ $tc('title.enter') }}</p>
                 </a>
             </li>
             <li class="header__menu-item" v-if="user.authorized">

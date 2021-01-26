@@ -26,7 +26,7 @@
                     <svg class="header__menu-icon" viewBox="-2 0 19 20">
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__user'"></use>
                     </svg>
-                    <p class="header__menu-text" v-if="!user.authorized">{{ $tc('header.menu.enter') }}</p>
+                    <p class="header__menu-text" v-if="!user.authorized">{{ $tc('title.enter') }}</p>
                     <div class="header__menu-tooltip" v-if="!user.authorized">
                         <div @click.prevent="openModal('user', 'login')"  href="#" class="header__menu-tooltip-layout">
                             <svg class="" viewBox="0 0 16 16">
