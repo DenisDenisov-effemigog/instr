@@ -120,7 +120,7 @@
                 v-model.trim="phone"/>
             <span class="user__label-text"
                 :class="{'user__label-text_up': $v.phone.required}"
-            >Номер телефона</span>
+            >{{ $tc('title.phone_number') }}</span>
             <svg viewBox="0 0 24 24"
                 class="user__label-icon"
                 v-if="$v.phone.required"
@@ -143,7 +143,7 @@
                 v-model.trim="newEmail">
             <span class="user__label-text"
                 :class="{'user__label-text_up': $v.newEmail.required}"
-            >{{ $tc('text.email') }}</span>
+            >{{ $tc('title.email') }}</span>
             <svg viewBox="0 0 24 24"
                 class="user__label-icon"
                 v-if="$v.newEmail.required"
