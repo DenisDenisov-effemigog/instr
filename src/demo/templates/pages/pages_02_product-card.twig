@@ -1644,6 +1644,10 @@
         'banner': '/demo_images/banners/product-card.png', 
         'bannerMobile': '/demo_images/banners/mob-banner.png'
     } %}
-    {% include '../../../templates/footer/footer.twig'  with {'countries': countries, 'user': user} %}
+    {% include '../../../templates/footer/footer.twig'  with {
+        'countries': countries,
+        'activeCountry': 'Россия',
+        'user': user
+    } %}
     
 {% endblock %}

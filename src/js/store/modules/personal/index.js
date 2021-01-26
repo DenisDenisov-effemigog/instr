@@ -41,7 +41,9 @@ const state = {
     },*/
     checkData: [],
     orders: [],
-    addresses: []
+    addresses: [],
+
+    country: ''
 };
 
 const mutations = {
@@ -66,6 +68,9 @@ const mutations = {
         console.log('mut', addresses);
         state.addresses = addresses;
     },
+    [types.PERSONAL_APPLY_COUNTRY](state, newMode) {
+        state.country = newMode;
+    }
 };
 
 const actions = {
@@ -97,6 +102,9 @@ const actions = {
             //}
         });
     },
+    countrySetActive({commit}, newMode) {
+        commit(types.PERSONAL_APPLY_COUNTRY, newMode);
+    }
 }
 
 const getters = {

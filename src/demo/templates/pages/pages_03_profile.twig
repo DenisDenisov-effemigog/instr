@@ -1495,6 +1495,10 @@
         'sort_types': sort_types,
         'sort_type': sort_type,
     } %}
-    {% include '../../../templates/footer/footer.twig'  with {'countries': countries, 'user': user} %}
+    {% include '../../../templates/footer/footer.twig'  with {
+        'countries': countries,
+        'activeCountry': 'Россия',
+        'user': user
+    } %}
     
 {% endblock %}
