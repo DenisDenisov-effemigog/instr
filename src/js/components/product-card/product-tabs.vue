@@ -4,6 +4,8 @@
             class="container">
             <div class="product__tabs-wrapper">
                 <div ref="tabs" class="product-tabs__tabs"
+                    :class="{'product-tabs__tabs--center': currentTab === 'description',
+                             'product-tabs__tabs--end': currentTab === 'questions'}"
                     @touchmove="scrollTabs"
                     @touchstart="touchStart"
                     @touchend="touchEnd"
@@ -11,7 +13,7 @@
                     <div
                         v-if="features"
                         class="product-tabs__tab"
-                        :class="{'product-tabs__tab_active': currentTab === 'features'}"
+                        :class="{'product-tabs__tab--active': currentTab === 'features'}"
                         @click.prevent="showTab('features')"
                     >
                         {{ $tc('product_card.tabs.features') }}
@@ -19,7 +21,7 @@
                     <div
                         v-if="description"
                         class="product-tabs__tab"
-                        :class="{'product-tabs__tab_active': currentTab === 'description'}"
+                        :class="{'product-tabs__tab--active': currentTab === 'description'}"
                         @click.prevent="showTab('description')"
                     >
                         {{ $tc('product_card.tabs.description') }}
@@ -27,7 +29,7 @@
                     <div
                         v-if="questions"
                         class="product-tabs__tab"
-                        :class="{'product-tabs__tab_active': currentTab === 'questions'}"
+                        :class="{'product-tabs__tab--active': currentTab === 'questions'}"
                         @click.prevent="showTab('questions')"
                     >
                         {{ $tc('product_card.tabs.questions') }}&nbsp;({{questions.length}})
