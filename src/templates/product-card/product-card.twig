@@ -63,35 +63,72 @@
                 {% endif %}
 				<component is="product-order-block" class="product-order__wrapper">
 					<ul class="product-order__list">
-                        {% for price in product.prices %}
-                            <li class="product-order__item product-order__item--{% if price.base == 1 %}retail{% elseif price.base == 2 %}base{% elseif price.base == 0 %}discount-{% if price.discount >= 10 %}green{% else %}blue{% endif %}{% elseif price.base == 3 %}total{% endif %}">
-                                <p class="product-order__name" >
-                                    {% if price.base == 1 %}
-                                        {{ 'product_card.price.retail'|trans }}
-                                    {% elseif price.base == 2 %}
-                                        {{ 'text.price_base'|trans }}
-                                    {% elseif price.base == 0 %}
-                                        {{ 'text.discount'|trans }}
-                                    {% elseif price.base == 3 %}
-                                        {{ 'text.price_yours'|trans }}
-                                    {% endif %}
-                                    {% if price.discount %}
-                                        {{ price.discount }}%
-                                    {% endif %}
+                        {% if user.personType == 2 and product.price.retail is not empty %}
+                            <li class="product-order__item product-order__item--retail">
+                                <p class="product-order__name" >{{ 'product_card.price.retail'|trans }}</p>
+                                    <div class="product-order__icon">
+                                        <svg>
+                                            <use xlink:href="{{ templatePath }}images/sprite.svg#icons__info"></use>
+                                        </svg>
+                                        <div class="product-order__tooltip"></div>
+                                    </div>
+                                <p class="product-order__price">
+                                    {{ product.price.retail }} {{ 'text.currency'|trans }}
                                 </p>
-                                <div class="product-order__icon">
-                                    <svg>
-                                        <use xlink:href="{{ templatePath }}images/sprite.svg#icons__info"></use>
-                                    </svg>
-                                    {% if price.discount %}
-                                        <div class="product-order__item-tooltip">{{ price.text }}</div>
-                                    {% endif %}
-                                </div>
-                                <p class="product-order__price {% if price.base == 1 and user.personType == 1 %}product-order__price--throut{% endif %}">{{ price.price }} {{ 'text.currency'|trans }}</p>
                             </li>
-                        {% endfor %}
+                        {% endif %}
+                        {% if product.price.base is not empty %}
+                            <li class="product-order__item product-order__item--base">
+                                {% if user.personType == 2 %}
+                                    <p class="product-order__name">{{ 'text.price_base'|trans }}</p>
+                                {% else %}
+                                    <p class="product-order__name">{{ 'text.price_old'|trans }}</p>
+                                {% endif %}
+                                <p class="product-order__price">{{ product.price.base }} {{ 'text.currency'|trans }}</p>
+                            </li>
+                        {% endif %}
+                        {% if product.discounts is not empty %}
+                            {% for discount in product.discounts %}
+                                {% if discount.type == 'total' %}
+                                    <li class="product-order__item product-order__item--discount-green">
+                                        <p class="product-order__name">{{ 'text.discount'|trans }} {{ discount.percent }}%</p>
+                                            <div class="product-order__icon">
+                                                <svg>
+                                                    <use xlink:href="{{ templatePath }}images/sprite.svg#icons__info"></use>
+                                                </svg>
+                                                <div class="product-order__tooltip">
+                                                    {% for discount in product.discounts %}
+                                                        {% if discount.type != 'сategory' and discount.type != 'total' %}
+                                                            <div class="product-order__tooltip-item{% if discount.type == 'action' %} product-order__tooltip-item--promo{% endif %}"
+                                                            >{{ discount.description }}<span>{{ discount.percent }}%</span>
+                                                            </div>
+                                                        {% elseif discount.type == 'total'%}
+                                                            <div class="product-order__tooltip-total">{{ discount.description }}<span>{{ discount.percent }}%</span></div>
+                                                        {% elseif discount.type == 'сategory'%}
+                                                            <div class="product-order__tooltip-note">{{ discount.description }} {{ discount.category_name }} {{ discount.percent }}%</div>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
+                                        <p class="product-order__price">{{ discount.value }} {{ 'text.currency'|trans }}</p>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                        {% if product.price.sell is not empty %}
+                            <li class="product-order__item product-order__item--total">
+                                {% if user.personType == 2 %}
+                                    <p class="product-order__name">{{ 'text.price_yours'|trans }}</p>
+                                {% elseif product.price.base is empty and user.personType == 1 %}
+                                    <p class="product-order__name">{{ 'text.price'|trans }}</p>
+                                {% else %}
+                                    <p class="product-order__name">{{ 'text.price_new'|trans }}</p>
+                                {% endif %}
+                                <p class="product-order__price">{{ product.price.sell }} {{ 'text.currency'|trans }}</p>
+                            </li>
+                        {% endif %}
 					</ul>
-					<component is="add-to-cart" 
+                    <component is="add-to-cart"  
                                :text="'input.text.in_cart'" 
                                :button-title="'button.add_to_cart.long'"
                                :size="'big'"
@@ -100,7 +137,8 @@
                     ></component>
 				</component>
                 <component is="product-discount-info"
-                           :discount="12"
+                           :product-discounts="{{ product.discounts|json_encode()|e('html_attr') }}"
+                           :authorized="{{ user.authorized }}"
                 >
                 </component>
 			</div>

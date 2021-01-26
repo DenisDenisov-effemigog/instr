@@ -182,6 +182,12 @@
     "product_card.tabs.desc": "Описание товара",
     "product_card.tabs.some_features": "Особенности",
     "product_card.tabs.advantages": "Преимущества",
+    "product_card.progress.text_start": "Добавьте в корзину товары категории",
+    "product_card.progress.text_middle": "на сумму",
+    "product_card.progress.text_end": "и скидка увеличится на",
+    "product_card.link": "Подробнее о системе скидок",
+    "product_card.offer.text": "Станьте постоянным партнером, чтобы получить доступ к системе скидкок",
+    "product_card.offer.button": "Стать партнёром",
 
     "listing.filters.button": "Посмотреть",
 

@@ -16,20 +16,21 @@
         //         height: 0
         //         display: none !important
         //         background: transparent
-        &_center
+        &--center
             @media screen and (max-width: 450px)
                 justify-content: center
-        &_end
+        &--end
             @media screen and (max-width: 450px)
                 justify-content: flex-end
     &__tab
         @extend .tabs__tab
+        white-space: nowrap
         &:not(:last-child)
             margin-right: 1.5rem
             +tablet
                 margin-right: 3.5rem
-        &_active
-            @extend .tabs__tab_active
+        &--active
+            @extend .tabs__tab--active
     &__content
         display: block
         padding-top: 2.5rem

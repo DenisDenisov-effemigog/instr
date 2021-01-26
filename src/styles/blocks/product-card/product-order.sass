@@ -2,7 +2,7 @@
     width: 100%
     +tablet
         width: 50%
-        max-width: 336px;
+        max-width: 336px
     &__stock
         padding-left: 1.125rem
         position: relative
@@ -18,18 +18,18 @@
             background: $green
             border-radius: 50% 
     &__wrapper
+        position: relative
         margin-top: 1rem
         padding: 1.5rem
         border: 1px solid $border-color
+        border-radius: $border-radius
     &__icon
         width: $size_20
         height: $size_20
         margin-right: 1.625rem
-        +tablet
-            &:hover .product-order__item-tooltip
-                display: flex
+        &:hover .product-order__tooltip
+            display: block
     &__item
-        position: relative
         padding-bottom: 0.5rem
         display: flex
         align-items: center
@@ -58,11 +58,53 @@
                 color: $green
             &-blue
                 color: $blue
-        &-tooltip
-            @extend .tooltip
-            width: 10.875rem
-            bottom: -3.125rem
-            left: 1.313rem
+    &__tooltip
+        @extend .tooltip
+        width: 20rem
+        +mobile
+            bottom: -1.25rem
+            left: 0
+            &:before
+                left: calc(50% - 2.75rem)
+        +tablet
+            top: .5rem
+            left: -94%
+            &::before
+                top: 71%
+                right: -.5625rem
+                left: auto
+                
+            &::after
+                top: 66%
+                right: -126px
+                left: auto
+                width: 8rem
+                height: 3rem
+    &__tooltip-item
+        @extend .text-3
+        +flex-container
+        color: $grey
+        font-size: $font-size_3
+        line-height: $line-height_3
+        justify-content: space-between
+        &:not(:last-of-type)
+            margin-bottom: .5rem
+        &--promo
+            color: $blue
+            margin-bottom: 1rem
+    &__tooltip-total
+        @extend .product-order__tooltip-item
+        color: $green
+        padding-top: 1rem
+        border-top: 1px solid rgba($light-grey, .42)
+        font-weight: 600
+    &__tooltip-note
+        @extend .text-3
+        +flex-container
+        color: $light-grey
+        &:not(:last-of-type)
+            margin-bottom: .5rem
+
     &__name
         padding-right: 0.375rem
     &__price

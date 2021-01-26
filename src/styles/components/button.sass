@@ -36,6 +36,18 @@
             background-color: transparent
             color: $primary-hover
             border-color: $primary-hover
+    &--secondary--blue
+        @extend .button
+        color: $blue
+        background-color: transparent
+        border: 1px solid $blue
+        +tablet
+            font-size: $font-size
+            line-height: $line-height
+        &:hover
+            background-color: transparent
+            color: $black
+            border-color: $black
     &--disabled
         @extend .button
         color: $white

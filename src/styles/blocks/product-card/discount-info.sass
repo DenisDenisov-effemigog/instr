@@ -1,22 +1,48 @@
 .discount-info
     margin-top: 1rem
     &__progress
+        +flex-container-center
         margin-top: 1rem
         padding: 1rem
         background-color: rgba($light-grey, .1)
+    &__progress-bar
+        width: 3rem
+        margin-right: 1rem
     &__progress-text
         @extend .text-2
         span
             font-family: $font-montserrat-bold
             font-weight: $font-weight_bold
+            white-space: nowrap
         &--discount
             color: $green
+    &__progress-discount
+        @extend .text-2
+        font-family: $font-montserrat-bold
+        font-weight: $font-weight_bold
+        color: $green
+
     &__link
         @extend .link-blue
         @extend .subtitle-2
-        
+        margin-top: 1rem
         svg
-            width: $size_20
+            width: $size_15
             height: $size_20
             fill: $icon-blue
-            margin-right: .5rem
+            margin-right: .625rem
+
+    &__offer
+        margin-top: 1.625rem
+        padding: 1.5rem
+        background-color: rgba($light-grey, .1)
+        border-radius: $border-radius
+    &__offer-text
+        @extend .text-3
+        color: $grey
+        padding-bottom: 1rem
+        border-bottom: 1px solid $border-color_4
+    &__offer-btn
+        @extend .button--secondary--blue
+        padding: 1rem
+        margin-top: 1rem
