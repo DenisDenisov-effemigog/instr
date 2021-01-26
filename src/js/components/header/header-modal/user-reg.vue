@@ -9,7 +9,7 @@
                 @click ='IndividualFlag = false'
                 checked>
             <span class="user-reg__check"></span>
-            <span class="user-reg__radio-label">Юридическое лицо</span>
+            <span class="user-reg__radio-label">{{ $tc('title.person_corporate') }}</span>
         </label>
         <label name="reason" class="user-reg__radio">
             <input
@@ -18,7 +18,7 @@
                 value="individual"
                 @click ='IndividualFlag = true'>
             <span class="user-reg__check"></span>
-            <span class="user-reg__radio-label">Физическое лицо</span>
+            <span class="user-reg__radio-label">{{ $tc('title.person_individual') }}</span>
         </label>
         <label v-show="!IndividualFlag" name="taxPayer" class="user-reg__checkbox">
             <input
@@ -26,7 +26,7 @@
                 type="checkbox"
                 name="taxPayer">
             <span class="user-reg__checkbox-slider"></span>
-            <span class="user-reg__checkbox-label">Плательщик&nbsp;НДС</span>
+            <span class="user-reg__checkbox-label">{{ $tc('user_reg.tax_payer') }}</span>
         </label>
         <label name="name" class="user__label">
             <input
@@ -51,10 +51,10 @@
                 v-model.trim="$v.name.$model">
             <span v-if="!IndividualFlag" class="user__label-text"
                 :class="{'user__label-text_up': $v.name.required}"
-            >Контактное лицо</span>
+            >{{ $tc('title.person') }}</span>
             <span v-else class="user__label-text"
                 :class="{'user__label-text_up': $v.name.required}"
-            >ФИО</span>
+            >{{ $tc('user_reg.name') }}</span>
             <svg viewBox="0 0 24 24"
                 class="user__label-icon"
                 v-if="$v.name.required"
@@ -76,7 +76,7 @@
                 v-model.trim="$v.company.$model">
             <span class="user__label-text"
                 :class="{'user__label-text_up': $v.company.required}"
-            >Компания</span>
+            >{{ $tc('title.company') }}</span>
             <svg viewBox="0 0 24 24"
                 class="user__label-icon" 
                 v-if="$v.company.required"
@@ -86,21 +86,21 @@
             <div class="user__error-text user__error-text_invalid"
                 v-if="$v.company.$error">{{ $tc('text.error') }}</div>
         </label>
-        <label v-show="!IndividualFlag" name="code" class="user__label">
+        <label v-show="!IndividualFlag" name="TIN" class="user__label">
             <input
                 class="user__input"
-                :class="{'user__input_error': $v.code.$error}"
+                :class="{'user__input_error': $v.tin.$error}"
                 type="text"
-                name="code"
-                id="code"
-                v-model.trim="$v.code.$model">
+                name="TIN"
+                id="TIN"
+                v-model.trim="$v.tin.$model">
             <span class="user__label-text"
-                :class="{'user__label-text_up': $v.code.required}"
-            >ИНН</span>
+                :class="{'user__label-text_up': $v.tin.required}"
+            >{{ $tc('title.tin') }}</span>
             <svg viewBox="0 0 24 24"
                 class="user__label-icon"
-                v-if="$v.code.required"
-                @click="$v.code.$model = ''">
+                v-if="$v.tin.required"
+                @click="$v.tin.$model = ''">
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>
             <div class="user__error-text user__error-text_invalid"
@@ -143,7 +143,7 @@
                 v-model.trim="newEmail">
             <span class="user__label-text"
                 :class="{'user__label-text_up': $v.newEmail.required}"
-            >Email</span>
+            >{{ $tc('text.email') }}</span>
             <svg viewBox="0 0 24 24"
                 class="user__label-icon"
                 v-if="$v.newEmail.required"
@@ -153,7 +153,7 @@
             <div class="user__error-text user__error-text_invalid"
                 v-if="$v.newEmail.$error">{{ $tc('text.error') }}</div>
         </label>
-        <div class="user__error-text" v-if="$v.error">*Обязательное поле для заполнения</div>
+        <div class="user__error-text" v-if="$v.error">*{{ $tc('text.required') }}</div>
         <label name="agreement" class="user__label user__label_row">
             <input
                 class="user__checkbox-input"
@@ -167,7 +167,7 @@
                     <use :xlink:href="templatePath + 'images/sprite.svg#icons__checked'"></use>
                 </svg>
             </span>
-            <span class="user__checkbox-text">Я согласен с политикой обработки персональных данных</span>
+            <span class="user__checkbox-text">{{ $tc('user_reg.agreement') }}</span>
         </label>
         <input type="submit" class="user__button" value="Зарегистрироваться">
     </form>
@@ -193,7 +193,7 @@
             company: {
                 required
             },
-            code: {
+            tin: {
                 required,
                 alphaNum
             },
@@ -210,7 +210,7 @@
                 IndividualFlag: false,
                 name: '',
                 company: '',
-                code: '',
+                tin: '',
                 phone: '',
                 newEmail: '',
                 tokens: config.phoneTokens,
@@ -227,7 +227,7 @@
             saveChanges() {
                this.name = this.$v.name.$model;
                this.company = this.$v.company.$model;
-               this.code = this.$v.code.$model;
+               this.tin = this.$v.tin.$model;
                this.phone = this.$v.phone.$model;
                this.newEmail = this.$v.newEmail.$model;
             }
