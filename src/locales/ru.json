@@ -105,6 +105,7 @@
     "profile_check.date": "Время и дата",
     "profile_check.operation": "Операция",
     "profile_check.operation_code": "Код операции",
+    "profile.delete_profile.another_reason": "Другая причина",
     
     "change_pass.current": "Текущий пароль",
     "change_pass.new": "Новый пароль",
@@ -148,6 +149,7 @@
     "main_page.stock.title": "Акции",
     "main_page.selection.title": "Еще одна интересная подборка со скроллом",
     "main_page.link.more_products": "Больше товаров тут",
+    "main_page.link.about_discount": "Подробнее об акции",
 
     "product_card.link.all_specifications": "Все характеристики",
     "product_card.link.copy": "Скопировать",

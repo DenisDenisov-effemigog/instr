@@ -3,7 +3,7 @@
         <svg class="slider-promo__modal-icon">
             <use :xlink:href="templatePath + 'images/sprite.svg#icons__link'"></use>
         </svg>
-        <p @click="openModal" class="slider-promo__modal-text">Подробнее об акции</p>
+        <p @click="openModal" class="slider-promo__modal-text">{{ $tc('main_page.link.about_discount') }}</p>
     </div>
 </template>
 

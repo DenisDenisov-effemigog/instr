@@ -33,7 +33,7 @@
                 <input
                     type="radio"
                     name="reason-another"
-                    value="Другая причина"
+                    :value="$tc('profile.delete_profile.another_reason')"
                     v-model="picked">
                 <span class="profile-modal__check"></span>
                 <span class="profile-modal__radio-label">{{ $tc('delete_profile.reason_another') }}</span>
