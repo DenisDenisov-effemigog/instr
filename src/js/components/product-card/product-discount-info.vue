@@ -28,11 +28,11 @@
                 </vue-ellipse-progress>
             </div>
             <div class="discount-info__progress-text">Добавьте в корзину товары категории <span>Силовое</span> на сумму 
-                <span>{{ currency(sum) }} RON</span> и скидка увеличится на <span class="discount-info__progress-text--discount">{{ discount }}%</span>
+                <span>{{ currency(sum) }} {{ $tc('text.currency') }}</span> и скидка увеличится на <span class="discount-info__progress-text--discount">{{ discount }}%</span>
             </div>
         </div>
         <div class="discount-info__link" @click="openModal">
-            <svg>
+            <svg viewBox="0 0 13 13">
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__link'"></use>
             </svg>
             Подробнее о системе скидок
@@ -58,6 +58,11 @@ export default {
             progress: 0
         }
     },
+    methods: {
+        openModal() {
+            
+        }
+    },
     computed: {
         progressPrice() {
             if (this.sum >= this.rightPrice) {
@@ -71,6 +76,6 @@ export default {
             const basketData = this.$store.getters.basketProductsSummary;
             return parseFloat((basketData.price).toFixed(3));
         }
-    }
+    },
 }
 </script>
