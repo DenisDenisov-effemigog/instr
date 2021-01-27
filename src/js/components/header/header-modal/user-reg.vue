@@ -120,7 +120,7 @@
                 v-model.trim="phone"/>
             <span class="user__label-text"
                 :class="{'user__label-text_up': $v.phone.required}"
-            >Номер телефона</span>
+            >{{ $tc('title.phone_number') }}</span>
             <svg viewBox="0 0 24 24"
                 class="user__label-icon"
                 v-if="$v.phone.required"
@@ -143,7 +143,7 @@
                 v-model.trim="newEmail">
             <span class="user__label-text"
                 :class="{'user__label-text_up': $v.newEmail.required}"
-            >{{ $tc('text.email') }}</span>
+            >{{ $tc('title.email') }}</span>
             <svg viewBox="0 0 24 24"
                 class="user__label-icon"
                 v-if="$v.newEmail.required"
@@ -156,14 +156,14 @@
         <div class="user__error-text" v-if="$v.error">*{{ $tc('text.required') }}</div>
         <label name="agreement" class="user__label user__label_row">
             <input
-                class="user__checkbox-input"
+                class="user__checkbox"
                 type="checkbox"
                 name="agreement"
                 required
                 checked
             >
             <span class="user__checkbox-label">
-                <svg viewBox="0 0 10 8">
+                <svg class="user__checkbox-svg" viewBox="0 0 10 8">
                     <use :xlink:href="templatePath + 'images/sprite.svg#icons__checked'"></use>
                 </svg>
             </span>

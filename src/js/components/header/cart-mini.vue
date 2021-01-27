@@ -1,5 +1,5 @@
 <template>
-    <a href="#" class="header__menu-link header__menu-link_cart_active">
+    <a href="#" class="header__menu-link header__menu-link--cart-active">
         <svg class="header__menu-icon">
             <use :xlink:href="templatePath + 'images/sprite.svg#icons__cart'"></use>
         </svg>
