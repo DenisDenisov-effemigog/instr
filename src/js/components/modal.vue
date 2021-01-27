@@ -1,5 +1,5 @@
 <template>
-    <div v-show="open" class="modal">
+    <div v-show="open" class="modal" :class="{'modal--user': modal==='user'}">
         <div class="modal-bg" @click="closeOutside"></div>
         <div class="modal-wrapper"
              :class="{'modal-wrapper_big': modalBigger, 'modal-wrapper_profile': !showCloseBtn}"
