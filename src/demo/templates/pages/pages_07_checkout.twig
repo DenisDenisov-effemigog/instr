@@ -857,10 +857,28 @@
     'name' : 'Ivan',
     'last_name' : 'Sidorov',
     'personType': 2,
-    'authorized': true,
+    'authorized': falce,
 }%}
 
 {% set payments = [
+    {
+        id: 1,
+        value: 'advance',
+        title: 'Предоплата',
+        description: 'Скидка 5% при оплате онлайн',
+    },
+    {
+        id: 2,
+        value: 'receipt',
+        title: 'Оплата при получении',
+        description: 'Скидка 5% при оплате онлайн',
+    },
+    {
+        id: 3,
+        value: 'contract',
+        title: 'Оплата по договору',
+        description: 'Способ оплаты для существующих клиентов. Оплата OP, BO (заказной билет), чек, оплата наличными по квитанции продавца.',
+    },
 ]%}
 
 {% set deliveries = [
@@ -902,6 +920,7 @@
     {% include '../../../templates/checkout/checkout.twig' with {
         'user': user,
         'deliveries': deliveries,
+        'payments': payments,
     } %}
     {% include '../../../templates/footer/footer.twig'  with {
         'countries': countries,

@@ -5,7 +5,7 @@
         <div class="delivery-date__calendar">
             <date-picker 
                 v-model="time1"
-                placeholder="Не выбрано (не обязательно)"
+                :placeholder="$tc('checkout.date_placeholder')"
                 :disabled-date="disabledTodayAfterAWeek"
                 :format='format'
                 :formatter="momentFormat"
@@ -34,20 +34,6 @@ export default{
     components: { selectList, DatePicker },
     data(){
         return{
-            points:[
-                {
-                    label:"Не выбрано (не обязательно)",
-                    value:"none"
-                },
-                {
-                    label:"31.12.1999",
-                    value:"999"
-                },
-            ],
-            setPoint:{
-                    label:"Не выбрано (не обязательно)",
-                    value:"none"
-                },
             time1: '',
             format:'DD.MM.YYYY',
             momentFormat: {
@@ -71,9 +57,9 @@ export default{
 
             return date < today
         },
+        inputVal(){
+            console.log('1')
+        }
     },
-    inputVal(){
-        console.log('1')
-    }
 }
 </script>

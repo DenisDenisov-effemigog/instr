@@ -1,5 +1,5 @@
 <template>
-    <div class="delivery-address">
+    <div class="delivery-address"><!--TODO адреса показываем если пользователь залогинен и у него есть сохранённые-->
         <div v-if="currentTab === 'corporate'" class="delivery-address__corporate">
             <div class="delivery-address__select">
                 <select-list

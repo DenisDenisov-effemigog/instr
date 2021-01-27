@@ -276,5 +276,6 @@
     "checkout.text.date": "Дата доставки ориентировочная. Не обязательно к заполнению.",
     "checkout.title.payment": "Способ оплаты",
     "checkout.title.comments": "Коментарии к заказу",
-    "checkout.checkbox_text": "Сообщать мне обо всяких акциях, новостях и тд и тп."
+    "checkout.checkbox_text": "Сообщать мне обо всяких акциях, новостях и тд и тп.",
+    "checkout.date_placeholder": "Не выбрано (не обязательно)"
 }

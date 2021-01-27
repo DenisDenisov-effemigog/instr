@@ -1,4 +1,4 @@
-<template>
+<template><!--TODO в чекауте тоже должен быть липким-->
     <div class="cart-order__head" :class="{'cart-order__head--active': mobileFlag}">
         <div class="cart-order__head-circle">
             <vue-ellipse-progress
@@ -55,7 +55,6 @@ export default {
                 this.progressIconSize = '-1 -2 12 12';
             } else {
                 this.progress = this.currentPrice/this.rightPrice*100;
-                // this.progressText = 'Внимание! Добавьте товар на сумму '+this.getPrice+' ₽, чтобы доставка стала бесплатной';
                 this.progress = this.currentPrice/7500*100;
                 this.progressIcon = 'icons__cube';
                 this.progressIconSize = '0 0 24 24';

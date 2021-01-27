@@ -28,7 +28,7 @@
             <h2 v-show='value === "new" && successFlag === "pay"' 
                 class="checkout__title"
             >{{ $tc('checkout.title') }}</h2>
-            <div v-show="successFlag === 'pay'" 
+            <div v-show="successFlag === 'pay' && !user.authorized" 
                  class="checkout-choice"
             >
                 <div class="checkout-choice__title">{{ $tc('checkout.title.contacts') }}</div>
@@ -66,7 +66,7 @@
                         :deliveries="deliveries"
                     ></checkout-delivery>
                     <delivery-date></delivery-date>
-                    <delivery-payment></delivery-payment>
+                    <delivery-payment :payments="payments"></delivery-payment>
                     <delivery-comment></delivery-comment>
                     <div class="checkout__btn-wrap">
                         <div class="checkout__btn"
@@ -114,7 +114,15 @@
             deliveries: {
                 required: true,
                 type: Array
-            }
+            },
+            user: {
+                required: true,
+                type: Object
+            },
+            payments: {
+                required: true,
+                type: Array
+            },
         },
         data(){
             return {
@@ -140,19 +148,13 @@
             showTab(code) {
                 if (this.currentTab !== code) {
                     this.currentTab = code;
-                    if(code === "corporate"){
-                        this.IndividualFlag = false
-                    }else{
-                        this.IndividualFlag = true
-                    }
+                    this.IndividualFlag = code !== "corporate";
                 }
             },
             mobileScroll(){
                 if(window.innerWidth < 768) {
                     let windowPosition = window.pageYOffset + window.innerHeight
                     let checkoutPosition = this.$refs.checkout.offsetTop + this.$refs.checkout.offsetHeight - 64
-                    console.log('windowPosition ' + windowPosition)
-                    console.log('checkoutPosition ' + checkoutPosition)
                     if(windowPosition < checkoutPosition){
                         this.fixedFlag = true
                     }else{
