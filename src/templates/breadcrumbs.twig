@@ -9,7 +9,7 @@
             <ul class="breadcrumbs">
                 {% for item in breadcrumbs %}
                     <li 
-                        class="breadcrumbs__item {% if loop.last %} breadcrumbs__item_active{% endif %}{% if loop.revindex == 2 %} breadcrumbs__item_penultimate{% endif %}"
+                        class="breadcrumbs__item {% if loop.last %} breadcrumbs__item--active{% endif %}{% if loop.revindex == 2 %} breadcrumbs__item--penultimate{% endif %}"
                     >
                         <a href="{{ item.url }}">{{ item.title }}</a>
                         <svg class="breadcrumbs__array">

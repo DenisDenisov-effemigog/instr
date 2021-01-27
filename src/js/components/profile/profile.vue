@@ -12,7 +12,7 @@
                     <router-link tag="li" 
                                  class="profile__menu-link" 
                                  :exact="!!item.exact" 
-                                 active-class="profile__menu-link_active" 
+                                 active-class="profile__menu-link--active" 
                                  :to="item.url"
                     >
                         <span>{{ $tc(item.title) }}</span>

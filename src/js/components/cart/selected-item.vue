@@ -1,12 +1,12 @@
 <template>
     <div class="selected-item">
-        <label class="selected-item__label">
-            <input type="checkbox" name="agreement" required="required" checked="checked" class="selected-item__checkbox-input"> 
+        <label name="selectedItem" class="selected-item__label">
+            <input name="selectedItem" type="checkbox" class="selected-item__checkbox">
             <span class="selected-item__checkbox-label">
-                <svg viewBox="0 0 10 8">
-                    <use xlink:href="/images/sprite.svg#icons__checked"></use>
+                <svg class="selected-item__checkbox-svg" viewBox="0 0 10 8">
+                    <use :xlink:href="templatePath + 'images/sprite.svg#icons__checked'"></use>
                 </svg>
-            </span> 
+            </span>
             <div class="selected-item__desc">
                 <div class="selected-item__pic">
                     <img :src="this.product.images[0].img" alt="">

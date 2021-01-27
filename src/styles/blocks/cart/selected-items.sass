@@ -39,13 +39,11 @@
     &__head-btn
         margin-top: 1.25rem
     &__label
-        @extend .user__label
-    &__checkbox-input
-        @extend .user__checkbox-input
-    &__checkbox-label
-        @extend .user__checkbox-label
+        @extend .form__label
+        flex-direction: row
+    &__checkbox
+        +checkbox
     &__checkbox-text
-        @extend .user__checkbox-text
         margin-left: 1.75rem
     &__content
         margin-top: 0.5rem

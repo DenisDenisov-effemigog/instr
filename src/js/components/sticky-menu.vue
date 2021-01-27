@@ -4,7 +4,7 @@
             <li class="header__menu-item">
                 <a
                     class="header__menu-link"
-                    :class="{'header__menu-link_active': menuLink === 'catalog' || menuLink === 'search'}"
+                    :class="{'header__menu-link--active': menuLink === 'catalog' || menuLink === 'search'}"
                     @click.prevent="clickMenu('catalog')"
                 >
                     <svg class="header__menu-icon">
@@ -40,7 +40,7 @@
             <li class="header__menu-item" v-if="user.authorized">
                 <a 
                     class="header__menu-link"
-                    :class="{'header__menu-link_active': menuLink === 'profile' || menuLink === 'search'}"
+                    :class="{'header__menu-link--active': menuLink === 'profile' || menuLink === 'search'}"
                     @click.prevent="clickMenu('profile')"
                 >
                     <svg class="header__menu-icon">
@@ -50,7 +50,7 @@
                 </a>
             </li>
             <li class="header__menu-item">
-                <a href="#" class="header__menu-link header__menu-link_cart_active">
+                <a href="#" class="header__menu-link header__menu-link--cart-active">
                     <svg class="header__menu-icon">
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__cart'"></use>
                     </svg>
