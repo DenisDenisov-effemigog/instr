@@ -1,1 +1,4 @@
-<component is="checkout"></component>
+<component is="checkout"
+           :deliveries="{{ deliveries|json_encode|e('html_attr') }}"
+           :user="{{ user|json_encode|e('html_attr') }}"
+></component>

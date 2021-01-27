@@ -45,7 +45,7 @@
                     </label>
                 </form>
             </div>
-            <div  v-show="successFlag === 'pay'" class="checkout__content">
+            <div v-show="successFlag === 'pay'" class="checkout__content">
                 <div v-show='value === "new"' class="checkout__desc">
                      <div class="checkout__tabs">
                         <div class="checkout__tab"
@@ -63,6 +63,7 @@
                     ></checkout-reg>
                     <checkout-delivery
                         :currentTab="currentTab"
+                        :deliveries="deliveries"
                     ></checkout-delivery>
                     <delivery-date></delivery-date>
                     <delivery-payment></delivery-payment>
@@ -109,6 +110,12 @@
     export default {
         components: { cartOrder, UserLogin, CheckoutReg, CheckoutDelivery, DeliveryDate, DeliveryPayment, DeliveryComment },
         name: "checkout",
+        props: {
+            deliveries: {
+                required: true,
+                type: Array
+            }
+        },
         data(){
             return {
                 choiseFlag: true,

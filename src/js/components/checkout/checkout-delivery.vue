@@ -2,23 +2,54 @@
     <div class="checkout-delivery">
         <h2 class="checkout-delivery__title">{{ $tc('text.delivery') }}</h2>
         <div class="checkout-delivery__content">
-            <delivery-option
+            <div class="delivery-option">
+            <div v-for="delivery in deliveries"
+                 class="delivery-option__wrap"
+                 :class="{
+                     'delivery-option__wrap--active': currentOption === delivery.type, 
+                     'delivery-option__wrap-delivery': delivery.type === 'delivery',
+                     'delivery-option__wrap-receive': delivery.type === 'receive',
+                 }"
+                 @click="currentOption = delivery.type"
+            >
+                <div class="delivery-option__sale">{{ $tc('text.discount') }} -{{delivery.discount}}%</div>
+                <div class="delivery-option__title">{{ delivery.name }}</div>
+                <div class="delivery-option__text">{{ delivery.description }}</div>
+                <div class="delivery-option__date">{{ delivery.date }}</div>
+                <div class="delivery-option__price" v-if="delivery.price > 0">{{ delivery.price}} {{ $tc('text.currency') }}</div><!--TODO добавить пробел цене-->
+                <div class="delivery-option__price delivery-option__price--green" v-else>{{ $tc('text.free') }}</div>
+            </div>
+            <delivery-address
+                v-if="currentOption === 'delivery'"
                 :currentTab="currentTab"
-            ></delivery-option>
+            ></delivery-address>
+            <receive-address v-else></receive-address>
+        </div>
         </div>
     </div>
 </template>
 
 <script>
-import deliveryOption from './delivery-option.vue'
-export default {
-  components: { deliveryOption },
-    name:"checkout-delivery",
-    props:{
-        currentTab:{
-            type:String,
-            required: true
+    import deliveryAddress from "./delivery-address.vue";
+    import ReceiveAddress from "./receive-address.vue";
+    
+    export default {
+        components: { deliveryAddress, ReceiveAddress },
+        name:"checkout-delivery",
+        props:{
+            currentTab:{
+                type:String,
+                required: true
+            },
+            deliveries: {
+                required: true,
+                type: Array
+            }
+        },
+        data(){
+            return{
+                currentOption: 'delivery'
+            }
         }
     }
-}
 </script>

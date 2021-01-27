@@ -860,6 +860,30 @@
     'authorized': true,
 }%}
 
+{% set payments = [
+]%}
+
+{% set deliveries = [
+    {
+        id: 2,
+        type: 'delivery',
+        name: 'Курьерская доставка',
+        discount: 5,
+        description: 'Доставка курьером до вашего адреса. Выберите нужный',
+        date: '8.08.2020',
+        price: 1564
+    },
+    {
+        id: 1,
+        type: 'receive',
+        name: 'Самовывоз',
+        discount: 5,
+        description: 'Самовывоз товара из пункта выдачи. Выберите подходящий',
+        date: '8.08.2020',
+        price: 0
+    },
+]%}
+
 {% block content %}
 
     {% include '../../../templates/header/header.twig' with {'categories': categories, 'user': user} %}
@@ -875,7 +899,10 @@
             },
         ]
     } %}
-    {% include '../../../templates/checkout/checkout.twig' with {'user': user} %}
+    {% include '../../../templates/checkout/checkout.twig' with {
+        'user': user,
+        'deliveries': deliveries,
+    } %}
     {% include '../../../templates/footer/footer.twig'  with {
         'countries': countries,
         'activeCountry': 'Россия',
