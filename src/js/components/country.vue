@@ -1,8 +1,8 @@
 <template>
-    <div class="country" :class="{'country-open': openedCountry}">
-        <div @click="closeChoiceCountry" class="country__bg"></div>
+    <div class="country" :class="{'country--open': openedCountry}">
+        <div @click="closeChoiceCountry" class="country__bg" :class="{'country__bg--show': showBg}"></div>
         <div class="country__wrapper"> 
-            <div class="country-container">
+            <div class="country__container">
                 <div class="country__choice">
                     <h2 class="country__choice-title">{{ $tc('country.choose_country') }}</h2>
                     <ul class="country__choice-list">
@@ -50,6 +50,7 @@ export default {
     data(){
         return{
             openedCountry: false,
+            showBg: false,
         }
     },
     computed: {
@@ -80,8 +81,12 @@ export default {
             this.openedCountry = !this.openedCountry
             if(this.openedCountry === true){
                 this.toggleHtmlOverflow('hidden')
+                setTimeout(() => {
+                    this.showBg = true
+                }, 150);
             }else{
                 this.toggleHtmlOverflow('auto')
+                this.showBg = false
             }
         }
     },
