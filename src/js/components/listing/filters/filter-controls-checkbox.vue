@@ -12,7 +12,7 @@
                 :value="checkbox.value"
             >
             <span class="filter-block__checkbox-label">
-                    <svg viewBox="0 0 10 8">
+                    <svg class="filter-block__checkbox-svg" viewBox="0 0 10 8">
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__checked'"></use>
                     </svg>
                 </span>

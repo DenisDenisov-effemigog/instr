@@ -28,12 +28,17 @@
         &_invalid_password
             @extend .form__error-text--invalid-email
 
-    &__checkbox-input
-        @extend .checkbox
+    // &__checkbox
+    //     @extend .checkbox
+    // &__checkbox-label
+    //     @extend .checkbox__label
+    //     margin-top: .3125rem
+    //     svg
+    //         @extend .checkbox__label-svg
+    // &__checkbox-text
+    //     @extend .checkbox__text
+
+    &__checkbox
+        +checkbox
     &__checkbox-label
-        @extend .checkbox__label
         margin-top: .3125rem
-        svg
-            @extend .checkbox__label-svg
-    &__checkbox-text
-        @extend .checkbox__text

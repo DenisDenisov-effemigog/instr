@@ -6,9 +6,9 @@
                 <textarea name="" id="" class="delivery-comment__textarea" placeholder="Сообщение"></textarea>
             </label>
             <label class="delivery-comment__label delivery-comment__label-row">
-                <input type="checkbox" name="agreement" required="required" checked="checked" class="delivery-comment__checkbox-input"> 
+                <input type="checkbox" name="agreement" required="required" checked="checked" class="delivery-comment__checkbox"> 
                 <span class="delivery-comment__checkbox-label">
-                    <svg viewBox="0 0 10 8">
+                    <svg class="delivery-comment__checkbox-svg" viewBox="0 0 10 8">
                         <use xlink:href="/images/sprite.svg#icons__checked"></use>
                         </svg>
                     </span> 

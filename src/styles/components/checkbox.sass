@@ -1,18 +1,17 @@
-.checkbox
+=checkbox
     display: none
     width: 0
     height: 0
     opacity: 0
-    &:checked + .checkbox__label::before
+    &:checked + &-label::before
         background-color: $primary-red
         border-color: $primary-red
-    &:checked + .checkbox__label .checkbox__label-svg
+    &:checked + &-label &-svg
         opacity: 1
         transform: scale(1)
-    &__label
+    &-label
         position: relative
         display: block
-        margin-top: .125rem
         padding-left: 2rem
         cursor: pointer
         &::before
@@ -26,7 +25,7 @@
             border: 2px solid $border-color
             &:hover
                 border-color: $light-grey
-    &__label-svg
+    &-svg
         position: absolute
         top: .375rem
         left: .3125rem
@@ -37,7 +36,7 @@
         transform: scale(0)
         z-index: 2
         transition: all .2s ease
-    &__text
+    &-text
         @extend .text-2
         display: block
         cursor: pointer
