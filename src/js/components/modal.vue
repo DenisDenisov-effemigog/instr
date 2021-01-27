@@ -64,7 +64,7 @@
             </div>
             <div class="modal-desc" v-else-if="modal === 'dialogue'">
                 <h3 class="modal-title modal-title--centered">{{ $tc(props[0]) }}</h3>
-                <div class="modal-text">{{ $tc(props[1]) }}</div>
+                <div class="modal-text modal-text--higher">{{ $tc(props[1]) }}</div>
                 <div @click="clearCart" class="modal-btn" v-if="$tc(props[0]) == 'Очистить корзину'">
                     {{ $tc('modal.link.clear_cart') }}
                 </div>
