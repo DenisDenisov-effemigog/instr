@@ -48,7 +48,7 @@
             </product-tabs-answer>    
         </div>
         <div class="product-tabs__answers-all" @click="expand" v-if="!expanded && quantity > 3">
-            {{ $tc('product_card.link.see_all') }} {{quantity}} {{ $tc('product_card.link.see_all_question')+ending(quantity) }}
+            {{ $tc('product_card.link.see_more') }} {{questionsQuantity - 3}} {{ $tc('product_card.link.see_more_question')+ending(questionsQuantity - 3) }}
         </div>
     </div>
 </template>
