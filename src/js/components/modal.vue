@@ -22,11 +22,11 @@
                 <iframe :src="props" frameborder="0" allowfullscreen></iframe>
             </div>
             <div class="modal_profile-edit" v-else-if="modal === 'profile-edit'">
-                <h3 class="modal-title modal-title_centered">{{ $tc('modal.title.profile_edit') }}</h3>
+                <h3 class="modal-title modal-title--centered">{{ $tc('modal.title.profile_edit') }}</h3>
                 <component is="edit-profile" :person="props"></component>
             </div>
             <div class="modal_profile-edit" v-else-if="modal === 'profile-password'">
-                <h3 class="modal-title modal-title_centered">{{ $tc('modal.title.password_edit') }}</h3>
+                <h3 class="modal-title modal-title--centered">{{ $tc('modal.title.password_edit') }}</h3>
                 <component is="change-password"></component>
             </div>
             <div class="modal_profile-edit" v-else-if="modal === 'profile-delete'">
@@ -38,7 +38,7 @@
                 <component is="add-address"></component>
             </div>
             <div class="modal_profile-edit" v-else-if="modal === 'delete-address'">
-                <h3 class="modal-title modal-title_centered">{{ $tc('modal.title.address_remove') }}</h3>
+                <h3 class="modal-title modal-title--centered">{{ $tc('modal.title.address_remove') }}</h3>
                 <div class="modal-text">{{ $tc('modal.text.address_remove') }}</div>
                 <div @click="closeModal" class="modal-btn">{{ $tc('modal.link.address_remove') }}</div>
             </div>
@@ -46,7 +46,7 @@
                 <component is="repeat-order" :products="props"></component>
             </div>
             <div class="modal_profile-edit" v-else-if="modal === 'user'">
-                <h3 class="modal-title modal-title_centered">{{ $tc('modal.title.auth') }}</h3>
+                <h3 class="modal-title modal-title--centered">{{ $tc('modal.title.auth') }}</h3>
                 <component is="user" :selected="props"></component>
             </div>
             <div class="modal_filters" v-else-if="modal === 'filters'">
@@ -61,6 +61,13 @@
                 </div>
                 <slot name="listingcat"></slot>
                 <component is="filters" :filters="props"></component>
+            </div>
+            <div class="modal-desc" v-else-if="modal === 'dialogue'">
+                <h3 class="modal-title modal-title--centered">{{ $tc(props[0]) }}</h3>
+                <div class="modal-text">{{ $tc(props[1]) }}</div>
+                <div @click="clearCart" class="modal-btn" v-if="$tc(props[0]) == 'Очистить корзину'">
+                    {{ $tc('modal.link.clear_cart') }}
+                </div>
             </div>
             
             <div class="modal__close" @click="closeModal" v-if="showCloseBtn">
@@ -143,6 +150,10 @@ export default {
             if(event.toElement.className !== '') {
                 this.closeModal() 
             }
+        },
+        clearCart() {
+            this.$store.dispatch('basketClear');
+            this.closeModal();
         }
     },
     
