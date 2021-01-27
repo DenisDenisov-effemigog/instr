@@ -1,13 +1,12 @@
 .selected-items
-    padding: 2rem
-    padding-top: 1.5rem
+    padding: 1.5rem 2rem
     border: 1px solid $blue
     box-sizing: border-box
     border-radius: 4px
     margin-right: 1.5rem
-    &__head
-        padding-bottom: 0.75rem
-        border-bottom: 1px solid $border-color_4
+    &--success
+        background: #E1EBFA
+        border-color: #E1EBFA;
     &__head-desc
         display: flex
         align-items: center
@@ -24,9 +23,7 @@
         font-weight: 600
         margin-bottom: 0.25rem
     &__head-deploy
-        cursor: pointer
-        color: $blue
-        display: flex
+        @extend .link-blue
         align-items: center
         @extend .text-2
         font-weight: 600
@@ -36,19 +33,24 @@
                 width: 1rem
                 height: 0.625rem
                 fill: $blue
+            &--rotate
+                & svg
+                    transform: rotate(180deg)
+                    transition: 0.35s
     &__head-btn
         margin-top: 1.25rem
+        padding-bottom: 0.75rem
+        border-bottom: 1px solid $border-color_4
     &__label
         @extend .form__label
         flex-direction: row
     &__checkbox
         +checkbox
-    &__checkbox-text
-        margin-left: 1.75rem
     &__content
         margin-top: 0.5rem
     &__list
         padding-left: 0.75rem
     &__btn
         margin-top: 2rem
+        margin-bottom: 1rem
         @extend .button-catalogue
