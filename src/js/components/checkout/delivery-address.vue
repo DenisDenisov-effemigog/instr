@@ -3,25 +3,9 @@
         <div v-if="currentTab === 'corporate'" class="delivery-address__corporate">
             <div class="delivery-address__select">
                 <select-list
-                    :points="[
-                                {
-                                    label:'Адрес №1: Будапешт 1062, V1 Бажаутса, 35',
-                                    value:'1'    
-                                },
-                                {
-                                    label:'Адрес №2: Будапешт 1062, V1 Бажаутса, 35',
-                                    value:'2'    
-                                },
-                                {
-                                    label:'Адрес №3: Будапешт 1062, V1 Бажаутса, 35',
-                                    value:'3'    
-                                }
-                            ]"
-                    :selectopenSelect=" {
-                                            label:'Адрес №1: Будапешт 1062, V1 Бажаутса, 35',
-                                            value:'1'    
-                                        }"
-                ></select-list><!--TODO из базы-->
+                    :points="addresses"
+                    :selectopenSelect="currentAddress"
+                ></select-list>
                 <add-address-btn></add-address-btn>
                 <div class="delivery-address__add-address">
 
@@ -47,6 +31,12 @@ import selectList from "../partials/select-list.vue"
 export default {
     name:"delivery-address",
     components: { selectList, AddAddressBtn, CustomInput },
+    props:{
+        currentTab:{
+            type:String,
+            required: true
+        },
+    },
     data(){
         return{
             inputArr:[
@@ -74,14 +64,23 @@ export default {
                     title:"title.apart",
                     name:"apart"
                 }
-            ]
+            ],
+            currentAddress: {
+                label: 'Адрес №1: 1062 Budapest, V1 Bajzautca, 35 1062 Budapest, V1 Bajzautca, 35 1062 Budapest, V1 Bajzautca, 35 Bajzautca',
+                value: '1'
+            } /*TODO не получилось передать первое значение из addresses ???*/
         }
     },
-    props:{
-        currentTab:{
-            type:String,
-            required: true
-        }
+    computed: {
+        addresses() {
+            let selectAddresses = []
+            this.$store.state.personal.addresses.map(address=>{
+                address.label = 'Адрес №' + address.order + ': ' + address.address
+                address.value = address.order
+                selectAddresses.push(address)
+            })
+            return selectAddresses;
+        },
     },
 }
 </script>

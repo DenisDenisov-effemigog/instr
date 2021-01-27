@@ -151,7 +151,8 @@ import SelectedItems from './selected-items.vue'
                 }
             },
             clearCart() { 
-                this.$store.dispatch('basketClear');
+                // this.$store.dispatch('basketClear');
+                this.$eventBus.$emit("openModal", 'dialogue', ['modal.title.clear_cart','modal.text.clear_cart'], false, false)
             },
             changeView(){
                 if(this.table){

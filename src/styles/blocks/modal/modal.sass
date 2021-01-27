@@ -41,15 +41,17 @@
     &-title
         @extend .title-2
         font-size: $font-size_8
-        &_centered
+        &--centered
             +tablet
                 text-align: center
-        &_
     &-text
         @extend .text-1
         padding-top: 1.5rem
         +tablet-only
             text-align: center
+        &--higher
+            padding-top: 1rem
+            padding-bottom: .5rem
     &-btn
         @extend .button-modal
         margin: 2rem auto 0

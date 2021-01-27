@@ -64,6 +64,7 @@
                     <checkout-delivery
                         :currentTab="currentTab"
                         :deliveries="deliveries"
+                        :deliveryPoints="deliveryPoints"
                     ></checkout-delivery>
                     <delivery-date></delivery-date>
                     <delivery-payment :payments="payments"></delivery-payment>
@@ -123,6 +124,10 @@
                 required: true,
                 type: Array
             },
+            deliveryPoints: {
+                required: true,
+                type: Array
+            },
         },
         data(){
             return {
@@ -140,10 +145,12 @@
                 return parseFloat((basketData.price).toFixed(3));
             },
         },
+        mounted() {
+            this.$store.dispatch('personalUpdateAddresses');
+        },
         created(){
             window.addEventListener('scroll', this.mobileScroll)
         },
-        
         methods:{
             showTab(code) {
                 if (this.currentTab !== code) {
