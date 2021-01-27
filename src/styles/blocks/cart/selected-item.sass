@@ -1,19 +1,20 @@
 .selected-item
     padding-top: 1rem
     &__label
-        display: flex
-        cursor: pointer
-        align-items: center
+        @extend .user__label
+        flex-direction: row
     &__checkbox-input
         @extend .user__checkbox-input
     &__checkbox-label
         @extend .user__checkbox-label
+        margin-top: 1.3125rem
+    &__checkbox-text
+        @extend .user__checkbox-text
     &__desc
         display: flex
-        width: 100%
         padding-bottom: 0.5rem
         border-bottom: 1px solid $border-color_4
-        margin-left: 1.75rem
+        margin-left: .75rem
         align-items: center
     &__pic
         width: 3.5rem

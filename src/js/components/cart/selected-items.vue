@@ -3,8 +3,8 @@
         <div class="selected-items__head">
             <div class="selected-items__head-desc">
                 <div class="selected-items__head-icon">
-                    <svg viewBox="0 0 20 20">
-                        <use :xlink:href="templatePath + 'images/sprite.svg#icons__info'"></use>
+                    <svg>
+                        <use :xlink:href="templatePath + 'images/sprite.svg#icons__cart-info'"></use>
                     </svg>
                 </div>
                 <div class="selected-items__head-info">
@@ -25,11 +25,15 @@
                 </div>
             </div>
             <div class="selected-items__head-btn">
-                <label for="selectedAll" class="selected-items__label">
-                    <input name="selectedAll" type="checkbox" class="selected-items__checkbox-input">
-                    <span class="selected-items__checkbox-label"></span>
+                <label class="selected-items__label selected-items__label-row">
+                    <input type="checkbox" name="agreement" required="required" checked="checked" class="selected-items__checkbox-input"> 
+                    <span class="selected-items__checkbox-label">
+                        <svg viewBox="0 0 10 8">
+                            <use xlink:href="/images/sprite.svg#icons__checked"></use>
+                            </svg>
+                        </span> 
                     <span class="selected-items__checkbox-text">{{ $tc('cart.selected_items.select_all') }}</span>
-                </label>
+            </label>
             </div>
         </div>
         <div class="selected-items__content">

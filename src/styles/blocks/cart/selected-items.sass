@@ -10,6 +10,7 @@
         border-bottom: 1px solid $border-color_4
     &__head-desc
         display: flex
+        align-items: center
     &__head-icon
         margin-right: 1.875rem
         & svg
@@ -38,16 +39,18 @@
     &__head-btn
         margin-top: 1.25rem
     &__label
-        @extend .form__label
-        flex-direction: row
+        @extend .user__label
     &__checkbox-input
         @extend .user__checkbox-input
     &__checkbox-label
-        @extend .checkbox__label
+        @extend .user__checkbox-label
     &__checkbox-text
-        @extend .checkbox__text
+        @extend .user__checkbox-text
+        margin-left: 1.75rem
     &__content
         margin-top: 0.5rem
+    &__list
+        padding-left: 0.75rem
     &__btn
         margin-top: 2rem
         @extend .button-catalogue
