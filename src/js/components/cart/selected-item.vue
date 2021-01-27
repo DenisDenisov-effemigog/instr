@@ -1,7 +1,7 @@
 <template>
     <div class="selected-item">
         <label name="selectedItem" class="selected-item__label">
-            <input name="selectedItem" type="checkbox" class="selected-item__checkbox">
+            <input ref="check" name="selectedItem" type="checkbox" class="selected-item__checkbox" :checked="selectFlag" @click="checkedItem">
             <span class="selected-item__checkbox-label">
                 <svg class="selected-item__checkbox-svg" viewBox="0 0 10 8">
                     <use :xlink:href="templatePath + 'images/sprite.svg#icons__checked'"></use>
@@ -37,6 +37,18 @@ export default {
             type: Object,
             required: true,
         },
-    }
+        selectFlag:{
+            type:Boolean,
+            required: true
+        }
+    },
+    data(){
+        return{
+        }
+    },
+    methods:{
+        checkedItem(){
+        }
+    },
 }
 </script>

@@ -41,6 +41,7 @@
     "text.from": "от",
     "text.to": "до",
     "text.currency": "₽",
+    "text.free": "бесплатно",
 
     "title.enter": "Войти",
     "title.entrance": "Вход",
@@ -220,6 +221,7 @@
     "cart.selected_items.select_all": "Выбрать все",
     "cart.selected_items.head_title": "Продукты, выбранные до авторизации на сайте",
     "cart.selected_items.head_text": "Вы добавили некоторые продукты, когда не были авторизованы. Добавьте эти продукты в корзину",
+    "cart.selected_items.head_text_success": "Продукты, выбранные до авторизации на сайте успешно добавлены!",
     "cart.selected_items.head_deploy": "Развернуть",
 
     "footer.company": "&#169; 2020 ООО «МИР ИНСТРУМЕНТА»",
@@ -275,5 +277,6 @@
     "checkout.text.date": "Дата доставки ориентировочная. Не обязательно к заполнению.",
     "checkout.title.payment": "Способ оплаты",
     "checkout.title.comments": "Коментарии к заказу",
-    "checkout.checkbox_text": "Сообщать мне обо всяких акциях, новостях и тд и тп."
+    "checkout.checkbox_text": "Сообщать мне обо всяких акциях, новостях и тд и тп.",
+    "checkout.date_placeholder": "Не выбрано (не обязательно)"
 }

@@ -3,7 +3,7 @@
         <div class="delivery-comment__title">{{ $tc('checkout.title.comments') }}</div>
         <div class="delivery-comment__form">
             <label for="" class="delivery-comment__label-textarea">
-                <textarea name="" id="" class="delivery-comment__textarea" placeholder="Сообщение"></textarea>
+                <textarea name="" id="" class="delivery-comment__textarea" :placeholder="$tc('text.message')"></textarea>
             </label>
             <label class="delivery-comment__label delivery-comment__label-row">
                 <input type="checkbox" name="agreement" required="required" checked="checked" class="delivery-comment__checkbox"> 
