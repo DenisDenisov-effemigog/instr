@@ -19,6 +19,9 @@
             <div class="cart-card__image-block">
                 <img class="cart-card__image" :src="this.product.images[0].img" alt="фото товара">
             </div>
+            <div class="cart-card__counter">
+                +1
+            </div>
         </div>
 
         <div class="cart-card__species" v-if="view === 'horiz_cards'">

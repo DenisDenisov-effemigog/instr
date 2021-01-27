@@ -162,8 +162,8 @@
     "product_card.link.all_specifications": "Все характеристики",
     "product_card.link.copy": "Скопировать",
     "product_card.link.read_all": "Читать полностью",
-    "product_card.link.see_all": "Посмотреть все",
-    "product_card.link.see_all_question": "вопрос",
+    "product_card.link.see_more": "Посмотреть ещё",
+    "product_card.link.see_more_question": "вопрос",
     "product_card.copied": "Скопирован в буфер обмена",
     "product_card.photo_modal.title": "Просмотр фотографий",
     "product_card.tabs.features": "Характеристики",
@@ -221,6 +221,7 @@
     "cart.selected_items.select_all": "Выбрать все",
     "cart.selected_items.head_title": "Продукты, выбранные до авторизации на сайте",
     "cart.selected_items.head_text": "Вы добавили некоторые продукты, когда не были авторизованы. Добавьте эти продукты в корзину",
+    "cart.selected_items.head_text_success": "Продукты, выбранные до авторизации на сайте успешно добавлены!",
     "cart.selected_items.head_deploy": "Развернуть",
 
     "footer.company": "&#169; 2020 ООО «МИР ИНСТРУМЕНТА»",
