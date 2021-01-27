@@ -55,7 +55,7 @@
                     :class="{'home-menu__link--opened': showCountry}"
                     @click="openCountry"
                 >
-                    <span>{{ activeCountry }}</span>
+                    <span>{{ activeDisplayingCountry }}</span>
                     <svg viewBox="0 0 6 10">
                         <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                     </svg>
@@ -66,11 +66,11 @@
                 >
                     <div
                         class="home-menu__link_sublink"
-                        :class="{'home-menu__link_sublink--active': activeCountry === country}"
+                        :class="{'home-menu__link_sublink--active': activeDisplayingCountry === country}"
                         @click="chooseCountry(country)"
                     >
                         <span>{{ country }}</span>
-                        <svg v-if="activeCountry === country"> 
+                        <svg v-if="activeDisplayingCountry === country"> 
                             <use :xlink:href="templatePath + 'images/sprite.svg#check'"></use>
                         </svg>
                     </div>
@@ -103,15 +103,19 @@
         data(){
             return{
                 showCountry: false,
-                activeCountry: 'Румыния',
             }
+        },
+        computed: {
+            activeDisplayingCountry() {
+                return this.$store.state.personal.country
+            },
         },
         methods: {
             openCountry() {
                 this.showCountry = !this.showCountry
             },
             chooseCountry(country){
-                this.activeCountry = country;
+                this.$store.dispatch('countrySetActive', country);
                 this.showCountry = false;
             },
         }

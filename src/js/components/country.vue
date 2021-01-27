@@ -7,10 +7,9 @@
                     <h2 class="country__choice-title">{{ $tc('country.choose_country') }}</h2>
                     <ul class="country__choice-list">
                         <li v-for="country in countries" class="country__choice-item">
-                            <a @click="choiceCountry(country)" 
-                               href="#" 
+                            <a @click.prevent="choiceCountry(country)" 
                                class="country__choice-link" 
-                               :class="{'country__choice-link-active': currentLink == countries.indexOf(country)}"
+                               :class="{'country__choice-link-active': activeDisplayingCountry === country}"
                             >{{country}}</a>
                         </li>
                     </ul>
@@ -39,7 +38,11 @@ import ClickOutside from "vue-click-outside";
 export default {
     name: "country",
     props: {
-        countries: {required: true}
+        countries: {required: true},
+        activeCountry: {
+            required: true,
+            type: String
+        }
     },
     directives: {
         ClickOutside
@@ -47,12 +50,19 @@ export default {
     data(){
         return{
             openedCountry: false,
-            currentLink: 7
         }
     },
-    created() {
-            this.$eventBus.$on("open-country", this.openCountry)
+    computed: {
+        activeDisplayingCountry() {
+            return this.$store.state.personal.country
         },
+    },
+    created() {
+        this.$eventBus.$on("open-country", this.openCountry)
+    },
+    mounted() {
+        this.$store.dispatch('countrySetActive', this.activeCountry);
+    },
     methods:{
         closeChoiceCountry(event){
             if(window.innerWidth > 760) {
@@ -64,8 +74,7 @@ export default {
             this.toggleHtmlOverflow('auto')
         },
         choiceCountry(country){
-            this.currentLink = this.countries.indexOf(country)
-            this.$eventBus.$emit("countryName", this.countries[this.currentLink])
+            this.$store.dispatch('countrySetActive', country);
         },
         openCountry(){
             this.openedCountry = !this.openedCountry

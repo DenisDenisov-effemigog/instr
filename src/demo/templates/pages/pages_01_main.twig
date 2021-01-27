@@ -1736,6 +1736,10 @@
     {% include '../../../templates/main-page/banners-section.twig' with {'actionBanners': actionBanners} %}
     {% include '../../../templates/main-page/cards-collection.twig' with {'products': products} %}
     
-    {% include '../../../templates/footer/footer.twig'  with {'countries': countries, 'user': user}%}
+    {% include '../../../templates/footer/footer.twig'  with {
+        'countries': countries,
+        'activeCountry': 'Россия', 
+        'user': user
+    }%}
     
 {% endblock %}

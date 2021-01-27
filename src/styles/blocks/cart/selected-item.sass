@@ -1,0 +1,35 @@
+.selected-item
+    padding-top: 1rem
+    &__label
+        display: flex
+        cursor: pointer
+        align-items: center
+    &__checkbox-input
+        @extend .user__checkbox-input
+    &__checkbox-label
+        @extend .user__checkbox-label
+    &__desc
+        display: flex
+        width: 100%
+        padding-bottom: 0.5rem
+        border-bottom: 1px solid $border-color_4
+        margin-left: 1.75rem
+        align-items: center
+    &__pic
+        width: 3.5rem
+        height: 3.5rem
+        margin-right: 1.5rem
+    &__info
+        flex: 1
+        margin-right: 1rem
+    &__article
+        @extend .text-3
+        color: $light-grey
+        font-weight: 400
+    &__text
+        @extend .text-2
+        font-weight: 400
+        padding-top: 0.25rem
+    &__price
+        @extend .title-7
+        font-weight: 700
