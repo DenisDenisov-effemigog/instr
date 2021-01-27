@@ -16,7 +16,7 @@
                 <div class="delivery-option__title">{{ delivery.name }}</div>
                 <div class="delivery-option__text">{{ delivery.description }}</div>
                 <div class="delivery-option__date">{{ delivery.date }}</div>
-                <div class="delivery-option__price" v-if="delivery.price > 0">{{ delivery.price}} {{ $tc('text.currency') }}</div><!--TODO добавить пробел цене-->
+                <div class="delivery-option__price" v-if="delivery.price > 0">{{ currency(delivery.price)}} {{ $tc('text.currency') }}</div>
                 <div class="delivery-option__price delivery-option__price--green" v-else>{{ $tc('text.free') }}</div>
             </div>
             <delivery-address
