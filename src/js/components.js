@@ -88,7 +88,6 @@ import selectedItems from './components/cart/selected-items.vue';
 import checkout from './components/checkout/checkout.vue'
 import checkoutReg from './components/checkout/checkout-reg.vue'
 import checkoutDelivery from './components/checkout/checkout-delivery.vue'
-import deliveryOption from './components/checkout/delivery-option.vue'
 import deliveryAddress from './components/checkout/delivery-address.vue'
 import deliveryDate from './components/checkout/delivery-date.vue'
 import deliveryComment from './components/checkout/delivery-comment.vue'
@@ -172,7 +171,6 @@ export default {
         checkout,
         checkoutReg,
         checkoutDelivery,
-        deliveryOption,
         deliveryAddress,
         addAddressBtn,
         customInput,

@@ -2,28 +2,16 @@
     <div class="delivery-payment">
         <div class="delivery-payment__title">{{ $tc('checkout.title.payment') }}</div>
         <form action="" class="delivery-payment__form">
-            <label class="delivery-payment__radio">
-                <input name="pay" type="radio" value="advance" v-model="payMethod">
-                <span class="delivery-payment__check"></span>
-                <div class="delivery-payment__radio-label"><!--TODO из базы-->
-                    <span class="delivery-payment__radio-title">Предоплата</span>
-                    <span class="delivery-payment__radio-text">Скидка 5% при оплате онлайн</span>
-                </div>
-            </label>
-            <label class="delivery-payment__radio">
-                <input name="pay" type="radio" value="receipt" v-model="payMethod">
+            <label class="delivery-payment__radio" v-for="payment in payments">
+                <input name="pay" 
+                       type="radio" 
+                       :value="payment.value" 
+                       v-model="payMethod"
+                >
                 <span class="delivery-payment__check"></span>
                 <div class="delivery-payment__radio-label">
-                    <span class="delivery-payment__radio-title">Оплата при получении</span>
-                    <span class="delivery-payment__radio-text">Скидка 5% при оплате онлайн</span>
-                </div>
-            </label>
-            <label class="delivery-payment__radio">
-                <input name="pay" type="radio" value="contract" v-model="payMethod">
-                <span class="delivery-payment__check"></span>
-                <div class="delivery-payment__radio-label">
-                    <span class="delivery-payment__radio-title">Оплата по договору</span>
-                    <span class="delivery-payment__radio-text">Способ оплаты для существующих клиентов. Оплата OP, BO (заказной билет), чек, оплата наличными по квитанции продавца.</span>
+                    <span class="delivery-payment__radio-title">{{ payment.title }}</span>
+                    <span class="delivery-payment__radio-text">{{ payment.description }}</span>
                 </div>
             </label>
         </form>
@@ -33,10 +21,16 @@
 <script>
 export default {
     name:"delivery-payment",
+    props: {
+        payments: {
+            required: true,
+            type: Array
+        },  
+    },
     data(){
         return{
-            payMethod:'advance'
+            payMethod: this.payments[0].value
         }
-    }
+    },
 }
 </script>
