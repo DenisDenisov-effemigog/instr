@@ -5,7 +5,7 @@
             <label for="" class="delivery-comment__label-textarea">
                 <textarea name="" id="" class="delivery-comment__textarea" :placeholder="$tc('text.message')"></textarea>
             </label>
-            <label class="delivery-comment__label delivery-comment__label-row">
+            <label name="agreement" class="delivery-comment__label">
                 <input type="checkbox" name="agreement" required="required" checked="checked" class="delivery-comment__checkbox"> 
                 <span class="delivery-comment__checkbox-label">
                     <svg class="delivery-comment__checkbox-svg" viewBox="0 0 10 8">
