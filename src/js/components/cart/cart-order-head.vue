@@ -1,4 +1,4 @@
-<template><!--TODO в чекауте тоже должен быть липким-->
+<template>
     <div class="cart-order__head" :class="{'cart-order__head--active': mobileFlag}">
         <div class="cart-order__head-circle">
             <vue-ellipse-progress
