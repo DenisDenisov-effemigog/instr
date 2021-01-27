@@ -1,22 +1,22 @@
 <template>
-    <label :name=item.name class="custom__label">
+    <label :name=item.name class="form__label form__label--column">
         <input 
             :name=item.name 
             type="text" 
-            class="custom__input"
-            :class="{'custom__input_error': $v.item.name.$error}"
+            class="form__input"
+            :class="{'form__input--error': $v.item.name.$error}"
             v-model.trim="$v.item.name.$model">
-        <span class="custom__label-text"
-            :class="{'custom__label-text_up': $v.item.name.required}"
+        <span class="form__label-text"
+            :class="{'form__label-text--up': $v.item.name.required}"
         >{{ $tc(item.title) }}</span>
         <svg viewBox="0 0 24 24"
-            class="custom__label-icon"
+            class="form__label-icon"
             v-if="$v.item.name.required"
             @click="$v.item.name.$model = ''"
         >
             <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
         </svg>
-        <div class="custom__error-text custom__error-text_invalid"
+        <div class="form__error-text form__error-text--invalid"
             v-if="$v.item.name.$error">{{ $tc('text.error') }}</div>
     </label>
 </template>
