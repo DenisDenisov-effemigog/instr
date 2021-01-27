@@ -73,6 +73,8 @@ export default {
                         output: answer.output
                     },'', answer.url);
                 });
+            } else {
+                console.log('отправляем значение:', vm.currentPoint)
             }
         },
         closeOutside() {

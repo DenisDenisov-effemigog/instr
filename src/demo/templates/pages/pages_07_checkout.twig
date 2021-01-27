@@ -883,7 +883,7 @@
 
 {% set deliveries = [
     {
-        id: 2,
+        id: 1,
         type: 'delivery',
         name: 'Курьерская доставка',
         discount: 5,
@@ -892,13 +892,28 @@
         price: 1564
     },
     {
-        id: 1,
+        id: 2,
         type: 'receive',
         name: 'Самовывоз',
         discount: 5,
         description: 'Самовывоз товара из пункта выдачи. Выберите подходящий',
         date: '8.08.2020',
         price: 0
+    },
+]%}
+
+{% set deliveryPoints = [
+    {
+        label: 'Пункт №1: Будапешт 1062, V1 Бажаутса, 35',
+        value: 'first-punkt'
+    },
+    {
+        label: 'Пункт №2: Будапешт 1062, V1 Бажаутса, 35',
+        value: 'second-punkt'
+    },
+    {
+        label: 'Пункт №3: Будапешт 1062, V1 Бажаутса, 35',
+        value: 'third-punkt'
     },
 ]%}
 
@@ -921,6 +936,7 @@
         'user': user,
         'deliveries': deliveries,
         'payments': payments,
+        'deliveryPoints': deliveryPoints,
     } %}
     {% include '../../../templates/footer/footer.twig'  with {
         'countries': countries,
