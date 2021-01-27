@@ -12,10 +12,10 @@
                 :value="checkbox.value"
             >
             <span class="filter-block__checkbox-label">
-                    <svg class="filter-block__checkbox-svg" viewBox="0 0 10 8">
-                        <use :xlink:href="templatePath + 'images/sprite.svg#icons__checked'"></use>
-                    </svg>
-                </span>
+                <svg class="filter-block__checkbox-svg" viewBox="0 0 10 8">
+                    <use :xlink:href="templatePath + 'images/sprite.svg#icons__checked'"></use>
+                </svg>
+            </span>
             <span class="filter-block__checkbox-text">{{ checkbox.title }}</span>
         </label>
     </div>
