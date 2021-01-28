@@ -92,6 +92,9 @@
                                     {{product.name}}
                                 </div>
                             </div>
+                            <div class="selected-item__qty">
+                                {{product.basket_quantity}} {{ $tc('text.count') }}
+                            </div>
                             <div class="selected-item__price">
                                 <span>{{product.price}}</span>
                                 <span>{{ $tc('text.currency') }}</span>
