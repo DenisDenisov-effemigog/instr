@@ -35,9 +35,8 @@
                         {{ $tc('cart.selected_items.head_text') }}
                     </div>
                 </div>
-                
                 <div class="selected-items__head-deploy" @click="expandFlag = !expandFlag">
-                    <span>{{ $tc('cart.selected_items.head_deploy') }}</span>
+                    <span>{{ $tc('cart.selected_items.head_deploy_close') }}</span>
                     <div class="selected-items__head-deploy-icon" :class="{'selected-items__head-deploy-icon--rotate': expandFlag}">
                         <svg>
                             <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-down'"></use>
@@ -80,30 +79,46 @@
                             </svg>
                         </span>
                         <div class="selected-item__desc">
-                            <div class="selected-item__pic">
-                                <img :src="product.images[0].img" alt="">
-                            </div>
-                            <div class="selected-item__info">
-                                <div class="selected-item__article">
-                                    <span>{{ $tc('text.articul') }}: </span>
-                                    <span>{{product.sku}}</span>
-                                </div>
-                                <div class="selected-item__text">
-                                    {{product.name}}
+                            <div class="selected-item__left">
+                                <div class="selected-item__pic">
+                                    <img :src="product.images[0].img" alt="">
                                 </div>
                             </div>
-                            <div class="selected-item__qty">
-                                {{product.basket_quantity}} {{ $tc('text.count') }}
-                            </div>
-                            <div class="selected-item__price">
-                                <span>{{product.price}}</span>
-                                <span>{{ $tc('text.currency') }}</span>
+                            <div class="selected-item__right">
+                                <div class="selected-item__info">
+                                    <div class="selected-item__article">
+                                        <span>{{ $tc('text.articul') }}: </span>
+                                        <span>{{product.sku}}</span>
+                                    </div>
+                                    <div class="selected-item__text">
+                                        {{product.name}}
+                                    </div>
+                                </div>
+                                <div class="selected-item__qty">
+                                    {{product.basket_quantity}} {{ $tc('text.count') }}
+                                </div>
+                                <div class="selected-item__price">
+                                    <span>{{product.price}}</span>
+                                    <span>{{ $tc('text.currency') }}</span>
+                                </div>
                             </div>
                         </div>
                     </label>
                 </div>
             </div>
             <div v-show="!successFlag" class="selected-items__btn" @click="combineCarts">{{ $tc('cart.search.button') }}</div>
+        </div>
+        <div class="selected-items__head-deploy selected-items__head-deploy--mobile" 
+            @click="expandFlag = !expandFlag"
+            :class="{'selected-items__head-deploy--mobile-close':successFlag}"
+        >
+            <span v-if="expandFlag">{{ $tc('cart.selected_items.head_deploy_open') }}</span>
+            <span v-else>{{ $tc('cart.selected_items.head_deploy_close') }}</span>
+            <div class="selected-items__head-deploy-icon" :class="{'selected-items__head-deploy-icon--rotate': expandFlag}">
+                <svg>
+                    <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-down'"></use>
+                </svg>
+            </div>
         </div>
     </div>
 </template>

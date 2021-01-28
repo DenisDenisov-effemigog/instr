@@ -54,7 +54,7 @@ export default {
             this.disabled = false
         },
         closeFilter(){
-
+            this.$eventBus.$emit('closeFilter')
         }
     },
     computed: {

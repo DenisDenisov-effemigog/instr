@@ -1,5 +1,5 @@
 .selected-items
-    padding: 0.5rem 1rem
+    padding: 1rem
     border: 1px solid $blue
     box-sizing: border-box
     border-radius: 4px
@@ -33,17 +33,26 @@
         font-weight: 600
         margin-bottom: 0.25rem
     &__head-deploy
-        margin-top: 1rem
         @extend .link-blue
+        @extend .text-2
+        margin-top: 1rem
         align-items: center
+        display: none!important
         justify-content: center
         width: 100%
+        font-weight: 600
         +tablet
             justify-content: normal
             margin-top: 0
             width: auto
-        @extend .text-2
-        font-weight: 600
+            display: flex!important
+        &--mobile
+            display: flex!important
+            +tablet
+                display: none!important
+        &--mobile-close
+            display: none!important
+       
     &__head-deploy-icon
             margin-left: 0.75rem
             & svg
@@ -72,3 +81,5 @@
         margin-top: 2rem
         margin-bottom: 1rem
         @extend .button-catalogue
+        +mobile
+            width: 100%
