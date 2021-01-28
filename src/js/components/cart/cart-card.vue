@@ -20,7 +20,7 @@
                 <img class="cart-card__image" :src="this.product.images[0].img" alt="фото товара">
             </div>
             <div class="cart-card__counter" v-if="product.available">
-                +1
+                +1<!--TODO принимать из базы-->
             </div>
         </div>
 

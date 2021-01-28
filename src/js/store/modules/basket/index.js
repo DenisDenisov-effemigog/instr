@@ -75,6 +75,19 @@ const actions = {
             },
         );
     },
+
+    combineCarts: ({commit, dispatch, state}, arr) => {
+        return new Promise((resolve, reject) => {
+            api.combineCarts(arr).then(
+                (data) => {
+                    // debugger;
+                    dispatch('basketApplyResponseProducts', data);
+                    resolve();
+                },
+                () => reject()
+            );
+        });
+    },
     
     basketSendQuantity: ({commit, dispatch, state}, params) => {
         //debugger;

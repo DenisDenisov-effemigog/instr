@@ -86,6 +86,11 @@ class Api {
             {arr: arr}
     );
     }
+    combineCarts(arr) {
+        return this._promiseBitrixRequest('instrument2:rest.api.basket.combineCarts',
+            {arr: arr}
+    );
+    }
     /*personalProfileSummary() {
         return this._promiseBitrixRequest('instrument2:rest.api.user.get', {});
     }*/

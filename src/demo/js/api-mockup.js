@@ -156,7 +156,7 @@ let demoMockupBasketOld = [
         id: 151010,
         name: 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
         url: '/product/gumky-bagazhni-450-600-900-mm-3-sht-sparta/',
-        sku: 12345,
+        sku: 123455,
         images: [
             {id: 1, img: './demo_images/product/image_50.png'},
             {id: 2, img: './demo_images/product/image_51.png'},
@@ -168,8 +168,8 @@ let demoMockupBasketOld = [
         allPrice: 3819,
         totalPrice: 2819,
         available: true,
-        stock: 15,
-        basket_quantity: 1,
+        stock: 55,
+        basket_quantity: 5,
         tooltips: [
             {
                 id: 1,
@@ -261,7 +261,7 @@ let demoMockupBasketOld = [
         id: 15101010101010,
         name: 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
         url: '/product/gumky-bagazhni-450-600-900-mm-3-sht-sparta/',
-        sku: 2345,
+        sku: 23455,
         images: [
             {id: 1, img: './demo_images/product/image_50.png'},
             {id: 2, img: './demo_images/product/image_51.png'},
@@ -749,6 +749,39 @@ window.runAction = function (action, config) {
                             }
                             demoMockupBasket.push(demoMockupItem)
                         }
+                    }
+                }
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                            answer: demoMockupBasket
+                        }
+                    }
+                });
+                break;
+            case 'instrument2:rest.api.basket.combineCarts':
+                for (let i = 0; i < config.data.arr.length; i++) {
+                    let demoMockupItem = demoMockupBasketOld.find(item => item.sku === config.data.arr[i])
+                    let quantity = demoMockupItem.basket_quantity
+                    let demoMockupBasketItem = demoMockupBasket.find(item => item.sku === demoMockupItem.sku)
+                    
+                    if(demoMockupBasketItem !== undefined && demoMockupBasketItem.sku === demoMockupItem.sku){
+                        if(demoMockupBasketItem.basket_quantity <= demoMockupBasketItem.stock){
+                            demoMockupBasketItem.basket_quantity = quantity + demoMockupBasketItem.basket_quantity
+                            if(demoMockupBasketItem.basket_quantity >= demoMockupBasketItem.stock) {
+                                demoMockupBasketItem.basket_quantity = demoMockupBasketItem.stock
+                            }
+                        } else {
+                            demoMockupBasketItem.basket_quantity = demoMockupBasketItem.stock
+                        }
+                    } else {
+                        if (demoMockupItem.stock >= quantity){
+                            demoMockupItem.basket_quantity = quantity
+                        } else {
+                            demoMockupItem.basket_quantity = demoMockupItem.stock
+                        }
+                        demoMockupBasket.push(demoMockupItem)
                     }
                 }
                 resolve({

@@ -20,7 +20,7 @@
             </div>
         </div>
         <form action="" class="cart-search__form">
-            <label for="" class="cart-search__label">
+            <label class="cart-search__label">
                 <div class="cart-search__textarea-wrapper">
                     <textarea-autosize type="text" class="cart-search__textarea"
                         :min-height="30"
