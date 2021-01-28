@@ -188,10 +188,10 @@ let demoMockupBasketOld = [
         ]
     },
     {
-        id: 101010,
+        id: 15101010,
         name: 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
         url: '/product/gumky-bagazhni-450-600-900-mm-3-sht-sparta/',
-        sku: 1534567,
+        sku: 34567,
         images: [
             {id: 1, img: './demo_images/product/image_50.png'},
             {id: 2, img: './demo_images/product/image_51.png'},
@@ -223,10 +223,10 @@ let demoMockupBasketOld = [
         ]
     },
     {
-        id: 1012220,
+        id: 151012220,
         name: 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
         url: '/product/gumky-bagazhni-450-600-900-mm-3-sht-sparta/',
-        sku: 1511111,
+        sku: 11111,
         images: [
             {id: 1, img: './demo_images/product/image_50.png'},
             {id: 2, img: './demo_images/product/image_51.png'},
@@ -258,10 +258,10 @@ let demoMockupBasketOld = [
         ]
     },
     {
-        id: 101010101010,
+        id: 15101010101010,
         name: 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
         url: '/product/gumky-bagazhni-450-600-900-mm-3-sht-sparta/',
-        sku: 152345,
+        sku: 2345,
         images: [
             {id: 1, img: './demo_images/product/image_50.png'},
             {id: 2, img: './demo_images/product/image_51.png'},

@@ -17,7 +17,6 @@ const mutations = {
     },
     [types.BASKET_APPLY_OLDPRODUCTS](state, data) {
         state.old_products = data;
-        state.loaded = true;
     },
     [types.CART_APPLY_VIEW_MODE](state, newMode) {
         state.view_mode = newMode;
@@ -54,32 +53,6 @@ const actions = {
 
         commit(types.BASKET_APPLY_PRODUCTS, products);
     },
-    
-    basketApplyResponseOldProducts: ({commit, dispatch}, data) => {
-        //debugger;
-        let products = [];
-        data.forEach((product) => {
-            products.push({
-                id: product.id,
-                name: product.name,
-                url: product.url,
-                sku: product.sku,
-                images: product.images,
-                price: product.price,
-                discount: product.discount,
-                allPrice: product.allPrice,
-                totalPrice: product.totalPrice,
-                available: product.available,
-                stock: product.stock,
-                basket_quantity: product.basket_quantity,
-                tooltips: product.tooltips,
-
-                basket_confirmed: true
-            });
-        });
-
-        commit(types.BASKET_APPLY_OLDPRODUCTS, products);
-    },
 
     basketUpdateProducts: ({dispatch}) => {
         //debugger;
@@ -95,18 +68,12 @@ const actions = {
         });
     },
 
-    getOldBasket: ({dispatch}) => {
+    getOldBasket: ({commit}) => {
         //debugger;
-        return new Promise((resolve, reject) => {
-            api.getOldBasket().then(
-                (data) => {
-                    //debugger;
-                    dispatch('basketApplyResponseOldProducts', data);
-                    resolve();
-                },
-                () => reject()
-            );
-        });
+        api.getOldBasket().then((products) => {
+                commit(types.BASKET_APPLY_OLDPRODUCTS, products);
+            },
+        );
     },
     
     basketSendQuantity: ({commit, dispatch, state}, params) => {

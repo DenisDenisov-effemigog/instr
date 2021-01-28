@@ -129,9 +129,6 @@ import store from "../../store";
             },
             oldProducts() {
                 return this.$store.state.basket.old_products.filter((product) => {
-                    if (!product.available && product.basket_quantity) {
-                        this.notAvailable.push(product.basket_quantity)
-                    }
                     return product.basket_quantity > 0;
                 });
             },
