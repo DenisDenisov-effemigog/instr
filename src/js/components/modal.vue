@@ -62,12 +62,17 @@
                 <slot name="listingcat"></slot>
                 <component is="filters" :filters="props"></component>
             </div>
+            <!-- Диалоговое окно -->
             <div class="modal-desc" v-else-if="modal === 'dialogue'">
-                <h3 class="modal-title modal-title--centered">{{ $tc(props[0]) }}</h3>
-                <div class="modal-text modal-text--higher">{{ $tc(props[1]) }}</div>
-                <div @click="clearCart" class="modal-btn" v-if="$tc(props[0]) == 'Очистить корзину'">
+                <!-- Первый элемент массива props - оглавление -->
+                <h3 class="modal-title modal-title--centered">{{ props[0] }}</h3>
+                <!-- Второй элемент передаваемого массива props - сообщение-->
+                <div class="modal-text modal-text--message">{{ props[1] }}</div>
+                <div @click="clearCart" class="modal-btn" v-if="props[0] == 'Очистить корзину'">
                     {{ $tc('modal.link.clear_cart') }}
                 </div>
+                <!-- Третий элемент передаваемого массива props - текст кнопки -->
+                <div @click="closeModal" class="modal-btn" v-else>{{ props[2] }}</div>
             </div>
             
             <div class="modal__close" @click="closeModal" v-if="showCloseBtn">
