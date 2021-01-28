@@ -151,8 +151,8 @@ import SelectedItems from './selected-items.vue'
                 }
             },
             clearCart() { 
-                // this.$store.dispatch('basketClear');
-                this.$eventBus.$emit("openModal", 'dialogue', ['modal.title.clear_cart','modal.text.clear_cart'], false, false)
+                // через массив передаем оглавление и сообщение модального окна очистки корзины - 2 элемента
+                this.$eventBus.$emit("openModal", 'dialogue', [this.$tc('modal.title.clear_cart'),this.$tc('modal.text.clear_cart')], false, false)
             },
             changeView(){
                 if(this.table){
