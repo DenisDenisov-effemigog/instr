@@ -28,7 +28,7 @@
             >{{ $tc('text.message') }}</span>
             <span class="profile-modal__error-text" v-if="$v.$error">*{{ $tc('text.required') }}</span>
         </label>
-        <input type="submit" class="profile-modal__button" value="Отправить запрос">
+        <input type="submit" class="profile-modal__button" :value="$tc('modal.link.confirm')">
     </form>
 </template>
 

@@ -19,8 +19,8 @@
             <div class="cart-card__image-block">
                 <img class="cart-card__image" :src="this.product.images[0].img" alt="фото товара">
             </div>
-            <div class="cart-card__counter" v-if="product.available">
-                +1
+            <div class="cart-card__counter" v-if="product.available && product.basket_extra_quantity">
+                +{{ product.basket_extra_quantity }}
             </div>
         </div>
 

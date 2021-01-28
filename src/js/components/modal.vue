@@ -10,12 +10,7 @@
                 </svg>
                 <span>{{ $tc('link.back') }}</span>
             </div>
-            <div class="modal-desc" v-if="modal === 'promo'">
-                <h3 class="modal-title">{{ $tc('modal.title.action') }}</h3>
-                <div class="modal-text">{{ $tc('modal.text.action') }}</div>
-                <div @click="closeModal" class="modal-btn">{{ $tc('modal.link.action') }}</div>
-            </div>
-            <div class="modal-slider" v-else-if="modal === 'product-card'">
+            <div class="modal-slider" v-if="modal === 'product-card'">
                 <component is="photo-modal" :productImages="props"></component>
             </div>
             <div class="modal__video" v-else-if="modal === 'openVideo'">
@@ -36,11 +31,6 @@
             <div class="modal_profile-edit" v-else-if="modal === 'new-address'">
                 <h3 class="modal-title">{{ $tc('modal.title.address_add') }}</h3>
                 <component is="add-address"></component>
-            </div>
-            <div class="modal_profile-edit" v-else-if="modal === 'delete-address'">
-                <h3 class="modal-title modal-title--centered">{{ $tc('modal.title.address_remove') }}</h3>
-                <div class="modal-text">{{ $tc('modal.text.address_remove') }}</div>
-                <div @click="closeModal" class="modal-btn">{{ $tc('modal.link.address_remove') }}</div>
             </div>
             <div class="modal_profile-edit" v-else-if="modal === 'repeat-order'">
                 <component is="repeat-order" :products="props"></component>
@@ -68,8 +58,11 @@
                 <h3 class="modal-title modal-title--centered">{{ props[0] }}</h3>
                 <!-- Второй элемент передаваемого массива props - сообщение-->
                 <div class="modal-text modal-text--message">{{ props[1] }}</div>
-                <div @click="clearCart" class="modal-btn" v-if="props[0] == 'Очистить корзину'">
+                <div @click="clearCart" class="modal-btn" v-if="props[0] === $tc('modal.title.clear_cart')">
                     {{ $tc('modal.link.clear_cart') }}
+                </div>
+                <div @click="deleteAddress" class="modal-btn" v-else-if="props[0] === $tc('modal.title.address_remove')">
+                    {{ $tc('modal.link.confirm') }}
                 </div>
                 <!-- Третий элемент передаваемого массива props - текст кнопки -->
                 <div @click="closeModal" class="modal-btn" v-else>{{ props[2] }}</div>
@@ -158,6 +151,10 @@ export default {
         },
         clearCart() {
             this.$store.dispatch('basketClear');
+            this.closeModal();
+        },
+        deleteAddress() {
+            // TODO удаление адреса
             this.closeModal();
         }
     },

@@ -46,6 +46,7 @@ const actions = {
                 stock: product.stock,
                 basket_quantity: product.basket_quantity,
                 tooltips: product.tooltips,
+                basket_extra_quantity: product.basket_extra_quantity,
 
                 basket_confirmed: true
             });
@@ -74,6 +75,19 @@ const actions = {
                 commit(types.BASKET_APPLY_OLDPRODUCTS, products);
             },
         );
+    },
+
+    combineCarts: ({commit, dispatch, state}, arr) => {
+        return new Promise((resolve, reject) => {
+            api.combineCarts(arr).then(
+                (data) => {
+                    // debugger;
+                    dispatch('basketApplyResponseProducts', data);
+                    resolve();
+                },
+                () => reject()
+            );
+        });
     },
     
     basketSendQuantity: ({commit, dispatch, state}, params) => {

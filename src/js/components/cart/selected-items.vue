@@ -103,7 +103,7 @@
                     </label>
                 </div>
             </div>
-            <div v-show="!successFlag" class="selected-items__btn" @click="successFlag = true">{{ $tc('cart.search.button') }}</div>
+            <div v-show="!successFlag" class="selected-items__btn" @click="combineCarts">{{ $tc('cart.search.button') }}</div>
         </div>
     </div>
 </template>
@@ -144,8 +144,10 @@
             checkboxChange() {
                 this.checkedAll = this.checked.length === this.products.length;
             },
-
-
+            combineCarts(){
+                this.successFlag = true
+                this.$store.dispatch('combineCarts', this.checked);
+            }
         }
     }
 </script>
