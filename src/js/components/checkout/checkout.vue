@@ -9,7 +9,8 @@
             <div v-show="successFlag === 'success'" 
                  class="checkout-success"
             >
-                <div class="checkout-success__text">{{ $tc('checkout.text.success') }}</div><!--TODO добавить вариант текста, если новый адрес не добавляли-->
+                <div v-if="newAddressFlag" class="checkout-success__text">{{ $tc('checkout.text.success_new_address') }}</div>
+                <div v-else class="checkout-success__text">{{ $tc('checkout.text.success') }}</div>
                 <div class="checkout-success__number">
                     <span class="checkout-success__number-text">{{ $tc('checkout.title.order_number') }}:</span>
                     <span>123456789009876</span><!--TODO из базы-->
@@ -136,7 +137,8 @@
                 IndividualFlag: false,
                 currentTab: "corporate",
                 fixedFlag:false,
-                successFlag:"pay"
+                successFlag:"pay",
+                newAddressFlag: true
             }
         },
         computed: {

@@ -27,11 +27,11 @@ export default {
         }
     },
     created() {
-        this.$eventBus.$on("sow-button", this.showButton);
+        this.$eventBus.$on("sow-button", this.sowButton);
         this.$eventBus.$on("hide-button", this.hideButton);
     },
     methods:{
-        showButton(firstPart, items, secondPart) {
+        sowButton(firstPart, items, secondPart) {
             this.showButton = true;
             this.disabled = false;
             this.items = items //передаём количество товаров

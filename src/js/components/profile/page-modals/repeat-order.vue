@@ -11,7 +11,7 @@
                     v-for="product in products.products"
                 >
                     <div class="order-modal__special_img">
-                        <img :src="productImg(product)" alt="">
+                        <img :src="product.images[0].img" alt=""> /*TODO не приходит картинка из-за роутера*/
                     </div>
                     <div class="order-modal__special_info">
                         <div class="order-modal__special_article">{{ $tc('text.articul') }}: {{ product.sku }}</div>
@@ -34,12 +34,7 @@ export default {
         }  
     },
     methods: {
-        productImg(product) {/*TODO не приходит картинка*/
-            if (product.images.length)
-                return product.images[0];
-            else
-                return '';
-        },
+       
     },
 }
 </script>

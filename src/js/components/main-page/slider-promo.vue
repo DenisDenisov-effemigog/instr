@@ -1,7 +1,7 @@
 <template>
     <agile :options="options" class="agile_centered">
 
-        <div @click="openModal" class="slider-promo__slide" v-for="slide in promoBanners">
+        <div @click="openModal(slide)" class="slider-promo__slide" v-for="slide in promoBanners">
             <div class="slider-promo__slide_content" 
                  :class="'slider-promo__slide_content--' + slide.theme"
             >
@@ -69,8 +69,9 @@
             }
         },
         methods: {
-            openModal(){
-                this.$eventBus.$emit("openModal", 'promo', '', false, true)
+            openModal(slide){
+                // через массив передаем оглавление, сообщение и текст кнопки модального окна - 3 элемеента
+                this.$eventBus.$emit("openModal", 'dialogue', [slide.modal.title, slide.modal.description, this.$tc('modal.link.action')], false, true)
             }
         }
     }

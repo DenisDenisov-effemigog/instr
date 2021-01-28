@@ -71,8 +71,8 @@
                     <div class="checkout-reg__error-text checkout-reg__error-text_invalid"
                         v-if="$v.company.$error">{{ $tc('text.error') }}</div>
                 </label>
-                <label for="phone" class="checkout-reg__label"><!--TODO не работает маска-->
-                    <input
+                <label for="phone" class="checkout-reg__label">
+                    <the-mask
                         class="checkout-reg__input"
                         :class="{'checkout-reg__input_error': $v.phone.$error}"
                         type="tel"
@@ -82,7 +82,7 @@
                         id="phone"
                         autocomplete="tel"
                         autocorrect="off"
-                        v-model.trim="$v.phone.$model">
+                        v-model.trim="$v.phone.$model"/>
                     <span class="checkout-reg__label-text"
                         :class="{'checkout-reg__label-text_up': $v.phone.required}"
                     >{{ $tc('title.phone_number') }}</span>
@@ -170,7 +170,7 @@
                 name: '',
                 company: '',
                 code: '',
-                phone: '',
+                phone: null,
                 newEmail: '',
                 phoneMask: config.phoneMask,
                 tokens: config.phoneTokens
