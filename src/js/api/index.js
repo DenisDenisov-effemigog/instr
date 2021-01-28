@@ -69,6 +69,9 @@ class Api {
     getBasket() {
         return this._promiseBitrixRequest('instrument2:rest.api.basket.get');
     }
+    getOldBasket() {
+        return this._promiseBitrixRequest('instrument2:rest.api.basket.get_old');
+    }
     setBasketQuantity(productId, quantity) {
         return this._promiseBitrixRequest(quantity === 0 ? 'instrument2:rest.api.basket.delete' :'instrument2:rest.api.basket.update', {
             id: productId,

@@ -1,16 +1,24 @@
 .selected-items
-    padding: 1.5rem 2rem
+    padding: 0.5rem 1rem
     border: 1px solid $blue
     box-sizing: border-box
     border-radius: 4px
-    margin-right: 1.5rem
+    margin-top: 1rem
+    +tablet
+        padding: 1.5rem 2rem
+        margin-right: 1.5rem
+        margin-top: 0
     &--success
         background: #E1EBFA
-        border-color: #E1EBFA;
+        border-color: #E1EBFA
     &__head-desc
-        display: flex
-        align-items: center
+        +tablet
+            display: flex
+            align-items: center
     &__head-icon
+        display: none
+        +tablet
+            display: block
         margin-right: 1.875rem
         & svg
             width: 1.875rem
@@ -19,12 +27,21 @@
     &__head-info
         @extend .text-2
         flex: 1
+        +tablet
+            margin-right: 1rem
     &__head-title
         font-weight: 600
         margin-bottom: 0.25rem
     &__head-deploy
+        margin-top: 1rem
         @extend .link-blue
         align-items: center
+        justify-content: center
+        width: 100%
+        +tablet
+            justify-content: normal
+            margin-top: 0
+            width: auto
         @extend .text-2
         font-weight: 600
     &__head-deploy-icon
@@ -46,9 +63,11 @@
     &__checkbox
         +checkbox
     &__content
-        margin-top: 0.5rem
+        +tablet
+            margin-top: 0.5rem
     &__list
-        padding-left: 0.75rem
+        +tablet
+            padding-left: 0.75rem
     &__btn
         margin-top: 2rem
         margin-bottom: 1rem
