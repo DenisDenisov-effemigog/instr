@@ -266,7 +266,7 @@
     "modal.title.clear_cart": "Очистить корзину",
     "modal.text.address_remove": "Отправьте запрос, чтобы удалить адрес.",
     "modal.text.clear_cart": "Вы действительно хотите очистить корзину?",
-    "modal.link.address_remove": "Отправить запрос",
+    "modal.link.confirm": "Отправить запрос",
     
     "checkout.client_new": "Я новый клиент",
     "checkout.client": "Я уже заказывал ранее и у меня есть учетная запись",

@@ -152,7 +152,7 @@ import SelectedItems from './selected-items.vue'
             },
             clearCart() { 
                 // через массив передаем оглавление и сообщение модального окна очистки корзины - 2 элемента
-                this.$eventBus.$emit("openModal", 'dialogue', [this.$tc('modal.title.clear_cart'),this.$tc('modal.text.clear_cart')], false, false)
+                this.$eventBus.$emit("openModal", 'dialogue', [this.$tc('modal.title.clear_cart'), this.$tc('modal.text.clear_cart')], false, false)
             },
             changeView(){
                 if(this.table){
