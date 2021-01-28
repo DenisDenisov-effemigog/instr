@@ -5,6 +5,7 @@ let api = Api.getInstance();
 
 const state = {
     products: [],
+    old_products: [],
     loaded: false,
     view_mode: 'horiz_cards'
 };
@@ -13,6 +14,9 @@ const mutations = {
     [types.BASKET_APPLY_PRODUCTS](state, data) {
         state.products = data;
         state.loaded = true;
+    },
+    [types.BASKET_APPLY_OLDPRODUCTS](state, data) {
+        state.old_products = data;
     },
     [types.CART_APPLY_VIEW_MODE](state, newMode) {
         state.view_mode = newMode;
@@ -62,6 +66,14 @@ const actions = {
                 () => reject()
             );
         });
+    },
+
+    getOldBasket: ({commit}) => {
+        //debugger;
+        api.getOldBasket().then((products) => {
+                commit(types.BASKET_APPLY_OLDPRODUCTS, products);
+            },
+        );
     },
     
     basketSendQuantity: ({commit, dispatch, state}, params) => {
