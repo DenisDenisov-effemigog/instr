@@ -31,7 +31,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="delivery__icon" @click.prevent="openModal('delete-address')">
+                    <div class="delivery__icon" @click.prevent="deleteAddress">
                         <svg v-if="order.status !== 'not confirmed'">
                             <use :xlink:href="templatePath + 'images/sprite.svg#icons__del'"></use>
                         </svg>
@@ -61,8 +61,9 @@ export default {
         this.$eventBus.$emit('hideMenu')
     },
     methods: {
-        openModal(modal) {
-            this.$eventBus.$emit("openModal", modal, '', false, false)
+        deleteAddress() {
+            // через массив передаем оглавление, сообщение модального окна удаления адреса - 2 элемеента
+            this.$eventBus.$emit("openModal", 'dialogue', [this.$tc('modal.title.address_remove'), this.$tc('modal.text.address_remove')], false, false)
         },
         openTooltip(data){
             this.showToltip = data

@@ -138,7 +138,7 @@ export default {
         this.updateWidth()
         this.$eventBus.$on("closeDetails", this.closeOrders)
         this.$eventBus.$on("openDetails", this.openDetails)
-        if(window.innerWidth < 760) {
+        if(window.innerWidth < 1024) {
             this.$eventBus.$on("hideMenu", this.openPage)
             this.$eventBus.$on("hideBreadcrumbs", this.openList)
         }
