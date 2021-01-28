@@ -27,6 +27,7 @@ let demoMockupBasket = [
         available: true,
         stock: 15,
         basket_quantity: 1,
+        basket_extra_quantity: 0,
         tooltips: [
             {
                 id: 1,
@@ -62,6 +63,7 @@ let demoMockupBasket = [
         available: true,
         stock: 15,
         basket_quantity: 4,
+        basket_extra_quantity: 0,
         tooltips: [
             {
                 id: 1,
@@ -97,6 +99,7 @@ let demoMockupBasket = [
         available: true,
         stock: 15,
         basket_quantity: 15,
+        basket_extra_quantity: 0,
         tooltips: [
             {
                 id: 1,
@@ -132,6 +135,7 @@ let demoMockupBasket = [
         available: false,
         stock: 15,
         basket_quantity: 4,
+        basket_extra_quantity: 0,
         tooltips: [
             {
                 id: 1,
@@ -170,6 +174,7 @@ let demoMockupBasketOld = [
         available: true,
         stock: 55,
         basket_quantity: 5,
+        basket_extra_quantity: 0,
         tooltips: [
             {
                 id: 1,
@@ -205,6 +210,7 @@ let demoMockupBasketOld = [
         available: true,
         stock: 15,
         basket_quantity: 4,
+        basket_extra_quantity: 0,
         tooltips: [
             {
                 id: 1,
@@ -240,6 +246,7 @@ let demoMockupBasketOld = [
         available: true,
         stock: 15,
         basket_quantity: 15,
+        basket_extra_quantity: 0,
         tooltips: [
             {
                 id: 1,
@@ -275,6 +282,7 @@ let demoMockupBasketOld = [
         available: false,
         stock: 15,
         basket_quantity: 4,
+        basket_extra_quantity: 0,
         tooltips: [
             {
                 id: 1,
@@ -766,6 +774,7 @@ window.runAction = function (action, config) {
                     let quantity = demoMockupItem.basket_quantity
                     let demoMockupBasketItem = demoMockupBasket.find(item => item.sku === demoMockupItem.sku)
                     
+                    
                     if(demoMockupBasketItem !== undefined && demoMockupBasketItem.sku === demoMockupItem.sku){
                         if(demoMockupBasketItem.basket_quantity <= demoMockupBasketItem.stock){
                             demoMockupBasketItem.basket_quantity = quantity + demoMockupBasketItem.basket_quantity
@@ -775,12 +784,15 @@ window.runAction = function (action, config) {
                         } else {
                             demoMockupBasketItem.basket_quantity = demoMockupBasketItem.stock
                         }
+                        demoMockupBasketItem.basket_extra_quantity = quantity
                     } else {
                         if (demoMockupItem.stock >= quantity){
                             demoMockupItem.basket_quantity = quantity
                         } else {
                             demoMockupItem.basket_quantity = demoMockupItem.stock
                         }
+                        demoMockupItem.basket_extra_quantity = quantity
+                        
                         demoMockupBasket.push(demoMockupItem)
                     }
                 }

@@ -46,6 +46,7 @@ const actions = {
                 stock: product.stock,
                 basket_quantity: product.basket_quantity,
                 tooltips: product.tooltips,
+                basket_extra_quantity: product.basket_extra_quantity,
 
                 basket_confirmed: true
             });
