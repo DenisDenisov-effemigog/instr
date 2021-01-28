@@ -10,7 +10,7 @@
                      'delivery-option__wrap-delivery': delivery.type === 'delivery',
                      'delivery-option__wrap-receive': delivery.type === 'receive',
                  }"
-                 @click="currentOption = delivery.type"
+                 @click="changeDeliveryType(delivery.type)"
             >
                 <div class="delivery-option__sale">{{ $tc('text.discount') }} -{{delivery.discount}}%</div>
                 <div class="delivery-option__title">{{ delivery.name }}</div>
@@ -55,6 +55,12 @@
         data(){
             return{
                 currentOption: 'delivery'
+            }
+        },
+        methods: {
+            changeDeliveryType(type){
+                this.currentOption = type
+                this.$eventBus.$emit('push-delivery', this.currentOption)
             }
         }
     }

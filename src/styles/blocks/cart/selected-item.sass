@@ -1,16 +1,10 @@
 .selected-item
-    padding-top: 0.5rem
-    +tablet
-        padding-top: 1rem
+    padding-top: 1rem
     &__label
         display: flex
         cursor: pointer
-        flex-direction: column
-        flex-wrap: wrap
         align-items: center
         +tablet
-            flex-direction: row
-            flex-wrap: nowrap
             align-items: normal
     &__checkbox
         +checkbox
@@ -18,30 +12,35 @@
         margin-top: 1.3125rem
     &__desc
         display: flex
-        flex-wrap: wrap
         border-bottom: 1px solid $border-color_4
         margin-top: 2rem
         +tablet
             flex-wrap: nowrap
             margin-top: 0
             padding-bottom: 0.5rem
-            margin-left: 0.75rem
             align-items: center
             width: 100%
-            justify-content: space-between
+            margin-left: 0.75rem
+    &__right
+        display: flex
+        align-items: center
+        width: 100%
+        flex-wrap: wrap
+        justify-content: space-between
+        +tablet 
+            flex-wrap: nowrap
+
     &__pic
-        width: 25%
+        width: auto
         margin-right: .5rem
         +tablet
             width: 3.5rem
             height: 3.5rem
             margin-right: 1.5rem
     &__info
-        width: 70%
-        margin-top: 0.5rem
+        order: 1
         +tablet
             width: auto
-            margin-top: 0
             flex: 1
             margin-right: 1rem
             max-width: 39.5rem
@@ -65,7 +64,9 @@
         color: $light-grey
         align-self: flex-end
         width: 20%
+        order: 3
         +tablet
+            order: 2
             align-self: center
             width: auto
             margin-right: 1rem
@@ -73,9 +74,10 @@
         @extend .title-7
         font-weight: 700
         margin-top: 0.5rem
-        width: 80%
         text-align: end
+        order: 2
         +tablet
             margin-top: 0
+            order: 3
             width: auto
             text-align: unset

@@ -15,8 +15,8 @@
                         </div>
                     </li>
                     <li class="cart-order__item" v-for="item in cartOrderArr">
-                        <div class="cart-order__text">{{item.text}}</div>
-                        <div class="cart-order__price" :class="{'cart-order__price--green' :item.discount}">
+                        <div class="cart-order__text">{{ $tc('text.discount') }}</div>
+                        <div class="cart-order__price cart-order__price--green">
                             {{ currency(item.price) }}
                             <span>{{ $tc('text.currency') }}</span>
                         </div>
@@ -65,19 +65,13 @@ export default {
         return{
             cartOrderArr:[
                  {
-                    "text": "Скидка",
                     "price": 918,
-                    "discount": true
                 },
                  {
-                    "text": "Скидка",
                     "price": 1,
-                    "discount": true
                 },
                  {
-                    "text": "Скидка",
                     "price": 1,
-                    "discount": true
                 }
             ],
             fixedFlag: false,
@@ -90,8 +84,7 @@ export default {
             if(!vm.cartOrderArr.length){
                 return vm.productsPrice
             } else{
-                let totalPrice = vm.productsPrice - vm.cartOrderArr[0].price + vm.cartOrderArr[1].price + vm.cartOrderArr[2].price
-                return totalPrice
+                return vm.productsPrice - vm.cartOrderArr[0].price + vm.cartOrderArr[1].price + vm.cartOrderArr[2].price
             }
             
         }
@@ -105,11 +98,7 @@ export default {
             if(window.innerWidth < 1024) {
                 let windowPosition = window.pageYOffset + window.innerHeight
                 let cartInfoPosition = this.$refs.cartOrderInfo.offsetTop + this.$refs.cartOrderInfo.offsetHeight + 64
-                if(windowPosition < cartInfoPosition){
-                    this.fixedFlag = true
-                }else{
-                    this.fixedFlag = false
-                }
+                this.fixedFlag = windowPosition < cartInfoPosition;
             } else {
                 this.fixedFlag = false
             }

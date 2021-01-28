@@ -52,7 +52,7 @@
     "title.person_name": "ФИО",
     "title.phone": "Телефон",
     "title.phone_number": "Номер телефона",
-    "title.tin": "ИНН",
+    "title.inn": "ИНН",
     "title.company": "Компания",
     "title.email": "Email",
     "title.city": "Город",
@@ -222,7 +222,8 @@
     "cart.selected_items.head_title": "Продукты, выбранные до авторизации на сайте",
     "cart.selected_items.head_text": "Вы добавили некоторые продукты, когда не были авторизованы. Добавьте эти продукты в корзину",
     "cart.selected_items.head_text_success": "Продукты, выбранные до авторизации на сайте успешно добавлены!",
-    "cart.selected_items.head_deploy": "Развернуть",
+    "cart.selected_items.head_deploy_close": "Развернуть",
+    "cart.selected_items.head_deploy_open": "Свернуть",
 
     "footer.company": "&#169; 2020 ООО «МИР ИНСТРУМЕНТА»",
     "footer.user_agreement": "Пользовательское соглашение",

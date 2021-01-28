@@ -7,6 +7,7 @@
                        type="radio" 
                        :value="payment.value" 
                        v-model="payMethod"
+                       @change="changeDeliveryPayment(payment.value)"
                 >
                 <span class="delivery-payment__check"></span>
                 <div class="delivery-payment__radio-label">
@@ -32,5 +33,10 @@ export default {
             payMethod: this.payments[0].value
         }
     },
+    methods: {
+        changeDeliveryPayment(type) {
+            this.$eventBus.$emit('push-payment', type)
+        }
+    }
 }
 </script>
