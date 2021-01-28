@@ -82,7 +82,6 @@ import cart from './components/cart/cart.vue';
 import cartOrder from './components/cart/cart-order.vue';
 import cartOrderHead from './components/cart/cart-order-head.vue';
 import cartSearch from './components/cart/cart-search.vue';
-import selectedItem from './components/cart/selected-item.vue';
 import selectedItems from './components/cart/selected-items.vue';
 /*checkout*/
 import checkout from './components/checkout/checkout.vue'
@@ -177,7 +176,6 @@ export default {
         receiveAddress,
         deliveryDate,
         deliveryComment,
-        selectedItem,
         selectedItems,
     },
 }
