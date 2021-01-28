@@ -48,7 +48,7 @@
             <ul class="catalogue__further-subcategories" v-if="subcategories">
                 <li 
                     v-for="category in currentSubategory.subcategories"
-                    @click="selectCategory(category.title)"
+                    @click="selectCategory(category)"
                 >
                     <a 
                         href="#" 
@@ -111,18 +111,18 @@
                 this.title = item.title;
                 this.prevTitle = this.title;
                 this.currentCategory = item;
-                this.$eventBus.$emit("sow-button", 'text.show', item.subcategories.length, 'text.product');
+                this.$eventBus.$emit("sow-button", 'text.show', item.subcategories.length, 'text.product', item.url);
             },
             openSubSubcategory(item) {
                 this.subcategories = true;
                 this.subcategory = false;
                 this.title = item.title;
                 this.currentSubategory = item;
-                this.$eventBus.$emit("sow-button", 'text.show', item.subcategories.length, 'text.product');
+                this.$eventBus.$emit("sow-button", 'text.show', item.subcategories.length, 'text.product', item.url);
             },
             selectCategory(category) {
-                this.selectedCategory = category;
-                this.$eventBus.$emit("sow-button", 'text.show', 1, 'text.product');
+                this.selectedCategory = category.title;
+                this.$eventBus.$emit("sow-button", 'text.show', 1, 'text.product', category.url);
             },
             closeCategory() {
                 this.$eventBus.$emit('toggle-catalog', false); //закрываем мобильный каталог
