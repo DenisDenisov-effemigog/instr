@@ -79,7 +79,7 @@
         <div class="product-tabs__content-layout">
             <div class="product-tabs__content-title">{{ 'product_card.tabs.some_features'|trans }}</div>
             <div class="product-tabs__content-grid">
-                {% for feature in product.description.features %}
+                {% for feature in product[0].description.features %} {# TODO выведен только один блок описания #}
                     <div class="product-tabs__content-grid-item">
                         <div class="product-tabs__content-feature">
                             <img class="product-tabs__feature-img" src="{{ feature.image}}" alt="{{product.name|e('html_attr')}}">

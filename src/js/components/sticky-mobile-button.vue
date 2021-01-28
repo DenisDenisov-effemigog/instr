@@ -4,7 +4,10 @@
         <div class="sticky-mobile-button__button"
              :class="{'sticky-mobile-button__button--disabled': disabled}"
         >
-            <a href="" >
+            <a v-if="linkUrl=='#'" href="#" @click="closeFilter">
+                {{ $tc(titlePartFirst) }} <span class="sticky-mobile-button__text-scnd">{{ items }}&nbsp;{{ $tc(titlePartSecond) }}{{ ends }}</span>
+            </a>
+            <a v-else :href="linkUrl" >
                 {{ $tc(titlePartFirst) }} <span class="sticky-mobile-button__text-scnd">{{ items }}&nbsp;{{ $tc(titlePartSecond) }}{{ ends }}</span>
             </a>
         </div>
@@ -24,6 +27,7 @@ export default {
             titlePartFirst: '',
             titlePartSecond: '',
             disabled: false,
+            linkUrl:'#'
         }
     },
     created() {
@@ -31,10 +35,11 @@ export default {
         this.$eventBus.$on("hide-button", this.hideButton);
     },
     methods:{
-        sowButton(firstPart, items, secondPart) {
+        sowButton(firstPart, items, secondPart, url = '#') {
             this.showButton = true;
+            this.linkUrl = url
             this.disabled = false;
-            this.items = items //передаём количество товаров
+            this.items = items //передаём количество товаров   
             this.titlePartFirst = firstPart //передаём текст кнопки, который пишется в первом ряду
             this.titlePartSecond = secondPart //передаём текст кнопки, который пишется во втором ряду
             if (this.items === 0) {
@@ -47,6 +52,9 @@ export default {
             this.titlePartFirst = ''
             this.titlePartSecond = ''
             this.disabled = false
+        },
+        closeFilter(){
+            this.$eventBus.$emit('closeFilter')
         }
     },
     computed: {
