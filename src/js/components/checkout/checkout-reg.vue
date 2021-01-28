@@ -37,7 +37,7 @@
                         v-model.trim="$v.code.$model">
                     <span class="checkout-reg__label-text"
                         :class="{'checkout-reg__label-text_up': $v.code.required}"
-                    >{{ $tc('title.inn') }}</span>
+                    >{{ $tc('title.tin') }}</span>
                     <svg viewBox="0 0 24 24"
                         class="checkout-reg__label-icon"
                         v-if="$v.code.required"
