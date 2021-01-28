@@ -1,6 +1,6 @@
 <template>
     <section class="cart">
-        <div class="cart__content" v-if="products.length == 0">
+        <div class="cart__content" v-if="products.length === 0">
             <div class="cart__purchases-wrapper">
                 <div class="cart__header cart__header--empty">
                     <div class="cart__title">{{ $tc('cart.title.empty') }}</div>
@@ -17,7 +17,7 @@
                         <div class="cart__title">{{ $tc('cart.title.full') }}</div>
                         <div class="cart__header-layout">
                             <div class="cart__view-switcher">
-                                <label name="mode" class="cart__view-switch" @click="changeView()">
+                                <label class="cart__view-switch" @click="changeView()">
                                     <input
                                         class="cart__view-switch-input"
                                         type="checkbox"
@@ -40,7 +40,7 @@
                         :currentPrice="productsPrice"
                     ></cart-order-head>
                     <selected-items
-                        :products="products"
+                        :products="oldProducts"
                     ></selected-items>
                     <div class="cart__purchases" :class="{'cart__purchases--table': changedView === 'table_cards'}">
                         <div class="table-header" v-if="changedView === 'table_cards'">
@@ -95,6 +95,7 @@ import CartOrderHead from './cart-order-head.vue'
 import CartOrder from './cart-order.vue'
 import CartCard from './cart-card.vue'
 import SelectedItems from './selected-items.vue'
+import store from "../../store";
     export default {
         name: "cart",
         components: {
@@ -126,21 +127,18 @@ import SelectedItems from './selected-items.vue'
                     return product.basket_quantity > 0;
                 });
             },
-            /*loaded() {
-                return this.$store.state.basket.loaded
+            oldProducts() {
+                return this.$store.state.basket.old_products.filter((product) => {
+                    if (!product.available && product.basket_quantity) {
+                        this.notAvailable.push(product.basket_quantity)
+                    }
+                    return product.basket_quantity > 0;
+                });
             },
-            productsQuantity() {
-                const basketData = this.$store.getters.basketProductsSummary;
-                
-                return basketData.quantity;
-            },*/
             productsPrice() {
                 const basketData = this.$store.getters.basketProductsSummary;
                 return parseFloat((basketData.price).toFixed(3));
             },
-            /*deliveryCost() {
-                return this.productsPrice > this.delivery_treshold ? 0 : this.delivery_price;
-            },*/
         },
         methods: {
             tableMode() {
@@ -168,6 +166,7 @@ import SelectedItems from './selected-items.vue'
         },
         mounted() {
             this.$store.dispatch('cartSetViewMode', this.view);
+            this.$store.dispatch('getOldBasket');
         },
     }
 </script>

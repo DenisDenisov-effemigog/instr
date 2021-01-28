@@ -5,6 +5,7 @@ let api = Api.getInstance();
 
 const state = {
     products: [],
+    old_products: [],
     loaded: false,
     view_mode: 'horiz_cards'
 };
@@ -12,6 +13,10 @@ const state = {
 const mutations = {
     [types.BASKET_APPLY_PRODUCTS](state, data) {
         state.products = data;
+        state.loaded = true;
+    },
+    [types.BASKET_APPLY_OLDPRODUCTS](state, data) {
+        state.old_products = data;
         state.loaded = true;
     },
     [types.CART_APPLY_VIEW_MODE](state, newMode) {
@@ -49,6 +54,32 @@ const actions = {
 
         commit(types.BASKET_APPLY_PRODUCTS, products);
     },
+    
+    basketApplyResponseOldProducts: ({commit, dispatch}, data) => {
+        //debugger;
+        let products = [];
+        data.forEach((product) => {
+            products.push({
+                id: product.id,
+                name: product.name,
+                url: product.url,
+                sku: product.sku,
+                images: product.images,
+                price: product.price,
+                discount: product.discount,
+                allPrice: product.allPrice,
+                totalPrice: product.totalPrice,
+                available: product.available,
+                stock: product.stock,
+                basket_quantity: product.basket_quantity,
+                tooltips: product.tooltips,
+
+                basket_confirmed: true
+            });
+        });
+
+        commit(types.BASKET_APPLY_OLDPRODUCTS, products);
+    },
 
     basketUpdateProducts: ({dispatch}) => {
         //debugger;
@@ -57,6 +88,20 @@ const actions = {
                 (data) => {
                     //debugger;
                     dispatch('basketApplyResponseProducts', data);
+                    resolve();
+                },
+                () => reject()
+            );
+        });
+    },
+
+    getOldBasket: ({dispatch}) => {
+        //debugger;
+        return new Promise((resolve, reject) => {
+            api.getOldBasket().then(
+                (data) => {
+                    //debugger;
+                    dispatch('basketApplyResponseOldProducts', data);
                     resolve();
                 },
                 () => reject()
