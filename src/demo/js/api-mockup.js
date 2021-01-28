@@ -1196,6 +1196,19 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
+
+            case 'instrument2:rest.api.order.validate':
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                            answer: 1
+                        }
+                    }
+                });
+                break;
+
+            case 'instrument2:rest.api.order.create':
         }
     });    
 };

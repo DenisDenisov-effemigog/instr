@@ -69,10 +69,30 @@
                     ></checkout-delivery>
                     <delivery-date></delivery-date>
                     <delivery-payment :payments="payments"></delivery-payment>
-                    <delivery-comment></delivery-comment>
+<!--                    <delivery-comment></delivery-comment>-->
+                    <div class="delivery-comment">
+                        <div class="delivery-comment__title">{{ $tc('checkout.title.comments') }}</div>
+                        <div class="delivery-comment__form">
+                            <label class="delivery-comment__label-textarea">
+                                <textarea class="delivery-comment__textarea" 
+                                          :placeholder="$tc('text.message')"
+                                          v-model="message"
+                                ></textarea>
+                            </label>
+                            <label class="delivery-comment__label">
+                                <input type="checkbox" name="agreement" v-model="actionsAgreement" class="delivery-comment__checkbox">
+                                <span class="delivery-comment__checkbox-label">
+                                    <svg class="delivery-comment__checkbox-svg" viewBox="0 0 10 8">
+                                        <use xlink:href="/images/sprite.svg#icons__checked"></use>
+                                        </svg>
+                                    </span>
+                                <span class="delivery-comment__checkbox-text">{{ $tc('checkout.checkbox_text') }}</span>
+                            </label>
+                        </div>
+                    </div>
                     <div class="checkout__btn-wrap">
                         <div class="checkout__btn"
-                            @click="successFlag='success'"
+                            @click="sendOrder"
                         >{{ $tc('button.go_payment') }}</div>
                     </div>
                     <div class="checkout__info">
@@ -93,7 +113,7 @@
                 :class="{'checkout__btn-wrap--fixed': fixedFlag}"
             >
                 <div class="checkout__btn"
-                    @click="successFlag='success'"
+                    @click="sendOrder"
                 >{{ $tc('button.go_payment') }}</div>
             </div>
         </div>
@@ -108,6 +128,9 @@
     import DeliveryComment from './delivery-comment.vue'
     import DeliveryDate from './delivery-date.vue'
     import DeliveryPayment from './delivery-payment.vue'
+    import * as Api from '../../api/index'
+
+    let api = Api.getInstance();
 
     export default {
         components: { cartOrder, UserLogin, CheckoutReg, CheckoutDelivery, DeliveryDate, DeliveryPayment, DeliveryComment },
@@ -138,7 +161,13 @@
                 currentTab: "corporate",
                 fixedFlag:false,
                 successFlag:"pay",
-                newAddressFlag: true
+                newAddressFlag: true,
+                actionsAgreement: true,
+                userData: {},
+                personType: 2,
+                message: '',
+                currentDeliveryPoint: this.deliveries[0].type,
+                currentDeliveryPayment: this.payments[0].value
             }
         },
         computed: {
@@ -152,25 +181,82 @@
         },
         created(){
             window.addEventListener('scroll', this.mobileScroll)
+            this.$eventBus.$on('push-personal-data', this.buildPersonData)
+            this.$eventBus.$on('push-delivery', this.buildDeliveryPoint)
+            this.$eventBus.$on('push-payment', this.buildDeliveryPayment)
         },
         methods:{
+            buildPersonData(name,company,code,phone,newEmail){
+                this.userData.name = name
+                this.userData.company = company
+                this.userData.code = code
+                this.userData.phone = phone
+                this.userData.newEmail = newEmail
+                console.log(this.userData)
+            },
+            buildDeliveryPoint(point){
+                this.currentDeliveryPoint = point
+            },
+            buildDeliveryPayment(type){
+                this.currentDeliveryPayment = type
+            },
             showTab(code) {
                 if (this.currentTab !== code) {
                     this.currentTab = code;
                     this.IndividualFlag = code !== "corporate";
+                }
+                if (this.currentTab === 'corporate'){
+                    this.personType = 2
+                } else {
+                    this.personType = 1
                 }
             },
             mobileScroll(){
                 if(window.innerWidth < 768) {
                     let windowPosition = window.pageYOffset + window.innerHeight
                     let checkoutPosition = this.$refs.checkout.offsetTop + this.$refs.checkout.offsetHeight - 64
-                    if(windowPosition < checkoutPosition){
-                        this.fixedFlag = true
-                    }else{
-                        this.fixedFlag = false
-                    }
+                    this.fixedFlag = windowPosition < checkoutPosition;
                 } else {
                     this.fixedFlag = false
+                }
+            },
+            sendOrder() {
+                let vm = this;
+                /*vm.personType, vm.userData, vm.currentDeliveryPoint, vm.currentDeliveryPayment, vm.actionsAgreement, vm.message*/
+                
+                if(vm.userData.name && 
+                    vm.userData.company && 
+                    vm.userData.code && 
+                    vm.userData.phone && 
+                    vm.userData.newEmail) {
+                    api.orderValidate(1, 2, 3).then(() => {
+                        api.orderCreate(1, 2, 3).then(answer => {
+                            if (answer.order) {
+
+                                /*if(answer.payment_form) {
+                                    let elem = document.createElement('div');
+                                    elem.style.cssText = 'position:absolute;left:0;top:0;z-index:-1000;opacity:0';
+                                    elem.innerHTML = base64.decode(answer.payment_form);
+                                    document.body.appendChild(elem);
+                                    let form = elem.querySelector('form');
+                                    if(form) {
+                                        form.submit();
+                                    }
+                                } else {
+                                    window.location.replace(config.links.order_success + answer.order);
+                                }*/
+                            }
+                        }).catch(errors => {
+                            console.error('Cannot create order');
+                            console.log(errors);
+                        })
+                    }).catch(errors => {
+                        console.error('Cannot validate order');
+                        console.log(errors);
+                    })
+                    vm.successFlag='success'
+                } else {
+                    console.log('!!! Заполнены не все поля !!!')
                 }
             }
         },
