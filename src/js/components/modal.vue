@@ -1,74 +1,14 @@
 <template>
     <div v-show="open" class="modal" :class="{'modal--user': modal==='user'}">
-        <div class="modal-bg" @click="closeOutside"></div>
-        <div class="modal-wrapper"
-             :class="{'modal-wrapper_big': modalBigger, 'modal-wrapper_profile': !showCloseBtn}"
+        <div class="modal__bg" @click="closeOutside"></div>
+        <div class="modal__wrapper"
+             :class="{'modal__wrapper--big': modalBigger, 'modal__wrapper--profile': !showCloseBtn}"
         >
-            <div class="breadcrumbs" v-if="!showCloseBtn" @click="closeModal">
-                <svg class="breadcrumbs__back" viewBox="0 0 18 15">
-                    <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
-                </svg>
-                <span>{{ $tc('link.back') }}</span>
-            </div>
-            <div class="modal-slider" v-if="modal === 'product-card'">
-                <component is="photo-modal" :productImages="props"></component>
-            </div>
-            <div class="modal__video" v-else-if="modal === 'openVideo'">
-                <iframe :src="props" frameborder="0" allowfullscreen></iframe>
-            </div>
-            <div class="modal_profile-edit" v-else-if="modal === 'profile-edit'">
-                <h3 class="modal-title modal-title--centered">{{ $tc('modal.title.profile_edit') }}</h3>
-                <component is="edit-profile" :person="props"></component>
-            </div>
-            <div class="modal_profile-edit" v-else-if="modal === 'profile-password'">
-                <h3 class="modal-title modal-title--centered">{{ $tc('modal.title.password_edit') }}</h3>
-                <component is="change-password"></component>
-            </div>
-            <div class="modal_profile-edit" v-else-if="modal === 'profile-delete'">
-                <h3 class="modal-title">{{ $tc('modal.title.profile_delete') }}</h3>
-                <component is="delete-profile"></component>
-            </div>
-            <div class="modal_profile-edit" v-else-if="modal === 'new-address'">
-                <h3 class="modal-title">{{ $tc('modal.title.address_add') }}</h3>
-                <component is="add-address"></component>
-            </div>
-            <div class="modal_profile-edit" v-else-if="modal === 'repeat-order'">
-                <component is="repeat-order" :products="props"></component>
-            </div>
-            <div class="modal_profile-edit" v-else-if="modal === 'user'">
-                <h3 class="modal-title modal-title--centered">{{ $tc('modal.title.auth') }}</h3>
-                <component is="user" :selected="props"></component>
-            </div>
-            <div class="modal_filters" v-else-if="modal === 'filters'">
-                <div class="modal_filters-sticky">
-                    <div class="modal_filters-sticky__icon" @click="closeModal">
-                        <svg>
-                            <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-left'"></use>
-                        </svg>
-                    </div>
-                    <h3 class="modal-title">{{ $tc('filters.title') }}</h3>
-                    <filter-clear-btn :mobileFlag=true></filter-clear-btn>
-                </div>
-                <slot name="listingcat"></slot>
-                <component is="filters" :filters="props"></component>
-            </div>
-            <!-- Диалоговое окно -->
-            <div class="modal-desc" v-else-if="modal === 'dialogue'">
-                <!-- Первый элемент массива props - оглавление -->
-                <h3 class="modal-title modal-title--centered">{{ props[0] }}</h3>
-                <!-- Второй элемент передаваемого массива props - сообщение-->
-                <div class="modal-text modal-text--message">{{ props[1] }}</div>
-                <div @click="clearCart" class="modal-btn" v-if="props[0] === $tc('modal.title.clear_cart')">
-                    {{ $tc('modal.link.clear_cart') }}
-                </div>
-                <div @click="deleteAddress" class="modal-btn" v-else-if="props[0] === $tc('modal.title.address_remove')">
-                    {{ $tc('modal.link.confirm') }}
-                </div>
-                <!-- Третий элемент передаваемого массива props - текст кнопки -->
-                <div @click="closeModal" class="modal-btn" v-else>{{ props[2] }}</div>
-            </div>
             
-            <div class="modal__close" @click="closeModal" v-if="showCloseBtn">
+            <div class="modal__close" 
+                :class="{'modal__close--desktop': !showCloseBtn}"
+                @click="closeModal"
+            >
                 <span v-if="modalBigger">{{ $tc('link.close') }}</span>
                 <svg 
                     class="modal__close-icon" 
@@ -77,6 +17,73 @@
                 >
                     <use :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
                 </svg>
+            </div>
+            <div class="modal__breadcrumbs breadcrumbs"
+                :class="{'modal__breadcrumbs--mobile': !showCloseBtn}"
+                @click="closeModal"
+            >
+                <svg class="breadcrumbs__back" viewBox="0 0 18 15">
+                    <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
+                </svg>
+                <span>{{ $tc('link.back') }}</span>
+            </div>
+
+            <div class="modal__slider" v-if="modal === 'product-card'">
+                <component is="photo-modal" :productImages="props"></component>
+            </div>
+            <div class="modal__video" v-else-if="modal === 'openVideo'">
+                <iframe :src="props" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="modal__profile-edit" v-else-if="modal === 'profile-edit'">
+                <h3 class="modal__title modal__title--centered">{{ $tc('modal.title.profile_edit') }}</h3>
+                <component is="edit-profile" :person="props"></component>
+            </div>
+            <div class="modal__profile-edit" v-else-if="modal === 'profile-password'">
+                <h3 class="modal__title modal__title--centered">{{ $tc('modal.title.password_edit') }}</h3>
+                <component is="change-password"></component>
+            </div>
+            <div class="modal__profile-edit" v-else-if="modal === 'profile-delete'">
+                <h3 class="modal__title">{{ $tc('modal.title.profile_delete') }}</h3>
+                <component is="delete-profile"></component>
+            </div>
+            <div class="modal__profile-edit" v-else-if="modal === 'new-address'">
+                <h3 class="modal__title">{{ $tc('modal.title.address_add') }}</h3>
+                <component is="add-address"></component>
+            </div>
+            <div class="modal__profile-edit" v-else-if="modal === 'repeat-order'">
+                <component is="repeat-order" :products="props"></component>
+            </div>
+            <div class="modal__profile-edit" v-else-if="modal === 'user'">
+                <h3 class="modal__title modal__title--centered">{{ $tc('modal.title.auth') }}</h3>
+                <component is="user" :selected="props"></component>
+            </div>
+            <div class="modal__filters" v-else-if="modal === 'filters'">
+                <div class="modal__filters-sticky">
+                    <div class="modal__filters-icon" @click="closeModal">
+                        <svg>
+                            <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-left'"></use>
+                        </svg>
+                    </div>
+                    <h3 class="modal__title">{{ $tc('filters.title') }}</h3>
+                    <filter-clear-btn :mobileFlag=true></filter-clear-btn>
+                </div>
+                <slot name="listingcat"></slot>
+                <component is="filters" :filters="props"></component>
+            </div>
+            <!-- Диалоговое окно -->
+            <div class="modal__dialogue" v-else-if="modal === 'dialogue'">
+                <!-- Первый элемент массива props - оглавление -->
+                <h3 class="modal__title modal__title--centered">{{ props[0] }}</h3>
+                <!-- Второй элемент передаваемого массива props - сообщение-->
+                <div class="modal__text modal__text--message">{{ props[1] }}</div>
+                <div @click="clearCart" class="modal__btn" v-if="props[0] === $tc('modal.title.clear_cart')">
+                    {{ $tc('modal.link.clear_cart') }}
+                </div>
+                <div @click="deleteAddress" class="modal__btn" v-else-if="props[0] === $tc('modal.title.address_remove')">
+                    {{ $tc('modal.link.confirm') }}
+                </div>
+                <!-- Третий элемент передаваемого массива props - текст кнопки -->
+                <div @click="closeModal" class="modal__btn" v-else>{{ props[2] }}</div>
             </div>
         </div>
         <slot></slot>
@@ -92,7 +99,7 @@
     import filters from "./listing/filters/filters.vue"
     import stickyMobileButton from "./sticky-mobile-button.vue"
     import ClickOutside from "vue-click-outside"
-import FilterClearBtn from './listing/filters/filter-clear-btn.vue'
+    import FilterClearBtn from './listing/filters/filter-clear-btn.vue'
 
 export default {
     name: 'modal',
@@ -132,9 +139,9 @@ export default {
             this.modal = modal //Название модального окна, которое должно открыться
             this.props = props //передаём нужные пропсы
             this.modalBigger = modalSize //передаём true, если нужно большое модальное окно
-            if (window.innerWidth < 1024) {
-                this.showCloseBtn = closeBtn //передаём true, если хотим чтобы вместо хлебных крошек был крестик
-            }
+            this.showCloseBtn = closeBtn //передаём true, если хотим чтобы вместо хлебных крошек был крестик
+            // if (window.innerWidth < 1024) {
+            // }
         },
         closeModal(){
             this.open = false
