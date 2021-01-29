@@ -76,10 +76,10 @@
             <div class="product-tabs__content-title">{{ 'product_card.tabs.desc'|trans }}</div>
             <p class="product-tabs__content-text product-tabs__content-text_description">{{product.description.description}}</p>
         </div>
-        <div class="product-tabs__content-layout">
+        {# <div class="product-tabs__content-layout">
             <div class="product-tabs__content-title">{{ 'product_card.tabs.some_features'|trans }}</div>
             <div class="product-tabs__content-grid">
-                {% for feature in product[0].description.features %} {# TODO выведен только один блок описания #}
+                {% for feature in product.description.features %}
                     <div class="product-tabs__content-grid-item">
                         <div class="product-tabs__content-feature">
                             <img class="product-tabs__feature-img" src="{{ feature.image}}" alt="{{product.name|e('html_attr')}}">
@@ -99,7 +99,7 @@
                     <li>{{advantage}}</li>
                 {% endfor %}
             </ul>
-        </div>
+         </div> #}   {# TODO временно убраны, не удалять!!! #}
     </template>
     {# <template v-slot:questions> 
         <div class="product-tabs__content-answer">
