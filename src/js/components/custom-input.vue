@@ -1,4 +1,4 @@
-<template>
+<template><!--TODO не используется, не понятно как валидировать отдельные поля-->
     <label :name=item.name class="form__label form__label--column">
         <input 
             :name=item.name 

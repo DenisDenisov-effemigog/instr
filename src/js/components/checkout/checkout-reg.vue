@@ -187,8 +187,6 @@
         methods:{
             buildPersonData(){
                 this.$eventBus.$emit('push-personal-data', this.name, this.company, this.code, this.phone, this.newEmail,)
-                /*if (!this.$v.$invalid) {
-                }*/
             }
         }
         

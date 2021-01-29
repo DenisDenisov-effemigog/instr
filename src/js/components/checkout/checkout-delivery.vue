@@ -23,6 +23,7 @@
                 v-if="currentOption === 'delivery'"
                 :currentTab="currentTab"
                 :addresses="addresses"
+                :user="user"
             ></delivery-address>
             <receive-address v-else
                              :deliveryPoints="deliveryPoints"
@@ -54,6 +55,10 @@
             },
             addresses:{
                 type:Array,
+                required: true
+            },
+            user:{
+                type:Object,
                 required: true
             },
         },

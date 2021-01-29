@@ -48,7 +48,7 @@
             </div>
             <div v-show="successFlag === 'pay'" class="checkout__content">
                 <div v-show='value === "new"' class="checkout__desc">
-                     <div class="checkout__tabs">
+                     <div class="checkout__tabs" v-if="!user.authorized">
                         <div class="checkout__tab"
                             :class="{'checkout__tab--active': currentTab === 'individual'}"
                             @click="showTab('individual')"
@@ -58,7 +58,7 @@
                             @click="showTab('corporate')"
                         >{{ $tc('title.person_corporate') }}</div>
                     </div>
-                    <checkout-reg
+                    <checkout-reg v-if="!user.authorized"
                         :IndividualFlag="IndividualFlag"
                         :currentTab="currentTab"
                     ></checkout-reg>
@@ -67,6 +67,7 @@
                         :deliveries="deliveries"
                         :deliveryPoints="deliveryPoints"
                         :addresses="addresses"
+                        :user="user"
                     ></checkout-delivery>
                     <delivery-date v-model="date"></delivery-date>
                     <delivery-payment :payments="payments"></delivery-payment>
@@ -170,8 +171,9 @@
                 currentDeliveryPoint: this.deliveries[0].type,
                 currentDeliveryPayment: this.payments[0].value,
                 date: '',
-                pointAddress: this.deliveryPoints[0].value,
-                deliveryAddress: '',/*TODO перенести в computed => может передаваться адрес в полях*/
+                pointAddress: this.deliveryPoints[0],
+                deliveryAddress: '',
+                deliveryNewAddress: {},
             }
         },
         computed: {
@@ -199,6 +201,7 @@
             this.$eventBus.$on('push-delivery', this.buildDeliveryPoint)
             this.$eventBus.$on('push-payment', this.buildDeliveryPayment)
             this.$eventBus.$on('change-select-point', this.buildDeliveryAddress)
+            this.$eventBus.$on('push-address', this.buildNewDeliveryAddress)
         },
         methods:{
             loading(){
@@ -228,6 +231,14 @@
                     this.pointAddress = address
                 }
             },
+            buildNewDeliveryAddress(city,street,house,build,floor,apart) {
+                this.deliveryNewAddress.city = city
+                this.deliveryNewAddress.street = street
+                this.deliveryNewAddress.house = house
+                this.deliveryNewAddress.build = build
+                this.deliveryNewAddress.floor = floor
+                this.deliveryNewAddress.apart = apart
+            },
             showTab(code) {
                 if (this.currentTab !== code) {
                     this.currentTab = code;
@@ -251,19 +262,46 @@
             sendOrder() {
                 let vm = this;
                 /*vm.personType, vm.userData, vm.currentDeliveryPoint (vm.deliveryAddress, vm.pointAddress), vm.currentDeliveryPayment, vm.actionsAgreement, vm.message, vm.date*/
-                if (vm.addresses.length) {
-                    vm.deliveryAddress = vm.addresses[0].label
-                } else {
-                    console.log('передать поля')
+                if (vm.addresses.length && vm.deliveryAddress === '') {
+                    vm.deliveryAddress = vm.addresses[0]
                 }
                 
-                if(vm.userData.name && 
-                    vm.userData.company && 
-                    vm.userData.code && 
-                    vm.userData.phone && 
-                    vm.userData.newEmail) {
-                    api.orderValidate(1, 2, 3).then(() => {
-                        api.orderCreate(1, 2, 3).then(answer => {
+                let orderData = []
+                /*TODO хорошо потестить*//*TODO вывести ошибки*/
+                if (!vm.user.authorized) {
+                    if (vm.personType === 1) {
+                        if (vm.userData.name && vm.userData.phone && vm.userData.newEmail) {
+                            if (vm.currentDeliveryPoint === 'delivery' && vm.deliveryNewAddress.city && vm.deliveryNewAddress.street && vm.deliveryNewAddress.house && vm.deliveryNewAddress.apart) {
+                                orderData.push(vm.personType, vm.userData, vm.currentDeliveryPoint, vm.deliveryNewAddress)
+                            } else if (vm.currentDeliveryPoint === 'receive') {
+                                orderData.push(vm.personType, vm.userData, vm.currentDeliveryPoint, vm.pointAddress.label)
+                            }
+                        }
+                    } else if (vm.personType === 2) {
+                        if (vm.userData.name && vm.userData.company && vm.userData.code && vm.userData.phone && vm.userData.newEmail) {
+                            if (vm.currentDeliveryPoint === 'delivery' && vm.deliveryNewAddress.city && vm.deliveryNewAddress.street && vm.deliveryNewAddress.house && vm.deliveryNewAddress.apart) {
+                                orderData.push(vm.personType, vm.userData, vm.currentDeliveryPoint, vm.deliveryNewAddress)
+                            } else if (vm.currentDeliveryPoint === 'receive') {
+                                orderData.push(vm.personType, vm.userData, vm.currentDeliveryPoint, vm.pointAddress.label)
+                            }
+                        }
+                    }
+                } else if (vm.user.authorized) {
+                    if (vm.currentDeliveryPoint === 'receive') {
+                        orderData.push(vm.currentDeliveryPoint, vm.pointAddress.label)
+                    } else if (vm.currentDeliveryPoint === 'delivery') {
+                        if (!vm.addresses.length && vm.deliveryNewAddress.city && vm.deliveryNewAddress.street && vm.deliveryNewAddress.house && vm.deliveryNewAddress.apart) {
+                            orderData.push(vm.currentDeliveryPoint, vm.deliveryNewAddress)
+                        } else if (vm.addresses.length) {
+                            orderData.push(vm.currentDeliveryPoint, vm.deliveryAddress.label)
+                        }
+                    }
+                }
+                console.log('1',orderData)
+                /*TODO сделать красивым отправляемый массив*/
+                if (orderData.length) {
+                    api.orderValidate(orderData, vm.actionsAgreement, vm.message, vm.date).then(() => {
+                        api.orderCreate(orderData, vm.actionsAgreement, vm.message, vm.date).then(answer => {
                             if (answer.order) {
 
                                 /*if(answer.payment_form) {
