@@ -53,6 +53,9 @@ export default {
     data(){
         return{
             showToltip: 0,
+            reasons: [
+                'delete_profile.reason', 'delete_profile.reason', 'delete_profile.reason', 'delete_profile.reason_another'
+            ]
         }
     },
     mounted() {
@@ -62,8 +65,8 @@ export default {
     },
     methods: {
         deleteAddress() {
-            // через массив передаем оглавление, сообщение модального окна удаления адреса - 2 элемеента
-            this.$eventBus.$emit("openModal", 'dialogue', [this.$tc('modal.title.address_remove'), this.$tc('modal.text.address_remove')], false, false)
+            // через массив передаем причины удаления и что удаляем - 2 элемеента
+            this.$eventBus.$emit("openModal", 'profile-delete', [this.reasons, 'address'], false, false)
         },
         openTooltip(data){
             this.showToltip = data

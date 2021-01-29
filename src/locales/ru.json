@@ -52,7 +52,7 @@
     "title.person_name": "ФИО",
     "title.phone": "Телефон",
     "title.phone_number": "Номер телефона",
-    "title.inn": "ИНН",
+    "title.tin": "ИНН",
     "title.company": "Компания",
     "title.email": "Email",
     "title.city": "Город",
@@ -119,7 +119,7 @@
     "change_pass.new": "Новый пароль",
     "change_pass.text": "Пароль должен быть длиной от 6 символов и содержать как минимум одну цифру и одну заглавную букву",
     
-    "delete_profile.reason": "Причина",
+    "delete_profile.reason": "Причина № ",
     "delete_profile.reason_another": "Другая причина",
     
     "repeat_order.text": "Все товары из этого заказа автоматически добавятся в корзину.",
@@ -264,6 +264,7 @@
     "modal.title.profile_delete": "Выберите причину удаления профиля:",
     "modal.title.address_add": "Добавление нового адреса доставки",
     "modal.title.address_remove": "Удаление адреса",
+    "modal.title.address_delete": "Выберите причину удаления адреса:",
     "modal.title.clear_cart": "Очистить корзину",
     "modal.text.address_remove": "Отправьте запрос, чтобы удалить адрес.",
     "modal.text.clear_cart": "Вы действительно хотите очистить корзину?",
