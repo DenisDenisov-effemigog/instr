@@ -48,7 +48,6 @@
 </template>
 
 <script>
-import addToCart from "../card/add-to-cart.vue"
 
 export default {
     name:"sticky-card",
@@ -57,9 +56,6 @@ export default {
             type: Object,
             required: true,
         }
-    },
-    components:{
-        addToCart,
     },
     data(){
         return{

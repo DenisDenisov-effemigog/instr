@@ -89,18 +89,12 @@
 
 <script>
 import sliderPhotoCard from './slider-photo-card.vue';
-import addToCart from './add-to-cart.vue';
-import inFavorite from '../in-favorite.vue';
-import toCompare from '../to-compare.vue';
 import CardStikers from './card-stikers.vue';
 
 export default {
     name: 'card',
     components: {
         sliderPhotoCard,
-        addToCart,
-        inFavorite,
-        toCompare,
         CardStikers,
     },
     props: {
