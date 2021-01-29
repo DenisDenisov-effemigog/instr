@@ -1,6 +1,6 @@
 <template>
     <div ref="checkout" class="checkout">
-        <div class="checkout__main" 
+        <div class="checkout__main" v-if="loaded" 
              :class="{'checkout__main--border-none': successFlag === 'success' || value !== 'new'}"
         >
             <h2 v-show="successFlag === 'success'" 
@@ -66,10 +66,10 @@
                         :currentTab="currentTab"
                         :deliveries="deliveries"
                         :deliveryPoints="deliveryPoints"
+                        :addresses="addresses"
                     ></checkout-delivery>
-                    <delivery-date></delivery-date>
+                    <delivery-date v-model="date"></delivery-date>
                     <delivery-payment :payments="payments"></delivery-payment>
-<!--                    <delivery-comment></delivery-comment>-->
                     <div class="delivery-comment">
                         <div class="delivery-comment__title">{{ $tc('checkout.title.comments') }}</div>
                         <div class="delivery-comment__form">
@@ -107,7 +107,8 @@
                 </div>
             </div>
         </div>
-        <div v-show="successFlag === 'pay' && value === 'new'" class="checkout__order">
+        <div v-else>Загрузка контента...</div><!--TODO реализовать прелоадер когда его утвердят-->
+        <div v-show="successFlag === 'pay' && value === 'new' && loaded" class="checkout__order">
             <cart-order :productsPrice="productsPrice" :place="'checkout'"></cart-order>
             <div class="checkout__btn-wrap checkout__btn-wrap--mobile"
                 :class="{'checkout__btn-wrap--fixed': fixedFlag}"
@@ -125,7 +126,6 @@
     import UserLogin from '../header/header-modal/user-login.vue'
     import CheckoutDelivery from './checkout-delivery.vue'
     import CheckoutReg from './checkout-reg.vue'
-    import DeliveryComment from './delivery-comment.vue'
     import DeliveryDate from './delivery-date.vue'
     import DeliveryPayment from './delivery-payment.vue'
     import * as Api from '../../api/index'
@@ -133,7 +133,7 @@
     let api = Api.getInstance();
 
     export default {
-        components: { cartOrder, UserLogin, CheckoutReg, CheckoutDelivery, DeliveryDate, DeliveryPayment, DeliveryComment },
+        components: { cartOrder, UserLogin, CheckoutReg, CheckoutDelivery, DeliveryDate, DeliveryPayment },
         name: "checkout",
         props: {
             deliveries: {
@@ -155,6 +155,7 @@
         },
         data(){
             return {
+                loaded: false,
                 choiseFlag: true,
                 value:'new',
                 IndividualFlag: false,
@@ -167,7 +168,10 @@
                 personType: 2,
                 message: '',
                 currentDeliveryPoint: this.deliveries[0].type,
-                currentDeliveryPayment: this.payments[0].value
+                currentDeliveryPayment: this.payments[0].value,
+                date: '',
+                pointAddress: this.deliveryPoints[0].value,
+                deliveryAddress: '',/*TODO перенести в computed => может передаваться адрес в полях*/
             }
         },
         computed: {
@@ -175,17 +179,34 @@
                 const basketData = this.$store.getters.basketProductsSummary;
                 return parseFloat((basketData.price).toFixed(3));
             },
+            addresses() {
+                let selectAddresses = []
+                this.$store.state.personal.addresses.map(address=>{
+                    address.label = 'Адрес №' + address.order + ': ' + address.address
+                    address.value = address.order
+                    selectAddresses.push(address)
+                })
+                return selectAddresses;
+            },
         },
         mounted() {
             this.$store.dispatch('personalUpdateAddresses');
         },
         created(){
             window.addEventListener('scroll', this.mobileScroll)
+            this.loading()
             this.$eventBus.$on('push-personal-data', this.buildPersonData)
             this.$eventBus.$on('push-delivery', this.buildDeliveryPoint)
             this.$eventBus.$on('push-payment', this.buildDeliveryPayment)
+            this.$eventBus.$on('change-select-point', this.buildDeliveryAddress)
         },
         methods:{
+            loading(){
+                let vm = this
+                setTimeout(function () {
+                    vm.loaded = true
+                }, 500)
+            },
             buildPersonData(name,company,code,phone,newEmail){
                 this.userData.name = name
                 this.userData.company = company
@@ -199,6 +220,13 @@
             },
             buildDeliveryPayment(type){
                 this.currentDeliveryPayment = type
+            },
+            buildDeliveryAddress(name, address){
+                if(name === 'delivery-address'){
+                    this.deliveryAddress = address
+                } else if (name === 'receive-address') {
+                    this.pointAddress = address
+                }
             },
             showTab(code) {
                 if (this.currentTab !== code) {
@@ -222,7 +250,12 @@
             },
             sendOrder() {
                 let vm = this;
-                /*vm.personType, vm.userData, vm.currentDeliveryPoint, vm.currentDeliveryPayment, vm.actionsAgreement, vm.message*/
+                /*vm.personType, vm.userData, vm.currentDeliveryPoint (vm.deliveryAddress, vm.pointAddress), vm.currentDeliveryPayment, vm.actionsAgreement, vm.message, vm.date*/
+                if (vm.addresses.length) {
+                    vm.deliveryAddress = vm.addresses[0].label
+                } else {
+                    console.log('передать поля')
+                }
                 
                 if(vm.userData.name && 
                     vm.userData.company && 

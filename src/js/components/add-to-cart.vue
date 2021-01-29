@@ -16,6 +16,7 @@
                 <div class="add-to-cart__amount-input">
                     <input 
                         type="number"
+                        inputmode="numeric"
                         @change="changeVal($event.target.value)" 
                         :value="amount"
                     > 

@@ -1,4 +1,4 @@
-<template> <!--TODO не используется-->
+<template> 
     <div class="slider-promo__modal">
         <svg class="slider-promo__modal-icon">
             <use :xlink:href="templatePath + 'images/sprite.svg#icons__link'"></use>

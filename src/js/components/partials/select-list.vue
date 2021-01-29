@@ -50,6 +50,10 @@ export default {
         sortingPage: { //передаём название страницы, если там происходит сортировка
             type: String,
             default: null
+        },
+        selectName: { //передаём название селекта
+            type: String,
+            default: null
         }
     },
     data(){
@@ -74,7 +78,7 @@ export default {
                     },'', answer.url);
                 });
             } else {
-                console.log('отправляем значение:', vm.currentPoint)
+                vm.$eventBus.$emit('change-select-point', vm.selectName, vm.currentPoint);
             }
         },
         closeOutside() {
