@@ -9,6 +9,7 @@ import stickyMenu from './components/sticky-menu.vue';
 import stickyMobileButton from './components/sticky-mobile-button.vue';
 import inFavorite from './components/in-favorite.vue';
 import toCompare from './components/to-compare.vue';
+import addToCart from './components/add-to-cart.vue';
 import mediaButton from './components/media-button.vue';
 import paginationBtn from './components/partials/pagination-btn.vue';
 /*catalogue*/
@@ -34,7 +35,6 @@ import sliderCollection from './components/main-page/mobile/slider-collection.vu
 import card from './components/card/card.vue';
 import sliderPhotoCard from './components/card/slider-photo-card.vue';
 import sliderPhotoDots from './components/card/slider-photo-dots.vue';
-import addToCart from './components/card/add-to-cart.vue';
 import cardStikers from './components/card/card-stikers.vue';
 /*product-card*/
 import productCardSlider from './components/product-card/product-card-slider.vue';

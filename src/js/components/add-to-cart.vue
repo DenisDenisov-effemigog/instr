@@ -16,6 +16,7 @@
                 <div class="add-to-cart__amount-input">
                     <input 
                         type="number"
+                        inputmode="numeric"
                         @change="changeVal($event.target.value)" 
                         :value="amount"
                     > 
@@ -53,7 +54,7 @@
 </template>
 
 <script>
-    import config from "../../config";
+    import config from "../config";
 
     export default {
         name: "add-to-cart",
