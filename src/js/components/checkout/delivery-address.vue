@@ -4,7 +4,8 @@
             <div class="delivery-address__select">
                 <select-list
                     :points="addresses"
-                    :selectopenSelect="currentAddress"
+                    :selectopenSelect="addresses[0]"
+                    :selectName="'delivery-address'"
                 ></select-list>
                 <add-address-btn></add-address-btn>
                 <div class="delivery-address__add-address">
@@ -36,6 +37,10 @@ export default {
             type:String,
             required: true
         },
+        addresses:{
+            type:Array,
+            required: true
+        },
     },
     data(){
         return{
@@ -65,22 +70,9 @@ export default {
                     name:"apart"
                 }
             ],
-            currentAddress: {
-                label: 'Адрес №1: 1062 Budapest, V1 Bajzautca, 35 1062 Budapest, V1 Bajzautca, 35 1062 Budapest, V1 Bajzautca, 35 Bajzautca',
-                value: '1'
-            } /*TODO не получилось передать первое значение из addresses ???*/
         }
     },
     computed: {
-        addresses() {
-            let selectAddresses = []
-            this.$store.state.personal.addresses.map(address=>{
-                address.label = 'Адрес №' + address.order + ': ' + address.address
-                address.value = address.order
-                selectAddresses.push(address)
-            })
-            return selectAddresses;
-        },
     },
 }
 </script>
