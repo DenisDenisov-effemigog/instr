@@ -11,6 +11,7 @@
                         id="name"
                         autocomplete="name"
                         autocorrect="off"
+                        @focusout="buildPersonData"
                         v-model.trim="$v.name.$model">
                     <span v-if="!IndividualFlag" class="checkout-reg__label-text"
                         :class="{'checkout-reg__label-text_up': $v.name.required}"
@@ -34,10 +35,12 @@
                         :class="{'checkout-reg__input_error': $v.code.$error}"
                         type="text"
                         name="code"
-                        v-model.trim="$v.code.$model">
+                        @focusout="buildPersonData"
+                        v-model.trim="$v.code.$model"
+                    >
                     <span class="checkout-reg__label-text"
                         :class="{'checkout-reg__label-text_up': $v.code.required}"
-                    >{{ $tc('title.inn') }}</span>
+                    >{{ $tc('title.tin') }}</span>
                     <svg viewBox="0 0 24 24"
                         class="checkout-reg__label-icon"
                         v-if="$v.code.required"
@@ -46,7 +49,7 @@
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
                     </svg>
                     <div class="checkout-reg__error-text checkout-reg__error-text_invalid"
-                        v-if="$v.company.$error">{{ $tc('text.error') }}</div>
+                        v-if="$v.code.$error">{{ $tc('text.error') }}</div>
                 </label>
                 <label v-show="!IndividualFlag" for="company" class="checkout-reg__label">
                     <input
@@ -57,7 +60,9 @@
                         id="company"
                         autocomplete="organization"
                         autocorrect="off"
-                        v-model.trim="$v.company.$model">
+                        @focusout="buildPersonData"
+                        v-model.trim="$v.company.$model"
+                    >
                     <span class="checkout-reg__label-text"
                         :class="{'checkout-reg__label-text_up': $v.company.required}"
                     >{{ $tc('title.company') }}</span>
@@ -82,7 +87,9 @@
                         id="phone"
                         autocomplete="tel"
                         autocorrect="off"
-                        v-model.trim="$v.phone.$model"/>
+                        @focusout="buildPersonData"
+                        v-model.trim="$v.phone.$model"
+                    />
                     <span class="checkout-reg__label-text"
                         :class="{'checkout-reg__label-text_up': $v.phone.required}"
                     >{{ $tc('title.phone_number') }}</span>
@@ -106,7 +113,9 @@
                         autocomplete="email"
                         autocorrect="off"
                         autocapitalize="off"
-                        v-model.trim="$v.newEmail.$model">
+                        @focusout="buildPersonData"
+                        v-model.trim="$v.newEmail.$model"
+                    >
                     <span class="checkout-reg__label-text"
                         :class="{'checkout-reg__label-text_up': $v.newEmail.required}"
                     >{{ $tc('title.email') }}</span>
@@ -120,7 +129,6 @@
                     <div class="checkout-reg__error-text checkout-reg__error-text_invalid"
                         v-if="$v.newEmail.$error">{{ $tc('text.error') }}</div>
                 </label>
-                <!-- <div class="checkout-reg__error-text" v-if="$v.error">*Обязательное поле для заполнения</div> -->
             </form>
         </div>
     </div>
@@ -177,7 +185,11 @@
             }
         },
         methods:{
-            
+            buildPersonData(){
+                this.$eventBus.$emit('push-personal-data', this.name, this.company, this.code, this.phone, this.newEmail,)
+                /*if (!this.$v.$invalid) {
+                }*/
+            }
         }
         
     }

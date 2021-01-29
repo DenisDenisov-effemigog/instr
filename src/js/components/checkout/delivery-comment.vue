@@ -19,7 +19,7 @@
 </template>
 
 <script>
-export default {
-    name:"delivery-comment"
-}
+    export default {
+        name:"delivery-comment"
+    }
 </script>
