@@ -79,21 +79,21 @@
                                 <div class="order-desc__name">{{ $tc('text.price') }}</div>
                                 <div class="order-desc__price">{{ order.price }} {{ $tc('text.currency') }}</div>
                             </li>
-                            <li class="order-desc__item order-desc__item_discount">
+                            <li class="order-desc__item order-desc__item--discount">
                                 <div class="order-desc__name">{{ $tc('text.discount') }}</div>
-                                <div class="order-desc__price order-desc__price_discount">{{ order.discount }} {{ $tc('text.currency') }}</div>
+                                <div class="order-desc__price order-desc__price--discount">{{ order.discount }} {{ $tc('text.currency') }}</div>
                             </li>
-                            <li class="order-desc__item order-desc__item_delivery">
+                            <li class="order-desc__item order-desc__item--delivery">
                                 <div class="order-desc__name">{{ $tc('profile_orders.economy') }}</div>
                                 <div class="order-desc__price">+{{ order.economy }} {{ $tc('text.currency') }}</div>
                             </li>
-                            <li class="order-desc__item order-desc__item_total">
-                                <div class="order-desc__name order-desc__name_total">{{ $tc('text.price_yours') }}</div>
-                                <div class="order-desc__price order-desc__price_total">{{ order.priceTotal }} {{ $tc('text.currency') }}</div>
+                            <li class="order-desc__item order-desc__item--total">
+                                <div class="order-desc__name order-desc__name--total">{{ $tc('text.price_yours') }}</div>
+                                <div class="order-desc__price order-desc__price--total">{{ order.priceTotal }} {{ $tc('text.currency') }}</div>
                             </li>
                         </ul>
                         <div class="order-desc__btn"
-                             :class="{'order-desc__btn_fixed': fixedButton}"
+                             :class="{'order-desc__btn--fixed': fixedButton}"
                              @click.stop="openModal('repeat-order')"
                         >
                             <div class="order-desc__btn-wrapper">
