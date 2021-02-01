@@ -208,9 +208,17 @@
                 required
             }
         },
+        created() {
+            this.$eventBus.$on('address-error', this.addressError)
+        },
         methods: {
             buildAddress() {
                 this.$eventBus.$emit('push-address',  this.city, this.street, this.house, this.build, this.floor, this.apart)
+            },
+            addressError() {
+                let vm = this
+                vm.$v.$touch();
+                window.scroll({ top: vm.$el, behavior: 'smooth'})
             }
         }
     }
