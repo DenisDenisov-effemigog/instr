@@ -2,6 +2,7 @@
     <div class="cart-order">
         <cart-order-head
             :currentPrice="productsPrice"
+            :salePrice="salePrice"
         ></cart-order-head>
         <div class="cart-order__content">
             <h2 class="cart-order__title">{{ $tc('cart.title.full') }}</h2>
@@ -14,10 +15,10 @@
                             <span>{{ $tc('text.currency') }}</span>
                         </div>
                     </li>
-                    <li class="cart-order__item" v-for="item in cartOrderArr">
+                    <li class="cart-order__item" v-for="item in productsSales">
                         <div class="cart-order__text">{{ $tc('text.discount') }}</div>
                         <div class="cart-order__price cart-order__price--green">
-                            {{ currency(item.price) }}
+                            {{ currency(item) }}
                             <span>{{ $tc('text.currency') }}</span>
                         </div>
                     </li>
@@ -31,7 +32,7 @@
                 </ul>
             </div>
             <div ref="cartOrderInfo" class="cart-order__info">
-                {{ $tc('cart.order.info')}}
+                {{ $tc('cart.order.info') }}
             </div>
             <div class="cart-order__btn-wrap" 
                  :class="{'cart-order__btn-wrap--fixed': fixedFlag}" 
@@ -48,32 +49,29 @@ import cartOrderHead from './cart-order-head.vue'
 import config from "../../config";
 
 export default {
-  components: { cartOrderHead },
+    components: { cartOrderHead },
     name:"cart-order",
     props: {
         productsPrice: {
             required: true,
             type: Number
         },
+        productsSales: {
+            required: true,
+            type: Array
+        },
         place: {
             required: false,
             type: String,
             default: 'cart'
+        },
+        salePrice:{
+            type: Number,
+            required: true,
         }
     },
     data(){
         return{
-            cartOrderArr:[
-                 {
-                    "price": 918,
-                },
-                 {
-                    "price": 1,
-                },
-                 {
-                    "price": 1,
-                }
-            ],
             fixedFlag: false,
             checkoutLink: config.links.checkout
         }
@@ -81,10 +79,11 @@ export default {
     computed:{
         getTotalPrice(){
             let vm = this
-            if(!vm.cartOrderArr.length){
+            if(!vm.productsSales.length){
                 return vm.productsPrice
             } else{
-                return vm.productsPrice - vm.cartOrderArr[0].price + vm.cartOrderArr[1].price + vm.cartOrderArr[2].price
+                const reducer = (accumulator, currentValue) => accumulator + currentValue;
+                return vm.productsPrice - vm.productsSales.reduce(reducer)
             }
             
         }
