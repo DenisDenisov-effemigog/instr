@@ -1,6 +1,15 @@
 function demoCloneOverJson(obj) {
     return JSON.parse(JSON.stringify(obj));
 }
+function demoBase64EncodeUnicode(str) {
+    // first we use encodeURIComponent to get percent-encoded UTF-8,
+    // then we convert the percent encodings into raw bytes which
+    // can be fed into btoa.
+    return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g,
+        function toSolidBytes(match, p1) {
+            return String.fromCharCode('0x' + p1);
+        }));
+}
 
 function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -595,6 +604,11 @@ let demoFilteredListing = {
         },
     ],
     pagination: {}
+};
+
+let orderSuccessAnswer = {
+    order: 4554465465,
+    payment_form: demoBase64EncodeUnicode('<form action="https://integration.bitrix.info/app/authorize/v4/handler.php" method="POST"><input type="hidden" name="paymentid" value="507"><input type="hidden" name="paymentpay" value="68.12"><input type="hidden" name="currency" value="USD"><input type="hidden" name="memberid" value="a0acc530a106712468f1c0c57f628b19"><input type="hidden" name="BX_PAYSYSTEM_ID" value="9"><input name="button" value="Pay" type="submit"></form>')
 };
 
 //console.log(demoOrders);
@@ -1196,7 +1210,6 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
-
             case 'instrument2:rest.api.order.validate':
                 resolve({
                     data: {
@@ -1207,8 +1220,17 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
-
             case 'instrument2:rest.api.order.create':
+            case 'instrument2:rest.api.user.order.repeat':
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                            answer: orderSuccessAnswer
+                        }
+                    }
+                });
+                break;
         }
     });    
 };
