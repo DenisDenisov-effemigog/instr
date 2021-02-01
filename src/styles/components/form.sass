@@ -16,6 +16,16 @@
         cursor: pointer
         &:hover
             fill: $icon-grey
+    &__label-icon-mag
+        position: absolute
+        top: .625rem
+        left: .625rem
+        width: $size_20
+        height: $size_20
+        fill: $light-grey
+        cursor: pointer
+        &:hover
+            fill: $icon-grey
     &__label-text
         @extend .text-3
         position: absolute
@@ -25,6 +35,8 @@
         color: $light-grey
         z-index: 2
         transition: .2s
+        &--with-mag
+            left: 2rem
         &--up
             @extend .label-typo
             top: -.5625rem
