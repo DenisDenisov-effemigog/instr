@@ -109,9 +109,11 @@
     import CheckoutReg from './checkout-reg.vue'
     import DeliveryDate from './delivery-date.vue'
     import DeliveryPayment from './delivery-payment.vue'
+    import config from "../../config";
     import * as Api from '../../api/index'
 
     let api = Api.getInstance();
+    let base64 = require('base-64');
 
     export default {
         components: { cartOrder, UserLogin, CheckoutReg, CheckoutDelivery, DeliveryDate, DeliveryPayment },
@@ -324,7 +326,7 @@
                         api.orderCreate(orderData, vm.actionsAgreement, vm.message, vm.date).then(answer => {
                             if (answer.order) {
 
-                                /*if(answer.payment_form) {
+                                if(answer.payment_form) {
                                     let elem = document.createElement('div');
                                     elem.style.cssText = 'position:absolute;left:0;top:0;z-index:-1000;opacity:0';
                                     elem.innerHTML = base64.decode(answer.payment_form);
@@ -332,10 +334,10 @@
                                     let form = elem.querySelector('form');
                                     if(form) {
                                         form.submit();
-                                    }
+                                    } 
                                 } else {
                                     window.location.replace(config.links.order_success + answer.order);
-                                }*/
+                                }
                             }
                         }).catch(errors => {
                             console.error('Cannot create order');
@@ -345,7 +347,6 @@
                         console.error('Cannot validate order');
                         console.log(errors);
                     })
-                    vm.successFlag='success'
                 } else {
                     if (!vm.user.authorized) {
                         vm.$eventBus.$emit('register-error')
