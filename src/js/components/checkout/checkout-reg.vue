@@ -5,7 +5,7 @@
                 <label for="name" class="checkout-reg__label">
                     <input
                         class="checkout-reg__input"
-                        :class="{'checkout-reg__input_error': $v.name.$error}"
+                        :class="{'checkout-reg__input--error': $v.name.$error}"
                         type="text"
                         name="name"
                         id="name"
@@ -14,10 +14,10 @@
                         @focusout="buildPersonData"
                         v-model.trim="$v.name.$model">
                     <span v-if="!IndividualFlag" class="checkout-reg__label-text"
-                        :class="{'checkout-reg__label-text_up': $v.name.required}"
+                        :class="{'checkout-reg__label-text--up': $v.name.required}"
                     >{{ $tc('title.person') }}</span>
                     <span v-else class="checkout-reg__label-text"
-                        :class="{'checkout-reg__label-text_up': $v.name.required}"
+                        :class="{'checkout-reg__label-text--up': $v.name.required}"
                     >{{ $tc('title.person_name') }}</span>
                     <svg viewBox="0 0 24 24"
                         class="checkout-reg__label-icon"
@@ -26,20 +26,20 @@
                     >
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
                     </svg>
-                    <div class="checkout-reg__error-text checkout-reg__error-text_invalid"
+                    <div class="checkout-reg__error-text checkout-reg__error-text--invalid"
                         v-if="$v.name.$error">{{ $tc('text.error') }}</div>
                 </label>
                 <label v-show="!IndividualFlag" class="checkout-reg__label">
                     <input
                         class="checkout-reg__input"
-                        :class="{'checkout-reg__input_error': $v.code.$error}"
+                        :class="{'checkout-reg__input--error': $v.code.$error}"
                         type="text"
                         name="code"
                         @focusout="buildPersonData"
                         v-model.trim="$v.code.$model"
                     >
                     <span class="checkout-reg__label-text"
-                        :class="{'checkout-reg__label-text_up': $v.code.required}"
+                        :class="{'checkout-reg__label-text--up': $v.code.required}"
                     >{{ $tc('title.tin') }}</span>
                     <svg viewBox="0 0 24 24"
                         class="checkout-reg__label-icon"
@@ -48,13 +48,13 @@
                     >
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
                     </svg>
-                    <div class="checkout-reg__error-text checkout-reg__error-text_invalid"
+                    <div class="checkout-reg__error-text checkout-reg__error-text--invalid"
                         v-if="$v.code.$error">{{ $tc('text.error') }}</div>
                 </label>
                 <label v-show="!IndividualFlag" for="company" class="checkout-reg__label">
                     <input
                         class="checkout-reg__input"
-                        :class="{'checkout-reg__input_error': $v.company.$error}"
+                        :class="{'checkout-reg__input--error': $v.company.$error}"
                         type="text"
                         name="company"
                         id="company"
@@ -64,7 +64,7 @@
                         v-model.trim="$v.company.$model"
                     >
                     <span class="checkout-reg__label-text"
-                        :class="{'checkout-reg__label-text_up': $v.company.required}"
+                        :class="{'checkout-reg__label-text--up': $v.company.required}"
                     >{{ $tc('title.company') }}</span>
                     <svg viewBox="0 0 24 24"
                         class="checkout-reg__label-icon"
@@ -73,13 +73,13 @@
                     >
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
                     </svg>
-                    <div class="checkout-reg__error-text checkout-reg__error-text_invalid"
+                    <div class="checkout-reg__error-text checkout-reg__error-text--invalid"
                         v-if="$v.company.$error">{{ $tc('text.error') }}</div>
                 </label>
                 <label for="phone" class="checkout-reg__label">
                     <the-mask
                         class="checkout-reg__input"
-                        :class="{'checkout-reg__input_error': $v.phone.$error}"
+                        :class="{'checkout-reg__input--error': $v.phone.$error}"
                         type="tel"
                         :mask="phoneMask"
                         :tokens="tokens"
@@ -91,7 +91,7 @@
                         v-model.trim="$v.phone.$model"
                     />
                     <span class="checkout-reg__label-text"
-                        :class="{'checkout-reg__label-text_up': $v.phone.required}"
+                        :class="{'checkout-reg__label-text--up': $v.phone.required}"
                     >{{ $tc('title.phone_number') }}</span>
                     <svg viewBox="0 0 24 24"
                         class="checkout-reg__label-icon"
@@ -100,13 +100,13 @@
                     >
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
                     </svg>
-                    <div class="checkout-reg__error-text checkout-reg__error-text_invalid"
+                    <div class="checkout-reg__error-text checkout-reg__error-text--invalid"
                         v-if="$v.phone.$error">{{ $tc('text.error') }}</div>
                 </label>
                 <label for="email-checkout" class="checkout-reg__label">
                     <input
                         class="checkout-reg__input"
-                        :class="{'checkout-reg__input_error': $v.newEmail.$error}"
+                        :class="{'checkout-reg__input--error': $v.newEmail.$error}"
                         type="email"
                         name="email"
                         id="email-checkout"
@@ -117,7 +117,7 @@
                         v-model.trim="$v.newEmail.$model"
                     >
                     <span class="checkout-reg__label-text"
-                        :class="{'checkout-reg__label-text_up': $v.newEmail.required}"
+                        :class="{'checkout-reg__label-text--up': $v.newEmail.required}"
                     >{{ $tc('title.email') }}</span>
                     <svg viewBox="0 0 24 24"
                         class="checkout-reg__label-icon"
@@ -126,7 +126,7 @@
                     >
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
                     </svg>
-                    <div class="checkout-reg__error-text checkout-reg__error-text_invalid"
+                    <div class="checkout-reg__error-text checkout-reg__error-text--invalid"
                         v-if="$v.newEmail.$error">{{ $tc('text.error') }}</div>
                 </label>
             </form>

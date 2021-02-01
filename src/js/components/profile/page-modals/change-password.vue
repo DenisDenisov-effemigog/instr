@@ -1,17 +1,17 @@
 <template>
     <form class="profile-modal__form"
         @submit.prevent="submit">
-        <label for="password" class="profile-modal__label profile-modal__label_column">
+        <label for="password" class="profile-modal__label profile-modal__label--column">
             <input
                 class="profile-modal__input"
-                :class="{'profile-modal__input_dots': $v.password.$model && !passwordHidden,
+                :class="{'profile-modal__input--dots': $v.password.$model && !passwordHidden,
                 'profile-modal__input_error': $v.password.$error }"
                 :type="passwordType"
                 name="password"
                 id="password"
                 v-model.trim="$v.password.$model">
             <span class="profile-modal__label-text"
-                :class="{'profile-modal__label-text_up': $v.password.required}"
+                :class="{'profile-modal__label-text--up': $v.password.required}"
             >{{ $tc('change_pass.current') }}</span>
             <show-password v-model="passwordHidden"></show-password>
             <span
@@ -19,17 +19,17 @@
                 v-if="$v.password.$error"
             >{{ $tc('text.error') }}</span>
         </label>
-        <label for="newPassword" class="profile-modal__label profile-modal__label_column">
+        <label for="newPassword" class="profile-modal__label profile-modal__label--column">
             <input
                 class="profile-modal__input"
-                :class="{'profile-modal__input_dots': $v.newPassword.required && !newPasswordHidden,
+                :class="{'profile-modal__input--dots': $v.newPassword.required && !newPasswordHidden,
                 'profile-modal__input_error': $v.newPassword.$error }"
                 :type="newPasswordType"
                 name="newPassword"
                 id="newPassword"
                 v-model.trim="$v.newPassword.$model">
             <span class="profile-modal__label-text"
-                :class="{'profile-modal__label-text_up': $v.newPassword.required}"
+                :class="{'profile-modal__label-text--up': $v.newPassword.required}"
             >{{ $tc('change_pass.new') }}</span>
             <show-password v-model="newPasswordHidden"></show-password>
             <span

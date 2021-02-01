@@ -1,31 +1,31 @@
 .profile-modal
     &__form
         margin-top: 1.5rem
-        &_column
+        &--column
             display: flex
             flex-direction: column
     &__label
         @extend .form__label
-        &_column
+        &--column
             display: flex
             flex-direction: column
     &__label-icon
         @extend .form__label-icon
     &__label-text
         @extend .form__label-text
-        &_up
+        &--up
             @extend .form__label-text--up
     &__input
         @extend .form__input
         &:focus ~ .profile-modal__label-text
             @extend .form__label-text--up
-        &_dots
+        &--dots
             @extend .form__input--dots
-        &_error
+        &--error
             @extend .form__input--error
     &__input:read-only
         background-color: $pre-white
-        & ~ .profile-modal__label-text_up::after
+        & ~ .profile-modal__label-text--up::after
             @extend .form__label-text--up-grey
             
     &__button
@@ -40,12 +40,14 @@
             display: block
         .profile-modal__label-text
             top: 3.0625rem
-        .profile-modal__label-text_up,
+        .profile-modal__label-text--up,
         .profile-modal__textarea:focus ~ .profile-modal__label-text
             top: 2.1875rem
         &:hover
             .profile-modal__check
                 border-color: $light-grey
+            input:checked + .profile-modal__check
+                border-color: $primary-red
     &__radio-input
         display: flex
         align-items: center
@@ -61,7 +63,7 @@
         padding: .75rem 1rem
         border: 1px solid $border-color
         border-radius: $border-radius_2
-        &_error
+        &--error
             border-color: $primary-hover
         &::placeholder
             color: $light-grey
@@ -76,7 +78,7 @@
                 transition: .2s  
     &__error-text
         @extend .form__error-text
-        &_invalid
+        &--invalid
             @extend .form__error-text--invalid
-        &_invalid_email
+        &--invalid-email
             @extend .form__error-text--invalid-email

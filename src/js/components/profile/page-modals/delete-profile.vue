@@ -1,5 +1,5 @@
 <template>
-    <form class="profile-modal__form profile-modal__form_column"
+    <form class="profile-modal__form profile-modal__form--column"
         @submit.prevent="submit">
         <label class="profile-modal__radio"
                v-for="(reason, index) in delationReasons"
@@ -29,13 +29,13 @@
             </span>
             <textarea
                 class="profile-modal__textarea" 
-                :class="{'profile-modal__textarea_error': $v.message.$error && picked === $tc(reason)}"
+                :class="{'profile-modal__textarea--error': $v.message.$error && picked === $tc(reason)}"
                 name="reason-another"
                 v-model.trim="$v.message.$model"
                 :disabled="picked !== $tc(reason)"
             ></textarea>
             <span class="profile-modal__label-text"
-                :class="{'profile-modal__label-text_up': $v.message.required}"
+                :class="{'profile-modal__label-text--up': $v.message.required}"
             >{{ $tc('text.message') }}</span>
             <span class="profile-modal__error-text" v-if="$v.message.$error && picked === $tc(reason)">*{{ $tc('text.required') }}</span>
         </label>
