@@ -29,7 +29,7 @@
             </div>
             <div class="product-card-slider__wrap">
                 <ul class="product-card-slider__list" :style="`transform:translateY(${-transition}px)`">
-                    <li @click=clickSlide(index) ref="slide" class="product-card-slider__item"
+                    <li ref="slide" class="product-card-slider__item"
                         :class="{'product-card-slider__item--current': index === currentIndex}"
                         :data-index="index"
                         v-for="(productImage, index) in productImages"
@@ -106,17 +106,18 @@ export default {
         }
     },
     methods: {
-        clickSlide(index){
-            this.currentIndex = index
-            this.$refs.main.goTo(this.currentIndex)
-        },
+
+        // clickSlide(index){ TODO будут тестить без клика по слайду
+        //     this.currentIndex = index
+        //     this.$refs.main.goTo(this.currentIndex)
+        // }, 
         nextSlide(e){
             if(this.$refs.next.classList.contains('product-card-slider__previous_arrow--default')){
                 e.preventDefault()
             }else{
                 if(this.currentIndex < this.productImages.length - 1){
                     if(this.currentIndex <= this.productImages.length - 5){
-                        this.transition = 73 * (this.currentIndex + 1)
+                        this.transition = 74 * (this.currentIndex + 1)
                     }
                     this.currentIndex += 1
                     this.$refs.main.goTo(this.currentIndex)
@@ -132,7 +133,7 @@ export default {
             }else{
                 if(this.currentIndex > 0){
                     if(this.currentIndex <= this.productImages.length - 4){
-                        this.transition = 73 * (this.currentIndex - 1)
+                        this.transition = 74 * (this.currentIndex - 1)
                     }
                     this.currentIndex -= 1
                     this.$refs.main.goTo(this.currentIndex)
