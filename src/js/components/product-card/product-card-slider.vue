@@ -140,8 +140,6 @@ export default {
                     this.currentIndex = 0
                     this.$refs.main.goTo(this.currentIndex)
                 }
-                console.log(this.currentIndex);
-                console.log(this.productImages.length - 5);
             }
         },
         openModal(){
