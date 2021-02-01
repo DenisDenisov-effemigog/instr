@@ -275,8 +275,6 @@
     "checkout.title.contacts": "Контактная информация",
     "checkout.title": "Оформление заказа",
     "checkout.title.success": "Ваш заказ принят!",
-    "checkout.text.success": "Поясняющий текст, что с вами свяжутся службы доставки и тд.",
-    "checkout.text.success_new_address": "Когда адрес пройдет верификацию, заказ будет подтвержден.",
     "checkout.title.order_number": "Номер заказа",
     "checkout.title.order_date": "Дата",
     "checkout.title.date": "Дата доставки",
