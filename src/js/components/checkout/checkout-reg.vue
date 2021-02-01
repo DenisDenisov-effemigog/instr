@@ -184,9 +184,17 @@
                 tokens: config.phoneTokens
             }
         },
+        created() {
+            this.$eventBus.$on('register-error', this.registerError)
+        },
         methods:{
             buildPersonData(){
                 this.$eventBus.$emit('push-personal-data', this.name, this.company, this.code, this.phone, this.newEmail,)
+            },
+            registerError() {
+                let vm = this
+                vm.$v.$touch();
+                window.scroll({ top: vm.$el, behavior: 'smooth'})
             }
         }
         
