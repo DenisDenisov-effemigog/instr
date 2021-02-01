@@ -89,7 +89,6 @@ import checkoutReg from './components/checkout/checkout-reg.vue'
 import checkoutDelivery from './components/checkout/checkout-delivery.vue'
 import deliveryAddress from './components/checkout/delivery-address.vue'
 import deliveryDate from './components/checkout/delivery-date.vue'
-import deliveryComment from './components/checkout/delivery-comment.vue'
 import receiveAddress from './components/checkout/receive-address.vue'
 
 export default {
@@ -175,7 +174,6 @@ export default {
         customInput,
         receiveAddress,
         deliveryDate,
-        deliveryComment,
         selectedItems,
     },
 }

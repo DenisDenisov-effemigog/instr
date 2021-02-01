@@ -8,11 +8,11 @@
         z-index: 14
         +tablet
             z-index: 20
-    &-bg
+    &__bg
         width: 100%
         height: 100vh
         background: rgba($black, .72)
-    &-wrapper
+    &__wrapper
         width: 100%
         height: 100%
         position: absolute
@@ -24,7 +24,7 @@
         +desktop
             width: 24.3125rem
             height: auto
-        &_big
+        &--big
             padding: 4rem 1rem 5.3125rem
             +desktop
                 width: 90%
@@ -36,15 +36,16 @@
                 +desktop
                     top: 3.5rem
                     right: 3.5rem
-        &_profile
-            padding: 0 1rem
-    &-title
+        &--profile
+            +until($desktop)
+                padding: 0 1rem
+    &__title
         @extend .title-2
         font-size: $font-size_8
         &--centered
             +tablet
                 text-align: center
-    &-text
+    &__text
         @extend .text-1
         padding-top: 1.5rem
         +tablet-only
@@ -52,7 +53,7 @@
         &--message
             padding-top: 1rem
             padding-bottom: .5rem
-    &-btn
+    &__btn
         @extend .button-modal
         margin: 2rem auto 0
     &__close
@@ -80,17 +81,30 @@
                     fill: $icon-black
                     width: 1rem
                     height: 1rem
+        &--desktop
+            display: none
+            +desktop
+                display: block
+
+    &__breadcrumbs
+        &.breadcrumbs
+            display: none
+        &--mobile.breadcrumbs
+            display: flex
+            +desktop
+                display: none
+
     &__video
         margin: 0 auto
         width: 80%
         iframe
             width: 100%
             height: 31.25rem
-    &_profile-edit
-        .modal-title
+    &__profile-edit
+        .modal__title
             +until($desktop)
                 margin-top: 1.5rem
-        .modal-text
+        .modal__text
             +mobile
                 margin-top: .5rem
                 padding-top: 0
@@ -98,7 +112,7 @@
                 line-height: $line-height_3
     & .breadcrumbs
         margin-top: 1.5rem
-    &_filters
+    &__filters
         position: absolute
         top: 3.5rem
         width: 100%
@@ -108,7 +122,7 @@
         overflow: auto
         padding: 1rem
         padding-bottom: 9.5rem
-    &_filters-sticky
+    &__filters-sticky
         position: fixed
         top: 0
         width: 100%
@@ -120,16 +134,16 @@
         align-items: center
         z-index: 20
         box-shadow: 0px 2px 8px rgba(181, 195, 208, 0.25)
-        & .modal-title
+        & .modal__title
             @extend .text-1
             font-weight: 700
             flex: 1
             padding-left: 1.25rem
-        &__icon
-            & svg
-                fill: $border-color
-                width: $size_8
-                height: $size_12
+    &__filters-icon
+        & svg
+            fill: $border-color
+            width: $size_8
+            height: $size_12
     // &--long
     //     overflow-y: scroll
     //     height: 100%

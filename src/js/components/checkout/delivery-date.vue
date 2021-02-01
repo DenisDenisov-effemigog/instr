@@ -4,13 +4,12 @@
         <div class="delivery-date__info">{{ $tc('checkout.text.date') }}</div>
         <div class="delivery-date__calendar">
             <date-picker 
-                v-model="time1"
+                v-model="newDate"
                 :placeholder="$tc('checkout.date_placeholder')"
                 :disabled-date="disabledTodayAfterAWeek"
                 :format='format'
                 :formatter="momentFormat"
                 :lang="lang"
-                @change='inputVal'
             >
                 <template v-slot:icon-calendar>
                     <svg>
@@ -32,15 +31,17 @@ import moment from 'moment';
 export default{
     name:"delivery-date",
     components: { selectList, DatePicker },
+    props: {
+      value: {required: true}  
+    },
     data(){
-        return{
-            time1: '',
+        return {
             format:'DD.MM.YYYY',
             momentFormat: {
                 //[optional] Date to String
                 stringify: (date) => {
                     return date ? moment(date).format('DD.MM.YYYY') : ''
-                }
+                },
             },
             lang:{
                 formatLocale: {
@@ -50,15 +51,26 @@ export default{
             }
         }
     },
+    model: {
+        prop: 'value',
+        event: 'change',
+    },
+    computed: {
+        newDate: {
+            get: function () {
+                return this.value;
+            },
+            set: function (newValue) {
+                this.$emit('change', newValue);
+            }
+        },
+    },
     methods:{
         disabledTodayAfterAWeek(date) {
             const today = new Date();
             today.setHours(0, 0, 0, 0);
 
             return date < today
-        },
-        inputVal(){
-            console.log('1')
         }
     },
 }

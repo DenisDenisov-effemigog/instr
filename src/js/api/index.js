@@ -132,19 +132,21 @@ class Api {
         return this._promiseBitrixRequest('instrument2:rest.api.catalog.filter', filtersPayload);
     }
 
-    orderValidate(payment, shipment, address) {
+    orderValidate(data, agreement, message, date) {
         return this._promiseBitrixRequest('instrument2:rest.api.order.validate', {
-            payment: payment,
-            shipment: shipment,
-            address: address
+            data: data,
+            agreement: agreement,
+            message: message,
+            date: date,
         });
     }
 
-    orderCreate(payment, shipment, address) {
+    orderCreate(data, agreement, message, date) {
         return this._promiseBitrixRequest('instrument2:rest.api.order.create', {
-            payment: payment,
-            shipment: shipment,
-            address: address
+            data: data,
+            agreement: agreement,
+            message: message,
+            date: date,
         });
     }
     

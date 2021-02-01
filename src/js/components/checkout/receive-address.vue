@@ -4,6 +4,7 @@
             <select-list
                 :points="deliveryPoints"
                 :selectopenSelect="deliveryPoints[0]"
+                :selectName="'receive-address'"
             ></select-list>
         </div>
     </div>
