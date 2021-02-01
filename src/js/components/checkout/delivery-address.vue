@@ -18,7 +18,7 @@
 
                 <label :name="city" class="form__label form__label--column">
                     <input
-                        :name=city
+                        :name="city"
                         type="text"
                         class="form__input"
                         :class="{'form__input--error': $v.city.$error}"

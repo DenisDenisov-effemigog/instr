@@ -860,62 +860,12 @@
     'authorized': false,
 }%}
 
-{% set payments = [
-    {
-        id: 1,
-        value: 'advance',
-        title: 'Предоплата',
-        description: 'Скидка 5% при оплате онлайн',
-    },
-    {
-        id: 2,
-        value: 'receipt',
-        title: 'Оплата при получении',
-        description: 'Скидка 5% при оплате онлайн',
-    },
-    {
-        id: 3,
-        value: 'contract',
-        title: 'Оплата по договору',
-        description: 'Способ оплаты для существующих клиентов. Оплата OP, BO (заказной билет), чек, оплата наличными по квитанции продавца.',
-    },
-]%}
-
-{% set deliveries = [
-    {
-        id: 1,
-        type: 'delivery',
-        name: 'Курьерская доставка',
-        discount: 5,
-        description: 'Доставка курьером до вашего адреса. Выберите нужный',
-        date: '8.08.2020',
-        price: 1564
-    },
-    {
-        id: 2,
-        type: 'receive',
-        name: 'Самовывоз',
-        discount: 5,
-        description: 'Самовывоз товара из пункта выдачи. Выберите подходящий',
-        date: '8.08.2020',
-        price: 0
-    },
-]%}
-
-{% set deliveryPoints = [
-    {
-        label: 'Пункт №1: Будапешт 1062, V1 Бажаутса, 35',
-        value: 'first-punkt'
-    },
-    {
-        label: 'Пункт №2: Будапешт 1062, V1 Бажаутса, 35',
-        value: 'second-punkt'
-    },
-    {
-        label: 'Пункт №3: Будапешт 1062, V1 Бажаутса, 35',
-        value: 'third-punkt'
-    },
-]%}
+{% set order = {
+    'id': 1001,
+    'number': '123456789009876',
+    'date': '12.10.2020',
+    'text': 'Когда адрес пройдет верификацию, заказ будет подтвержден.',
+} %}
 
 {% block content %}
 
@@ -932,7 +882,7 @@
             },
         ]
     } %}
-    {% include '../../../templates/checkout/checkout-success.twig' %}
+    {% include '../../../templates/checkout/checkout-success.twig' with {'order': order} %}
     {% include '../../../templates/footer/footer.twig'  with {
         'countries': countries,
         'activeCountry': 'Россия',

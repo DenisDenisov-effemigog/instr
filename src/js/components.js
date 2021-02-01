@@ -1,7 +1,6 @@
 import VueSlickCarousel from "vue-slick-carousel";
 /*elements*/
 import country from './components/country.vue';
-import customInput from './components/custom-input.vue';
 import addAddressBtn from './components/add-address-btn.vue';
 import modal from './components/modal.vue';
 import mobileMenu from './components/mobile-menu.vue';
@@ -171,7 +170,6 @@ export default {
         checkoutDelivery,
         deliveryAddress,
         addAddressBtn,
-        customInput,
         receiveAddress,
         deliveryDate,
         selectedItems,

@@ -14,7 +14,7 @@
                 </svg>
             </div>
         </div>
-        <div v-show="sownSubcategory || main && sownSubcategory"> <!--TODO надо обдумать как скрыть подкатегории остальных категорий по умолчанию-->
+        <div v-show="sownSubcategory">
             <slot name="subcategories-content"></slot> 
         </div>
     </div>
@@ -25,7 +25,7 @@
         name: 'listing-subcategories',
         data(){
             return{
-                sownSubcategory: true
+                sownSubcategory: this.main
             }
         },
         props:{
