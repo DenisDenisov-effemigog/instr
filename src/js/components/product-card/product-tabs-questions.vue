@@ -6,37 +6,46 @@
             @click="formExpanded = true">
             <div class="product-tabs__content-title">{{ $tc('product_card.form.title') }}</div>
             <textarea class="product-tabs__input"
-                type="text"
-                placeholder="Напишите свой вопрос"
-                autocorrect="off"
-                v-model.trim="newQuestion"
-                required></textarea>
+                      :class="{'form__input--error': $v.newQuestion.$error}"
+                      :placeholder="$tc('input.text.write-ask')"
+                      autocorrect="off"
+                      v-model.trim="$v.newQuestion.$model"
+            ></textarea>
             <span class="product-tabs__form-button-block">
-                <label name="email" class="product-tabs__input-email-label">
+                <label class="product-tabs__input-email-label">
                     <input class="product-tabs__input-email"
-                        name="email"
-                        type="email"
-                        placeholder="Email для ответа"
-                        autocorrect="off"
-                        autocomplete="email"
-                        v-model.trim="email"
-                        required>
+                           :name="email"
+                           :placeholder="$tc('input.text.mail-answer')"
+                           autocorrect="off"
+                           autocomplete="email"
+                           autocapitalize="off"
+                           :class="{'form__input--error': $v.email.$dirty && $v.email.$error}"
+                           v-model.trim="$v.email.$model"
+                    >
                     <svg viewBox="0 0 24 24" @click="email = ''" v-if="email">
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
                     </svg>
                 </label>
                 <input type="submit"
-                    class="product-tabs__button"
-                    value="Отправить вопрос"
-                    
+                       class="product-tabs__button"
+                       :value="$tc('product_card.button.send-question')"
                 >
             </span>
-            <!-- <span class="product-tabs__form-error"
-                :class="{'product-tabs__form-error_show': error}">
-                Заполните все поля</span> --> <!--TODO это нужный кусок?-->
+             <span class="product-tabs__form-error"
+                :class="{'product-tabs__form-error_show': $v.email.$error || $v.newQuestion.$error}"
+             >{{$tc('text.error')}}</span>
         </form>
+        <div class="product-tabs__answer" v-if="newItem.question">
+            <span class="product-tabs__new-badge">{{ $tc('product_card.questions.badge') }}</span>
+            <div class="product-tabs__content-title" v-show="newItem.name">{{newItem.name}}</div>
+            <div class="product-tabs__question">
+                <svg  viewBox="0 0 18 18">
+                    <use :xlink:href="templatePath + 'images/sprite.svg#icons__question'"></use>
+                </svg>
+                <div class="product-tabs__question-text">{{newItem.question}}</div>
+            </div>   
+        </div>
         <div class="product-tabs__answer" v-for="(question, index) in qAs">
-            <span class="product-tabs__new-badge" v-if="newBadge === index">{{ $tc('product_card.questions.badge') }}</span>
             <div class="product-tabs__content-title" v-show="question.name">{{question.name}}</div>
             <div class="product-tabs__question">
                 <svg  viewBox="0 0 18 18">
@@ -55,6 +64,10 @@
 
 <script>
     import productTabsAnswer from './product-tabs-answer.vue'
+    import {required,email} from "vuelidate/lib/validators";
+    import * as Api from '../../api/index'
+
+    let api = Api.getInstance();
 
     export default {
         name: "product-tabs-questions",
@@ -63,15 +76,17 @@
                 type: Array,
                 required: true
             },
+            user: {
+                type: Object,
+                required: true
+            },
         },
         data() {
             return {
                 expanded: false,
                 formExpanded: false,
-                error: false,
                 newQuestion: '',
-                newBadge: null,
-                email: 'moymir@mail.ru',
+                email: this.user.email,
                 newItem: {
                     'name': null,
                     'question': null,
@@ -80,25 +95,40 @@
                 quantity: null
             }
         },
+        validations:{
+            email: {required, email},
+            newQuestion: {required}
+        },
         components: {
             productTabsAnswer
         },
         methods: {    
             addQuestion() {
-                if (this.email && this.newQuestion) {
-                    this.newBadge = 0;
-                    this.error = false;
-                    this.qAs.unshift({...this.newQuestionItem});
-                    this.questions.unshift({...this.newQuestionItem});
-                    this.newQuestion = ''
-                    this.quantity = this.questions.length
+                if (!this.$v.$invalid) {
+                    
+                    let vm = this;
+                    api.sendQuestion(vm.email, vm.newQuestion).then(() => {
+                        this.newQuestionItem();
+                        this.formExpanded = false;
+                        this.quantity = this.questions.length
+                    }).catch((errors) => {
+                        console.error('something wrong');
+                    });
                 } else {
-                    this.newBadge = null;
-                    this.error = true
+                    this.$v.$touch();
                 }
             },
             expand() {
                 this.expanded = true;
+            },
+            newQuestionItem() {
+                if (this.user.email === this.email) {
+                    this.newItem.name = this.user.name
+                } else {
+                    this.newItem.name = null
+                }
+                this.newItem.question = this.newQuestion;
+                return this.newItem
             }
         },
         computed: {
@@ -112,15 +142,6 @@
             questionsQuantity() {
                 return this.quantity = this.questions.length
             },
-            newQuestionItem() { /*TODO принимать значения из бд*/
-                if (this.email == 'moymir@mail.ru') {
-                    this.newItem.name = 'Роман Сычев'
-                } else {
-                    this.newItem.name = null
-                }
-                this.newItem.question = this.newQuestion;
-                return this.newItem
-            }
         },
         created() {
             this.qAs

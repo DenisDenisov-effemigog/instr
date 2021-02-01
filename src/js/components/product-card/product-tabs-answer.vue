@@ -1,13 +1,13 @@
 <template>
     <div class="product-tabs__answer-text"
-        :class="{'product-tabs__answer-text_expanded': expanded}"
+        :class="{'product-tabs__answer-text_expanded': expandedText}"
         ref="textBlock"
         v-if="answer">
         <div class="product-tabs__answer-full-text" ref="text">
             {{answer}}
         </div>
         <span class="product-tabs__text-prompt">
-            … <span @click="expanded = true">{{ $tc('product_card.link.read_all') }}</span>
+            … <span @click="expandedText = true">{{ $tc('product_card.link.read_all') }}</span>
         </span>
     </div>   
 </template>
@@ -21,7 +21,7 @@
         },
         data() {
             return {
-                expanded: false
+                expandedText: false
             }
         },
         created() {
@@ -33,7 +33,7 @@
         methods: {
             textHeight(e) {
                 if (this.$refs.text.clientHeight <= this.$refs.textBlock.clientHeight) {
-                    return this.expanded = true
+                    return this.expandedText = true
                 }
             }
         },

@@ -2,6 +2,7 @@
     :features="{{ product.features|json_encode()|e('html_attr') }}"
     :description="{{ product.description|json_encode()|e('html_attr') }}"
     :questions="{{ product.questions|json_encode()|e('html_attr') }}"
+    :user="{{ user|json_encode()|e('html_attr') }}"
 >
     <template v-slot:features>
         <div class="product-tabs__content-layout">

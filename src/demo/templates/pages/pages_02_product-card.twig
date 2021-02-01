@@ -1247,7 +1247,8 @@
     'name' : 'Ivan',
     'last_name' : 'Sidorov',
     'personType': 2,
-    'authorized': false,
+    'authorized': true,
+    'email': 'moymir@mail.ru'
 }%}
 
 {% set category_discount = {
@@ -1637,7 +1638,8 @@
     {% include '../../../templates/product-card/same-products.twig' with {'productsSames': productsSames, 'user': user} %}
     {% include '../../../templates/product-card/product-tabs.twig' with {
         'product': product,
-        'category_discount': category_discount
+        'category_discount': category_discount,
+        'user': user
     } %}
     {% include '../../../templates/product-card/recommend.twig' with {'productsRecommended': productsRecommended} %}
     {% include '../../../templates/product-card/banner.twig' with {

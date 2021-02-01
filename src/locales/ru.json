@@ -18,6 +18,8 @@
     "link.add_address": "Добавить адрес",
     
     "input.text.in_cart": "В корзине",
+    "input.text.write-ask": "Напишите свой вопрос",
+    "input.text.mail-answer": "Email для ответа",
     
     "text.count": "шт.",
     "text.articul": "Артикул",
@@ -189,6 +191,7 @@
     "product_card.link": "Подробнее о системе скидок",
     "product_card.offer.text": "Станьте постоянным партнером, чтобы получить доступ к системе скидкок",
     "product_card.offer.button": "Стать партнёром",
+    "product_card.button.send-question": "Отправить вопрос",
 
     "listing.filters.button": "Посмотреть",
 

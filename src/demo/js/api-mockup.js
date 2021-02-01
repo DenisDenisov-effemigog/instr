@@ -1231,6 +1231,16 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
+                
+            case 'instrument2:rest.api.question.send':
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                        }
+                    }
+                });
+                break;
         }
     });    
 };
