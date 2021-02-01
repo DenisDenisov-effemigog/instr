@@ -91,7 +91,11 @@ export default {
                     {
                         breakpoint: 768,
                         settings: {
-                            arrows: false
+                            arrows: false,
+                            centerMode: true,
+                            infinite: true,
+                            slidesToShow: 2,
+                            slidesToScroll: 4,
                         }
                     }
                 ],
