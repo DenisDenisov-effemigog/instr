@@ -1,0 +1,35 @@
+.checkout-success
+    +tablet
+        max-width: 25.5rem
+    &__title
+        @extend .title-6
+    &__text
+        @extend .text-2
+        font-weight: 400
+        margin-top: 1rem
+    &__number
+        margin-top: 1.5rem
+        @extend .text-5
+        font-weight: 400
+        color: $blue
+        +tablet
+            margin-top: 2rem
+    &__number-text
+        font-weight: 600
+        color: $black
+        padding-right: 0.5rem
+    &__date
+        margin-top: 0.5rem
+        @extend .text-5
+        font-weight: 400
+    &__date-title
+        font-weight: 600
+        padding-right: 0.5rem
+    &__link
+        margin-top: 2rem
+        @extend .button-catalogue
+        width: 100%
+        +tablet
+            max-width: 11.75rem
+            &:hover
+                color: $white !important

@@ -3,26 +3,6 @@
         <div class="checkout__main" v-if="loaded" 
              :class="{'checkout__main--border-none': successFlag === 'success' || value !== 'new'}"
         >
-            <h2 v-show="successFlag === 'success'" 
-                class="checkout__title"
-            >{{ $tc('checkout.title.success') }}</h2>
-            <div v-show="successFlag === 'success'" 
-                 class="checkout-success"
-            >
-                <div v-if="newAddressFlag" class="checkout-success__text">{{ $tc('checkout.text.success_new_address') }}</div>
-                <div v-else class="checkout-success__text">{{ $tc('checkout.text.success') }}</div>
-                <div class="checkout-success__number">
-                    <span class="checkout-success__number-text">{{ $tc('checkout.title.order_number') }}:</span>
-                    <span>123456789009876</span><!--TODO из базы-->
-                </div>
-                <div class="checkout-success__date">
-                    <span class="checkout-success__date-title">{{ $tc('checkout.title.order_date') }}:</span>
-                    <span>12.10.2020</span><!--TODO из базы-->
-                </div>
-                <div class="checkout-success__btn"
-                    @click="successFlag='pay'"
-                >{{ $tc('button.go_catalog') }}</div>
-            </div>
             <h2 v-show='value === "experienced" && successFlag === "pay"' 
                 class="checkout__title"
             >{{ $tc('modal.title.auth') }}</h2>
