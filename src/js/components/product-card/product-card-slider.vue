@@ -77,7 +77,9 @@ export default {
         VueSlickCarousel
     },
     props: {
-        productImages: {required: true, type: Array}  
+        productImages: {required: true, type: Array},
+        videoLink: {required: true, type: String},
+        theeDLink: {required: true, type: String},  
     },
     data() {
         return {
@@ -144,7 +146,8 @@ export default {
             }
         },
         openModal(){
-            this.$eventBus.$emit("openModal", 'product-card', this.productImages, true, true)
+            let props = {images: this.productImages, video: this.videoLink, treeD: this.theeDLink}
+            this.$eventBus.$emit("openModal", 'product-card', props, true, true)
         },
         hoverOn(){
             if(window.innerWidth > 1024) {
