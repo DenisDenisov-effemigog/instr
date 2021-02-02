@@ -15,19 +15,25 @@
                        :tooltips="{{ product.tooltips|json_encode()|e('html_attr') }}"></component>
 			<component is="product-card-slider"
                        :product-images="{{ product.images|json_encode()|e('html_attr') }}" 
+                       :video-link="{{ product.videoUrl|json_encode()|e('html_attr') }}" 
+                       :thee-d-link="{{ product.threeDUrl|json_encode()|e('html_attr') }}" 
             ></component>
             <div class="product-card__slider_media">
                 <div class="product-card__media-buttons">
-                    <component is="media-button"
-                               :svg="'play-btn'"
-                               :action="'openVideo'"
-                               :link="{{ product.videoUrl|json_encode()|e('html_attr') }}"
-                    ></component>
-                    <component is="media-button"
-                               :svg="'around-photo'"
-                               :action="'openVideo'"
-                               :link="{{ product.threeDUrl|json_encode()|e('html_attr') }}"
-                    ></component>
+                    {% if product.videoUrl %}
+                        <component is="media-button"
+                                   :svg="'play-btn'"
+                                   :action="'openVideo'"
+                                   :link="{{ product.videoUrl|json_encode()|e('html_attr') }}"
+                        ></component>
+                    {% endif %}
+                    {% if product.threeDUrl %}
+                        <component is="media-button"
+                                   :svg="'around-photo'"
+                                   :action="'openVideo'"
+                                   :link="{{ product.threeDUrl|json_encode()|e('html_attr') }}"
+                        ></component>
+                    {% endif %}
                 </div>
             </div>
 		</div>

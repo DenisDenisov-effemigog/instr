@@ -13,7 +13,7 @@
                 </svg>
             </template>
             <div class="photo-modal__main_slide"
-                 v-for="productImage in productImages">
+                 v-for="productImage in props.images">
                 <img :src="productImage.img" alt="">
             </div>
             <template #nextArrow>
@@ -35,7 +35,7 @@
                     </svg>
                 </template>
                 <div class="photo-modal__previous_slide"
-                     v-for="productImage in productImages">
+                     v-for="productImage in props.images">
                     <img :src="productImage.img" alt="">
                 </div>
                 <template #nextArrow>
@@ -45,14 +45,16 @@
                 </template>
             </VueSlickCarousel>
             <component is="media-button"
+                       v-if="props.video"
                        :svg="'play-btn'"
                        :action="'openVideo'"
-                       :link="'http://www.youtube.com/embed/ODEsC4Ijc2o'"
+                       :link="props.video"
             ></component>
             <component is="media-button"
+                       v-if="props.treeD"
                        :svg="'around-photo'"
                        :action="'openVideo'"
-                       :link="'https://instrument.ru/info/3d_photo/14109/READY/3D.html'"
+                       :link="props.treeD"
             ></component>
         </div>
     </div>
@@ -68,9 +70,9 @@ export default {
         VueSlickCarousel, mediaButton
     },
     props: {
-        productImages: {
+        props: {
             required: true,
-            type: Array,
+            type: Object,
         }
     },
     data() {

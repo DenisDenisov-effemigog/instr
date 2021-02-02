@@ -54,7 +54,13 @@ export default {
         VueSlickCarousel
     },
     props: {
+<<<<<<< HEAD
         productImages: {required: true, type: Array}
+=======
+        productImages: {required: true, type: Array},
+        videoLink: {required: true, type: String},
+        theeDLink: {required: true, type: String},  
+>>>>>>> 187a4b1bfd38b2f35788cdc9d7065c46039d1894
     },
     data() {
         return {
