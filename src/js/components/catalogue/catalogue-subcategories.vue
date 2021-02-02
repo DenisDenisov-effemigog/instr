@@ -1,7 +1,7 @@
 <template>
     <div class="catalogue__subcategories">
         <div class="catalogue__subcategory" v-for="subcategory in subcategories">
-            <a href="#" class="catalogue__subcategory-link">{{subcategory.title}}</a>
+            <a :href="subcategory.url" class="catalogue__subcategory-link">{{subcategory.title}}</a>
             <furtherSubcategories :categories="subcategory.subcategories"></furtherSubcategories>
         </div>
     </div>
