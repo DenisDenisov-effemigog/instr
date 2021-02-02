@@ -29,7 +29,7 @@
             </div>
 
             <div class="modal__slider" v-if="modal === 'product-card'">
-                <component is="photo-modal" :productImages="props" :currentSlide="currentSlide"></component>
+                <component is="photo-modal" :props="props" :currentSlide="currentSlide"></component>
             </div>
             <div class="modal__video" v-else-if="modal === 'openVideo'">
                 <iframe :src="props" frameborder="0" allowfullscreen></iframe>
