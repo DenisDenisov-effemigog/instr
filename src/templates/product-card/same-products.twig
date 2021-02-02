@@ -1,4 +1,4 @@
-<div class="slider-cards  slider-cards--short-card">
+<div class="slider-cards">
     <div class="slider-cards__title">{{ 'product_card.same_products.title'|trans }}</div>
     <component 
         is="slider-cards"
@@ -8,7 +8,6 @@
             <div class="slider-cards__slide">
                 <card
                     :change-icon="true"
-                    :card-size="'short'"
                     :product="{{ product|json_encode()|e('html_attr') }}"
                 >
                     {% include '../partials/card.twig' with {'product': product} %}
