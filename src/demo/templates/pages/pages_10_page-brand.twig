@@ -1,6 +1,6 @@
 {% extends "../layout.twig" %}
 
-{% block title %}Pages | 09 Бренды{% endblock %}
+{% block title %}Pages | 10 Бренд{% endblock %}
 
 {% set categories = [
     {
@@ -860,58 +860,35 @@
     'authorized': false,
 }%}
 
-{% set orders = [
+{% set brand = 
     {
         title: 'Denzel',
         img: './demo_images/brands/denzel.png',
-        url: ''
-    },
-    {
-        title: 'Stels',
-        img: './demo_images/brands/stels.png',
-        url: ''
-    },
-    {
-        title: 'Барс',
-        img: './demo_images/brands/bars.png',
-        url: ''
-    },
-     {
-        title: 'Stern',
-        img: './demo_images/brands/stern.png',
-        url: ''
-    },
-     {
-        title: 'Sparta',
-        img: './demo_images/brands/sparta.png',
-        url: ''
-    },
-    {
-        title: 'Palisad',
-        img: './demo_images/brands/palisad.png',
-        url: ''
-    },
-    {
-        title: 'Сибртех',
-        img: './demo_images/brands/sibtex.png',
-        url: ''
-    },
-    {
-        title: 'Kronwerk',
-        img: './demo_images/brands/kronwerk.png',
-        url: ''
-    },
-    {
-        title: 'Gross',
-        img: './demo_images/brands/gross.png',
-        url: ''
-    },
-    {
-        title: 'Matrix',
-        img: './demo_images/brands/matrix.png',
-        url: ''
+        category:'ЭЛЕКТРОИНСТРУМЕНТ',
+        description: '<ul>
+                        <li>
+                            <p>
+                                Продукция торговой марки Denzel — это надежное силовое оборудование по разумной цене, не уступающее в качестве образцам именитых брендов
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                Denzel предлагает взвешенные, практичные решения, полностью соответствующие заявленной ценовой категории. Это техника для реальной жизни, которая будет верным помощником в быту и строительстве
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                Ассортимент торговой марки Denzel включает широкий спектр силового оборудования
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                Оборудование предназначено для владельцев частных домов, садоводов и фермеров, DIY-мастеров и профессиональных строителей, автолюбителей и специалистов автосервисов
+                            </p>
+                        </li>
+                    </ul>'
     }
-]
+
 
 %}
 
@@ -929,9 +906,13 @@
                 'title': 'Бренды',
                 'url': '/brends/'
             },
+            {
+                'title': 'Denzel',
+                'url': '/Denzel/'
+            },
         ]
     } %}
-    {% include '../../../templates/brands/page-brands.twig' with {'orders': orders} %}
+    {% include '../../../templates/brands/page-brand.twig' with {'brand': brand} %}
     {% include '../../../templates/footer/footer.twig'  with {
         'countries': countries,
         'activeCountry': 'Россия',

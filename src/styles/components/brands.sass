@@ -19,15 +19,19 @@
             cursor: pointer
     &__wrap
         background: $pre-white
-        padding: 1.5rem 0.75rem
         display: flex
         align-items: center
         justify-content: center
         +tablet
-            padding: 4.03125rem 3.75rem
+            .brands__link img
+                    transition: 0.35s
             &:hover
                 .brands__link img
-                    transition: 0.35s
                     transform: scale(1.2)
+    &__link
+        padding: 1.5rem 0.75rem
+        +tablet
+            padding: 4.03125rem 3.75rem
+
             
                 
