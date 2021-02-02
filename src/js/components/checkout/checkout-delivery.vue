@@ -12,7 +12,7 @@
                  }"
                  @click="changeDeliveryType(delivery.type)"
             >
-                <div class="delivery-option__sale">{{ $tc('text.discount') }} -{{delivery.discount}}%</div>
+                <div v-show="delivery.discount > 0" class="delivery-option__sale">{{ $tc('text.discount') }} -{{delivery.discount}}%</div>
                 <div class="delivery-option__title">{{ delivery.name }}</div>
                 <div class="delivery-option__text">{{ delivery.description }}</div>
                 <div class="delivery-option__date">{{ delivery.date }}</div>
