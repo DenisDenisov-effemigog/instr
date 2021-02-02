@@ -16,89 +16,23 @@
         <div v-else class="delivery-address__individual">
             <form action="" class="delivery-address__form">
 
-                <autocompleteInput
-                    :itemsArray="cities",
-                    :label="''"
+                <autocomplete-input
+                    :itemsArray="cities"
+                    :labelName="$tc('title.city')"
+                    :itemName="'city'"
+                    :getValue="getValue"
+                    @focusout="buildAddress"
                 >
-                </autocompleteInput>
+                </autocomplete-input>
 
-                <!-- <autocomplete 
-                    class="form__label form__label--column"
-                    :search="searchCity"
-                    :name="city"
-                    :get-result-value="setLabel"
-                    @submit="submitCity"
-                    auto-select
+                <autocomplete-input
+                    :itemsArray="streets"
+                    :labelName="$tc('title.street')"
+                    :itemName="'street'"
+                    :getValue="getValue"
+                    @focusout="buildAddress"
                 >
-                    <template #default="{
-                        rootProps,
-                        inputProps,
-                        inputListeners,
-                        resultListProps,
-                        resultListListeners,
-                        results,
-                        resultProps}"
-                    >
-                        <div v-bind="rootProps">
-                            <input
-                                v-bind="inputProps"
-                                v-on="inputListeners"
-                                :name="city"
-                                v-model.trim="$v.city.$model"
-                                :class="[
-                                    'form__input',
-                                    'autocomplete-input',
-                                    { 'autocomplete-input-focused': focused }
-                                ]"
-                                @focusout="buildAddress"
-                            />
-                            <ul v-bind="resultListProps" v-on="resultListListeners" class="autocomplete-result-list">
-                                <li
-                                    v-for="(result, index) in results"
-                                    :key="resultProps[index].id"
-                                    v-bind="resultProps[index]"
-                                    class="autocomplete-result"
-                                >
-                                    {{ result.name }}
-                                </li>
-                            </ul>
-                            <span class="form__label-text form__label-text--with-mag"
-                                :class="{'form__label-text--up': $v.city.required}"
-                            >{{ $tc('title.city') }}</span>
-                            <svg viewBox="-4 -4 24 24" class="form__label-icon-mag" v-if="!$v.city.required">
-                                <use :xlink:href="templatePath + 'images/sprite.svg#icons__mag'"></use>
-                            </svg>
-                            <svg viewBox="0 0 24 24" class="form__label-icon"  v-if="$v.city.required" @click="$v.city.$model = ''">
-                                <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
-                            </svg>
-                        </div>
-                    </template>
-                </autocomplete> -->
-
-                <!-- <autocomplete 
-                    class="form__label form__label--column"
-                    :search="items"
-                    v-model="street"
-                    :name="street"
-                    v-model.trim="$v.street.$model"
-                    :setLabel="setLabel"
-                    :itemTemplate="itemTemplate"
-                    @changed="inputStreet"
-                    @selected="itemSelected"
-                    :inputClasses="'form__input'"
-                >
-                    <template slot="searchSlot">
-                        <span class="form__label-text form__label-text--with-mag"
-                            :class="{'form__label-text--up': $v.street.required}"
-                        >{{ $tc('title.street') }}</span>
-                        <svg viewBox="-4 -4 24 24" class="form__label-icon-mag" v-if="!$v.street.required">
-                            <use :xlink:href="templatePath + 'images/sprite.svg#icons__mag'"></use>
-                        </svg> -->
-                        <!-- <svg viewBox="0 0 24 24" class="form__label-icon">
-                            <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
-                        </svg> -->
-                    <!-- </template>
-                </autocomplete> -->
+                </autocomplete-input>
 
                 <!-- <label :name="street" class="form__label form__label--column">
                     <input
@@ -223,12 +157,11 @@
     import AddAddressBtn from '../add-address-btn.vue'
     import selectList from "../partials/select-list.vue"
     import {required} from "vuelidate/lib/validators";
-    import Autocomplete from '@trevoreyre/autocomplete-vue';
     import autocompleteInput from './autocomplete-input.vue'
 
     export default {
         name:"delivery-address",
-        components: { selectList, AddAddressBtn, Autocomplete, autocompleteInput },
+        components: { selectList, AddAddressBtn, autocompleteInput },
         props:{
             currentTab:{
                 type:String,
@@ -269,7 +202,6 @@
                     { id: 6, name: 'Киевская'},
                     { id: 7, name: 'Московская'},
                 ],
-                items: [],
             }
         },
         validations:{
@@ -291,31 +223,16 @@
             }
         },
         methods: {
-            // submitCity(item) {
-            //     this.city = item.name;
-            //     console.log(this.result, 'selected')
-            // },
-            // setLabel(item) {
-            //     console.log(item.name, 'setlabel')
-            //     return item.name;
-            // },
-            // searchCity(input) {
-            //     this.city = input
-            //     if (input.length < 1) { return [] }
-            //         return this.cities.filter(item => {
-            //             return item.name.toLowerCase().startsWith(input.toLowerCase())
-            //         })
-            // },
-            // searchStreet(input) {
-            //     this.street = input
-            //     if (input.length < 1) { return [] }
-            //         return this.streets.filter(item => {
-            //             return item.name.toLowerCase().startsWith(input.toLowerCase())
-            //         })
-            // },
             buildAddress() {
                 this.$eventBus.$emit('push-address',  this.city, this.street, this.house, this.build, this.floor, this.apart)
             },
+            getValue(data){
+                if (data.itemName == 'city') {
+                    this.city = data.value
+                } else if (data.itemName == 'street') {
+                    this.street = data.value
+                }
+            }
         }
     }
 </script>

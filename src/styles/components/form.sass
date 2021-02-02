@@ -62,8 +62,11 @@
                 top: 44%
     &__input
         @extend .input-modal
-        &:focus ~ .form__label-text
-            @extend .form__label-text--up
+        &:focus
+            & ~ .form__label-text
+                @extend .form__label-text--up
+            & ~ .form__label-icon-mag
+                display: none
         &--dots
             @extend .dot-font
         &--error
