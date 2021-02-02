@@ -11,7 +11,7 @@ import VueTheMask from 'vue-the-mask';
 import VueI18n from 'vue-i18n';
 import TextareaAutosize from 'vue-textarea-autosize';
 import VueEllipseProgress from 'vue-ellipse-progress';
-
+import Autocomplete from '@trevoreyre/autocomplete-vue';
 
 Vue.use(TextareaAutosize)
 Vue.use(VueI18n);
@@ -22,6 +22,7 @@ Vue.use(Vuelidate);
 Vue.use(VueTheMask);
 Vue.use(ivSlider);
 Vue.use(VueEllipseProgress);
+Vue.use(Autocomplete);
 
 function loadLocaleMessages () {
     let messages = [];

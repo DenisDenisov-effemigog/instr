@@ -13,17 +13,17 @@
                 width: 100%
     &__input
         @extend .form__input
-    &__input_error
-        @extend .input-modal_error
+        &--error
+            @extend .input-modal--error
     &__label-text
         @extend .form__label-text
-        &_up
+        &--up
             @extend .form__label-text--up
     &__label-icon
         @extend .form__label-icon
     &__error-text
         @extend .form__error-text
-        &_invalid
+        &--invalid
             @extend .form__error-text--invalid
     &__content
         margin-top: 1.5rem

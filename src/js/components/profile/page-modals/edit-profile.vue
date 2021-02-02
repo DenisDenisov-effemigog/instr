@@ -1,10 +1,10 @@
 <template>
     <form class="profile-modal__form"
           @submit.prevent="submit">
-        <label for="name" class="profile-modal__label">
+        <label for="name" class="profile-modal__label profile-modal__label--column">
             <input
                 class="profile-modal__input"
-                :class="{'profile-modal__input_error': $v.name.$error}"
+                :class="{'profile-modal__input--error': $v.name.$error}"
                 type="text"
                 name="name"
                 id="name"
@@ -12,7 +12,7 @@
                 autocorrect="off"
                 v-model.trim="$v.name.$model">
             <span class="profile-modal__label-text"
-                  :class="{'profile-modal__label-text_up': $v.name.required}"
+                  :class="{'profile-modal__label-text--up': $v.name.required}"
             >{{ $tc('title.person') }}</span>
             <svg
                 viewBox="0 0 24 24"
@@ -20,12 +20,16 @@
                 v-if="$v.name.required"
                 @click="$v.name.$model = ''">
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
-            </svg>   
+            </svg>
+            <span
+                class="profile-modal__error-text profile-modal__error-text--invalid-email"
+                v-if="$v.name.$error"
+            >{{ $tc('text.error') }}</span>   
         </label>
         <label for="company" class="profile-modal__label">
             <input
                 class="profile-modal__input"
-                :class="{'profile-modal__input_error': $v.company.$error}"
+                :class="{'profile-modal__input--error': $v.company.$error}"
                 type="text"
                 name="company"
                 id="company"
@@ -34,26 +38,26 @@
                 v-model.trim="$v.company.$model"
                 readonly="readonly">
             <span class="profile-modal__label-text"
-                  :class="{'profile-modal__label-text_up': $v.company.required}"
+                  :class="{'profile-modal__label-text--up': $v.company.required}"
             >{{ $tc('title.company') }}</span>
         </label>
         <label for="code" class="profile-modal__label">
             <input
                 class="profile-modal__input"
-                :class="{'profile-modal__input_error': $v.code.$error}"
+                :class="{'profile-modal__input--error': $v.code.$error}"
                 type="text"
                 name="code"
                 id="code"
                 v-model.trim="$v.code.$model"
                 readonly="readonly">
             <span class="profile-modal__label-text"
-                  :class="{'profile-modal__label-text_up': $v.code.required}"
+                  :class="{'profile-modal__label-text--up': $v.code.required}"
             >{{ $tc('title.tin') }}</span>
         </label>
-        <label for="phone" class="profile-modal__label profile-modal__label_column">
+        <label for="phone" class="profile-modal__label profile-modal__label--column">
             <the-mask
                 class="profile-modal__input"
-                :class="{'profile-modal__input_error': $v.phone.$error}"
+                :class="{'profile-modal__input--error': $v.phone.$error}"
                 type="tel"
                 :mask="phoneMask"
                 :tokens="tokens"
@@ -63,7 +67,7 @@
                 autocorrect="off"
                 v-model.trim="$v.phone.$model"/>
             <span class="profile-modal__label-text"
-                  :class="{'profile-modal__label-text_up': $v.phone.required}"
+                  :class="{'profile-modal__label-text--up': $v.phone.required}"
             >{{ $tc('title.phone_number') }}</span>
             <svg
                 viewBox="0 0 24 24"
@@ -73,14 +77,14 @@
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>
             <span
-                class="profile-modal__error-text profile-modal__error-text_invalid"
+                class="profile-modal__error-text profile-modal__error-text--invalid"
                 v-if="$v.phone.$error"
             >{{ $tc('text.error') }}</span>
         </label>
-        <label for="email" class="profile-modal__label profile-modal__label_column">
+        <label for="email" class="profile-modal__label profile-modal__label--column">
             <input
                 class="profile-modal__input"
-                :class="{'profile-modal__input_error': $v.email.$error}"
+                :class="{'profile-modal__input--error': $v.email.$error}"
                 type="email"
                 name="email"
                 id="email"
@@ -89,7 +93,7 @@
                 autocapitalize="off"
                 v-model.trim="$v.email.$model">
             <span class="profile-modal__label-text"
-                  :class="{'profile-modal__label-text_up': $v.email.required}"
+                  :class="{'profile-modal__label-text--up': $v.email.required}"
             >{{ $tc('title.email') }}</span>
             <svg
                 viewBox="0 0 24 24"
@@ -99,7 +103,7 @@
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>
             <span
-                class="profile-modal__error-text profile-modal__error-text_invalid_email"
+                class="profile-modal__error-text profile-modal__error-text--invalid-email"
                 v-if="$v.email.$error"
             >{{ $tc('text.error') }}</span>
         </label>

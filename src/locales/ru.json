@@ -61,7 +61,7 @@
     "title.city": "Город",
     "title.street": "Улица",
     "title.house": "Дом",
-    "title.build": "Строение",
+    "title.building": "Строение",
     "title.floor": "Этаж",
     "title.apart": "Офис/Квартира",
     
@@ -286,5 +286,7 @@
     "checkout.title.payment": "Способ оплаты",
     "checkout.title.comments": "Коментарии к заказу",
     "checkout.checkbox_text": "Сообщать мне обо всяких акциях, новостях и тд и тп.",
-    "checkout.date_placeholder": "Не выбрано (не обязательно)"
+    "checkout.date_placeholder": "Не выбрано (не обязательно)",
+    "checkout.delivery-address.city.error": "Ошибка, город не найден",
+    "checkout.delivery-address.street.error": "Ошибка, улица не найдена"
 }

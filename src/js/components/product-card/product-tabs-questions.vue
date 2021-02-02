@@ -19,7 +19,7 @@
                            autocorrect="off"
                            autocomplete="email"
                            autocapitalize="off"
-                           :class="{'form__input--error': $v.email.$dirty && $v.email.$error}"
+                           :class="{'form__input--error': $v.email.$error}"
                            v-model.trim="$v.email.$model"
                     >
                     <svg viewBox="0 0 24 24" @click="email = ''" v-if="email">
@@ -108,11 +108,13 @@
                     
                     let vm = this;
                     api.sendQuestion(vm.email, vm.newQuestion).then(() => {
-                        this.newQuestionItem();
-                        this.formExpanded = false;
-                        this.quantity = this.questions.length
+                        vm.newQuestionItem();
+                        vm.formExpanded = false;
+                        vm.quantity = vm.questions.length
+                        vm.newQuestion = null
+                        vm.$v.newQuestion.$reset()
                     }).catch((errors) => {
-                        console.error('something wrong');
+                        console.error(errors);
                     });
                 } else {
                     this.$v.$touch();

@@ -4,11 +4,13 @@
         <div class="sticky-mobile-button__button"
              :class="{'sticky-mobile-button__button--disabled': disabled}"
         >
-            <a v-if="linkUrl=='#'" href="#" @click="closeFilter">
-                {{ $tc(titlePartFirst) }} <span class="sticky-mobile-button__text-scnd">{{ items }}&nbsp;{{ $tc(titlePartSecond) }}{{ ends }}</span>
+            <a v-if="!linkUrl" :href="linkUrl" @click.prevent="closeFilter">
+                {{ $tc(titlePartFirst) }} 
+                <span class="sticky-mobile-button__text-scnd">{{ items }}&nbsp;{{ $tc(titlePartSecond) }}{{ ends }}</span>
             </a>
             <a v-else :href="linkUrl" >
-                {{ $tc(titlePartFirst) }} <span class="sticky-mobile-button__text-scnd">{{ items }}&nbsp;{{ $tc(titlePartSecond) }}{{ ends }}</span>
+                {{ $tc(titlePartFirst) }} 
+                <span class="sticky-mobile-button__text-scnd">{{ items }}&nbsp;{{ $tc(titlePartSecond) }}{{ ends }}</span>
             </a>
         </div>
     </div>
@@ -27,7 +29,7 @@ export default {
             titlePartFirst: '',
             titlePartSecond: '',
             disabled: false,
-            linkUrl:'#'
+            linkUrl: ''
         }
     },
     created() {
@@ -35,7 +37,7 @@ export default {
         this.$eventBus.$on("hide-button", this.hideButton);
     },
     methods:{
-        sowButton(firstPart, items, secondPart, url = '#') {
+        sowButton(firstPart, items, secondPart, url) {
             this.showButton = true;
             this.linkUrl = url
             this.disabled = false;
