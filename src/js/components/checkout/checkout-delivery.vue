@@ -24,6 +24,8 @@
                 :currentTab="currentTab"
                 :addresses="addresses"
                 :user="user"
+                :cities="cities"
+                :streets="streets"
             ></delivery-address>
             <receive-address v-else
                              :deliveryPoints="deliveryPoints"
@@ -59,6 +61,14 @@
             },
             user:{
                 type:Object,
+                required: true
+            },
+            cities:{
+                type: Array,
+                required: true
+            },
+            streets:{
+                type: Array,
                 required: true
             },
         },

@@ -917,6 +917,49 @@
     },
 ]%}
 
+{% set cities = [
+    { id: 1, name: 'Киев'},
+    { id: 2, name: 'Харьков'},
+    { id: 3, name: 'Одесса'},
+    { id: 4, name: 'Днепр'},
+    { id: 5, name: 'Запорожье'},
+    { id: 6, name: 'Львов'},
+    { id: 7, name: 'Кривой Рог'},
+    { id: 8, name: 'Александрия'},
+    { id: 9, name: 'Алёшки'},
+    { id: 10, name: 'Ананьев'},
+    { id: 11, name: 'Андрушёвка'},
+    { id: 12, name: 'Апостолово'},
+    { id: 13, name: 'Арциз'},
+    { id: 14, name: 'Ахтырка'},
+    { id: 15, name: 'Балаклея'},
+    { id: 16, name: 'Балта'},
+    { id: 17, name: 'Бар'},
+    { id: 18, name: 'Барановка'},
+    { id: 19, name: 'Барвенково'},
+    { id: 20, name: 'Батурин'},
+    { id: 21, name: 'Бахмач'},
+    { id: 22, name: 'Баштанка'},
+] %}
+
+{% set streets = [
+    { id: 1, name: 'Ленина'},
+    { id: 2, name: 'Советская'},
+    { id: 3, name: 'Тенистая'},
+    { id: 4, name: 'Тихая'},
+    { id: 5, name: 'Школьная'},
+    { id: 6, name: 'Киевская'},
+    { id: 7, name: 'Московская'},
+    { id: 8, name: 'Адмирала Ушакова'},
+    { id: 9, name: 'Азовская'},
+    { id: 10, name: 'Агитаторская'},
+    { id: 11, name: 'Бакинская'},
+    { id: 12, name: 'Боровой переулок'},
+    { id: 13, name: 'Вацлава Гавела бульвар'},
+    { id: 14, name: 'Владимира Высоцкого бульвар'},
+    { id: 15, name: 'Грузинская'},
+] %}
+
 {% block content %}
 
     {% include '../../../templates/header/header.twig' with {'categories': categories, 'user': user} %}
@@ -937,6 +980,8 @@
         'deliveries': deliveries,
         'payments': payments,
         'deliveryPoints': deliveryPoints,
+        'cities': cities,
+        'streets': streets,
     } %}
     {% include '../../../templates/footer/footer.twig'  with {
         'countries': countries,

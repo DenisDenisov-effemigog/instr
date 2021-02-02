@@ -48,6 +48,8 @@
                         :deliveryPoints="deliveryPoints"
                         :addresses="addresses"
                         :user="user"
+                        :cities="cities"
+                        :streets="streets"
                     ></checkout-delivery>
                     <delivery-date v-model="date"></delivery-date>
                     <delivery-payment :payments="payments"></delivery-payment>
@@ -132,6 +134,14 @@
                 type: Array
             },
             deliveryPoints: {
+                required: true,
+                type: Array
+            },
+            cities: {
+                required: true,
+                type: Array
+            },
+            streets: {
                 required: true,
                 type: Array
             },
