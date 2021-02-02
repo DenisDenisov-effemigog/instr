@@ -2,6 +2,8 @@
            :deliveries="{{ deliveries|json_encode|e('html_attr') }}"
            :user="{{ user|json_encode|e('html_attr') }}"
            :payments="{{ payments|json_encode|e('html_attr') }}"
+           :discounts="{{ discounts|json_encode|e('html_attr') }}"
+           :sale-price="{{ salePrice|json_encode|e('html_attr') }}"
            :delivery-points="{{ deliveryPoints|json_encode|e('html_attr') }}"
            :cities="{{ cities|json_encode|e('html_attr') }}"
            :streets="{{ streets|json_encode|e('html_attr') }}"

@@ -4,7 +4,7 @@
         <slot v-if="className === 'listing' && !subcategoryShowAll" name="subcategory-listing-part"></slot>
         <slot v-else-if="className === 'listing' && subcategoryShowAll" name="subcategory-listing-all"></slot>
         <li v-else v-for="category in subcategories">
-            <a href="#" class="catalogue__further-subcategory">{{category.title}}</a>
+            <a :href="category.url" class="catalogue__further-subcategory">{{category.title}}</a>
         </li>
         <li v-if="!subcategoryShowAll && className ==='listing' && subcategories.length > 5" class="listing__subcategory-btn">
             <a href="" @click.prevent="subcategoryShowAll = true">{{ $tc('header.catalogue.show_more') }}</a>

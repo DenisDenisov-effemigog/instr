@@ -14,7 +14,7 @@
                         :class="{'catalogue__category_hovered': hovered === index}"
                     >
                         <div>
-                            <a href="#" class="catalogue__category-link">
+                            <a :href="category.url" class="catalogue__category-link">
                                 {{category.title}}
                                 <svg class="" viewBox="0 0 6 10">
                                     <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>

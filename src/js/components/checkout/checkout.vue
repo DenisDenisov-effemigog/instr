@@ -92,7 +92,11 @@
         </div>
         <div v-else>Загрузка контента...</div><!--TODO реализовать прелоадер когда его утвердят-->
         <div v-show="successFlag === 'pay' && value === 'new' && loaded" class="checkout__order">
-            <cart-order :productsPrice="productsPrice" :place="'checkout'"></cart-order>
+            <cart-order :productsPrice="productsPrice" 
+                        :productsSales="discounts"
+                        :salePrice="salePrice"
+                        :place="'checkout'"
+            ></cart-order>
             <div class="checkout__btn-wrap checkout__btn-wrap--mobile"
                 :class="{'checkout__btn-wrap--fixed': fixedFlag}"
             >
@@ -145,6 +149,14 @@
                 required: true,
                 type: Array
             },
+            discounts: {
+                required: true,
+                type: Array
+            },
+            salePrice:{
+                type: Number,
+                required: true,
+            }
         },
         data(){
             return {
