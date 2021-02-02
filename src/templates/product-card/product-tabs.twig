@@ -75,18 +75,18 @@
     <template v-slot:description>
         <div class="product-tabs__content-layout">
             <div class="product-tabs__content-title">{{ 'product_card.tabs.desc'|trans }}</div>
-            <p class="product-tabs__content-text product-tabs__content-text_description">{{product.description.description}}</p>
+            <p class="product-tabs__content-text product-tabs__content-text_description">{{product.description.description|raw}}</p>
         </div>
-        {# <div class="product-tabs__content-layout">
-            <div class="product-tabs__content-title">{{ 'product_card.tabs.some_features'|trans }}</div>
+         {#<div class="product-tabs__content-layout">
+            <div class="product-tabs__content-title">{{ product.description.features.title }}</div>
             <div class="product-tabs__content-grid">
-                {% for feature in product.description.features %}
+                {% for feature in product.description.features.values %}
                     <div class="product-tabs__content-grid-item">
                         <div class="product-tabs__content-feature">
                             <img class="product-tabs__feature-img" src="{{ feature.image}}" alt="{{product.name|e('html_attr')}}">
                             <div class="product-tabs__feature">
                                 <div class="product-tabs__content-title">{{ feature.title}}</div>
-                                <div class="product-tabs__content-text">{{ feature.value}}</div>
+                                <div class="product-tabs__content-text">{{ feature.value|raw}}</div>
                             </div>
                         </div>
                     </div>
@@ -94,10 +94,10 @@
             </div>
         </div>
         <div class="product-tabs__content-layout">
-            <div class="product-tabs__content-title">{{ 'product_card.tabs.advantages'|trans }}</div>
+            <div class="product-tabs__content-title">{{ product.description.advantages.title }}</div>
             <ul class="product-tabs__content-list">
-                {% for advantage in product.description.advantages %}
-                    <li>{{advantage}}</li>
+                {% for advantage in product.description.advantages.descriptions %}
+                    <li>{{advantage|raw}}</li>
                 {% endfor %}
             </ul>
          </div> #}   {# TODO временно убраны, не удалять!!! #}
