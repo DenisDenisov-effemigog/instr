@@ -173,12 +173,6 @@
             }
         },
         validations:{
-            city:{
-                required
-            },
-            street:{
-                required
-            },
             house:{
                 required
             },
