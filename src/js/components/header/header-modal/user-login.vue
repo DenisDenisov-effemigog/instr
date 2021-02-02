@@ -4,7 +4,7 @@
         <label name="email" class="user__label">
             <input
                 class="user__input"
-                :class="{'user__input_error': $v.email.$error}"
+                :class="{'user__input--error': $v.email.$error}"
                 type="email"
                 name="email"
                 id="email"
@@ -13,7 +13,7 @@
                 autocapitalize="off"
                 v-model.trim="$v.email.$model">
             <span class="user__label-text"
-                :class="{'user__label-text_up': $v.email.required}"
+                :class="{'user__label-text--up': $v.email.required}"
             >{{ $tc('title.email') }}</span>
             <svg viewBox="0 0 24 24"
                 class="user__label-icon"
@@ -21,23 +21,23 @@
                 @click="$v.email.$model = ''">
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>
-            <div class="user__error-text user__error-text_invalid"
+            <div class="user__error-text user__error-text--invalid"
                 v-if="$v.email.$error">{{ $tc('text.error') }}</div>
         </label>
         <label name="password" class="user__label">
             <input
                 class="user__input"
-                :class="{'user__input_dots': $v.password.$model && !passwordHidden,
-                'user__input_error': $v.password.$error}"
+                :class="{'user__input--dots': $v.password.$model && !passwordHidden,
+                'user__input--error': $v.password.$error}"
                 :type="passwordType"
                 name="password"
                 id="password"
                 v-model.trim="$v.password.$model">
             <span class="user__label-text"
-                :class="{'user__label-text_up': $v.password.required}"
+                :class="{'user__label-text--up': $v.password.required}"
             >{{ $tc('user_login.password') }}</span>
             <show-password v-model="passwordHidden"></show-password>
-            <div class="user__error-text user__error-text_invalid_password"
+            <div class="user__error-text user__error-text--invalid-password"
                 v-if="$v.password.$error">{{ $tc('text.error') }}</div>
         </label>
         <div class="user__error-text" v-if="$v.$error">*{{ $tc('text.required') }}</div>

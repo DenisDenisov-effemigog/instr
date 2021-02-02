@@ -16,55 +16,27 @@
         <div v-else class="delivery-address__individual">
             <form action="" class="delivery-address__form">
 
-                <label :name="city" class="form__label form__label--column">
-                    <input
-                        :name="city"
-                        type="text"
-                        class="form__input"
-                        :class="{'form__input--error': $v.city.$error}"
-                        v-model.trim="$v.city.$model"
-                        @focusout="buildAddress"
-                    >
-                    <span class="form__label-text"
-                          :class="{'form__label-text--up': $v.city.required}"
-                    >{{ $tc('title.city') }}</span>
-                    <svg viewBox="0 0 24 24"
-                         class="form__label-icon"
-                         v-if="$v.city.required"
-                         @click="$v.city.$model = ''"
-                    >
-                        <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
-                    </svg>
-                    <div class="form__error-text form__error-text--invalid"
-                         v-if="$v.city.$error">{{ $tc('text.error') }}</div>
-                </label>
+                <autocomplete-input
+                    :itemsArray="cities"
+                    :labelName="$tc('title.city')"
+                    :itemName="'city'"
+                    :getValue="getValue"
+                    @focusout="buildAddress"
+                >
+                </autocomplete-input>
 
-                <label :name="street" class="form__label form__label--column">
-                    <input
-                        :name="street"
-                        type="text"
-                        class="form__input"
-                        :class="{'form__input--error': $v.street.$error}"
-                        v-model.trim="$v.street.$model"
-                        @focusout="buildAddress"
-                    >
-                    <span class="form__label-text"
-                          :class="{'form__label-text--up': $v.street.required}"
-                    >{{ $tc('title.street') }}</span>
-                    <svg viewBox="0 0 24 24"
-                         class="form__label-icon"
-                         v-if="$v.street.required"
-                         @click="$v.street.$model = ''"
-                    >
-                        <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
-                    </svg>
-                    <div class="form__error-text form__error-text--invalid"
-                         v-if="$v.street.$error">{{ $tc('text.error') }}</div>
-                </label>
+                <autocomplete-input
+                    :itemsArray="streets"
+                    :labelName="$tc('title.street')"
+                    :itemName="'street'"
+                    :getValue="getValue"
+                    @focusout="buildAddress"
+                >
+                </autocomplete-input>
 
-                <label :name="house" class="form__label form__label--column">
+                <label name="house" class="form__label form__label--column">
                     <input
-                        :name="house"
+                        name="house"
                         type="text"
                         class="form__input"
                         :class="{'form__input--error': $v.house.$error}"
@@ -85,32 +57,32 @@
                          v-if="$v.house.$error">{{ $tc('text.error') }}</div>
                 </label>
 
-                <label :name="build" class="form__label form__label--column">
+                <label name="building" class="form__label form__label--column">
                     <input
-                        :name="build"
+                        name="building"
                         type="text"
                         class="form__input"
-                        :class="{'form__input--error': $v.build.$error}"
-                        v-model.trim="$v.build.$model"
+                        :class="{'form__input--error': $v.building.$error}"
+                        v-model.trim="$v.building.$model"
                         @focusout="buildAddress"
                     >
                     <span class="form__label-text"
-                          :class="{'form__label-text--up': $v.build.required}"
-                    >{{ $tc('title.build') }}</span>
+                          :class="{'form__label-text--up': !!building}"
+                    >{{ $tc('title.building') }}</span>
                     <svg viewBox="0 0 24 24"
                          class="form__label-icon"
-                         v-if="$v.build.required"
-                         @click="$v.build.$model = ''"
+                         v-if="!!building"
+                         @click="$v.building.$model = ''"
                     >
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
                     </svg>
                     <div class="form__error-text form__error-text--invalid"
-                         v-if="$v.build.$error">{{ $tc('text.error') }}</div>
+                         v-if="$v.building.$error">{{ $tc('text.error') }}</div>
                 </label>
 
-                <label :name="floor" class="form__label form__label--column">
+                <label name="floor" class="form__label form__label--column">
                     <input
-                        :name="floor"
+                        name="floor"
                         type="text"
                         class="form__input"
                         :class="{'form__input--error': $v.floor.$error}"
@@ -118,11 +90,11 @@
                         @focusout="buildAddress"
                     >
                     <span class="form__label-text"
-                          :class="{'form__label-text--up': $v.floor.required}"
+                          :class="{'form__label-text--up': !!floor}"
                     >{{ $tc('title.floor') }}</span>
                     <svg viewBox="0 0 24 24"
                          class="form__label-icon"
-                         v-if="$v.floor.required"
+                         v-if="!!floor"
                          @click="$v.floor.$model = ''"
                     >
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
@@ -131,9 +103,9 @@
                          v-if="$v.floor.$error">{{ $tc('text.error') }}</div>
                 </label>
 
-                <label :name="apart" class="form__label form__label--column">
+                <label name="apart" class="form__label form__label--column">
                     <input
-                        :name="apart"
+                        name="apart"
                         type="text"
                         class="form__input"
                         :class="{'form__input--error': $v.apart.$error}"
@@ -162,10 +134,11 @@
     import AddAddressBtn from '../add-address-btn.vue'
     import selectList from "../partials/select-list.vue"
     import {required} from "vuelidate/lib/validators";
+    import autocompleteInput from './autocomplete-input.vue'
 
     export default {
         name:"delivery-address",
-        components: { selectList, AddAddressBtn },
+        components: { selectList, AddAddressBtn, autocompleteInput },
         props:{
             currentTab:{
                 type:String,
@@ -185,9 +158,27 @@
                 city: '',
                 street: '',
                 house: '',
-                build: '',
+                building: '',
                 floor: '',
                 apart: '',
+                cities: [
+                    { id: 1, name: 'Киев'},
+                    { id: 2, name: 'Харьков'},
+                    { id: 3, name: 'Одесса'},
+                    { id: 4, name: 'Днепр'},
+                    { id: 5, name: 'Запорожье'},
+                    { id: 6, name: 'Львов'},
+                    { id: 7, name: 'Кривой Рог'},
+                ],
+                streets: [
+                    { id: 1, name: 'Ленина'},
+                    { id: 2, name: 'Советская'},
+                    { id: 3, name: 'Тенистая'},
+                    { id: 4, name: 'Тихая'},
+                    { id: 5, name: 'Школьная'},
+                    { id: 6, name: 'Киевская'},
+                    { id: 7, name: 'Московская'},
+                ],
             }
         },
         validations:{
@@ -200,7 +191,7 @@
             house:{
                 required
             },
-            build:{
+            building:{
             },
             floor:{
             },
@@ -213,7 +204,14 @@
         },
         methods: {
             buildAddress() {
-                this.$eventBus.$emit('push-address',  this.city, this.street, this.house, this.build, this.floor, this.apart)
+                this.$eventBus.$emit('push-address',  this.city, this.street, this.house, this.building, this.floor, this.apart)
+            },
+            getValue(data){
+                if (data.itemName == 'city') {
+                    this.city = data.value
+                } else if (data.itemName == 'street') {
+                    this.street = data.value
+                }
             },
             addressError() {
                 let vm = this

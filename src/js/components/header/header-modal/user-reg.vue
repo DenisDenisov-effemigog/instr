@@ -32,7 +32,7 @@
             <input
                 v-if="!IndividualFlag"
                 class="user__input"
-                :class="{'user__input_error': $v.name.$error}"
+                :class="{'user__input--error': $v.name.$error}"
                 type="text"
                 name="name"
                 id="name"
@@ -42,7 +42,7 @@
             <input
                 v-else
                 class="user__input"
-                :class="{'user__input_error': $v.name.$error}"
+                :class="{'user__input--error': $v.name.$error}"
                 type="text"
                 name="name"
                 id="name"
@@ -50,10 +50,10 @@
                 autocorrect="off"
                 v-model.trim="$v.name.$model">
             <span v-if="!IndividualFlag" class="user__label-text"
-                :class="{'user__label-text_up': $v.name.required}"
+                :class="{'user__label-text--up': $v.name.required}"
             >{{ $tc('title.person') }}</span>
             <span v-else class="user__label-text"
-                :class="{'user__label-text_up': $v.name.required}"
+                :class="{'user__label-text--up': $v.name.required}"
             >{{ $tc('user_reg.name') }}</span>
             <svg viewBox="0 0 24 24"
                 class="user__label-icon"
@@ -61,13 +61,13 @@
                 @click="$v.name.$model = ''">
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>
-            <div class="user__error-text user__error-text_invalid"
+            <div class="user__error-text user__error-text--invalid"
                 v-if="$v.name.$error">{{ $tc('text.error') }}</div>
         </label>
         <label v-show="!IndividualFlag" name="company" class="user__label">
             <input
                 class="user__input"
-                :class="{'user__input_error': $v.company.$error}"
+                :class="{'user__input--error': $v.company.$error}"
                 type="text"
                 name="company"
                 id="company"
@@ -75,7 +75,7 @@
                 autocorrect="off"
                 v-model.trim="$v.company.$model">
             <span class="user__label-text"
-                :class="{'user__label-text_up': $v.company.required}"
+                :class="{'user__label-text--up': $v.company.required}"
             >{{ $tc('title.company') }}</span>
             <svg viewBox="0 0 24 24"
                 class="user__label-icon" 
@@ -83,19 +83,19 @@
                 @click="$v.company.$model = ''">
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>
-            <div class="user__error-text user__error-text_invalid"
+            <div class="user__error-text user__error-text--invalid"
                 v-if="$v.company.$error">{{ $tc('text.error') }}</div>
         </label>
         <label v-show="!IndividualFlag" name="TIN" class="user__label">
             <input
                 class="user__input"
-                :class="{'user__input_error': $v.tin.$error}"
+                :class="{'user__input--error': $v.tin.$error}"
                 type="text"
                 name="TIN"
                 id="TIN"
                 v-model.trim="$v.tin.$model">
             <span class="user__label-text"
-                :class="{'user__label-text_up': $v.tin.required}"
+                :class="{'user__label-text--up': $v.tin.required}"
             >{{ $tc('title.tin') }}</span>
             <svg viewBox="0 0 24 24"
                 class="user__label-icon"
@@ -103,13 +103,13 @@
                 @click="$v.tin.$model = ''">
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>
-            <div class="user__error-text user__error-text_invalid"
+            <div class="user__error-text user__error-text--invalid"
                 v-if="$v.company.$error">{{ $tc('text.error') }}</div>
         </label>
         <label name="phone" class="user__label">
             <the-mask
                 class="user__input"
-                :class="{'user__input_error': $v.phone.$error}"
+                :class="{'user__input--error': $v.phone.$error}"
                 type="tel"
                 :mask="phoneMask"
                 :tokens="tokens"
@@ -119,7 +119,7 @@
                 autocorrect="off"
                 v-model.trim="phone"/>
             <span class="user__label-text"
-                :class="{'user__label-text_up': $v.phone.required}"
+                :class="{'user__label-text--up': $v.phone.required}"
             >{{ $tc('title.phone_number') }}</span>
             <svg viewBox="0 0 24 24"
                 class="user__label-icon"
@@ -127,13 +127,13 @@
                 @click="$v.phone.$model = ''">
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>
-            <div class="user__error-text user__error-text_invalid"
+            <div class="user__error-text user__error-text--invalid"
                 v-if="$v.phone.$error">{{ $tc('text.error') }}</div>
         </label>
         <label name="email" class="user__label">
             <input
                 class="user__input"
-                :class="{'user__input_error': $v.newEmail.$error}"
+                :class="{'user__input--error': $v.newEmail.$error}"
                 type="email"
                 name="email"
                 id="email"
@@ -142,7 +142,7 @@
                 autocapitalize="off"
                 v-model.trim="newEmail">
             <span class="user__label-text"
-                :class="{'user__label-text_up': $v.newEmail.required}"
+                :class="{'user__label-text--up': $v.newEmail.required}"
             >{{ $tc('title.email') }}</span>
             <svg viewBox="0 0 24 24"
                 class="user__label-icon"
@@ -150,7 +150,7 @@
                 @click="$v.newEmail.$model = ''">
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>
-            <div class="user__error-text user__error-text_invalid"
+            <div class="user__error-text user__error-text--invalid"
                 v-if="$v.newEmail.$error">{{ $tc('text.error') }}</div>
         </label>
         <div class="user__error-text" v-if="$v.error">*{{ $tc('text.required') }}</div>
