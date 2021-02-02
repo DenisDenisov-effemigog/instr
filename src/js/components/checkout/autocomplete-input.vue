@@ -25,10 +25,14 @@
                     :class="[
                         'form__input',
                         'autocomplete-input',
-                        {'form__input--error': $v.value.$error}
+                        { 'form__input--error': $v.value.$error }
                     ]"
                 >
-                <ul v-bind="resultListProps" v-on="resultListListeners" class="autocomplete-result-list">
+                <ul 
+                    v-bind="resultListProps" 
+                    v-on="resultListListeners" 
+                    class="autocomplete-result-list"
+                >
                     <li
                         v-for="(result, index) in results"
                         :key="resultProps[index].id"
@@ -38,15 +42,25 @@
                         {{ result.name }}
                     </li>
                 </ul>
+
                 <span class="form__label-text form__label-text--with-mag"
                     :class="{'form__label-text--up': $v.value.required}"
                 >{{ labelName }}</span>
+
                 <svg viewBox="-4 -4 24 24" class="form__label-icon-mag" v-if="!$v.value.required">
                     <use :xlink:href="templatePath + 'images/sprite.svg#icons__mag'"></use>
                 </svg>
                 <svg viewBox="0 0 24 24" class="form__label-icon" v-if="$v.value.required" @click="$v.value.$model = ''">
                     <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
                 </svg>
+
+                <div class="form__error-text form__error-text--invalid" v-if="noResults && itemName == 'city'">
+                    {{ $tc('checkout.delivery-address.city.error') }}
+                </div>
+                <div class="form__error-text form__error-text--invalid" v-if="noResults && itemName == 'street'">
+                    {{ $tc('checkout.delivery-address.street.error') }}
+                </div>
+
                 <div class="form__error-text form__error-text--invalid" v-if="$v.value.$error">
                     {{ $tc('text.error') }}
                 </div>
@@ -86,26 +100,29 @@
             }
         },
         validations:{
-            value:{
+            value: {
                 required
             }
         },
         computed: {
             items() {
                 return this.itemsArray
+            },
+            noResults() {
+                return this.value && this.results.length === 0
             }
         },
         methods: {
             submitItem(item) {
-                this.value = item.name;
-                console.log(this.value, 'submit');
-                this.getValue({
-                    value: this.value,
-                    itemName: this.itemName
-                })
+                if (!this.noResults) {
+                    this.value = item.name;
+                    this.getValue({
+                        value: this.value,
+                        itemName: this.itemName
+                    })
+                }
             },
             setLabel(item) {
-                console.log(item.name, 'setlabel')
                 return item.name;
             },
             search(input) {

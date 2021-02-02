@@ -152,6 +152,14 @@
                 type:Object,
                 required: true
             },
+            cities:{
+                type:Array,
+                required: true
+            },
+            streets:{
+                type:Array,
+                required: true
+            },
         },
         data(){
             return{
@@ -161,24 +169,7 @@
                 building: '',
                 floor: '',
                 apart: '',
-                cities: [
-                    { id: 1, name: 'Киев'},
-                    { id: 2, name: 'Харьков'},
-                    { id: 3, name: 'Одесса'},
-                    { id: 4, name: 'Днепр'},
-                    { id: 5, name: 'Запорожье'},
-                    { id: 6, name: 'Львов'},
-                    { id: 7, name: 'Кривой Рог'},
-                ],
-                streets: [
-                    { id: 1, name: 'Ленина'},
-                    { id: 2, name: 'Советская'},
-                    { id: 3, name: 'Тенистая'},
-                    { id: 4, name: 'Тихая'},
-                    { id: 5, name: 'Школьная'},
-                    { id: 6, name: 'Киевская'},
-                    { id: 7, name: 'Московская'},
-                ],
+                
             }
         },
         validations:{
