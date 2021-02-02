@@ -1,6 +1,6 @@
 {% extends "../layout.twig" %}
 
-{% block title %}Pages | 02 Карточка товара{% endblock %}
+{% block title %}Pages | 09 Бренды{% endblock %}
 
 {% set categories = [
     {
@@ -853,763 +853,68 @@
 
 {% set countries = ['Белоруссия','Болгария','Венгрия','Казахстан','Польша','Россия','Румыния','США','Украина'] %}
 
-{% set productsSames = [
-    {
-        'id': 31,
-        'title': 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
-        'link': '',
-        'code': 717950,
-        'available': true,
-        'stock': 100,
-        'oldPrice': '3 819',
-        'newPrice': '2 819',
-        'images': [
-        {id: 1, img: './demo_images/product/image_50.png'},
-        {id: 2, img: './demo_images/product/image_51.png'},
-        {id: 3, img: './demo_images/product/image_52.png'},
-        {id: 4, img: './demo_images/product/image_53.png'},
-    ],
-        'tooltips': [
-        {
-            'id': 1,
-            'title': 'Новинка',
-            'text': 'Товар находится в акционной категории товаров “Новинка”',
-            'link': '',
-            'status': 'new',
-        },
-        {
-            'id': 2,
-            'title': 'Акция',
-            'text': 'Товар участвует в акции “Акция”',
-            'link': '',
-            'status': 'promo',
-        },
-    ]
-    },
-    {
-        'id': 32,
-        'title': 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
-        'link': '',
-        'code': 717950,
-        'available': true,
-        'stock': 100,
-        'oldPrice': '3 819',
-        'newPrice': '2 819',
-        'images': [
-        {id: 1, img: './demo_images/product/image_50.png'},
-        {id: 2, img: './demo_images/product/image_51.png'},
-        {id: 3, img: './demo_images/product/image_52.png'},
-        {id: 4, img: './demo_images/product/image_53.png'},
-    ],
-        'tooltips': [
-        {
-            'id': 1,
-            'title': 'Новинка',
-            'text': 'Товар находится в акционной категории товаров “Новинка”',
-            'link': '',
-            'status': 'new',
-        },
-        {
-            'id': 2,
-            'title': 'Акция',
-            'text': 'Товар участвует в акции “Акция”',
-            'link': '',
-            'status': 'promo',
-        },
-    ]
-    },
-    {
-        'id': 33,
-        'title': 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
-        'link': '',
-        'code': 717950,
-        'available': true,
-        'stock': 100,
-        'oldPrice': '3 819',
-        'newPrice': '2 819',
-        'images': [
-        {id: 1, img: './demo_images/product/image_50.png'},
-        {id: 2, img: './demo_images/product/image_51.png'},
-        {id: 3, img: './demo_images/product/image_52.png'},
-        {id: 4, img: './demo_images/product/image_53.png'},
-    ],
-        'tooltips': [
-        {
-            'id': 1,
-            'title': 'Новинка',
-            'text': 'Товар находится в акционной категории товаров “Новинка”',
-            'link': '',
-            'status': 'new',
-        },
-        {
-            'id': 2,
-            'title': 'Акция',
-            'text': 'Товар участвует в акции “Акция”',
-            'link': '',
-            'status': 'promo',
-        },
-    ]
-    },
-    {
-        'id': 34,
-        'title': 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
-        'link': '',
-        'code': 717950,
-        'available': true,
-        'stock': 100,
-        'oldPrice': '3 819',
-        'newPrice': '2 819',
-        'images': [
-        {id: 1, img: './demo_images/product/image_50.png'},
-        {id: 2, img: './demo_images/product/image_51.png'},
-        {id: 3, img: './demo_images/product/image_52.png'},
-        {id: 4, img: './demo_images/product/image_53.png'},
-    ],
-        'tooltips': [
-        {
-            'id': 1,
-            'title': 'Новинка',
-            'text': 'Товар находится в акционной категории товаров “Новинка”',
-            'link': '',
-            'status': 'new',
-        },
-        {
-            'id': 2,
-            'title': 'Акция',
-            'text': 'Товар участвует в акции “Акция”',
-            'link': '',
-            'status': 'promo',
-        },
-    ]
-    },
-    {
-        'id': 35,
-        'title': 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
-        'link': '',
-        'code': 717950,
-        'available': true,
-        'stock': 100,
-        'oldPrice': '3 819',
-        'newPrice': '2 819',
-        'images': [
-        {id: 1, img: './demo_images/product/image_50.png'},
-        {id: 2, img: './demo_images/product/image_51.png'},
-        {id: 3, img: './demo_images/product/image_52.png'},
-        {id: 4, img: './demo_images/product/image_53.png'},
-    ],
-        'tooltips': [
-        {
-            'id': 1,
-            'title': 'Новинка',
-            'text': 'Товар находится в акционной категории товаров “Новинка”',
-            'link': '',
-            'status': 'new',
-        },
-        {
-            'id': 2,
-            'title': 'Акция',
-            'text': 'Товар участвует в акции “Акция”',
-            'link': '',
-            'status': 'promo',
-        },
-    ]
-    },
-    {
-        'id': 36,
-        'title': 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
-        'link': '',
-        'code': 717950,
-        'available': true,
-        'stock': 100,
-        'oldPrice': '3 819',
-        'newPrice': '2 819',
-        'images': [
-        {id: 1, img: './demo_images/product/image_50.png'},
-        {id: 2, img: './demo_images/product/image_51.png'},
-        {id: 3, img: './demo_images/product/image_52.png'},
-        {id: 4, img: './demo_images/product/image_53.png'},
-    ],
-        'tooltips': [
-        {
-            'id': 1,
-            'title': 'Новинка',
-            'text': 'Товар находится в акционной категории товаров “Новинка”',
-            'link': '',
-            'status': 'new',
-        },
-        {
-            'id': 2,
-            'title': 'Акция',
-            'text': 'Товар участвует в акции “Акция”',
-            'link': '',
-            'status': 'promo',
-        },
-    ]
-    },
-] %}
-
-{% set productsRecommended = [
-    {
-        'id': 41,
-        'title': 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
-        'link': '',
-        'code': 717950,
-        'available': true,
-        'stock': 100,
-        'oldPrice': '3 819',
-        'newPrice': '2 819',
-        'images': [
-        {id: 1, img: './demo_images/product/image_50.png'},
-        {id: 2, img: './demo_images/product/image_51.png'},
-        {id: 3, img: './demo_images/product/image_52.png'},
-        {id: 4, img: './demo_images/product/image_53.png'},
-    ],
-        'tooltips': [
-        {
-            'id': 1,
-            'title': 'Новинка',
-            'text': 'Товар находится в акционной категории товаров “Новинка”',
-            'link': '',
-            'status': 'new',
-        },
-        {
-            'id': 2,
-            'title': 'Акция',
-            'text': 'Товар участвует в акции “Акция”',
-            'link': '',
-            'status': 'promo',
-        },
-    ]
-    },
-    {
-        'id': 42,
-        'title': 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
-        'link': '',
-        'code': 717950,
-        'available': true,
-        'stock': 100,
-        'oldPrice': '3 819',
-        'newPrice': '2 819',
-        'images': [
-        {id: 1, img: './demo_images/product/image_50.png'},
-        {id: 2, img: './demo_images/product/image_51.png'},
-        {id: 3, img: './demo_images/product/image_52.png'},
-        {id: 4, img: './demo_images/product/image_53.png'},
-    ],
-        'tooltips': [
-        {
-            'id': 1,
-            'title': 'Новинка',
-            'text': 'Товар находится в акционной категории товаров “Новинка”',
-            'link': '',
-            'status': 'new',
-        },
-        {
-            'id': 2,
-            'title': 'Акция',
-            'text': 'Товар участвует в акции “Акция”',
-            'link': '',
-            'status': 'promo',
-        },
-    ]
-    },
-    {
-        'id': 43,
-        'title': 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
-        'link': '',
-        'code': 717950,
-        'available': true,
-        'stock': 100,
-        'oldPrice': '3 819',
-        'newPrice': '2 819',
-        'images': [
-        {id: 1, img: './demo_images/product/image_50.png'},
-        {id: 2, img: './demo_images/product/image_51.png'},
-        {id: 3, img: './demo_images/product/image_52.png'},
-        {id: 4, img: './demo_images/product/image_53.png'},
-    ],
-        'tooltips': [
-        {
-            'id': 1,
-            'title': 'Новинка',
-            'text': 'Товар находится в акционной категории товаров “Новинка”',
-            'link': '',
-            'status': 'new',
-        },
-        {
-            'id': 2,
-            'title': 'Акция',
-            'text': 'Товар участвует в акции “Акция”',
-            'link': '',
-            'status': 'promo',
-        },
-    ]
-    },
-    {
-        'id': 44,
-        'title': 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
-        'link': '',
-        'code': 717950,
-        'available': true,
-        'stock': 100,
-        'oldPrice': '3 819',
-        'newPrice': '2 819',
-        'images': [
-        {id: 1, img: './demo_images/product/image_50.png'},
-        {id: 2, img: './demo_images/product/image_51.png'},
-        {id: 3, img: './demo_images/product/image_52.png'},
-        {id: 4, img: './demo_images/product/image_53.png'},
-    ],
-        'tooltips': [
-        {
-            'id': 1,
-            'title': 'Новинка',
-            'text': 'Товар находится в акционной категории товаров “Новинка”',
-            'link': '',
-            'status': 'new',
-        },
-        {
-            'id': 2,
-            'title': 'Акция',
-            'text': 'Товар участвует в акции “Акция”',
-            'link': '',
-            'status': 'promo',
-        },
-    ]
-    },
-    {
-        'id': 45,
-        'title': 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
-        'link': '',
-        'code': 717950,
-        'available': true,
-        'stock': 100,
-        'oldPrice': '3 819',
-        'newPrice': '2 819',
-        'images': [
-        {id: 1, img: './demo_images/product/image_50.png'},
-        {id: 2, img: './demo_images/product/image_51.png'},
-        {id: 3, img: './demo_images/product/image_52.png'},
-        {id: 4, img: './demo_images/product/image_53.png'},
-    ],
-        'tooltips': [
-        {
-            'id': 1,
-            'title': 'Новинка',
-            'text': 'Товар находится в акционной категории товаров “Новинка”',
-            'link': '',
-            'status': 'new',
-        },
-        {
-            'id': 2,
-            'title': 'Акция',
-            'text': 'Товар участвует в акции “Акция”',
-            'link': '',
-            'status': 'promo',
-        },
-    ]
-    },
-    {
-        'id': 46,
-        'title': 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
-        'link': '',
-        'code': 717950,
-        'available': true,
-        'stock': 100,
-        'oldPrice': '3 819',
-        'newPrice': '2 819',
-        'images': [
-        {id: 1, img: './demo_images/product/image_50.png'},
-        {id: 2, img: './demo_images/product/image_51.png'},
-        {id: 3, img: './demo_images/product/image_52.png'},
-        {id: 4, img: './demo_images/product/image_53.png'},
-    ],
-        'tooltips': [
-        {
-            'id': 1,
-            'title': 'Новинка',
-            'text': 'Товар находится в акционной категории товаров “Новинка”',
-            'link': '',
-            'status': 'new',
-        },
-        {
-            'id': 2,
-            'title': 'Акция',
-            'text': 'Товар участвует в акции “Акция”',
-            'link': '',
-            'status': 'promo',
-        },
-    ]
-    },
-] %}
-
 {% set user = {
     'name' : 'Ivan',
     'last_name' : 'Sidorov',
     'personType': 2,
-    'authorized': true,
-    'email': 'moymir@mail.ru'
+    'authorized': false,
 }%}
 
-{% set category_discount = {
-    title: 'Силовое',
-    total: 5000,
-    remainder: 3819.27,
-    discount: 12,
-}%}
+{% set brands = [
+    {
+        title: 'Denzel',
+        img: './demo_images/brands/denzel.png',
+        url: ''
+    },
+    {
+        title: 'Stels',
+        img: './demo_images/brands/stels.png',
+        url: ''
+    },
+    {
+        title: 'Барс',
+        img: './demo_images/brands/bars.png',
+        url: ''
+    },
+     {
+        title: 'Stern',
+        img: './demo_images/brands/stern.png',
+        url: ''
+    },
+     {
+        title: 'Sparta',
+        img: './demo_images/brands/sparta.png',
+        url: ''
+    },
+    {
+        title: 'Palisad',
+        img: './demo_images/brands/palisad.png',
+        url: ''
+    },
+    {
+        title: 'Сибртех',
+        img: './demo_images/brands/sibtex.png',
+        url: ''
+    },
+    {
+        title: 'Kronwerk',
+        img: './demo_images/brands/kronwerk.png',
+        url: ''
+    },
+    {
+        title: 'Gross',
+        img: './demo_images/brands/gross.png',
+        url: ''
+    },
+    {
+        title: 'Matrix',
+        img: './demo_images/brands/matrix.png',
+        url: ''
+    }
+]
 
-{% set product = {
-    'id': 556,
-    'name': 'Аккумуляторная бесщеточная дрель-шуруповерт DENZEL BLDL-IB-18-02, Li-Ion, 18 В, 1.5 А*ч, 2 аккумулятора',
-    'sku': '26304',
-    'stock': 20,
-    'available': true,
-    'url': '',
-    'videoUrl': 'http://www.youtube.com/embed/ODEsC4Ijc2o',
-    'threeDUrl': 'https://instrument.ru/info/3d_photo/14109/READY/3D.html',
-    'price': {
-        retail: 3819.27,
-        base: 3819.27,
-        sell: 3019.27
-    },
-    'discounts':
-    [
-        {
-            type: 'personal',
-            description: 'Персональная скидка',
-            percent: 16,
-            value: 214,
-        },
-        {
-            type: 'action',
-            description: 'Скидка по акции',
-            percent: 10,
-            value: 188,
-        },
-        {
-            type: 'total',
-            description: 'Общая скидка',
-            percent: 24,
-            value: 1066.81,
-        },
-        {
-            type: 'сategory',
-            description: 'Максимально доступная скидка для категории товаров',
-            category_name: 'Силовое',
-            percent: 24,
-            value: 38,
+%}
 
-            next: 8000,
-            more_percent: 20,
-            remainder: 3819,
-        },
-    ],
-    'guarantee': 3,
-    'brand': {
-        'link': '',
-        'logo': './demo_images/product-card/logo.svg',
-    },
-    'images': [
-        {img: './demo_images/product-big/image-70.png'},
-        {img: './demo_images/product-big/image-71.png'},
-        {img: './demo_images/product-big/image-72.png'},
-        {img: './demo_images/product-big/image-73.png'},
-        {img: './demo_images/product-big/image-74.png'},
-        {img: './demo_images/product-big/image-75.png'},
-        {img: './demo_images/product-big/image-76.png'},
-        {img: './demo_images/product-big/image-77.png'},
-        {img: './demo_images/product-big/image-78.png'},
-    ],
-    'tooltips': [
-        {
-            'id': 1,
-            'title': 'Новинка',
-            'text': 'Товар находится в акционной категории товаров “Новинка”',
-            'link': '',
-            'status': 'new',
-        },
-        {
-            'id': 2,
-            'title': 'Акция',
-            'text': 'Товар участвует в акции “Акция”',
-            'link': '',
-            'status': 'promo',
-        },
-    ],
-    'features': {
-        'main': [
-            {
-                'title': 'Тип патрона',
-                'value': 'бесключевой одномуфтовый'
-            },
-            {
-                'title': 'Число скоростей',
-                'value': '2'
-            },
-            {
-                'title': 'Тип аккумулятора',
-                'value': 'Li-Ion'
-            },
-            {
-                'title': 'Емкость аккумулятора',
-                'value': '1.5 А*ч'
-            },
-            {
-                'title': 'Напряжение аккумулятора',
-                'value': '18 В'
-            },
-            {
-                'title': 'Количество аккумуляторов в комплекте',
-                'value': '2'
-            },
-            {
-                'title': 'Время зарядки АКБ',
-                'value': '1 ч'
-            },
-            {
-                'title': 'Диаметр патрона',
-                'value': '13 мм'
-            },
-            {
-                'title': 'Число ступеней регулировки крутящего момента',
-                'value': '21+1'
-            },
-            {
-                'title': 'Блокировка шпинделя',
-                'value': 'Есть'
-            },
-            {
-                'title': 'Подсветка рабочей зоны',
-                'value': 'Есть'
-            },
-            {
-                'title': 'Индикатор заряда аккумуляторной батареи',
-                'value': 'Есть'
-            },
-            {
-                'title': 'Максимальный крутящий момент',
-                'value': '65 Нм'
-            },
-            {
-                'title': 'Максимальный диаметр сверления (металл)',
-                'value': '13 мм'
-            },
-            {
-                'title': 'Частота вращения шпинделя',
-                'value': '0-500/0-2000 об/мин'
-            },
-            {
-                'title': 'Наличие реверса',
-                'value': 'Есть'
-            },
-            {
-                'title': 'Страна бренда',
-                'value': 'Германия',
-                'country':'Germany'
-            },
-            {
-                'title': 'Страна производства',
-                'value': 'Китай',
-                'country':'China'
-            }          
-        ],
-        'packaging': [
-            {
-                'title': 'Высота',
-                'value': '335 мм'
-            },
-            {
-                'title': 'Длина',
-                'value': '495 мм'
-            },
-            {
-                'title': 'Ширина',
-                'value': '380 мм'
-            },
-            {
-                'title': 'Тип упаковки',
-                'value': 'пластиковый кейс с набором аксессуаров'
-            },
-            {
-                'title': 'Вес',
-                'value': '3.35 кг'
-            },
-            {
-                'title': 'Штрихкод',
-                'value': '4044996171326'
-            }
-        ],
-        'equipment': [
-            {
-                'title': 'Дрель-шуруповерт аккумуляторная',
-                'value': '1 шт'
-            },
-            {
-                'title': 'Батарея аккумуляторная',
-                'value': '2 шт.'
-            },
-            {
-                'title': 'Сверла спиральные по металлу',
-                'value': '6 шт.'
-            },
-            {
-                'title': 'Устройство зарядное',
-                'value': '1 шт.'
-            },
-            {
-                'title': 'Биты 25 мм (тип SL, PH, PZ)',
-                'value': '6 шт.'
-            },
-            {
-                'title': 'Адаптер магнитный для бит',
-                'value': '1 шт.'
-            },
-            {
-                'title': 'Инструкция по эксплуатации и гарантийный талон',
-                'value': '1 шт.'
-            }
-        ]
-    },
-    'description': {
-        'description': 'Аккумуляторная бесщеточная дрель-шуруповерт DENZEL BLDL-IB-18-02 26121 предназначена для домашних 
-            мастеров.Снабжена быстрозажимным патроном, что обеспечивает простую смену оснастки.Функция реверса позволяет 
-            менять направление движения и работать с трудными и прочными материалами.Обрезиненная рукоять снижает уровень 
-            вибрации, гарантируя комфорт во время использования.',
-        'features': [
-            {
-                'title': 'Эргономичная конструкция',
-                'value': 'Антивибрационные демпферы вала и узла сцепления создают комфортные условия для работы',
-                'image': './demo_images/product-features/image_1.jpg'
-            },
-            {
-                'title': 'Полуавтоматическя подача лески',
-                'value': 'Кнопка в нижней части катушки позволяет легко выпустить леску в процессе кошения',
-                'image': './demo_images/product-features/image_2.jpg'
-            },
-            {
-                'title': 'Эргономичная конструкция',
-                'value': 'Антивибрационные демпферы вала и узла сцепления создают комфортные условия для работы',
-                'image': './demo_images/product-features/image_1.jpg'
-            },
-            {
-                'title': 'Полуавтоматическя подача лески',
-                'value': 'Кнопка в нижней части катушки позволяет легко выпустить леску в процессе кошения',
-                'image': './demo_images/product-features/image_2.jpg'
-            }
-        ],
-        'advantages': [
-            'Усиленная надежная конструкция редуктора',
-            'Аккумуляторные батареи с интеллектуальной системой распознавания типа нагрузки',
-            'Совместимые с другими продуктами в модельном ряду',
-            'Светодиодная подсветка',
-            'Прорезиненная рукоятка',
-            'Единый аккумулятор',
-            'Усиленная надежная конструкция редуктора'
-        ]
-    },
-    'questions': [
-        {
-            'name': 'Роман Сычев',
-            'question': 'Здравствуйте! Является ли максимальный диаметр в паспорте предельным или рекомендуемым?',
-            'answer': 'Рассматривая технические характеристики дрелей, показатель максимального диаметра сверления следует считать '
-        },
-        {
-            'name': 'Роман Сычев1',
-            'question': 'Здравствуйте! Является ли максимальный диаметр в паспорте предельным или рекомендуемым?',
-            'answer': 'Рассматривая технические характеристики дрелей, показатель максимального диаметра сверления следует считать 
-                рекомендованным. Некоторые производители в инструкциях называют его предельным, определяя тем самым величину, которую 
-                Рассматривая технические характеристики дрелей, показатель максимального диаметра сверления следует считать 
-                рекомендованным. Некоторые производители в инструкциях называют его предельным, определяя тем самым величину, которую'
-        },
-         {
-            'name': 'Роман Сычев2',
-            'question': 'Здравствуйте! Является ли максимальный диаметр в паспорте предельным или рекомендуемым?',
-            'answer': 'Рассматривая технические характеристики дрелей, показатель максимального диаметра сверления следует считать 
-                рекомендованным. Некоторые производители в инструкциях называют его предельным, определяя тем самым величину, которую 
-                Рассматривая технические характеристики дрелей, показатель максимального диаметра сверления следует считать 
-                рекомендованным. Некоторые производители в инструкциях называют его предельным, определяя тем самым величину, которую'
-        },
-        {
-            'name': 'Роман Сычев3',
-            'question': 'Здравствуйте! Является ли максимальный диаметр в паспорте предельным или рекомендуемым?',
-            'answer': 'Рассматривая технические характеристики дрелей, показатель максимального диаметра сверления следует считать 
-                рекомендованным. Некоторые производители в инструкциях называют его предельным, определяя тем самым величину, которую 
-                Рассматривая технические характеристики дрелей, показатель максимального диаметра сверления следует считать 
-                рекомендованным. Некоторые производители в инструкциях называют его предельным, определяя тем самым величину, которую'
-        },
-         {
-            'name': 'Роман Сычев4',
-            'question': 'Здравствуйте! Является ли максимальный диаметр в паспорте предельным или рекомендуемым?',
-            'answer': 'Рассматривая технические характеристики дрелей, показатель максимального диаметра сверления следует считать 
-                рекомендованным. Некоторые производители в инструкциях называют его предельным, определяя тем самым величину, которую 
-                Рассматривая технические характеристики дрелей, показатель максимального диаметра сверления следует считать 
-                рекомендованным. Некоторые производители в инструкциях называют его предельным, определяя тем самым величину, которую'
-        },
-        {
-            'name': 'Роман Сычев5',
-            'question': 'Здравствуйте! Является ли максимальный диаметр в паспорте предельным или рекомендуемым?',
-            'answer': 'Рассматривая технические характеристики дрелей, показатель максимального диаметра сверления следует считать 
-                рекомендованным. Некоторые производители в инструкциях называют его предельным, определяя тем самым величину, которую 
-                Рассматривая технические характеристики дрелей, показатель максимального диаметра сверления следует считать 
-                рекомендованным. Некоторые производители в инструкциях называют его предельным, определяя тем самым величину, которую'
-        },
-         {
-            'name': 'Роман Сычев6',
-            'question': 'Здравствуйте! Является ли максимальный диаметр в паспорте предельным или рекомендуемым?',
-            'answer': 'Рассматривая технические характеристики дрелей, показатель максимального диаметра сверления следует считать 
-                рекомендованным. Некоторые производители в инструкциях называют его предельным, определяя тем самым величину, которую 
-                Рассматривая технические характеристики дрелей, показатель максимального диаметра сверления следует считать 
-                рекомендованным. Некоторые производители в инструкциях называют его предельным, определяя тем самым величину, которую'
-        },
-        {
-            'name': 'Роман Сычев',
-            'question': 'Здравствуйте! Является ли максимальный диаметр в паспорте предельным или рекомендуемым?',
-            'answer': 'Рассматривая технические характеристики дрелей, показатель максимального диаметра сверления следует считать '
-        },
-        {
-            'name': 'Роман Сычев7',
-            'question': 'Здравствуйте! Является ли максимальный диаметр в паспорте предельным или рекомендуемым?',
-            'answer': 'Рассматривая технические характеристики дрелей, показатель максимального диаметра сверления следует считать 
-                рекомендованным. Некоторые производители в инструкциях называют его предельным, определяя тем самым величину, которую 
-                Рассматривая технические характеристики дрелей, показатель максимального диаметра сверления следует считать 
-                рекомендованным. Некоторые производители в инструкциях называют его предельным, определяя тем самым величину, которую'
-        },
-         {
-            'name': 'Роман Сычев8',
-            'question': 'Здравствуйте! Является ли максимальный диаметр в паспорте предельным или рекомендуемым?',
-            'answer': 'Рассматривая технические характеристики дрелей, показатель максимального диаметра сверления следует считать 
-                рекомендованным. Некоторые производители в инструкциях называют его предельным, определяя тем самым величину, которую 
-                Рассматривая технические характеристики дрелей, показатель максимального диаметра сверления следует считать 
-                рекомендованным. Некоторые производители в инструкциях называют его предельным, определяя тем самым величину, которую'
-        },
-        {
-            'name': 'Роман Сычев9',
-            'question': 'Здравствуйте! Является ли максимальный диаметр в паспорте предельным или рекомендуемым?',
-            'answer': 'Рассматривая технические характеристики дрелей, показатель максимального диаметра сверления следует считать 
-                рекомендованным. Некоторые производители в инструкциях называют его предельным, определяя тем самым величину, которую 
-                Рассматривая технические характеристики дрелей, показатель максимального диаметра сверления следует считать 
-                рекомендованным. Некоторые производители в инструкциях называют его предельным, определяя тем самым величину, которую'
-        },
-         {
-            'name': 'Роман Сычев10',
-            'question': 'Здравствуйте! Является ли максимальный диаметр в паспорте предельным или рекомендуемым?',
-            'answer': 'Рассматривая технические характеристики дрелей, показатель максимального диаметра сверления следует считать 
-                рекомендованным. Некоторые производители в инструкциях называют его предельным, определяя тем самым величину, которую 
-                Рассматривая технические характеристики дрелей, показатель максимального диаметра сверления следует считать 
-                рекомендованным. Некоторые производители в инструкциях называют его предельным, определяя тем самым величину, которую'
-        },
-        {
-            'name': 'Роман Сычев11',
-            'question': 'Здравствуйте! Является ли максимальный диаметр в паспорте предельным или рекомендуемым?',
-            'answer': 'Рассматривая технические характеристики дрелей, показатель максимального диаметра сверления следует считать 
-                рекомендованным. Некоторые производители в инструкциях называют его предельным, определяя тем самым величину, которую 
-                Рассматривая технические характеристики дрелей, показатель максимального диаметра сверления следует считать 
-                рекомендованным. Некоторые производители в инструкциях называют его предельным, определяя тем самым величину, которую'
-        }
-    ]
-} %}
-
-{% set showStickyCard = true %}
 
 {% block content %}
 
@@ -1621,35 +926,16 @@
                 'url': '/'
             },
             {
-                'title': 'Силовое оборудование',
-                'url': '/PowerEquipment/'
-            },
-            {
-                'title': 'Электроинструменты',
-                'url': '/PowelTools/'
-            },
-            {
-                'title': 'Дрели',
-                'url': '/Drills/'
+                'title': 'Бренды',
+                'url': '/brends/'
             },
         ]
     } %}
-    {% include '../../../templates/product-card/product-card.twig' with {'product': product} %}
-    {% include '../../../templates/product-card/same-products.twig' with {'productsSames': productsSames, 'user': user} %}
-    {% include '../../../templates/product-card/product-tabs.twig' with {
-        'product': product,
-        'category_discount': category_discount,
-        'user': user
-    } %}
-    {% include '../../../templates/product-card/recommend.twig' with {'productsRecommended': productsRecommended} %}
-    {% include '../../../templates/product-card/banner.twig' with {
-        'banner': '/demo_images/banners/product-card.png', 
-        'bannerMobile': '/demo_images/banners/mob-banner.png'
-    } %}
+    {% include '../../../templates/brands/page-brands.twig' with {'brands': brands} %}
     {% include '../../../templates/footer/footer.twig'  with {
         'countries': countries,
         'activeCountry': 'Россия',
-        'user': user
+        'user': user,
     } %}
     
 {% endblock %}

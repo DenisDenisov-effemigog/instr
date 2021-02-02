@@ -149,6 +149,13 @@ class Api {
             date: date,
         });
     }
+
+    sendQuestion(email, message) {
+        return this._promiseBitrixRequest('instrument2:rest.api.question.send', {
+            message: message,
+            email: email,
+        });
+    }
     
 }
 

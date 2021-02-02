@@ -38,6 +38,7 @@
                     <cart-order-head 
                         :mobileFlag="true"
                         :currentPrice="productsPrice"
+                        :salePrice="salePrice"
                     ></cart-order-head>
                     <selected-items
                         :products="oldProducts"
@@ -83,6 +84,8 @@
                 <div class="cart__sidebar">
                     <cart-order
                         :productsPrice="productsPrice"
+                        :productsSales="discounts"
+                        :salePrice="salePrice"
                     ></cart-order>
                 </div>
             </div>
@@ -91,11 +94,11 @@
 </template>
 
 <script>
-import CartOrderHead from './cart-order-head.vue'
-import CartOrder from './cart-order.vue'
-import CartCard from './cart-card.vue'
-import SelectedItems from './selected-items.vue'
-import store from "../../store";
+    import CartOrderHead from './cart-order-head.vue'
+    import CartOrder from './cart-order.vue'
+    import CartCard from './cart-card.vue'
+    import SelectedItems from './selected-items.vue'
+
     export default {
         name: "cart",
         components: {
@@ -107,6 +110,14 @@ import store from "../../store";
         props: {
             view:{
                 type: String,
+                required: true,
+            },
+            salePrice:{
+                type: Number,
+                required: true,
+            },
+            discounts:{
+                type: Array,
                 required: true,
             }  
         },

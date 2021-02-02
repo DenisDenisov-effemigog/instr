@@ -862,6 +862,10 @@
     'authorized': true,
 }%}
 
+{% set discounts = [
+    918, 1, 1
+] %}
+
 {% block content %}
 
     {% include '../../../templates/header/header.twig' with {'categories': categories, 'user': user} %}
@@ -877,7 +881,7 @@
             },
         ]
     } %}
-    {% include '../../../templates/cart/cart.twig' %}
+    {% include '../../../templates/cart/cart.twig' with {'salePrice': 7500} %}
     {% include '../../../templates/footer/footer.twig'  with {
         'countries': countries,
         'activeCountry': 'Россия',

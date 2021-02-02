@@ -21,7 +21,7 @@
                 </svg>
             </vue-ellipse-progress>
         </div>
-        <div class="cart-order__head-text" v-if="currentPrice > rightPrice">{{ $tc('cart.order.progress_success') }}</div>
+        <div class="cart-order__head-text" v-if="currentPrice > salePrice">{{ $tc('cart.order.progress_success') }}</div>
         <div class="cart-order__head-text" v-else>{{ $tc('cart.order.progress_text_start') }}{{ getPrice }}{{ $tc('cart.order.progress_text_end') }}</div>
     </div>
 </template>
@@ -29,14 +29,6 @@
 <script>
 export default {
     name:"cart-order-head",
-    data(){
-        return{
-            rightPrice: 7500, /*TODO вывести из базы ???*/
-            progress: 0,
-            progressIcon: 'icons__cube',
-            progressIconSize: '0 0 24 24'
-        }
-    },
     props:{
         mobileFlag:{
             type:Boolean,
@@ -45,17 +37,27 @@ export default {
         currentPrice:{
             type: Number,
             required: true
+        },
+        salePrice:{
+            type: Number,
+            required: true,
+        }
+    },
+    data(){
+        return{
+            progress: 0,
+            progressIcon: 'icons__cube',
+            progressIconSize: '0 0 24 24'
         }
     },
     computed:{
         progressPrice() {
-            if (this.currentPrice >= this.rightPrice) {
+            if (this.currentPrice >= this.salePrice) {
                 this.progress = 100;
                 this.progressIcon = 'check';
                 this.progressIconSize = '-1 -2 12 12';
             } else {
-                this.progress = this.currentPrice/this.rightPrice*100;
-                this.progress = this.currentPrice/7500*100;
+                this.progress = this.currentPrice/this.salePrice*100;
                 this.progressIcon = 'icons__cube';
                 this.progressIconSize = '0 0 24 24';
             }
@@ -63,7 +65,7 @@ export default {
             return this.progress
         },
         getPrice(){
-            return this.rightPrice - this.currentPrice
+            return this.salePrice - this.currentPrice
         }
     }
 }

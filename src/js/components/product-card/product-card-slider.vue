@@ -1,10 +1,10 @@
 <template>
     <div class="product-card-slider">
-        <VueSlickCarousel
+        <!-- <VueSlickCarousel
             class="product-card-slider__previous"
             v-bind="settingsForPrev"
             ref="previous"
-            :asNavFor="$refs.main"
+            @beforeChange="current"
         >
             <template #prevArrow>
                 <svg class="product-card-slider__previous_arrow" viewBox="0 0 10 10">
@@ -20,12 +20,36 @@
                     <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-down'"></use>
                 </svg>
             </template>
-        </VueSlickCarousel>
+        </VueSlickCarousel> -->
+        <div class="product-card-slider__previous">
+            <div>
+                <svg ref="prev" class="product-card-slider__previous_arrow" viewBox="0 0 10 10" @click="prevSlide" :class="{'product-card-slider__previous_arrow--default': currentIndex == 0}">
+                    <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-top'"></use>
+                </svg>
+            </div>
+            <div class="product-card-slider__wrap">
+                <ul class="product-card-slider__list" :style="`transform:translateY(${-transition}px)`">
+                    <li ref="slide" class="product-card-slider__item"
+                        :class="{'product-card-slider__item--current': index === currentIndex}"
+                        :data-index="index"
+                        v-for="(productImage, index) in productImages"
+                    >
+                        <div class="product-card-slider__pic">
+                            <img :src="productImage.img" alt="">
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <svg ref="next" class="product-card-slider__previous_arrow" viewBox="0 0 12 12" @click="nextSlide" :class="{'product-card-slider__previous_arrow--default': currentIndex == productImages.length - 1}">
+                    <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-down'"></use>
+                </svg>
+            </div>
+        </div>
         <VueSlickCarousel
             class="product-card-slider__main"
             v-bind="settings"
             ref="main"
-            :asNavFor="$refs.previous"
         >
             <div class="product-card-slider__main_slide"
                  v-for="productImage in productImages"
@@ -57,6 +81,8 @@ export default {
     },
     data() {
         return {
+            currentIndex: 0,
+            transition: 0,
             x:0,
             y:0,
             openZoom: false,
@@ -77,25 +103,46 @@ export default {
                     }
                 ]
             },
-            settingsForPrev: {
-                dots: false,
-                slidesToShow: 4,
-                slidesToScroll: 1,
-                vertical: true,
-                verticalSwiping: true,
-                focusOnSelect: true,
-                responsive: [
-                    {
-                        breakpoint: 768,
-                        settings: {
-                            
-                        }
-                    }
-                ]
-            },
         }
     },
     methods: {
+
+        // clickSlide(index){ TODO будут тестить без клика по слайду
+        //     this.currentIndex = index
+        //     this.$refs.main.goTo(this.currentIndex)
+        // }, 
+        nextSlide(e){
+            if(this.$refs.next.classList.contains('product-card-slider__previous_arrow--default')){
+                e.preventDefault()
+            }else{
+                if(this.currentIndex < this.productImages.length - 1){
+                    if(this.currentIndex <= this.productImages.length - 5){
+                        this.transition = 74 * (this.currentIndex + 1)
+                    }
+                    this.currentIndex += 1
+                    this.$refs.main.goTo(this.currentIndex)
+                }else{
+                    this.currentIndex = this.productImages.length - 1
+                    this.$refs.main.goTo(this.currentIndex)
+                }
+            }
+        },
+        prevSlide(e){
+            if(this.$refs.prev.classList.contains('product-card-slider__previous_arrow--default')){
+                e.preventDefault()
+            }else{
+                if(this.currentIndex > 0){
+                    if(this.currentIndex <= this.productImages.length - 4){
+                        this.transition = 74 * (this.currentIndex - 1)
+                    }
+                    this.currentIndex -= 1
+                    this.$refs.main.goTo(this.currentIndex)
+                }else{
+                    this.currentIndex = 0
+                    this.$refs.main.goTo(this.currentIndex)
+                }
+            }
+        },
         openModal(){
             this.$eventBus.$emit("openModal", 'product-card', this.productImages, true, true)
         },

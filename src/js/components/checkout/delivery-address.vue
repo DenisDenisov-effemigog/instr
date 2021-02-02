@@ -199,6 +199,9 @@
                 required
             }
         },
+        created() {
+            this.$eventBus.$on('address-error', this.addressError)
+        },
         methods: {
             buildAddress() {
                 this.$eventBus.$emit('push-address',  this.city, this.street, this.house, this.building, this.floor, this.apart)
@@ -209,6 +212,11 @@
                 } else if (data.itemName == 'street') {
                     this.street = data.value
                 }
+            },
+            addressError() {
+                let vm = this
+                vm.$v.$touch();
+                window.scroll({ top: vm.$el, behavior: 'smooth'})
             }
         }
     }

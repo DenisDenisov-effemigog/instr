@@ -3,26 +3,6 @@
         <div class="checkout__main" v-if="loaded" 
              :class="{'checkout__main--border-none': successFlag === 'success' || value !== 'new'}"
         >
-            <h2 v-show="successFlag === 'success'" 
-                class="checkout__title"
-            >{{ $tc('checkout.title.success') }}</h2>
-            <div v-show="successFlag === 'success'" 
-                 class="checkout-success"
-            >
-                <div v-if="newAddressFlag" class="checkout-success__text">{{ $tc('checkout.text.success_new_address') }}</div>
-                <div v-else class="checkout-success__text">{{ $tc('checkout.text.success') }}</div>
-                <div class="checkout-success__number">
-                    <span class="checkout-success__number-text">{{ $tc('checkout.title.order_number') }}:</span>
-                    <span>123456789009876</span><!--TODO из базы-->
-                </div>
-                <div class="checkout-success__date">
-                    <span class="checkout-success__date-title">{{ $tc('checkout.title.order_date') }}:</span>
-                    <span>12.10.2020</span><!--TODO из базы-->
-                </div>
-                <div class="checkout-success__btn"
-                    @click="successFlag='pay'"
-                >{{ $tc('button.go_catalog') }}</div>
-            </div>
             <h2 v-show='value === "experienced" && successFlag === "pay"' 
                 class="checkout__title"
             >{{ $tc('modal.title.auth') }}</h2>
@@ -129,9 +109,11 @@
     import CheckoutReg from './checkout-reg.vue'
     import DeliveryDate from './delivery-date.vue'
     import DeliveryPayment from './delivery-payment.vue'
+    import config from "../../config";
     import * as Api from '../../api/index'
 
     let api = Api.getInstance();
+    let base64 = require('base-64');
 
     export default {
         components: { cartOrder, UserLogin, CheckoutReg, CheckoutDelivery, DeliveryDate, DeliveryPayment },
@@ -184,7 +166,7 @@
             addresses() {
                 let selectAddresses = []
                 this.$store.state.personal.addresses.map(address=>{
-                    address.label = 'Адрес №' + address.order + ': ' + address.address
+                    address.label = this.$tc('text.address') + ' №' + address.order + ': ' + address.address
                     address.value = address.order
                     selectAddresses.push(address)
                 })
@@ -216,7 +198,6 @@
                 this.userData.code = code
                 this.userData.phone = phone
                 this.userData.newEmail = newEmail
-                console.log(this.userData)
             },
             buildDeliveryPoint(point){
                 this.currentDeliveryPoint = point
@@ -261,50 +242,91 @@
             },
             sendOrder() {
                 let vm = this;
-                /*vm.personType, vm.userData, vm.currentDeliveryPoint (vm.deliveryAddress, vm.pointAddress), vm.currentDeliveryPayment, vm.actionsAgreement, vm.message, vm.date*/
+                
                 if (vm.addresses.length && vm.deliveryAddress === '') {
                     vm.deliveryAddress = vm.addresses[0]
                 }
                 
-                let orderData = []
-                /*TODO хорошо потестить*//*TODO вывести ошибки*/
+                let orderData = {}
                 if (!vm.user.authorized) {
                     if (vm.personType === 1) {
                         if (vm.userData.name && vm.userData.phone && vm.userData.newEmail) {
-                            if (vm.currentDeliveryPoint === 'delivery' && vm.deliveryNewAddress.city && vm.deliveryNewAddress.street && vm.deliveryNewAddress.house && vm.deliveryNewAddress.apart) {
-                                orderData.push(vm.personType, vm.userData, vm.currentDeliveryPoint, vm.deliveryNewAddress)
+                            if (vm.currentDeliveryPoint === 'delivery') {
+                                if (vm.deliveryNewAddress.city && 
+                                    vm.deliveryNewAddress.street && 
+                                    vm.deliveryNewAddress.house && 
+                                    vm.deliveryNewAddress.apart
+                                ) {
+                                    orderData.personeType = vm.personType
+                                    orderData.registrationData = vm.userData
+                                    orderData.delivery = vm.currentDeliveryPoint
+                                    orderData.deliveryAddress = vm.deliveryNewAddress
+                                } else {
+                                    vm.$eventBus.$emit('address-error')
+                                }
                             } else if (vm.currentDeliveryPoint === 'receive') {
-                                orderData.push(vm.personType, vm.userData, vm.currentDeliveryPoint, vm.pointAddress.label)
+                                orderData.personeType = vm.personType
+                                orderData.registrationData = vm.userData
+                                orderData.delivery = vm.currentDeliveryPoint
+                                orderData.deliveryAddress = vm.pointAddress.label
                             }
+                        } else {
+                            vm.$eventBus.$emit('register-error')
                         }
                     } else if (vm.personType === 2) {
                         if (vm.userData.name && vm.userData.company && vm.userData.code && vm.userData.phone && vm.userData.newEmail) {
-                            if (vm.currentDeliveryPoint === 'delivery' && vm.deliveryNewAddress.city && vm.deliveryNewAddress.street && vm.deliveryNewAddress.house && vm.deliveryNewAddress.apart) {
-                                orderData.push(vm.personType, vm.userData, vm.currentDeliveryPoint, vm.deliveryNewAddress)
+                            if (vm.currentDeliveryPoint === 'delivery') {
+                                if (vm.deliveryNewAddress.city &&
+                                    vm.deliveryNewAddress.street &&
+                                    vm.deliveryNewAddress.house &&
+                                    vm.deliveryNewAddress.apart
+                                ) {
+                                    orderData.personeType = vm.personType
+                                    orderData.registrationData = vm.userData
+                                    orderData.delivery = vm.currentDeliveryPoint
+                                    orderData.deliveryAddress = vm.deliveryNewAddress
+                                } else {
+                                    vm.$eventBus.$emit('address-error')
+                                }
                             } else if (vm.currentDeliveryPoint === 'receive') {
-                                orderData.push(vm.personType, vm.userData, vm.currentDeliveryPoint, vm.pointAddress.label)
+                                orderData.personeType = vm.personType
+                                orderData.registrationData = vm.userData
+                                orderData.delivery = vm.currentDeliveryPoint
+                                orderData.deliveryAddress = vm.pointAddress.label
                             }
+                        } else {
+                            vm.$eventBus.$emit('register-error')
                         }
                     }
                 } else if (vm.user.authorized) {
                     if (vm.currentDeliveryPoint === 'receive') {
-                        orderData.push(vm.currentDeliveryPoint, vm.pointAddress.label)
+                        orderData.delivery = vm.currentDeliveryPoint
+                        orderData.deliveryAddress = vm.pointAddress.label
                     } else if (vm.currentDeliveryPoint === 'delivery') {
-                        if (!vm.addresses.length && vm.deliveryNewAddress.city && vm.deliveryNewAddress.street && vm.deliveryNewAddress.house && vm.deliveryNewAddress.apart) {
-                            orderData.push(vm.currentDeliveryPoint, vm.deliveryNewAddress)
+                        if (!vm.addresses.length) {
+                            if (vm.deliveryNewAddress.city &&
+                                vm.deliveryNewAddress.street &&
+                                vm.deliveryNewAddress.house &&
+                                vm.deliveryNewAddress.apart
+                            ) {
+                                orderData.delivery = vm.currentDeliveryPoint
+                                orderData.deliveryAddress = vm.deliveryNewAddress
+                            } else {
+                                vm.$eventBus.$emit('address-error')
+                            }
                         } else if (vm.addresses.length) {
-                            orderData.push(vm.currentDeliveryPoint, vm.deliveryAddress.label)
+                            orderData.delivery = vm.currentDeliveryPoint
+                            orderData.deliveryAddress = vm.deliveryAddress.label
                         }
                     }
                 }
-                console.log('1',orderData)
-                /*TODO сделать красивым отправляемый массив*/
-                if (orderData.length) {
+                
+                if (orderData.delivery) {
                     api.orderValidate(orderData, vm.actionsAgreement, vm.message, vm.date).then(() => {
                         api.orderCreate(orderData, vm.actionsAgreement, vm.message, vm.date).then(answer => {
                             if (answer.order) {
 
-                                /*if(answer.payment_form) {
+                                if(answer.payment_form) {
                                     let elem = document.createElement('div');
                                     elem.style.cssText = 'position:absolute;left:0;top:0;z-index:-1000;opacity:0';
                                     elem.innerHTML = base64.decode(answer.payment_form);
@@ -312,10 +334,10 @@
                                     let form = elem.querySelector('form');
                                     if(form) {
                                         form.submit();
-                                    }
+                                    } 
                                 } else {
                                     window.location.replace(config.links.order_success + answer.order);
-                                }*/
+                                }
                             }
                         }).catch(errors => {
                             console.error('Cannot create order');
@@ -325,9 +347,13 @@
                         console.error('Cannot validate order');
                         console.log(errors);
                     })
-                    vm.successFlag='success'
                 } else {
-                    console.log('!!! Заполнены не все поля !!!')
+                    if (!vm.user.authorized) {
+                        vm.$eventBus.$emit('register-error')
+                    }
+                    if (vm.currentDeliveryPoint === 'delivery' && !vm.addresses.length) {
+                        vm.$eventBus.$emit('address-error')
+                    }
                 }
             }
         },

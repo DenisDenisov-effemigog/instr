@@ -1,0 +1,37 @@
+.brands
+    @extend .container
+    margin-top: 1.5rem
+    &__title
+        @extend .title-5
+    &__list
+        margin-top: 2rem
+        display: flex
+        flex-wrap: wrap
+        margin: 0 -0.5rem
+        +tablet
+            margin: 0 -0.75rem
+    &__item
+        width: 50%
+        padding: 0.5rem
+        +tablet
+            width: 25%
+            padding: 0.75rem
+            cursor: pointer
+    &__wrap
+        background: $pre-white
+        display: flex
+        align-items: center
+        justify-content: center
+        +tablet
+            .brands__link img
+                    transition: 0.35s
+            &:hover
+                .brands__link img
+                    transform: scale(1.2)
+    &__link
+        padding: 1.5rem 0.75rem
+        +tablet
+            padding: 4.03125rem 3.75rem
+
+            
+                
