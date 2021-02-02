@@ -860,7 +860,7 @@
     'authorized': false,
 }%}
 
-{% set orders = [
+{% set brands = [
     {
         title: 'Denzel',
         img: './demo_images/brands/denzel.png',
@@ -931,7 +931,7 @@
             },
         ]
     } %}
-    {% include '../../../templates/brands/page-brands.twig' with {'orders': orders} %}
+    {% include '../../../templates/pages/page-brands.twig' with {'brands': brands} %}
     {% include '../../../templates/footer/footer.twig'  with {
         'countries': countries,
         'activeCountry': 'Россия',
