@@ -24,7 +24,8 @@
                     :name="itemName"
                     :class="[
                         'form__input',
-                        'autocomplete-input'
+                        'autocomplete-input',
+                        {'form__input--error': $v.value.$error}
                     ]"
                 >
                 <ul v-bind="resultListProps" v-on="resultListListeners" class="autocomplete-result-list">
