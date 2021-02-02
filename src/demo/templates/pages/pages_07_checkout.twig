@@ -986,6 +986,10 @@
     },
 ]%}
 
+{% set discounts = [
+    918, 1, 1
+] %}
+
 {% block content %}
 
     {% include '../../../templates/header/header.twig' with {'categories': categories, 'user': user} %}
@@ -1006,6 +1010,8 @@
         'deliveries': deliveries,
         'payments': payments,
         'deliveryPoints': deliveryPoints,
+        'discounts': discounts,
+        'salePrice': 7500
     } %}
     {% include '../../../templates/footer/footer.twig'  with {
         'countries': countries,
