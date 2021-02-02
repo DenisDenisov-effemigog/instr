@@ -29,7 +29,7 @@
             </div>
 
             <div class="modal__slider" v-if="modal === 'product-card'">
-                <component is="photo-modal" :productImages="props"></component>
+                <component is="photo-modal" :productImages="props" :currentSlide="currentSlide"></component>
             </div>
             <div class="modal__video" v-else-if="modal === 'openVideo'">
                 <iframe :src="props" frameborder="0" allowfullscreen></iframe>
@@ -123,7 +123,8 @@ export default {
             modal: '',
             props: [],
             modalBigger: false,
-            showCloseBtn: true
+            showCloseBtn: true,
+            currentSlide: 0
         }
     },
     created(){
@@ -134,7 +135,8 @@ export default {
         this.$eventBus.$off('openModal');
     },
     methods:{
-        openModal(modal, props, modalSize, closeBtn){
+        openModal(modal, props, modalSize, closeBtn, index = 0){
+            this.currentSlide = index
             this.toggleHtmlOverflow('hidden')
             this.open = true
             this.modal = modal //Название модального окна, которое должно открыться
