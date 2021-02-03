@@ -1,9 +1,8 @@
 .slider-cards
     @extend .container
-    margin-right: 0
     margin-bottom: 3.5rem
-    +desktop
-        margin-right: auto
+    +mobile
+        margin-right: 0
     & > .agile > .agile__list
         +desktop
             width: calc(100% - 5.625rem)
@@ -30,7 +29,7 @@
             transform: translate(0)
             border-radius: $border-radius
             width: 4.125rem
-            height: 29.188rem
+            height: 100%
             display: none
             +desktop
                 display: block
@@ -42,9 +41,6 @@
             & svg
                 fill: $icon-grey
                 width: .375rem
-    &--short-card .agile__nav-button
-        &--next
-            height: 26.25rem
     & .card
         +mobile
             padding: 0
