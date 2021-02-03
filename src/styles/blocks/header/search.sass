@@ -18,144 +18,137 @@
     &::-webkit-scrollbar
         width: 0
     overflow: hidden
-    &_opened
+    &--opened
         max-height: 100vh
         +tablet
             max-height: 80vh
         opacity: 1
         margin: 0 -1rem
         overflow: auto
-    &-result
+    &__result
         order: 2
         padding-bottom: 1rem
         font-size: $font-size_4
         +desktop
             border-bottom: 1px solid $border-color_2
-        &__item
-            padding: 0.75rem 1rem
-            display: flex
-            justify-content: space-between
-            align-items: center
-            +desktop
-                display: block
-                cursor: pointer
-                &:hover
-                    background: $pre-white
-        &__link
-            font-size: $font-size_4
-        &__clear
-            cursor: pointer
-            padding: 0.75rem 1rem
-            display: flex
-            justify-content: center
-            +desktop
-                justify-content: space-between
-            &-text
-                order: 2
-                padding-left: 0.5rem
-                color: $blue
-                font-weight: 600
-                +desktop
-                    padding-left: 0
-                    order: 1
-                    &:hover
-                        text-decoration: underline
-                
-                
-            &-pic
-                order: 1
-                +desktop
-                    order: 2
-                &-icon
-                    fill: $blue
-                    width: $size_18
-                    height: $size_18
-        &__close
+        &--close
             display: none
-        &__pic
-            &-icon
-                width: $size_18
-                height: $size_18
-                fill: $black
-            +desktop
-                display: none
-    &-category
+    &__result-item
+        padding: 0.75rem 1rem
+        display: flex
+        justify-content: space-between
+        align-items: center
+        +desktop
+            display: block
+            cursor: pointer
+            &:hover
+                background: $pre-white
+    &__result-link
+        font-size: $font-size_4
+    &__result-pic
+        +desktop
+            display: none
+    &__result-pic-icon
+        width: $size_18
+        height: $size_18
+        fill: $black
+    &__clear
+        cursor: pointer
+        padding: 0.75rem 1rem
+        display: flex
+        justify-content: center
+        +desktop
+            justify-content: space-between
+    &__clear-text
+        @extend .link-blue
+        @extend .subtitle-4
+        order: 2
+        padding-left: 0.5rem
+        background-position: 0% 70%
+        +desktop
+            padding-left: 0
+            order: 1
+    &__clear-pic
+        order: 1
+        +desktop
+            order: 2
+    &__clear-icon
+        fill: $blue
+        width: $size_18
+        height: $size_18
+    &__category
         order: 1
         padding: 1rem 1rem 0.5rem 1rem
         +desktop
             border-bottom: 1px solid $border-color_2
-        &__title
-            display: none
-            +desktop
-                display: block
-            font-size: $font-size_3
-            color: $black
-        &__list
-            @extend .shield
-            +desktop
-                padding-left: 1rem 
-                padding-right: 0.5rem
-        &__item
-        &__link
-            @extend .shield__item
-            &--active
-                @extend .shield__item--active
-    &-items
+    &__category-title
         display: none
         +desktop
             display: block
-        &__title
-            padding-top: 1rem
-            padding-left: 1rem
-            font-size: $font-size_3
-            color: $black
-        &__list
-            padding-top: 2.5rem
-            &_hidden
-                overflow: hidden
-                height: 17.8125rem
-        &__item
-            cursor: pointer
-            &:hover
-                background: $pre-white
-            &:nth-child(3)
-                & ~ .search-items__item
-                    display: none
-        &__info
-            display: flex
-            padding: 1rem
-        &__desc
-            padding: 0 1rem
-            margin-right: 1.75rem
-            padding-bottom: 1rem
-            margin-bottom: -1rem
-            border-bottom: 1px solid $border-color_2
-            flex: 1
-            &-text
-                font-size: $font-size_4
-            &-price
-                font-size: $font-size_3
-                font-weight: 600
-        &__icon
-            padding-top: 1rem
-            & > svg
-                fill: $icon-grey
-                width: $size_18
-                height: $size_18
-        &__download
-            display: flex
-            justify-content: center
-            align-items: center
-            padding-bottom: 1.5rem
-            &-text
-                @extend .profile__link
-                padding-right: 0.625rem
-            &-pic
-                margin-top: 1.5rem
-                &-icon
-                    fill: $icon-blue
-                    width: $size_16
-                    height: $size_10
-
-
+        font-size: $font-size_3
+        color: $black
+    &__category-list
+        @extend .shield
+        +desktop
+            padding-left: 1rem 
+            padding-right: 0.5rem
+    &__category-item
+    &__category-link
+        @extend .shield__item
+        &--active
+            @extend .shield__item--active
+    &__items
+        display: none
+        +desktop
+            display: block
+    &__items-title
+        padding-top: 1rem
+        padding-left: 1rem
+        font-size: $font-size_3
+        color: $black
+    &__items-list
+        padding-top: 2.5rem
+        &_hidden
+            overflow: hidden
+            height: 17.8125rem
+    &__item
+        cursor: pointer
+        &:hover
+            background: $pre-white
+        &:nth-child(3)
+            & ~ .search-items__item
+                display: none
+    &__item-info
+        display: flex
+        padding: 1rem
+    &__item-desc
+        padding: 0 1rem
+        margin-right: 1.75rem
+        padding-bottom: 1rem
+        margin-bottom: -1rem
+        border-bottom: 1px solid $border-color_2
+        flex: 1
+    &__item-desc-text
+        font-size: $font-size_4
+    &__item-price
+        font-size: $font-size_3
+        font-weight: 600
+    &__item-icon
+        padding-top: 1rem
+        & > svg
+            fill: $icon-grey
+            width: $size_18
+            height: $size_18
+    &__download
+        +flex-container-center
+        padding: 1.5rem 0
+    &__download-text
+        @extend .link-blue
+        @extend .show-more
+        +flex-container-center
+    &__download-icon
+        fill: $icon-blue
+        width: $size_10
+        height: $size_10
+        margin-left: 0.625rem
         
