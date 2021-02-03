@@ -1,6 +1,8 @@
 {
     "button.add_to_cart.short": "В корзину",
     "button.add_to_cart.long": "Добавить в корзину",
+    "button.add_to_cart.tooltip.part1": "К сожалению, вы не можете добавить больше",
+    "button.add_to_cart.tooltip.part2": "шт. так как в таком количестве товара нет на складе",
     "button.go_payment": "Перейти к оплате",
     "button.go_catalog": "Перейти в каталог",
     
@@ -146,7 +148,8 @@
     "header.search.placeholder_mobile": "Найти",
     "header.search.show_all": "Показать все результаты",
     "header.catalogue": "Каталог",
-    "header.catalogue.show_more": "Показать ещё",
+    "header.catalogue.show_more": "Показать все",
+    "header.catalogue.hide_more": "Скрыть все",
     "country.choose_country": "Выбор страны",
 
     "user_reg.name": "ФИО",

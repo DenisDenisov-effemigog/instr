@@ -24,7 +24,7 @@
                     <!-- <span class="add-to-cart__amount">&nbsp;{{ $tc('text.count') }}</span> -->
                 </div>
                 <div v-show="tooltipFlag" class="add-to-cart__tooltip" :class="{'add-to-cart__tooltip--active':tooltipFlag}">
-                   К сожалению, вы не можете добавить больше {{maxAmount}} шт. так как в таком количестве товара нет на складе
+                    {{ $tc('button.add_to_cart.tooltip.part1') }} {{maxAmount}} {{ $tc('button.add_to_cart.tooltip.part2') }}
                 </div>
             </div>
             

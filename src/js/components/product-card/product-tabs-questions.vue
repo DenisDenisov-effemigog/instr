@@ -83,6 +83,10 @@
                 type: Object,
                 required: true
             },
+            productId: {
+                type: Number,
+                required: true
+            },
         },
         data() {
             return {
@@ -111,7 +115,7 @@
                 if (!this.$v.$invalid) {
                     
                     let vm = this;
-                    api.sendQuestion(vm.email, vm.newQuestion).then(answer => {
+                    api.sendQuestion( vm.productId, vm.newQuestion, vm.email).then(answer => {
                         vm.newQuestionItem();
                         vm.formExpanded = false;
                         vm.quantity = vm.questions.length

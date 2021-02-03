@@ -256,6 +256,10 @@
             width: $size_18
             // min-height: 1.125rem
             margin-right: .6875rem
+            margin-top: 4px
+            align-self: baseline
+            +tablet
+                align-self: center
     &__answer-text
         display: block
         @extend .product-tabs__content-text
@@ -275,6 +279,7 @@
         right: 0
         bottom: 0
         background-color: $white
+        right: 1px
         +tablet
             right: .875rem
         & > span

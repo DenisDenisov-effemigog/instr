@@ -150,8 +150,9 @@ class Api {
         });
     }
 
-    sendQuestion(email, message) {
+    sendQuestion(productId, email, message) {
         return this._promiseBitrixRequest('instrument2:rest.api.cart.faq', {
+            productId: productId,
             message: message,
             email: email,
         });

@@ -38,7 +38,6 @@ export default{
         return {
             format:'DD.MM.YYYY',
             momentFormat: {
-                //[optional] Date to String
                 stringify: (date) => {
                     return date ? moment(date).format('DD.MM.YYYY') : ''
                 },
@@ -46,8 +45,12 @@ export default{
             lang:{
                 formatLocale: {
                     firstDayOfWeek: 1,
+                    months: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+                    weekdaysMin: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
                 },
                 monthFormat: 'MMMM',
+                dayFormat: 'D',
+               
             }
         }
     },
