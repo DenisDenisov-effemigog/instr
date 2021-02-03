@@ -73,6 +73,10 @@ export default {
         props: {
             required: true,
             type: Object,
+        },
+        currentSlide: {
+            required: true,
+            type: Number,
         }
     },
     data() {
@@ -83,12 +87,14 @@ export default {
                 slidesToShow: 1,
                 slidesToScroll: 1,
                 draggable: false,
+                initialSlide: this.currentSlide,
             },
             settingsForPrev: {
                 dots: false,
                 slidesToShow: 4,
                 slidesToScroll: 1,
                 focusOnSelect: true,
+                initialSlide: this.currentSlide,
                 responsive: [
                     {
                         breakpoint: 768,
