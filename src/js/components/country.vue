@@ -25,8 +25,8 @@
                 </div>
             </div>
             <div class="country__map">
-                <!-- <img :src="templatePath + 'images/country/globus.png'" alt="" class="country__map-pic"> -->
-                <img :src="templatePath + 'images/country/map-dots.png'" alt="" class="country__map-pic">
+                <img :src="templatePath + 'images/country/globus.png'" alt="" class="country__map-pic">
+                <!-- <img :src="templatePath + 'images/country/map-dots.png'" alt="" class="country__map-pic"> -->
             </div>
         </div>
     </div>
