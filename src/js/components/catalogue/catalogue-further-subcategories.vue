@@ -9,6 +9,9 @@
         <li v-if="!subcategoryShowAll && className ==='listing' && subcategories.length > 5" class="listing__subcategory-btn">
             <a href="" @click.prevent="subcategoryShowAll = true">{{ $tc('header.catalogue.show_more') }}</a>
         </li>
+        <li v-else-if="subcategoryShowAll && className ==='listing'" class="listing__subcategory-btn">
+            <a href="" @click.prevent="subcategoryShowAll = false">{{ $tc('header.catalogue.hide_more') }}</a>
+        </li>
     </ul>
 </template>
 

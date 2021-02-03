@@ -148,7 +148,8 @@
     "header.search.placeholder_mobile": "Найти",
     "header.search.show_all": "Показать все результаты",
     "header.catalogue": "Каталог",
-    "header.catalogue.show_more": "Показать ещё",
+    "header.catalogue.show_more": "Показать все",
+    "header.catalogue.hide_more": "Скрыть все",
     "country.choose_country": "Выбор страны",
 
     "user_reg.name": "ФИО",
