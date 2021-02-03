@@ -148,7 +148,7 @@
                     this.tooltipFlag = true
                     setTimeout(() => {
                         this.tooltipFlag = false
-                    }, 1500);
+                    }, 5000);
                 }
                 let vm = this;
 

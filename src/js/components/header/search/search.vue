@@ -1,46 +1,46 @@
 <template>
-    <div class="search" :class="{'search_opened': focused}">
-        <div class="search-result" :class="{'search-result__close': flag}">
-            <ul class="search-result__list">
-                <li v-for="item in resultArr" :key="item" class="search-result__item">
-                    <a href="#" class="search-result__link">{{item}}</a>
-                    <div class="search-result__pic">
-                        <svg class="search-result__pic-icon">
+    <div class="search" :class="{'search--opened': focused}">
+        <div class="search__result" :class="{'search__result--close': flag}">
+            <ul class="search__result-list">
+                <li v-for="item in resultArr" :key="item" class="search__result-item">
+                    <a href="#" class="search__result-link">{{item}}</a>
+                    <div class="search__result-pic">
+                        <svg class="search__result-pic-icon">
                             <use :xlink:href="templatePath + 'images/sprite.svg#arrows__mob-arrow'"></use>
                         </svg>
                     </div>
                 </li>
             </ul>
-            <div @click="clearHistory" class="search-result__clear">
-                <p class="search-result__clear-text">{{ $tc('header.search.clear_history') }}</p>
-                <div class="search-result__clear-pic">
-                    <svg class="search-result__clear-pic-icon">
+            <div @click="clearHistory" class="search__clear">
+                <p class="search__clear-text">{{ $tc('header.search.clear_history') }}</p>
+                <div class="search__clear-pic">
+                    <svg class="search__clear-icon">
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__del'"></use>
                     </svg>
                 </div>
             </div>
         </div>
-        <div class="search-category">
-            <h2 class="search-category__title">{{ $tc('header.search.categories') }}</h2>
-            <ul class="search-category__list">
-                <li @click="categoryClick" v-for="item in categoryArr" :key="item" class="search-category__item">
-                    <a href="#" class="search-category__link">{{item}}</a>
+        <div class="search__category">
+            <h2 class="search__category-title">{{ $tc('header.search.categories') }}</h2>
+            <ul class="search__category-list">
+                <li @click="categoryClick" v-for="item in categoryArr" :key="item" class="search__category-item">
+                    <a href="#" class="search__category-link">{{item}}</a>
                 </li>
             </ul>
         </div>
-        <div class="search-items">
-            <h2 class="search-items__title">{{ $tc('header.search.products') }}</h2>
-            <ul class="search-items__list">
-                <li v-for="item in itemArr" :key="item" class="search-items__item">
-                    <div class="search-items__info">
-                        <div class="search-items__img">
+        <div class="search__items">
+            <h2 class="search__items-title">{{ $tc('header.search.products') }}</h2>
+            <ul class="search__items-list">
+                <li v-for="item in itemArr" :key="item" class="search__item">
+                    <div class="search__item-info">
+                        <div class="search__item-img">
                             <img :src="templatePath + 'images/search/item.png'" alt="" class="search-items__pic">
                         </div>
-                        <div class="search-items__desc">
-                            <p class="search-items__desc-text">Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel 52 сс</p>
-                            <p class="search-items__desc-price">2 819 {{ $tc('text.currency') }}</p>
+                        <div class="search__item-desc">
+                            <p class="search__item-desc-text">Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel 52 сс</p>
+                            <p class="search__item-price">2 819 {{ $tc('text.currency') }}</p>
                         </div>
-                        <div class="search-items__icon">
+                        <div class="search__item-icon">
                             <svg class="">
                                 <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                             </svg>
@@ -48,14 +48,14 @@
                     </div>
                 </li>
             </ul>
-            <div class="search-items__download">
+            <div class="search__download">
                 <!-- Переход к результатам -->
-                <a href="#" class="search-items__download-text">{{ $tc('header.search.show_all') }}</a>
-                <div class="search-items__download-pic">
-                    <svg class="search-items__download-pic-icon" viewBox="0 0 12 10">
+                <a href="#" class="search__download-text">
+                    {{ $tc('header.search.show_all') }}
+                    <svg class="search__download-icon" viewBox="-3 0 12 10">
                         <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                     </svg>
-                </div>
+                </a>
             </div>
         </div>
     </div>
@@ -84,9 +84,9 @@ export default {
             this.flag = true
         },
         categoryClick(e){
-            if(e.target.classList.contains('search-category__link')){
+            if(e.target.classList.contains('search__category-link')){
                 let a = e.target
-                a.classList.toggle('search-category__link--active')
+                a.classList.toggle('search__category-link--active')
             }
         }
     },
