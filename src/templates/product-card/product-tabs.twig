@@ -16,7 +16,7 @@
                             </div>
                         </div>
                         <div class="product-tabs__features-value">
-                            <a href="#">{{ product.guarantee }} {{ 'product_card.tabs.years'|trans }}</a>
+                            <a href="{{ product.guaranteeUrl }}">{{ product.guarantee }} {{ 'product_card.tabs.years'|trans }}</a>
                         </div>
                     </li>
                     {% for feature in product.features.main %}

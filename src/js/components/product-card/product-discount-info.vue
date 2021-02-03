@@ -34,54 +34,55 @@
     <div class="discount-info" v-else>
         <div class="discount-info__offer">
             <div class="discount-info__offer-text">{{ $tc('product_card.offer.text') }}</div>
-            <a href="" class="discount-info__offer-btn">{{ $tc('product_card.offer.button') }}</a>
+            <a class="discount-info__offer-btn"
+               href="" 
+               @click="redirect"
+            >{{ $tc('product_card.offer.button') }}</a>
         </div>
     </div>
 </template>
 
 <script>
-export default {
-    name: 'product-discount-info',
-    props: {
-        authorized: {
-            Type: Boolean,
-            required: true
-        },
-        productDiscounts: {
-            Type: Array,
-            required: true
-        }
-    },
-    data() {
-        return {
-            progress: 0
-        }
-    },
-    methods: {
-        openModal() {
-            
-        }
-    },
-    computed: {
-        progressPrice() {
-            if (this.sum >= this.discount[0].next) {
-                this.progress = 100;
-            } else {
-                this.progress = this.sum/this.discount[0].next*100;
+    export default {
+        name: 'product-discount-info',
+        props: {
+            authorized: {
+                Type: Boolean,
+                required: true
+            },
+            productDiscounts: {
+                Type: Array,
+                required: true
             }
-            return this.progress
         },
-        sum() {
-            return this.discount[0].next - this.discount[0].remainder
+        data() {
+            return {
+                progress: 0
+            }
         },
-        discount(){
-            return this.productDiscounts.filter(item => item.type === 'сategory')
+        computed: {
+            progressPrice() {
+                if (this.sum >= this.discount[0].next) {
+                    this.progress = 100;
+                } else {
+                    this.progress = this.sum/this.discount[0].next*100;
+                }
+                return this.progress
+            },
+            sum() {
+                return this.discount[0].next - this.discount[0].remainder
+            },
+            discount(){
+                return this.productDiscounts.filter(item => item.type === 'сategory')
+            },
         },
-    },
-    methods: {
-        openModal(){
-            
-        }
-    },
-}
+        methods: {
+            openModal(){
+                
+            },
+            redirect() {
+                /*TODO редирект на регистрацию*/
+            }
+        },
+    }
 </script>
