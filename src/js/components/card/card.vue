@@ -14,7 +14,7 @@
                                 :cardPosition="cardPosition"
                     ></card-stikers>
                 </div>
-                <component class="card__header_in-favorite" is="in-favorite"></component>
+                <component class="card__header_in-favorite" is="in-favorite" :id="product.id"></component>
             </div>
             <div class="card__image-block" 
                 :class="{'card__image-block--short-card': cardSize === 'short'}"
@@ -53,12 +53,12 @@
                 <div class="card__price">
                     <slot name="price"></slot>
     <!-- кнопка добавления в избранные для горизонтальной карточки -->
-                    <component class="card__header_in-favorite" is="in-favorite"></component>
+                    <component class="card__header_in-favorite" is="in-favorite" :id="product.id"></component>
     <!--  -->
                 </div>
                 <div class="card__button-block">
                     <component is="add-to-cart" :productId="product.id" :max-amount="product.stock" :changeIcon="changeIcon" ></component>
-                    <component class="card__button-block_to-compare" is="to-compare"></component>
+                    <component class="card__button-block_to-compare" is="to-compare" :id="product.id"></component>
                     <div @click="menuTooltip = !menuTooltip" class="card__menu-btn">
                         <span></span>
                         <span></span>
@@ -67,12 +67,14 @@
                     <div v-show="menuTooltip" class="card-menu-tooltip">
                         <div class="card-menu-tooltip__block">
                             <component is="in-favorite"
-                                    :text="true"
-                                    :mobile="true"
+                                       :text="true"
+                                       :mobile="true"
+                                       :id="product.id"
                             ></component>
                             <component is="to-compare"
-                                    :text="true"
-                                    :mobile="true"
+                                       :text="true"
+                                       :mobile="true"
+                                       :id="product.id"
                             ></component>
                         </div>
                         <svg class="card-menu-tooltip__close" @click="menuTooltip = false" viewBox="0 0 12 12">

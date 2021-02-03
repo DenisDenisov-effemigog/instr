@@ -12,19 +12,23 @@
         &--border-none
             border: none
     &__content
-        margin-bottom: 6.5rem
+        margin-bottom: 5rem
+        +tablet
+            margin-bottom: 6.5rem
     &__order
         margin-top: 1.5rem
         min-height: 20.0625rem
-        max-width: 19.25rem
         +tablet
             margin-top: 0
             min-height: auto
-            max-width: auto
             width: 25%
+
     &__title
         @extend .title-5
         font-weight: 700
+        margin-top: 1.5rem
+        +tablet
+            margin-top: 2.25rem
     &__login
         padding-top: 1.5rem
         +tablet
@@ -70,6 +74,7 @@
             +tablet
                 display: none!important
         &--fixed
+            margin: 0
             @extend .cart-order__btn-wrap--fixed
             background: linear-gradient(180deg, rgba(255, 255, 255, 0) -50.04%, #FFFFFF 36.02%)
     &__btn

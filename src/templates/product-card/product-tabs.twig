@@ -5,88 +5,94 @@
     :user="{{ user|json_encode()|e('html_attr') }}"
 >
     <template v-slot:features>
-        <div class="product-tabs__content-layout">
-            <div class="product-tabs__content-title">{{ 'product_card.tabs.main_features'|trans }}</div>
-            <ul class="product-tabs__features product-tabs__features_main">
-                <li class="product-tabs__features-item">
-                    <div class="product-tabs__features-term">
-                        <div class="product-tabs__features-term-dash">
-                            <span class="product-tabs__features-term-label">{{ 'product_card.tabs.guarantee'|trans }}</span>
-                        </div>
-                    </div>
-                    <div class="product-tabs__features-value">
-                        <a href="#">{{ product.guarantee }} {{ 'product_card.tabs.years'|trans }}</a>
-                    </div>
-                </li>
-                {% for feature in product.features.main %}
+        {% if product.features.main %}
+            <div class="product-tabs__content-layout">
+                <div class="product-tabs__content-title">{{ 'product_card.tabs.main_features'|trans }}</div>
+                <ul class="product-tabs__features product-tabs__features_main">
                     <li class="product-tabs__features-item">
                         <div class="product-tabs__features-term">
                             <div class="product-tabs__features-term-dash">
-                                <span class="product-tabs__features-term-label">{{feature.title}}</span>
+                                <span class="product-tabs__features-term-label">{{ 'product_card.tabs.guarantee'|trans }}</span>
                             </div>
                         </div>
                         <div class="product-tabs__features-value">
-                            {{feature.value}}
-                            {% if feature.country %}
-                            <svg class="product-tabs__features-country" viewBox="0 0 36 24">
-                                {% if feature.country == 'Germany' %}
-                                    <use xlink:href="{{ templatePath }}images/sprite.svg#countries__germany"></use>
-                                {% elseif feature.country == 'China' %}
-                                    <use xlink:href="{{ templatePath }}images/sprite.svg#countries__china"></use>
+                            <a href="#">{{ product.guarantee }} {{ 'product_card.tabs.years'|trans }}</a>
+                        </div>
+                    </li>
+                    {% for feature in product.features.main %}
+                        <li class="product-tabs__features-item">
+                            <div class="product-tabs__features-term">
+                                <div class="product-tabs__features-term-dash">
+                                    <span class="product-tabs__features-term-label">{{feature.title}}</span>
+                                </div>
+                            </div>
+                            <div class="product-tabs__features-value">
+                                {{feature.value}}
+                                {% if feature.country %}
+                                    <svg class="product-tabs__features-country" viewBox="0 0 36 24">
+                                        {% if feature.country == 'Germany' %}
+                                            <use xlink:href="{{ templatePath }}images/sprite.svg#countries__germany"></use>
+                                        {% elseif feature.country == 'China' %}
+                                            <use xlink:href="{{ templatePath }}images/sprite.svg#countries__china"></use>
+                                        {% endif %}
+                                    </svg>
                                 {% endif %}
-                            </svg>
-                            {% endif %}
-                        </div>
-                    </li>
-                {% endfor %}
-            </ul>
-        </div>
-        <div class="product-tabs__content-layout">
-            <div class="product-tabs__content-title">{{ 'product_card.tabs.parameters'|trans }}</div>
-            <ul class="product-tabs__features product-tabs__features_packaging">
-                {% for feature in product.features.packaging %}
-                    <li class="product-tabs__features-item">
-                        <div class="product-tabs__features-term">
-                            <div class="product-tabs__features-term-dash">
-                                <span class="product-tabs__features-term-label">{{feature.title}}</span>
                             </div>
-                        </div>
-                        <div class="product-tabs__features-value">{{feature.value}}</div>
-                    </li>
-                {% endfor %}
-            </ul>
-        </div>
-        <div class="product-tabs__content-layout">
-            <div class="product-tabs__content-title">{{ 'product_card.tabs.options'|trans }}</div>
-            <ul class="product-tabs__features product-tabs__features_equipment">
-                {% for feature in product.features.equipment %}
-                    <li class="product-tabs__features-item">
-                        <div class="product-tabs__features-term">
-                            <div class="product-tabs__features-term-dash">
-                                <span class="product-tabs__features-term-label">{{feature.title}}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        {% if product.features.packaging %}
+            <div class="product-tabs__content-layout">
+                <div class="product-tabs__content-title">{{ 'product_card.tabs.parameters'|trans }}</div>
+                <ul class="product-tabs__features product-tabs__features_packaging">
+                    {% for feature in product.features.packaging %}
+                        <li class="product-tabs__features-item">
+                            <div class="product-tabs__features-term">
+                                <div class="product-tabs__features-term-dash">
+                                    <span class="product-tabs__features-term-label">{{feature.title}}</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="product-tabs__features-value">{{feature.value}}</div>
-                    </li>
-                {% endfor %}
-            </ul>
-        </div>  
+                            <div class="product-tabs__features-value">{{feature.value}}</div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        {% if product.features.equipment %}
+            <div class="product-tabs__content-layout">
+                <div class="product-tabs__content-title">{{ 'product_card.tabs.options'|trans }}</div>
+                <ul class="product-tabs__features product-tabs__features_equipment">
+                    {% for feature in product.features.equipment %}
+                        <li class="product-tabs__features-item">
+                            <div class="product-tabs__features-term">
+                                <div class="product-tabs__features-term-dash">
+                                    <span class="product-tabs__features-term-label">{{feature.title}}</span>
+                                </div>
+                            </div>
+                            <div class="product-tabs__features-value">{{feature.value}}</div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %} 
     </template>
     <template v-slot:description>
         <div class="product-tabs__content-layout">
             <div class="product-tabs__content-title">{{ 'product_card.tabs.desc'|trans }}</div>
-            <p class="product-tabs__content-text product-tabs__content-text_description">{{product.description.description}}</p>
+            <p class="product-tabs__content-text product-tabs__content-text_description">{{product.description.description|raw}}</p>
         </div>
-        {# <div class="product-tabs__content-layout">
-            <div class="product-tabs__content-title">{{ 'product_card.tabs.some_features'|trans }}</div>
+         {#<div class="product-tabs__content-layout">
+            <div class="product-tabs__content-title">{{ product.description.features.title }}</div>
             <div class="product-tabs__content-grid">
-                {% for feature in product.description.features %}
+                {% for feature in product.description.features.values %}
                     <div class="product-tabs__content-grid-item">
                         <div class="product-tabs__content-feature">
                             <img class="product-tabs__feature-img" src="{{ feature.image}}" alt="{{product.name|e('html_attr')}}">
                             <div class="product-tabs__feature">
                                 <div class="product-tabs__content-title">{{ feature.title}}</div>
-                                <div class="product-tabs__content-text">{{ feature.value}}</div>
+                                <div class="product-tabs__content-text">{{ feature.value|raw}}</div>
                             </div>
                         </div>
                     </div>
@@ -94,10 +100,10 @@
             </div>
         </div>
         <div class="product-tabs__content-layout">
-            <div class="product-tabs__content-title">{{ 'product_card.tabs.advantages'|trans }}</div>
+            <div class="product-tabs__content-title">{{ product.description.advantages.title }}</div>
             <ul class="product-tabs__content-list">
-                {% for advantage in product.description.advantages %}
-                    <li>{{advantage}}</li>
+                {% for advantage in product.description.advantages.descriptions %}
+                    <li>{{advantage|raw}}</li>
                 {% endfor %}
             </ul>
          </div> #}   {# TODO временно убраны, не удалять!!! #}

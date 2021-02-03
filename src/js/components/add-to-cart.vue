@@ -22,6 +22,9 @@
                     > 
                     <span class="add-to-cart__amount">&nbsp;{{ $tc('text.count') }}</span>
                 </div>
+                <div v-show="tooltipFlag" class="add-to-cart__tooltip" :class="{'add-to-cart__tooltip--active':tooltipFlag}">
+                   К сожалению, вы не можете добавить больше {{maxAmount}} шт. так как в таком количестве товара нет на складе
+                </div>
             </div>
             
 			<div
@@ -107,6 +110,7 @@
                 width: 0,
                 _debounce_timer: null,
                 _loading_timer: null,
+                tooltipFlag: false
             };
         },
         computed: {
@@ -140,6 +144,12 @@
         },
         methods: {
             setAmount(amount) {
+                if(amount >= this.maxAmount){
+                    this.tooltipFlag = true
+                    setTimeout(() => {
+                        this.tooltipFlag = false
+                    }, 5000);
+                }
                 let vm = this;
 
                 // Включение лоадера при долгой загрузке

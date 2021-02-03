@@ -34,6 +34,9 @@
              <span class="product-tabs__form-error"
                 :class="{'product-tabs__form-error_show': $v.email.$error || $v.newQuestion.$error}"
              >{{$tc('text.error')}}</span>
+             <span class="product-tabs__form-error"
+                :class="{'product-tabs__form-error_show': error}"
+             >{{$tc('text.error.server')}}</span>
         </form>
         <div class="product-tabs__answer" v-if="newItem.question">
             <span class="product-tabs__new-badge">{{ $tc('product_card.questions.badge') }}</span>
@@ -84,6 +87,7 @@
         data() {
             return {
                 expanded: false,
+                error: false,
                 formExpanded: false,
                 newQuestion: '',
                 email: this.user.email,
@@ -107,14 +111,21 @@
                 if (!this.$v.$invalid) {
                     
                     let vm = this;
-                    api.sendQuestion(vm.email, vm.newQuestion).then(() => {
+                    api.sendQuestion(vm.email, vm.newQuestion).then(answer => {
                         vm.newQuestionItem();
                         vm.formExpanded = false;
                         vm.quantity = vm.questions.length
                         vm.newQuestion = null
                         vm.$v.newQuestion.$reset()
+                        this.error = false
                     }).catch((errors) => {
                         console.error(errors);
+                        this.error = true
+                        /*todo возможные ошибки от сервера, возможео понадобится*/
+                        if (errors === 'http_parameter_err') {
+                        } else if (errors === 'need_auth') {
+                        } else if (errors === 'incorrect_email') {
+                        }
                     });
                 } else {
                     this.$v.$touch();

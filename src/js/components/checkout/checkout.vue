@@ -58,9 +58,11 @@
                         <div class="delivery-comment__form">
                             <label class="delivery-comment__label-textarea">
                                 <textarea class="delivery-comment__textarea" 
-                                          :placeholder="$tc('text.message')"
-                                          v-model="message"
+                                    v-model.trim="$v.message.$model"
                                 ></textarea>
+                                <span class="delivery-comment__label-text"
+                                    :class="{'profile-modal__label-text--up': $v.message.required}"
+                                >{{$tc('text.message')}}</span>
                             </label>
                             <label class="delivery-comment__label">
                                 <input type="checkbox" name="agreement" v-model="actionsAgreement" class="delivery-comment__checkbox">
@@ -116,6 +118,7 @@
     import DeliveryDate from './delivery-date.vue'
     import DeliveryPayment from './delivery-payment.vue'
     import config from "../../config";
+    import {required} from "vuelidate/lib/validators"
     import * as Api from '../../api/index'
 
     let api = Api.getInstance();
@@ -124,6 +127,11 @@
     export default {
         components: { cartOrder, UserLogin, CheckoutReg, CheckoutDelivery, DeliveryDate, DeliveryPayment },
         name: "checkout",
+        validations: {
+            message: {
+                required,
+            }
+        },
         props: {
             deliveries: {
                 required: true,

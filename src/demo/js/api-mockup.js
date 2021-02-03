@@ -611,6 +611,50 @@ let orderSuccessAnswer = {
     payment_form: demoBase64EncodeUnicode('<form action="https://integration.bitrix.info/app/authorize/v4/handler.php" method="POST"><input type="hidden" name="paymentid" value="507"><input type="hidden" name="paymentpay" value="68.12"><input type="hidden" name="currency" value="USD"><input type="hidden" name="memberid" value="a0acc530a106712468f1c0c57f628b19"><input type="hidden" name="BX_PAYSYSTEM_ID" value="9"><input name="button" value="Pay" type="submit"></form>')
 };
 
+let favorites = [
+    {product_id: 1, is_favorite: false},
+    {product_id: 2, is_favorite: false},
+    {product_id: 3, is_favorite: false},
+    {product_id: 4, is_favorite: false},
+    {product_id: 5, is_favorite: false},
+    {product_id: 6, is_favorite: false},
+    {product_id: 11, is_favorite: false},
+    {product_id: 12, is_favorite: false},
+    {product_id: 13, is_favorite: false},
+    {product_id: 14, is_favorite: false},
+    {product_id: 15, is_favorite: false},
+    {product_id: 16, is_favorite: false},
+    {product_id: 17, is_favorite: false},
+    {product_id: 18, is_favorite: false},
+    {product_id: 110, is_favorite: false},
+    {product_id: 33, is_favorite: false},
+    {product_id: 41, is_favorite: false},
+    {product_id: 31, is_favorite: false},
+    {product_id: 32, is_favorite: false},
+];
+
+let compares = [
+    {product_id: 1, is_compare: false},
+    {product_id: 2, is_compare: false},
+    {product_id: 3, is_compare: false},
+    {product_id: 4, is_compare: false},
+    {product_id: 5, is_compare: false},
+    {product_id: 6, is_compare: false},
+    {product_id: 11, is_compare: false},
+    {product_id: 12, is_compare: false},
+    {product_id: 13, is_compare: false},
+    {product_id: 14, is_compare: false},
+    {product_id: 15, is_compare: false},
+    {product_id: 16, is_compare: false},
+    {product_id: 17, is_compare: false},
+    {product_id: 18, is_compare: false},
+    {product_id: 110, is_compare: false},
+    {product_id: 33, is_compare: false},
+    {product_id: 41, is_compare: false},
+    {product_id: 31, is_compare: false},
+    {product_id: 32, is_compare: false},
+];
+
 //console.log(demoOrders);
 
 function demoSetBasketQuantity(productId, quantity) {
@@ -1232,11 +1276,62 @@ window.runAction = function (action, config) {
                 });
                 break;
                 
-            case 'instrument2:rest.api.question.send':
+            case 'instrument2:rest.api.cart.faq':
                 resolve({
                     data: {
                         data: {
                             status: 1,
+                            answer: true
+                        }
+                    }
+                });
+                break;
+                
+            case 'instrument2:rest.api.cart.favorite':
+                let favorite = favorites.find(item => item.product_id === config.data.id)
+                favorite.is_favorite = !favorite.is_favorite
+                
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                            answer: favorite.is_favorite 
+                        }
+                    }
+                });
+                break;
+                
+            case 'instrument2:rest.api.cart.get.favorite':
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                            answer: favorites 
+                        }
+                    }
+                });
+                break;
+                
+            case 'instrument2:rest.api.cart.compare':
+                let compare = compares.find(item => item.product_id === config.data.id)
+                compare.is_compare = !compare.is_compare
+                
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                            answer: compare.is_compare
+                        }
+                    }
+                });
+                break;
+                
+            case 'instrument2:rest.api.cart.get.compare':
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                            answer: compares
                         }
                     }
                 });
