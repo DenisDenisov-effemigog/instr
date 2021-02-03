@@ -64,17 +64,19 @@
         text-align: start
 
     &__amount-input
-        +flex-container-center
+        // +flex-container-center
         input
-            width: 32%
+            width: 100%
+            // width: 32% 
             font-size: $font-size_3
-            text-align: end
+            text-align: center
+            // text-align: end
 
     &__add
         @extend .button
         cursor: pointer
         white-space: nowrap
-        padding: .375rem
+        padding: .375rem 1.1875rem
         +desktop
             padding: .375rem 2.125rem
         +tablet

@@ -20,7 +20,8 @@
                         @change="changeVal($event.target.value)" 
                         :value="amount"
                     > 
-                    <span class="add-to-cart__amount">&nbsp;{{ $tc('text.count') }}</span>
+                    <!-- временно отключаем меру подсчета -->
+                    <!-- <span class="add-to-cart__amount">&nbsp;{{ $tc('text.count') }}</span> -->
                 </div>
                 <div v-show="tooltipFlag" class="add-to-cart__tooltip" :class="{'add-to-cart__tooltip--active':tooltipFlag}">
                    К сожалению, вы не можете добавить больше {{maxAmount}} шт. так как в таком количестве товара нет на складе
