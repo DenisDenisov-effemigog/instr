@@ -12,7 +12,9 @@
         &--border-none
             border: none
     &__content
-        margin-bottom: 6.5rem
+        margin-bottom: 5rem
+        +tablet
+            margin-bottom: 6.5rem
     &__order
         margin-top: 1.5rem
         min-height: 20.0625rem
@@ -25,6 +27,9 @@
     &__title
         @extend .title-5
         font-weight: 700
+        margin-top: 1.5rem
+        +tablet
+            margin-top: 2.25rem
     &__login
         padding-top: 1.5rem
         +tablet
