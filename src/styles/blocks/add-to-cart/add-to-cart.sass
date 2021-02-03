@@ -43,6 +43,7 @@
             @extend .button--disabled
 
     &__input
+        position: relative
         +flex-container-center
         flex-direction: column
         font-size: $font-size_3
@@ -86,3 +87,11 @@
             fill: $white
         &[disabled]
             background: $border-color
+    &__tooltip
+        @extend .tooltip
+        &::before
+            top: auto
+            bottom: -.5625rem
+        &--active
+            display: flex
+            bottom: 3.125rem
