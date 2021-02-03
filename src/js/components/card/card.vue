@@ -64,8 +64,8 @@
                         <span></span>
                         <span></span>
                     </div>
-                    <div v-show="menuTooltip" class="card__menu-tooltip">
-                        <div>
+                    <div v-show="menuTooltip" class="card-menu-tooltip">
+                        <div class="card-menu-tooltip__block">
                             <component is="in-favorite"
                                     :text="true"
                                     :mobile="true"
@@ -75,7 +75,7 @@
                                     :mobile="true"
                             ></component>
                         </div>
-                        <svg class="card__menu-tooltip-close" @click="menuTooltip = false" viewBox="0 0 12 12">
+                        <svg class="card-menu-tooltip__close" @click="menuTooltip = false" viewBox="0 0 12 12">
                             <use @click.stop :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
                         </svg>
                     </div>
