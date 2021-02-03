@@ -58,7 +58,7 @@
 					<a href="{{ product.brand.link }}" class="product-info__brand-logo">
 						<img src="{{ product.brand.logo }}">
 					</a>
-					<a href="#" class="product-info__assurance">
+					<a href="{{ product.guaranteeUrl }}" class="product-info__assurance">
                         <svg class="product-info__assurance-icon">
                             <use xlink:href="{{ templatePath }}images/sprite.svg#assurance__assurance-{{ product.guarantee }}"></use>
                         </svg>

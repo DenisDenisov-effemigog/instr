@@ -4,12 +4,12 @@
         <div class="country__wrapper"> 
             <div class="country__container">
                 <div class="country__choice">
-                    <h2 class="country__choice-title">{{ $tc('country.choose_country') }}</h2>
-                    <ul class="country__choice-list">
+                    <h2 class="country__title">{{ $tc('country.choose_country') }}</h2>
+                    <ul class="country__list">
                         <li v-for="country in countries" class="country__choice-item">
                             <a @click.prevent="choiceCountry(country)" 
                                class="country__choice-link" 
-                               :class="{'country__choice-link-active': activeDisplayingCountry === country}"
+                               :class="{'country__choice-link--active': activeDisplayingCountry === country}"
                             >{{country}}</a>
                         </li>
                     </ul>
@@ -24,9 +24,11 @@
                     </svg>
                 </div>
             </div>
+        </div>
+        <div class="country__map-wrapper">
             <div class="country__map">
-                <!-- <img :src="templatePath + 'images/country/globus.png'" alt="" class="country__map-pic"> -->
-                <img :src="templatePath + 'images/country/map-dots.png'" alt="" class="country__map-pic">
+                <img :src="templatePath + 'images/country/globus.png'" alt="" class="country__map-pic">
+                <!-- <img :src="templatePath + 'images/country/map-dots.png'" alt="" class="country__map-pic"> -->
             </div>
         </div>
     </div>

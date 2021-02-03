@@ -1,12 +1,12 @@
 <template>
-    <div class="add-address-btn"
+    <a class="add-address-btn"
         @click.prevent="openModal('new-address')"
     >
         <svg viewBox="0 0 20 20">
             <use :xlink:href="templatePath + 'images/sprite.svg#icons__plus-small'"></use>
         </svg>
         <span>{{ $tc('link.add_address') }}</span>
-    </div>
+    </a>
 </template>
 
 <script>

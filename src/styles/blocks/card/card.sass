@@ -1,3 +1,5 @@
+@import './card-menu-tooltip'
+
 .card
     width: 50%
     border: 1px solid $border-color
@@ -28,42 +30,13 @@
             margin-bottom: 0
         &_in-favorite
             +mobile
-                display: none !important  
-    &__menu-tooltip
-        @extend .tooltip
-        padding: 0.5rem
-        +tablet
-            padding: 1rem
-        right: 0
-        bottom: 2.875rem
-        display: flex
-        width: 100%
-        justify-content: space-between
-        svg
-            +tablet
-                display: none
-            fill: $icon-grey
-            width: 0.5rem
-            height: 0.5rem
-            flex-shrink: 0
-            //margin-left: 1rem
-            cursor: pointer
-        &::before
-            left: calc(96% - .5rem)
-            bottom: -.5625rem
-            top: auto
-        &::after
-            top: auto
-            bottom: -1rem
-        &-close
-            +tablet
-                display: none
+                display: none !important
+
     &__stickers
         +stickers
 
     &__sticker-tooltip
         @extend .tooltip
-        @extend .text-2
         top: 2.375rem
         left: 50%
         transform: translateX(-50%)
@@ -73,6 +46,9 @@
             transform: translateX(0%)
             &::before
                 left: calc(10% - .5rem)
+        +tablet
+            font-size: $font-size_3
+            line-height: $line-height_3
         & a
             color: $blue
             &:hover
@@ -107,7 +83,7 @@
             &::before
                 left: calc(70% - .5rem)
     &__image-block
-        max-width: 9.75rem
+        //max-width: 9.75rem
         margin: 1rem auto
         +desktop
             width: 100%
@@ -165,11 +141,10 @@
             +tablet
                 max-width: 9.0625rem
     &__menu-btn
-        width: 2rem
+        +flex-container
+        min-width: 2rem
         height: 2rem
-        display: flex
-        align-items: center
-        justify-content: center
+        padding: .28125rem
         background: $pre-white
         border-radius: $border-radius_2
         cursor: pointer

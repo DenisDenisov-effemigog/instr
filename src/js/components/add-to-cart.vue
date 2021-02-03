@@ -20,7 +20,8 @@
                         @change="changeVal($event.target.value)" 
                         :value="amount"
                     > 
-                    <span class="add-to-cart__amount">&nbsp;{{ $tc('text.count') }}</span>
+                    <!-- временно отключаем меру подсчета -->
+                    <!-- <span class="add-to-cart__amount">&nbsp;{{ $tc('text.count') }}</span> -->
                 </div>
                 <div v-show="tooltipFlag" class="add-to-cart__tooltip" :class="{'add-to-cart__tooltip--active':tooltipFlag}">
                     {{ $tc('button.add_to_cart.tooltip.part1') }} {{maxAmount}} {{ $tc('button.add_to_cart.tooltip.part2') }}

@@ -15,7 +15,7 @@
                                 <use :xlink:href="templatePath + 'images/sprite.svg#check'"></use>
                             </svg>
                         {% endif %}
-                        <a href="#" class="listing__further-subcategory">{{ subsubcategory.title }}</a>
+                        <a href="{{ subsubcategory.url }}" class="listing__further-subcategory">{{ subsubcategory.title }}</a>
                     </li>
                 {% endfor %}
             </template>
@@ -27,7 +27,7 @@
                                 <use :xlink:href="templatePath + 'images/sprite.svg#check'"></use>
                             </svg>
                         {% endif %}
-                        <a href="#" class="listing__further-subcategory">{{ subsubcategory.title }}</a>
+                        <a href="{{ subsubcategory.url }}" class="listing__further-subcategory">{{ subsubcategory.title }}</a>
                     </li>
                 {% endfor %}
             </template>
