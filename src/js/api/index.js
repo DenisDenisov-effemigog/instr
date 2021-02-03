@@ -151,7 +151,7 @@ class Api {
     }
 
     sendQuestion(email, message) {
-        return this._promiseBitrixRequest('instrument2:rest.api.question.send', {
+        return this._promiseBitrixRequest('instrument2:rest.api.cart.faq', {
             message: message,
             email: email,
         });
