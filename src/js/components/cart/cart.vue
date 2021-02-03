@@ -35,14 +35,14 @@
                             </div>
                         </div>
                     </div>
+                    <selected-items
+                        :products="oldProducts"
+                    ></selected-items>
                     <cart-order-head 
                         :mobileFlag="true"
                         :currentPrice="productsPrice"
                         :salePrice="salePrice"
                     ></cart-order-head>
-                    <selected-items
-                        :products="oldProducts"
-                    ></selected-items>
                     <div class="cart__purchases" :class="{'cart__purchases--table': changedView === 'table_cards'}">
                         <div class="table-header" v-if="changedView === 'table_cards'">
                             <div class="table-header__code">{{ $tc('cart.title.sku') }}</div>
