@@ -42,7 +42,9 @@
             top: 3.0625rem
         .profile-modal__label-text--up,
         .profile-modal__textarea:focus ~ .profile-modal__label-text
-            top: 2.1875rem
+            top: 2.0625rem
+            +tablet
+                top: 2.1875rem
         &:hover
             .profile-modal__check
                 border-color: $light-grey
@@ -70,12 +72,8 @@
         &:focus
             border-color: $light-grey
             & ~ .profile-modal__label-text
-                @extend .label-typo
-                top: -.375rem
-                left: 1rem
-                padding: 1px .5rem
-                background-color: $white
-                transition: .2s  
+                @extend .form__label-text--up
+                top: -.5rem
     &__error-text
         @extend .form__error-text
         &--invalid

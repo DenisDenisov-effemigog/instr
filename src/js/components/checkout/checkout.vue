@@ -61,7 +61,7 @@
                                     v-model.trim="$v.message.$model"
                                 ></textarea>
                                 <span class="delivery-comment__label-text"
-                                    :class="{'profile-modal__label-text--up': $v.message.required}"
+                                    :class="{'delivery-comment__label-text--up': $v.message.required}"
                                 >{{$tc('text.message')}}</span>
                             </label>
                             <label class="delivery-comment__label">
