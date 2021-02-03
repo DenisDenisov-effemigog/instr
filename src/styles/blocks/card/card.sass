@@ -141,11 +141,10 @@
             +tablet
                 max-width: 9.0625rem
     &__menu-btn
-        width: 2rem
+        +flex-container
+        min-width: 2rem
         height: 2rem
-        display: flex
-        align-items: center
-        justify-content: center
+        padding: .28125rem
         background: $pre-white
         border-radius: $border-radius_2
         cursor: pointer
