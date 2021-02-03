@@ -8,8 +8,8 @@
             ></component>
         </div>
         <div class="product-card__actions">
-            <component is="to-compare"></component>
-            <component is="in-favorite"></component>
+            <component is="to-compare" :id="id"></component>
+            <component is="in-favorite" :id="id"></component>
         </div>
     </div>
 </template>
@@ -29,6 +29,10 @@ export default {
     props: {
         tooltips: {
             type: Array,
+            required: true,
+        },
+        id: {
+            type: Number,
             required: true,
         }
     },

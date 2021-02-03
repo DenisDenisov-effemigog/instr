@@ -2,17 +2,19 @@
 	<div class="product-card__title">{{ product.name }}</div>
 	<div class="product-card__header">
 		<div class="product-card__favorite-btn">
-			<component is="in-favorite" :text="true"></component>
+			<component is="in-favorite" :text="true" :id="{{ product.id|json_encode()|e('html_attr') }}"></component>
 		</div>
 		<div class="product-card__compare-btn">
-            <component is="to-compare" :text="true"></component>
+            <component is="to-compare" :text="true" :id="{{ product.id|json_encode()|e('html_attr') }}"></component>
 		</div>
 		<component is="product-card-article">{{ product.sku }}</component>
 	</div>
 	<div class="product-card__content">
 		<div class="product-card__slider">
             <component is="product-card-header" 
-                       :tooltips="{{ product.tooltips|json_encode()|e('html_attr') }}"></component>
+                       :tooltips="{{ product.tooltips|json_encode()|e('html_attr') }}"
+                       :id="{{ product.id|json_encode()|e('html_attr') }}"
+            ></component>
 			<component is="product-card-slider"
                        :product-images="{{ product.images|json_encode()|e('html_attr') }}" 
                        :video-link="{{ product.videoUrl|json_encode()|e('html_attr') }}" 

@@ -2,7 +2,7 @@
     <div
         class="in-favorite"
         :class="{'in-favorite--active': inFavorite, 'in-favorite--mobile': mobile}"
-        @click="inFavorite = !inFavorite"
+        @click="addFavorite"
     >
         <svg v-if="!inFavorite" viewBox="0 0 18 16">
             <use :xlink:href="templatePath + 'images/sprite.svg#icons__heart'"></use>
@@ -15,26 +15,54 @@
 </template>
 
 <script>
-export default {
-    name: 'in-favorite',
-    props: {
-        text: {
-            required: false,
-            default: false,
-            type: Boolean
+    import * as Api from '../api/index'
+    
+    let api = Api.getInstance();
+    
+    export default {
+        name: 'in-favorite',
+        props: {
+            id: {
+                required: true,
+                type: Number
+            },
+            text: {
+                required: false,
+                default: false,
+                type: Boolean
+            },
+            mobile: {
+                required: false,
+                default: false,
+                type: Boolean
+            }  
         },
-        mobile: {
-            required: false,
-            default: false,
-            type: Boolean
-        }  
-    },
-    data(){
-        return{
-            inFavorite: false,
+        data() {
+            return{
+                inFavorite: false,
+            }
+        },
+        computed: {
+            favorites() {
+                return this.$store.state.listing.actions.favoritesProducts
+            },
+        },
+        mounted() {
+             favorites.filter(favorite => {
+                if (favorite.product_id === this.id) {
+                    this.inFavorite = favorite.is_favorite 
+                }
+            })
+        },
+        methods: {
+            addFavorite() {
+                let vm = this
+                api.addFavorite(vm.id).then(answer => {
+                    vm.inFavorite = answer
+                }).catch(errors => {
+                    console.error(errors);
+                })
+            }
         }
-    },
-    methods:{
     }
-}
 </script>
