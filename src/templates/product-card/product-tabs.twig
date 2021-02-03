@@ -3,6 +3,7 @@
     :description="{{ product.description|json_encode()|e('html_attr') }}"
     :questions="{{ product.questions|json_encode()|e('html_attr') }}"
     :user="{{ user|json_encode()|e('html_attr') }}"
+    :product-id="{{ productId|json_encode()|e('html_attr') }}"
 >
     <template v-slot:features>
         {% if product.features.main %}

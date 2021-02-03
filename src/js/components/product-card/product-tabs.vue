@@ -46,7 +46,8 @@
                 <product-tabs-questions 
                     v-else-if="currentTab === 'questions'"
                     :questions="questionsAnswers"
-                    :user="user">
+                    :user="user"
+                    :productId="productId">
                 </product-tabs-questions>
             </div>
         </div>
@@ -67,6 +68,10 @@
             questions: {},
             user: {
                 type: Object,
+                required: true
+            },
+            productId: {
+                type: Number,
                 required: true
             },
             },
