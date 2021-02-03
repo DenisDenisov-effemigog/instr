@@ -62,15 +62,14 @@ export default {
     },
     methods:{
         textareaChange(e){
-            if(this.newVal.length < 5){
+            if(this.newVal.length < 50){
                 let isDigit = false
-                if(e.key >= 0 || e.key <= 9 || e.key == 'Backspace'  || e.key == 'ArrowLeft' || e.key == 'ArrowRight' || e.key == 'ArrowUp' || e.key == 'ArrowDown'){
+                if(e.key >= 0 || e.key <= 9 || e.key == 'Backspace'  || e.key == 'ArrowLeft' || e.key == 'ArrowRight' || e.key == 'ArrowUp' || e.key == 'ArrowDown' || e.ctrlKey && e.key == 'c' || e.ctrlKey && e.key == 'v'){
                     isDigit = true
                 }else if(e.key == 'Enter'){
                     this.value = this.$v.value.$model;
                     this.newVal = this.value.split('\n')
-                }
-                else{
+                }else{
                     e.preventDefault();
                 }
             }else{
