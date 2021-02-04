@@ -908,6 +908,39 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
+            case 'instrument2:rest.api.user.base.edit':
+                demoProfile.contact = config.data.name
+                demoProfile.phone = config.data.phone
+                demoProfile.email = config.data.email
+                
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                            answer: demoProfile
+                        }
+                    }
+                });
+                break;
+            case 'instrument2:rest.api.user.base.delete':
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                        }
+                    }
+                });
+                break;
+            case 'instrument2:rest.api.user.change.password':
+                /*если пароли совпадают, заменить*/
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                        }
+                    }
+                });
+                break;
             case 'instrument2:rest.api.user.address.get':
                 resolve({
                     data: {

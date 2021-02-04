@@ -114,9 +114,12 @@
 </template>
 
 <script>
-    import {required, minLength, email, numeric, alphaNum} from "vuelidate/lib/validators"
+    import {required, minLength, maxLength, email, numeric, alphaNum} from "vuelidate/lib/validators"
     import {TheMask} from 'vue-the-mask'
     import config from "../../../config";
+    import * as Api from '../../../api/index'
+
+    let api = Api.getInstance();
 
     export default {
         name:"edit-profile",
@@ -138,7 +141,9 @@
                 alphaNum
             },
             phone: {
-                required
+                required,
+                minLength: minLength(18),
+                maxLength: maxLength(18),
             },
             email: {
                 required,
@@ -164,11 +169,14 @@
                 }
             },
             saveChanges() {
-               this.person.contact = this.$v.name.$model;
-               this.person.company = this.$v.company.$model;
-               this.person.code = this.$v.code.$model;
-               this.person.phone = this.$v.phone.$model;
-               this.person.email = this.$v.email.$model;
+                let vm = this
+                
+                api.editProfile(vm.$v.name.$model, vm.$v.phone.$model, vm.$v.email.$model).then(answer => {
+                    vm.$eventBus.$emit('closeModal')
+                    vm.$eventBus.$emit('editProfile', answer)
+                }).catch(errors => {
+                    console.error(errors);
+                })
             }
         },
         mounted() {

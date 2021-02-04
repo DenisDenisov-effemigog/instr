@@ -97,6 +97,25 @@ class Api {
     personalProfile() {
         return this._promiseBitrixRequest('instrument2:rest.api.user.base.get', {});
     }
+    editProfile(name, phone, email) {
+        return this._promiseBitrixRequest('instrument2:rest.api.user.base.edit', {
+            name: name,
+            phone: phone,
+            email: email,
+        });
+    }
+    deleteProfile(reason, message) {
+        return this._promiseBitrixRequest('instrument2:rest.api.user.base.delete', {
+            reason: reason,
+            message: message,
+        });
+    }
+    changePassowrd(currentPass, newPass) {
+        return this._promiseBitrixRequest('instrument2:rest.api.user.change.password', {
+            currentPass: currentPass,
+            newPass: newPass,
+        });
+    }
     personalOrders() {
         return this._promiseBitrixRequest('instrument2:rest.api.user.order.list', {});
     }

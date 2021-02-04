@@ -53,6 +53,7 @@ export default {
     name:"page-personal",
     data() {
         return {
+            profile: {},
             person: [
                 {'title': 'title.person', 'icon': 'user-profile', 'index': 'contact', 'personType': 1},
                 {'title': 'title.phone', 'icon': 'call', 'index': 'phone', 'personType': 1},
@@ -67,13 +68,12 @@ export default {
         }  
     },
     computed: {
-        profile() {         
-            let profile = this.cloneOverJson(this.$store.state.personal);
-            return profile;
-        },
         h1() {
             return this.$store.state.layout.h1;
         },
+    },
+    created() {
+        this.$eventBus.$on('editProfile', this.editProfile)
     },
     methods: {
         openModal(modal) {
@@ -82,10 +82,14 @@ export default {
         deleteProfile() {
             // через массив передаем причины удаления и что удаляем - 2 элемеента
             this.$eventBus.$emit("openModal", 'profile-delete', [this.reasons, 'profile'], false, false)
+        },
+        editProfile(profile) {
+            this.profile = profile
         }
     },
     mounted() {
         this.$eventBus.$emit('hideMenu')
+        this.profile = this.cloneOverJson(this.$store.state.personal)
     }
 }
 </script>

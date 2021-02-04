@@ -47,6 +47,9 @@
     import showPassword from '../../partials/show-password.vue';
     
     import config from "../../../config";
+    import * as Api from '../../../api/index'
+
+    let api = Api.getInstance();
 
     const pattern = helpers.regex('pattern', config.passwordPattern)
 
@@ -81,8 +84,12 @@
                 }
             },
             saveChanges() {
-                this.password = this.$v.password.$model
-                this.newPassword = this.$v.newPassword.$model
+                let vm = this
+                api.changePassowrd(vm.$v.password.$model, vm.$v.newPassword.$model).then(() => {
+                    vm.$eventBus.$emit('closeModal')
+                }).catch(error => {
+                    console.error(error)
+                })
             }
         },
         computed: {

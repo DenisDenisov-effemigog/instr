@@ -2,9 +2,9 @@
     <div class="profile">
         <div class="profile__menu" v-if="showMenu">
             <div class="profile__company profile__company--mobile">
-                <h3 class="profile__company-name profile__company-name--mobile">{{ profile.personal.company }}</h3>
+                <h3 class="profile__company-name profile__company-name--mobile">{{ profile.company }}</h3>
                 <p class="profile__company-type profile__company-type--mobile">
-                    <span>{{profile.personal.personTypePrint}}</span>
+                    <span>{{profile.personTypePrint}}</span>
                 </p>
             </div>
             <ul class="profile__menu-list">
@@ -55,10 +55,6 @@
 export default {
     name: "profile",
     props: {
-        profile: {
-            required: true,
-            type: Object,
-        },
         points:{
             type: Array,
             required: true,
@@ -117,15 +113,15 @@ export default {
                 if (item.url) {
                     item.active = vm.trimPath(vm.$route.path) === vm.trimPath(item.url);
                 }
-                type = item.personType.filter(type => this.profile.personal.personType === type)
+                type = item.personType.filter(type => this.profile.personType === type)
                 // console.log(type)
                 result.push(item);
             });
             return result;
         },
-        personal() {
-            return this.profile.personal
-        }
+        profile() {
+            return this.cloneOverJson(this.$store.state.personal);
+        },
     },
     watch: {
     },

@@ -46,6 +46,9 @@
 
 <script>
     import {required, minLength} from "vuelidate/lib/validators"
+    import * as Api from '../../../api/index'
+
+    let api = Api.getInstance();
 
     export default {
         name:"delete-profile",
@@ -68,24 +71,27 @@
         data() {
             return {
                 message: '',
-                picked: '',
+                picked: 1,
                 checkedVal: ''
             }
         },
         methods: {
             submit() {
                 this.$v.$touch();
-                if (this.picked !== 'delete_profile.reason_another') {
+                if (this.picked !== this.$tc('delete_profile.reason_another')) {
                     this.saveChanges();
-                }else if(!this.$v.$invalid){
+                }else if (!this.$v.$invalid){
                     this.saveChanges()
                 }
             },
             saveChanges() {
-                if(this.message){
-                    this.message = this.$v.message.$model;
-                }
-                this.checkedVal = this.picked
+                let vm = this
+                api.deleteProfile(this.picked, this.message).then(() => {
+                    vm.$eventBus.$emit('closeModal')
+                    window.location.replace('/');
+                }).catch(errors => {
+                    console.error(errors);
+                })
             }
         },
         computed: {
