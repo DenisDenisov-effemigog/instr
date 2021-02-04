@@ -24,8 +24,7 @@
 <script>
 import selectList from "../partials/select-list.vue"
 import DatePicker from 'vue2-datepicker';
-import 'vue2-datepicker/locale/ru';
-import moment from 'moment';
+import moment, {Moment} from 'moment';
 
 
 export default{
@@ -45,12 +44,9 @@ export default{
             lang:{
                 formatLocale: {
                     firstDayOfWeek: 1,
-                    months: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
-                    weekdaysMin: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
                 },
                 monthFormat: 'MMMM',
                 dayFormat: 'D',
-               
             }
         }
     },

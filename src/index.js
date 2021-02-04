@@ -12,6 +12,7 @@ import VueI18n from 'vue-i18n';
 import TextareaAutosize from 'vue-textarea-autosize';
 import VueEllipseProgress from 'vue-ellipse-progress';
 import Autocomplete from '@trevoreyre/autocomplete-vue';
+import 'vue2-datepicker/locale/ru';
 
 Vue.use(TextareaAutosize)
 Vue.use(VueI18n);
