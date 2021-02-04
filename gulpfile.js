@@ -115,6 +115,22 @@ gulp.task('fix:vue-agile', function () {
         .pipe(gulp.dest('./'));
 });
 
+gulp.task('fix:datepicker-month', function () {
+    return gulp.src([
+        './node_modules/vue2-datepicker/locale/ru.js'
+    ], {base: './'})
+        .pipe(replace("'январь', 'февраль', 'март', 'апрель', 'май', 'июнь', 'июль', 'август', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь'", "'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'"))
+        .pipe(gulp.dest('./'));
+});
+
+gulp.task('fix:datepicker-week', function () {
+    return gulp.src([
+        './node_modules/vue2-datepicker/locale/ru.js'
+    ], {base: './'})
+        .pipe(replace("'вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'", "'Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'"))
+        .pipe(gulp.dest('./'));
+});
+
 gulp.task('fix:vuefy', function () {
     return gulp.src([
         "./node_modules/vueify/lib/compiler.js",
@@ -126,6 +142,8 @@ gulp.task('fix:vuefy', function () {
 
 gulp.task('fix', gulp.parallel(
     'fix:vuefy',
+    'fix:datepicker-month',
+    'fix:datepicker-week',
     'fix:vue-agile'
 ));
 
