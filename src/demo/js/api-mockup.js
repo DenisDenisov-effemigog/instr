@@ -922,6 +922,15 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
+            case 'instrument2:rest.api.user.base.delete':
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                        }
+                    }
+                });
+                break;
             case 'instrument2:rest.api.user.address.get':
                 resolve({
                     data: {

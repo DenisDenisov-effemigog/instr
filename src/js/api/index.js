@@ -104,6 +104,12 @@ class Api {
             email: email,
         });
     }
+    deleteProfile(reason, message) {
+        return this._promiseBitrixRequest('instrument2:rest.api.user.base.delete', {
+            reason: reason,
+            message: message,
+        });
+    }
     personalOrders() {
         return this._promiseBitrixRequest('instrument2:rest.api.user.order.list', {});
     }

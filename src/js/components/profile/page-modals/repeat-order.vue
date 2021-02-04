@@ -11,7 +11,7 @@
                     v-for="product in products.products"
                 >
                     <div class="order-modal__special_img">
-                        <img :src="product.images[0].img" alt=""> /*TODO не приходит картинка из-за роутера*/
+                        <img :src="product.images[0].img" alt=""> <!--TODO не приходит картинка из-за роутера-->
                     </div>
                     <div class="order-modal__special_info">
                         <div class="order-modal__special_article">{{ $tc('text.articul') }}: {{ product.sku }}</div>
@@ -20,21 +20,25 @@
                 </li>
             </ul>
         </div>
-        <div class="order-modal__btn">{{ $tc('link.go_cart') }}</div>
+        <a :href="cartLink" class="order-modal__btn">{{ $tc('link.go_cart') }}</a><!--TODO пофиксить ховер-->
     </div>
 </template>
 
 <script>
-export default {
-    name:'repeat-order',
-    props: {
-        products: {
-            required: true,
-            type: Object
-        }  
-    },
-    methods: {
-       
-    },
-}
+    import config from "../../../config";
+    
+    export default {
+        name:'repeat-order',
+        props: {
+            products: {
+                required: true,
+                type: Object
+            }, 
+        },
+        data() {
+            return {
+                cartLink: config.links.cart
+            }
+        },
+    }
 </script>

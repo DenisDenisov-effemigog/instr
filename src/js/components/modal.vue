@@ -80,7 +80,7 @@
                 <div @click="clearCart" class="modal__btn" v-if="props[0] === $tc('modal.title.clear_cart')">
                     {{ $tc('modal.link.clear_cart') }}
                 </div>
-                <div @click="deleteAddress" class="modal__btn" v-else-if="props[0] === $tc('modal.title.address_remove')">
+                <div class="modal__btn" v-else-if="props[0] === $tc('modal.title.address_remove')">
                     {{ $tc('modal.link.confirm') }}
                 </div>
                 <!-- Третий элемент передаваемого массива props - текст кнопки -->
@@ -164,10 +164,6 @@ export default {
             this.$store.dispatch('basketClear');
             this.closeModal();
         },
-        deleteAddress() {
-            // TODO удаление адреса
-            this.closeModal();
-        }
     },
     
 }

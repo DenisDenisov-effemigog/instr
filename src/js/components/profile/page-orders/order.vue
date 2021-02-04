@@ -92,7 +92,6 @@ export default {
                     //debugger;
                     return item.available === false
                 })
-                console.log('vm.products' , vm.products, 'result' , result);
                 let repeatOrder = {
                     'products': result,
                     'orderNumber': vm.order.number
