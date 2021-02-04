@@ -17,8 +17,8 @@
                     <input 
                         type="number"
                         inputmode="numeric"
-                        @keydown="changeVal" 
-                        v-model.trim="value"
+                        @change="changeVal($event.target.value)" 
+                        :value="amount"
                     > 
                     <!-- временно отключаем меру подсчета -->
                     <!-- <span class="add-to-cart__amount">&nbsp;{{ $tc('text.count') }}</span> -->
@@ -59,15 +59,9 @@
 
 <script>
     import config from "../config";
-    import {required} from "vuelidate/lib/validators"
 
     export default {
         name: "add-to-cart",
-        validations: {
-            value: {
-                required,
-            },
-        },
         props: {
             productId: {
                 type: Number,
@@ -118,7 +112,6 @@
                 _debounce_timer: null,
                 _loading_timer: null,
                 tooltipFlag: false,
-                value: 1
             };
         },
         computed: {
@@ -195,7 +188,6 @@
             decrease() {
                 if (this.amount > this.allowedDecreaseAmount) {
                     this.amount--;
-                    this.value = this.amount
                     this.startSetAmount();
                 }
             },
@@ -205,7 +197,6 @@
             increase() {
                 if (this.amount < this.maxAmount) {
                     this.amount++;
-                    this.value = this.amount
                     if(this.changeIcon && this.width < 760) {
                         this.disabled = true
                     }
@@ -213,26 +204,18 @@
                 }
             },
             changeVal(e){
-                console.log(e.key);
-                if(e.key >= 0 || e.key <= 9 || e.key == 'Backspace'  || e.key == 'ArrowLeft' || e.key == 'ArrowRight' || e.key == 'ArrowUp' || e.key == 'ArrowDown' ){
-                }else if(e.key == 'Enter'){
-                    this.amount = this.$v.value.$model
-                    if (this.amount <= this.maxAmount && this.amount >= this.allowedDecreaseAmount){
-                        this.amount = this.$v.value.$model
-                    }
+                this.amount = Number(e)
+                if (this.amount <= this.maxAmount && this.amount >= this.allowedDecreaseAmount){
+                    this.amount = Number(e)
+                }else{
                     if (this.amount >= this.maxAmount){
                         this.amount = this.maxAmount
-                        this.value = this.amount
                     }
                     if (this.amount <= this.allowedDecreaseAmount){
                         this.amount = this.allowedDecreaseAmount
-                        this.value = this.amount
                     }
-                    this.startSetAmount()
-                }else{
-                    e.preventDefault()
                 }
-                
+                this.startSetAmount()
             },
             mobileScroll(){
                 if(window.innerWidth < 768) {

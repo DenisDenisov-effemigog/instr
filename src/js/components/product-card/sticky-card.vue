@@ -7,25 +7,20 @@
                 </div>
                 <div class="sticky-card__desc">
                     <div class="sticky-card__stickers">
-                        <div class="product-card__stickers_sticker-wrap"
-                             v-for="sticer in product.tooltips">
-                            <div class="product-card__stickers_sticker"
-                                 :class="'product-card__stickers_sticker product-card__stickers_sticker--' + sticer.status">
-                                <span>{{ sticer.title }}</span>
-                            </div>
-                        </div>
+                        <card-stikers v-for="tooltip in product.tooltips"
+                                    :tooltip="tooltip"
+                                    :cardPosition="cardPosition"
+                        ></card-stikers>
                     </div>
                     <div class="sticky-card__text">{{ product.name }}</div>
                 </div>
                 <div class="sticky-card__price">
-                    <div v-for="price in product.prices"
-                         v-if="price.base === 1"
+                    <div v-if="product.price.base"
                          class="sticky-card__price--old"
-                    >{{ price.price }} {{ $tc('text.currency') }}</div>
-                    <div v-for="price in product.prices"
-                         v-if="price.base === 3"
+                    >{{ product.price.base }} {{ $tc('text.currency') }}</div>
+                    <div v-if="product.price.sell"
                          class="sticky-card__price--total"
-                    >{{ price.price }} {{ $tc('text.currency') }}</div>
+                    >{{ product.price.sell }} {{ $tc('text.currency') }}</div>
                 </div>
                 <component is="add-to-cart"
                            :product-id="product.id"
