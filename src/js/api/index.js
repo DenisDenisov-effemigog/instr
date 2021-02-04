@@ -110,6 +110,12 @@ class Api {
             message: message,
         });
     }
+    changePassowrd(currentPass, newPass) {
+        return this._promiseBitrixRequest('instrument2:rest.api.user.change.password', {
+            currentPass: currentPass,
+            newPass: newPass,
+        });
+    }
     personalOrders() {
         return this._promiseBitrixRequest('instrument2:rest.api.user.order.list', {});
     }

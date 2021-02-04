@@ -931,6 +931,16 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
+            case 'instrument2:rest.api.user.change.password':
+                /*если пароли совпадают, заменить*/
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                        }
+                    }
+                });
+                break;
             case 'instrument2:rest.api.user.address.get':
                 resolve({
                     data: {
