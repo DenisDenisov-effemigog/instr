@@ -97,6 +97,13 @@ class Api {
     personalProfile() {
         return this._promiseBitrixRequest('instrument2:rest.api.user.base.get', {});
     }
+    editProfile(name, phone, email) {
+        return this._promiseBitrixRequest('instrument2:rest.api.user.base.edit', {
+            name: name,
+            phone: phone,
+            email: email,
+        });
+    }
     personalOrders() {
         return this._promiseBitrixRequest('instrument2:rest.api.user.order.list', {});
     }

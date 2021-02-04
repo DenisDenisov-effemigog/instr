@@ -129,7 +129,7 @@ export default {
     },
     created(){
         this.$eventBus.$on("openModal", this.openModal)
-        this.$eventBus.$on("closeFilter", this.closeModal)
+        this.$eventBus.$on("closeModal", this.closeModal)
     },
     beforeDestroy(){
         this.$eventBus.$off('openModal');
