@@ -1,6 +1,6 @@
 <template>
     <div class="add-to-cart" :class="{'add-to-cart--big': size==='big'}">
-        <div class="add-to-cart__in-cart" v-if="amountFlag && !disabled">
+        <div class="add-to-cart__in-cart" v-if="amount > 0 && !disabled">
 			<div
 				class="add-to-cart__button add-to-cart__button--decrease"
 				:disabled="decreaseDisabled"
@@ -17,8 +17,7 @@
                     <input 
                         type="number"
                         inputmode="numeric"
-                        @input="changeVal($event.target.value)" 
-                        @change="c" 
+                        @change="changeVal($event.target.value)" 
                         :value="amount"
                     > 
                     <!-- временно отключаем меру подсчета -->
@@ -113,7 +112,6 @@
                 _debounce_timer: null,
                 _loading_timer: null,
                 tooltipFlag: false,
-                amountFlag: false
             };
         },
         computed: {
