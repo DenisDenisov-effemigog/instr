@@ -12,14 +12,32 @@ export default {
     },
     data(){
         return{
+            productOrderPosition: 0
         }
     },
     methods:{
     },
     mounted() {
-        let productOrderBlock = this.$refs.productOrderBlock
-        let productOrderPosition = productOrderBlock.offsetTop + productOrderBlock.clientHeight
-        this.$eventBus.$emit('productOrderBlockPosition', productOrderPosition)
-    }
+        if(window.innerWidth < 768){
+            this.productOrderPosition = this.$refs.productOrderBlock.getBoundingClientRect().bottom + this.$refs.productOrderBlock.clientHeight + 54 + 64
+        }else{
+            this.productOrderPosition = productOrderBlock.offsetTop + productOrderBlock.clientHeight
+        }
+        this.$eventBus.$emit('productOrderBlockPosition', this.productOrderPosition)
+    },
+    methods:{
+        resizeWidth(){
+            let productOrderBlock = this.$refs.productOrderBlock
+            if(window.innerWidth < 768){
+                this.productOrderPosition = this.$refs.productOrderBlock.getBoundingClientRect().bottom + this.$refs.productOrderBlock.clientHeight + 54 + 64
+            }else{
+                this.productOrderPosition = productOrderBlock.offsetTop + productOrderBlock.clientHeight
+            }
+            this.$eventBus.$emit('productOrderBlockPosition', this.productOrderPosition)
+        }
+    },
+    created() {
+        window.addEventListener('resize', this.resizeWidth);
+    },
 }
 </script>

@@ -74,6 +74,16 @@ export default {
                 }
              }
         },
+        mobileScroll(){
+            if(window.innerWidth < 768) {
+                let windowPosition = window.pageYOffset
+                if(windowPosition > this.productOrderPosition){
+                    this.showButton = true
+                } else{
+                    this.showButton = false
+                }
+            }
+        },
         productOrderBlockPosition(productOrderBlockPosition) {
             this.productOrderPosition = productOrderBlockPosition
         },
@@ -86,6 +96,7 @@ export default {
     },
     created () {
         window.addEventListener('scroll', this.mouseWheel);
+        window.addEventListener('scroll', this.mobileScroll);
         this.$eventBus.$on("openStickyButton", this.sowButton);
         this.$eventBus.$on("closeStickyButton", this.hideButton);
         this.$eventBus.$on("productOrderBlockPosition", this.productOrderBlockPosition);

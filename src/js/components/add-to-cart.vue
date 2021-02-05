@@ -217,17 +217,20 @@
                 }
                 this.startSetAmount()
             },
-            mobileScroll(){
-                if(window.innerWidth < 768) {
-                    let windowPosition = window.pageYOffset
-                    let orderPosition = this.productOrderPosition
-                    if(windowPosition > orderPosition){
-                        this.$eventBus.$emit('openStickyButton', 'button.add_to_cart.long')
-                    } else{
-                        this.$eventBus.$emit('closeStickyButton')
-                    }
-                }
-            },
+            // #TODO перенос механики появления стики кнопки в другой компонент
+            // mobileScroll(){
+            //     if(window.innerWidth < 768) {
+            //         let windowPosition = window.pageYOffset
+            //         let orderPosition = this.productOrderPosition
+            //         console.log("windowPosition " + windowPosition);
+            //         console.log("orderPosition " + orderPosition);
+            //         if(windowPosition > orderPosition){
+            //             this.$eventBus.$emit('openStickyButton', 'button.add_to_cart.long')
+            //         } else{
+            //             this.$eventBus.$emit('closeStickyButton')
+            //         }
+            //     }
+            // },
         }
     }
 </script>
