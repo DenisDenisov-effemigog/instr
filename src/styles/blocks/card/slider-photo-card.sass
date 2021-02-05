@@ -23,9 +23,10 @@
         flex: 1 1 auto
         height: 100%
     &__dots
-        padding-top: 1rem
         display: flex
         justify-content: center
+        +tablet
+            height: 1.375rem
     &__dot
         width: .375rem
         height: .375rem
@@ -40,4 +41,5 @@
         &--active
             background: $light-grey
     &--short-card .slider-photo-card__dots
-        padding-top: .5rem
+        +tablet
+            padding-top: .5rem

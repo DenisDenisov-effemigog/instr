@@ -16,7 +16,7 @@
             <div class="filter-block__subtitle">{{ $tc('text.price_base') }}</div>
             <filter-control-range v-model="filterInternal"></filter-control-range>
         </div>
-        <div class="filter-block__content"  v-else-if="filterInternal.type === 'switch'" v-show="openFilter">
+        <div class="filter-block__content" :class="{'filter-block__content--switch':filterInternal.type === 'switch'}"   v-else-if="filterInternal.type === 'switch'" v-show="openFilter">
             <filter-controls-switch v-model="filterInternal"></filter-controls-switch>
         </div>
         <div class="filter-block__content" v-else-if="filterInternal.type === 'checkbox'" v-show="openFilter">
