@@ -1,4 +1,5 @@
 .add-to-cart
+    width: 100%
     margin-right: .5rem   
     &--big
         padding-right: 0
@@ -52,16 +53,13 @@
         //     width: 5.0625rem
 
     &__amount
-        // display: flex
-        // flex-direction: column
-        // justify-content: center
-        // text-align: center
-        // font-size: $font-size_3
-        // width: 3.25rem
-        // +desktop
-        //     width: 5.0625rem
-        text-align: start
-
+        display: none
+        @extend .text-2
+        color: $black
+        font-weight: 600
+        +tablet
+            display: block
+            
     &__amount-input
         // +flex-container-center
         input

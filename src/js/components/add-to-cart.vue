@@ -15,6 +15,7 @@
                 <div class="add-to-cart__input-text" v-if="text">{{ $tc(text) }}</div>
                 <div class="add-to-cart__amount-input">
                     <input 
+                        v-if="inputMode"
                         type="number"
                         inputmode="numeric"
                         @change="changeVal($event.target.value)" 
@@ -22,7 +23,7 @@
                         :value="amount"
                     > 
                     <!-- временно отключаем меру подсчета -->
-                    <!-- <span class="add-to-cart__amount">&nbsp;{{ $tc('text.count') }}</span> -->
+                    <p v-else @click="inputMode = true" class="add-to-cart__amount">{{amount}} {{ $tc('text.count') }}</p>
                 </div>
                 <div v-show="tooltipFlag" class="add-to-cart__tooltip" :class="{'add-to-cart__tooltip--active':tooltipFlag}">
                     {{ $tc('button.add_to_cart.tooltip.part1') }} {{maxAmount}} {{ $tc('button.add_to_cart.tooltip.part2') }}
@@ -113,6 +114,7 @@
                 _debounce_timer: null,
                 _loading_timer: null,
                 tooltipFlag: false,
+                inputMode: false
             };
         },
         computed: {
@@ -193,6 +195,9 @@
                 }
             },
             updateWidth() {
+                if(window.innerWidth < 768){
+                    this.inputMode = true
+                }
                 this.width = window.innerWidth;
             },
             increase() {
@@ -205,7 +210,14 @@
                 }
             },
             inputVal(e){
-                if(!(e.key >= 0 || e.key <= 9 || e.key == 'Backspace'  || e.key == 'ArrowLeft' || e.key == 'ArrowRight' || e.key == 'ArrowUp' || e.key == 'ArrowDown' || e.key == 'Enter')){
+                console.log(e.key);
+                if(e.key >= 0 || e.key <= 9 || e.key == 'Backspace'  || e.key == 'ArrowLeft' || e.key == 'ArrowRight' || e.key == 'ArrowUp' || e.key == 'ArrowDown'){
+                    
+                }else if( e.key == 'Enter'){
+                    if(window.innerWidth > 768){
+                        this.inputMode = false
+                    }
+                }else{
                     e.preventDefault()
                 }
             },
@@ -220,6 +232,9 @@
                     if (this.amount <= this.allowedDecreaseAmount){
                         this.amount = this.allowedDecreaseAmount
                     }
+                }
+                if(window.innerWidth > 768){
+                    this.inputMode = false
                 }
                 this.startSetAmount()
             },
