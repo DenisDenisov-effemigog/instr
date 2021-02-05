@@ -1,5 +1,5 @@
 <template>
-    <div ref="productOrderBlock">
+    <div ref="productOrderBlock" class="product-order__wrapper">
         <slot></slot>
     </div>
 </template>
@@ -21,7 +21,7 @@ export default {
         if(window.innerWidth < 768){
             this.productOrderPosition = this.$refs.productOrderBlock.getBoundingClientRect().bottom + this.$refs.productOrderBlock.clientHeight + 54 + 64
         }else{
-            this.productOrderPosition = productOrderBlock.offsetTop + productOrderBlock.clientHeight
+            this.productOrderPosition = this.$refs.productOrderBlock.getBoundingClientRect().top + this.$refs.productOrderBlock.clientHeight
         }
         this.$eventBus.$emit('productOrderBlockPosition', this.productOrderPosition)
     },

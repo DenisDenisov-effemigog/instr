@@ -69,7 +69,7 @@
                 {% if product.avalible %}
 				    <div class="product-order__stock">{{ 'product_card.in_stock'|trans }}</div>
                 {% endif %}
-				<component is="product-order-block" class="product-order__wrapper">
+				<component is="product-order-block">
 					<ul class="product-order__list">
                         {% if user.personType == 2 and product.price.retail is not empty %}
                             <li class="product-order__item product-order__item--retail">
