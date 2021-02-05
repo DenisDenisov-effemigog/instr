@@ -18,6 +18,7 @@
                         type="number"
                         inputmode="numeric"
                         @change="changeVal($event.target.value)" 
+                        @keydown="inputVal" 
                         :value="amount"
                     > 
                     <!-- временно отключаем меру подсчета -->
@@ -201,6 +202,11 @@
                         this.disabled = true
                     }
                     this.startSetAmount();
+                }
+            },
+            inputVal(e){
+                if(!(e.key >= 0 || e.key <= 9 || e.key == 'Backspace'  || e.key == 'ArrowLeft' || e.key == 'ArrowRight' || e.key == 'ArrowUp' || e.key == 'ArrowDown' || e.key == 'Enter')){
+                    e.preventDefault()
                 }
             },
             changeVal(e){
