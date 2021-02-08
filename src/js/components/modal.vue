@@ -7,7 +7,7 @@
             
             <div class="modal__close" 
                 :class="{'modal__close--desktop': !showCloseBtn}"
-                @click="closeModal"
+                @click="closeModal(modal)"
             >
                 <span v-if="modalBigger">{{ $tc('link.close') }}</span>
                 <svg 
@@ -137,7 +137,9 @@ export default {
     methods:{
         openModal(modal, props, modalSize, closeBtn, index = 0){
             this.currentSlide = index
-            this.toggleHtmlOverflow('hidden')
+            if(modal != 'product-card'){
+                this.toggleHtmlOverflow('hidden')
+            }
             this.open = true
             this.modal = modal //Название модального окна, которое должно открыться
             this.props = props //передаём нужные пропсы
@@ -146,14 +148,17 @@ export default {
             // if (window.innerWidth < 1024) {
             // }
         },
-        closeModal(){
+        closeModal(modal){
+            console.log(modal);
             this.open = false
             this.modal = ''
             this.props = []
             this.modalBigger = false
             this.$eventBus.$emit("deleteActive");
             this.$eventBus.$emit("hide-button");
-            this.toggleHtmlOverflow('auto')
+            if(modal != 'product-card'){
+                this.toggleHtmlOverflow('auto')
+            }
         },
         closeOutside(event) {
             if(event.toElement.className !== '') {
