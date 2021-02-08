@@ -1,0 +1,106 @@
+<div class="contacts">
+	<h2 class="contacts-head__title">{{ 'contacts.title'|trans }}</h2>
+	<div class="contacts-head">
+		<div class="contacts-head__main">
+			<div class="contacts-head__details">
+				<h3 class="contacts-head__title">{{ 'contacts.head_title'|trans }}</h3>
+				<ul class="contacts-head__list">
+					<li class="contacts-head__item">
+						<div class="contacts-head__icon">
+							<svg viewbox="0 0 16 16">
+								<use xlink:href="{{ templatePath }}images/sprite.svg#icons__phone"></use>
+							</svg>
+						</div>
+                        <div class="contacts-head__text">{{tradeMainOffice.phone}}</div>
+					</li>
+					<li class="contacts-head__item">
+						<div class="contacts-head__icon">
+							<svg  viewbox="-3 0 16 12">
+								<use xlink:href="{{ templatePath }}images/sprite.svg#icons__clock"></use>
+							</svg>
+						</div>
+						<div class="contacts-head__text">{{tradeMainOffice.schedule}}</div>
+					</li>
+					<li class="contacts-head__item">
+						<div class="contacts-head__icon">
+							<svg>
+								<use xlink:href="{{ templatePath }}images/sprite.svg#icons__mail"></use>
+							</svg>
+						</div>
+						<div class="contacts-head__text">{{tradeMainOffice.mail}}</div>
+					</li>
+					<li class="contacts-head__item">
+						<div class="contacts-head__icon">
+							<svg>
+								<use xlink:href="{{ templatePath }}images/sprite.svg#icons__location"></use>
+							</svg>
+						</div>
+						<div class="contacts-head__text">{{tradeMainOffice.address}}</div>
+					</li>
+				</ul>
+			</div>
+			<component is="contacts-form"></component>
+		</div>
+	</div>
+	<div class="contacts-map">
+		<h3 class="contacts-map__title">
+			{{ 'contacts.map_title'|trans }}
+		</h3>
+		<div
+			class="contacts-map__main">
+			<!-- #TODO пока просто картинка -->
+			<img
+			src="./demo_images/map/map.png" alt="map">
+		<!-- #TODO пока просто картинка -->
+		</div>
+	</div>
+	<div class="contacts-trade">
+		<h3 class="contacts-trade__title">
+			{{ 'contacts.trade_title'|trans }}
+		</h3>
+		<ul class="contacts-trade__list">
+			{% for trade in tradeOffices %}
+				<li class="contacts-trade__item">
+					<div class="contacts-trade__subtitle">{{trade.title}}:</div>
+					<div class="contacts-trade__desc">
+						<ul class="contacts-trade__sublist">
+							<li class="contacts-trade__subitem">
+								<div class="contacts-trade__icon">
+									<svg>
+										<use xlink:href="{{ templatePath }}images/sprite.svg#icons__location"></use>
+									</svg>
+								</div>
+								<div class="contacts-trade__text">
+									{{trade.address}}
+								</div>
+							</li>
+							<li class="contacts-trade__subitem">
+								<div class="contacts-trade__icon">
+									<svg viewbox="0 0 16 16">
+										<use xlink:href="{{ templatePath }}images/sprite.svg#icons__phone"></use>
+									</svg>
+								</div>
+								<div class="contacts-trade__text">
+									{{trade.phone}}
+								</div>
+							</li>
+							<li class="contacts-trade__subitem">
+								<div class="contacts-trade__icon">
+									<svg>
+										<use xlink:href="{{ templatePath }}images/sprite.svg#icons__mail"></use>
+									</svg>
+								</div>
+								<div class="contacts-trade__text">
+									{{trade.mail}}
+								</div>
+							</li>
+						</ul>
+					</div>
+				</li>
+			{% endfor %}
+		</ul>
+        <div class="contacts-trade__info">
+            Если у вас есть вопросы, позвоните на горячую линию <a class="contacts-trade__info-link">8 (800) 200-49-49</a> или напишите нам <a class="contacts-trade__info-link">help@toolsworld.ru</a>
+        </div>
+	</div>
+</div>

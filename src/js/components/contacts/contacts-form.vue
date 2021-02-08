@@ -1,0 +1,163 @@
+<template>
+    <form action="" class="contacts-form">
+        <h3 class="contacts-form__title">{{  $tc('contacts.form_title') }}</h3>
+        <div class="contacts-form__column">
+            <label name="name" class="contacts-form__label">
+                <input
+                    class="contacts-form__input"
+                    :class="{'contacts-form__input--error': $v.name.$error}"
+                    type="text"
+                    name="name"
+                    id="name"
+                    autocomplete="organization"
+                    autocorrect="off"
+                    v-model.trim="$v.name.$model">
+                <span class="contacts-form__label-text"
+                    :class="{'contacts-form__label-text--up': $v.name.required}"
+                >{{ $tc('contacts.form_name') }}</span>
+                <svg viewBox="0 0 24 24"
+                    class="contacts-form__label-icon" 
+                    v-if="$v.name.required"
+                    @click="$v.name.$model = ''">
+                    <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
+                </svg>
+                <div class="contacts-form__error-text contacts-form__error-text--invalid"
+                    v-if="$v.name.$error">{{ $tc('text.error') }}</div>
+            </label>
+            <label name="phone" class="contacts-form__label">
+                <the-mask
+                    class="contacts-form__input"
+                    :class="{'contacts-form__input--error': $v.phone.$error}"
+                    type="tel"
+                    :mask="phoneMask"
+                    :tokens="tokens"
+                    name="phone"
+                    id="phone"
+                    autocomplete="tel"
+                    autocorrect="off"
+                    v-model.trim="phone"/>
+                <span class="contacts-form__label-text"
+                    :class="{'contacts-form__label-text--up': $v.phone.required}"
+                >{{ $tc('title.phone_number') }}</span>
+                <svg viewBox="0 0 24 24"
+                    class="contacts-form__label-icon"
+                    v-if="$v.phone.required"
+                    @click="$v.phone.$model = ''">
+                    <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
+                </svg>
+                <div class="contacts-form__error-text contacts-form__error-text--invalid"
+                    v-if="$v.phone.$error">{{ $tc('text.error') }}</div>
+            </label>
+            <label name="email" class="contacts-form__label">
+                <input
+                    class="contacts-form__input"
+                    :class="{'contacts-form__input--error': $v.newEmail.$error}"
+                    type="email"
+                    name="email"
+                    id="email"
+                    autocomplete="email"
+                    autocorrect="off"
+                    autocapitalize="off"
+                    v-model.trim="newEmail">
+                <span class="contacts-form__label-text"
+                    :class="{'contacts-form__label-text--up': $v.newEmail.required}"
+                >{{ $tc('title.email') }}</span>
+                <svg viewBox="0 0 24 24"
+                    class="contacts-form__label-icon"
+                    v-if="$v.newEmail.required"
+                    @click="$v.newEmail.$model = ''">
+                    <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
+                </svg>
+                <div class="contacts__error-text contacts__error-text--invalid"
+                    v-if="$v.newEmail.$error">{{ $tc('text.error') }}</div>
+            </label>
+            <label name="town" class="contacts-form__label">
+                <input
+                    class="contacts-form__input"
+                    :class="{'contacts-form__input--error': $v.town.$error}"
+                    type="text"
+                    name="town"
+                    id="town"
+                    autocomplete="organization"
+                    autocorrect="off"
+                    v-model.trim="$v.town.$model">
+                <span class="contacts-form__label-text"
+                    :class="{'contacts-form__label-text--up': $v.town.required}"
+                >{{ $tc('contacts.form_town') }}</span>
+                <svg viewBox="0 0 24 24"
+                    class="contacts-form__label-icon" 
+                    v-if="$v.town.required"
+                    @click="$v.town.$model = ''">
+                    <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
+                </svg>
+                <div class="contacts-form__error-text contacts__error-text--invalid"
+                    v-if="$v.town.$error">{{ $tc('text.error') }}</div>
+            </label>
+        </div>
+        <label for="message" class="contacts-form__label contacts-form__label--column">
+            <textarea
+                class="contacts-form__textarea"
+                :class="{'contacts-form__textarea--error': $v.message.$error}"
+                name="message"
+                id="message"
+                v-model.trim="message"
+            ></textarea>
+            <span class="contacts-form__label-text"
+                :class="{'contacts-form__label-text--up': $v.message.required}"
+            >{{ $tc('text.message') }}</span>
+            <span class="contacts-form__error-text" v-if="$v.$error">*{{ $tc('text.required') }}</span>
+        </label>
+        <div class="contacts-form__stick">
+            <label for="files" class="contacts-form__stick-label">
+                <input id="files" type="file" class="contacts-form__stick-input">
+                {{ $tc('contacts.form_stick_input') }}
+            </label>
+            <span class="contacts-form__stick-text">
+                {{ $tc('contacts.form_stick_text') }}
+            </span>
+        </div>
+        <input type="submit" class="contacts-form__btn" :value="$tc('contacts.form_btn')">
+    </form>
+</template>
+
+<script>
+
+    import {required, email} from "vuelidate/lib/validators"
+    import {TheMask} from 'vue-the-mask'
+
+    import config from "../../config";
+
+export default {
+    name:"contacts-form",
+    components: {
+        TheMask
+    },
+    validations: {
+            name: {
+                required
+            },
+            town: {
+                required
+            },
+            phone: {
+                required
+            },
+            newEmail: {
+                required,
+                email
+            },
+            message: {
+                required,
+            }
+        },
+        data() {
+            return {
+                name: '',
+                phone: '',
+                newEmail: '',
+                tokens: config.phoneTokens,
+                phoneMask: config.phoneMask
+            }
+        },
+}
+</script>

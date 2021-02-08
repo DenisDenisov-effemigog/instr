@@ -89,6 +89,8 @@ import checkoutDelivery from './components/checkout/checkout-delivery.vue'
 import deliveryAddress from './components/checkout/delivery-address.vue'
 import deliveryDate from './components/checkout/delivery-date.vue'
 import receiveAddress from './components/checkout/receive-address.vue'
+/* contacts */ 
+import contactsForm from './components/contacts/contacts-form.vue'
 
 export default {
     components: {
@@ -173,5 +175,6 @@ export default {
         receiveAddress,
         deliveryDate,
         selectedItems,
+        contactsForm,
     },
 }

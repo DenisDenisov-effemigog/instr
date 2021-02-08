@@ -1,0 +1,61 @@
+.contacts-form
+    display: none
+    +tablet
+        width: 50%
+        display: block
+        padding: 2rem
+        border: 1px solid $border-color_4
+        border-radius: 4px
+    &__title
+        @extend .title-7
+        font-weight: 700
+    &__label
+        @extend .form__label
+        flex-direction: column
+        &_row
+            flex-direction: row
+    &__label-text
+        @extend .form__label-text
+        &--up
+            @extend .form__label-text--up
+    &__input
+        @extend .form__input
+        &--dots
+            @extend .form__input--dots
+        &--error
+            @extend .input-modal--error
+    &__button
+        @extend .form__button   
+    &__label-icon
+        @extend .form__label-icon
+    &__error-text
+        @extend .form__error-text
+        &--invalid
+            @extend .form__error-text--invalid
+        &--invalid-password
+            @extend .form__error-text--invalid-email
+    &__textarea
+        @extend .profile-modal__textarea
+    &__column
+        margin-top: 1.5rem
+        display: flex
+        justify-content: space-between
+        flex-wrap: wrap
+        .contacts-form__label
+            width: calc(100% / 2 - 0.75rem)
+    &__stick
+        @extend .text-3
+        font-weight: 400
+        margin-top: 0.5rem
+        display: flex
+    &__stick-label
+        color: $blue
+        padding-right: 0.3125rem
+        cursor: pointer
+    &__stick-input
+        display: none
+    &__btn
+        @extend .button-primary
+        margin-top: 1.5rem
+
+

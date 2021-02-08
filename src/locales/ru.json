@@ -290,5 +290,18 @@
     "checkout.checkbox_text": "Сообщать мне обо всяких акциях, новостях и тд и тп.",
     "checkout.date_placeholder": "Не выбрано (не обязательно)",
     "checkout.delivery-address.city.error": "Ошибка, город не найден",
-    "checkout.delivery-address.street.error": "Ошибка, улица не найдена"
+    "checkout.delivery-address.street.error": "Ошибка, улица не найдена",
+
+    "page-brand.title":"Производитель",
+
+    "contacts.title":"Контакты московского филиала ООО «МИР ИНСТРУМЕНТА»",
+    "contacts.head_title":"Контактные данные",
+    "contacts.form_title":"Форма обратной связи",
+    "contacts.map_title":"Местоположение",
+    "contacts.trade_title":"Торговые представительства",
+    "contacts.form_name":"Ваше имя",
+    "contacts.form_town":"Ваш город",
+    "contacts.form_stick_text":"документ (Общий объем файлов не более 5 Мб)",
+    "contacts.form_stick_input":"Прикрепить",
+    "contacts.form_btn":"Отправить"
 }
