@@ -9,14 +9,17 @@
         @extend .text-2
         font-weight: 400
         margin-top: 1rem
-    &__number
+    &__number-link
         margin-top: 1.5rem
         @extend .text-5
         font-weight: 400
         color: $blue
         +tablet
             margin-top: 2rem
+        &:hover
+            color: $blue
     &__number-text
+        @extend .text-5
         font-weight: 600
         color: $black
         padding-right: 0.5rem
