@@ -1,0 +1,26 @@
+.errors-promo
+    margin-top: 1rem
+    +tablet
+        margin-top: 1.5rem
+        display: flex
+    &__btn
+        @extend .button-primary
+        margin-top: 1rem
+        +tablet
+            margin-top: 0
+    &__text
+        padding: 0.75rem 1rem
+        border: 1px solid $border-color_4
+        border-radius: 4px
+        @extend .text-3
+        font-weight: 400
+        color: $light-grey
+        +tablet
+            margin-right: 1.5rem
+        &--copy
+            -webkit-touch-callout: none
+            -webkit-user-select: none
+            -khtml-user-select: none
+            -moz-user-select: none
+            -ms-user-select: none
+            user-select: none     

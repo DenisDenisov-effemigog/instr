@@ -34,6 +34,12 @@
         padding-bottom: 1rem
         &:last-child
             padding-bottom: 0
+        +tablet
+            cursor: pointer
+            &:hover .contacts-head__text
+                color: $black
+            &:hover .contacts-head__icon svg
+                fill: $black
     &__icon
         margin-right: 0.625rem
         & svg
@@ -42,7 +48,7 @@
             fill: $grey
     &__text
         @extend .text-2
-        color: $grey
+        color: $light-grey
         font-weight: 400
 
 .contacts-map
@@ -98,7 +104,7 @@
             fill: $grey
     &__text
         @extend .text-2
-        color: $grey
+        color: $light-grey
         font-weight: 400
     &__info
         margin-top: 2rem
