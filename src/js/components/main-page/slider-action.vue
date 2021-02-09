@@ -1,21 +1,19 @@
 <template>
-    <div class="slider-action">
-        <agile :options="options" class="agile_centered">
+    <agile :options="options" class="agile_centered">
 
-            <slot></slot>
+        <slot></slot>
 
-            <template slot="prevButton">
-                <svg>
-                    <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
-                </svg>
-            </template>
-            <template slot="nextButton">
-                <svg>
-                    <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-right'"></use>
-                </svg>
-            </template>
-        </agile>
-    </div>
+        <template slot="prevButton">
+            <svg>
+                <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
+            </svg>
+        </template>
+        <template slot="nextButton">
+            <svg>
+                <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-right'"></use>
+            </svg>
+        </template>
+    </agile>
 </template>
 
 <script>
@@ -53,7 +51,7 @@
         },
         methods: {
             oneSlide() {
-                if (this.quantity < 3) {
+                if (this.quantity < 4) {
                     this.options.infinite = false;
                     this.options.responsive[0].settings.navButtons = false
                 }

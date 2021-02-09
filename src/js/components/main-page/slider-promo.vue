@@ -54,6 +54,7 @@
                             breakpoint: 1024,
                             settings: {
                                 slidesToShow: 6,
+                                navButtons: true,
                             }
                         },
                         {
@@ -77,6 +78,9 @@
                 if (this.promoBanners.length < 6) {
                     this.options.infinite = false;
                     this.options.responsive[1].settings.navButtons = false
+                } else if (this.promoBanners.length < 7) {
+                    this.options.infinite = false;
+                    this.options.responsive[0].settings.navButtons = false
                 }
             }
         },

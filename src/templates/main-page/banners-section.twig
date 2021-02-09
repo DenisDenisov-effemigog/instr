@@ -8,13 +8,13 @@
         </a>
 	</div>
     <div class="banners-section__title">{{ 'main_page.stock.title'|trans }}</div>
-    <component is="slider-action" :quantity={{ actionBanners|length }}>
-        {% for slide in actionBanners %}
-            <div class="slider-action__slide">
-                <div class="">
+    <div class="slider-action">
+        <component is="slider-action" :quantity={{ actionBanners|length }}>
+            {% for slide in actionBanners %}
+                <div class="slider-action__slide">
                     <img src="{{ slide.img }}" alt="">
                 </div>
-            </div>
-        {% endfor %}
-    </component>
+            {% endfor %}
+        </component>
+    </div>
 </section>
