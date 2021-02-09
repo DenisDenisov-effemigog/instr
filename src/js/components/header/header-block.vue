@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <a href="#" class="header__logo header__logo_desktop" v-show="!activeSearch">
+        <a href="/" class="header__logo header__logo_desktop" v-show="!activeSearch">
             <!-- <svg viewBox="0 0 650 150">
                 <use :xlink:href="templatePath + 'images/sprite.svg#logo'"></use>
             </svg> -->
@@ -8,7 +8,7 @@
                 <use :xlink:href="templatePath + 'images/sprite.svg#wt'"></use>
             </svg>
         </a>
-        <a href="#" class="header__logo header__logo_mobile" v-show="!activeSearch">
+        <a href="/" class="header__logo header__logo_mobile" v-show="!activeSearch">
             <!-- <svg viewBox="0 0 650 150">
                 <use :xlink:href="templatePath + 'images/sprite.svg#logo'"></use>
             </svg> -->

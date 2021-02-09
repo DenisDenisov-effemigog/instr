@@ -950,6 +950,24 @@ window.runAction = function (action, config) {
                         }
                     }
                 });
+                break;
+            case 'instrument2:rest.api.user.address.add':
+                demoAddressList.push({
+                    'id': 333,
+                    'order': '1',
+                    'address': config.data.address,
+                    'status': 'submitted',
+                    'statusPrint': 'Отправлен на подтверждение',
+                    'statusDesc': 'В данный момент адрес проходит проверку модератора. Следить за статусом адреса вы можете тут',
+                })
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                            answer: demoCloneOverJson(demoAddressList)
+                        }
+                    }
+                });
                 break;    
             case 'instrument2:rest.api.user.checks.list':
                 resolve({

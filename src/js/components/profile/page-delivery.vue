@@ -63,7 +63,13 @@ export default {
         this.$store.dispatch('personalUpdateAddresses');
         this.$eventBus.$emit('hideMenu')
     },
+    created() {
+        this.$eventBus.$on('addAddress', this.addAddress)
+    },
     methods: {
+        addAddress(address) {
+            this.$store.dispatch('personalUpdateAddresses');
+        },
         deleteAddress() {
             // через массив передаем причины удаления и что удаляем - 2 элемеента
             this.$eventBus.$emit("openModal", 'profile-delete', [this.reasons, 'address'], false, false)
@@ -77,7 +83,6 @@ export default {
     },
     computed: {
         addresses() {
-            console.log('this.$store.state.personal.addresses', this.$store.state.personal.addresses);
             return this.$store.state.personal.addresses;
         },
     }

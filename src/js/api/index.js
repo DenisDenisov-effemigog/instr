@@ -116,6 +116,12 @@ class Api {
             newPass: newPass,
         });
     }
+    addAddress(address, message) {
+        return this._promiseBitrixRequest('instrument2:rest.api.user.address.add', {
+            address: address,
+            message: message,
+        });
+    }
     personalOrders() {
         return this._promiseBitrixRequest('instrument2:rest.api.user.order.list', {});
     }
