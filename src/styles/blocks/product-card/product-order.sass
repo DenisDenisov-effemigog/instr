@@ -18,7 +18,6 @@
             background: $green
             border-radius: 50% 
     &__wrapper
-        position: relative
         margin-top: 1rem
         padding: 1.5rem
         border: 1px solid $border-color
@@ -56,19 +55,23 @@
         &--discount
             &-green
                 color: $green
+                position: relative
             &-blue
                 color: $blue
+                position: relative
     &__tooltip
         @extend .tooltip
         width: 20rem
         +mobile
-            bottom: -1.25rem
-            left: 0
+            max-width: 20rem
+            width: 100%
+            top: 105%
+            left: -3%
             &:before
                 left: calc(50% - 2.75rem)
         +tablet
-            top: .5rem
-            left: -94%
+            top: -7rem
+            right: 105%
             &::before
                 top: 71%
                 right: -.5625rem

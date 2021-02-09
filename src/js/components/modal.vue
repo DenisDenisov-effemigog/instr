@@ -149,7 +149,6 @@ export default {
             // }
         },
         closeModal(modal){
-            console.log(modal);
             this.open = false
             this.modal = ''
             this.props = []

@@ -21,6 +21,7 @@
                         @change="changeVal($event.target.value)" 
                         @keydown="inputVal" 
                         :value="amount"
+                        :autofocus="autofocusFlag"
                     > 
                     <!-- временно отключаем меру подсчета -->
                     <p v-else @click="inputMode = true" class="add-to-cart__amount">{{amount}} {{ $tc('text.count') }}</p>
@@ -114,7 +115,8 @@
                 _debounce_timer: null,
                 _loading_timer: null,
                 tooltipFlag: false,
-                inputMode: false
+                inputMode: false,
+                autofocusFlag: true
             };
         },
         computed: {
@@ -197,6 +199,7 @@
             updateWidth() {
                 if(window.innerWidth < 768){
                     this.inputMode = true
+                    this.autofocusFlag = false
                 }
                 this.width = window.innerWidth;
             },
@@ -210,7 +213,6 @@
                 }
             },
             inputVal(e){
-                console.log(e.key);
                 if(e.key >= 0 || e.key <= 9 || e.key == 'Backspace'  || e.key == 'ArrowLeft' || e.key == 'ArrowRight' || e.key == 'ArrowUp' || e.key == 'ArrowDown'){
                     
                 }else if( e.key == 'Enter'){
@@ -233,9 +235,9 @@
                         this.amount = this.allowedDecreaseAmount
                     }
                 }
-                if(window.innerWidth > 768){
-                    this.inputMode = false
-                }
+                // if(window.innerWidth > 768){
+                //     this.inputMode = false
+                // }
                 this.startSetAmount()
             },
             // #TODO перенос механики появления стики кнопки в другой компонент
