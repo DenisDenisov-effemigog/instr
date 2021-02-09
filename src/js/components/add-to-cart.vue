@@ -213,7 +213,6 @@
                 }
             },
             inputVal(e){
-                console.log(e.key);
                 if(e.key >= 0 || e.key <= 9 || e.key == 'Backspace'  || e.key == 'ArrowLeft' || e.key == 'ArrowRight' || e.key == 'ArrowUp' || e.key == 'ArrowDown'){
                     
                 }else if( e.key == 'Enter'){
