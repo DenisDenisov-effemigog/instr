@@ -19,19 +19,24 @@ export default {
     },
     mounted() {
         if(window.innerWidth < 768){
-            this.productOrderPosition = this.$refs.productOrderBlock.getBoundingClientRect().bottom + this.$refs.productOrderBlock.clientHeight + 54 + 64
+            this.productOrderPosition = 0
+            this.productOrderPosition = this.$refs.productOrderBlock.offsetTop + this.$refs.productOrderBlock.clientHeight
+            console.log(this.productOrderPosition);
         }else{
-            this.productOrderPosition = this.$refs.productOrderBlock.getBoundingClientRect().top + this.$refs.productOrderBlock.clientHeight
+            this.productOrderPosition = 0
+            this.productOrderPosition = this.$refs.productOrderBlock.offsetTop + this.$refs.productOrderBlock.clientHeight
         }
         this.$eventBus.$emit('productOrderBlockPosition', this.productOrderPosition)
     },
     methods:{
         resizeWidth(){
-            let productOrderBlock = this.$refs.productOrderBlock
             if(window.innerWidth < 768){
-                this.productOrderPosition = this.$refs.productOrderBlock.getBoundingClientRect().bottom + this.$refs.productOrderBlock.clientHeight + 54 + 64
+                this.productOrderPosition = 0
+                this.productOrderPosition = this.$refs.productOrderBlock.offsetTop + this.$refs.productOrderBlock.clientHeight
+                 console.log(this.productOrderPosition);
             }else{
-                this.productOrderPosition = productOrderBlock.offsetTop + productOrderBlock.clientHeight
+                this.productOrderPosition = 0
+                this.productOrderPosition = this.$refs.productOrderBlock.offsetTop + this.$refs.productOrderBlock.clientHeight
             }
             this.$eventBus.$emit('productOrderBlockPosition', this.productOrderPosition)
         }
