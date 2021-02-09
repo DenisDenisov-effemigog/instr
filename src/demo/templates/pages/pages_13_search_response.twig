@@ -1,6 +1,6 @@
 {% extends "../layout.twig" %}
 
-{% block title %}Pages | 12 Ошибки{% endblock %}
+{% block title %}Pages | 13 "Ничего не найдено"{% endblock %}
 
 {% set categories = [
     {
@@ -1864,7 +1864,7 @@
 {% block content %}
 
     {% include '../../../templates/header/header.twig' with {'categories': categories, 'user': user} %}
-    {% include '../../../templates/errors/errors.twig' %}
+    {% include '../../../templates/search-response/search-response.twig' %}
     {% include '../../../templates/listing/listing.twig' with {
         'products': products,
         'sort_types': sort_types,
