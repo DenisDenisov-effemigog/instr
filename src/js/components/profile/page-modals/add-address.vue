@@ -34,6 +34,9 @@
 
 <script>
     import {required, minLength} from "vuelidate/lib/validators"
+    import * as Api from '../../../api/index'
+
+    let api = Api.getInstance();
 
     export default {
         name:"add-address",
@@ -63,8 +66,14 @@
                 }
             },
             saveChanges() {
-                this.address = this.$v.address.$model;
-                this.message = this.$v.message.$model
+                let vm = this
+
+                api.addAddress(vm.$v.address.$model, vm.$v.message.$model).then(answer => {
+                    vm.$eventBus.$emit('closeModal')
+                    vm.$eventBus.$emit('addAddress', answer)
+                }).catch(errors => {
+                    console.error(errors);
+                })
             }
         },
     }
