@@ -1,11 +1,13 @@
 .errors
     @extend .container
     margin-top: 2.5rem
+    margin-bottom: 2.5rem
     +tablet
         display: flex
         align-items: center
         margin-top: 9.125rem
         justify-content: center
+        margin-bottom: 6.5rem
     &__img
         width: 100%
         max-width: 9.6875rem
@@ -35,7 +37,8 @@
         +tablet 
             margin-top: 1.5rem
     &__btn
-        @extend .button-primary
         margin-top: 1rem
         +tablet
             margin-top: 2rem
+    &__btn-link
+        @extend .button-primary
