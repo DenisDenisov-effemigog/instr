@@ -26,6 +26,12 @@
         components: {
             agile: VueAgile
         },
+        props: {
+            quantity: {
+                type: Number,
+                required: true
+            }
+        },
         data() {
             return {
                 options: {
@@ -46,6 +52,15 @@
             }
         },
         methods: {
+            oneSlide() {
+                if (this.quantity < 3) {
+                    this.options.infinite = false;
+                    this.options.responsive[0].settings.navButtons = false
+                }
+            }
+        },
+        created() {
+            this.oneSlide();
         }
     }
 </script>

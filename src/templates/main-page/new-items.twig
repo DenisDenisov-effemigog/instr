@@ -17,6 +17,7 @@
         <component
             is="slider-cards"
             :dots="false"
+            :quantity={{ noveltys|length }}
         >
             {% for product in noveltys %}
                 <div class="slider-cards__slide">

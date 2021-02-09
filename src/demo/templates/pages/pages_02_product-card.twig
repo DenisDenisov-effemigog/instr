@@ -1712,6 +1712,7 @@
     } %}
     {% include '../../../templates/product-card/product-card.twig' with {'product': product} %}
     {% include '../../../templates/product-card/same-products.twig' with {'productsSames': productsSames, 'user': user} %}
+    {% include '../../../templates/product-card/same-products.twig' with {'productsSames': productsSames|slice(0, 4), 'user': user} %}
     {% include '../../../templates/product-card/product-tabs.twig' with {
         'product': product,
         'category_discount': category_discount,
@@ -1719,6 +1720,7 @@
         'productId': product.id
     } %}
     {% include '../../../templates/product-card/recommend.twig' with {'productsRecommended': productsRecommended} %}
+    {% include '../../../templates/product-card/recommend.twig' with {'productsRecommended': productsRecommended|slice(0, 4)} %}
     {% include '../../../templates/product-card/banner.twig' with {
         'banner': '/demo_images/banners/product-card.png', 
         'bannerMobile': '/demo_images/banners/mob-banner.png'

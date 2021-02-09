@@ -24,6 +24,10 @@
                 type: Boolean,
                 default: true,
             },
+            quantity: {
+                type: Number,
+                required: true
+            }
         },
         data() {
             return {
@@ -53,10 +57,20 @@
         methods: {
             doStopScroll(event) {
                 console.log('event.type')
+            },
+            oneSlide() {
+                if (this.quantity < 5) {
+                    this.options.infinite = false;
+                    this.options.responsive[0].settings.navButtons = false
+                    this.options.responsive[1].settings.navButtons = false
+                }
             }
         },
         mounted() {
             // this.$refs.sliderCard.removeEventListener('touchmove', this.handleMouseMove)
         },
+        created() {
+            this.oneSlide();
+        }
     }
 </script>

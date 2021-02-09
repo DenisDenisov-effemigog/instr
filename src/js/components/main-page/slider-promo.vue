@@ -72,7 +72,16 @@
             openModal(slide){
                 // через массив передаем оглавление, сообщение и текст кнопки модального окна - 3 элемеента
                 this.$eventBus.$emit("openModal", 'dialogue', [slide.modal.title, slide.modal.description, this.$tc('modal.link.action')], false, true)
+            },
+            oneSlide() {
+                if (this.promoBanners.length < 6) {
+                    this.options.infinite = false;
+                    this.options.responsive[1].settings.navButtons = false
+                }
             }
+        },
+        created() {
+            this.oneSlide();
         }
     }
 </script>
