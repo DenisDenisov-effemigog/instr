@@ -10,9 +10,9 @@
         font-weight: 400
         margin-top: 1rem
     &__number-link
-        margin-top: 1.5rem
+        @extend .link-blue
         @extend .text-5
-        font-weight: 400
+        margin-top: 1.5rem
         color: $blue
         +tablet
             margin-top: 2rem
@@ -20,15 +20,16 @@
             color: $blue
     &__number-text
         @extend .text-5
-        font-weight: 600
+        font-family: $font-montserrat-semibold
+        font-weight: $font-weight_semibold
         color: $black
         padding-right: 0.5rem
     &__date
         margin-top: 0.5rem
         @extend .text-5
-        font-weight: 400
     &__date-title
-        font-weight: 600
+        font-family: $font-montserrat-semibold
+        font-weight: $font-weight_semibold
         padding-right: 0.5rem
     &__link
         margin-top: 2rem
