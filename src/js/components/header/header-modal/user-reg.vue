@@ -113,6 +113,7 @@
                 type="tel"
                 :mask="phoneMask"
                 :tokens="tokens"
+                :masked="true"
                 name="phone"
                 id="phone"
                 autocomplete="tel"
