@@ -8,8 +8,8 @@
             <add-address-btn></add-address-btn>
         </div>
       
-        <div v-if="addresses.length > 0">
-            <ul class="delivery__list">
+        <div class="delivery__list">
+            <ul v-if="addresses.length > 0">
                 <li class="delivery__item" v-for="order in addresses">
                     <div class="delivery__desc">
                         <div class="delivery__order">{{ $tc('text.address') }} № {{order.order}}</div>
@@ -37,8 +37,8 @@
                         </svg>
                     </div>
                 </li>
-                <add-address-btn></add-address-btn>
             </ul>
+            <add-address-btn></add-address-btn>
         </div>
     </div>
 </template>
