@@ -57,7 +57,7 @@
     <!--  -->
                 </div>
                 <div class="card__button-block">
-                    <component is="add-to-cart" :productId="product.id" :max-amount="product.stock" :changeIcon="changeIcon" ></component>
+                    <component is="add-to-cart" @cloneCard="cloneCard" :productId="product.id" :max-amount="product.stock" :changeIcon="changeIcon" ></component>
                     <component class="card__button-block_to-compare" is="to-compare" :id="product.id"></component>
                     <div @click="menuTooltip = !menuTooltip" class="card__menu-btn">
                         <span></span>
@@ -122,18 +122,43 @@ export default {
             menuTooltip: false,
             productId: 0,
             tooltipId: 0,
-            cardPosition: 0
+            cardPosition: 0,
+            cartTopPosition: 0,
+            cartLeftPosition: 0
         }
     },
     methods: {
         menuBtnClick(e){
             console.log(e.target)
+        },
+        cloneCard(btn){
+            if(window.innerWidth > 987){
+                this.$eventBus.$emit("clickedToBtn")
+                let card = btn.closest('.card')
+                console.log(card.getBoundingClientRect());
+                let clone = card.cloneNode(true)
+                clone.style.width = card.offsetWidth + 'px'
+                clone.style.top = card.pageYOffset + 'px'
+                clone.style.left = card.getBoundingClientRect().left + 'px'
+                clone.classList.add('card-clone')
+                document.querySelector('body').appendChild(clone)
+            }
+            console.log(this.cartTopPosition);
+            console.log(this.cartLeftPosition);
+        },
+        cartPosition(obj){
+            this.cartTopPosition = obj.top
+            this.cartLeftPosition = obj.left
         }
     },
     mounted() {
         let card = this.$refs.card
         let c = card.getBoundingClientRect()
         this.cardPosition = c.left + c.width
-    }
+    },
+    created() {
+        this.$eventBus.$on("cloneCard", this.cloneCard)
+        this.$eventBus.$on("cartPosition", this.cartPosition)
+    },
 }
 </script>

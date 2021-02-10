@@ -1,5 +1,5 @@
 <template>
-    <a href="#" class="header__menu-link header__menu-link--cart-active">
+    <a ref="cart" href="#" class="header__menu-link header__menu-link--cart-active">
         <svg class="header__menu-icon">
             <use :xlink:href="templatePath + 'images/sprite.svg#icons__cart'"></use>
         </svg>
@@ -30,7 +30,20 @@
                 return basketData.price;
             },
             
-        }
+        },
+        methods:{
+            clickedToBtn(){
+                let cart = this.$refs.cart
+                let cartPositionObj= {}
+                cartPositionObj.top = cart.offsetTop
+                cartPositionObj.left = cart.offsetLeft
+                console.log(cartPositionObj);
+                this.$eventBus.$emit("cartPosition", cartPositionObj)
+            }
+        },
+        created() {
+            this.$eventBus.$on("clickedToBtn", this.clickedToBtn)
+        },
     }
 </script>
 

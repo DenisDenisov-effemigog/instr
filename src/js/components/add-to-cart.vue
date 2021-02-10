@@ -203,7 +203,9 @@
                 }
                 this.width = window.innerWidth;
             },
-            increase() {
+            increase(event) {
+                let button = event.target;
+                this.$emit('cloneCard', button)
                 if (this.amount < this.maxAmount) {
                     this.amount++;
                     if(this.changeIcon && this.width < 760) {
