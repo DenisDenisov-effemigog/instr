@@ -70,7 +70,7 @@
 
                 api.addAddress(vm.$v.address.$model, vm.$v.message.$model).then(answer => {
                     vm.$eventBus.$emit('closeModal')
-                    vm.$eventBus.$emit('addAddress', answer)
+                    vm.$eventBus.$emit('updateAddress')
                 }).catch(errors => {
                     console.error(errors);
                 })
