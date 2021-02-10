@@ -3,6 +3,7 @@
     <component 
         is="slider-cards"
         :dots="false"
+        :quantity={{ productsSames|length }}
     >
         {% for product in productsSames %}
             <div class="slider-cards__slide">
