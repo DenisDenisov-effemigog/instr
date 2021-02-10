@@ -131,20 +131,46 @@ export default {
         menuBtnClick(e){
             console.log(e.target)
         },
-        cloneCard(btn){
+        cloneCard(btn, event){
             if(window.innerWidth > 987){
                 this.$eventBus.$emit("clickedToBtn")
                 let card = btn.closest('.card')
-                console.log(card.getBoundingClientRect());
                 let clone = card.cloneNode(true)
+                let cardTop = card.getBoundingClientRect().top + document.documentElement.scrollTop
+                let cardLeft = card.getBoundingClientRect().left
                 clone.style.width = card.offsetWidth + 'px'
-                clone.style.top = card.pageYOffset + 'px'
-                clone.style.left = card.getBoundingClientRect().left + 'px'
+                clone.style.top = cardTop + 'px'
+                clone.style.left = cardLeft + 'px'
                 clone.classList.add('card-clone')
                 document.querySelector('body').appendChild(clone)
+                // let a = this.cartTopPosition;
+                // console.log('cardTop ' + cardTop);
+                // let posTop = cardTop
+                // let posLeft = cardLeft
+                // let id = setInterval(frame, 5);
+                // function frame(){
+                //     if (posTop <= a){
+                //         alert(1)
+                //         clearInterval(id)
+                //         return
+                //     }else{
+                //         posTop--
+                //         posLeft++
+                //         clone.style.top = posTop + 'px'
+                //         clone.style.left = posLeft + 'px'
+                //     }
+                //     console.log(a);
+                //     console.log('cardTop ' + cardTop);
+                // }
+                setTimeout(() => {
+                    clone.style.top = this.cartTopPosition + 'px'
+                    clone.style.left = this.cartLeftPosition + 'px'
+                    clone.style.transition = 1 + 's'
+                    setTimeout(() => {
+                        clone.parentNode.removeChild(clone)
+                    }, 600);
+                }, 500);
             }
-            console.log(this.cartTopPosition);
-            console.log(this.cartLeftPosition);
         },
         cartPosition(obj){
             this.cartTopPosition = obj.top

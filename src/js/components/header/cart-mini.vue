@@ -35,9 +35,8 @@
             clickedToBtn(){
                 let cart = this.$refs.cart
                 let cartPositionObj= {}
-                cartPositionObj.top = cart.offsetTop
+                cartPositionObj.top = cart.offsetTop + document.documentElement.scrollTop
                 cartPositionObj.left = cart.offsetLeft
-                console.log(cartPositionObj);
                 this.$eventBus.$emit("cartPosition", cartPositionObj)
             }
         },
