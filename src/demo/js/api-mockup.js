@@ -390,7 +390,7 @@ for(let i = 0; i < 6; ++i) {
 }
 
 let demoAddressList = [
-    /*{
+    {
         'id': 12828,
         'order': '1',
         'address': '1062 Budapest, V1 Bajzautca, 35 1062 Budapest, V1 Bajzautca, 35 1062 Budapest, V1 Bajzautca, 35 Bajzautca',
@@ -413,7 +413,7 @@ let demoAddressList = [
         'status': 'not-сonfirmed',
         'statusPrint': 'Не подтвержден',
         'statusDesc': 'К сожалению, адрес не прошел проверку модератора. Подробнее по горячей линии: 8 800-765-87-51',
-    }*/
+    }
 ];
 
 let demoListingResult= {
@@ -960,6 +960,22 @@ window.runAction = function (action, config) {
                     'statusPrint': 'Отправлен на подтверждение',
                     'statusDesc': 'В данный момент адрес проходит проверку модератора. Следить за статусом адреса вы можете тут',
                 })
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                            answer: demoCloneOverJson(demoAddressList)
+                        }
+                    }
+                });
+                break;  
+            case 'instrument2:rest.api.user.address.delete':
+                for (let i = 0; i < demoAddressList.length; i++) {
+                    if (demoAddressList[i].id === config.data.id) {
+                        demoAddressList.splice(i,1)
+                    }
+                }
+                
                 resolve({
                     data: {
                         data: {

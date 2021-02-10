@@ -31,7 +31,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="delivery__icon" @click.prevent="deleteAddress">
+                    <div class="delivery__icon" @click.prevent="deleteAddress(order.id)">
                         <svg v-if="order.status !== 'not confirmed'">
                             <use :xlink:href="templatePath + 'images/sprite.svg#icons__del'"></use>
                         </svg>
@@ -64,15 +64,15 @@ export default {
         this.$eventBus.$emit('hideMenu')
     },
     created() {
-        this.$eventBus.$on('addAddress', this.addAddress)
+        this.$eventBus.$on('updateAddress', this.updateAddress)
     },
     methods: {
-        addAddress(address) {
+        updateAddress() {
             this.$store.dispatch('personalUpdateAddresses');
         },
-        deleteAddress() {
+        deleteAddress(addressId) {
             // через массив передаем причины удаления и что удаляем - 2 элемеента
-            this.$eventBus.$emit("openModal", 'profile-delete', [this.reasons, 'address'], false, false)
+            this.$eventBus.$emit("openModal", 'profile-delete', [this.reasons, 'address', addressId], false, false)
         },
         openTooltip(data){
             this.showToltip = data
