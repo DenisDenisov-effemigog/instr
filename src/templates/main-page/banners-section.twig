@@ -11,9 +11,9 @@
     <div class="slider-action">
         <component is="slider-action" :quantity={{ actionBanners|length }}>
             {% for slide in actionBanners %}
-                <div class="slider-action__slide">
+                <a class="slider-action__slide" href="{{ slide.link }}">
                     <img src="{{ slide.img }}" alt="">
-                </div>
+                </a>
             {% endfor %}
         </component>
     </div>

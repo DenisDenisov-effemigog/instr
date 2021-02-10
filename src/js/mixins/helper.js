@@ -21,7 +21,7 @@ export default {
             }
             // не уверена насчет .listing__actions, что думаете? не придумала, как скрыть его
         },
-        ending(value) {
+        /* ending(value) {
             let end = '';
             
             if (value % 10 > 4 || value % 10 == 0 || value > 10 && value < 15) {
@@ -33,7 +33,7 @@ export default {
             }
 
             return end
-        },
+        }, */ // вместо отдельных окончаний добавить в файл локализаций json варианты pluralization
     },
     computed: {
         templatePath() {

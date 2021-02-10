@@ -6,11 +6,11 @@
         >
             <a v-if="!linkUrl" :href="linkUrl" @click.prevent="closeFilter">
                 {{ $tc(titlePartFirst) }} 
-                <span class="sticky-mobile-button__text-scnd">{{ items }}&nbsp;{{ $tc(titlePartSecond) }}{{ ends }}</span>
+                <span class="sticky-mobile-button__text-scnd">{{ currency(items) }}&nbsp;{{ $tc(titlePartSecond, items) }}</span>
             </a>
             <a v-else :href="linkUrl" >
                 {{ $tc(titlePartFirst) }} 
-                <span class="sticky-mobile-button__text-scnd">{{ items }}&nbsp;{{ $tc(titlePartSecond) }}{{ ends }}</span>
+                <span class="sticky-mobile-button__text-scnd">{{ currency(items) }}&nbsp;{{ $tc(titlePartSecond, items) }}</span>
             </a>
         </div>
     </div>
@@ -43,7 +43,7 @@ export default {
             this.disabled = false;
             this.items = items //передаём количество товаров   
             this.titlePartFirst = firstPart //передаём текст кнопки, который пишется в первом ряду
-            this.titlePartSecond = secondPart //передаём текст кнопки, который пишется во втором ряду
+            this.titlePartSecond = secondPart //передаём текст кнопки, который пишется во втором ряду, не забыть добавить в файл локализаций json варианты pluralization
             if (this.items === 0) {
                 this.disabled = true
             }
@@ -57,11 +57,6 @@ export default {
         },
         closeFilter(){
             this.$eventBus.$emit('closeModal')
-        }
-    },
-    computed: {
-        ends() {
-            return this.ending(this.items)
         }
     }
 }

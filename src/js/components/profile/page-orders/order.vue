@@ -5,7 +5,7 @@
             <div class="order__date">{{order.date}}</div>
             <div class="order__status">{{order.status}}</div>
             
-            <span>{{ $tc('profile_orders.items', order.qty) }}</span>
+            <span>{{ currency(order.qty) }}&nbsp;{{ $tc('text.product', order.qty) }}</span>
             <div class="order__price">{{order.priceTotal}} {{ $tc('text.currency') }}</div>
             <div @click.stop="openModal('repeat-order')" class="order__btn">
                 <div class="order__btn-icon">

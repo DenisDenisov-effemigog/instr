@@ -1,5 +1,5 @@
 <template>
-    <span class="listing__items-cont">{{ itemsQuantity }} {{ $tc('text.product') }}{{ ending(itemsQuantity) }}</span>
+    <span class="listing__items-cont">{{ currency(itemsQuantity) }} {{ $tc('text.product', itemsQuantity) }}</span>
 </template>
 
 <script>
@@ -7,7 +7,7 @@
         name: "listing-items-quantity",
         props: {
             itemsQuantity: {
-                type: String,
+                type: Number,
                 required: true
             },
         },
