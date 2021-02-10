@@ -35,12 +35,14 @@
                     slidesToShow: 2.5,
                     dots: false,
                     navButtons: false,
+                    infinite: true,
                     responsive: [
                         {
                             breakpoint: 1320,
                             settings: {
                                 slidesToShow: 5,
                                 dots: this.dots,
+                                infinite: true,
                             }
                         },
                         {
@@ -48,6 +50,7 @@
                             settings: {
                                 navButtons: true,
                                 slidesToShow: 4,
+                                infinite: true,
                             }
                         },
                     ]
@@ -60,9 +63,11 @@
             },
             oneSlide() {
                 if (this.quantity < 5) {
-                    this.options.infinite = false;
-                    this.options.responsive[0].settings.navButtons = false
+                    this.options.responsive[1].settings.infinite = false;
                     this.options.responsive[1].settings.navButtons = false
+                } else if (this.quantity < 6) {
+                    this.options.responsive[0].settings.infinite = false;
+                    this.options.responsive[0].settings.navButtons = false
                 }
             }
         },

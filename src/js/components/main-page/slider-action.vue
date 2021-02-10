@@ -36,6 +36,7 @@
                     slidesToShow: 1.5,
                     dots: false,
                     navButtons: false,
+                    infinite: true,
                     responsive: [
                         {
                             breakpoint: 768,
@@ -43,6 +44,7 @@
                                 navButtons: true,
                                 slidesToShow: 3,
                                 dots: false,
+                                infinite: true,
                             }
                         },
                     ]
@@ -52,7 +54,7 @@
         methods: {
             oneSlide() {
                 if (this.quantity < 4) {
-                    this.options.infinite = false;
+                    this.options.responsive[0].settings.infinite = false;
                     this.options.responsive[0].settings.navButtons = false
                 }
             }
