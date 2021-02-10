@@ -1200,22 +1200,50 @@ window.runAction = function (action, config) {
 
                                     },
                                     {
-                                        title: "",
-                                        code: "switch_toggle",
-                                        type: "switch",
+                                        title: "Тип скидки",
+                                        code: "sale_type",
+                                        type: "checkbox",
                                         values: [
                                             {
-                                                title: "Бестселлеры",
-                                                value: "bestsellers",
-                                                checked: true
+                                                title: "Силовое без скидки",
+                                                value: "sale_1",
+                                                checked: false,
+                                                available: true,
+                                                count: 2
                                             },
                                             {
-                                                title: "Новинки",
-                                                value: "news",
-                                                checked: false
+                                                title: "Силовое",
+                                                value: "sale_2",
+                                                checked: false,
+                                                available: true,
+                                                count: 1
+                                            },
+                                            {
+                                                title: "Россия без скидки",
+                                                value: "sale_3",
+                                                checked: false,
+                                                available: true,
+                                                count: 3
+                                            },
+                                            {
+                                                title: "Импорт без скидки",
+                                                value: "sale_4",
+                                                checked: false,
+                                                available: true,
+                                                count: 4
                                             },
                                         ]
-
+                                    },
+                                    {
+                                        title: "Наличие товара",
+                                        code: "classifier_again",
+                                        type: "switch",
+                                        values: [{
+                                            title: "В наличии",
+                                            value: "in_stock",
+                                            checked: true,
+                                            count: 19
+                                        }]
                                     },
                                     {
                                         title: "Бренд",
@@ -1274,46 +1302,23 @@ window.runAction = function (action, config) {
                                         ]
                                     },
                                     {
-                                        title: "Тип скидки",
-                                        code: "sale_type",
-                                        type: "checkbox",
+                                        title: "",
+                                        code: "switch_toggle",
+                                        type: "switch",
                                         values: [
                                             {
-                                                title: "Силовое без скидки",
-                                                value: "sale_1",
-                                                checked: false,
-                                                available: true,
-                                                count: 2
+                                                title: "Бестселлеры",
+                                                value: "bestsellers",
+                                                checked: true
                                             },
                                             {
-                                                title: "Силовое",
-                                                value: "sale_2",
-                                                checked: false,
-                                                available: true,
-                                                count: 1
-                                            },
-                                            {
-                                                title: "Россия без скидки",
-                                                value: "sale_3",
-                                                checked: false,
-                                                available: true,
-                                                count: 3
-                                            },
-                                            {
-                                                title: "Импорт без скидки",
-                                                value: "sale_4",
-                                                checked: false,
-                                                available: true,
-                                                count: 4
+                                                title: "Новинки",
+                                                value: "news",
+                                                checked: false
                                             },
                                         ]
+
                                     },
-                                    {
-                                        title: "Наличие товара",
-                                        code: "classifier_again",
-                                        type: "checkbox",
-                                        values: []
-                                    }
                                 ],
                                 hash: 'newhash',
                             }
