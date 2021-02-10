@@ -1,6 +1,6 @@
 <template>
-    <div ref="checkout" class="checkout">
-        <div class="checkout__main" v-if="loaded" 
+    <div ref="checkout" class="checkout" v-if="loaded">
+        <div class="checkout__main" 
              :class="{'checkout__main--border-none': successFlag === 'success' || value !== 'new'}"
         >
             <h2 v-show='value === "experienced" && successFlag === "pay"' 
@@ -92,7 +92,6 @@
                 </div>
             </div>
         </div>
-        <div v-else>Загрузка контента...</div><!--TODO реализовать прелоадер когда его утвердят-->
         <div v-show="successFlag === 'pay' && value === 'new' && loaded" class="checkout__order">
             <cart-order :productsPrice="productsPrice" 
                         :productsSales="discounts"
@@ -108,6 +107,7 @@
             </div>
         </div>
     </div>
+    <div v-else class="preloader"><img :src="templatePath + 'images/preloader.svg'" alt=""></div>
 </template>
 
 <script>
