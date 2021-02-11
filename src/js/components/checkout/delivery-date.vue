@@ -10,6 +10,7 @@
                 :format='format'
                 :formatter="momentFormat"
                 :lang="lang"
+                @input="changeInput"
             >
                 <template v-slot:icon-calendar>
                     <svg>
@@ -70,6 +71,9 @@ export default{
             today.setHours(0, 0, 0, 0);
 
             return date < today
+        },
+        changeInput(e){
+                console.log(e.target);
         }
     },
 }
