@@ -143,6 +143,12 @@ export default {
         this.$eventBus.$off('hideMenu');
     },
     methods: {
+        clickTab(e){
+            if(window.innerWidth > 768){
+                this.$refs.bg.style.top = e.target.offsetTop + 'px'
+                this.$refs.bg.style.height = e.target.clientHeight + 'px'
+            }
+        },
         trimPath(value) {
             return value.replace(/^\/+|\/+$/g, '');
         },
