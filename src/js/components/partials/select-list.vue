@@ -8,12 +8,11 @@
     </div>
     <div v-show="openSelect" class="select__dropdown">
         <ul class="select__list" v-if="selectName === 'download-doc'">
-            <li @click="clickPoint(point)"
-                class="select__item"
-                :class="{'select__item--active':currentPoint.value === point.value}"
-                v-for="point in points"
-            >
-                <a href="/images/country/map.png" download>
+            <li @click="clickPoint(point)" v-for="point in points">
+                <a href="/images/country/map.png" download
+                    class="select__item"
+                    :class="{'select__item--active':currentPoint.value === point.value}"
+                >
                     <span>{{ point.label }}</span>
                     <svg>
                         <use :xlink:href="templatePath + `images/sprite.svg#${icon}`"></use>
