@@ -20,6 +20,7 @@
             <select-list
                 :points="points"
                 :selectopenSelect="selectopenSelect"
+                :sortingPage="'orders'"
             ></select-list>
         </div>
         <div class="order__main">
@@ -58,12 +59,24 @@
             this.$eventBus.$emit('hideMenu')
         },
         created(){
+            this.$eventBus.$on('apply-sorting', this.applySorting);
+        },
+        beforeDestroy() {
+            // this.$eventBus.$off('apply-sorting');
         },
         methods:{
+            applySorting(orders) {
+                this.ordersAll = orders
+            }
         },
         computed: {
-            ordersAll() {
-                return this.$store.state.personal.orders;
+            ordersAll: {
+                get: function() {
+                    return this.$store.state.personal.orders;
+                },
+                set: function() {
+                    this.applySorting()
+                }
             },
             h1() {
                 return this.$store.state.layout.h1;

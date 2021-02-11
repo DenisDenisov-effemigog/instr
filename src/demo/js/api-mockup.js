@@ -329,7 +329,7 @@ for(let i = 0; i < 5; ++i) {
     newOrderDate.setDate(newOrderDate.getDate() + i);
     newOrderDate = Math.round(newOrderDate.getTime()/1000);*/
 
-    let newOrdeStatus = ['Выполнен', 'В процессе', 'Отменен'].sort(function (a, b) {
+    let newOrdeStatus = ['Выполнен', 'В ожидании оплаты', 'Отменен'].sort(function (a, b) {
         return 0.5 - Math.random()
     }).pop();
 
@@ -1158,6 +1158,34 @@ window.runAction = function (action, config) {
                                 url: '',
                                 output: demoSortingListing,
                                 //получить новый листинг. Фильтры, сетка и пагинация сохраняются
+                            },
+                            status: 1,
+                        }
+                    }
+                });
+                break;
+            case 'instrument2:rest.api.sortOrders.get':
+
+                if (!config.data || !config.data.params) {
+                    reject(new Error('Wrong config'));
+                }
+                
+                const filterOrders = (status) => {
+                    return demoOrders.filter(order => {
+                        return order.status === status.label
+                    })
+                }
+                
+                let demoSortedOrders = filterOrders(config.data.params)
+                console.log(demoSortedOrders)
+
+                resolve({
+                    data: {
+                        data: {
+                            answer: {
+                                url: '',
+                                output: demoSortedOrders,
+                                //получить заказы по фильтрам и пагинацию. Сортировка и сетка сохраняются
                             },
                             status: 1,
                         }
