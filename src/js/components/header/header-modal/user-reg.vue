@@ -1,36 +1,37 @@
 <template>
     <form class="user-reg__form"
         @submit.prevent="submit">
-        <label name="reason" class="user-reg__radio">
+        <label class="user-reg__radio">
             <input
                 type="radio"
                 name="entity"
                 value="legal"
-                @click ='IndividualFlag = false'
+                @click='individualFlag = false'
                 checked>
             <span class="user-reg__check"></span>
             <span class="user-reg__radio-label">{{ $tc('title.person_corporate') }}</span>
         </label>
-        <label name="reason" class="user-reg__radio">
+        <label class="user-reg__radio">
             <input
                 type="radio"
                 name="entity"
                 value="individual"
-                @click ='IndividualFlag = true'>
+                @click='individualFlag = true'>
             <span class="user-reg__check"></span>
             <span class="user-reg__radio-label">{{ $tc('title.person_individual') }}</span>
         </label>
-        <label v-show="!IndividualFlag" name="taxPayer" class="user-reg__checkbox">
+        <label v-show="!individualFlag" class="user-reg__checkbox">
             <input
                 class="user-reg__checkbox-input"
                 type="checkbox"
-                name="taxPayer">
+                name="taxPayer"
+                :value="nds"
+            >
             <span class="user-reg__checkbox-slider"></span>
             <span class="user-reg__checkbox-label">{{ $tc('user_reg.tax_payer') }}</span>
         </label>
-        <label name="name" class="user__label">
+        <label for="name" class="user__label">
             <input
-                v-if="!IndividualFlag"
                 class="user__input"
                 :class="{'user__input--error': $v.name.$error}"
                 type="text"
@@ -38,18 +39,9 @@
                 id="name"
                 autocomplete="name"
                 autocorrect="off"
-                v-model.trim="$v.name.$model">
-            <input
-                v-else
-                class="user__input"
-                :class="{'user__input--error': $v.name.$error}"
-                type="text"
-                name="name"
-                id="name"
-                autocomplete="name"
-                autocorrect="off"
-                v-model.trim="$v.name.$model">
-            <span v-if="!IndividualFlag" class="user__label-text"
+                v-model.trim="$v.name.$model"
+            >
+            <span v-if="!individualFlag" class="user__label-text"
                 :class="{'user__label-text--up': $v.name.required}"
             >{{ $tc('title.person') }}</span>
             <span v-else class="user__label-text"
@@ -62,9 +54,10 @@
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>
             <div class="user__error-text user__error-text--invalid"
-                v-if="$v.name.$error">{{ $tc('text.error') }}</div>
+                 v-if="$v.name.$error"
+            >{{ $tc('text.error') }}</div>
         </label>
-        <label v-show="!IndividualFlag" name="company" class="user__label">
+        <label v-show="!individualFlag" for="company" class="user__label">
             <input
                 class="user__input"
                 :class="{'user__input--error': $v.company.$error}"
@@ -86,7 +79,7 @@
             <div class="user__error-text user__error-text--invalid"
                 v-if="$v.company.$error">{{ $tc('text.error') }}</div>
         </label>
-        <label v-show="!IndividualFlag" name="TIN" class="user__label">
+        <label v-show="!individualFlag" for="TIN" class="user__label">
             <input
                 class="user__input"
                 :class="{'user__input--error': $v.tin.$error}"
@@ -106,7 +99,7 @@
             <div class="user__error-text user__error-text--invalid"
                 v-if="$v.company.$error">{{ $tc('text.error') }}</div>
         </label>
-        <label name="phone" class="user__label">
+        <label for="phone" class="user__label">
             <the-mask
                 class="user__input"
                 :class="{'user__input--error': $v.phone.$error}"
@@ -131,7 +124,7 @@
             <div class="user__error-text user__error-text--invalid"
                 v-if="$v.phone.$error">{{ $tc('text.error') }}</div>
         </label>
-        <label name="email" class="user__label">
+        <label for="email" class="user__label">
             <input
                 class="user__input"
                 :class="{'user__input--error': $v.newEmail.$error}"
@@ -155,13 +148,13 @@
                 v-if="$v.newEmail.$error">{{ $tc('text.error') }}</div>
         </label>
         <div class="user__error-text" v-if="$v.error">*{{ $tc('text.required') }}</div>
-        <label name="agreement" class="user__label user__label_row">
+        <label class="user__label user__label_row">
             <input
                 class="user__checkbox"
                 type="checkbox"
                 name="agreement"
-                required
-                checked
+                v-model="agreement"
+                @click="agreement = !agreement"
             >
             <span class="user__checkbox-label">
                 <svg class="user__checkbox-svg" viewBox="0 0 10 8">
@@ -177,8 +170,11 @@
 <script>
     import {required, minLength, email, alphaNum} from "vuelidate/lib/validators"
     import {TheMask} from 'vue-the-mask'
+    import * as Api from '../../../api/index'
+
+    let api = Api.getInstance()
     
-    import config from "../../../config";
+    import config from "../../../config"
 
     export default {
         name:'user-reg',
@@ -204,11 +200,13 @@
             newEmail: {
                 required,
                 email
-            }
+            },
         },
         data() {
             return {
-                IndividualFlag: false,
+                individualFlag: false,
+                nds: false,
+                agreement: true,
                 name: '',
                 company: '',
                 tin: '',
@@ -221,17 +219,27 @@
         methods: {
             submit() {
                 this.$v.$touch();
-                if (!this.$v.$invalid) {
-                    this.saveChanges();
+                if (!this.$v.$invalid && this.agreement) {
+                    this.register();
                 }
             },
-            saveChanges() {
-               this.name = this.$v.name.$model;
-               this.company = this.$v.company.$model;
-               this.tin = this.$v.tin.$model;
-               this.phone = this.$v.phone.$model;
-               this.newEmail = this.$v.newEmail.$model;
-            }
+
+            register() {
+                let vm = this;
+                let type = ''
+                if (!vm.individualFlag){
+                    type = 'juridic'
+                } else {
+                    type = 'fizic'
+                }
+                api.authSignUp(type, vm.name,vm. company, vm.tin, vm.newEmail, vm.phone, vm.nds).then(() => {
+                    vm.$eventBus.$emit('closeModal')
+                    // window.location.replace(config.links.auth_thanks);
+                }).catch((errors) => {
+                    console.log(errors)
+                });
+
+            },
         }
     }
 </script>

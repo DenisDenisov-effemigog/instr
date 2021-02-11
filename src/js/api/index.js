@@ -94,6 +94,23 @@ class Api {
     /*personalProfileSummary() {
         return this._promiseBitrixRequest('instrument2:rest.api.user.get', {});
     }*/
+    authSignIn(email, password) {
+        return this._promiseBitrixRequest('instrument2:rest.api.auth.sign_in', {
+            email: email,
+            password: password
+        });
+    }
+    authSignUp( type,name, company, tin, email, phone, nds) {
+        return this._promiseBitrixRequest('instrument2:rest.api.auth.sign_up', {
+            name: name,
+            company: company,
+            tin: tin,
+            email: email,
+            phone: phone,
+            type: type,
+            nds: nds,
+        });
+    }
     personalProfile() {
         return this._promiseBitrixRequest('instrument2:rest.api.user.base.get', {});
     }
