@@ -7,7 +7,21 @@
         </svg>
     </div>
     <div v-show="openSelect" class="select__dropdown">
-        <ul class="select__list">
+        <ul class="select__list" v-if="selectName === 'download-doc'">
+            <li @click="clickPoint(point)"
+                class="select__item"
+                :class="{'select__item--active':currentPoint.value === point.value}"
+                v-for="point in points"
+            >
+                <a href="/images/country/map.png" download>
+                    <span>{{ point.label }}</span>
+                    <svg>
+                        <use :xlink:href="templatePath + `images/sprite.svg#${icon}`"></use>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+        <ul class="select__list" v-else>
             <li @click="clickPoint(point)"
                 class="select__item"
                 :class="{'select__item--active':currentPoint.value === point.value}"
@@ -77,8 +91,10 @@ export default {
                         output: answer.output
                     },'', answer.url);
                 });
-            } else {
+            } else if (vm.selectName === 'receive-address') {
                 vm.$eventBus.$emit('change-select-point', vm.selectName, vm.currentPoint);
+            } else if (vm.selectName === 'download-doc') {
+                vm.$eventBus.$emit('download-doc', vm.currentPoint)
             }
         },
         closeOutside() {

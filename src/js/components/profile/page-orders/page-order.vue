@@ -29,6 +29,7 @@
                         :points="order.documents"
                         :icon="icon"
                         :selectopenSelect="order.currentDocument"
+                        :selectName="'download-doc'"
                     ></select-list>
                 </div>
                 <div @click.stop="openModal('repeat-order')" class="page-order__btn">
@@ -217,11 +218,15 @@ export default {
 
             this.$eventBus.$emit("openModal", modal, repeatOrder, false, false)
 
-        } 
+        },
+        downloadDocument(doc) {
+            console.log("download-doc", doc.value)
+        }
     },
     created () {
         window.addEventListener('scroll', this.mouseWheel);
         this.$eventBus.$on("closeStickyButton", this.closeStickyBtn);
+        this.$eventBus.$on("download-doc", this.downloadDocument);
     },
 }
 </script>
