@@ -7,21 +7,21 @@
                     <span>{{profile.personTypePrint}}</span>
                 </p>
             </div>
-            <ul class="profile__menu-list" @click="clickTab">
+            <ul class="profile__menu-list"  @click="clickTab">
                 <template v-for="item in computedLinks">
                     <router-link tag="li" 
-                                class="profile__menu-link" 
-                                :exact="!!item.exact" 
-                                active-class="profile__menu-link--active" 
-                                :to="item.url"
+                                 class="profile__menu-link" 
+                                 :exact="!!item.exact" 
+                                 active-class="profile__menu-link--active" 
+                                 :to="item.url"
                     >
                         <span>{{ $tc(item.title) }}</span>
                         <svg class="" viewBox="0 0 6 10">
                             <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                         </svg>
                     </router-link>
-                </template>   
-                <div ref="bg" class="profile__menu-bg"></div>
+                </template>  
+                <div ref="bg" class="profile__menu-bg"></div>  
             </ul>
             <div class="profile__menu-mobile">
                 <div class="profile__menu-mobile_link" v-for="link in menuMobile">
@@ -145,9 +145,11 @@ export default {
     },
     methods: {
         clickTab(e){
-            console.log(e.target.offsetTop)
-            this.$refs.bg.style.top = e.target.offsetTop + 'px'
-            this.$refs.bg.style.height = e.target.clientHeight + 'px'
+            if(window.innerWidth > 768){
+                let profileLink = e.target.closest('.profile__menu-link')
+                this.$refs.bg.style.top = profileLink.offsetTop + 'px'
+                this.$refs.bg.style.height = profileLink.clientHeight + 'px'
+            }
         },
         trimPath(value) {
             return value.replace(/^\/+|\/+$/g, '');
