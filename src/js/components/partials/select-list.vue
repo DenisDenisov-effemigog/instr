@@ -9,7 +9,7 @@
     <div v-show="openSelect" class="select__dropdown">
         <ul class="select__list" v-if="selectName === 'download-doc'">
             <li @click="clickPoint(point)" v-for="point in points">
-                <a href="/images/country/map.png" download
+                <a :href="point.link" download
                     class="select__item"
                     :class="{'select__item--active':currentPoint.value === point.value}"
                 >
@@ -92,8 +92,6 @@ export default {
                 });
             } else if (vm.selectName === 'receive-address') {
                 vm.$eventBus.$emit('change-select-point', vm.selectName, vm.currentPoint);
-            } else if (vm.selectName === 'download-doc') {
-                vm.$eventBus.$emit('download-doc', vm.currentPoint)
             }
         },
         closeOutside() {

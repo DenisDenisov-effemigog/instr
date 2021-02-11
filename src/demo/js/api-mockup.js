@@ -348,9 +348,9 @@ for(let i = 0; i < 5; ++i) {
         
         documents:
             [
-                {label: 'Документы', value: 'documents'},
-                {label: 'Загрузить еще что-нибудь', value: 'something'},
-                {label: 'Загрузить счет-фактуру', value: 'check'}
+                {label: 'Документы', value: 'documents', link: '/images/country/globus.png'},
+                {label: 'Загрузить еще что-нибудь', value: 'something', link: '/images/country/map.png'},
+                {label: 'Загрузить счет-фактуру', value: 'check', link: '/images/country/map-dots.png'}
             ],
         currentDocument:
             {label: 'Документы', value: 'documents'},
