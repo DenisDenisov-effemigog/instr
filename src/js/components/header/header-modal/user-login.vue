@@ -48,8 +48,11 @@
 <script>
     import {required, email, helpers} from "vuelidate/lib/validators"
     import showPassword from '../../partials/show-password.vue'
+    import * as Api from '../../../api/index'
+
+    let api = Api.getInstance()
     
-    import config from "../../../config";
+    import config from "../../../config"
 
     const pattern = helpers.regex('pattern', config.passwordPattern)
 
@@ -81,8 +84,19 @@
             submit() {
                 this.$v.$touch();
                 if (!this.$v.$invalid) {
-                    this.enter();
+                    this.login();
                 }
+            },
+            login(login, password) {
+                let vm = this;
+                api.authSignIn(vm.email, vm.password).then(() => {
+                    vm.$eventBus.$emit('closeModal')
+                    console.log('success')
+                    // let ref = document.referrer;
+                    // window.location.replace(ref.length > 0 ? ref : '/');
+                }).catch((error) => {
+                    console.log(error)
+                });
             },
             enter() {
                 this.email = this.$v.email.$model;

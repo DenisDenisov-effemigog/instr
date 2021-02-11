@@ -182,3 +182,56 @@
                 padding: .375rem
             +widescreen
                 padding: .375rem 2.125rem
+            
+.card-clone
+    position: absolute
+    background: $white
+    opacity: 0.4
+    &--horiz
+        border-left: none
+        display: flex
+        border: none
+        padding: 0.75rem 0
+        & .card__top
+            margin-right: 1.5rem
+            display: flex
+            justify-content: center
+            align-items: center
+            & .card__header
+                display: none
+            & .card__code
+                display: none
+        & .card__image-block
+            order: -1
+            height: 7.5rem
+            max-width: 7.5rem
+            margin: 0
+            width: 5.875rem
+            & img 
+                display: block
+            .slider-photo-card
+                display: none
+        .card__bottom
+            display: flex
+            flex-direction: row
+            width: inherit
+            .card__price-horiz
+                align-self: flex-end
+                width: 25%
+            .card__description-horiz
+                margin-right: 1.5rem
+                width: 80%
+                .cart__code
+                    display: block 
+                    margin-bottom: 0.5rem
+                    text-align: left
+                .cart__header
+                    display: block 
+                    margin-bottom: .5rem
+                .card__name
+                    margin-bottom: 0
+                    height: 3.75rem
+        
+
+
+            

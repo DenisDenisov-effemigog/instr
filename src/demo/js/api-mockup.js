@@ -863,6 +863,24 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
+            case 'instrument2:rest.api.auth.sign_in':
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                        }
+                    }
+                });
+                break;
+            case 'instrument2:rest.api.auth.sign_up':
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                        }
+                    }
+                });
+                break;
             case 'instrument2:rest.api.basket.get':
                 resolve({
                     data: {

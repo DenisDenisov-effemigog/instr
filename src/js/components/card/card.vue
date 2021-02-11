@@ -57,7 +57,7 @@
     <!--  -->
                 </div>
                 <div class="card__button-block">
-                    <component is="add-to-cart" :productId="product.id" :max-amount="product.stock" :changeIcon="changeIcon" ></component>
+                    <component is="add-to-cart" @cloneCard="cloneCard" :productId="product.id" :max-amount="product.stock" :changeIcon="changeIcon" ></component>
                     <component class="card__button-block_to-compare" is="to-compare" :id="product.id"></component>
                     <div @click="menuTooltip = !menuTooltip" class="card__menu-btn">
                         <span></span>
@@ -122,18 +122,92 @@ export default {
             menuTooltip: false,
             productId: 0,
             tooltipId: 0,
-            cardPosition: 0
+            cardPosition: 0,
+            cartTopPosition: 0,
+            cartLeftPosition: 0
         }
     },
     methods: {
         menuBtnClick(e){
             console.log(e.target)
+        },
+        cloneCard(btn){
+            if(window.innerWidth > 987){
+                this.$eventBus.$emit("clickedToBtn")
+                if(this.cartLeftPosition > 0){
+                    let card = btn.closest('.card')
+                    let clone = card.cloneNode(true)
+                    let cardTop = card.getBoundingClientRect().top + document.documentElement.scrollTop
+                    let cardLeft = card.getBoundingClientRect().left
+                    let cardHeight = card.clientHeight
+                    let cardWidth = card.offsetWidth
+                    if(card.closest('.listing__grid--horiz')){
+                        // clone.style.display = 'flex'
+                        // clone.style.padding = 0 + 'px' + ' !important'
+                        // clone.style.border = 'none'
+
+                        // let cardHeader = clone.querySelector(".card__header")
+                        // console.log(cardHeader);
+                        // cardHeader.style.display = "none"
+
+                        // let cardImage = clone.querySelector(".card__image-block")
+                        // console.log(cardImage);
+                        // cardImage.style.order = -1
+                        // cardImage.style.height = 7.5 + 'rem'
+                        // cardImage.style.maxWidth = 7.5 + 'rem'
+                        // cardImage.style.margin = 0
+                        // cardImage.style.width = 5.875 + 'rem'
+
+                        // let cardSlider = cardImage.querySelector('.slider-photo-card')
+                        // console.log(cardSlider);
+                        // cardSlider.style.display = 'none'
+
+                        // let cardImageBlockCode = clone.querySelector('.card__code')
+                        // console.log(cardImageBlockCode);
+                        // cardImageBlockCode.style.display = 'none'
+
+                        // let cardBottom = clone.querySelector(".card__bottom")
+                        // console.log(cardBottom);
+                        // cardBottom.style.display = "flex"
+                        // cardBottom.style.width = "inherit"
+                        // cardBottom.style.flexDirection = "row"
+
+                        // let cardBottomCode = cardBottom.querySelector(".card__code")
+                        // console.log(cardBottomCode);
+                        // cardBottomCode.style.display = "block"
+                        // cardBottomCode.style.marginBottom = 0.5 + 'rem'
+                    clone.classList.add('card-clone--horiz')
+                    }
+                    clone.style.width = cardWidth + 'px'
+                    clone.style.height = cardHeight + 'px'
+                    clone.style.top = cardTop + 'px'
+                    clone.style.left = cardLeft + 'px'
+                    clone.classList.add('card-clone')
+                    document.querySelector('body').appendChild(clone)
+                    setTimeout(() => {
+                        clone.style.top = (this.cartTopPosition - (cardHeight / 2)) + 'px'
+                        clone.style.left = (this.cartLeftPosition - (cardWidth / 2)) + 'px'
+                        clone.style.transition = 1 + 's'
+                        setTimeout(() => {
+                            clone.parentNode.removeChild(clone)
+                        }, 450);
+                    }, 350);
+                };
+            }
+        },
+        cartPosition(obj){
+            this.cartTopPosition = obj.top
+            this.cartLeftPosition = obj.left
         }
     },
     mounted() {
         let card = this.$refs.card
         let c = card.getBoundingClientRect()
         this.cardPosition = c.left + c.width
-    }
+    },
+    created() {
+        this.$eventBus.$on("cloneCard", this.cloneCard)
+        this.$eventBus.$on("cartPosition", this.cartPosition)
+    },
 }
 </script>
