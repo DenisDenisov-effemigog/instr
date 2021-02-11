@@ -131,45 +131,68 @@ export default {
         menuBtnClick(e){
             console.log(e.target)
         },
-        cloneCard(btn, event){
+        cloneCard(btn){
             if(window.innerWidth > 987){
                 this.$eventBus.$emit("clickedToBtn")
-                let card = btn.closest('.card')
-                let clone = card.cloneNode(true)
-                let cardTop = card.getBoundingClientRect().top + document.documentElement.scrollTop
-                let cardLeft = card.getBoundingClientRect().left
-                clone.style.width = card.offsetWidth + 'px'
-                clone.style.top = cardTop + 'px'
-                clone.style.left = cardLeft + 'px'
-                clone.classList.add('card-clone')
-                document.querySelector('body').appendChild(clone)
-                // let a = this.cartTopPosition;
-                // console.log('cardTop ' + cardTop);
-                // let posTop = cardTop
-                // let posLeft = cardLeft
-                // let id = setInterval(frame, 5);
-                // function frame(){
-                //     if (posTop <= a){
-                //         alert(1)
-                //         clearInterval(id)
-                //         return
-                //     }else{
-                //         posTop--
-                //         posLeft++
-                //         clone.style.top = posTop + 'px'
-                //         clone.style.left = posLeft + 'px'
-                //     }
-                //     console.log(a);
-                //     console.log('cardTop ' + cardTop);
-                // }
-                setTimeout(() => {
-                    clone.style.top = this.cartTopPosition + 'px'
-                    clone.style.left = this.cartLeftPosition + 'px'
-                    clone.style.transition = 1 + 's'
+                if(this.cartLeftPosition > 0){
+                    let card = btn.closest('.card')
+                    let clone = card.cloneNode(true)
+                    let cardTop = card.getBoundingClientRect().top + document.documentElement.scrollTop
+                    let cardLeft = card.getBoundingClientRect().left
+                    let cardHeight = card.clientHeight
+                    let cardWidth = card.offsetWidth
+                    if(card.closest('.listing__grid--horiz')){
+                        // clone.style.display = 'flex'
+                        // clone.style.padding = 0 + 'px' + ' !important'
+                        // clone.style.border = 'none'
+
+                        // let cardHeader = clone.querySelector(".card__header")
+                        // console.log(cardHeader);
+                        // cardHeader.style.display = "none"
+
+                        // let cardImage = clone.querySelector(".card__image-block")
+                        // console.log(cardImage);
+                        // cardImage.style.order = -1
+                        // cardImage.style.height = 7.5 + 'rem'
+                        // cardImage.style.maxWidth = 7.5 + 'rem'
+                        // cardImage.style.margin = 0
+                        // cardImage.style.width = 5.875 + 'rem'
+
+                        // let cardSlider = cardImage.querySelector('.slider-photo-card')
+                        // console.log(cardSlider);
+                        // cardSlider.style.display = 'none'
+
+                        // let cardImageBlockCode = clone.querySelector('.card__code')
+                        // console.log(cardImageBlockCode);
+                        // cardImageBlockCode.style.display = 'none'
+
+                        // let cardBottom = clone.querySelector(".card__bottom")
+                        // console.log(cardBottom);
+                        // cardBottom.style.display = "flex"
+                        // cardBottom.style.width = "inherit"
+                        // cardBottom.style.flexDirection = "row"
+
+                        // let cardBottomCode = cardBottom.querySelector(".card__code")
+                        // console.log(cardBottomCode);
+                        // cardBottomCode.style.display = "block"
+                        // cardBottomCode.style.marginBottom = 0.5 + 'rem'
+                    clone.classList.add('card-clone--horiz')
+                    }
+                    clone.style.width = cardWidth + 'px'
+                    clone.style.height = cardHeight + 'px'
+                    clone.style.top = cardTop + 'px'
+                    clone.style.left = cardLeft + 'px'
+                    clone.classList.add('card-clone')
+                    document.querySelector('body').appendChild(clone)
                     setTimeout(() => {
-                        clone.parentNode.removeChild(clone)
-                    }, 600);
-                }, 500);
+                        clone.style.top = (this.cartTopPosition - (cardHeight / 2)) + 'px'
+                        clone.style.left = (this.cartLeftPosition - (cardWidth / 2)) + 'px'
+                        clone.style.transition = 1 + 's'
+                        setTimeout(() => {
+                            clone.parentNode.removeChild(clone)
+                        }, 450);
+                    }, 350);
+                };
             }
         },
         cartPosition(obj){
