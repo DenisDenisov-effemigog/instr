@@ -49,7 +49,7 @@
         height: 1.5rem
   &:hover 
     .mx-icon-clear 
-      display: block
+      display: block 
     
     .mx-icon-clear + .mx-icon-calendar 
       display: none
@@ -283,6 +283,7 @@
 
 .mx-table-date th
     height: 30px
+    color: $grey
     .today 
         color: #ccc
     .cell.not-current-month 
@@ -399,3 +400,20 @@
     left: 0
 .mx-btn-icon-right
     right: 0
+
+button.mx-btn.mx-btn-text.mx-btn-current-month
+  cursor: auto
+  pointer-events: none
+  font-weight: 700
+  @extend .text-1
+  color: $black
+
+button.mx-btn.mx-btn-text.mx-btn-current-year
+  cursor: auto
+  pointer-events: none
+  font-weight: 700
+  @extend .text-1
+  color: $black
+
+.cell.not-current-month.disabled
+  color: $light-grey
