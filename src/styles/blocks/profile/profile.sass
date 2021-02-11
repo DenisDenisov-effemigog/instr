@@ -15,6 +15,7 @@
         +widescreen
             margin: 0 3.5rem 0 -1.5rem
     &__menu-list
+        position: relative
         &::after
             content: ''
             display: block
@@ -22,6 +23,12 @@
             border-bottom: 1px solid $border-color_4
             +desktop
                 content: unset
+    &__menu-bg
+        position: absolute
+        width: 100%
+        background-color: $pre-white
+        z-index: -1
+        transition: 0.35s
     &__menu-link
         @extend .text-2
         position: relative
@@ -40,7 +47,7 @@
         &--active
             @extend .text--active
             color: $black
-            background-color: $pre-white
+            // background-color: $pre-white
         svg
             position: absolute
             top: 1.4375rem

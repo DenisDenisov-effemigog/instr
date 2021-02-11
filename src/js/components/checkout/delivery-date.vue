@@ -47,7 +47,7 @@ export default{
                 },
                 monthFormat: 'MMMM',
                 dayFormat: 'D',
-            }
+            },
         }
     },
     model: {
