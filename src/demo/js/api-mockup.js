@@ -348,9 +348,9 @@ for(let i = 0; i < 5; ++i) {
         
         documents:
             [
-                {label: 'Документы', value: 'documents'},
-                {label: 'Загрузить еще что-нибудь', value: 'something'},
-                {label: 'Загрузить счет-фактуру', value: 'check'}
+                {label: 'Документы', value: 'documents', link: '/images/country/globus.png'},
+                {label: 'Загрузить еще что-нибудь', value: 'something', link: '/images/country/map.png'},
+                {label: 'Загрузить счет-фактуру', value: 'check', link: '/images/country/map-dots.png'}
             ],
         currentDocument:
             {label: 'Документы', value: 'documents'},
@@ -390,7 +390,7 @@ for(let i = 0; i < 6; ++i) {
 }
 
 let demoAddressList = [
-    /*{
+    {
         'id': 12828,
         'order': '1',
         'address': '1062 Budapest, V1 Bajzautca, 35 1062 Budapest, V1 Bajzautca, 35 1062 Budapest, V1 Bajzautca, 35 Bajzautca',
@@ -413,7 +413,7 @@ let demoAddressList = [
         'status': 'not-сonfirmed',
         'statusPrint': 'Не подтвержден',
         'statusDesc': 'К сожалению, адрес не прошел проверку модератора. Подробнее по горячей линии: 8 800-765-87-51',
-    }*/
+    }
 ];
 
 let demoListingResult= {
@@ -968,6 +968,22 @@ window.runAction = function (action, config) {
                         }
                     }
                 });
+                break;  
+            case 'instrument2:rest.api.user.address.delete':
+                for (let i = 0; i < demoAddressList.length; i++) {
+                    if (demoAddressList[i].id === config.data.id) {
+                        demoAddressList.splice(i,1)
+                    }
+                }
+                
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                            answer: demoCloneOverJson(demoAddressList)
+                        }
+                    }
+                });
                 break;    
             case 'instrument2:rest.api.user.checks.list':
                 resolve({
@@ -1184,22 +1200,50 @@ window.runAction = function (action, config) {
 
                                     },
                                     {
-                                        title: "",
-                                        code: "switch_toggle",
-                                        type: "switch",
+                                        title: "Тип скидки",
+                                        code: "sale_type",
+                                        type: "checkbox",
                                         values: [
                                             {
-                                                title: "Бестселлеры",
-                                                value: "bestsellers",
-                                                checked: true
+                                                title: "Силовое без скидки",
+                                                value: "sale_1",
+                                                checked: false,
+                                                available: true,
+                                                count: 2
                                             },
                                             {
-                                                title: "Новинки",
-                                                value: "news",
-                                                checked: false
+                                                title: "Силовое",
+                                                value: "sale_2",
+                                                checked: false,
+                                                available: true,
+                                                count: 1
+                                            },
+                                            {
+                                                title: "Россия без скидки",
+                                                value: "sale_3",
+                                                checked: false,
+                                                available: true,
+                                                count: 3
+                                            },
+                                            {
+                                                title: "Импорт без скидки",
+                                                value: "sale_4",
+                                                checked: false,
+                                                available: true,
+                                                count: 4
                                             },
                                         ]
-
+                                    },
+                                    {
+                                        title: "Наличие товара",
+                                        code: "classifier_again",
+                                        type: "switch",
+                                        values: [{
+                                            title: "В наличии",
+                                            value: "in_stock",
+                                            checked: true,
+                                            count: 19
+                                        }]
                                     },
                                     {
                                         title: "Бренд",
@@ -1258,46 +1302,23 @@ window.runAction = function (action, config) {
                                         ]
                                     },
                                     {
-                                        title: "Тип скидки",
-                                        code: "sale_type",
-                                        type: "checkbox",
+                                        title: "",
+                                        code: "switch_toggle",
+                                        type: "switch",
                                         values: [
                                             {
-                                                title: "Силовое без скидки",
-                                                value: "sale_1",
-                                                checked: false,
-                                                available: true,
-                                                count: 2
+                                                title: "Бестселлеры",
+                                                value: "bestsellers",
+                                                checked: true
                                             },
                                             {
-                                                title: "Силовое",
-                                                value: "sale_2",
-                                                checked: false,
-                                                available: true,
-                                                count: 1
-                                            },
-                                            {
-                                                title: "Россия без скидки",
-                                                value: "sale_3",
-                                                checked: false,
-                                                available: true,
-                                                count: 3
-                                            },
-                                            {
-                                                title: "Импорт без скидки",
-                                                value: "sale_4",
-                                                checked: false,
-                                                available: true,
-                                                count: 4
+                                                title: "Новинки",
+                                                value: "news",
+                                                checked: false
                                             },
                                         ]
+
                                     },
-                                    {
-                                        title: "Наличие товара",
-                                        code: "classifier_again",
-                                        type: "checkbox",
-                                        values: []
-                                    }
                                 ],
                                 hash: 'newhash',
                             }

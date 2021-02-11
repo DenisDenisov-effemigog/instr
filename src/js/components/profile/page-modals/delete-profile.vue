@@ -60,6 +60,10 @@
             type: {
                 type: String,
                 required: true
+            },
+            id: {
+                type: Number,
+                required: false
             }
         },
         validations: {
@@ -86,12 +90,21 @@
             },
             saveChanges() {
                 let vm = this
-                api.deleteProfile(this.picked, this.message).then(() => {
-                    vm.$eventBus.$emit('closeModal')
-                    window.location.replace('/');
-                }).catch(errors => {
-                    console.error(errors);
-                })
+                if(vm.type === 'profile') {
+                    api.deleteProfile(vm.picked, vm.message).then(() => {
+                        vm.$eventBus.$emit('closeModal')
+                        window.location.replace('/');
+                    }).catch(errors => {
+                        console.error(errors);
+                    })
+                } else if (vm.type === 'address') {
+                    api.deleteAddress(vm.picked, vm.message, vm.id).then(() => {
+                        vm.$eventBus.$emit('closeModal')
+                        vm.$eventBus.$emit('updateAddress')
+                    }).catch(errors => {
+                        console.error(errors);
+                    })
+                }
             }
         },
         computed: {

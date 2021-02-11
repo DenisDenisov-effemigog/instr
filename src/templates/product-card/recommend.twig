@@ -3,6 +3,7 @@
     <component 
         is="slider-cards" 
         :dots="false"
+        :quantity={{ productsRecommended|length }}
     >
         {% for product in productsRecommended %}
             <div class="slider-cards__slide">

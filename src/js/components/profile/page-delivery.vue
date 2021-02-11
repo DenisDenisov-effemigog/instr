@@ -8,8 +8,8 @@
             <add-address-btn></add-address-btn>
         </div>
       
-        <div v-if="addresses.length > 0">
-            <ul class="delivery__list">
+        <div class="delivery__list">
+            <ul v-if="addresses.length > 0">
                 <li class="delivery__item" v-for="order in addresses">
                     <div class="delivery__desc">
                         <div class="delivery__order">{{ $tc('text.address') }} № {{order.order}}</div>
@@ -31,14 +31,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="delivery__icon" @click.prevent="deleteAddress">
+                    <div class="delivery__icon" @click.prevent="deleteAddress(order.id)">
                         <svg v-if="order.status !== 'not confirmed'">
                             <use :xlink:href="templatePath + 'images/sprite.svg#icons__del'"></use>
                         </svg>
                     </div>
                 </li>
-                <add-address-btn></add-address-btn>
             </ul>
+            <add-address-btn></add-address-btn>
         </div>
     </div>
 </template>
@@ -64,15 +64,15 @@ export default {
         this.$eventBus.$emit('hideMenu')
     },
     created() {
-        this.$eventBus.$on('addAddress', this.addAddress)
+        this.$eventBus.$on('updateAddress', this.updateAddress)
     },
     methods: {
-        addAddress(address) {
+        updateAddress() {
             this.$store.dispatch('personalUpdateAddresses');
         },
-        deleteAddress() {
+        deleteAddress(addressId) {
             // через массив передаем причины удаления и что удаляем - 2 элемеента
-            this.$eventBus.$emit("openModal", 'profile-delete', [this.reasons, 'address'], false, false)
+            this.$eventBus.$emit("openModal", 'profile-delete', [this.reasons, 'address', addressId], false, false)
         },
         openTooltip(data){
             this.showToltip = data

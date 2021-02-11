@@ -1196,7 +1196,7 @@
 {% set filters = {
     'page_count': 20,
     'sort': 'popular',
-    'match': '13',
+    'match': 13,
     'section_id': 178500,
     'hash': 'JnnUHIo**(&87868HHkjYUI@wewe',
     'filters': [
@@ -1250,8 +1250,13 @@
         {
             title: "Наличие товара",
             code: "classifier_again",
-            type: "checkbox",
-            values: []
+            type: "switch",
+            values: [{
+                    title: "В наличии",
+                    value: "in_stock",
+                    checked: false,
+                    count: 19
+                }]
         },
         {
             title: "Бренд",

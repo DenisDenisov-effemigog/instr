@@ -49,11 +49,14 @@
                     slidesToShow: 2.5,
                     dots: false,
                     navButtons: false,
+                    infinite: true,
                     responsive: [
                         {
                             breakpoint: 1024,
                             settings: {
                                 slidesToShow: 6,
+                                navButtons: true,
+                                infinite: true,
                             }
                         },
                         {
@@ -62,6 +65,7 @@
                                 navButtons: true,
                                 slidesToShow: 5,
                                 dots: false,
+                                infinite: true,
                             }
                         },
                     ]
@@ -72,7 +76,19 @@
             openModal(slide){
                 // через массив передаем оглавление, сообщение и текст кнопки модального окна - 3 элемеента
                 this.$eventBus.$emit("openModal", 'dialogue', [slide.modal.title, slide.modal.description, this.$tc('modal.link.action')], false, true)
+            },
+            oneSlide() {
+                if (this.promoBanners.length < 6) {
+                    this.options.responsive[1].settings.infinite = false;
+                    this.options.responsive[1].settings.navButtons = false
+                } else if (this.promoBanners.length < 7) {
+                    this.options.responsive[0].settings.infinite = false;
+                    this.options.responsive[0].settings.navButtons = false
+                }
             }
+        },
+        created() {
+            this.oneSlide();
         }
     }
 </script>

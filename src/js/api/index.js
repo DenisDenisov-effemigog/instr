@@ -122,6 +122,13 @@ class Api {
             message: message,
         });
     }
+    deleteAddress(reason, message, id) {
+        return this._promiseBitrixRequest('instrument2:rest.api.user.address.delete', {
+            reason: reason,
+            message: message,
+            id: id,
+        });
+    }
     personalOrders() {
         return this._promiseBitrixRequest('instrument2:rest.api.user.order.list', {});
     }

@@ -4,6 +4,7 @@
         <component
             is="slider-cards"
             :dots="false"
+            :quantity={{ products|length }}
         >
             {% for product in products %}
                 <div class="slider-cards__slide">
