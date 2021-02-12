@@ -36,6 +36,7 @@ import sliderPhotoCard from './components/card/slider-photo-card.vue';
 import sliderPhotoDots from './components/card/slider-photo-dots.vue';
 import cardStikers from './components/card/card-stikers.vue';
 /*product-card*/
+import productCard from './components/product-card/product-card.vue';
 import productCardSlider from './components/product-card/product-card-slider.vue';
 import productCardHeader from './components/product-card/product-card-header.vue';
 import productTabs from './components/product-card/product-tabs.vue';
@@ -115,6 +116,7 @@ export default {
         stickyMenu,
         modal,
         stickyMobileButton,
+        productCard,
         productCardSlider,
         productCardHeader,
         productTabs,
