@@ -87,6 +87,11 @@ const actions = {
             }
         });
     },
+    personalSortOrders: ({commit}, status) => {
+        api.sortOrders(status).then((answer) => {
+            commit(types.PERSONAL_APPLY_ORDERS, answer);
+        });
+    },
     personalUpdateCheckData: ({commit}) => {
         api.personalChecks().then((answer) => {
             if(answer.checkData) {

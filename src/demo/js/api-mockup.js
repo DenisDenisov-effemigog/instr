@@ -1020,6 +1020,7 @@ window.runAction = function (action, config) {
                 });
                 break;
             case 'instrument2:rest.api.user.order.list':
+                
                 resolve({
                     data: {
                         data: {
@@ -1195,16 +1196,12 @@ window.runAction = function (action, config) {
                 }
                 
                 let demoSortedOrders = filterOrders(config.data.params)
-                console.log(demoSortedOrders)
+                console.log('sorting', demoSortedOrders)
 
                 resolve({
                     data: {
                         data: {
-                            answer: {
-                                url: '',
-                                output: demoSortedOrders,
-                                //получить заказы по фильтрам и пагинацию. Сортировка и сетка сохраняются
-                            },
+                            answer: demoSortedOrders,
                             status: 1,
                         }
                     }

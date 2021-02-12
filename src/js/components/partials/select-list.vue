@@ -91,18 +91,16 @@ export default {
                     },'', answer.url);
                 });
             } else if (vm.sortingPage === 'orders') {
-                api.sortOrders(vm.currentPoint)
+                vm.$eventBus.$emit('apply-sorting', vm.currentPoint);
+                /* api.sortOrders(vm.currentPoint)
                     .then(
                         answer => {
                             vm.$eventBus.$emit('apply-sorting', answer.output);
-                            window.history.pushState({
-                                output: answer.output
-                            },'', answer.url);
                         },
                         error => {
                             return error
                         }
-                    )
+                    ) */
             } else if (vm.selectName === 'receive-address') {
                 vm.$eventBus.$emit('change-select-point', vm.selectName, vm.currentPoint);
             }
