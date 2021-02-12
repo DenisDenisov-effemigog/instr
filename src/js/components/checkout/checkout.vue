@@ -111,6 +111,11 @@
         <svg viewBox="0 0 145 145">
             <use :xlink:href="templatePath + 'images/sprite.svg#preloader'"></use>
         </svg>
+        <div class="preloader__loading">
+            <svg viewBox="0 0 145 145">
+                <use :xlink:href="templatePath + 'images/sprite.svg#preloader'"></use>
+            </svg>
+        </div>
     </div>
 </template>
 
