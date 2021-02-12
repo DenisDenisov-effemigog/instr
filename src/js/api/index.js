@@ -170,6 +170,12 @@ class Api {
         });
     }
 
+    sortOrders(params) {
+        return this._promiseBitrixRequest('instrument2:rest.api.sortOrders.get', {
+            params: params
+        });
+    }
+
     filteredListing(hash, params) {
         return this._promiseBitrixRequest('instrument2:rest.api.filteredListing.get', {
             hash: hash,
