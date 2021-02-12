@@ -1,7 +1,16 @@
 .preloader
-    width: 100px
+    width: 95px
+    max-height: 107px
     margin: 100px auto
-    animation: pulse 1s infinite
+    // animation: pulse 1s infinite
+    overflow: hidden
+    animation: fillthis .5s ease forwards
+    
+    svg
+        width: 145px
+        height: 145px
+        fill: $primary-red
+
     
 @keyframes pulse
     0% 
@@ -10,3 +19,9 @@
         transform: scale(1.2)
     100% 
         transform: scale(1)
+
+@keyframes fillthis
+    0% 
+        max-height: 0
+    100% 
+        max-height: 107px

@@ -107,7 +107,11 @@
             </div>
         </div>
     </div>
-    <div v-else class="preloader"><img :src="templatePath + 'images/preloader.svg'" alt=""></div>
+    <div v-else class="preloader">
+        <svg viewBox="0 0 145 145">
+            <use :xlink:href="templatePath + 'images/sprite.svg#preloader'"></use>
+        </svg>
+    </div>
 </template>
 
 <script>
