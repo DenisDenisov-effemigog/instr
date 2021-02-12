@@ -4,27 +4,26 @@
     height: 107px
     margin: 100px auto
     // animation: pulse 1s infinite
-    
+
     svg
         width: 145px
         height: 145px
-        fill: $light-grey
-
+        fill: $primary-red
+    
     &__loading
         position: absolute
         top: 0
         height: 0
-        width: 95px
-        height: 107px
-        overflow: hidden
-        animation: fillthis .5s ease forwards
+        width: 100%
+        height: 100%
+        background-color: $white
+        &--first
+            animation: fillfirst 1s cubic-bezier(0.1, -0.6, 0.2, 0) infinite
+        &--second
+            top: auto
+            bottom: 0
+            animation: fillsecond 1s cubic-bezier(0.1, -0.6, 0.2, 0) infinite
 
-        svg
-            width: 145px
-            height: 145px
-            fill: $primary-red
-
-    
 @keyframes pulse
     0% 
         transform: scale(1)
@@ -33,8 +32,18 @@
     100% 
         transform: scale(1)
 
-@keyframes fillthis
+@keyframes fillfirst
     0% 
-        height: 0
+        height: 100%
+    50% 
+        height: 0%
     100% 
-        height: 107px
+        height: 0%
+
+@keyframes fillsecond
+    0% 
+        height: 0%
+    70% 
+        height: 0%
+    100% 
+        height: 100%
