@@ -142,40 +142,6 @@ export default {
                     let cardHeight = card.clientHeight
                     let cardWidth = card.offsetWidth
                     if(card.closest('.listing__grid--horiz')){
-                        // clone.style.display = 'flex'
-                        // clone.style.padding = 0 + 'px' + ' !important'
-                        // clone.style.border = 'none'
-
-                        // let cardHeader = clone.querySelector(".card__header")
-                        // console.log(cardHeader);
-                        // cardHeader.style.display = "none"
-
-                        // let cardImage = clone.querySelector(".card__image-block")
-                        // console.log(cardImage);
-                        // cardImage.style.order = -1
-                        // cardImage.style.height = 7.5 + 'rem'
-                        // cardImage.style.maxWidth = 7.5 + 'rem'
-                        // cardImage.style.margin = 0
-                        // cardImage.style.width = 5.875 + 'rem'
-
-                        // let cardSlider = cardImage.querySelector('.slider-photo-card')
-                        // console.log(cardSlider);
-                        // cardSlider.style.display = 'none'
-
-                        // let cardImageBlockCode = clone.querySelector('.card__code')
-                        // console.log(cardImageBlockCode);
-                        // cardImageBlockCode.style.display = 'none'
-
-                        // let cardBottom = clone.querySelector(".card__bottom")
-                        // console.log(cardBottom);
-                        // cardBottom.style.display = "flex"
-                        // cardBottom.style.width = "inherit"
-                        // cardBottom.style.flexDirection = "row"
-
-                        // let cardBottomCode = cardBottom.querySelector(".card__code")
-                        // console.log(cardBottomCode);
-                        // cardBottomCode.style.display = "block"
-                        // cardBottomCode.style.marginBottom = 0.5 + 'rem'
                     clone.classList.add('card-clone--horiz')
                     }
                     clone.style.width = cardWidth + 'px'
@@ -190,8 +156,8 @@ export default {
                         clone.style.transition = 1 + 's'
                         setTimeout(() => {
                             clone.parentNode.removeChild(clone)
-                        }, 450);
-                    }, 350);
+                        }, 500);
+                    }, 50);
                 };
             }
         },
