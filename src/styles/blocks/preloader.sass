@@ -1,7 +1,29 @@
 .preloader
-    width: 100px
+    position: relative
+    width: 95px
+    height: 107px
     margin: 100px auto
-    animation: pulse 1s infinite
+    // animation: pulse 1s infinite
+    
+    svg
+        width: 145px
+        height: 145px
+        fill: $light-grey
+
+    &__loading
+        position: absolute
+        top: 0
+        height: 0
+        width: 95px
+        height: 107px
+        overflow: hidden
+        animation: fillthis .5s ease forwards
+
+        svg
+            width: 145px
+            height: 145px
+            fill: $primary-red
+
     
 @keyframes pulse
     0% 
@@ -10,3 +32,9 @@
         transform: scale(1.2)
     100% 
         transform: scale(1)
+
+@keyframes fillthis
+    0% 
+        height: 0
+    100% 
+        height: 107px

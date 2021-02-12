@@ -65,18 +65,13 @@
             // this.$eventBus.$off('apply-sorting');
         },
         methods:{
-            applySorting(orders) {
-                this.ordersAll = orders
+            applySorting(status) {
+                this.$store.dispatch('personalSortOrders', status);
             }
         },
         computed: {
-            ordersAll: {
-                get: function() {
-                    return this.$store.state.personal.orders;
-                },
-                set: function() {
-                    this.applySorting()
-                }
+            ordersAll() {
+                return this.$store.state.personal.orders;
             },
             h1() {
                 return this.$store.state.layout.h1;

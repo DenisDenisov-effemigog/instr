@@ -34,7 +34,7 @@
         width: initial
         color: $light-grey
         transition: .2s
-        z-index: 1
+        z-index: -1
         &--with-mag
             left: 2rem
         &--up
@@ -44,6 +44,7 @@
             padding: 1px .5rem
             background-color: $white
             transition: .2s
+            z-index: 1
             +tablet
                 top: -.375rem
         // добавить стили для псевдоэлемента - серого фона - для плейсхолдера нередактируемого поля
@@ -62,6 +63,7 @@
                 top: 44%
     &__input
         @extend .input-modal
+        background: transparent
         &:focus
             & ~ .form__label-text
                 @extend .form__label-text--up
