@@ -82,6 +82,7 @@ export default {
         openDetails(index){
             this.$router.push('/account/orders/' + this.order.id + '/');
             this.$eventBus.$emit('hideBreadcrumbs', true);
+            this.$eventBus.$emit('closeTitle')
         },
         openModal(modal) {
             let vm = this;
