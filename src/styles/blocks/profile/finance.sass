@@ -1,14 +1,14 @@
 .finance
     &__header
         margin: 1rem 0 0 0
-        +desktop
+        +desktop-small
             margin-top: .75rem
         &--download
-            +desktop
+            +desktop-small
                 +flex-container
         & .profile__title
             margin: 0 0 1rem 0
-            +desktop
+            +desktop-small
                 margin: 0
         & .profile__link
             svg
@@ -26,11 +26,12 @@
                 height: $size_18
     &__layout
         margin: 2rem 0 1.5rem 0
-        +tablet
+        +desktop-small
             margin: 2.5rem 0 0 0
         &:last-of-type
-            +tablet
-                margin-bottom: 0
+            margin-bottom: 5.8125rem
+            +desktop-small
+                margin-bottom: 2.875rem
         & .profile__link svg
             margin: 0 0 0 .25rem
     &__list
@@ -43,28 +44,29 @@
     &__item
         @extend .text-2
         display: flex
-        padding: 1rem
+        padding: 1rem 0
         border-bottom: 1px solid $border-color
         flex-wrap: wrap
         justify-content: space-between
-        +desktop
+        +desktop-small
+            padding: 1rem
             flex-wrap: nowrap
             justify-content: normal
         &--head
             background: $shield
             border: none
             display: none
-            +desktop
+            +desktop-small
                 display: flex
     &__sum
         order: 1
         flex: 1
         &--red
             color: $primary-hover
-        +tablet-only
-            width: 50%
+        +until($desktop-small)
+            width: 40%
             flex: none
-        +desktop
+        +desktop-small
             flex: 1
             max-width: 9.813rem
             order: 0
@@ -76,25 +78,30 @@
         width: 75%
         padding-top: 0.5rem
         color: $light-grey
-        +desktop
+        +desktop-small
             width: auto
             padding-top: 0
             flex: 1
             max-width: 14.875rem
             order: 0
+            font-size: inherit
+            color: initial
             
     &__operation
         order: 2
-        +desktop
+        +desktop-small
             flex: 1
             order: 0
+    &__operation-number
+        +until($desktop-small)
+            display: none
             
     &__code
         display: none
         color: $blue
         &--head
             color: $black
-        +desktop
+        +desktop-small
             flex: 1
             display: flex
             justify-content: flex-end
@@ -103,7 +110,7 @@
         order: 4
         color: $blue
         padding-top: 0.5rem
-        +desktop
+        +desktop-small
             display: none
 
     

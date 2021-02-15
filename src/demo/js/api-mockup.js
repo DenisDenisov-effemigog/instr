@@ -364,7 +364,7 @@ for(let i = 0; i < 5; ++i) {
 let financeData = [];
 for(let i = 0; i < 6; ++i) {
 
-    let operation = ['Пополнение баланса', 'Оплата заказа'].sort(function (a, b) {
+    let operation = [profile_finance.top_up, profile_finance.purchasing].sort(function (a, b) {
         return 0.5 - Math.random()
     }).pop();
 

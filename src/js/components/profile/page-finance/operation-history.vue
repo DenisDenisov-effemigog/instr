@@ -14,14 +14,22 @@
                 ><span v-if="item.status">-</span><span v-else>+</span>{{item.sum}} {{ $tc('text.currency') }}</div>
                 <div class="finance__date">{{item.date}} {{ $tc('text.in') }} {{item.time}}</div>
                 <div class="finance__operation">
-                    <span>{{item.operation}}</span>
-                    <span v-if="item.operationNumber">#{{item.operationNumber}}</span>
+                    <span>{{ item.operation }}</span>
+                    <span 
+                        class="finance__operation-number"
+                        v-show="item.operationNumber && item.operation === $tc('profile_finance.purchasing')"
+                    >
+                        #{{item.operationNumber}}
+                    </span>
                 </div>
                 <div class="finance__code">{{item.code}}</div>
                 <div class="finance__order">#{{item.order}}</div>
             </li>
         </ul>
-        <a v-if="!expanded && operationHistory.length > 5" class="profile__link" @click.prevent="expanded = true">
+        <a v-if="!expanded && operationHistory.length > 4" 
+            class="profile__link profile__link--center" 
+            @click.prevent="expanded = true"
+        >
             {{ $tc('profile_finance.deploy') }}
             <svg viewBox="-7 -6 20 20" class="finance__expand-arrow">
                 <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-down'"></use>
