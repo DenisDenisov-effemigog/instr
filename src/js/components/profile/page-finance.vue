@@ -3,7 +3,7 @@
         <h2 class="profile__title">{{ $tc('link.finance') }}</h2>
         <div class="profile__empty-content" v-if="!financeDataAll">
             <p class="finance__text">{{ $tc('profile_finance.empty_text') }}</p>
-            <div class="profile__catalogue-btn">{{ $tc('button.go_catalog') }}</div>
+            <a href="" class="profile__catalogue-btn">{{ $tc('button.move_to_catalog') }}</a>
         </div>
         <div v-else>
             <operation-history :financeHistory="financeDataAll"></operation-history>
