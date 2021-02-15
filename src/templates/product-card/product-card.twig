@@ -3,10 +3,18 @@
 	<div class="product-card__title">{{ product.name }}</div>
 	<div class="product-card__header">
 		<div class="product-card__favorite-btn">
-			<component is="in-favorite" :text="true" :id="{{ product.id|json_encode()|e('html_attr') }}"></component>
+			<component is="in-favorite" 
+                       :text="true" 
+                       :id="{{ product.id|json_encode()|e('html_attr') }}" 
+                       :value="{{ product.is_favorite|json_encode()|e('html_attr') }}"
+            ></component>
 		</div>
 		<div class="product-card__compare-btn">
-            <component is="to-compare" :text="true" :id="{{ product.id|json_encode()|e('html_attr') }}"></component>
+            <component is="to-compare" 
+                       :text="true" 
+                       :id="{{ product.id|json_encode()|e('html_attr') }}"
+                       :value="{{ product.is_compare|json_encode()|e('html_attr') }}"
+            ></component>
 		</div>
 		<component is="product-card-article">{{ product.sku }}</component>
 	</div>
@@ -15,6 +23,8 @@
             <component is="product-card-header" 
                        :tooltips="{{ product.tooltips|json_encode()|e('html_attr') }}"
                        :id="{{ product.id|json_encode()|e('html_attr') }}"
+                       :favorite="{{ product.is_favorite|json_encode()|e('html_attr') }}"
+                       :compare="{{ product.is_compare|json_encode()|e('html_attr') }}"
             ></component>
 			<component is="product-card-slider"
                        :product-images="{{ product.images|json_encode()|e('html_attr') }}" 

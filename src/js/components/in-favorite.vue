@@ -26,6 +26,10 @@
                 required: true,
                 type: Number
             },
+            value: {
+                required: true,
+                type: Boolean
+            },
             text: {
                 required: false,
                 default: false,
@@ -42,17 +46,19 @@
                 inFavorite: false,
             }
         },
-        computed: {
-            favorites() {
-                return this.$store.state.listing.actions.favoritesProducts
-            },
+        model: {
+            prop: 'value',
+            event: 'change',
         },
-        mounted() {
-             favorites.filter(favorite => {
-                if (favorite.product_id === this.id) {
-                    this.inFavorite = favorite.is_favorite 
-                }
-            })
+        computed: {
+            favorites: {
+                get: function () {
+                    return this.value;
+                },
+                set: function (newValue) {
+                    this.$emit('change', newValue);
+                },
+            },
         },
         methods: {
             addFavorite() {

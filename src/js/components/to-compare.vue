@@ -23,6 +23,10 @@
                 required: true,
                 type: Number
             },
+            value: {
+                required: true,
+                type: Boolean
+            },
             text: {
                 required: false,
                 default: false,
@@ -39,17 +43,19 @@
                 inCompare: false,
             }
         },
-        computed: {
-            favorites() {
-                return this.$store.state.listing.actions.comparingProducts
-            },
+        model: {
+            prop: 'value',
+            event: 'change',
         },
-        mounted() {
-            compares.filter(compare => {
-                if (compare.product_id === this.id) {
-                    this.inCompare = compare.is_compare
-                }
-            })
+        computed: {
+            favorites: {
+                get: function () {
+                    return this.value;
+                },
+                set: function (newValue) {
+                    this.$emit('change', newValue);
+                },
+            },
         },
         methods: {
             addCompare() {
