@@ -361,10 +361,15 @@ for(let i = 0; i < 5; ++i) {
     });
 }
 
-let financeData = [];
+let financeData = {
+    invoice: '/images/country/globus.png',
+    history: [],
+};
+
 for(let i = 0; i < 6; ++i) {
 
-    let operation = ['Пополнение баланса', 'Оплата заказа'].sort(function (a, b) {
+    // profile_finance.top_up and profile_finance.purchasing are from json file for vue-i18n
+    let operation = ['profile_finance.top_up', 'profile_finance.purchasing'].sort(function (a, b) {
         return 0.5 - Math.random()
     }).pop();
 
@@ -376,7 +381,7 @@ for(let i = 0; i < 6; ++i) {
         return 0.5 - Math.random()
     }).pop();
     
-    financeData.push({
+    financeData.history.push({
         id: i+1,
         'sum': '1000000',
         'date': '23.12.2020',
