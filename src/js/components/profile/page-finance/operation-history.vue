@@ -8,7 +8,7 @@
                 <div class="finance__operation">{{ $tc('profile_finance.operation') }}</div>
                 <div class="finance__code finance__code--head">{{ $tc('profile_finance.operation_code') }}</div>
             </li>
-            <li v-for="item in financeDataAll" class="finance__item">
+            <li v-for="item in operationHistory" class="finance__item">
                 <div class="finance__sum" 
                         :class="{'finance__sum--red': item.status}" 
                 ><span v-if="item.status">-</span><span v-else>+</span>{{item.sum}} {{ $tc('text.currency') }}</div>
@@ -21,7 +21,7 @@
                 <div class="finance__order">#{{item.order}}</div>
             </li>
         </ul>
-        <a v-if="!expanded && financeDataAll.length > 5" class="profile__link" @click.prevent="expanded = true">
+        <a v-if="!expanded && operationHistory.length > 5" class="profile__link" @click.prevent="expanded = true">
             {{ $tc('profile_finance.deploy') }}
             <svg viewBox="-7 -6 20 20" class="finance__expand-arrow">
                 <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-down'"></use>
@@ -33,20 +33,21 @@
 <script>
     export default {
         name: 'operation-history',
+        props: {
+            financeHistory: {
+                type: Array
+            }
+        },
         data() {
             return {
                 expanded: false,
             }
         },
-        mounted() {
-            this.$store.dispatch('personalUpdateFinanceData');
-        },
         computed: {
-            financeDataAll() {
-                return this.$store.state.personal.financeData;
-            },
+            operationHistory() {
+                return this.financeHistory
+            }
         }
-
     }
 </script>
 

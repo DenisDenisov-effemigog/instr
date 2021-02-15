@@ -115,6 +115,7 @@
     "profile_orders.title.recipient": "Получатель",
     "profile_orders.title.payment": "Оплата",
     "profile_delivery.empty_text": "У вас пока нет ни одного адреса.",
+    "profile_finance.empty_text": "Текст про то, что договор не заключен.",
     "profile_finance.history": "История операций",
     "profile_finance.sum": "Сумма",
     "profile_finance.date": "Время и дата",

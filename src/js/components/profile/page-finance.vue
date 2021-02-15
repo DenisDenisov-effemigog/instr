@@ -1,7 +1,13 @@
 <template>
     <div class="finance">
         <h2 class="profile__title">{{ $tc('link.finance') }}</h2>
-        <operation-history></operation-history>
+        <div class="profile__empty-content" v-if="!financeDataAll">
+            <p class="finance__text">{{ $tc('profile_finance.empty_text') }}</p>
+            <div class="profile__catalogue-btn">{{ $tc('button.go_catalog') }}</div>
+        </div>
+        <div v-else>
+            <operation-history :financeHistory="financeDataAll"></operation-history>
+        </div>
     </div>
 </template>
 
@@ -11,8 +17,18 @@
     export default {
         name:"page-finance",
         components: { operationHistory},
+        data() {
+            return {
+            }
+        },
         mounted() {
+            this.$store.dispatch('personalUpdateFinanceData');
             this.$eventBus.$emit('hideMenu')
+        },
+        computed: {
+            financeDataAll() {
+                return this.$store.state.personal.financeData;
+            },
         }
     }
 </script>
