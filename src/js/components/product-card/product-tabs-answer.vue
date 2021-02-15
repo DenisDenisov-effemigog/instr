@@ -1,6 +1,6 @@
 <template>
     <div class="product-tabs__answer-text"
-        :class="{'product-tabs__answer-text_expanded': expandedText}"
+        :class="{'product-tabs__answer-text--expanded': expandedText}"
         ref="textBlock"
         v-if="answer">
         <div class="product-tabs__answer-full-text" ref="text">

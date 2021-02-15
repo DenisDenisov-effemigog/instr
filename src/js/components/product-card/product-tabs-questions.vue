@@ -1,7 +1,7 @@
 <template>
     <div class="product-tabs__content-answer">
         <form class="product-tabs__form"
-            :class="{'product-tabs__form_expanded': formExpanded}"
+            :class="{'product-tabs__form--expanded': formExpanded}"
             @submit.prevent="addQuestion"
             @click="formExpanded = true">
             <div class="product-tabs__content-title">{{ $tc('product_card.form.title') }}</div>

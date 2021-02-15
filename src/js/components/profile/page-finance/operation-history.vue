@@ -1,7 +1,7 @@
 <template>
     <div class="finance__layout">
         <h4 class="finance__subtitle">{{ $tc('profile_finance.history') }}</h4>
-        <ul class="finance__list">
+        <ul class="finance__list" :class="{'finance__list--expanded': expanded}">
             <li class="finance__item finance__item--head">
                 <div class="finance__sum">{{ $tc('profile_finance.sum') }}</div>
                 <div class="finance__date">{{ $tc('profile_finance.date') }}</div>
@@ -21,12 +21,23 @@
                 <div class="finance__order">#{{item.order}}</div>
             </li>
         </ul>
+        <a v-if="!expanded && financeDataAll.length > 5" class="profile__link" @click.prevent="expanded = true">
+            {{ $tc('profile_finance.deploy') }}
+            <svg viewBox="-7 -6 20 20" class="finance__expand-arrow">
+                <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-down'"></use>
+            </svg>
+        </a>
     </div>
 </template>
 
 <script>
     export default {
         name: 'operation-history',
+        data() {
+            return {
+                expanded: false,
+            }
+        },
         mounted() {
             this.$store.dispatch('personalUpdateFinanceData');
         },
