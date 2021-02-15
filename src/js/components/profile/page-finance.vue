@@ -1,6 +1,14 @@
 <template>
     <div class="finance">
-        <h2 class="profile__title">{{ $tc('link.finance') }}</h2>
+        <div class="finance__header" :class="{'finance__header--download': !!financeDataAll}">
+            <h2 class="profile__title">{{ $tc('link.finance') }}</h2>
+            <a class="profile__link" href="/images/country/globus.png" download  v-if="!!financeDataAll">
+                {{ $tc('profile_finance.download') }}
+                <svg>
+                    <use :xlink:href="templatePath + `images/sprite.svg#icons__download`"></use>
+                </svg>
+            </a>
+        </div>
         <div class="profile__empty-content" v-if="!financeDataAll">
             <p class="finance__text">{{ $tc('profile_finance.empty_text') }}</p>
             <a href="" class="profile__catalogue-btn">{{ $tc('button.move_to_catalog') }}</a>

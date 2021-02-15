@@ -1,6 +1,20 @@
 .finance
-    &__title
-        @extend .order__title
+    &__header
+        margin: 1rem 0 0 0
+        +desktop
+            margin-top: .75rem
+        &--download
+            +desktop
+                +flex-container
+        & .profile__title
+            margin: 0 0 1rem 0
+            +desktop
+                margin: 0
+        & .profile__link
+            svg
+                width: 1.125rem
+                height: 1.25rem
+                margin: 0 0 0 .5rem
     &__subtitle
         @extend .profile__company-name
     &__info
