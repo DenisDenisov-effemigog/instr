@@ -7,6 +7,7 @@ import * as types from '../store/mutation-types';
 Vue.use(Router);
 
 const router = new Router({
+    // TODO переименовать title
     mode: 'history',
     routes: [
         {

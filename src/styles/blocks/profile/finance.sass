@@ -1,6 +1,8 @@
 .finance
     &__title
         @extend .order__title
+    &__subtitle
+        @extend .profile__company-name
     &__info
         @extend .order__info
         &-icon
@@ -8,8 +10,13 @@
             & svg
                 width: $size_18
                 height: $size_18
-    &__main
-        padding-top: 2rem
+    &__layout
+        margin: 2rem 0 1.5rem 0
+        +tablet
+            margin: 2.5rem 0 0 0
+        &:last-of-type
+            +tablet
+                margin-bottom: 0
     &__item
         @extend .text-2
         display: flex

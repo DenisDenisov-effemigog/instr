@@ -114,10 +114,13 @@
     "profile_orders.title.recipient": "Получатель",
     "profile_orders.title.payment": "Оплата",
     "profile_delivery.empty_text": "У вас пока нет ни одного адреса.",
+    "profile_finance.history": "История операций",
     "profile_finance.sum": "Сумма",
     "profile_finance.date": "Время и дата",
     "profile_finance.operation": "Операция",
     "profile_finance.operation_code": "Код операции",
+    "profile_finance.deploy_fees": "Развернуть все платежи",
+    "profile_finance.deploy": "Развернуть еще",
     "profile.delete_profile.another_reason": "Другая причина",
     
     "change_pass.current": "Текущий пароль",

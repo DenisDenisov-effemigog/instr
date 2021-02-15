@@ -45,7 +45,7 @@
                     },
                     {
                         title: 'link.finance',
-                        url: '/account/check', 
+                        url: '/account/finance',
                         personType: 2, 
                         external: true,
                         icon: 'card'

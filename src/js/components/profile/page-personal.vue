@@ -53,7 +53,6 @@ export default {
     name:"page-personal",
     data() {
         return {
-            profile: {},
             person: [
                 {'title': 'title.person', 'icon': 'user-profile', 'index': 'contact', 'personType': 1},
                 {'title': 'title.phone', 'icon': 'call', 'index': 'phone', 'personType': 1},
@@ -70,6 +69,9 @@ export default {
     computed: {
         h1() {
             return this.$store.state.layout.h1;
+        },
+        profile() {
+            return this.cloneOverJson(this.$store.state.personal);
         },
     },
     created() {
