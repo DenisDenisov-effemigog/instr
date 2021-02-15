@@ -14,31 +14,87 @@
         </div>
         
     <div class="order__main">
-        
-        
         <div class="page-order" ref="content">
-            
             <div class="page-order__head">
-                <div class="page-order__info">
-                    <div class="page-order__number">{{ $tc('text.order') }} #{{ order.number }}</div>
-                    <div class="page-order__date">{{ order.date }}</div>
-                    <div class="page-order__status">{{ order.status }}</div>
-                </div>
-                <div class="page-order__select">
-                    <select-list
-                        :points="order.documents"
-                        :icon="icon"
-                        :selectopenSelect="order.currentDocument"
-                        :selectName="'download-doc'"
-                    ></select-list>
-                </div>
-                <div @click.stop="openModal('repeat-order')" class="page-order__btn">
-                    <div class="page-order__btn-icon">
-                        <svg>
-                            <use :xlink:href="templatePath + 'images/sprite.svg#icons__repeat'"></use>
-                        </svg>
+                <div class="page-order__head-top">
+                    <div class="page-order__info">
+                        <div class="page-order__number">{{ $tc('text.order') }} #{{ order.number }}</div>
+                        <div class="page-order__date">{{ order.date }}</div>
+                        <div class="page-order__status">{{ order.status }}</div>
                     </div>
-                    <div class="page-order__btn-text">{{ $tc('profile_orders.link.repeat') }}</div>
+                    <ul class="page-order__desc-list">
+                        <li class="page-order__desc-item" v-for="(item, index) in deliveryInfo">
+                            <div class="page-order__desc-icon">
+                                <svg v-if="index === 1">
+                                    <use :xlink:href="templatePath + `images/sprite.svg#icons__${item.icon}`"></use>
+                                </svg>
+                                <svg viewBox="-3 -5 20 20" v-else>
+                                    <use :xlink:href="templatePath + `images/sprite.svg#icons__${item.icon}`"></use>
+                                </svg>
+                            </div>
+                            <div class="page-order__desc-info">
+                                <div class="page-order__desc-subtitle">
+                                    {{ $tc(item.title) }}
+                                </div>
+                                <div class="page-order__desc-desc">
+                                    {{item.desc}}
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="page-order__select">
+                        <select-list
+                            :points="order.documents"
+                            :icon="icon"
+                            :selectopenSelect="order.currentDocument"
+                            :selectName="'download-doc'"
+                        ></select-list>
+                    </div>
+                </div>
+                <div class="page-order__head-bottom">
+                    <div class="order-desc" ref="order">
+                        <h3 class="order-desc__title">{{ $tc('profile_orders.title.price') }}</h3>
+                        <ul class="order-desc__list">
+                            <li class="order-desc__item">
+                                <div class="order-desc__name">{{ $tc('text.price') }}</div>
+                                <div class="order-desc__price">{{ order.price }} {{ $tc('text.currency') }}</div>
+                            </li>
+                            <li class="order-desc__item order-desc__item--discount">
+                                <div class="order-desc__name">{{ $tc('text.discount') }}</div>
+                                <div class="order-desc__price order-desc__price--discount">{{ order.discount }} {{ $tc('text.currency') }}</div>
+                            </li>
+                            <!-- #TODO пока выпилили -->
+                            <!-- <li class="order-desc__item order-desc__item--delivery">
+                                <div class="order-desc__name">{{ $tc('profile_orders.economy') }}</div>
+                                <div class="order-desc__price">+{{ order.economy }} {{ $tc('text.currency') }}</div>
+                            </li> -->
+                            <li class="order-desc__item order-desc__item--total">
+                                <div class="order-desc__name order-desc__name--total">{{ $tc('text.price_yours') }}</div>
+                                <div class="order-desc__price order-desc__price--total">{{ order.priceTotal }} {{ $tc('text.currency') }}</div>
+                            </li>
+                        </ul>
+                        <div class="order-desc__btn"
+                             :class="{'order-desc__btn--fixed': fixedButton}"
+                             @click.stop="openModal('repeat-order')"
+                        >
+                            <div class="order-desc__btn-wrapper">
+                                <div class="order-desc__btn-icon">
+                                    <svg>
+                                        <use :xlink:href="templatePath + 'images/sprite.svg#icons__repeat'"></use>
+                                    </svg>
+                                </div>
+                                <div class="order-desc__btn-text">{{ $tc('profile_orders.link.repeat') }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-order__select page-order__select--mobile">
+                        <select-list
+                            :points="order.documents"
+                            :icon="icon"
+                            :selectopenSelect="order.currentDocument"
+                            :selectName="'download-doc'"
+                        ></select-list>
+                    </div>
                 </div>
             </div>
             <div class="page-order__main">
@@ -52,7 +108,7 @@
                     <div class="page-order__new-price">{{ $tc('text.price_new') }}</div>
                 </div>
                 <order-product-list :orderId="order.id" :showAll="true" :opened="true" :products="order.basket"></order-product-list>
-                <div class="page-order__desc">
+                <!-- <div class="page-order__desc">
                     <ul class="page-order__desc-list">
                         <li class="page-order__desc-item" v-for="(item, index) in deliveryInfo">
                             <div class="page-order__desc-icon">
@@ -107,7 +163,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
             
@@ -193,9 +249,11 @@ export default {
         },
         mouseWheel(){
             if(window.innerWidth < 768) {
-                let windowPosition = (window.pageYOffset + window.innerHeight).toFixed(0)
-                let pcH = (this.$refs.content.clientHeight).toFixed(0)
-                this.fixedButton = +pcH > +windowPosition
+                let windowPosition = (window.pageYOffset).toFixed(0)
+                let pcH = (this.$refs.order.clientHeight + this.$refs.order.offsetTop).toFixed(0)
+                console.log(windowPosition);
+                console.log(pcH);
+                this.fixedButton = +pcH < +windowPosition
             }
         },
         closeStickyBtn(){

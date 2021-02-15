@@ -11,8 +11,8 @@
                     {{product.name}}
                 </div>
             </div>
-            <div class="order__product-qty">{{product.basket_quantity}}<span>{{ $tc('text.count') }}</span></div>
-            <div class="order__product-item-price">{{product.price}} {{ $tc('text.currency') }}</div>
+            <div class="order__product-qty">{{product.basket_quantity}} <span>{{ $tc('text.count') }}</span></div>
+            <div class="order__product-item-price">{{product.price}}  {{ $tc('text.item_currency') }}</div>
             <div class="order__product-all-price">{{product.allPrice}} {{ $tc('text.currency') }}</div>
             <div class="order__product-discount">
                 <span v-if="product.discount > 0">{{product.discount}}%</span>
