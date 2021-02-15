@@ -39,7 +39,7 @@ const state = {
         max: 0,
         current: 0
     },*/
-    checkData: [],
+    financeData: [],
     orders: [],
     addresses: [],
 
@@ -60,9 +60,9 @@ const mutations = {
     [types.PERSONAL_APPLY_ORDERS](state, orders) {
         state.orders = orders;
     },
-    [types.PERSONAL_APPLY_CHECKS](state, checkData) {
-        console.log('mut', checkData);
-        state.checkData = checkData;
+    [types.PERSONAL_APPLY_FINANCE](state, financeData) {
+        console.log('mut fin', financeData);
+        state.financeData = financeData;
     },
     [types.PERSONAL_ADDRESSES](state, addresses) {
         console.log('mut', addresses);
@@ -92,10 +92,10 @@ const actions = {
             commit(types.PERSONAL_APPLY_ORDERS, answer);
         });
     },
-    personalUpdateCheckData: ({commit}) => {
+    personalUpdateFinanceData: ({commit}) => {
         api.personalChecks().then((answer) => {
-            if(answer.checkData) {
-                commit(types.PERSONAL_APPLY_CHECKS, answer.checkData);
+            if(answer.financeData) {
+                commit(types.PERSONAL_APPLY_FINANCE, answer.financeData);
             }
         });
     },

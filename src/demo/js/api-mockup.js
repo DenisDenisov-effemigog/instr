@@ -361,7 +361,7 @@ for(let i = 0; i < 5; ++i) {
     });
 }
 
-let checkData = [];
+let financeData = [];
 for(let i = 0; i < 6; ++i) {
 
     let operation = ['Пополнение баланса', 'Оплата заказа'].sort(function (a, b) {
@@ -376,7 +376,7 @@ for(let i = 0; i < 6; ++i) {
         return 0.5 - Math.random()
     }).pop();
     
-    checkData.push({
+    financeData.push({
         id: i+1,
         'sum': '1000000',
         'date': '23.12.2020',
@@ -1253,7 +1253,7 @@ window.runAction = function (action, config) {
                         data: {
                             status: 1,
                             answer: {
-                                checkData: checkData,
+                                financeData: financeData,
                                 pagination: {
                                     current: 1,
                                     total: 5

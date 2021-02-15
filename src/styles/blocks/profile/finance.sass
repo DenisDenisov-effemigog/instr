@@ -1,6 +1,22 @@
-.my-check
-    &__title
-        @extend .order__title
+.finance
+    &__header
+        margin: 1rem 0 0 0
+        +desktop
+            margin-top: .75rem
+        &--download
+            +desktop
+                +flex-container
+        & .profile__title
+            margin: 0 0 1rem 0
+            +desktop
+                margin: 0
+        & .profile__link
+            svg
+                width: 1.125rem
+                height: 1.25rem
+                margin: 0 0 0 .5rem
+    &__subtitle
+        @extend .profile__company-name
     &__info
         @extend .order__info
         &-icon
@@ -8,8 +24,22 @@
             & svg
                 width: $size_18
                 height: $size_18
-    &__main
-        padding-top: 2rem
+    &__layout
+        margin: 2rem 0 1.5rem 0
+        +tablet
+            margin: 2.5rem 0 0 0
+        &:last-of-type
+            +tablet
+                margin-bottom: 0
+        & .profile__link svg
+            margin: 0 0 0 .25rem
+    &__list
+        max-height: 19.8125rem
+        margin-bottom: 1.5rem
+        overflow: hidden
+        &--expanded
+            max-height: fit-content
+            margin-bottom: 0
     &__item
         @extend .text-2
         display: flex

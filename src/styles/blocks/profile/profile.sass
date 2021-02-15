@@ -88,9 +88,6 @@
     &__link
         @extend .link-blue
         @extend .show-more
-        margin-top: 1rem
-        +desktop
-            margin-top: 1.5rem
         &_title
             margin-top: 0
             +tablet
@@ -118,11 +115,22 @@
             height: 4.5rem
     &__company-name
         @extend .title-4
+        margin: 0 0 1rem 0
         &--mobile
             @extend .title-5
         +desktop
             font-size: $font-size_8
             line-height: $line-height_8
+            margin: 0 0 1.5rem 0
     &__company-type
         @extend .text-2
         margin-top: .5rem
+    &__empty-content
+        padding-top: 0.8rem
+    &__catalogue-btn
+        @extend .button-catalogue
+        margin-top: 2rem
+        width: 100%
+        +tablet
+            cursor: pointer
+            width: 11.75rem
