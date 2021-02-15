@@ -219,18 +219,10 @@ class Api {
         });
     }
 
-    getFavorite() {
-        return this._promiseBitrixRequest('instrument2:rest.api.cart.get.favorite');
-    }
-
     addCompare(id) {
         return this._promiseBitrixRequest('instrument2:rest.api.cart.compare', {
             id: id,
         });
-    }
-
-    getCompare() {
-        return this._promiseBitrixRequest('instrument2:rest.api.cart.get.compare');
     }
     
 }

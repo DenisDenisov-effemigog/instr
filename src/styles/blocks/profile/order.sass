@@ -47,6 +47,8 @@
         cursor: pointer
         +mobile
             flex-wrap: wrap
+            & span 
+                order: 2
     &__number
         +mobile
             order: 1
@@ -144,6 +146,9 @@
     &__product-list
         display: none
         margin-top: 1.625rem
+        margin-bottom: 3.75rem
+        +tablet
+            margin-bottom: 0rem
         &--open
             display: block
     &__product-item
@@ -206,8 +211,6 @@
             top: 2rem
     &__product-qty
         +tablet
-            & span
-                display: none
             flex: 1
             max-width: 5rem
         +mobile

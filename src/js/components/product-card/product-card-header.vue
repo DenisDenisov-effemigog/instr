@@ -8,8 +8,8 @@
             ></component>
         </div>
         <div class="product-card__actions">
-            <component is="to-compare" :id="id"></component>
-            <component is="in-favorite" :id="id"></component>
+            <component is="to-compare" :id="id" v-model="compare"></component>
+            <component is="in-favorite" :id="id" v-model="favorite"></component>
         </div>
     </div>
 </template>
@@ -33,6 +33,14 @@ export default {
         },
         id: {
             type: Number,
+            required: true,
+        },
+        favorite: {
+            type: Boolean,
+            required: true,
+        },
+        compare: {
+            type: Boolean,
             required: true,
         }
     },
