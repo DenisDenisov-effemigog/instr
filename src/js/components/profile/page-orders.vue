@@ -67,7 +67,7 @@
         methods:{
             applySorting(status) {
                 this.$store.dispatch('personalSortOrders', status);
-            }
+            },
         },
         computed: {
             ordersAll() {
