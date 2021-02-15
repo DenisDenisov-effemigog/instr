@@ -14,10 +14,10 @@
                 ><span v-if="item.status">-</span><span v-else>+</span>{{item.sum}} {{ $tc('text.currency') }}</div>
                 <div class="finance__date">{{item.date}} {{ $tc('text.in') }} {{item.time}}</div>
                 <div class="finance__operation">
-                    <span>{{ item.operation }}</span>
+                    <span>{{ $tc(item.operation) }}</span>
                     <span 
                         class="finance__operation-number"
-                        v-show="item.operationNumber && item.operation === $tc('profile_finance.purchasing')"
+                        v-show="item.operationNumber && $tc(item.operation) === $tc('profile_finance.purchasing')"
                     >
                         #{{item.operationNumber}}
                     </span>
