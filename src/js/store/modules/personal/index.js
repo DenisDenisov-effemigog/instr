@@ -61,7 +61,7 @@ const mutations = {
         state.orders = orders;
     },
     [types.PERSONAL_APPLY_CHECKS](state, checkData) {
-        console.log('mut', checkData);
+        console.log('mut fin', checkData);
         state.checkData = checkData;
     },
     [types.PERSONAL_ADDRESSES](state, addresses) {

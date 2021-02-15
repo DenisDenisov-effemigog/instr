@@ -44,7 +44,7 @@
                         icon: 'order'
                     },
                     {
-                        title: 'link.my_check',
+                        title: 'link.finance',
                         url: '/account/check', 
                         personType: 2, 
                         external: true,

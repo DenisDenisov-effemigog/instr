@@ -34,11 +34,11 @@ const router = new Router({
             }
         },
         {
-            path: '/account/check',
-            component: require('../components/profile/page-check.vue'),
+            path: '/account/finance',
+            component: require('../components/profile/page-finance.vue'),
             meta: {
-                title: 'Личный кабинет - Мой счет',
-                h1: 'link.my_check'
+                title: 'Личный кабинет - Финансы',
+                h1: 'link.finance'
             }
         },
         {
