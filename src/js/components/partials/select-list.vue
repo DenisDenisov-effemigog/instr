@@ -92,15 +92,6 @@ export default {
                 });
             } else if (vm.sortingPage === 'orders') {
                 vm.$eventBus.$emit('apply-sorting', vm.currentPoint);
-                /* api.sortOrders(vm.currentPoint)
-                    .then(
-                        answer => {
-                            vm.$eventBus.$emit('apply-sorting', answer.output);
-                        },
-                        error => {
-                            return error
-                        }
-                    ) */
             } else if (vm.selectName === 'receive-address') {
                 vm.$eventBus.$emit('change-select-point', vm.selectName, vm.currentPoint);
             }

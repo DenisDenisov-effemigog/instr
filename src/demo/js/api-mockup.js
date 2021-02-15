@@ -665,7 +665,7 @@ let favorites = [
         'stock': 100,
         'oldPrice': '3 819',
         'newPrice': '2 819',
-        'is_favorite': false,
+        'is_favorite': true,
         'is_compare': false,
         'images': [
             {id: 1, img: './demo_images/product/image_50.png'},

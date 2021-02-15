@@ -53,7 +53,7 @@
             },
             payload() {
                 let result = {
-                    // section_id: this.internal.section_id,
+                    hash: this.internal.hash,
                     filters: {},
                     params: this.getPayloadParams()
                 };
@@ -188,7 +188,6 @@
             
             lookupFilters() {
                 let vm = this;
-                
                 api.listingFilter(this.payload).then((newFilters) => {
                     vm.applyExternalData(newFilters, true);
                     this.$eventBus.$emit('show-clear-filters-btn')

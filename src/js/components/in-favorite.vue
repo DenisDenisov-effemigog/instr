@@ -26,7 +26,7 @@
                 required: true,
                 type: Number
             },
-            value: {
+            favorite: {
                 required: true,
                 type: Boolean
             },
@@ -46,19 +46,8 @@
                 inFavorite: false,
             }
         },
-        model: {
-            prop: 'value',
-            event: 'change',
-        },
-        computed: {
-            favorites: {
-                get: function () {
-                    return this.value;
-                },
-                set: function (newValue) {
-                    this.$emit('change', newValue);
-                },
-            },
+        mounted() {
+            this.inFavorite = this.favorite
         },
         methods: {
             addFavorite() {

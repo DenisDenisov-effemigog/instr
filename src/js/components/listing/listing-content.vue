@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if="loaded">
         <div class="listing__grid"
              :class="{'listing__grid--horiz': activeDisplaying === 'horizview'}">
             <template v-if="content !== null">
@@ -84,6 +84,13 @@
             </div>
         </div>
     </div>
+    <div v-else class="preloader">
+        <svg viewBox="0 0 145 145">
+            <use :xlink:href="templatePath + 'images/sprite.svg#preloader'"></use>
+        </svg>
+        <div class="preloader__loading preloader__loading--first"></div>
+        <div class="preloader__loading preloader__loading--second"></div>
+    </div>
 </template>
 
 <script>
@@ -97,6 +104,7 @@
         },
         data() {
             return {
+                loaded: false,
                 output: null,
                 content: null,
                 internalPagination: {}
@@ -111,6 +119,7 @@
             },
         },
         created() {
+            this.loading()
             this.$eventBus.$on('load-listing', this.loadListing);
             this.$eventBus.$on('apply-listing', this.applyListing);
         },
@@ -119,6 +128,12 @@
             this.$eventBus.$off('apply-listing');
         },
         methods: {
+            loading(){
+                let vm = this
+                setTimeout(function () {
+                    vm.loaded = true
+                }, 500)
+            },
             loadListing(contents) {
                 this.output = contents.products;
                 this.internalPagination = contents.pagination;

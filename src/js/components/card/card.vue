@@ -14,7 +14,7 @@
                                 :cardPosition="cardPosition"
                     ></card-stikers>
                 </div>
-                <component class="card__header_in-favorite" is="in-favorite" :id="product.id" v-model="product.is_favorite"></component>
+                <component class="card__header_in-favorite" is="in-favorite" :id="product.id" :favorite="product.is_favorite"></component>
             </div>
             <div class="card__image-block" 
                 :class="{'card__image-block--short-card': cardSize === 'short'}"
@@ -53,7 +53,7 @@
                 <div class="card__price">
                     <slot name="price"></slot>
     <!-- кнопка добавления в избранные для горизонтальной карточки -->
-                    <component class="card__header_in-favorite" is="in-favorite" :id="product.id" v-model="product.is_favorite"></component>
+                    <component class="card__header_in-favorite" is="in-favorite" :id="product.id" :favorite="product.is_favorite"></component>
     <!--  -->
                 </div>
                 <div class="card__button-block">
@@ -61,7 +61,7 @@
                     <component is="to-compare" 
                                class="card__button-block_to-compare" 
                                :id="product.id" 
-                               v-model="product.is_compare"
+                               :compare="product.is_compare"
                     ></component>
                     <div @click="menuTooltip = !menuTooltip" class="card__menu-btn">
                         <span></span>
@@ -74,13 +74,13 @@
                                        :text="true"
                                        :mobile="true"
                                        :id="product.id"
-                                       v-model="product.is_favorite"
+                                       :favorite="product.is_favorite"
                             ></component>
                             <component is="to-compare"
                                        :text="true"
                                        :mobile="true"
                                        :id="product.id"
-                                       v-model="product.is_compare"
+                                       :compare="product.is_compare"
                             ></component>
                         </div>
                         <svg class="card-menu-tooltip__close" @click="menuTooltip = false" viewBox="0 0 12 12">
