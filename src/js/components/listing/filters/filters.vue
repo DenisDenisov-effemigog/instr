@@ -207,20 +207,24 @@
                 let vm = this;
                 let params = vm.getPayloadParams();
 
-                api.catalogGet(this.internal.hash, params).then(answer => {
+                api.catalogUpdate(this.internal.hash, params).then(() => {
+                    api.catalogGet(this.internal.hash, params).then(answer => {
 
-                    vm.$eventBus.$emit('apply-listing', answer.output);
-                    if(changeState) {
-                        window.history.pushState({
-                            output: answer.output
-                        },'', answer.url);
-                        
-                        if (window.innerWidth > 767) {
-                            this.scrollTop('.breadcrumbs');
-                        } else {
-                            this.scrollTop('.listing__actions');
+                        vm.$eventBus.$emit('apply-listing', answer.output);
+                        if (changeState) {
+                            window.history.pushState({
+                                output: answer.output
+                            }, '', answer.url);
+
+                            if (window.innerWidth > 767) {
+                                this.scrollTop('.breadcrumbs');
+                            } else {
+                                this.scrollTop('.listing__actions');
+                            }
                         }
-                    }
+                    }).catch(errors => {
+                        console.error(errors);
+                    });
                 }).catch(errors => {
                     console.error(errors);
                 });

@@ -171,6 +171,12 @@ class Api {
             params: params
         });
     }
+    catalogUpdate(hash, params) {
+        return this._promiseBitrixRequest('instrument2:rest.api.catalog.update', {
+            hash: hash,
+            params: params
+        });
+    }
     listingFilter(hash, filters) {
         return this._promiseBitrixRequest('instrument2:rest.api.catalog.filter', {
             hash: hash,
