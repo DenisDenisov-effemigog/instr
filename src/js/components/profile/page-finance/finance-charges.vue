@@ -1,7 +1,9 @@
 <template>
     <div class="finance__layout">
         <h4 class="finance__subtitle" v-if="arrears">{{ $tc('profile_finance.title.arrears') }}</h4>
-        <h4 class="finance__subtitle" v-else>{{ $tc('profile_finance.title.charges', lengthOfNotArrears) }}</h4>
+        <h4 class="finance__subtitle" v-else>
+            {{ $tc('profile_finance.title.charges', lengthOfNotArrears) }} {{ currency(sum) }} {{ $tc('text.currency') }}
+        </h4>
         <ul class="finance-charges"
             :class="{'finance-charges--arrears': arrears, 'finance-charges--expanded': expanded}"
         >
@@ -11,14 +13,14 @@
                 <div class="finance-charges__left-days">{{ $tc('profile_finance.head.left_days') }}</div>
             </li>
             <li class="finance-charges__item" v-for="item in charges" v-if="arrears && item.days < 0">
-                <div class="finance-charges__sum">{{ item.sum }} {{ $tc('text.currency') }}</div>
+                <div class="finance-charges__sum">{{ currency(item.sum) }} {{ $tc('text.currency') }}</div>
                 <div class="finance-charges__date">{{ item.date }}</div>
                 <div class="finance-charges__left-days finance-charges__left-days--arrears">
                     - {{ $tc('profile_finance.days', -item.days) }}
                 </div>
             </li>
             <li class="finance-charges__item" v-for="item in charges" v-if="!arrears && item.days >= 0">
-                <div class="finance-charges__sum">{{ item.sum }} {{ $tc('text.currency') }}</div>
+                <div class="finance-charges__sum">{{ currency(item.sum) }} {{ $tc('text.currency') }}</div>
                 <div class="finance-charges__date">{{ item.date }}</div>
                 <div class="finance-charges__left-days">
                     {{ $tc('profile_finance.days', item.days) }}
@@ -61,7 +63,8 @@
         data() {
             return {
                 expanded: false,
-                notArrearsLength: 0
+                notArrearsLength: 0,
+                sum: 0
             }
         },
         computed: {
@@ -78,7 +81,10 @@
             lengthOfNotArrears() {
                 let count=0
                 for (let i=0; i<this.charges.length; i++) {
-                    if (this.charges[i].days >= 0) count++
+                    if (this.charges[i].days >= 0) {
+                        count++
+                        this.sum += this.charges[i].sum
+                    }
                 }
                 return count
             },

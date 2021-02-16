@@ -20,7 +20,7 @@
                 </li>
             </ul>
         </div>
-        <a :href="cartLink" class="order-modal__btn">{{ $tc('link.go_cart') }}</a><!--TODO пофиксить ховер-->
+        <a :href="cartLink" class="order-modal__btn">{{ $tc('link.go_cart') }}</a>
     </div>
 </template>
 

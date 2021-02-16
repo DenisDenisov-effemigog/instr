@@ -118,7 +118,7 @@
     "profile_finance.download": "Загрузить счет-фактуру",
     "profile_finance.empty_text": "Текст про то, что договор не заключен.",
     "profile_finance.title.arrears": "Просроченные платежи",
-    "profile_finance.title.charges": "Еще 0 платежей на сумму | Еще {n} платеж на сумму | Еще {n} платежа на сумму | Еще {n} платежей на сумму",
+    "profile_finance.title.charges": "Еще 0 платежей на сумму: | Еще {n} платеж на сумму: | Еще {n} платежа на сумму: | Еще {n} платежей на сумму:",
     "profile_finance.title.history": "История операций",
     "profile_finance.head.sum": "Сумма",
     "profile_finance.head.date": "Дата",
