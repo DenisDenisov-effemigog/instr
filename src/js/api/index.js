@@ -154,8 +154,8 @@ class Api {
             id: id
         });
     }
-    personalChecks() {
-        return this._promiseBitrixRequest('instrument2:rest.api.user.checks.list', {});
+    personalFinance() {
+        return this._promiseBitrixRequest('instrument2:rest.api.user.finance.list', {});
     }
     personalAddressList() {
         return this._promiseBitrixRequest('instrument2:rest.api.user.address.get', {});

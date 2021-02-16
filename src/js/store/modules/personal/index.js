@@ -93,7 +93,7 @@ const actions = {
         });
     },
     personalUpdateFinanceData: ({commit}) => {
-        api.personalChecks().then((answer) => {
+        api.personalFinance().then((answer) => {
             if(answer.financeData) {
                 commit(types.PERSONAL_APPLY_FINANCE, answer.financeData);
             }

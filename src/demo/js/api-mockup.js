@@ -363,8 +363,29 @@ for(let i = 0; i < 5; ++i) {
 
 let financeData = {
     invoice: '/images/country/globus.png',
+    charges: [],
     history: [],
 };
+
+for(let i = 0; i < 6; ++i) {
+
+    let sum = [10000, 20000].sort(function (a, b) {
+        return 0.5 - Math.random()
+    }).pop();
+
+    let date = ['15.12.2020', '20.12.2020'].sort(function (a, b) {
+        return 0.5 - Math.random()
+    }).pop();
+
+    let days = Math.floor(Math.random() * 20) - 10;
+    
+    financeData.charges.push({
+        id: i+1,
+        'sum': sum,
+        'date': date,
+        'days': days
+    });
+}
 
 for(let i = 0; i < 6; ++i) {
 
@@ -1252,7 +1273,7 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;    
-            case 'instrument2:rest.api.user.checks.list':
+            case 'instrument2:rest.api.user.finance.list':
                 resolve({
                     data: {
                         data: {

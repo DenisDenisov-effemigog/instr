@@ -14,17 +14,20 @@
             <a href="" class="profile__catalogue-btn">{{ $tc('button.move_to_catalog') }}</a>
         </div>
         <div v-else>
+            <finance-charges :financeCharges="financeDataAll.charges" :arrears="true"></finance-charges>
+            <finance-charges :financeCharges="financeDataAll.charges"></finance-charges>
             <operation-history :financeHistory="financeDataAll.history"></operation-history>
         </div>
     </div>
 </template>
 
 <script>
+    import financeCharges from './page-finance/finance-charges.vue';
     import operationHistory from './page-finance/operation-history.vue';
 
     export default {
         name:"page-finance",
-        components: { operationHistory},
+        components: { financeCharges, operationHistory},
         data() {
             return {
             }
