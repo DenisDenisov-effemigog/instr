@@ -160,33 +160,35 @@ class Api {
     personalAddressList() {
         return this._promiseBitrixRequest('instrument2:rest.api.user.address.get', {});
     }
-    getMoreListing() {
-        return this._promiseBitrixRequest('instrument2:rest.api.listing.get');
-    }
-
-    sortListing(params) {
-        return this._promiseBitrixRequest('instrument2:rest.api.sortListing.get', {
-            params: params
-        });
-    }
-
     sortOrders(params) {
         return this._promiseBitrixRequest('instrument2:rest.api.sortOrders.get', {
             params: params
         });
     }
-
-    filteredListing(hash, params) {
-        return this._promiseBitrixRequest('instrument2:rest.api.filteredListing.get', {
+    catalogGet(hash, params) {
+        return this._promiseBitrixRequest('instrument2:rest.api.catalog.get', {
             hash: hash,
             params: params
         });
     }
-
-    listingFilter(filtersPayload) {
-        return this._promiseBitrixRequest('instrument2:rest.api.catalog.filter', filtersPayload);
+    catalogUpdate(hash, params) {
+        return this._promiseBitrixRequest('instrument2:rest.api.catalog.update', {
+            hash: hash,
+            params: params
+        });
     }
-
+    listingFilter(hash, filters) {
+        return this._promiseBitrixRequest('instrument2:rest.api.catalog.filter', {
+            hash: hash,
+            filters: filters,
+           });
+    }
+    goToPage (hash, page) {
+        return this._promiseBitrixRequest('instrument2:rest.api.catalog.next', {
+            hash: hash,
+            page: page,
+        });
+    }
     orderValidate(data, agreement, message, date) {
         return this._promiseBitrixRequest('instrument2:rest.api.order.validate', {
             data: data,

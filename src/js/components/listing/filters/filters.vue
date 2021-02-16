@@ -34,10 +34,12 @@
         data(){
             return {
                 internal: {
+                    page_count: 0,
                     filters: [],
                     match: 0,
                     hash: '',
                     sort: '',
+                    view: '',
                 },
                 _debounce_timer: null
             }
@@ -53,7 +55,7 @@
             },
             payload() {
                 let result = {
-                    // section_id: this.internal.section_id,
+                    hash: this.internal.hash,
                     filters: {},
                     params: this.getPayloadParams()
                 };
@@ -84,13 +86,16 @@
         created() {
           this.$eventBus.$on('clear-filters', this.clearFilters)  
           this.$eventBus.$on('add-sorting', this.changeSort)  
+          this.$eventBus.$on('changed-view', this.changeView)  
+          this.$eventBus.$on('load-listing', this.loadListing)  
         },
         methods: {
 
             getPayloadParams() {
                 return {
                     sort: this.internal.sort,
-                    // view: this.internalView
+                    view: this.internal.view,
+                    page_count: this.internal.page_count
                 }
             },
 
@@ -98,9 +103,9 @@
                 let vm = this;
 
                 if(!add) {
-                    // this.internal.page_count = data.page_count;
                     this.internal.sort = data.sort;
-                    // this.internal.section_id = data.section_id;
+                    this.internal.view = data.view;
+                    this.internal.page_count = data.page_count;
                 }
 
                 this.internal.hash = data.hash;
@@ -169,7 +174,7 @@
 
             clearFilters() {
                 let vm = this;
-                api.listingFilter(vm.emptyPayload).then((newFilters) => {
+                api.listingFilter(this.internal.hash, vm.emptyPayload).then((newFilters) => {
                     vm.applyExternalData(newFilters, true);
                     this.applyFilters(true);
                 });
@@ -188,12 +193,13 @@
             
             lookupFilters() {
                 let vm = this;
-                
-                api.listingFilter(this.payload).then((newFilters) => {
+                api.listingFilter(this.payload.hash, this.payload.filters).then((newFilters) => {
                     vm.applyExternalData(newFilters, true);
                     this.$eventBus.$emit('show-clear-filters-btn')
                     window.dispatchEvent(new Event('click'));
                     this.applyFilters(true);
+                }).catch(errors => {
+                    console.error(errors);
                 });
             },
 
@@ -201,26 +207,40 @@
                 let vm = this;
                 let params = vm.getPayloadParams();
 
-                api.filteredListing(this.internal.hash, params).then(answer => {
+                api.catalogUpdate(this.internal.hash, params).then(() => {
+                    api.catalogGet(this.internal.hash, params).then(answer => {
 
-                    vm.$eventBus.$emit('apply-listing', answer.output, 'filter');
-                    if(changeState) {
-                        window.history.pushState({
-                            output: answer.output
-                        },'', answer.url);
-                        
-                        if (window.innerWidth > 767) {
-                            this.scrollTop('.breadcrumbs');
-                        } else {
-                            this.scrollTop('.listing__actions');
+                        vm.$eventBus.$emit('apply-listing', answer.output);
+                        if (changeState) {
+                            window.history.pushState({
+                                output: answer.output
+                            }, '', answer.url);
+
+                            if (window.innerWidth > 767) {
+                                this.scrollTop('.breadcrumbs');
+                            } else {
+                                this.scrollTop('.listing__actions');
+                            }
                         }
-                    }
+                    }).catch(errors => {
+                        console.error(errors);
+                    });
+                }).catch(errors => {
+                    console.error(errors);
                 });
             },
             changeSort(value) {
                 this.internal.sort = value;
+                this.applyFilters(false);
             },
-
+            changeView(value) {
+                this.internal.view = value;
+                this.applyFilters(false);
+            },
+            loadListing(){
+                this.internal.page_count = this.internal.page_count + this.filters.page_count
+                this.applyFilters(false);
+            },
             scrollTop(element) {
                 let topScroll = document.querySelector(element).offsetTop
                 if (window.innerWidth > 767) {

@@ -8,8 +8,8 @@
             ></component>
         </div>
         <div class="product-card__actions">
-            <component is="to-compare" :id="id" v-model="compare"></component>
-            <component is="in-favorite" :id="id" v-model="favorite"></component>
+            <component is="to-compare" :id="id" :compare="compare"></component>
+            <component is="in-favorite" :id="id" :favorite="favorite"></component>
         </div>
     </div>
 </template>

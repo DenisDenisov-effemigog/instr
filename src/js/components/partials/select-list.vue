@@ -38,9 +38,6 @@
 
 <script>
 import ClickOutside from "vue-click-outside";
-import * as Api from '../../api';
-
-let api = Api.getInstance();
 
 export default {
     name: "select-list",
@@ -83,24 +80,9 @@ export default {
             let vm = this;
             vm.currentPoint = data
             if (vm.sortingPage === 'listing') {
-                vm.$eventBus.$emit('add-sorting', vm.currentPoint);
-                api.sortListing(vm.currentPoint).then(answer => {
-                    vm.$eventBus.$emit('apply-listing', answer.output);
-                    window.history.pushState({
-                        output: answer.output
-                    },'', answer.url);
-                });
+                vm.$eventBus.$emit('add-sorting', vm.currentPoint.value);
             } else if (vm.sortingPage === 'orders') {
                 vm.$eventBus.$emit('apply-sorting', vm.currentPoint);
-                /* api.sortOrders(vm.currentPoint)
-                    .then(
-                        answer => {
-                            vm.$eventBus.$emit('apply-sorting', answer.output);
-                        },
-                        error => {
-                            return error
-                        }
-                    ) */
             } else if (vm.selectName === 'receive-address') {
                 vm.$eventBus.$emit('change-select-point', vm.selectName, vm.currentPoint);
             }

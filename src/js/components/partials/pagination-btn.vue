@@ -5,10 +5,6 @@
 </template>
 
 <script>
-    import * as Api from '../../api';
-    
-    let api = Api.getInstance();
-
     export default {
         name: "pagination-btn",
         data(){
@@ -18,9 +14,7 @@
         methods:{
             loadMore() {
                 let vm = this;
-                api.getMoreListing().then(answer => {
-                    vm.$eventBus.$emit('load-listing', answer.content);
-                });
+                vm.$eventBus.$emit('load-listing');
             },
         },
     }
