@@ -35,7 +35,7 @@
                     class="pagination__arrow pagination__arrow-prev"
                     :class="{'pagination__arrow--disabled': disabledPrevArrow}"
                     @click.prevent="goToPage(internalPagination.current - 1)"
-                ><!--TODO задизеблить кнопку, если активна первая страница-->
+                >
                     <svg>
                         <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-left'"></use>
                     </svg>
@@ -66,7 +66,7 @@
                     class="pagination__arrow pagination__arrow_next"
                     :class="{'pagination__arrow--disabled': disabledNextArrow}"
                     @click.prevent="goToPage(internalPagination.current + 1)"
-                ><!--TODO задизеблить кнопку, если активна последняя страница-->
+                >
                     <svg>
                         <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                     </svg>
@@ -120,7 +120,7 @@
             isArrowDisabled() {
                 if (this.pagination.current === 1) {
                     this.disabledPrevArrow = true
-                } else if (this.pagination.current === total) {
+                } else if (this.pagination.current === this.pagination.total) {
                     this.disabledNextArrow = true
                 }
             }
