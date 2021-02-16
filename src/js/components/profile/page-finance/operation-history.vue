@@ -11,7 +11,7 @@
             <li v-for="item in operations" class="finance-history__item">
                 <div class="finance-history__sum" 
                         :class="{'finance-history__sum--red': item.status}" 
-                ><span v-if="item.status">-</span><span v-else>+</span>{{item.sum}} {{ $tc('text.currency') }}</div>
+                ><span v-if="item.status">-</span><span v-else>+</span>{{ currency(item.sum) }} {{ $tc('text.currency') }}</div>
                 <div class="finance-history__date">{{item.date}} {{ $tc('text.in') }} {{item.time}}</div>
                 <div class="finance-history__operation">
                     <span>{{ $tc(item.operation) }}</span>

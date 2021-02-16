@@ -404,7 +404,7 @@ for(let i = 0; i < 6; ++i) {
     
     financeData.history.push({
         id: i+1,
-        'sum': '1000000',
+        'sum': 1000000,
         'date': '23.12.2020',
         'time': '24:10',
         'operation': operation,

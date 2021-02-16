@@ -35,7 +35,10 @@
         &--download
             & .select__item:hover
                 & > svg
-                    fill: $light-grey
+                    fill: $grey
+            & .select__item--active
+                & > svg
+                    fill: transparent
             & .select__item--active:hover
                 & > svg
                         fill: $grey
@@ -43,6 +46,7 @@
     &__item
         padding: 0.75rem 1rem
         cursor: pointer
+        transition: .2s
         +flex-container
         a
             +flex-container
