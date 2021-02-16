@@ -6,7 +6,10 @@
             <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-down'"></use>
         </svg>
     </div>
-    <div v-show="openSelect" class="select__dropdown">
+    <div v-show="openSelect" 
+        class="select__dropdown"
+        :class="{'select__dropdown--download': icon === 'icons__download'}"
+    >
         <ul class="select__list" v-if="selectName === 'download-doc'">
             <li @click="clickPoint(point)" v-for="point in points">
                 <a :href="point.link" download

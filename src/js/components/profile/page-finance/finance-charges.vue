@@ -1,5 +1,5 @@
 <template>
-    <div class="finance__layout">
+    <div class="finance__layout" v-if="arrears && lengthOfArrears > 0 || !arrears && lengthOfNotArrears">
         <h4 class="finance__subtitle" v-if="arrears">{{ $tc('profile_finance.title.arrears') }}</h4>
         <h4 class="finance__subtitle" v-else>
             {{ $tc('profile_finance.title.charges', lengthOfNotArrears) }} {{ currency(sum) }} {{ $tc('text.currency') }}
@@ -63,7 +63,6 @@
         data() {
             return {
                 expanded: false,
-                notArrearsLength: 0,
                 sum: 0
             }
         },
@@ -72,20 +71,20 @@
                 return this.financeCharges
             },
             lengthOfArrears() {
-                let count=0
-                for (let i=0; i<this.charges.length; i++) {
-                    if (this.charges[i].days < 0) count++
-                }
+                let count = 0;
+                this.charges.forEach(item => {
+                    if (item.days < 0) count++
+                })
                 return count
             },
             lengthOfNotArrears() {
-                let count=0
-                for (let i=0; i<this.charges.length; i++) {
-                    if (this.charges[i].days >= 0) {
-                        count++
-                        this.sum += this.charges[i].sum
+                let count = 0;
+                this.charges.forEach(item => {
+                    if (item.days >= 0) {
+                        count++;
+                        this.sum += item.sum
                     }
-                }
+                })
                 return count
             },
         }
