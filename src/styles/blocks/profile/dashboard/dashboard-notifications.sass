@@ -1,0 +1,45 @@
+.dashboard-notifications
+    position: relative
+    &__link
+        width: fit-content
+        position: relative
+        @extend .link-blue
+        @extend .text-2
+        font-weight: 600
+        display: flex
+        align-items: center
+        & svg
+            margin-left: 0.635rem
+            width: $size_15
+            height: $size_15
+            fill: $blue
+    &__counter
+        position: absolute
+        top: -0.625rem
+        right: -0.3125rem
+        color: $white
+        background: $primary-red
+        text-align: center
+        border-radius: 50%
+        padding: 0 0.25rem
+    &__tooltip
+        @extend .tooltip
+        display: block
+        width: 100%
+        padding: 1.5rem 1rem
+        right: 0
+        +tablet
+            width: 22.75rem
+            padding: 1.5rem 2rem
+    &__head
+        padding-bottom: 1rem
+        border-bottom: 1px solid $border-color_4
+    &__title
+        @extend .text-1
+        font-weight: 700
+    &__list
+        margin-top: 1rem
+        & svg
+            width: $size_15
+            height: $size_15
+    

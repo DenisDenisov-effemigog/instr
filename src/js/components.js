@@ -49,6 +49,12 @@ import productOrderBlock from './components/product-card/product-order-block.vue
 import productDiscountInfo from './components/product-card/product-discount-info.vue';
 /*profile*/
 import profile from './components/profile/profile.vue';
+import pageDashboard from './components/profile/page-dashboard.vue';
+import dashboardDiscount from './components/profile/page-dashboard/dashboard-discount.vue';
+import dashboardContract from './components/profile/page-dashboard/dashboard-contract.vue';
+import dashboardOrders from './components/profile/page-dashboard/dashboard-orders.vue';
+import dashboardCurator from './components/profile/page-dashboard/dashboard-curator.vue';
+import dashboardNotifications from './components/profile/page-dashboard/dashboard-notifications.vue';
 import pagePersonal from './components/profile/page-personal.vue';
 import pageOrders from './components/profile/page-orders.vue';
 import pageOrder from './components/profile/page-orders/page-order.vue';
@@ -181,5 +187,11 @@ export default {
         selectedItems,
         contactsForm,
         errorsPromo,
+        pageDashboard,
+        dashboardDiscount,
+        dashboardContract,
+        dashboardCurator,
+        dashboardOrders,
+        dashboardNotifications,
     },
 }

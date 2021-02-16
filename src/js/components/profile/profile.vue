@@ -69,6 +69,12 @@ export default {
         return {
             links: [
                 {
+                    title: 'link.dashboard',
+                    url: '/account/dashboard',
+                    exact: true,
+                    personType: [1,2],
+                },
+                {
                     title: 'link.my_profile',
                     url: '/account/',
                     exact: true,

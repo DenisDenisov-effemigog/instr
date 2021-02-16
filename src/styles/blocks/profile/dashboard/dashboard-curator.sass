@@ -1,0 +1,74 @@
+.dashboard-curator
+    margin-top: 1rem
+    padding: 1.5rem 1rem
+    box-shadow: 0px 2px 8px rgba(181, 195, 208, 0.25)
+    border-radius: 4px
+    +tablet 
+        padding: 1.5rem 2rem
+        margin-top: 0
+    &__head
+        padding-bottom: 1rem
+        border-bottom: 1px solid $border-color_4
+        display: flex
+        justify-content: space-between
+        align-items: center
+    &__title
+        @extend .text-1
+        font-weight: 700
+        padding-right: 1.5rem
+    &__pic
+        height: 3.5rem
+        border-radius: 50%
+        width: 3.5rem
+        overflow: hidden
+        & img
+            max-height: auto
+            height: 100%
+    &__icon
+        height: 3.5rem
+        width: 3.5rem
+        border-radius: 50%
+        overflow: hidden
+        background: $border-color
+        display: flex
+        align-items: center
+        justify-content: center
+        & svg
+            fill: $white
+            width: 1.6875rem
+            height: 1.6875rem
+    &__main
+        margin-top: 1.5rem
+        @extend .text-2
+        font-weight: 400
+        +tablet 
+            margin-top: 1rem
+        & svg
+            width: $size_15
+            height: $size_15
+            margin-right: 0.625rem
+    &__name
+        font-weight: 600
+    &__phone
+        color: $grey
+        margin-top: 0.5rem
+        display: flex
+        align-items: center
+    &__mail
+        margin-top: 0.25rem
+        display: flex
+        align-items: center
+    &__btn
+        @extend .link-blue
+        margin-top: 1.5rem
+        width: fit-content
+        font-weight: 600
+        display: flex
+        align-items: center
+        & svg
+            fill: $blue
+        +tablet 
+            margin-top: 1rem
+    &__info
+        color: $light-grey
+
