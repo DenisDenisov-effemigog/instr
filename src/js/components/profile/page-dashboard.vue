@@ -32,6 +32,10 @@ export default {
         DashboardOrders, 
         DashboardNotifications
     },
+    mounted() {
+        this.$store.dispatch('personalUpdateFinanceData');
+        this.$eventBus.$emit('hideMenu')
+    },
 }
 </script>
         

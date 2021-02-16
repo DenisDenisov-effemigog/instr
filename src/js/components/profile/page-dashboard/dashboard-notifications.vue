@@ -1,14 +1,14 @@
 <template>
     <div class="dashboard-notifications">
-        <div class="dashboard-notifications">
-            <a href="" class="dashboard-notifications__link">
+        <div @mouseleave="tooltipFlag = false" class="dashboard-notifications">
+            <div @mouseenter="tooltipFlag = true" @click="tooltipFlag = !tooltipFlag" class="dashboard-notifications__link">
                 {{ $tc('profile.dashboard.notification_link') }}
                 <svg viewBox="0 0 16 16">
                     <use :xlink:href="templatePath + `images/sprite.svg#icons__noti`"></use>
                 </svg>
                 <span class="dashboard-notifications__counter">3</span>
-            </a>
-            <div class="dashboard-notifications__tooltip">
+            </div>
+            <div v-show="tooltipFlag" class="dashboard-notifications__tooltip">
                 <div class="dashboard-notifications__head">
                     <h3 class="dashboard-notifications__title">
                         {{ $tc('profile.dashboard.notifications_title') }}
@@ -21,11 +21,9 @@
                                 <div class="dashboard-notifications__subtitle">
                                     {{item.title}}                                
                                 </div>
-                                <div class="dashboard-notifications__arrow">
-                                    <svg>
-                                        <use :xlink:href="templatePath + `images/sprite.svg#arrows__arr-long-right`"></use>
-                                    </svg>
-                                </div>
+                                <svg>
+                                    <use :xlink:href="templatePath + `images/sprite.svg#arrows__arr-long-right`"></use>
+                                </svg>
                             </div>
                             <div class="dashboard-notifications__item-bottom">
                                 <div class="dashboard-notifications__date">
@@ -54,6 +52,7 @@ export default {
     name:"dashboard-notifications",
     data(){
         return{
+            tooltipFlag: false,
              notificationData:[
                  {
                      title:'Вопрос по гарантии',
