@@ -103,7 +103,10 @@
                        :selectopen-select="{{ sort_type|json_encode|e('html_attr') }}"
                        :view="{{ view_type|json_encode|e('html_attr') }}"
             ></component>
-            <component is="listing-content" :pagination="{{ pagination|json_encode|e('html_attr') }}">
+            <component is="listing-content" 
+                       :pagination="{{ pagination|json_encode|e('html_attr') }}" 
+                       :hash="{{ filters.hash|json_encode|e('html_attr') }}"
+            >
                 {% for product in products %}
                     <div class="listing__card">
                         <card

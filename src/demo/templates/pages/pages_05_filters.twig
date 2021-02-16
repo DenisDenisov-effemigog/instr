@@ -1194,8 +1194,9 @@
 ] %}
 
 {% set filters = {
-    'page_count': 20,
+    'page_count': 16,
     'sort': 'popular',
+    'view': 'gridview',
     'match': 13,
     'section_id': 178500,
     'hash': 'JnnUHIo**(&87868HHkjYUI@wewe',
@@ -1516,6 +1517,8 @@
         'stock': 100,
         'oldPrice': '3 819',
         'newPrice': '2 819',
+        'is_favorite': false,
+        'is_compare': false,
         'images': [
         {id: 1, img: './demo_images/product/image_50.png'},
         {id: 2, img: './demo_images/product/image_51.png'},
@@ -1883,7 +1886,7 @@
     
 {% set pagination = {
     'total': 106,
-    'current': 3,
+    'current': 1,
     'url_previous': '/some/category/page/2',
     'url_next': '/some/category/page/4',
     'url_last': '/some/category/page/last',

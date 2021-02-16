@@ -1,0 +1,65 @@
+.finance-charges
+    max-height: 10.5rem
+    margin-bottom: 1.5rem
+    background-color: $pre-white
+    overflow: hidden
+    +desktop-small
+        max-height: 14rem
+        padding: 0 1rem
+    &--arrears
+        border-radius: $border-radius
+        border: 1px solid $primary-hover
+    &--expanded
+        max-height: fit-content
+        margin-bottom: 0
+        & .finance-charges__item:nth-of-type(4)
+            height: 2.5rem
+            +desktop-small
+                height: 3.25rem
+
+    &__item
+        @extend .text-3
+        display: flex
+        height: 2.5rem
+        border-bottom: 1px solid $white
+        +desktop-small
+            font-size: $font-size_3
+            line-height: $line-height_3
+            height: 3.25rem
+        &--head
+            font-family: $font-montserrat-semibold
+            font-weight: $font-weight_semibold
+            height: 2.75rem
+            +desktop-small
+                height: 3.75rem
+        &:nth-of-type(4),
+        &:last-of-type
+            height: 2.75rem
+            +desktop-small
+                height: 3.75rem
+        & div
+            +flex-container
+            height: 100%
+
+    &__sum
+        width: 30%
+        padding: 0 .5rem 0 1rem
+        border-right: 1px solid $white
+        +desktop-small
+            width: 20%
+            padding-left: 1.5rem
+
+    &__date
+        width: 28%
+        padding: 0 .5rem
+        border-right: 1px solid $white
+        +desktop-small
+            width: 15%
+            padding: 0 1.5rem
+
+    &__left-days
+        padding: 0 0 0 .5rem
+        +desktop-small
+            padding-left: 1.5rem
+        &--arrears
+            color: $primary-hover

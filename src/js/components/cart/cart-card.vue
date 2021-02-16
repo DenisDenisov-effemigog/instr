@@ -180,7 +180,7 @@
             },
             clearItem(productId) { 
                 this.deleteItem = false;
-                this.$store.dispatch('basketSetQuantity', {
+                this.$store.dispatch('basketSendQuantity', {
                     productId: productId,
                     quantity: 0
                 }).finally(() => {

@@ -23,7 +23,7 @@
                 required: true,
                 type: Number
             },
-            value: {
+            compare: {
                 required: true,
                 type: Boolean
             },
@@ -43,19 +43,8 @@
                 inCompare: false,
             }
         },
-        model: {
-            prop: 'value',
-            event: 'change',
-        },
-        computed: {
-            favorites: {
-                get: function () {
-                    return this.value;
-                },
-                set: function (newValue) {
-                    this.$emit('change', newValue);
-                },
-            },
+        mounted() {
+            this.inCompare = this.compare
         },
         methods: {
             addCompare() {

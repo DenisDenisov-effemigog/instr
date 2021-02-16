@@ -361,10 +361,36 @@ for(let i = 0; i < 5; ++i) {
     });
 }
 
-let financeData = [];
+let financeData = {
+    invoice: '/images/country/globus.png',
+    charges: [],
+    history: [],
+};
+
 for(let i = 0; i < 6; ++i) {
 
-    let operation = ['Пополнение баланса', 'Оплата заказа'].sort(function (a, b) {
+    let sum = [10000, 20000].sort(function (a, b) {
+        return 0.5 - Math.random()
+    }).pop();
+
+    let date = ['15.12.2020', '20.12.2020'].sort(function (a, b) {
+        return 0.5 - Math.random()
+    }).pop();
+
+    let days = Math.floor(Math.random() * 20) - 10;
+    
+    financeData.charges.push({
+        id: i+1,
+        'sum': sum,
+        'date': date,
+        'days': days
+    });
+}
+
+for(let i = 0; i < 6; ++i) {
+
+    // profile_finance.top_up and profile_finance.purchasing are from json file for vue-i18n
+    let operation = ['profile_finance.top_up', 'profile_finance.purchasing'].sort(function (a, b) {
         return 0.5 - Math.random()
     }).pop();
 
@@ -376,7 +402,7 @@ for(let i = 0; i < 6; ++i) {
         return 0.5 - Math.random()
     }).pop();
     
-    financeData.push({
+    financeData.history.push({
         id: i+1,
         'sum': '1000000',
         'date': '23.12.2020',
@@ -613,6 +639,10 @@ let demoFilteredListing = {
             ]
         },
     ],
+    sort_type: 'discount',
+    shields: [],
+    // filters,
+    view_type: 'grid',
     pagination: {}
 };
 
@@ -665,7 +695,7 @@ let favorites = [
         'stock': 100,
         'oldPrice': '3 819',
         'newPrice': '2 819',
-        'is_favorite': false,
+        'is_favorite': true,
         'is_compare': false,
         'images': [
             {id: 1, img: './demo_images/product/image_50.png'},
@@ -1247,7 +1277,7 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;    
-            case 'instrument2:rest.api.user.checks.list':
+            case 'instrument2:rest.api.user.finance.list':
                 resolve({
                     data: {
                         data: {
@@ -1398,35 +1428,6 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
-            case 'instrument2:rest.api.listing.get':
-
-                resolve({
-                    data: {
-                        data: {
-                            answer: {
-                                content: demoListingResult,
-                                //получаем больше контента, приходит новая пагинация. Сортировка, сетка и фильтры сохраняются
-                            },
-                            status: 1,
-                        }
-                    }
-                });
-                break;
-            case 'instrument2:rest.api.sortListing.get':
-
-                resolve({
-                    data: {
-                        data: {
-                            answer: {
-                                url: '',
-                                output: demoSortingListing,
-                                //получить новый листинг. Фильтры, сетка и пагинация сохраняются
-                            },
-                            status: 1,
-                        }
-                    }
-                });
-                break;
             case 'instrument2:rest.api.sortOrders.get':
 
                 if (!config.data || !config.data.params) {
@@ -1451,7 +1452,7 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
-            case 'instrument2:rest.api.filteredListing.get':
+            case 'instrument2:rest.api.catalog.next':
 
                 resolve({
                     data: {
@@ -1459,8 +1460,31 @@ window.runAction = function (action, config) {
                             answer: {
                                 url: '',
                                 output: demoFilteredListing,
-                                //получить новый листинг по фильтрам и пагинацию. Сортировка и сетка сохраняются
                             },
+                            status: 1,
+                        }
+                    }
+                });
+                break;
+            case 'instrument2:rest.api.catalog.get':
+
+                resolve({
+                    data: {
+                        data: {
+                            answer: {
+                                url: '',
+                                output: demoFilteredListing,
+                            },
+                            status: 1,
+                        }
+                    }
+                });
+                break;
+            case 'instrument2:rest.api.catalog.update':
+
+                resolve({
+                    data: {
+                        data: {
                             status: 1,
                         }
                     }
@@ -1634,7 +1658,6 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
-                
             case 'instrument2:rest.api.cart.faq':
                 resolve({
                     data: {
@@ -1645,7 +1668,6 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
-                
             case 'instrument2:rest.api.cart.favorite':
                 let favorite = favorites.find(item => item.id === config.data.id)
                 favorite.is_favorite = !favorite.is_favorite
@@ -1659,7 +1681,6 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
-                
             case 'instrument2:rest.api.cart.compare':
                 let compare = compares.find(item => item.id === config.data.id)
                 compare.is_compare = !compare.is_compare

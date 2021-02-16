@@ -21,6 +21,13 @@
             width: $size_12
             height: $size_12
             fill: $border-color
+        &--disabled,
+        &--disabled:hover
+            pointer-events: none
+            & svg
+                fill: $border-color
+                +tablet
+                    fill: $border-color
     &__link
         @extend .text-2
         +flex-container-center
