@@ -1,5 +1,5 @@
 <template>
-    <div class="finance">
+    <div class="finance" v-if="loaded">
         <div class="finance__header" :class="{'finance__header--download': !!financeDataAll}">
             <h2 class="profile__title">{{ $tc('link.finance') }}</h2>
             <a class="profile__link" :href="financeDataAll.invoice" download  v-if="!!financeDataAll">
@@ -19,6 +19,13 @@
             <operation-history :financeHistory="financeDataAll.history"></operation-history>
         </div>
     </div>
+    <div v-else class="preloader">
+        <svg viewBox="0 0 145 145">
+            <use :xlink:href="templatePath + 'images/sprite.svg#preloader'"></use>
+        </svg>
+        <div class="preloader__loading preloader__loading--first"></div>
+        <div class="preloader__loading preloader__loading--second"></div>
+    </div>
 </template>
 
 <script>
@@ -30,7 +37,19 @@
         components: { financeCharges, operationHistory},
         data() {
             return {
+                loaded: false
             }
+        },
+        methods: {
+            loading(){
+                let vm = this
+                setTimeout(function () {
+                    vm.loaded = true
+                }, 500)
+            },
+        },
+        created() {
+            this.loading()
         },
         mounted() {
             this.$store.dispatch('personalUpdateFinanceData');

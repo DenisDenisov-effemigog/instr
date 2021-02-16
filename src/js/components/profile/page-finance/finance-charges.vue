@@ -1,7 +1,7 @@
 <template>
     <div class="finance__layout">
         <h4 class="finance__subtitle" v-if="arrears">{{ $tc('profile_finance.title.arrears') }}</h4>
-        <h4 class="finance__subtitle" v-else>{{ $tc('profile_finance.title.charges', ) }}</h4>
+        <h4 class="finance__subtitle" v-else>{{ $tc('profile_finance.title.charges', lengthOfNotArrears) }}</h4>
         <ul class="finance-charges"
             :class="{'finance-charges--arrears': arrears, 'finance-charges--expanded': expanded}"
         >
