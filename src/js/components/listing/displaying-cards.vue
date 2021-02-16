@@ -52,7 +52,6 @@
         },
         data(){
             return{
-                changedView: 'gridview'
             }
         },
         computed: {
@@ -62,11 +61,13 @@
         },
         mounted() {
             this.$store.dispatch('listingSetViewMode', this.activeView);
+            this.changedView = this.activeView
         },
         methods:{
             changeDisplaying(item){
                 this.changedView = item
                 this.$store.dispatch('listingSetViewMode', this.changedView);
+                this.$eventBus.$emit('changed-view', this.changedView);
             },
         },
     }

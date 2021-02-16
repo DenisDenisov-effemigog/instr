@@ -160,15 +160,6 @@ class Api {
     personalAddressList() {
         return this._promiseBitrixRequest('instrument2:rest.api.user.address.get', {});
     }
-    getMoreListing() {
-        return this._promiseBitrixRequest('instrument2:rest.api.listing.get');
-    }
-
-    sortListing(params) {
-        return this._promiseBitrixRequest('instrument2:rest.api.sortListing.get', {
-            params: params
-        });
-    }
 
     sortOrders(params) {
         return this._promiseBitrixRequest('instrument2:rest.api.sortOrders.get', {
@@ -176,15 +167,18 @@ class Api {
         });
     }
 
-    filteredListing(hash, params) {
-        return this._promiseBitrixRequest('instrument2:rest.api.filteredListing.get', {
+    catalogGet(hash, params) {
+        return this._promiseBitrixRequest('instrument2:rest.api.catalog.get', {
             hash: hash,
             params: params
         });
     }
 
-    listingFilter(filtersPayload) {
-        return this._promiseBitrixRequest('instrument2:rest.api.catalog.filter', filtersPayload);
+    listingFilter(hash, filters) {
+        return this._promiseBitrixRequest('instrument2:rest.api.catalog.filter', {
+            hash: hash,
+            filters: filters,
+           });
     }
 
     orderValidate(data, agreement, message, date) {

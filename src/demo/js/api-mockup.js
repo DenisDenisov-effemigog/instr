@@ -618,6 +618,10 @@ let demoFilteredListing = {
             ]
         },
     ],
+    sort_type: 'discount',
+    shields: [],
+    // filters,
+    view_type: 'grid',
     pagination: {}
 };
 
@@ -1403,35 +1407,6 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
-            case 'instrument2:rest.api.listing.get':
-
-                resolve({
-                    data: {
-                        data: {
-                            answer: {
-                                content: demoListingResult,
-                                //получаем больше контента, приходит новая пагинация. Сортировка, сетка и фильтры сохраняются
-                            },
-                            status: 1,
-                        }
-                    }
-                });
-                break;
-            case 'instrument2:rest.api.sortListing.get':
-
-                resolve({
-                    data: {
-                        data: {
-                            answer: {
-                                url: '',
-                                output: demoSortingListing,
-                                //получить новый листинг. Фильтры, сетка и пагинация сохраняются
-                            },
-                            status: 1,
-                        }
-                    }
-                });
-                break;
             case 'instrument2:rest.api.sortOrders.get':
 
                 if (!config.data || !config.data.params) {
@@ -1456,7 +1431,7 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
-            case 'instrument2:rest.api.filteredListing.get':
+            case 'instrument2:rest.api.catalog.get':
 
                 resolve({
                     data: {
@@ -1464,7 +1439,6 @@ window.runAction = function (action, config) {
                             answer: {
                                 url: '',
                                 output: demoFilteredListing,
-                                //получить новый листинг по фильтрам и пагинацию. Сортировка и сетка сохраняются
                             },
                             status: 1,
                         }
@@ -1639,7 +1613,6 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
-                
             case 'instrument2:rest.api.cart.faq':
                 resolve({
                     data: {
@@ -1650,7 +1623,6 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
-                
             case 'instrument2:rest.api.cart.favorite':
                 let favorite = favorites.find(item => item.id === config.data.id)
                 favorite.is_favorite = !favorite.is_favorite
@@ -1664,7 +1636,6 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
-                
             case 'instrument2:rest.api.cart.compare':
                 let compare = compares.find(item => item.id === config.data.id)
                 compare.is_compare = !compare.is_compare

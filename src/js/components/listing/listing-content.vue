@@ -27,30 +27,6 @@
                 </div>
             </template>
             <slot v-else></slot>
-            <template v-if="output !== null">
-            <div class="listing__card" v-for="product in output">
-                <card
-                    :change-icon="false"
-                    :card-grid="'grid'"
-                    :product="product"
-                >
-                    <template v-slot:code>
-                        <div class="card__code">{{ product.code }}</div>
-                    </template>
-                    <template v-slot:description>
-                        <a :href="product.link" class="card__name">
-                            {{ product.title }}
-                        </a>
-                    </template>
-                    <template v-slot:price>
-                        <div class="card__price-block">
-                            <div class="card__old-price">{{ product.oldPrice }} {{ $tc('text.currency') }}</div>
-                            <div class="card__current-price">{{ product.newPrice }} {{ $tc('text.currency') }}</div>
-                        </div>
-                    </template>
-                </card>
-            </div>
-        </template>
         </div>
         <div class="listing__pagination" v-if="internalPagination.current">
             <component is="pagination-btn"></component>
@@ -105,7 +81,6 @@
         data() {
             return {
                 loaded: false,
-                output: null,
                 content: null,
                 internalPagination: {}
             };
@@ -120,11 +95,9 @@
         },
         created() {
             this.loading()
-            this.$eventBus.$on('load-listing', this.loadListing);
             this.$eventBus.$on('apply-listing', this.applyListing);
         },
         beforeDestroy() {
-            this.$eventBus.$off('load-listing');
             this.$eventBus.$off('apply-listing');
         },
         methods: {
@@ -134,17 +107,10 @@
                     vm.loaded = true
                 }, 500)
             },
-            loadListing(contents) {
-                this.output = contents.products;
-                this.internalPagination = contents.pagination;
-            },
-            applyListing(contents, action) {
+            applyListing(contents) {
                 this.content = contents;
                 if(contents.pagination) {
                     this.internalPagination = contents.pagination;
-                }
-                if(action === 'filter'){
-                    this.output = null /*сбрасываем подгруженный контент при фильтрах*/
                 }
             },
         },
