@@ -1,0 +1,41 @@
+.dashboard-discount
+    // margin-top: 1.5rem
+    padding: 1.5rem 1rem
+    box-shadow: 0px 2px 8px rgba(181, 195, 208, 0.25)
+    border-radius: 4px
+    +tablet 
+        padding: 1.5rem 2rem
+    &__title
+        @extend .text-1
+        font-weight: 700
+        padding-bottom: 1rem
+        border-bottom: 1px solid $border-color_4
+    &__list
+        display: flex
+        margin-top: 1.5rem
+        +tablet 
+            margin-top: 1rem
+    &__item 
+        width: calc(100% / 3)
+        padding: 0 0.25rem 
+        border-right: 1px solid  $border-color_4
+        +tablet
+            padding: 0 0.75rem
+        &:last-child
+            border: none
+            padding: 0
+        
+    &__desc
+        display: flex
+        justify-content: space-between
+        align-items: center
+        padding: 0.625rem 0.1875rem
+        +tablet 
+            padding: 1.375rem 0.75rem 
+    &__text
+        @extend .text-6
+        font-weight: 400
+    &__discount
+        @extend .text-7
+        font-weight: 700
+        color: $green

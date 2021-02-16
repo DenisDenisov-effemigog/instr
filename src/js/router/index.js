@@ -11,6 +11,14 @@ const router = new Router({
     mode: 'history',
     routes: [
         {
+            path: '/account/dashboard',
+            component: require('../components/profile/page-dashboard.vue'),
+            meta: {
+                title: 'Личный кабинет - Сводка',
+                h1: 'link.dashboard'
+            }
+        },
+        {
             path: '/account',
             component: require('../components/profile/page-personal.vue'),
             meta: {
