@@ -33,6 +33,7 @@
             <div class="pagination">
                 <a  :href="internalPagination.url_previous" 
                     class="pagination__arrow pagination__arrow-prev"
+                    :class="{'pagination__arrow--disabled': disabledPrevArrow}"
                     @click.prevent="goToPage(internalPagination.current - 1)"
                 ><!--TODO задизеблить кнопку, если активна первая страница-->
                     <svg>
@@ -63,6 +64,7 @@
                 </ul>
                 <a  :href="internalPagination.url_next" 
                     class="pagination__arrow pagination__arrow_next"
+                    :class="{'pagination__arrow--disabled': disabledNextArrow}"
                     @click.prevent="goToPage(internalPagination.current + 1)"
                 ><!--TODO задизеблить кнопку, если активна последняя страница-->
                     <svg>
@@ -102,16 +104,26 @@
             return {
                 loaded: false,
                 content: null,
-                internalPagination: {}
+                internalPagination: {},
+                disabledPrevArrow: false,
+                disabledNextArrow: false
             };
         },
         mounted() {
             this.internalPagination = this.pagination;
+            this.isArrowDisabled;
         },
         computed: {
             activeDisplaying() {
                 return this.$store.state.listing.view_mode
             },
+            isArrowDisabled() {
+                if (this.pagination.current === 1) {
+                    this.disabledPrevArrow = true
+                } else if (this.pagination.current === total) {
+                    this.disabledNextArrow = true
+                }
+            }
         },
         created() {
             this.loading()
