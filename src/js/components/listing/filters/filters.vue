@@ -198,6 +198,8 @@
                     this.$eventBus.$emit('show-clear-filters-btn')
                     window.dispatchEvent(new Event('click'));
                     this.applyFilters(true);
+                }).catch(errors => {
+                    console.error(errors);
                 });
             },
 
@@ -219,6 +221,8 @@
                             this.scrollTop('.listing__actions');
                         }
                     }
+                }).catch(errors => {
+                    console.error(errors);
                 });
             },
             changeSort(value) {

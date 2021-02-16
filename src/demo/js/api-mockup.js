@@ -1431,6 +1431,20 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
+            case 'instrument2:rest.api.catalog.next':
+
+                resolve({
+                    data: {
+                        data: {
+                            answer: {
+                                url: '',
+                                output: demoFilteredListing,
+                            },
+                            status: 1,
+                        }
+                    }
+                });
+                break;
             case 'instrument2:rest.api.catalog.get':
 
                 resolve({

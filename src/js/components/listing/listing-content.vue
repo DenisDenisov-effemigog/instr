@@ -31,7 +31,10 @@
         <div class="listing__pagination" v-if="internalPagination.current">
             <component is="pagination-btn"></component>
             <div class="pagination">
-                <a  :href="internalPagination.url_previous" class="pagination__arrow pagination__arrow-prev">
+                <a  :href="internalPagination.url_previous" 
+                    class="pagination__arrow pagination__arrow-prev"
+                    @click.prevent="goToPage(internalPagination.current - 1)"
+                ><!--TODO задизеблить кнопку, если активна первая страница-->
                     <svg>
                         <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-left'"></use>
                     </svg>
@@ -41,7 +44,10 @@
                         v-for="link in internalPagination.urls"
                         :class="{'pagination__item--current': internalPagination.current == link.title}"
                     >
-                        <a :href="link.url" class="pagination__link">{{ link.title }}</a>
+                        <a :href="link.url" 
+                           class="pagination__link"
+                           @click.prevent="goToPage(link.title)"
+                        >{{ link.title }}</a>
                     </li>
                     <li class="pagination__item pagination__item--dots">
                         <div class="pagination__link">...</div>
@@ -49,10 +55,16 @@
                     <li class="pagination__item"
                         :class="{'pagination__item--current': internalPagination.current == internalPagination.total}"
                     >
-                        <a :href="internalPagination.url_last" class="pagination__link">{{ internalPagination.total }}</a>
+                        <a :href="internalPagination.url_last" 
+                           class="pagination__link"
+                           @click.prevent="goToPage(internalPagination.total)"
+                        >{{ internalPagination.total }}</a>
                     </li>
                 </ul>
-                <a  :href="internalPagination.url_next" class="pagination__arrow pagination__arrow_next">
+                <a  :href="internalPagination.url_next" 
+                    class="pagination__arrow pagination__arrow_next"
+                    @click.prevent="goToPage(internalPagination.current + 1)"
+                ><!--TODO задизеблить кнопку, если активна последняя страница-->
                     <svg>
                         <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                     </svg>
@@ -70,12 +82,20 @@
 </template>
 
 <script>
+    import * as Api from '../../api';
+
+    let api = Api.getInstance();
+    
     export default {
         name: "listing-content",
         props: {
             pagination: {
                 required: true,
                 type: Object
+            },
+            hash: {
+                required: true,
+                type: String
             }  
         },
         data() {
@@ -113,6 +133,15 @@
                     this.internalPagination = contents.pagination;
                 }
             },
+            goToPage(page) {
+                let vm = this
+                api.goToPage(this.hash, page).then((answer) => {
+                    vm.applyListing(answer.output);
+                    window.scroll({ top: document.querySelector('body').offsetTop, behavior: 'smooth'})
+                }).catch(errors => {
+                    console.error(errors);
+                });
+            }
         },
     }
 </script>
