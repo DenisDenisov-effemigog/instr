@@ -30,48 +30,12 @@
         </div>
         <div class="listing__pagination" v-if="internalPagination.current">
             <component is="pagination-btn"></component>
-            <div class="pagination">
-                <a  :href="internalPagination.url_previous" 
-                    class="pagination__arrow pagination__arrow-prev"
-                    :class="{'pagination__arrow--disabled': disabledPrevArrow}"
-                    @click.prevent="goToPage(internalPagination.current - 1)"
-                >
-                    <svg>
-                        <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-left'"></use>
-                    </svg>
-                </a>
-                <ul class="pagination__list">
-                    <li class="pagination__item"
-                        v-for="link in internalPagination.urls"
-                        :class="{'pagination__item--current': internalPagination.current == link.title}"
-                    >
-                        <a :href="link.url" 
-                           class="pagination__link"
-                           @click.prevent="goToPage(link.title)"
-                        >{{ link.title }}</a>
-                    </li>
-                    <li class="pagination__item pagination__item--dots">
-                        <div class="pagination__link">...</div>
-                    </li>
-                    <li class="pagination__item"
-                        :class="{'pagination__item--current': internalPagination.current == internalPagination.total}"
-                    >
-                        <a :href="internalPagination.url_last" 
-                           class="pagination__link"
-                           @click.prevent="goToPage(internalPagination.total)"
-                        >{{ internalPagination.total }}</a>
-                    </li>
-                </ul>
-                <a  :href="internalPagination.url_next" 
-                    class="pagination__arrow pagination__arrow_next"
-                    :class="{'pagination__arrow--disabled': disabledNextArrow}"
-                    @click.prevent="goToPage(internalPagination.current + 1)"
-                >
-                    <svg>
-                        <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
-                    </svg>
-                </a>
-            </div>
+            <component 
+                is="pagination"
+                :pagination="internalPagination"
+                :hash="hash" 
+            >
+            </component>
         </div>
     </div>
     <div v-else class="preloader">
@@ -83,11 +47,7 @@
     </div>
 </template>
 
-<script>
-    import * as Api from '../../api';
-
-    let api = Api.getInstance();
-    
+<script>    
     export default {
         name: "listing-content",
         props: {
@@ -105,25 +65,15 @@
                 loaded: false,
                 content: null,
                 internalPagination: {},
-                disabledPrevArrow: false,
-                disabledNextArrow: false
             };
         },
         mounted() {
             this.internalPagination = this.pagination;
-            this.isArrowDisabled;
         },
         computed: {
             activeDisplaying() {
                 return this.$store.state.listing.view_mode
             },
-            isArrowDisabled() {
-                if (this.pagination.current === 1) {
-                    this.disabledPrevArrow = true
-                } else if (this.pagination.current === this.pagination.total) {
-                    this.disabledNextArrow = true
-                }
-            }
         },
         created() {
             this.loading()
@@ -145,15 +95,6 @@
                     this.internalPagination = contents.pagination;
                 }
             },
-            goToPage(page) {
-                let vm = this
-                api.goToPage(this.hash, page).then((answer) => {
-                    vm.applyListing(answer.output);
-                    window.scroll({ top: document.querySelector('body').offsetTop, behavior: 'smooth'})
-                }).catch(errors => {
-                    console.error(errors);
-                });
-            }
         },
     }
 </script>

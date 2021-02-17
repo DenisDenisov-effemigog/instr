@@ -85,7 +85,7 @@ export default {
             if (vm.sortingPage === 'listing') {
                 vm.$eventBus.$emit('add-sorting', vm.currentPoint.value);
             } else if (vm.sortingPage === 'orders') {
-                vm.$eventBus.$emit('apply-sorting', vm.currentPoint);
+                vm.$eventBus.$emit('apply-sorting', vm.currentPoint.value);
             } else if (vm.selectName === 'receive-address') {
                 vm.$eventBus.$emit('change-select-point', vm.selectName, vm.currentPoint);
             }

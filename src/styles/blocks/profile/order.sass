@@ -1,4 +1,6 @@
 .order
+    +until($desktop)
+        margin-bottom: 4.5rem
     &__title
         @extend .title-3
 
@@ -28,6 +30,9 @@
         margin-top: 3.125rem
     &__item
         padding-bottom: 2.5rem
+        &:last-of-type
+            +mobile
+                padding-bottom: 0
     &__desc
         padding: 0 1rem
         padding-bottom: 1.25rem
@@ -68,7 +73,12 @@
         +tablet
             flex: 1
             max-width: 7.5rem
-        color: $green
+        &--done
+            color: $green
+        &--cancelled
+            color: $primary-red
+        &--assembling
+            color: $orange
     &__qty
         +mobile
             order: 2
@@ -230,6 +240,11 @@
         +mobile
             display: none
         color: $green
+    &__pagination
+        display: flex
+        justify-content: flex-end
+
+
 .order-modal
     &__title
         @extend .title-2
