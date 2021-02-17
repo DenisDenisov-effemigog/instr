@@ -92,7 +92,11 @@ export default {
             let newVal = this.value.split('\n')
             let arr = []
             for (let i = 0; i < newVal.length; i++){
-                arr.push(newVal[i].split(' '))
+                if(newVal[i].split(' ').length > 2) {
+                    arr.push(newVal[i].split(' ').splice(1))
+                } else {
+                    arr.push(newVal[i].split(' '))
+                }
             }
             
             this.$store.dispatch('searchItem', arr);
