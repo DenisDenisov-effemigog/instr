@@ -14,7 +14,14 @@ if (window.runAction == undefined) {
             if (payload) {
                 Object.keys(payload).forEach(function (key) {
                     //console.log(key, payload[key]);
-                    formData.append(key, JSON.stringify(payload[key]));
+                    let params = payload[key]
+                    if(typeof params === 'object') {
+                        Object.keys(params).forEach(function (index) {
+                            formData.append(index, JSON.stringify(params[index]))
+                        })
+                    } else {
+                        formData.append(key, JSON.stringify(params));
+                    }
                 });
                 //console.log('formData', formData, payload.id);
             } else {
