@@ -15,7 +15,7 @@
                 v-model="rangeValue"
                 :min="filterInternal.values.min"
                 :max="filterInternal.values.max"
-                :step="rangeStep"
+                :step="filterInternal.step"
                 range
                 showTip="never"
                 accordingToStep
@@ -80,18 +80,6 @@
                     this.filterInternal = filter;
                 }
             },
-            rangeStep() {
-                let step = 1;
-                let value = this.filterInternal.values.from;
-                if (Math.floor(value * 100) === value * 100) {
-                    step = 0.01
-                } else if (Math.floor(value * 10) === value * 10) {
-                    step = 0.1
-                } else if (Math.floor(value) === value) {
-                    step = 1
-                }
-                return step
-            }
         }
     }
 </script>
