@@ -3,7 +3,14 @@
         <div class="order__desc" @click.stop="openDetails(index)">
             <div class="order__number">#{{order.number}}</div>
             <div class="order__date">{{order.date}}</div>
-            <div class="order__status">{{order.status}}</div>
+            <div class="order__status"
+                :class="{'order__status--done': order.status.value === 'done',
+                    'order__status--cancelled': order.status.value === 'cancelled',
+                    'order__status--assembling': order.status.value === 'waiting',
+                }"
+            >
+                {{order.status.label}}
+            </div>
             
             <span>{{ currency(order.qty) }}&nbsp;{{ $tc('text.product', order.qty) }}</span>
             <div class="order__price">{{order.priceTotal}} {{ $tc('text.currency') }}</div>

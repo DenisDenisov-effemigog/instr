@@ -324,14 +324,15 @@ let demoProfile = {
 
 let demoOrders = [];
 //let baseOrderDate = new Date('2020-02-14');
-for(let i = 0; i < 5; ++i) {
+for(let i = 0; i < 46; ++i) {
     /*let newOrderDate = new Date(baseOrderDate.valueOf());
     newOrderDate.setDate(newOrderDate.getDate() + i);
     newOrderDate = Math.round(newOrderDate.getTime()/1000);*/
 
-    let newOrdeStatus = ['Выполнен', 'В ожидании оплаты', 'Отменен'].sort(function (a, b) {
-        return 0.5 - Math.random()
-    }).pop();
+    let newOrdeStatus = [{label: 'Доставлен', value: 'done'}, {label: 'В сборке', value: 'waiting'}, {label: 'Отменен', value: 'cancelled'}]
+        .sort(function (a, b) {
+            return 0.5 - Math.random()
+        }).pop();
 
     demoOrders.push({
         id: i+1,
@@ -1436,7 +1437,7 @@ window.runAction = function (action, config) {
                 
                 const filterOrders = (status) => {
                     return demoOrders.filter(order => {
-                        return order.status === status.label
+                        return order.status.value === status
                     })
                 }
                 

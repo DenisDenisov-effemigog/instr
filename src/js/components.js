@@ -10,6 +10,7 @@ import inFavorite from './components/in-favorite.vue';
 import toCompare from './components/to-compare.vue';
 import addToCart from './components/add-to-cart.vue';
 import mediaButton from './components/media-button.vue';
+import pagination from './components/pagination.vue';
 import paginationBtn from './components/partials/pagination-btn.vue';
 /*catalogue*/
 import catalogue from './components/catalogue/catalogue.vue';
@@ -139,6 +140,7 @@ export default {
         inFavorite,
         toCompare,
         mediaButton,
+        pagination,
         paginationBtn,
         profile,
         pagePersonal,

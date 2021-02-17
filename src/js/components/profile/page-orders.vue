@@ -1,6 +1,5 @@
 <template>
-    <div class="order">
-        
+    <div class="order">  
         <div class="order__header">
             <h2 class="profile__title">{{ $tc(h1) }}</h2>
         </div>
@@ -24,19 +23,23 @@
             ></select-list>
         </div>
         <div class="order__main">
-            <order-list v-model.trim="details" :orders="ordersAll"></order-list>
+            <order-list v-model="details" :orders="paginatedOrders"></order-list>
         </div>
+        <order-pagination v-model="pageNumber" :pageAmount="showPages" v-if="ordersAll.length > 0"></order-pagination>
     </div>
 </template>
 
 <script>
-    import selectList from '../partials/select-list.vue'
-    import orderList from './page-orders/order-list.vue'
+    import selectList from '../partials/select-list.vue';
+    import orderList from './page-orders/order-list.vue';
+    import orderPagination from './page-orders/order-pagination.vue'
+
     export default {
-         components: { 
-             selectList,
-             orderList,
-         },
+        components: { 
+            selectList,
+            orderList,
+            orderPagination,
+        },
         name:"page-orders",
         props:{
             points:{
@@ -52,6 +55,8 @@
             return{
                 profile: [],
                 details: false,
+                pageNumber: 1,
+                onPage: 10,
             }
         },
         mounted() {
@@ -67,6 +72,7 @@
         methods:{
             applySorting(status) {
                 this.$store.dispatch('personalSortOrders', status);
+                this.pageNumber = 1;
             },
         },
         computed: {
@@ -76,6 +82,12 @@
             h1() {
                 return this.$store.state.layout.h1;
             },
+            showPages() {
+                return Math.ceil(this.ordersAll.length / this.onPage);
+            },
+            paginatedOrders() {
+                return this.ordersAll.slice((this.pageNumber - 1) * this.onPage, this.pageNumber * this.onPage);
+            }
         }
     }
 </script>

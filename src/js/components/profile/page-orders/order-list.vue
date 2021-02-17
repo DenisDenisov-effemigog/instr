@@ -18,24 +18,24 @@
 import order from './order.vue'
 
 export default {
-     components: {
-         order, 
-     },
-     name: 'order-list',
-     props: {
-         value: {
-             type: Boolean,
-             required: true
-         },
-         orders: {
-             type: Array,
-             required: true
-         },
-     },
-     data(){
-         return{
-             order: {},
-         }
+    components: {
+        order, 
+    },
+    name: 'order-list',
+    props: {
+        value: {
+            type: Boolean,
+            required: true
+        },
+        orders: {
+            type: Array,
+            required: true
+        },
+    },
+    data(){
+        return{
+            order: {},
+        }
     },
     model: {
         prop: 'value',
