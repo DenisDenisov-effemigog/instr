@@ -1,5 +1,5 @@
 <template>
-    <div class="order">  
+    <div class="order" v-if="loaded">  
         <div class="order__header">
             <h2 class="profile__title">{{ $tc(h1) }}</h2>
         </div>
@@ -25,7 +25,16 @@
         <div class="order__main">
             <order-list v-model="details" :orders="paginatedOrders"></order-list>
         </div>
-        <order-pagination v-model="pageNumber" :pageAmount="showPages" v-if="ordersAll.length > 0"></order-pagination>
+        <div class="order__pagination">
+            <order-pagination v-model="pageNumber" :pageAmount="showPages" v-if="ordersAll.length > 0"></order-pagination>
+        </div>
+    </div>
+    <div v-else class="preloader">
+        <svg viewBox="0 0 145 145">
+            <use :xlink:href="templatePath + 'images/sprite.svg#preloader'"></use>
+        </svg>
+        <div class="preloader__loading preloader__loading--first"></div>
+        <div class="preloader__loading preloader__loading--second"></div>
     </div>
 </template>
 
@@ -57,6 +66,7 @@
                 details: false,
                 pageNumber: 1,
                 onPage: 10,
+                loaded: false
             }
         },
         mounted() {
@@ -64,12 +74,19 @@
             this.$eventBus.$emit('hideMenu')
         },
         created(){
+            this.loading();
             this.$eventBus.$on('apply-sorting', this.applySorting);
         },
         beforeDestroy() {
             // this.$eventBus.$off('apply-sorting');
         },
         methods:{
+            loading(){
+                let vm = this
+                setTimeout(function () {
+                    vm.loaded = true
+                }, 500)
+            },
             applySorting(status) {
                 this.$store.dispatch('personalSortOrders', status);
                 this.pageNumber = 1;

@@ -324,7 +324,7 @@ let demoProfile = {
 
 let demoOrders = [];
 //let baseOrderDate = new Date('2020-02-14');
-for(let i = 0; i < 46; ++i) {
+for(let i = 0; i < 76; ++i) {
     /*let newOrderDate = new Date(baseOrderDate.valueOf());
     newOrderDate.setDate(newOrderDate.getDate() + i);
     newOrderDate = Math.round(newOrderDate.getTime()/1000);*/
