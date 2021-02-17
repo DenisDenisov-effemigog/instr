@@ -47,8 +47,7 @@ export default {
         return{
             openTooltip: false,
             value: '',
-            valArr:[],
-            newVal:''
+            newVal:[]
         }
     },
     validations: {
@@ -67,8 +66,12 @@ export default {
                 if(e.key >= 0 || e.key <= 9 || e.key == 'Backspace'  || e.key == 'ArrowLeft' || e.key == 'ArrowRight' || e.key == 'ArrowUp' || e.key == 'ArrowDown' || e.ctrlKey && e.key == 'c' || e.ctrlKey && e.key == 'v'){
                     isDigit = true
                 }else if(e.key == 'Enter'){
-                    this.value = this.$v.value.$model;
-                    this.newVal = this.value.split('\n')
+                    let newArr = []
+                    let valueArr = this.value.split('\n')
+                    for(let i = 0; i < valueArr.length; i++){
+                        newArr.push({sku:valueArr[i].split(' ')[0], quantity:valueArr[i].split(' ')[1]})
+                        this.newVal = newArr
+                    }
                 }else{
                     e.preventDefault();
                 }
@@ -89,7 +92,11 @@ export default {
             let newVal = this.value.split('\n')
             let arr = []
             for (let i = 0; i < newVal.length; i++){
-                arr.push(newVal[i].split(' '))
+                if(newVal[i].split(' ').length > 2) {
+                    arr.push(newVal[i].split(' ').splice(1))
+                } else {
+                    arr.push(newVal[i].split(' '))
+                }
             }
             
             this.$store.dispatch('searchItem', arr);

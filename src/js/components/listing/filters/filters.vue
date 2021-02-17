@@ -193,9 +193,13 @@
             
             lookupFilters() {
                 let vm = this;
-                api.listingFilter(this.payload.hash, this.payload.filters).then((newFilters) => {
+                if(Object.keys(vm.payload.filters).length){
+                    this.$eventBus.$emit('show-clear-filters-btn', true)
+                } else {
+                    this.$eventBus.$emit('show-clear-filters-btn', false)
+                }
+                api.listingFilter(vm.payload.hash, vm.payload.filters).then((newFilters) => {
                     vm.applyExternalData(newFilters, true);
-                    this.$eventBus.$emit('show-clear-filters-btn')
                     window.dispatchEvent(new Event('click'));
                     this.applyFilters(true);
                 }).catch(errors => {
