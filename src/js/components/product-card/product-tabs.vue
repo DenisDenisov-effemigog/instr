@@ -27,7 +27,7 @@
                         {{ $tc('product_card.tabs.description') }}
                     </div>
                     <div
-                        v-if="questions"
+                        v-if="questions && !!user.authorized"
                         class="product-tabs__tab"
                         :class="{'product-tabs__tab--active': currentTab === 'questions'}"
                         @click.prevent="showTab('questions')"
@@ -44,7 +44,7 @@
                     <slot name="description"></slot>
                 </div>
                 <product-tabs-questions 
-                    v-else-if="currentTab === 'questions'"
+                    v-else-if="currentTab === 'questions' && !!user.authorized"
                     :questions="questionsAnswers"
                     :user="user"
                     :productId="productId">
