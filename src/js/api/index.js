@@ -204,7 +204,6 @@ class Api {
             date: date,
         });
     }
-
     orderCreate(data, agreement, message, date) {
         return this._promiseBitrixRequest('instrument2:rest.api.order.create', {
             data: data,
@@ -213,7 +212,17 @@ class Api {
             date: date,
         });
     }
-
+    finedCity(query) {
+        return this._promiseBitrixRequest('instrument2:rest.api.location.find.city', {
+            query: query,
+        });
+    }
+    finedStreet(query, id) {
+        return this._promiseBitrixRequest('instrument2:rest.api.location.find.street', {
+            query: query,
+            id: id,
+        });
+    }
     sendQuestion(productId, email, message) {
         return this._promiseBitrixRequest('instrument2:rest.api.cart.faq', {
             productId: productId,
@@ -221,19 +230,16 @@ class Api {
             email: email,
         });
     }
-
     addFavorite(id) {
         return this._promiseBitrixRequest('instrument2:rest.api.cart.favorite', {
             id: id,
         });
     }
-
     addCompare(id) {
         return this._promiseBitrixRequest('instrument2:rest.api.cart.compare', {
             id: id,
         });
     }
-    
 }
 
 let instance = new Api();

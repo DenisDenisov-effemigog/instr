@@ -1694,6 +1694,45 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
+            case 'instrument2:rest.api.location.find.city':
+                
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                            answer: {
+                                'query': config.data,
+                                'list': 
+                                    [
+                                        {'name': 'Киев', 'id': 1},
+                                        {'name': 'Харьков', 'id': 2},
+                                    ]
+                                }
+
+                            }
+                    }
+                });
+                break;
+            case 'instrument2:rest.api.location.find.street':
+                
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                            answer: {
+                                'query': config.data,
+                                'list': 
+                                    [
+                                        {'name': 'Ленина', 'id': 101, 'city_id': 2},
+                                        {'name': 'Советская', 'id': 202, 'city_id': 2},
+                                
+                                    ]
+                                }
+
+                            }
+                    }
+                });
+                break;
         }
     });    
 };

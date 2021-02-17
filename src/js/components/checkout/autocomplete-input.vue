@@ -20,12 +20,12 @@
                 <input
                     v-bind="inputProps"
                     v-on="inputListeners"
-                    v-model.trim="$v.value.$model"
+                    v-model.trim="$v.valueInput.$model"
                     :name="itemName"
                     :class="[
                         'form__input',
                         'autocomplete-input',
-                        { 'form__input--error': $v.value.$error }
+                        { 'form__input--error': $v.valueInput.$error }
                     ]"
                 >
                 <ul 
@@ -44,13 +44,13 @@
                 </ul>
 
                 <span class="form__label-text form__label-text--with-mag"
-                    :class="{'form__label-text--up': $v.value.required}"
+                    :class="{'form__label-text--up': $v.valueInput.required}"
                 >{{ labelName }}</span>
 
-                <svg viewBox="-4 -4 24 24" class="form__label-icon-mag" v-if="!$v.value.required">
+                <svg viewBox="-4 -4 24 24" class="form__label-icon-mag" v-if="!$v.valueInput.required">
                     <use :xlink:href="templatePath + 'images/sprite.svg#icons__mag'"></use>
                 </svg>
-                <svg viewBox="0 0 24 24" class="form__label-icon" v-if="$v.value.required" @click="$v.value.$model = ''">
+                <svg viewBox="0 0 24 24" class="form__label-icon" v-if="$v.valueInput.required" @click="$v.valueInput.$model = ''">
                     <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
                 </svg>
 
@@ -61,7 +61,7 @@
                     {{ $tc('checkout.delivery-address.street.error') }}
                 </div>
 
-                <div class="form__error-text form__error-text--invalid" v-if="$v.value.$error">
+                <div class="form__error-text form__error-text--invalid" v-if="$v.valueInput.$error">
                     {{ $tc('text.error') }}
                 </div>
             </div>
@@ -72,6 +72,9 @@
 <script>
     import Autocomplete from '@trevoreyre/autocomplete-vue';
     import {required} from "vuelidate/lib/validators";
+    import * as Api from '../../api';
+
+    let api = Api.getInstance();
 
     export default {
         name: 'autocomplete-input',
@@ -91,34 +94,52 @@
             },
             getValue: {
                 type: Function
+            },
+            value: {
+                type: Number,
+                required: true
             }
         },
         data() {
             return {
                 results: [],
-                value: '',
+                valueInput: '',
             }
         },
         validations:{
-            value: {
+            valueInput: {
                 required
             }
         },
+        model: {
+            prop: 'value',
+            event: 'change'
+        },
         computed: {
+            cityId : {
+                get: function() {
+                    return this.value;
+                },
+                set: function(newValue) {
+                    this.$emit('change', newValue);
+                }
+            },
             items() {
                 return this.itemsArray
             },
             noResults() {
-                return this.value && this.results.length === 0
+                return this.valueInput && this.results.length === 0
             }
         },
         methods: {
             submitItem(item) {
                 if (!this.noResults) {
-                    this.value = item.name;
+                    this.valueInput = item.name;
+                    this.cityId = item.id;
                     this.getValue({
-                        value: this.value,
-                        itemName: this.itemName
+                        value: this.valueInput,
+                        itemName: this.itemName,
+                        cityId: this.cityId
                     })
                 }
             },
@@ -126,15 +147,28 @@
                 return item.name;
             },
             search(input) {
-                this.value = input
-                if (input.length < 1) {
-                    this.results = []
+                let vm = this
+                this.valueInput = input
+                if (this.itemName === 'city') {
+                    api.finedCity(input).then(answer => {
+                        vm.results = answer.list.filter(item => {
+                            if(item.name.toLowerCase() === vm.valueInput.toLowerCase()) {
+                                console.log(item)
+                                vm.cityId = item.id
+                            }
+                            return item.name.toLowerCase()
+                                .startsWith(input.toLowerCase())
+                        })
+                    })
                 } else {
-                    this.results = this.items.filter(item => {
-                    return item.name.toLowerCase()
-                        .startsWith(input.toLowerCase())
+                    api.finedStreet(input, vm.cityId).then(answer => {
+                        vm.results = answer.list.filter(item => {
+                            return item.name.toLowerCase()
+                                .startsWith(input.toLowerCase())
+                        })
                     })
                 }
+                
                 return this.results
             }
         },
