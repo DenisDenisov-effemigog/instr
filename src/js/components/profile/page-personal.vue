@@ -91,7 +91,6 @@ export default {
     },
     mounted() {
         this.$eventBus.$emit('hideMenu')
-        this.profile = this.cloneOverJson(this.$store.state.personal)
     }
 }
 </script>

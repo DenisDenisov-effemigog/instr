@@ -86,11 +86,11 @@
         },
         methods: {
             previous() {
-                if (this.current > 1) this.current--;
+                this.current--;
                 this.scrollToTop()
             },
             next() {
-                if (this.current < this.pageAmount) this.current++;
+                this.current++;
                 this.scrollToTop()
             },
             goToPage(value) {
