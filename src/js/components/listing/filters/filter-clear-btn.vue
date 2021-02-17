@@ -36,8 +36,8 @@ export default {
             this.dirty = false;
             this.$eventBus.$emit('clear-filters')
         },
-        showButton() {
-            this.dirty = true;
+        showButton(item) {
+            this.dirty = item;
         }
     }
 }
