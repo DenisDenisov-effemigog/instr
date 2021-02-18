@@ -1517,7 +1517,6 @@ window.runAction = function (action, config) {
                                         title: "Цена",
                                         code: "price_base",
                                         type: "range",
-                                        step: 10,
                                         values: {
                                             min: 1,
                                             max: 100,
