@@ -8,8 +8,8 @@
 </template>
 <template v-slot:price>
     <div class="card__price-block">
-        <div class="card__old-price">{{ product.oldPrice }} {{ 'text.currency'|trans }}</div>
-        <div class="card__current-price">{{ product.newPrice }} {{ 'text.currency'|trans }}</div>
+        <div class="card__old-price">{{ product.oldPrice|currency }} {{ 'text.currency'|trans }}</div>
+        <div class="card__current-price">{{ product.newPrice|currency }} {{ 'text.currency'|trans }}</div>
     </div>
 </template>
 

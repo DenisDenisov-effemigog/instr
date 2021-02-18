@@ -86,19 +86,18 @@
         display: none
         margin-bottom: .5rem
         +tablet
-            display: block
+            display: flex
             margin-bottom: 0
-        &-wrap
+        & > .card__stickers-wrap
             display: block
+            margin-right: 0
             +tablet
                 display: flex
-        &-sticker
-            width: fit-content
-            +mobile
-                margin-right: 0
-            &:not(:last-of-type)
+            &:not(:last-child)
                 +mobile
                     margin-bottom: .5rem
+            & > .card__stickers-sticker
+                width: fit-content
         &--mobile
             display: block
             +tablet
@@ -120,12 +119,14 @@
         @extend .text-2
         color: $light-grey
         text-decoration: line-through
+        white-space: nowrap
         +tablet
             margin-bottom: .25rem
 
     &__current-price
         @extend .title-7
         margin-bottom: 1rem
+        white-space: nowrap
         order: 1
         +tablet
             margin-bottom: .5rem
@@ -155,6 +156,7 @@
         @extend .text-3
         margin-top: .375rem
         color: $light-grey
+        white-space: nowrap
 
     &__in-favorite
         @extend .link-blue

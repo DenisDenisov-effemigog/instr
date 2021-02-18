@@ -386,10 +386,10 @@ for(let i = 0; i < 76; ++i) {
         paid: Math.random() > 0.5,
         count: Math.floor(99 * Math.random()),//оставить одно
         qty: getRandomInt(2,8),
-        discount: '10',
-        economy: '1 000',
-        price: '1 001 819',
-        priceTotal: '1 000 819',
+        discount: 10,
+        economy: 1000,
+        price: 1001819,
+        priceTotal: 1000819,
         
         documents:
             [
@@ -463,7 +463,7 @@ for(let i = 0; i < 6; ++i) {
 let demoAddressList = [
     {
         'id': 12828,
-        'order': '1',
+        'order': 1,
         'address': '1062 Budapest, V1 Bajzautca, 35 1062 Budapest, V1 Bajzautca, 35 1062 Budapest, V1 Bajzautca, 35 Bajzautca',
         'status': 'сonfirmed',
         'statusPrint': 'Подтверждён',
@@ -471,7 +471,7 @@ let demoAddressList = [
     },
     {
         'id': 12829,
-        'order': '2',
+        'order': 2,
         'address': 'II., FrankelLeóút 22 1062 Budapest, V1 Bajzautca, 351062 Budapest, V1 Bajzautca, 35',
         'status': 'submitted',
         'statusPrint': 'Отправлен на подтверждение',
@@ -479,7 +479,7 @@ let demoAddressList = [
     },
     {
         'id': 12830,
-        'order': '3',
+        'order': 3,
         'address': 'XXI., Áruháztér 8',
         'status': 'not-сonfirmed',
         'statusPrint': 'Не подтвержден',
@@ -496,8 +496,8 @@ let demoListingResult= {
             'code': 717950,
             'available': true,
             'stock': 100,
-            'oldPrice': '3 819',
-            'newPrice': '2 819',
+            'oldPrice': 3819.358,
+            'newPrice': 2819.365,
             'is_favorite': false,
             'is_compare': false,
             'images': [
@@ -530,8 +530,8 @@ let demoListingResult= {
             'code': 717950,
             'available': true,
             'stock': 100,
-            'oldPrice': '3 819',
-            'newPrice': '2 819',
+            'oldPrice': 3819,
+            'newPrice': 2819,
             'is_favorite': false,
             'is_compare': false,
             'images': [
@@ -583,8 +583,8 @@ let demoSortingListing = {
             'code': 717950,
             'available': true,
             'stock': 100,
-            'oldPrice': '3 819',
-            'newPrice': '2 819',
+            'oldPrice': 3819.3565,
+            'newPrice': 2819.6569,
             'is_favorite': false,
             'is_compare': false,
             'images': [
@@ -617,8 +617,8 @@ let demoSortingListing = {
             'code': 717950,
             'available': true,
             'stock': 100,
-            'oldPrice': '3 819',
-            'newPrice': '2 819',
+            'oldPrice': 3819,
+            'newPrice': 2819,
             'is_favorite': false,
             'is_compare': false,
             'images': [
@@ -656,8 +656,8 @@ let demoFilteredListing = {
             'code': 717950,
             'available': true,
             'stock': 100,
-            'oldPrice': '3 819',
-            'newPrice': '2 819',
+            'oldPrice': 3819,
+            'newPrice': 2819,
             'is_favorite': false,
             'is_compare': false,
             'images': [
@@ -704,8 +704,8 @@ let favorites = [
         'code': 717950,
         'available': true,
         'stock': 100,
-        'oldPrice': '3 819',
-        'newPrice': '2 819',
+        'oldPrice': 3819,
+        'newPrice': 2819,
         'is_favorite': false,
         'is_compare': false,
         'images': [
@@ -738,8 +738,8 @@ let favorites = [
         'code': 717950,
         'available': true,
         'stock': 100,
-        'oldPrice': '3 819',
-        'newPrice': '2 819',
+        'oldPrice': 3819,
+        'newPrice': 2819,
         'is_favorite': true,
         'is_compare': false,
         'images': [
@@ -772,8 +772,8 @@ let favorites = [
         'code': 717950,
         'available': true,
         'stock': 100,
-        'oldPrice': '3 819',
-        'newPrice': '2 819',
+        'oldPrice': 3819,
+        'newPrice': 2819,
         'is_favorite': false,
         'is_compare': false,
         'images': [
@@ -806,8 +806,8 @@ let favorites = [
         'code': 717950,
         'available': true,
         'stock': 100,
-        'oldPrice': '3 819',
-        'newPrice': '2 819',
+        'oldPrice': 3819,
+        'newPrice': 2819,
         'is_favorite': false,
         'is_compare': false,
         'images': [
@@ -843,8 +843,8 @@ let compares = [
         'code': 717950,
         'available': true,
         'stock': 100,
-        'oldPrice': '3 819',
-        'newPrice': '2 819',
+        'oldPrice': 3819,
+        'newPrice': 2819,
         'is_favorite': false,
         'is_compare': false,
         'images': [
@@ -877,8 +877,8 @@ let compares = [
         'code': 717950,
         'available': true,
         'stock': 100,
-        'oldPrice': '3 819',
-        'newPrice': '2 819',
+        'oldPrice': 3819,
+        'newPrice': 2819,
         'is_favorite': false,
         'is_compare': false,
         'images': [
@@ -911,8 +911,8 @@ let compares = [
         'code': 717950,
         'available': true,
         'stock': 100,
-        'oldPrice': '3 819',
-        'newPrice': '2 819',
+        'oldPrice': 3819,
+        'newPrice': 2819,
         'is_favorite': false,
         'is_compare': false,
         'images': [
@@ -945,8 +945,8 @@ let compares = [
         'code': 717950,
         'available': true,
         'stock': 100,
-        'oldPrice': '3 819',
-        'newPrice': '2 819',
+        'oldPrice': 3819,
+        'newPrice': 2819,
         'is_favorite': false,
         'is_compare': false,
         'images': [
@@ -1321,7 +1321,7 @@ window.runAction = function (action, config) {
             case 'instrument2:rest.api.user.address.add':
                 demoAddressList.push({
                     'id': 333,
-                    'order': '1',
+                    'order': 1,
                     'address': config.data.address,
                     'status': 'submitted',
                     'statusPrint': 'Отправлен на подтверждение',
@@ -1577,7 +1577,6 @@ window.runAction = function (action, config) {
                                         title: "Цена",
                                         code: "price_base",
                                         type: "range",
-                                        step: 10,
                                         values: {
                                             min: 1,
                                             max: 100,

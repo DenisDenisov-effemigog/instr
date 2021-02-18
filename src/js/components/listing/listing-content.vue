@@ -19,8 +19,8 @@
                         </template>
                         <template v-slot:price>
                             <div class="card__price-block">
-                                <div class="card__old-price">{{ product.oldPrice }} {{ $tc('text.currency') }}</div>
-                                <div class="card__current-price">{{ product.newPrice }} {{ $tc('text.currency') }}</div>
+                                <div class="card__old-price">{{ currency(product.oldPrice) }} {{ $tc('text.currency') }}</div>
+                                <div class="card__current-price">{{ currency(product.newPrice) }} {{ $tc('text.currency') }}</div>
                             </div>
                         </template>
                     </card>
