@@ -20,7 +20,7 @@
                     <div class="page-order__info">
                         <div class="page-order__number">{{ $tc('text.order') }} #{{ order.number }}</div>
                         <div class="page-order__date">{{ order.date }}</div>
-                        <div class="page-order__status">{{ order.status }}</div>
+                        <div class="page-order__status">{{ order.status.label }}</div>
                     </div>
                     <ul class="page-order__desc-list">
                         <li class="page-order__desc-item" v-for="(item, index) in deliveryInfo">
@@ -57,20 +57,20 @@
                         <ul class="order-desc__list">
                             <li class="order-desc__item">
                                 <div class="order-desc__name">{{ $tc('text.price') }}</div>
-                                <div class="order-desc__price">{{ order.price }} {{ $tc('text.currency') }}</div>
+                                <div class="order-desc__price">{{ currency(order.price) }} {{ $tc('text.currency') }}</div>
                             </li>
                             <li class="order-desc__item order-desc__item--discount">
                                 <div class="order-desc__name">{{ $tc('text.discount') }}</div>
-                                <div class="order-desc__price order-desc__price--discount">{{ order.discount }} {{ $tc('text.currency') }}</div>
+                                <div class="order-desc__price order-desc__price--discount">{{ currency(order.discount) }} {{ $tc('text.currency') }}</div>
                             </li>
                             <!-- #TODO пока выпилили -->
                             <!-- <li class="order-desc__item order-desc__item--delivery">
                                 <div class="order-desc__name">{{ $tc('profile_orders.economy') }}</div>
-                                <div class="order-desc__price">+{{ order.economy }} {{ $tc('text.currency') }}</div>
+                                <div class="order-desc__price">+{{ currency(order.economy) }} {{ $tc('text.currency') }}</div>
                             </li> -->
                             <li class="order-desc__item order-desc__item--total">
                                 <div class="order-desc__name order-desc__name--total">{{ $tc('text.price_yours') }}</div>
-                                <div class="order-desc__price order-desc__price--total">{{ order.priceTotal }} {{ $tc('text.currency') }}</div>
+                                <div class="order-desc__price order-desc__price--total">{{ currency(order.priceTotal) }} {{ $tc('text.currency') }}</div>
                             </li>
                         </ul>
                         <div class="order-desc__btn"
