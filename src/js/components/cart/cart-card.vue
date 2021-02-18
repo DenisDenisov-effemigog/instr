@@ -6,15 +6,11 @@
     >
         <div class="cart-card__header" v-if="view === 'horiz_cards' && !deleteItem">
             <div class="cart-card__stickers cart-card__stickers--mobile" v-if="product.available">
-                <div class="cart-card__stickers-wrap">
-                    <div
-                        class="cart-card__stickers-sticker"
-                        v-for="tooltip in product.tooltips"
-                        :class="'cart-card__stickers-sticker--' + tooltip.status"
-                    >
-                        <span>{{ tooltip.title }}</span>
-                    </div>
-                </div>
+                <card-stickers
+                    v-for="tooltip in product.tooltips"
+                    :tooltip="tooltip"
+                >
+                </card-stickers>
             </div>
             <div class="cart-card__image-block">
                 <img class="cart-card__image" :src="this.product.images[0].img" alt="фото товара">
@@ -34,15 +30,11 @@
                             {{ product.name }}
                         </a>
                         <div class="cart-card__stickers" v-if="product.available">
-                            <div class="cart-card__stickers-wrap">
-                                <div
-                                    class="cart-card__stickers-sticker"
-                                    v-for="tooltip in product.tooltips"
-                                    :class="'cart-card__stickers-sticker--' + tooltip.status"
-                                >
-                                    <span>{{ tooltip.title }}</span>
-                                </div>
-                            </div>
+                            <card-stickers
+                                v-for="tooltip in product.tooltips"
+                                :tooltip="tooltip"
+                            >
+                            </card-stickers>
                         </div>
                     </div>
                     <div class="cart-card__price-block" v-if="product.available">
@@ -62,7 +54,7 @@
                                     :max-amount="product.stock"
                                     :isCart="true">
                         </component>
-                        <div class="cart-card__price-per-one">{{ product.price }}&nbsp;{{ $tc('text.currency') }}&nbsp;/&nbsp;{{ $tc('text.count') }}</div>
+                        <div class="cart-card__price-per-one">{{ currency(product.price) }}&nbsp;{{ $tc('text.currency') }}&nbsp;/&nbsp;{{ $tc('text.count') }}</div>
                     </div>
 
                 </div>
@@ -149,6 +141,8 @@
 </template>
 
 <script>
+    import cardStickers from '../card/card-stikers.vue'
+
     export default {
         name: 'cart-card',
         props: {
@@ -161,6 +155,7 @@
                 required: true,
             }
         },
+        components: {cardStickers},
         data() {
             return {
                 deleteItem: false,
