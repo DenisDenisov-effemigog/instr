@@ -92,7 +92,7 @@
                                         <div class="product-order__tooltip"></div>
                                     </div>
                                 <p class="product-order__price">
-                                    {{ product.price.retail }} {{ 'text.currency'|trans }}
+                                    {{ product.price.retail|currency }} {{ 'text.currency'|trans }}
                                 </p>
                             </li>
                         {% endif %}
@@ -103,7 +103,7 @@
                                 {% else %}
                                     <p class="product-order__name">{{ 'text.price_old'|trans }}</p>
                                 {% endif %}
-                                <p class="product-order__price">{{ product.price.base }} {{ 'text.currency'|trans }}</p>
+                                <p class="product-order__price">{{ product.price.base|currency }} {{ 'text.currency'|trans }}</p>
                             </li>
                         {% endif %}
                         {% if product.discounts is not empty %}
@@ -129,7 +129,7 @@
                                                     {% endfor %}
                                                 </div>
                                             </div>
-                                        <p class="product-order__price">{{ discount.value }} {{ 'text.currency'|trans }}</p>
+                                        <p class="product-order__price">{{ discount.value|currency }} {{ 'text.currency'|trans }}</p>
                                     </li>
                                 {% endif %}
                             {% endfor %}
@@ -143,7 +143,7 @@
                                 {% else %}
                                     <p class="product-order__name">{{ 'text.price_new'|trans }}</p>
                                 {% endif %}
-                                <p class="product-order__price">{{ product.price.sell }} {{ 'text.currency'|trans }}</p>
+                                <p class="product-order__price">{{ product.price.sell|currency }} {{ 'text.currency'|trans }}</p>
                             </li>
                         {% endif %}
 					</ul>
