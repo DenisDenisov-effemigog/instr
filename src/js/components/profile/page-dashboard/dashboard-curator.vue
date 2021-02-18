@@ -43,12 +43,15 @@ export default {
     name:"dashboard-curator",
     data(){
         return{
-            managerData:{
-                name:'Хорошилова Ирина Николаевна',
-                phone: '8-925-234-69-14',
-                mail:'i.horoshilova@instrument.ru'
-            }
         }
+    },
+    mounted() {
+        this.$store.dispatch('personalGetManager');
+    },
+    computed: {
+        managerData() {
+            return this.cloneOverJson(this.$store.state.personal.manager);
+        },
     }
 }
 </script>

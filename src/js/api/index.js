@@ -134,6 +134,9 @@ class Api {
             message: message,
         });
     }
+    managerGet() {
+        return this._promiseBitrixRequest('instrument2:rest.api.manager.get');
+    }
     changePassowrd(currentPass, newPass) {
         return this._promiseBitrixRequest('instrument2:rest.api.user.change.password', {
             currentPass: currentPass,

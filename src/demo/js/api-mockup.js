@@ -321,7 +321,11 @@ let demoProfile = {
     'email': 'konstantynopolsky@gmail.com',
     'address': 'Название адреса'
 };
-
+let demoManager = {
+    name:'Хорошилова Ирина Николаевна',
+    phone: '8-925-234-69-14',
+    mail:'i.horoshilova@instrument.ru'
+}
 let demoOrders = [];
 //let baseOrderDate = new Date('2020-02-14');
 for(let i = 0; i < 76; ++i) {
@@ -1197,6 +1201,16 @@ window.runAction = function (action, config) {
                         data: {
                             status: 1,
                             answer: demoProfile
+                        }
+                    }
+                });
+                break;
+            case 'instrument2:rest.api.manager.get':
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                            answer: demoManager
                         }
                     }
                 });
