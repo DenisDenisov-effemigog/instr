@@ -145,6 +145,11 @@
     "profile.dashboard.order_info": "Заказов нет",
     "profile.dashboard.notifications_title": "Мои уведомления",
     "profile.dashboard.notifications_clear": "Очистить все",
+    "profile.credit_debt.title": "Кредиторская задолженность",
+    "profile.credit_debt.total": "Общая кредиторская задолженность",
+    "profile.credit_debt.expired": "Просроченная кредиторская задолженность",
+    "profile.credit_debt.next_payment": "Ближайший платеж через {n} день | Ближайший платеж через {n} дня | Ближайший платеж через {n} дней",
+    "profile.credit_debt.payment": "Еще {n} платеж на сумму | Еще {n} платежа на сумму | Еще {n} платежей на сумму",
     
     "change_pass.current": "Текущий пароль",
     "change_pass.new": "Новый пароль",

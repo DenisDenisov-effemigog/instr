@@ -137,6 +137,12 @@ class Api {
     managerGet() {
         return this._promiseBitrixRequest('instrument2:rest.api.manager.get');
     }
+    discountGet() {
+        return this._promiseBitrixRequest('instrument2:rest.api.discount.get');
+    }
+    contractGet() {
+        return this._promiseBitrixRequest('instrument2:rest.api.contract.get');
+    }
     changePassowrd(currentPass, newPass) {
         return this._promiseBitrixRequest('instrument2:rest.api.user.change.password', {
             currentPass: currentPass,

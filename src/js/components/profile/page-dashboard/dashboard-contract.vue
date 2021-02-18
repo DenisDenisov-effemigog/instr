@@ -30,33 +30,16 @@ export default {
     name: "dashboard-contract",
     data(){
         return{
-            contractArr:[
-                {
-                    title:'Договор №',
-                    info:'19/000'
-                },
-                {
-                    title:'Срок действия',
-                    info:'с 17.12.2019 по 31.12.2020'
-                },
-                {
-                    title:'Пролонгация',
-                    info:'Да'
-                },
-                {
-                    title:'Отсрочка платежа',
-                    info:'14 дней'
-                },
-                {
-                    title:'Товарный лимит',
-                    info:'100 000 ₽'
-                },
-                {
-                    title:'Остаток товарного лимита',
-                    info:'30 000 ₽'
-                }
-            ]
+            
         }
     },
+    mounted() {
+        this.$store.dispatch('personalGetContract');
+    },
+    computed: {
+        contractArr() {
+            return this.cloneOverJson(this.$store.state.personal.contract);
+        },
+    }
 }
 </script>
