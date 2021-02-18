@@ -13,7 +13,7 @@
             </div>
             
             <span>{{ currency(order.qty) }}&nbsp;{{ $tc('text.product', order.qty) }}</span>
-            <div class="order__price">{{order.priceTotal}} {{ $tc('text.currency') }}</div>
+            <div class="order__price">{{ currency(order.priceTotal) }} {{ $tc('text.currency') }}</div>
             <div @click.stop="openModal('repeat-order')" class="order__btn">
                 <div class="order__btn-icon">
                     <svg>

@@ -23,6 +23,7 @@ const gulp = require('gulp'),
     watch = require('gulp-watch'),
     vinyl_buffer = require('vinyl-buffer')
 ;
+const { is_int } = require('locutus/php/var');
 
 const isProduction = (process.env.NODE_ENV === 'production');
 
@@ -372,9 +373,9 @@ gulp.task('demo:templates:build', function () {
                 {
                     name: 'currency',
                     func: function (value) {
-                        return php_strings.number_format(value, 2, '.', ',');
+                        return is_int(value) ? php_strings.number_format(value, 0, '.', ' ') : php_strings.number_format(value, 2, '.', ' ');
                     }
-                },/*TODO это функция преобразования чисел из дензела*/
+                },
                 {
                     name: 'trans',
                     func: function (value) {
