@@ -5,6 +5,8 @@
     "button.add_to_cart.tooltip.part2": "шт. так как в таком количестве товара нет на складе",
     "button.go_payment": "Перейти к оплате",
     "button.move_to_catalog": "Перейти в каталог",
+
+    "local": "ru",
     
     "link.in_favorite": "В избранное",
     "link.to_compare": "Сравнить",
@@ -118,11 +120,12 @@
     "profile_delivery.empty_text": "У вас пока нет ни одного адреса.",
     "profile_finance.download": "Загрузить счет-фактуру",
     "profile_finance.empty_text": "Текст про то, что договор не заключен.",
+    "profile_finance.title.payable": "Кредиторская задолженность",
     "profile_finance.title.arrears": "Просроченные платежи",
     "profile_finance.title.charges": "Еще 0 платежей на сумму: | Еще {n} платеж на сумму: | Еще {n} платежа на сумму: | Еще {n} платежей на сумму:",
     "profile_finance.title.history": "История операций",
     "profile_finance.head.sum": "Сумма",
-    "profile_finance.head.date": "Дата",
+    "profile_finance.head.date": "Дата платежа",
     "profile_finance.head.left_days": "Дней до платежа",
     "profile_finance.head.date_time": "Дата и время",
     "profile_finance.head.operation": "Операция",

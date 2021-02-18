@@ -388,8 +388,10 @@ for(let i = 0; i < 6; ++i) {
         id: i+1,
         'sum': sum,
         'date': date,
-        'days': days
+        'days': days,
+        'latest': false
     });
+    financeData.charges[0].latest = true
 }
 
 for(let i = 0; i < 6; ++i) {
