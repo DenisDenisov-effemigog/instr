@@ -43,7 +43,9 @@ const state = {
     orders: [],
     addresses: [],
 
-    country: ''
+    country: '',
+    
+    manager: '',
 };
 
 const mutations = {
@@ -70,6 +72,9 @@ const mutations = {
     },
     [types.PERSONAL_APPLY_COUNTRY](state, newMode) {
         state.country = newMode;
+    },
+    [types.PERSONAL_APPLY_MANAGER](state, newMode) {
+        state.manager = newMode;
     }
 };
 
@@ -77,6 +82,11 @@ const actions = {
     personalUpdateProfile: ({commit, dispatch}) => {
         api.personalProfile().then((profile) => {
             commit(types.PERSONAL_APPLY_PROFILE, profile);
+        });
+    },
+    personalGetManager: ({commit, dispatch}) => {
+        api.managerGet().then((profile) => {
+            commit(types.PERSONAL_APPLY_MANAGER, profile);
         });
     },
 
