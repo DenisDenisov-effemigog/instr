@@ -39,7 +39,9 @@
 					</li>
 				</ul>
 			</div>
-			<component is="contacts-form"></component>
+			<component is="contacts-form"
+                       :phone-mask="{{ phone_mask|json_encode|e('html_attr') }}"
+            ></component>
 		</div>
 	</div>
 	<div class="contacts-map">
@@ -48,10 +50,7 @@
 		</h3>
 		<div
 			class="contacts-map__main">
-			<!-- #TODO пока просто картинка -->
-			<img
-			src="./demo_images/map/map.png" alt="map">
-		<!-- #TODO пока просто картинка -->
+            <iframe src="{{ map }}" frameborder="0" allowfullscreen></iframe>
 		</div>
 	</div>
 	<div class="contacts-trade">
@@ -100,7 +99,7 @@
 			{% endfor %}
 		</ul>
         <div class="contacts-trade__info">{{ 'contacts.note'|trans }}
-             <a href="tel:+78002004949" class="contacts-trade__info-link">8 (800) 200-49-49</a> {{ 'contacts.note-more'|trans }} <a href="mailto:help@toolsworld.ru" class="contacts-trade__info-link">help@toolsworld.ru</a>
+             <a href="tel: {{ 'contacts.tel'|trans }}" class="contacts-trade__info-link">{{ 'contacts.tel'|trans }}</a> {{ 'contacts.note-more'|trans }} <a href="mailto: {{ 'contacts.mail'|trans }}" class="contacts-trade__info-link">{{ 'contacts.mail'|trans }}</a>
         </div>
 	</div>
 </div>

@@ -133,6 +133,12 @@ export default {
     components: {
         TheMask
     },
+    props: {
+        phoneMask:{
+            type: String,
+            required: true,
+        },  
+    },
     validations: {
             name: {
                 required
@@ -157,7 +163,6 @@ export default {
                 phone: '',
                 newEmail: '',
                 tokens: config.phoneTokens,
-                phoneMask: config.phoneMask
             }
         },
 }

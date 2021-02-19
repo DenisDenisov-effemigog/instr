@@ -58,7 +58,7 @@ export default {
     },
     methods:{
         openDetails() {
-            this.$router.push('/account/orders/' + this.orderId + '/');
+            this.$router.push('/my/orders/' + this.orderId + '/');
             this.$eventBus.$emit('hideBreadcrumbs', true);
         },
     }

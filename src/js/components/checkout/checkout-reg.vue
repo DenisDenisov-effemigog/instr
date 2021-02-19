@@ -165,6 +165,10 @@
             }
         },
         props:{
+            phoneMask:{
+                type: String,
+                required: true,
+            },
             currentTab:{
                 type:String,
                 required: true
@@ -181,7 +185,6 @@
                 code: '',
                 phone: null,
                 newEmail: '',
-                phoneMask: config.phoneMask,
                 tokens: config.phoneTokens
             }
         },

@@ -194,11 +194,11 @@ export default {
                 this.$eventBus.$emit('change-current-point', order.currentDocument)
                 console.log('this.order', this.order);
             }).catch((error) => {
-                this.$router.push('/account/orders/');
+                this.$router.push('/my/orders/');
             });
         },
         mouseWheel(){
-            if(window.innerWidth < 768 && this.$refs.order) {
+            if(window.innerWidth < 768 && this.$refs.order) {/*TODO в консоле ошибка*/
                 let windowPosition = (window.pageYOffset).toFixed(0)
                 this.pcH = (this.$refs.order.clientHeight + this.$refs.order.offsetTop).toFixed(0)
                 this.fixedButton = +this.pcH < +windowPosition

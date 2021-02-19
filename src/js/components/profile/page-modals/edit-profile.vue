@@ -124,6 +124,10 @@
     export default {
         name:"edit-profile",
         props:{
+            phoneMask:{
+                type: String,
+                required: true,
+            },
             person: {required: true}
         },
         components: {
@@ -158,7 +162,6 @@
                 phone: null,
                 email: '',
                 tokens: config.phoneTokens,
-                phoneMask: config.phoneMask
             }
         },
         methods: {

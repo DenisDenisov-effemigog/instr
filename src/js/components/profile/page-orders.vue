@@ -5,7 +5,7 @@
         </div>
         <div v-if="ordersAll.length === 0" class="profile__empty-content">
             <div class="order__text">{{ $tc('profile_orders.empty_text') }}</div>
-            <a href="" class="profile__catalogue-btn">{{ $tc('button.move_to_catalog') }}</a>
+            <a :href="catalogLink" class="profile__catalogue-btn">{{ $tc('button.move_to_catalog') }}</a>
         </div>
         <div class="order__info" v-if="!details && ordersAll.length !== 0">
             <div class="order__info-icon">
@@ -42,6 +42,7 @@
     import selectList from '../partials/select-list.vue';
     import orderList from './page-orders/order-list.vue';
     import orderPagination from './page-orders/order-pagination.vue'
+    import config from "../../config";
 
     export default {
         components: { 
@@ -66,7 +67,8 @@
                 details: false,
                 pageNumber: 1,
                 onPage: 10,
-                loaded: false
+                loaded: false,
+                catalogLink: config.links.catalog
             }
         },
         mounted() {

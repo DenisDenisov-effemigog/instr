@@ -7,55 +7,78 @@ import * as types from '../store/mutation-types';
 Vue.use(Router);
 
 const router = new Router({
-    // TODO переименовать title
     mode: 'history',
     routes: [
         {
-            path: '/account/dashboard',
+            path: '/my/dashboard',
             component: require('../components/profile/page-dashboard.vue'),
             meta: {
-                title: 'Личный кабинет - Сводка',
+                title: 'profile.title.my' + ' - ' + 'link.dashboard',
                 h1: 'link.dashboard'
             }
         },
         {
-            path: '/account',
+            path: '/my/profile',
             component: require('../components/profile/page-personal.vue'),
             meta: {
-                title: 'Личный кабинет - Личные данные',
+                title: 'profile.title.my' + ' - ' + 'profile.title.my_own',
                 h1: 'profile.title.my_own'
             }
         },
         {
-            path: '/account/orders',
+            path: '/my/discounts',
+            component: require('../components/profile/page-discounts.vue'),
+            meta: {
+                title: 'profile.title.my' + ' - ' + 'profile.title.discounts',
+                h1: 'profile.title.discounts'
+            }
+        },
+        {
+            path: '/my/orders',
             component: require('../components/profile/page-orders.vue'),
             meta: {
-                title: 'Личный кабинет - Список заказов',
+                title: 'profile.title.my' + ' - ' + 'link.orders_list',
                 h1: 'link.orders_list'
             }
         },
         {
-            path: '/account/orders/:id',
+            path: '/my/orders/:id',
             component: require('../components/profile/page-orders/page-order.vue'),
             meta: {
-                title: 'Личный кабинет - Заказ',
+                title: 'profile.title.my' + ' - ' + 'text.order',
                 h1: null,
             }
         },
         {
-            path: '/account/finance',
+            path: '/my/finances',
             component: require('../components/profile/page-finance.vue'),
             meta: {
-                title: 'Личный кабинет - Финансы',
+                title: 'profile.title.my' + ' - ' + 'link.finance',
                 h1: 'link.finance'
             }
         },
         {
-            path: '/account/adresses',
+            path: '/my/address',
             component: require('../components/profile/page-delivery.vue'),
             meta: {
-                title: 'Личный кабинет - Адреса доставки',
+                title: 'profile.title.my' + ' - ' + 'link.my_addresses',
                 h1: 'link.my_addresses'
+            }
+        },
+        {
+            path: '/my/feeds',
+            component: require('../components/profile/page-feeds.vue'),
+            meta: {
+                title: 'profile.title.my' + ' - ' + 'profile.title.feeds',
+                h1: 'profile.title.feeds'
+            }
+        },
+        {
+            path: '/my/appeals',
+            component: require('../components/profile/page-appeals.vue'),
+            meta: {
+                title: 'profile.title.my' + ' - ' +'profile.title.appeals',
+                h1: 'profile.title.appeals'
             }
         },
     ]

@@ -182,6 +182,10 @@
             TheMask
         },
         props: {
+            phoneMask:{
+                type: String,
+                required: true,
+            },
         },
         validations: {
             name: {
@@ -213,7 +217,6 @@
                 phone: '',
                 newEmail: '',
                 tokens: config.phoneTokens,
-                phoneMask: config.phoneMask
             }
         },
         methods: {

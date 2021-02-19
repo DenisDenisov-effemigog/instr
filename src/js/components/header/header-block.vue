@@ -28,13 +28,13 @@
                     </svg>
                     <p class="header__menu-text" v-if="!user.authorized">{{ $tc('title.enter') }}</p>
                     <div class="header__menu-tooltip" v-if="!user.authorized">
-                        <div @click.prevent="openModal('user', 'login')"  href="#" class="header__menu-tooltip-layout">
+                        <div @click.prevent="openModal('user', 'login')" class="header__menu-tooltip-layout">
                             <svg class="" viewBox="0 0 16 16">
                                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__entrance'"></use>
                             </svg>
                             {{ $tc('title.entrance') }}
                         </div>
-                        <div @click.prevent="openModal('user', 'reg')" href="#" class="header__menu-tooltip-layout">
+                        <div @click.prevent="openModal('user', 'reg')" class="header__menu-tooltip-layout">
                             <svg class="" viewBox="0 0 16 16">
                                 <use :xlink:href="templatePath + 'images/sprite.svg#plus'"></use>
                             </svg>
@@ -46,7 +46,7 @@
                 </div>
             </li>
             <li class="header__menu-item">
-                <a href="#" class="header__menu-link">
+                <a :href="compareLink" class="header__menu-link">
                     <svg class="header__menu-icon" viewBox="-2 0 19 20">
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__graf'" ></use>
                     </svg>
@@ -54,7 +54,7 @@
                 </a>
             </li>
             <li class="header__menu-item">
-                <a href="#" class="header__menu-link">
+                <a :href="favoritesLink" class="header__menu-link">
                     <svg class="header__menu-icon">
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__heart'"></use>
                     </svg>
@@ -72,6 +72,7 @@
     import showCatalogue from '../catalogue/show-catalogue.vue';
     import headerSearch from './search/header-search.vue';
     import tooltipProfile from './tooltip-profile.vue';
+    import config from "../../config";
 
 export default {
     name: "header-block",
@@ -86,7 +87,9 @@ export default {
     },
     data(){
         return{
-            activeSearch: false
+            activeSearch: false,
+            compareLink: config.links.compare,
+            favoritesLink: config.links.favorites
         }
     },
     methods:{

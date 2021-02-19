@@ -41,6 +41,7 @@
                     <checkout-reg v-if="!user.authorized"
                         :IndividualFlag="IndividualFlag"
                         :currentTab="currentTab"
+                        :phoneMask="phoneMask"
                     ></checkout-reg>
                     <checkout-delivery
                         :currentTab="currentTab"
@@ -82,9 +83,9 @@
                     </div>
                     <div class="checkout__info">
                         {{ $tc('text.agreement') }}&nbsp; 
-                        <a href="#" class="checkout__info-link"> {{ $tc('link.agreement') }}</a>&nbsp;
+                        <a :href="conditionsLink" class="checkout__info-link"> {{ $tc('link.agreement') }}</a>&nbsp;
                         {{ $tc('text.more_info') }}&nbsp;
-                        <a href="#" class="checkout__info-link">{{ $tc('link.more_info') }}</a>.
+                        <a :href="deliveryLink" class="checkout__info-link">{{ $tc('link.more_info') }}</a>.
                     </div>
                 </div>
                 <div v-show='value === "experienced"' class="checkout__login">
@@ -170,7 +171,11 @@
             salePrice:{
                 type: Number,
                 required: true,
-            }
+            },
+            phoneMask:{
+                type: String,
+                required: true,
+            },
         },
         data(){
             return {
@@ -192,6 +197,8 @@
                 pointAddress: this.deliveryPoints[0],
                 deliveryAddress: '',
                 deliveryNewAddress: {},
+                conditionsLink: config.links.conditions,
+                deliveryLink: config.links.delivery,
             }
         },
         computed: {

@@ -24,7 +24,7 @@
                 <span>{{ currency(discount[0].remainder) }} {{ $tc('text.currency') }}</span> {{ $tc('product_card.progress.text_end') }}&nbsp;<span class="discount-info__progress-text--discount">{{ discount[0].more_percent }}%</span>
             </div>
         </div>
-        <a href="" class="discount-info__link" @click="openModal">
+        <a href="" class="discount-info__link" @click.prevent="openModal">
             <svg viewBox="0 0 13 13">
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__link'"></use>
             </svg>
@@ -36,7 +36,7 @@
             <div class="discount-info__offer-text">{{ $tc('product_card.offer.text') }}</div>
             <a class="discount-info__offer-btn"
                href="" 
-               @click="redirect"
+               @click.prevent="redirect"
             >{{ $tc('product_card.offer.button') }}</a>
         </div>
     </div>

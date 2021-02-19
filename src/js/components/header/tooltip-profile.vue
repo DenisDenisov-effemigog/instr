@@ -10,7 +10,7 @@
             </svg>
             <span>{{ $tc(item.title) }}</span>
         </router-link>
-        <div href="#" class="header__menu-tooltip-layout">
+        <div href="" class="header__menu-tooltip-layout" @click.prevent="exit">
             <svg>
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__exit'"></use>
             </svg>
@@ -85,6 +85,9 @@
             trimPath(value) {
                 return value.replace(/^\/+|\/+$/g, '');
             },
+            exit() {
+                /*TODO реализовать выход из профиля, редирект на главную*/
+            }
         }
     }
 </script>

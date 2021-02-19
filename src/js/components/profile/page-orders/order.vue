@@ -71,7 +71,7 @@ export default {
                 return api.personalOrder(this.order.id).then((order) => {
                     this.products = order.basket;
                 }).catch((error) => {
-                    this.$router.push('/account/orders/');
+                    this.$router.push('/my/orders/');
                 });
             } else {
                 return new Promise((resolve, reject) => {
@@ -87,7 +87,7 @@ export default {
             this.opened = !this.opened;
         },
         openDetails(index){
-            this.$router.push('/account/orders/' + this.order.id + '/');
+            this.$router.push('/my/orders/' + this.order.id + '/');
             this.$eventBus.$emit('hideBreadcrumbs', true);
             this.$eventBus.$emit('closeTitle')
         },

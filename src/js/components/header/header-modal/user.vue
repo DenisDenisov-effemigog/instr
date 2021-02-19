@@ -15,7 +15,7 @@
                 <user-login></user-login>
             </div>
             <div class="user-reg" v-else>
-                <user-reg></user-reg>
+                <user-reg :phoneMask="phoneMask"></user-reg>
             </div>
         </div>
     </div>
@@ -32,6 +32,10 @@
             userReg
         },
         props: {
+            phoneMask:{
+                type: String,
+                required: true,
+            },
             selected: {
                 type: String,
                 required: true
