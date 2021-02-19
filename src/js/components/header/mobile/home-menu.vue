@@ -1,49 +1,9 @@
 <template>
     <div class="home-menu">
         <ul class="home-menu__links">
-            <li>
-                <a href="" class="home-menu__link">
-                    <span>{{ $tc('nav.title.about') }}</span>
-                    <svg viewBox="0 0 6 10">
-                        <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
-                    </svg>
-                </a>
-            </li>
-            <li>
-                <a href="" class="home-menu__link">
-                    <span>{{ $tc('nav.branches') }}</span>
-                    <svg viewBox="0 0 6 10">
-                        <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
-                    </svg>
-                </a>
-            </li>
-            <li>
-                <a href="" class="home-menu__link">
-                    <span>{{ $tc('nav.points_of_purchases') }}</span>
-                    <svg viewBox="0 0 6 10">
-                        <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
-                    </svg>
-                </a>
-            </li>
-            <li>
-                <a href="" class="home-menu__link">
-                    <span>{{ $tc('nav.cooperation') }}</span>
-                    <svg viewBox="0 0 6 10">
-                        <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
-                    </svg>
-                </a>
-            </li>
-            <li>
-                <a href="" class="home-menu__link">
-                    <span>{{ $tc('nav.brands') }}</span>
-                    <svg viewBox="0 0 6 10">
-                        <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
-                    </svg>
-                </a>
-            </li>
-            <li>
-                <a href="" class="home-menu__link">
-                    <span>{{ $tc('nav.discounts') }}</span>
+            <li v-for="link in links">
+                <a :href="link.link" class="home-menu__link">
+                    <span>{{ $tc(link.title) }}</span>
                     <svg viewBox="0 0 6 10">
                         <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                     </svg>
@@ -95,6 +55,8 @@
 </template>
 
 <script>
+    import config from "../../../config";
+    
     export default {
         name: 'home-menu',
         props: {
@@ -103,6 +65,14 @@
         data(){
             return{
                 showCountry: false,
+                links: [
+                    {title: 'nav.title.about', link: config.links.about},
+                    {title: 'nav.branches', link: config.links.branches},
+                    {title: 'nav.points_of_purchases', link: config.links.points},
+                    {title: 'nav.cooperation', link: config.links.cooperation},
+                    {title: 'nav.brands', link: config.links.brands},
+                    {title: 'nav.discounts', link: config.links.shares},
+                ]
             }
         },
         computed: {

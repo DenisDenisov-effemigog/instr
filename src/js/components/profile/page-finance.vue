@@ -11,7 +11,7 @@
         </div>
         <div class="profile__empty-content" v-if="!financeDataAll">
             <p class="finance__text">{{ $tc('profile_finance.empty_text') }}</p>
-            <a href="" class="profile__catalogue-btn">{{ $tc('button.move_to_catalog') }}</a>
+            <a :href="catalogLink" class="profile__catalogue-btn">{{ $tc('button.move_to_catalog') }}</a>
         </div>
         <div v-else>
             <accounts-payable :financeCharges="financeDataAll.charges"></accounts-payable>
@@ -33,13 +33,15 @@
     import accountsPayable from './page-finance/accounts-payable.vue'
     import financeCharges from './page-finance/finance-charges.vue';
     import operationHistory from './page-finance/operation-history.vue';
+    import config from "../../config";
 
     export default {
         name:"page-finance",
         components: { accountsPayable, financeCharges, operationHistory},
         data() {
             return {
-                loaded: false
+                loaded: false,
+                catalogLink: config.links.catalog
             }
         },
         methods: {

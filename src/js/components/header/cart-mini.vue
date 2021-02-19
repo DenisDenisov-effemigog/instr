@@ -1,5 +1,5 @@
 <template>
-    <a ref="cart" href="#" class="header__menu-link header__menu-link--cart-active">
+    <a ref="cart" :href="cartLink" class="header__menu-link header__menu-link--cart-active">
         <svg class="header__menu-icon">
             <use :xlink:href="templatePath + 'images/sprite.svg#icons__cart'"></use>
         </svg>
@@ -11,6 +11,8 @@
 </template>
 
 <script>
+    import config from "../../config";
+    
     export default {
         name: "cart-mini",
         props: {
@@ -19,6 +21,11 @@
                 required: false,
                 default: false
             }
+        },
+        data() {
+          return {
+              cartLink: config.links.cart
+          }  
         },
         computed: {
             productsQuantity() {

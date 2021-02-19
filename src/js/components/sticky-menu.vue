@@ -14,7 +14,7 @@
                 </a>
             </li>
             <li class="header__menu-item">
-                <a href="#" class="header__menu-link">
+                <a :href="compareLink" class="header__menu-link">
                     <svg class="header__menu-icon">
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__graf'"></use>
                     </svg>
@@ -22,7 +22,7 @@
                 </a>
             </li>
             <li class="header__menu-item">
-                <a href="#" class="header__menu-link">
+                <a :href="favoritesLink" class="header__menu-link">
                     <svg class="header__menu-icon">
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__heart'"></use>
                     </svg>
@@ -30,7 +30,7 @@
                 </a>
             </li>
             <li class="header__menu-item" v-if="!user.authorized">
-                <a href="#" class="header__menu-link" @click.prevent="clickMenu('profile')">
+                <a :href="profileLink" class="header__menu-link" @click.prevent="clickMenu('profile')">
                     <svg class="header__menu-icon">
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__user'"></use>
                     </svg>
@@ -50,7 +50,7 @@
                 </a>
             </li>
             <li class="header__menu-item">
-                <a href="#" class="header__menu-link header__menu-link--cart-active">
+                <a :href="cartLink" class="header__menu-link header__menu-link--cart-active">
                     <svg class="header__menu-icon">
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__cart'"></use>
                     </svg>
@@ -65,6 +65,7 @@
 </template>
 
 <script>
+    import config from "../config";
 
 export default {
     name: "sticky-menu",
@@ -73,7 +74,11 @@ export default {
     },
     data(){
         return{
-            menuLink: ''
+            menuLink: '',
+            compareLink: config.links.compare,
+            favoritesLink: config.links.favorites,
+            cartLink: config.links.cart,
+            profileLink: config.links.personal,
         }
     },
     created() {
