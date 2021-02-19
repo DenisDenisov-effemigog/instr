@@ -14,7 +14,7 @@ export default {
         'F': {pattern: /9/},
         '#': {pattern: /\d/}
     },
-    phoneMask: '+7 (F##) ###-##-##',
+    // phoneMask: '+7 (F##) ###-##-##', Идёт из базы
 
     passwordPattern: /^(?=.*\d)(?=.*[A-Z])(?=.*[a-zA-Z]).{6,}$/,
 

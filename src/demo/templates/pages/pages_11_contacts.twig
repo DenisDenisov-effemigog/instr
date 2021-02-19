@@ -1022,12 +1022,14 @@
     {% include '../../../templates/contacts/contacts.twig' with {
         'tradeOffices': tradeOffices,
         'tradeMainOffice': tradeMainOffice,
+        'phone_mask': '+7 (F##) ###-##-##',
         
     } %}
     {% include '../../../templates/footer/footer.twig'  with {
         'countries': countries,
         'activeCountry': 'Россия',
         'user': user,
+        'phone_mask': '+7 (F##) ###-##-##',
     } %}
     
 {% endblock %}

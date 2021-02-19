@@ -39,7 +39,9 @@
 					</li>
 				</ul>
 			</div>
-			<component is="contacts-form"></component>
+			<component is="contacts-form"
+                       :phone-mask="{{ phone_mask|json_encode|e('html_attr') }}"
+            ></component>
 		</div>
 	</div>
 	<div class="contacts-map">

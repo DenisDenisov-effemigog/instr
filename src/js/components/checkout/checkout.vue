@@ -41,6 +41,7 @@
                     <checkout-reg v-if="!user.authorized"
                         :IndividualFlag="IndividualFlag"
                         :currentTab="currentTab"
+                        :phoneMask="phoneMask"
                     ></checkout-reg>
                     <checkout-delivery
                         :currentTab="currentTab"
@@ -170,7 +171,11 @@
             salePrice:{
                 type: Number,
                 required: true,
-            }
+            },
+            phoneMask:{
+                type: String,
+                required: true,
+            },
         },
         data(){
             return {

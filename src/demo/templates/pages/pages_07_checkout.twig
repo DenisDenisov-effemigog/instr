@@ -1056,12 +1056,14 @@
         'cities': cities,
         'streets': streets,
         'discounts': discounts,
-        'salePrice': 7500
+        'salePrice': 7500,
+        'phone_mask': '+7 (F##) ###-##-##'
     } %}
     {% include '../../../templates/footer/footer.twig'  with {
         'countries': countries,
         'activeCountry': 'Россия',
         'user': user,
+        'phone_mask': '+7 (F##) ###-##-##',
     } %}
     
 {% endblock %}

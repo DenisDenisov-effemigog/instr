@@ -9,7 +9,9 @@
 <component is="mobile-menu" 
            :countries="{{ countries|json_encode()|e('html_attr') }}"
 ></component>
-<component is="modal">
+<component is="modal"
+           :phone-mask="{{ phone_mask|json_encode|e('html_attr') }}"
+>
     <template v-slot:listingcat>
         {% if filters.filters is not empty %}
             <div class="listing__subcategories listing__subcategories--filter">

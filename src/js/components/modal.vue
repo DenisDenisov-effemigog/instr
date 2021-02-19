@@ -36,7 +36,7 @@
             </div>
             <div class="modal__profile-edit" v-else-if="modal === 'profile-edit'">
                 <h3 class="modal__title modal__title--centered">{{ $tc('modal.title.profile_edit') }}</h3>
-                <component is="edit-profile" :person="props"></component>
+                <component is="edit-profile" :person="props" :phoneMask="phoneMask"></component>
             </div>
             <div class="modal__profile-edit" v-else-if="modal === 'profile-password'">
                 <h3 class="modal__title modal__title--centered">{{ $tc('modal.title.password_edit') }}</h3>
@@ -56,7 +56,7 @@
             </div>
             <div class="modal__profile-edit" v-else-if="modal === 'user'">
                 <h3 class="modal__title modal__title--centered">{{ $tc('modal.title.auth') }}</h3>
-                <component is="user" :selected="props"></component>
+                <component is="user" :selected="props" :phoneMask="phoneMask"></component>
             </div>
             <div class="modal__filters" v-else-if="modal === 'filters'">
                 <div class="modal__filters-sticky">
@@ -117,6 +117,12 @@ export default {
     directives: {
         ClickOutside
     },
+    props: {
+        phoneMask:{
+            type: String,
+            required: true,
+        },
+    },
     data(){
         return{
             open: false,
@@ -124,7 +130,7 @@ export default {
             props: [],
             modalBigger: false,
             showCloseBtn: true,
-            currentSlide: 0
+            currentSlide: 0,
         }
     },
     created(){
