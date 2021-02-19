@@ -46,6 +46,8 @@ const state = {
     country: '',
     
     manager: '',
+    discount: '',
+    contract: '',
 };
 
 const mutations = {
@@ -75,6 +77,12 @@ const mutations = {
     },
     [types.PERSONAL_APPLY_MANAGER](state, newMode) {
         state.manager = newMode;
+    },
+    [types.PERSONAL_APPLY_DISCOUNT](state, newMode) {
+        state.discount = newMode;
+    },
+    [types.PERSONAL_APPLY_CONTRACT](state, newMode) {
+        state.contract = newMode;
     }
 };
 
@@ -89,7 +97,16 @@ const actions = {
             commit(types.PERSONAL_APPLY_MANAGER, profile);
         });
     },
-
+    personalGetDiscount: ({commit, dispatch}) => {
+        api.discountGet().then((profile) => {
+            commit(types.PERSONAL_APPLY_DISCOUNT, profile);
+        });
+    },
+    personalGetContract: ({commit, dispatch}) => {
+        api.contractGet().then((profile) => {
+            commit(types.PERSONAL_APPLY_CONTRACT, profile);
+        });
+    },
     personalUpdateOrders: ({commit}) => {
         api.personalOrders().then((answer) => {
             if(answer.orders) {

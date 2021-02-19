@@ -21,15 +21,15 @@
                 </vue-ellipse-progress>
             </div>
             <div class="discount-info__progress-text">{{ $tc('product_card.progress.text_start') }} <span>{{ discount[0].category_name }}</span> {{ $tc('product_card.progress.text_middle') }} 
-                <span>{{ discount[0].remainder }} {{ $tc('text.currency') }}</span> {{ $tc('product_card.progress.text_end') }}&nbsp;<span class="discount-info__progress-text--discount">{{ discount[0].more_percent }}%</span>
+                <span>{{ currency(discount[0].remainder) }} {{ $tc('text.currency') }}</span> {{ $tc('product_card.progress.text_end') }}&nbsp;<span class="discount-info__progress-text--discount">{{ discount[0].more_percent }}%</span>
             </div>
         </div>
-        <div class="discount-info__link" @click="openModal">
+        <a href="" class="discount-info__link" @click="openModal">
             <svg viewBox="0 0 13 13">
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__link'"></use>
             </svg>
             {{ $tc('product_card.link') }}
-        </div>
+        </a>
     </div>
     <div class="discount-info" v-else>
         <div class="discount-info__offer">

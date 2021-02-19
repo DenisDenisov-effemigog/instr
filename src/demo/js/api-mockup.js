@@ -325,7 +325,47 @@ let demoManager = {
     name:'Хорошилова Ирина Николаевна',
     phone: '8-925-234-69-14',
     mail:'i.horoshilova@instrument.ru'
-}
+};
+let demoDiscount = [
+    {
+        title: "Импорт",
+        discount: 11
+    },
+    {
+        title: "Силовое",
+        discount: 7
+    },
+    {
+        title: "Россия",
+        discount: 10
+    }
+];
+let demoContract = [
+    {
+        title:'Договор №',
+        info:'19/000'
+    },
+    {
+        title:'Срок действия',
+        info:'с 17.12.2019 по 31.12.2020'
+    },
+    {
+        title:'Пролонгация',
+        info:'Да'
+    },
+    {
+        title:'Отсрочка платежа',
+        info:'14 дней'
+    },
+    {
+        title:'Товарный лимит',
+        info:'100 000 ₽'
+    },
+    {
+        title:'Остаток товарного лимита',
+        info:'30 000 ₽'
+    }
+]
 let demoOrders = [];
 //let baseOrderDate = new Date('2020-02-14');
 for(let i = 0; i < 76; ++i) {
@@ -388,8 +428,10 @@ for(let i = 0; i < 6; ++i) {
         id: i+1,
         'sum': sum,
         'date': date,
-        'days': days
+        'days': days,
+        'latest': false
     });
+    financeData.charges[0].latest = true
 }
 
 for(let i = 0; i < 6; ++i) {
@@ -1211,6 +1253,26 @@ window.runAction = function (action, config) {
                         data: {
                             status: 1,
                             answer: demoManager
+                        }
+                    }
+                });
+                break;
+            case 'instrument2:rest.api.discount.get':
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                            answer: demoDiscount
+                        }
+                    }
+                });
+                break;
+            case 'instrument2:rest.api.contract.get':
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                            answer: demoContract
                         }
                     }
                 });

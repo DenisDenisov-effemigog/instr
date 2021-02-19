@@ -1,0 +1,21 @@
+.finance-prgs-crcl
+    display: none
+    +desktop
+        +flex-container-center
+        flex-direction: column
+        margin-left: 1.5rem
+    &__days
+        @extend .title-3
+        width: 4.2rem
+        color: $blue
+        &--error
+            color: $primary-hover
+    &__text
+        @extend .text-2
+        +flex-container-center
+        flex-direction: column
+        margin-top: 1.5rem
+        &--error
+            color: $primary-hover
+    &__payment-date
+        color: $blue

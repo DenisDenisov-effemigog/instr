@@ -21,19 +21,12 @@ export default {
             }
             // не уверена насчет .listing__actions, что думаете? не придумала, как скрыть его
         },
-        /* ending(value) {
-            let end = '';
-            
-            if (value % 10 > 4 || value % 10 == 0 || value > 10 && value < 15) {
-                end = 'ов'
-            } else if ((value % 10) === 1) {
-                end = ''
-            } else {
-                end = 'а'
-            }
-
-            return end
-        }, */ // вместо отдельных окончаний добавить в файл локализаций json варианты pluralization
+        /* getDays: function (date) {
+            const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+            const firstDate = new Date(date);
+            const secondDate = new Date();
+            return Math.round((firstDate - secondDate) / oneDay);
+        } */ // пока не используется
     },
     computed: {
         templatePath() {

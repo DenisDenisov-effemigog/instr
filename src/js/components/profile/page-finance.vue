@@ -14,6 +14,7 @@
             <a href="" class="profile__catalogue-btn">{{ $tc('button.move_to_catalog') }}</a>
         </div>
         <div v-else>
+            <accounts-payable :financeCharges="financeDataAll.charges"></accounts-payable>
             <finance-charges :financeCharges="financeDataAll.charges" :arrears="true"></finance-charges>
             <finance-charges :financeCharges="financeDataAll.charges"></finance-charges>
             <operation-history :financeHistory="financeDataAll.history"></operation-history>
@@ -29,12 +30,13 @@
 </template>
 
 <script>
+    import accountsPayable from './page-finance/accounts-payable.vue'
     import financeCharges from './page-finance/finance-charges.vue';
     import operationHistory from './page-finance/operation-history.vue';
 
     export default {
         name:"page-finance",
-        components: { financeCharges, operationHistory},
+        components: { accountsPayable, financeCharges, operationHistory},
         data() {
             return {
                 loaded: false

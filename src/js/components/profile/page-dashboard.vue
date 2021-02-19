@@ -6,6 +6,7 @@
         </div>
         <div class="dashboard__main">
             <div class="dashboard__top">
+                <creditor-debt></creditor-debt>
                 <dashboard-discount></dashboard-discount>
                 <dashboard-contract></dashboard-contract>
             </div>
@@ -18,6 +19,7 @@
 </template>
 
 <script>
+import CreditorDebt from './creditor-debt.vue'
     import DashboardContract from './page-dashboard/dashboard-contract.vue'
     import DashboardCurator from './page-dashboard/dashboard-curator.vue'
     import DashboardDiscount from './page-dashboard/dashboard-discount.vue'
@@ -30,9 +32,10 @@ export default {
         DashboardContract, 
         DashboardCurator, 
         DashboardOrders, 
-        DashboardNotifications
+        DashboardNotifications,
+        CreditorDebt
     },
-    mounted() {
+    mounted(){
         this.$eventBus.$emit('hideMenu')
     },
 }
