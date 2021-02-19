@@ -9,6 +9,8 @@
     &__head
         padding-bottom: 1rem
         border-bottom: 1px solid $border-color_4
+    &__title
+        @extend .title-4
     &__progress-line
         width: 100%
         position: relative
@@ -23,6 +25,7 @@
         background: $grey
         height: 1.625rem
         border-radius: 4px
+        cursor: pointer
     &__progress-expired
         position: absolute
         top: 0
@@ -31,6 +34,7 @@
         background: $primary-hover
         height: 1.625rem
         border-radius: 4px
+        cursor: pointer
     &__progress-price
         display: flex
         align-items: center
@@ -42,13 +46,13 @@
         color: $grey
         top: 1.875rem
         right: 0
-        width: 5.375rem
+        width: fit-content
         &--expired
             color: $primary-hover
     &__progress-price
         margin-top: 0.5rem
         @extend .text-8
-        font-weight: 400
+        font-weight: $font-weight
         color: $light-grey
     &__list
         @extend .text-8
@@ -63,10 +67,12 @@
         justify-content: space-between
         &--expired
             color: $primary-hover
-            font-weight: 600
-        &--next_payment
+            font-family: $font-montserrat-semibold
+            font-weight: $font-weight_semibold
+        &--next-payment
             color: $blue
-            font-weight: 600
+            font-family: $font-montserrat-semibold
+            font-weight: $font-weight_semibold
     &__payment
         @extend .text-8
         margin-top: 1rem
@@ -74,12 +80,35 @@
         align-items: center
         justify-content: space-between
         +tablet 
-            margin-top: 0.5rem
+            margin-top: 1rem
+        &--next-payment
+            font-family: $font-montserrat-semibold
+            font-weight: $font-weight_semibold
     &__payment-link
         text-decoration: underline
         width: fit-content
         cursor: pointer
+        +tablet
+            font:
+                family: $font-montserrat-semibold
+                size: $font-size_3
+                weight: $font-weight_semibold
+            line-height: $line-height_3
+
+    &__payment-price
+        &--expired
+            color: $primary-hover
+            font-family: $font-montserrat-semibold
+            font-weight: $font-weight_semibold
+        &--next-payment
+            color: $blue
+            font-family: $font-montserrat-semibold
+            font-weight: $font-weight_semibold
     &__price
         white-space: nowrap
     &__text
         padding-right: 1rem
+    &__date-text
+        font-family: $font-montserrat-regular
+        font-weight: $font-weight
+        color: $light-grey

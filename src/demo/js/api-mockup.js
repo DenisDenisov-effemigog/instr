@@ -412,7 +412,7 @@ let financeData = {
     history: [],
 };
 
-for(let i = 0; i < 6; ++i) {
+for(let i = 0; i < 5; ++i) {
 
     let sum = [10000, 20000].sort(function (a, b) {
         return 0.5 - Math.random()
@@ -422,7 +422,7 @@ for(let i = 0; i < 6; ++i) {
         return 0.5 - Math.random()
     }).pop();
 
-    let days = Math.floor(Math.random() * 20) - 10;
+    let days = Math.floor(Math.random() * 10) + 10;
     
     financeData.charges.push({
         id: i+1,
@@ -431,8 +431,11 @@ for(let i = 0; i < 6; ++i) {
         'days': days,
         'latest': false
     });
-    financeData.charges[0].latest = true
 }
+financeData.charges[0].days = -6;
+financeData.charges[0].date = '21.12.2020';
+financeData.charges[1].days = -4;
+financeData.charges[0].latest = true
 
 for(let i = 0; i < 6; ++i) {
 

@@ -1,8 +1,9 @@
 .finance-prgs-crcl
     display: none
-    +desktop
+    +desktop-small
         +flex-container-center
         flex-direction: column
+        width: 32%
         margin-left: 1.5rem
     &__days
         @extend .title-3
@@ -15,6 +16,7 @@
         +flex-container-center
         flex-direction: column
         margin-top: 1.5rem
+        text-align: center
         &--error
             color: $primary-hover
     &__payment-date

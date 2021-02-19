@@ -6,7 +6,7 @@
         </div>
         <div class="dashboard__main">
             <div class="dashboard__top">
-                <creditor-debt></creditor-debt>
+                <creditor-debt :financeCharges="financeData.charges"></creditor-debt>
                 <dashboard-discount></dashboard-discount>
                 <dashboard-contract></dashboard-contract>
             </div>
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import CreditorDebt from './creditor-debt.vue'
+    import CreditorDebt from './creditor-debt.vue'
     import DashboardContract from './page-dashboard/dashboard-contract.vue'
     import DashboardCurator from './page-dashboard/dashboard-curator.vue'
     import DashboardDiscount from './page-dashboard/dashboard-discount.vue'
@@ -36,8 +36,14 @@ export default {
         CreditorDebt
     },
     mounted(){
-        this.$eventBus.$emit('hideMenu')
+        this.$eventBus.$emit('hideMenu');
+        this.$store.dispatch('personalUpdateFinanceData');
     },
+    computed: {
+        financeData() {
+            return this.$store.state.personal.financeData;
+        },
+    }
 }
 </script>
         

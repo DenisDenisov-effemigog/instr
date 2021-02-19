@@ -1,6 +1,12 @@
 <template>
-    <div class="finance__layout">
-        <h4 class="finance__subtitle">{{ $tc('profile_finance.title.payable') }}</h4>
+    <div class="finance__layout finance__layout--credit-debt">
+        <div class="finance__creditor-debt">
+            <h4 class="finance__subtitle">{{ $tc('profile_finance.title.payable') }}</h4>
+            <component is="creditor-debt" 
+                :financeCharges="financeCharges"
+                :dashboard="false"
+            ></component>
+        </div>
         <div class="finance-prgs-crcl">
             <vue-ellipse-progress
                 :progress="progressBar"
@@ -11,7 +17,7 @@
                 :thickness="24"
                 :empty-thickness="24"
                 :gap="2"
-                animation="reverse 700 1000"
+                :animation="animation"
                 :legend="false"
                 line="butt"
             >
@@ -20,7 +26,7 @@
                     slot="legend-caption"
                 >
                     <span v-if="arrears">- </span>
-                    {{ $tc('profile_finance.days', leftDays) }}
+                    {{ $tc('profile_finance.days', Math.abs(this.latestArrears.days)) }}
                 </div>
             </vue-ellipse-progress>
             <div class="finance-prgs-crcl__text"
@@ -30,8 +36,9 @@
                 Поставки временно заблокированы до погашения просроченной дебиторской задолженности!
             </div>
             <div class="finance-prgs-crcl__text" v-else>
-                <span>Осталось до даты погашения задолженности.</span>
-                <span>Оплатить до: <span class="finance-prgs-crcl__payment-date">22.12.2020</span></span>
+                <span>Осталось до даты погашения задолженности. Оплатить до:&nbsp;
+                    <span class="finance-prgs-crcl__payment-date">{{ this.latestArrears.date }}</span>
+                </span>
             </div>
         </div>
     </div>
@@ -50,17 +57,15 @@
                 angle: -90,
                 color: '#357ADE',
                 limit: 30,
-                arrears: false
+                arrears: false,
+                animation: 'reverse 700 400'
             }
         },
         computed: {
-            charges() {
-                return this.financeCharges
-            },
             latestArrears() {
                 let latest = {}
-                this.charges.forEach(item => {
-                    if (!!item.latest) latest = {...item}
+                this.financeCharges.forEach(item => {
+                    if (item.latest) latest = {...item}
                 })
                 return latest
             },
@@ -71,14 +76,13 @@
                 if (this.latestArrears.days < 1) {
                     this.color = '#FF0000';
                     this.arrears = true;
+                    this.animation = 'default 700 400'
                 } else {
                     this.color = '#357ADE';
                     this.arrears = false;
+                    this.animation = 'reverse 700 400'
                 }
             },
-            leftDays() {
-                return Math.abs(this.latestArrears.days)
-            }
         },
         created() {
             this.changeColor
