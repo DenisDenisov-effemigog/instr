@@ -17,21 +17,16 @@ export default {
     name: "dashboard-discount",
     data(){
         return{
-            discountArr:[
-                {
-                    title: "Импорт",
-                    discount: 11
-                },
-                {
-                    title: "Силовое",
-                    discount: 7
-                },
-                {
-                    title: "Россия",
-                    discount: 10
-                }
-            ]
+            
         }
+    },
+    mounted() {
+        this.$store.dispatch('personalGetDiscount');
+    },
+    computed: {
+        discountArr() {
+            return this.cloneOverJson(this.$store.state.personal.discount);
+        },
     }
 }
 </script>
