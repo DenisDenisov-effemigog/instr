@@ -57,6 +57,9 @@ import dashboardOrders from './components/profile/page-dashboard/dashboard-order
 import dashboardCurator from './components/profile/page-dashboard/dashboard-curator.vue';
 import dashboardNotifications from './components/profile/page-dashboard/dashboard-notifications.vue';
 import pagePersonal from './components/profile/page-personal.vue';
+import pageAppeals from './components/profile/page-appeals.vue';
+import pageFeeds from './components/profile/page-feeds.vue';
+import pageDiscounts from './components/profile/page-discounts.vue';
 import pageOrders from './components/profile/page-orders.vue';
 import pageOrder from './components/profile/page-orders/page-order.vue';
 import orderList from './components/profile/page-orders/order-list.vue';
@@ -145,6 +148,9 @@ export default {
         paginationBtn,
         profile,
         pagePersonal,
+        pageAppeals,
+        pageFeeds,
+        pageDiscounts,
         pageOrders,
         pageFinance,
         pageDelivery,

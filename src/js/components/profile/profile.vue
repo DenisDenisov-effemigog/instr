@@ -70,31 +70,49 @@ export default {
             links: [
                 {
                     title: 'link.dashboard',
-                    url: '/account/dashboard',
+                    url: '/my/dashboard',
                     exact: true,
                     personType: [1,2],
                 },
                 {
                     title: 'link.my_profile',
-                    url: '/account/',
+                    url: '/my/profile',
+                    exact: true,
+                    personType: [1,2],
+                },
+                {
+                    title: 'link.discounts',
+                    url: '/my/discounts',
                     exact: true,
                     personType: [1,2],
                 },
                 {
                     title: 'link.orders_list',
-                    url: '/account/orders/', 
+                    url: '/my/orders/', 
                     personType: [1,2],
                     //external: true
                 },
                 {
                     title: 'link.finance',
-                    url: '/account/finance/', 
+                    url: '/my/finances/', 
                     personType: [2],
                     //external: true
                 },
                 {
                     title: 'link.my_addresses',
-                    url: '/account/adresses/',
+                    url: '/my/address/',
+                    personType: [2],
+                    //external: true
+                },
+                {
+                    title: 'link.feeds',
+                    url: '/my/feeds/',
+                    personType: [2],
+                    //external: true
+                },
+                {
+                    title: 'link.appeals',
+                    url: '/my/appeals/',
                     personType: [2],
                     //external: true
                 },
