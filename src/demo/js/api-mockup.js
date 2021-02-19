@@ -1520,7 +1520,7 @@ window.runAction = function (action, config) {
                                         values: {
                                             min: 1,
                                             max: 100,
-                                            from: 12,
+                                            from: 1,
                                             to: 100
                                         },
 
@@ -1567,7 +1567,7 @@ window.runAction = function (action, config) {
                                         values: [{
                                             title: "В наличии",
                                             value: "in_stock",
-                                            checked: true,
+                                            checked: false,
                                             count: 19
                                         }]
                                     },
@@ -1579,14 +1579,14 @@ window.runAction = function (action, config) {
                                             {
                                                 title: "Denzel",
                                                 value: "denzel",
-                                                checked: true,
+                                                checked: false,
                                                 available: true,
                                                 count: 7
                                             },
                                             {
                                                 title: "Сибртех",
                                                 value: "sibteh",
-                                                checked: true,
+                                                checked: false,
                                                 available: true,
                                                 count: 6
                                             },
@@ -1635,7 +1635,7 @@ window.runAction = function (action, config) {
                                             {
                                                 title: "Бестселлеры",
                                                 value: "bestsellers",
-                                                checked: true
+                                                checked: false
                                             },
                                             {
                                                 title: "Новинки",

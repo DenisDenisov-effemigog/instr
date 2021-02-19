@@ -4,7 +4,7 @@
             <filter-block v-model="internal.filters[index]" 
                 :key="filter.code" 
                 @change="onFiltersChange" 
-                :collapsed="filter.type != 'switch' && index > 2"
+                :collapsed="filter.type !== 'switch' && index > 2"
             >
             </filter-block>
         </template>
@@ -138,38 +138,12 @@
                                 if(oldFilter.values.max > item.values.max) {
                                     item.values.max = oldFilter.values.max;
                                 }
-                                filters[index].min = item.values.min;
-                                filters[index].max = item.values.max;
                             }
                         }
                     });
                 }
 
                 this.internal.filters = filters;
-                this.checkFiltersApplied();
-            },
-
-            checkFiltersApplied() {
-                let filtersApplied = false;
-                this.internal.filters.every((filter) => {
-                    if (filter.type === 'range') {
-                        if (filter.values.min !== filter.values.from || filter.values.max !== filter.values.to) {
-                            filtersApplied = true;
-                            return false;
-                        }
-                    } else if (filter.type === 'checkbox') {
-                        filter.values.every((value) => {
-                            if (value.checked) {
-                                filtersApplied = true;
-                                return false;
-                            }
-                        });
-                        if (filtersApplied) {
-                            return false;
-                        }
-                    }
-                    return true;
-                });
             },
 
             clearFilters() {
@@ -199,8 +173,8 @@
                     this.$eventBus.$emit('show-clear-filters-btn', false)
                 }
                 api.listingFilter(vm.payload.hash, vm.payload.filters).then((newFilters) => {
+                    newFilters.filters = vm.internal.filters
                     vm.applyExternalData(newFilters, true);
-                    window.dispatchEvent(new Event('click'));
                     this.applyFilters(true);
                 }).catch(errors => {
                     console.error(errors);
@@ -211,24 +185,19 @@
                 let vm = this;
                 let params = vm.getPayloadParams();
 
-                api.catalogUpdate(this.internal.hash, params).then(() => {
-                    api.catalogGet(this.internal.hash, params).then(answer => {
+                api.catalogGet(this.internal.hash, params).then(answer => {
+                    vm.$eventBus.$emit('apply-listing', answer.output);
+                    if (changeState) {
+                        window.history.pushState({
+                            output: answer.output
+                        }, '', answer.url);
 
-                        vm.$eventBus.$emit('apply-listing', answer.output);
-                        if (changeState) {
-                            window.history.pushState({
-                                output: answer.output
-                            }, '', answer.url);
-
-                            if (window.innerWidth > 767) {
-                                this.scrollTop('.breadcrumbs');
-                            } else {
-                                this.scrollTop('.listing__actions');
-                            }
+                        if (window.innerWidth > 767) {
+                            this.scrollTop('.breadcrumbs');
+                        } else {
+                            this.scrollTop('.listing__actions');
                         }
-                    }).catch(errors => {
-                        console.error(errors);
-                    });
+                    }
                 }).catch(errors => {
                     console.error(errors);
                 });
@@ -239,7 +208,11 @@
             },
             changeView(value) {
                 this.internal.view = value;
-                this.applyFilters(false);
+                let params = this.getPayloadParams();
+                api.catalogUpdate(this.internal.hash, params).then(() => {
+                }).catch(errors => {
+                    console.error(errors);
+                });
             },
             loadListing(){
                 this.internal.page_count = this.internal.page_count + this.filters.page_count
