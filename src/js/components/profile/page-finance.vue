@@ -14,6 +14,7 @@
             <a :href="catalogLink" class="profile__catalogue-btn">{{ $tc('button.move_to_catalog') }}</a>
         </div>
         <div v-else>
+            <product-limit :financeCharges="financeDataAll.charges"></product-limit>
             <accounts-payable :financeCharges="financeDataAll.charges"></accounts-payable>
             <finance-charges :financeCharges="financeDataAll.charges" :arrears="true"></finance-charges>
             <finance-charges :financeCharges="financeDataAll.charges"></finance-charges>
@@ -30,6 +31,7 @@
 </template>
 
 <script>
+    import productLimit from './page-finance/product-limit.vue'
     import accountsPayable from './page-finance/accounts-payable.vue'
     import financeCharges from './page-finance/finance-charges.vue';
     import operationHistory from './page-finance/operation-history.vue';
@@ -37,7 +39,7 @@
 
     export default {
         name:"page-finance",
-        components: { accountsPayable, financeCharges, operationHistory},
+        components: { productLimit, accountsPayable, financeCharges, operationHistory},
         data() {
             return {
                 loaded: false,

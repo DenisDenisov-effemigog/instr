@@ -11,6 +11,13 @@
         border-bottom: 1px solid $border-color_4
     &__title
         @extend .title-4
+    &__main
+        &--no-debt
+            & .creditor-debt__progress
+                display: none
+            & .creditor-debt__list
+                margin-top: 0
+
     &__progress-line
         width: 100%
         position: relative

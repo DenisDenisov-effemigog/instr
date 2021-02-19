@@ -3,7 +3,10 @@
         <div class="creditor-debt__head" v-if="dashboard">
             <h3 class="creditor-debt__title">{{ $tc('profile_finance.title.payable') }}</h3>
         </div>
-        <div class="creditor-debt__main">
+        <div class="creditor-debt__main"
+            :class="{'creditor-debt__main--no-debt': !dashboard && arrears === 0}"
+        >
+            <!-- Progress Bar -->
             <div class="creditor-debt__progress">
                 <div  class="creditor-debt__progress-line">
                     <div @mouseleave="closeTooltip" v-if="arrears > 0" 
@@ -38,6 +41,8 @@
                     </div>
                 </div>
             </div>
+            <!-- Progress Bar ending -->
+
             <div class="creditor-debt__list">
                 <div class="creditor-debt__item creditor-debt__item--total">
                     <div class="creditor-debt__text">
@@ -49,11 +54,10 @@
                 </div>
                 <div class="creditor-debt__item"
                     :class="{'creditor-debt__item--expired':arrears > 0}"
-                    v-if="arrears > 0"
                 >
                     <div class="creditor-debt__text">
                         {{ $tc('profile_finance.credit_debt.expired') }}
-                        <span class="creditor-debt__date-text" v-if="!dashboard"> ({{ nextPayment.date }})</span>
+                        <span class="creditor-debt__date-text" v-if="!dashboard && arrears > 0"> ({{ nextPayment.date }})</span>
                     </div>
                     <div class="creditor-debt__price">
                         {{currency(arrears)}} {{ $tc('text.currency') }}

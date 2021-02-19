@@ -1,5 +1,5 @@
 <template>
-    <div class="dashboard">
+    <div class="dashboard" v-if="loaded">
         <div class="dashboard__head">
             <h2 class="dashboard__title">Сводка</h2>
             <dashboard-notifications></dashboard-notifications>
@@ -15,6 +15,13 @@
                 <dashboard-orders></dashboard-orders>
             </div>
         </div>
+    </div>
+    <div v-else class="preloader">
+        <svg viewBox="0 0 145 145">
+            <use :xlink:href="templatePath + 'images/sprite.svg#preloader'"></use>
+        </svg>
+        <div class="preloader__loading preloader__loading--first"></div>
+        <div class="preloader__loading preloader__loading--second"></div>
     </div>
 </template>
 
@@ -34,6 +41,22 @@ export default {
         DashboardOrders, 
         DashboardNotifications,
         CreditorDebt
+    },
+    data() {
+            return {
+                loaded: false,
+            }
+        },
+    methods: {
+        loading(){
+            let vm = this
+            setTimeout(function () {
+                vm.loaded = true
+            }, 500)
+        },
+    },
+    created() {
+        this.loading()
     },
     mounted(){
         this.$eventBus.$emit('hideMenu');

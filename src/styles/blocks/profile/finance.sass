@@ -38,18 +38,17 @@
                 margin-bottom: 2.875rem
         & .profile__link svg
             margin: 0 0 0 .25rem
-        &--credit-debt
-            display: flex
-
-    &__creditor-debt
-        flex: 1
         & .creditor-debt
-            width: 66%
-            // height: fit-content
+            width: percentage(2 / 3)
             padding: 1rem
             box-shadow: none
             border: 1px solid $border-color_4
             +desktop-small
                 width: 100%
                 padding: 2rem
+        &--credit-debt
+            display: flex
+
+    &__creditor-debt
+        flex: 1
         

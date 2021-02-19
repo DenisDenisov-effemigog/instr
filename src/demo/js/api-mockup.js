@@ -432,9 +432,9 @@ for(let i = 0; i < 5; ++i) {
         'latest': false
     });
 }
-financeData.charges[0].days = -6;
+financeData.charges[0].days = 1;
 financeData.charges[0].date = '21.12.2020';
-financeData.charges[1].days = -4;
+financeData.charges[1].days = 2;
 financeData.charges[0].latest = true
 
 for(let i = 0; i < 6; ++i) {
