@@ -1,10 +1,15 @@
 <template>
     <div class="finance__layout">
         <h4 class="finance__subtitle">{{ $tc('profile_finance.title.product_limit') }}</h4>
-        <component is="creditor-debt" 
-            :financeCharges="financeCharges"
-            :dashboard="false"
-        ></component>
+        <div class="columns">
+            <div class="finance__progress-bar finance__progress-bar--limit">
+                <component is="finance-progress" 
+                    :financeCharges="financeCharges"
+                    :dashboard="false"
+                    :productLimit="true"
+                ></component>
+            </div>
+        </div>
     </div>
 </template>
 

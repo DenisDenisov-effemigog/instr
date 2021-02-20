@@ -30,6 +30,9 @@
                 height: $size_18
     &__layout
         margin: 2rem 0 1.5rem 0
+        // flex-basis: 0
+        // flex-grow: 1
+        // flex-shrink: 1
         +desktop-small
             margin: 2.5rem 0 0 0
         &:last-of-type
@@ -38,17 +41,51 @@
                 margin-bottom: 2.875rem
         & .profile__link svg
             margin: 0 0 0 .25rem
-        & .creditor-debt
-            width: percentage(2 / 3)
+        & .finance-progress
             padding: 1rem
             box-shadow: none
             border: 1px solid $border-color_4
             +desktop-small
-                width: 100%
                 padding: 2rem
-        &--credit-debt
-            display: flex
 
-    &__creditor-debt
-        flex: 1
-        
+    &__progress-bar
+        @extend .column
+        flex: none
+        width: 100%
+        +desktop-small
+            width: percentage(2 / 3)
+        &--payable
+            .finance-progress__head,
+            .finance-progress__item--next-payment,
+            .finance-progress__payment-link
+                display: none
+        &--limit
+            .finance-progress__head,
+            .finance-progress__item--next-payment,
+            .finance-progress__item--expired,
+            .finance-progress__payment-link
+                display: none
+            flex: none
+            .finance-progress
+                padding: 0
+                border: none
+                .finance-progress__main--no-debt .finance-progress__progress
+                    display: block
+                .finance-progress__info
+                    padding: 1rem
+                    margin-top: 1.5rem
+                    border: 1px solid $border-color_4
+                    border-radius: $border-radius
+                    +desktop-small
+                        padding: 2rem
+                        margin-top: 2rem
+                .finance-progress__list
+                    margin-top: 0
+                .finance-progress__item:first-of-type
+                    padding-top: 0
+                .finance-progress__item--processing
+                    display: flex
+                .finance-progress__payment
+                    display: none
+                    &--balance
+                        display: flex

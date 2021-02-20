@@ -73,7 +73,7 @@ import changePassword from './components/profile/page-modals/change-password.vue
 import deleteProfile from './components/profile/page-modals/delete-profile.vue';
 import addAddress from './components/profile/page-modals/add-address.vue';
 import repeatOrder from './components/profile/page-modals/repeat-order.vue';
-import creditorDebt from './components/profile/creditor-debt.vue';
+import creditorDebt from './components/profile/finance-progress.vue';
 /*listing*/
 import filters from './components/listing/filters/filters.vue';
 import allCategories from './components/listing/all-categories.vue';

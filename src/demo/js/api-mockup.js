@@ -423,18 +423,23 @@ for(let i = 0; i < 5; ++i) {
     }).pop();
 
     let days = Math.floor(Math.random() * 10) + 10;
+
+    let shipped = [true, false].sort(function (a, b) {
+        return 0.5 - Math.random()
+    }).pop();
     
     financeData.charges.push({
         id: i+1,
         'sum': sum,
         'date': date,
         'days': days,
-        'latest': false
+        'latest': false,
+        'shipped': shipped
     });
 }
-financeData.charges[0].days = 1;
+financeData.charges[0].days = -6;
 financeData.charges[0].date = '21.12.2020';
-financeData.charges[1].days = 2;
+financeData.charges[1].days = -4;
 financeData.charges[0].latest = true
 
 for(let i = 0; i < 6; ++i) {
