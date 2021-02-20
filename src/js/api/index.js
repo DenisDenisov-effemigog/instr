@@ -3,75 +3,92 @@ import axios from 'axios';
 if (window.runAction == undefined) {
     window.runAction = function (action, payload) {
         //debugger;
-        if (payload.data){
-            payload = payload.data; 
-        }
         console.log('runAction call from site');
         return new Promise((resolve, reject) => {
             //debugger;
             let url = '/bitrix/services/main/ajax.php?action='+encodeURIComponent(action);
-            let formData = new FormData();
-            if (payload) {
-                Object.keys(payload).forEach(function (key) {
-                    //console.log(key, payload[key]);
-                    let params = payload[key]
-                    if(typeof params === 'object') {
-                        Object.keys(params).forEach(function (index) {
-                            formData.append(index, JSON.stringify(params[index]))
-                        })
-                    } else {
-                        formData.append(key, JSON.stringify(params));
-                    }
-                });
-                //console.log('formData', formData, payload.id);
-            } else {
-                //console.log('formData', formData);
-            }
+            let formData = new HttpDataTransfer(payload.data).getFormData();
 
             axios.post(url, formData, {
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded",
                 }
             })
-            .then((response) => {
-                //debugger;
-                resolve(response);
-            })
-            .catch((response) => {
-                console.error('[BX.ajax error]', response.errors);
-                reject([{code: 'bx_sys_error', message: ''}]);
-            });
+                .then((response) => {
+                    //debugger;
+                    resolve(response);
+                })
+                .catch((response) => {
+                    console.error('[BX.ajax error]', response.errors);
+                    reject([{code: 'bx_sys_error', message: ''}]);
+                });
         });
     };
 }
+
+/**
+ *      let params = {outer: {inner: "value"}};
+ *      let formData = new HttpDataTransfer(params).getFormData();
+ *      formData // => FormData({"outer[inner]" : "value"})
+ */
+class HttpDataTransfer
+{
+    constructor(params)
+    {
+        this.params = params;
+    }
+
+    _collectFormData(formData, data, name = '')
+    {
+        if (typeof data === 'object')
+        {
+            Object.keys(data).forEach((index) => {
+                this._collectFormData(formData, data[index], !name ? index : name + '['+index+']');
+            });
+        }
+        else
+        {
+            formData.append(name, data);
+        }
+    }
+
+    getFormData()
+    {
+        let formData = new FormData();
+        this._collectFormData(formData, this.params);
+        return formData;
+    }
+}
+
 class Api {
+
     _promiseBitrixRequest(action, payload) {
         //debugger;
         return new Promise((resolve, reject) => {
-        //debugger;
+            //debugger;
             runAction(action, {
                 data: payload
             })
-            .then((response) => {
-                // debugger;
-                console.log('[response]', response);
-                if (response && response.data) {
-                    response = response.data;
-                    if (response.data.status === 0) {
-                        reject(response.data.errors)
-                    } else if (response.data.status === 1) {
-                        resolve(response.data.answer);
+                .then((response) => {
+                    // debugger;
+                    console.log('[response]', response);
+                    if (response && response.data) {
+                        response = response.data;
+                        if (response.data.status === 0) {
+                            reject(response.data.errors)
+                        } else if (response.data.status === 1) {
+                            resolve(response.data.answer);
+                        }
+                    } else {
+                        console.error('[BX.ajax error]', response.errors);
+                        reject([{code: 'bx_sys_error', message: 'Invalid response'}]);
                     }
-                } else {
+                })
+                .catch((response) => {
                     console.error('[BX.ajax error]', response.errors);
-                    reject([{code: 'bx_sys_error', message: 'Invalid response'}]);
-                }
-            })
-            .catch((response) => {
-                console.error('[BX.ajax error]', response.errors);
-                reject([{code: 'bx_sys_error', message: ''}]);
-            });
-        });   
+                    reject([{code: 'bx_sys_error', message: ''}]);
+                });
+        });
     }
     getBasket() {
         return this._promiseBitrixRequest('instrument2:rest.api.basket.get');
@@ -91,12 +108,12 @@ class Api {
     searchItem(arr) {
         return this._promiseBitrixRequest('instrument2:rest.api.basket.searchItem',
             {arr: arr}
-    );
+        );
     }
     combineCarts(arr) {
         return this._promiseBitrixRequest('instrument2:rest.api.basket.combineCarts',
             {arr: arr}
-    );
+        );
     }
     /*personalProfileSummary() {
         return this._promiseBitrixRequest('instrument2:rest.api.user.get', {});
@@ -197,7 +214,7 @@ class Api {
         return this._promiseBitrixRequest('instrument2:rest.api.catalog.filter', {
             hash: hash,
             filters: filters,
-           });
+        });
     }
     goToPage (hash, page) {
         return this._promiseBitrixRequest('instrument2:rest.api.catalog.next', {
