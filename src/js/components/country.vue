@@ -7,10 +7,10 @@
                     <h2 class="country__title">{{ $tc('country.choose_country') }}</h2>
                     <ul class="country__list">
                         <li v-for="country in countries" class="country__choice-item">
-                            <a @click.prevent="choiceCountry(country)" 
+                            <a :href="country.url" 
                                class="country__choice-link" 
-                               :class="{'country__choice-link--active': activeDisplayingCountry === country}"
-                            >{{country}}</a>
+                               :class="{'country__choice-link--active': activeCountry === country.title}"
+                            >{{country.title}}</a>
                         </li>
                     </ul>
                 </div>
@@ -55,16 +55,8 @@ export default {
             showBg: false,
         }
     },
-    computed: {
-        activeDisplayingCountry() {
-            return this.$store.state.personal.country
-        },
-    },
     created() {
         this.$eventBus.$on("open-country", this.openCountry)
-    },
-    mounted() {
-        this.$store.dispatch('countrySetActive', this.activeCountry);
     },
     methods:{
         closeChoiceCountry(event){
@@ -75,9 +67,6 @@ export default {
                 } 
             }
             this.toggleHtmlOverflow('auto')
-        },
-        choiceCountry(country){
-            this.$store.dispatch('countrySetActive', country);
         },
         openCountry(){
             this.openedCountry = !this.openedCountry

@@ -920,7 +920,17 @@
     }
 ] %}
 
-{% set countries = ['Белоруссия','Болгария','Венгрия','Казахстан','Польша','Россия','Румыния','США','Украина'] %}
+{% set countries = [
+    {title: 'Белоруссия', url: ''},
+    {title: 'Болгария', url: ''},
+    {title: 'Венгрия', url: ''},
+    {title: 'Казахстан', url: ''},
+    {title: 'Польша', url: ''},
+    {title: 'Россия', url: ''},
+    {title: 'Румыния', url: ''},
+    {title: 'США', url: ''},
+    {title: 'Украина', url: ''}
+] %}
 
 {% set user = {
     'name' : 'Ivan',
@@ -1006,7 +1016,11 @@
 
 {% block content %}
 
-    {% include '../../../templates/header/header.twig' with {'categories': categories, 'user': user} %}
+    {% include '../../../templates/header/header.twig' with {
+        'categories': categories, 
+        'user': user,
+        'activeCountry': 'Россия',
+    } %}
     {% include '../../../templates/breadcrumbs.twig' with {
         'breadcrumbs': [
             {

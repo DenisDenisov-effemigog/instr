@@ -6,6 +6,7 @@
         >
             <component is="home-menu" 
                        :countries="countries" 
+                       :activeCountry="activeCountry" 
                        v-if="menuLink === 'home'"
             ></component>
         </div>
@@ -21,7 +22,11 @@ export default {
         homeMenu,
     },
     props: {
-        countries: {required: true}
+        countries: {required: true},
+        activeCountry: {
+            required: true,
+            type: String
+        }
     },
     data(){
         return{

@@ -42,8 +42,6 @@ const state = {
     financeData: [],
     orders: [],
     addresses: [],
-
-    country: '',
     
     manager: '',
     discount: '',
@@ -72,9 +70,6 @@ const mutations = {
     [types.PERSONAL_ADDRESSES](state, addresses) {
         console.log('mut', addresses);
         state.addresses = addresses;
-    },
-    [types.PERSONAL_APPLY_COUNTRY](state, newMode) {
-        state.country = newMode;
     },
     [types.PERSONAL_APPLY_MANAGER](state, newMode) {
         state.manager = newMode;
@@ -143,9 +138,6 @@ const actions = {
             //}
         });
     },
-    countrySetActive({commit}, newMode) {
-        commit(types.PERSONAL_APPLY_COUNTRY, newMode);
-    }
 }
 
 const getters = {

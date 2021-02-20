@@ -15,7 +15,7 @@
                     :class="{'home-menu__link--opened': showCountry}"
                     @click="openCountry"
                 >
-                    <span>{{ activeDisplayingCountry }}</span>
+                    <span>{{ activeCountry }}</span>
                     <svg viewBox="0 0 6 10">
                         <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                     </svg>
@@ -24,16 +24,15 @@
                     class="home-menu__link_content" 
                     v-if="showCountry" v-for="country in countries"
                 >
-                    <div
+                    <a :href="country.url"
                         class="home-menu__link_sublink"
-                        :class="{'home-menu__link_sublink--active': activeDisplayingCountry === country}"
-                        @click="chooseCountry(country)"
+                        :class="{'home-menu__link_sublink--active': activeCountry === country.title}"
                     >
-                        <span>{{ country }}</span>
-                        <svg v-if="activeDisplayingCountry === country"> 
+                        <span>{{ country.title }}</span>
+                        <svg v-if="activeCountry === country.title"> 
                             <use :xlink:href="templatePath + 'images/sprite.svg#check'"></use>
                         </svg>
-                    </div>
+                    </a>
                 </div>
             </li>
         </ul>
@@ -60,7 +59,11 @@
     export default {
         name: 'home-menu',
         props: {
-            countries: {required: true}
+            countries: {required: true},
+            activeCountry: {
+                required: true,
+                type: String
+            }
         },
         data(){
             return{
@@ -75,17 +78,11 @@
                 ]
             }
         },
-        computed: {
-            activeDisplayingCountry() {
-                return this.$store.state.personal.country
-            },
-        },
         methods: {
             openCountry() {
                 this.showCountry = !this.showCountry
             },
             chooseCountry(country){
-                this.$store.dispatch('countrySetActive', country);
                 this.showCountry = false;
             },
         }
