@@ -1,7 +1,7 @@
 <template>
     <div class="dashboard" v-if="loaded">
         <div class="dashboard__head">
-            <h2 class="profile__title">Сводка</h2>
+            <h2 class="profile__title">{{ $tc('link.dashboard') }}</h2>
             <dashboard-notifications></dashboard-notifications>
         </div>
         <div class="dashboard__main">
