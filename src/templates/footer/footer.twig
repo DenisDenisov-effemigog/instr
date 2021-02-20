@@ -48,8 +48,10 @@
                 <use xlink:href="{{ templatePath }}images/sprite.svg#wt"></use>
             </svg>
             <div class="footer__company footer__company_desktop">{{ 'footer.company'|trans }}</div>
-            <a href="#" class="footer__agreement footer__agreement_desktop">
-                <span>{{ 'footer.user_agreement'|trans }}</span>
+            <a href="{{ footerLinks.agreement.url }}" 
+               class="footer__agreement footer__agreement_desktop"
+            >
+                <span>{{ footerLinks.agreement.title }}</span>
             </a>
         </div>
         <div class="footer__layout footer__layout_mobile">
@@ -57,43 +59,46 @@
                 <use xlink:href="{{ templatePath }}images/sprite.svg#tw"></use>
             </svg>
             <div class="footer__company footer__company_desktop">{{ 'footer.company'|trans }}</div>
-            <a href="#" class="footer__agreement footer__agreement_desktop">{{ 'footer.user_agreement'|trans }}</a>
+            <a href="{{ footerLinks.agreement.url }}"
+               class="footer__agreement footer__agreement_desktop"
+            >{{ footerLinks.agreement.title }}</a>
         </div>
 
         <nav class="footer__menu">
             <ul class="footer__menu-column footer__menu-column_desktop">
-                <li class="footer__menu-title"><a href="#">{{ 'nav.title.about'|trans }}</a></li>
-                <li class="footer__menu-item"><a href="#">{{ 'nav.branches'|trans }}</a></li>
-                <li class="footer__menu-item"><a href="#">{{ 'nav.brands'|trans }}</a></li>
-                <li class="footer__menu-item"><a href="#">{{ 'nav.guarantee'|trans }}</a></li>
-                <li class="footer__menu-item"><a href="#">{{ 'nav.news'|trans }}</a></li>
+                <li class="footer__menu-title"><a href="{{ footerLinks.about.url }}">{{ footerLinks.about.title }}</a></li>
+                {% for link in footerLinks.about.links %}
+                    <li class="footer__menu-item"><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
             </ul>
             <ul class="footer__menu-column footer__menu-column_desktop">
-                <li class="footer__menu-title"><a href="#">{{ 'nav.title.help'|trans }}</a></li>
-                <li class="footer__menu-item"><a href="#">{{ 'nav.discounts'|trans }}</a></li>
-                <li class="footer__menu-item"><a href="#">{{ 'nav.volume_discounts'|trans }}</a></li>
-                <li class="footer__menu-item"><a href="#">{{ 'nav.catalog'|trans }}</a></li>
-                <li class="footer__menu-item"><a href="#">{{ 'nav.points_of_purchases'|trans }}</a></li>
+                <li class="footer__menu-title"><a href="{{ footerLinks.help.url }}">{{ footerLinks.help.title }}</a></li>
+                {% for link in footerLinks.help.links %}
+                    <li class="footer__menu-item"><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
             </ul>
             <ul class="footer__menu-column footer__menu-column_desktop">
-                <li class="footer__menu-title"><a href="#">{{ 'nav.title.to_costumer'|trans }}</a></li>
-                <li class="footer__menu-item"><a href="#">{{ 'nav.service_warranty'|trans }}</a></li>
-                <li class="footer__menu-item"><a href="#">{{ 'nav.feedback'|trans }}</a></li>
-                <li class="footer__menu-item">
-                    <a href="#">{{ 'nav.policy'|trans }}</a>
-                </li>
+                <li class="footer__menu-title"><a href="{{ footerLinks.client.url }}">{{ footerLinks.client.title }}</a></li>
+                {% for link in footerLinks.client.links %}
+                    <li class="footer__menu-item"><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
             </ul>
             <div class="footer__menu-column footer__menu-column_mobile">
+                <div class="footer__menu-title">
+                    <a href="{{ footerLinks.help.url }}">{{ footerLinks.help.title }}</a>
+                </div>
                 <ul>
-                    <li class="footer__menu-title"><a href="#">{{ 'nav.title.help'|trans }}</a></li>
-                    <li class="footer__menu-item"><a href="#">{{ 'nav.catalog'|trans }}</a></li>
-                    <li class="footer__menu-item"><a href="#">{{ 'nav.discounts'|trans }}</a></li>
-                    <li class="footer__menu-item"><a href="#">{{ 'nav.brands'|trans }}</a></li>
-                    <li class="footer__menu-item"><a href="#">{{ 'nav.guarantee'|trans }}</a></li>
-                    <li class="footer__menu-item"><a href="#">{{ 'nav.points_of_purchases'|trans }}</a></li>
-                    <li class="footer__menu-item"><a href="#">{{ 'nav.volume_discounts'|trans }}</a></li>
+                    {% for link in footerLinks.about.links %}
+                        <li class="footer__menu-item"><a href="{{ link.url }}">{{ link.title }}</a></li>
+                    {% endfor %}
+                    {% for link in footerLinks.help.links %}
+                        <li class="footer__menu-item"><a href="{{ link.url }}">{{ link.title }}</a></li>
+                    {% endfor %}
+                    {% for link in footerLinks.client.links %}
+                        <li class="footer__menu-item"><a href="{{ link.url }}">{{ link.title }}</a></li>
+                    {% endfor %}
                 </ul>
-                <ul>
+                {#<ul>
                     <li class="footer__menu-title"></li>
                     <li class="footer__menu-item">
                         <a href="#">{{ 'nav.policy'|trans }}</a>
@@ -102,10 +107,12 @@
                     <li class="footer__menu-item"><a href="#">{{ 'nav.branches'|trans }}</a></li>
                     <li class="footer__menu-item"><a href="#">{{ 'nav.feedback'|trans }}</a></li>
                     <li class="footer__menu-item"><a href="#">{{ 'nav.service_warranty'|trans }}</a></li>
-                </ul>
+                </ul>#}
             </div>
             <ul class="footer__menu-column">
-                <li class="footer__menu-title"><a href="#">{{ 'nav.title.contacts'|trans }}</a></li>
+                <li class="footer__menu-title">
+                    <a href="{{ footerLinks.contacts.url }}">{{ footerLinks.contacts.title }}</a>
+                </li>
                 <li class="footer__menu-item footer__menu-item_img">
                     <svg class="footer__menu-icon">
                         <use xlink:href="{{ templatePath }}images/sprite.svg#icons__phone"></use>
@@ -133,8 +140,8 @@
             </ul>
         </nav>
 
-        <a href="#" class="footer__agreement footer__agreement_mobile">
-            <span>{{ 'footer.user_agreement'|trans }}</span>
+        <a href="{{ footerLinks.agreement.url }}" class="footer__agreement footer__agreement_mobile">
+            <span>{{ footerLinks.agreement.title }}</span>
         </a>
         <div class="footer__company footer__company_mobile">{{ 'footer.company'|trans }}</div>
 

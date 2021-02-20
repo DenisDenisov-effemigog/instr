@@ -1909,6 +1909,43 @@
     ]
 } %}
 
+{% set footerLinks = {
+    agreement: {title: 'Пользовательское соглашение', url: ''},
+    contacts: {
+        title: 'Контакты',
+        url: '',
+    },
+    about: {
+        title: 'О компании',
+        url: '',
+        links: [
+            {title: 'Филиалы', url: ''},
+            {title: 'Бренды', url: ''},
+            {title: 'Гарантия', url: ''},
+            {title: 'Новости', url: ''},
+        ]
+    },
+    help: {
+        title: 'Помощь',
+        url: '',
+        links: [
+            {title: 'Акции', url: ''},
+            {title: 'Оптовые скидки', url: ''},
+            {title: 'Каталог товаров', url: ''},
+            {title: 'Где купить', url: ''},
+        ]
+    },
+    client: {
+        title: 'Покупателю',
+        url: '',
+        links: [
+            {title: 'Сервис и гарантия', url: ''},
+            {title: 'Обратная связь', url: ''},
+            {title: 'Политика обработки персональных данных', url: ''},
+        ]
+    },
+} %}
+
 {% block content %}
 
     {% include '../../../templates/header/header.twig' with {
@@ -1950,6 +1987,7 @@
         'listingCategories': listingCategories[0],
         'listingCategoryTitle': listingCategories[0].title,
         'phone_mask': '+7 (F##) ###-##-##',
+        'footerLinks': footerLinks,
     } %}
     
 {% endblock %}
