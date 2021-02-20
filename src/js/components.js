@@ -55,6 +55,7 @@ import dashboardDiscount from './components/profile/page-dashboard/dashboard-dis
 import dashboardContract from './components/profile/page-dashboard/dashboard-contract.vue';
 import dashboardOrders from './components/profile/page-dashboard/dashboard-orders.vue';
 import dashboardCurator from './components/profile/page-dashboard/dashboard-curator.vue';
+import dashboardPetitions from './components/profile/page-dashboard/dashboard-petitions.vue';
 import dashboardNotifications from './components/profile/page-dashboard/dashboard-notifications.vue';
 import pagePersonal from './components/profile/page-personal.vue';
 import pageAppeals from './components/profile/page-appeals.vue';
@@ -73,7 +74,7 @@ import changePassword from './components/profile/page-modals/change-password.vue
 import deleteProfile from './components/profile/page-modals/delete-profile.vue';
 import addAddress from './components/profile/page-modals/add-address.vue';
 import repeatOrder from './components/profile/page-modals/repeat-order.vue';
-import creditorDebt from './components/profile/creditor-debt.vue';
+import creditorDebt from './components/profile/finance-progress.vue';
 /*listing*/
 import filters from './components/listing/filters/filters.vue';
 import allCategories from './components/listing/all-categories.vue';
@@ -203,5 +204,6 @@ export default {
         dashboardOrders,
         dashboardNotifications,
         creditorDebt,
+        dashboardPetitions,
     },
 }

@@ -365,6 +365,20 @@ let demoContract = [
         title:'Остаток товарного лимита',
         info:'30 000 ₽'
     }
+];
+let demoPetitions = [
+    {
+        title:'Вопрос по гарантии',
+        date:'12.03.2021',
+        status:'Есть ответ',
+        success: true
+    },
+    {
+        title:'Запрос на удаление адреса',
+        date:'12.03.2021',
+        status:'В работе',
+        success: false
+    },
 ]
 let demoOrders = [];
 //let baseOrderDate = new Date('2020-02-14');
@@ -423,18 +437,23 @@ for(let i = 0; i < 5; ++i) {
     }).pop();
 
     let days = Math.floor(Math.random() * 10) + 10;
+
+    let shipped = [true, false].sort(function (a, b) {
+        return 0.5 - Math.random()
+    }).pop();
     
     financeData.charges.push({
         id: i+1,
         'sum': sum,
         'date': date,
         'days': days,
-        'latest': false
+        'latest': false,
+        'shipped': shipped
     });
 }
-financeData.charges[0].days = 1;
+financeData.charges[0].days = -6;
 financeData.charges[0].date = '21.12.2020';
-financeData.charges[1].days = 2;
+financeData.charges[1].days = -4;
 financeData.charges[0].latest = true
 
 for(let i = 0; i < 6; ++i) {
@@ -1276,6 +1295,16 @@ window.runAction = function (action, config) {
                         data: {
                             status: 1,
                             answer: demoContract
+                        }
+                    }
+                });
+                break;
+            case 'instrument2:rest.api.petitions.get':
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                            answer: demoPetitions
                         }
                     }
                 });
