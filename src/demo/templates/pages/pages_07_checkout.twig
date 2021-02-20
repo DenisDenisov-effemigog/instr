@@ -1042,6 +1042,50 @@
 {% set discounts = [
     918, 1, 1
 ] %}
+{% set headerLinks = [
+    {title: 'О компании', url: ''},
+    {title: 'Филиалы', url: ''},
+    {title: 'Где купить', url: ''},
+    {title: 'Условия сотрудничества', url: ''},
+    {title: 'Бренды', url: ''},
+    {title: 'Акции', url: ''},
+] %}
+{% set footerLinks = {
+    agreement: {title: 'Пользовательское соглашение', url: ''},
+    contacts: {
+        title: 'Контакты',
+        url: '',
+    },
+    about: {
+        title: 'О компании',
+        url: '',
+        links: [
+            {title: 'Филиалы', url: ''},
+            {title: 'Бренды', url: ''},
+            {title: 'Гарантия', url: ''},
+            {title: 'Новости', url: ''},
+        ]
+    },
+    help: {
+        title: 'Помощь',
+        url: '',
+        links: [
+            {title: 'Акции', url: ''},
+            {title: 'Оптовые скидки', url: ''},
+            {title: 'Каталог товаров', url: ''},
+            {title: 'Где купить', url: ''},
+        ]
+    },
+    client: {
+        title: 'Покупателю',
+        url: '',
+        links: [
+            {title: 'Сервис и гарантия', url: ''},
+            {title: 'Обратная связь', url: ''},
+            {title: 'Политика обработки персональных данных', url: ''},
+        ]
+    },
+} %}
 
 {% block content %}
 
@@ -1049,6 +1093,7 @@
         'categories': categories, 
         'user': user,
         'activeCountry': 'Россия',
+        'headerLinks': headerLinks,
     } %}
     {% include '../../../templates/breadcrumbs.twig' with {
         'breadcrumbs': [
@@ -1078,6 +1123,8 @@
         'activeCountry': 'Россия',
         'user': user,
         'phone_mask': '+7 (F##) ###-##-##',
+        'footerLinks': footerLinks,
+        'headerLinks': headerLinks,
     } %}
     
 {% endblock %}

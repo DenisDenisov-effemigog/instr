@@ -3,24 +3,11 @@
         <div class="container">
             <nav class="topnav__nav">
                 <ul class="topnav__nav-list">
-                    <li class="topnav__nav-item">
-                        <a href="#" class="topnav__nav-link">{{ 'nav.title.about'|trans }}</a>
-                    </li>
-                    <li class="topnav__nav-item">
-                        <a href="#" class="topnav__nav-link">{{ 'nav.branches'|trans }}</a>
-                    </li>
-                    <li class="topnav__nav-item">
-                        <a href="#" class="topnav__nav-link">{{ 'nav.points_of_purchases'|trans }}</a>
-                    </li>
-                    <li class="topnav__nav-item">
-                        <a href="#" class="topnav__nav-link">{{ 'nav.cooperation'|trans }}</a>
-                    </li>
-                    <li class="topnav__nav-item">
-                        <a href="#" class="topnav__nav-link">{{ 'nav.brands'|trans }}</a>
-                    </li>
-                    <li class="topnav__nav-item">
-                        <a href="#" class="topnav__nav-link">{{ 'nav.discounts'|trans }}</a>
-                    </li>
+                    {% for link in headerLinks %}
+                        <li class="topnav__nav-item">
+                            <a href="{{ link.url }}" class="topnav__nav-link">{{ link.title }}</a>
+                        </li>
+                    {% endfor %}
                 </ul>
             </nav>
             <component is="topnav-switch"

@@ -90,12 +90,13 @@
     &__menu-column
         //margin-top: 1.5rem
         &_mobile
-            display: flex
             margin-bottom: 1.75rem
             +tablet
                 display: none
             & > ul
-                width: 50%
+                width: 100%
+                column-count: 2
+                    
         &_desktop
             display: none
             +tablet

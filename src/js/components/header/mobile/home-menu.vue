@@ -1,9 +1,9 @@
 <template>
     <div class="home-menu">
         <ul class="home-menu__links">
-            <li v-for="link in links">
-                <a :href="link.link" class="home-menu__link">
-                    <span>{{ $tc(link.title) }}</span>
+            <li v-for="link in headerLinks">
+                <a :href="link.url" class="home-menu__link">
+                    <span>{{ link.title }}</span>
                     <svg viewBox="0 0 6 10">
                         <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                     </svg>
@@ -54,8 +54,6 @@
 </template>
 
 <script>
-    import config from "../../../config";
-    
     export default {
         name: 'home-menu',
         props: {
@@ -63,19 +61,15 @@
             activeCountry: {
                 required: true,
                 type: String
+            },
+            headerLinks: {
+                type: Array,
+                required: true
             }
         },
         data(){
             return{
                 showCountry: false,
-                links: [
-                    {title: 'nav.title.about', link: config.links.about},
-                    {title: 'nav.branches', link: config.links.branches},
-                    {title: 'nav.points_of_purchases', link: config.links.points},
-                    {title: 'nav.cooperation', link: config.links.cooperation},
-                    {title: 'nav.brands', link: config.links.brands},
-                    {title: 'nav.discounts', link: config.links.shares},
-                ]
             }
         },
         methods: {
