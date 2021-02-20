@@ -9,6 +9,7 @@
 <component is="mobile-menu" 
            :countries="{{ countries|json_encode()|e('html_attr') }}"
            :active-country="{{ activeCountry|json_encode()|e('html_attr') }}"
+           :header-links="{{ headerLinks|json_encode()|e('html_attr') }}"
 ></component>
 <component is="modal"
            :phone-mask="{{ phone_mask|json_encode|e('html_attr') }}"
@@ -98,16 +99,6 @@
                         <li class="footer__menu-item"><a href="{{ link.url }}">{{ link.title }}</a></li>
                     {% endfor %}
                 </ul>
-                {#<ul>
-                    <li class="footer__menu-title"></li>
-                    <li class="footer__menu-item">
-                        <a href="#">{{ 'nav.policy'|trans }}</a>
-                    </li>
-                    <li class="footer__menu-item"><a href="#">{{ 'nav.news'|trans }}</a></li>
-                    <li class="footer__menu-item"><a href="#">{{ 'nav.branches'|trans }}</a></li>
-                    <li class="footer__menu-item"><a href="#">{{ 'nav.feedback'|trans }}</a></li>
-                    <li class="footer__menu-item"><a href="#">{{ 'nav.service_warranty'|trans }}</a></li>
-                </ul>#}
             </div>
             <ul class="footer__menu-column">
                 <li class="footer__menu-title">

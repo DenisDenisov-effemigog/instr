@@ -1013,7 +1013,14 @@
 
     },
 ] %}
-
+{% set headerLinks = [
+    {title: 'О компании', url: ''},
+    {title: 'Филиалы', url: ''},
+    {title: 'Где купить', url: ''},
+    {title: 'Условия сотрудничества', url: ''},
+    {title: 'Бренды', url: ''},
+    {title: 'Акции', url: ''},
+] %}
 {% set footerLinks = {
     agreement: {title: 'Пользовательское соглашение', url: ''},
     contacts: {
@@ -1057,6 +1064,7 @@
         'categories': categories, 
         'user': user,
         'activeCountry': 'Россия',
+        'headerLinks': headerLinks,
     } %}
     {% include '../../../templates/breadcrumbs.twig' with {
         'breadcrumbs': [
@@ -1083,6 +1091,7 @@
         'user': user,
         'phone_mask': '+7 (F##) ###-##-##',
         'footerLinks': footerLinks,
+        'headerLinks': headerLinks,
     } %}
     
 {% endblock %}
