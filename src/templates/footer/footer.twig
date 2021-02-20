@@ -8,6 +8,7 @@
 ></component>
 <component is="mobile-menu" 
            :countries="{{ countries|json_encode()|e('html_attr') }}"
+           :active-country="{{ activeCountry|json_encode()|e('html_attr') }}"
 ></component>
 <component is="modal"
            :phone-mask="{{ phone_mask|json_encode|e('html_attr') }}"

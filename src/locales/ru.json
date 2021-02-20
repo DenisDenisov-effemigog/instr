@@ -166,6 +166,9 @@
     "profile.dashboard.order_info": "Заказов нет",
     "profile.dashboard.notifications_title": "Мои уведомления",
     "profile.dashboard.notifications_clear": "Очистить все",
+    "profile.dashboard.petitions_title": "Обращения",
+    "profile.dashboard.petitions_add": "Создать",
+    "profile.dashboard.petitions_info": "Обращений нет",
     
     "change_pass.current": "Текущий пароль",
     "change_pass.new": "Новый пароль",

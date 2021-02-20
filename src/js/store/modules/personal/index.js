@@ -42,12 +42,11 @@ const state = {
     financeData: [],
     orders: [],
     addresses: [],
-
-    country: '',
     
     manager: '',
     discount: '',
     contract: '',
+    petitions: '',
 };
 
 const mutations = {
@@ -72,9 +71,6 @@ const mutations = {
         console.log('mut', addresses);
         state.addresses = addresses;
     },
-    [types.PERSONAL_APPLY_COUNTRY](state, newMode) {
-        state.country = newMode;
-    },
     [types.PERSONAL_APPLY_MANAGER](state, newMode) {
         state.manager = newMode;
     },
@@ -83,6 +79,9 @@ const mutations = {
     },
     [types.PERSONAL_APPLY_CONTRACT](state, newMode) {
         state.contract = newMode;
+    },
+    [types.PERSONAL_APPLY_PETITIONS](state, newMode) {
+        state.petitions = newMode;
     }
 };
 
@@ -105,6 +104,11 @@ const actions = {
     personalGetContract: ({commit, dispatch}) => {
         api.contractGet().then((profile) => {
             commit(types.PERSONAL_APPLY_CONTRACT, profile);
+        });
+    },
+    personalGetPetitions: ({commit, dispatch}) => {
+        api.petitionsGet().then((profile) => {
+            commit(types.PERSONAL_APPLY_PETITIONS, profile);
         });
     },
     personalUpdateOrders: ({commit}) => {
@@ -134,9 +138,6 @@ const actions = {
             //}
         });
     },
-    countrySetActive({commit}, newMode) {
-        commit(types.PERSONAL_APPLY_COUNTRY, newMode);
-    }
 }
 
 const getters = {

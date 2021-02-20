@@ -365,6 +365,20 @@ let demoContract = [
         title:'Остаток товарного лимита',
         info:'30 000 ₽'
     }
+];
+let demoPetitions = [
+    {
+        title:'Вопрос по гарантии',
+        date:'12.03.2021',
+        status:'Есть ответ',
+        success: true
+    },
+    {
+        title:'Запрос на удаление адреса',
+        date:'12.03.2021',
+        status:'В работе',
+        success: false
+    },
 ]
 let demoOrders = [];
 //let baseOrderDate = new Date('2020-02-14');
@@ -1281,6 +1295,16 @@ window.runAction = function (action, config) {
                         data: {
                             status: 1,
                             answer: demoContract
+                        }
+                    }
+                });
+                break;
+            case 'instrument2:rest.api.petitions.get':
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                            answer: demoPetitions
                         }
                     }
                 });

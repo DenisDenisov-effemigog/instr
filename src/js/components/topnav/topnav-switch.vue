@@ -5,7 +5,7 @@
                 <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-top'"></use>
             </svg>
         </div>
-        <div @click="clickToCountry" class="topnav__switch-text">{{ activeDisplayingCountry }}</div>
+        <div @click="clickToCountry" class="topnav__switch-text">{{ activeCountry }}</div>
     </div>
 </template>
 
@@ -13,15 +13,16 @@
 
 export default {
     name: 'topnav-switch',
+    props: {
+        activeCountry: {
+            required: true,
+            type: String
+        }
+    },
     data(){
         return{
             openedModal: false
         }
-    },
-    computed: {
-        activeDisplayingCountry() {
-            return this.$store.state.personal.country
-        },
     },
     methods:{
         clickToCountry(){
