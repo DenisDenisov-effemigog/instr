@@ -511,6 +511,83 @@ let demoAddressList = [
     }
 ];
 
+let demoFeeds = {
+    userFeeds: [
+        {
+            'id': 1,
+            'title': 'Выгрузка новинки',
+            'date': '2020, 04, 15, 16, 56',
+            'updateDate': '2020, 04, 15, 16, 56',
+            'filter1': '',
+            'filter2': '',
+            'brand1': 'Denzel',
+            'brand2': ''
+        },
+        {
+            'id': 2,
+            'title': 'Выгрузка новинки',
+            'date': '2020, 04, 15, 16, 56',
+            'updateDate': '2020, 04, 15, 16, 56',
+            'filter1': '',
+            'filter2': '',
+            'brand1': 'Denzel',
+            'brand2': ''
+        }
+    ],
+    readyFeeds: [
+        {
+            'title': 'Полный прайс-лист',
+            'link_yml': '/images/country/globus.png',
+            'link_xlsx': '/images/country/map.png',
+        },
+        {
+            'title': 'Все бренды',
+            'link_yml': '/images/country/globus.png',
+            'link_xlsx': '/images/country/map.png',
+        },
+        {
+            'title': 'Gross',
+            'link_yml': '/images/country/globus.png',
+            'link_xlsx': '/images/country/map.png',
+        },
+        {
+            'title': 'Matrix',
+            'link_yml': '/images/country/globus.png',
+            'link_xlsx': '/images/country/map.png',
+        },
+        {
+            'title': 'Средства индивидуальной защиты',
+            'link_yml': '/images/country/globus.png',
+            'link_xlsx': '/images/country/map.png',
+        },
+        {
+            'title': 'Полный прайс-лист',
+            'link_yml': '/images/country/globus.png',
+            'link_xlsx': '/images/country/map.png',
+        },
+        {
+            'title': 'Все бренды',
+            'link_yml': '/images/country/globus.png',
+            'link_xlsx': '/images/country/map.png',
+        },
+        {
+            'title': 'Gross',
+            'link_yml': '/images/country/globus.png',
+            'link_xlsx': '/images/country/map.png',
+        },
+        {
+            'title': 'Matrix',
+            'link_yml': '/images/country/globus.png',
+            'link_xlsx': '/images/country/map.png',
+        },
+        {
+            'title': 'Средства индивидуальной защиты',
+            'link_yml': '/images/country/globus.png',
+            'link_xlsx': '/images/country/map.png',
+        }
+    ]
+}
+
 let demoListingResult= {
     products: [
         {
@@ -1398,6 +1475,16 @@ window.runAction = function (action, config) {
                                     total: 5
                                 }
                             },
+                        }
+                    }
+                });
+                break;
+            case 'instrument2:rest.api.user.feeds.get':
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                            answer: demoFeeds
                         }
                     }
                 });
