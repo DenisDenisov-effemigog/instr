@@ -48,6 +48,7 @@ const state = {
     manager: '',
     discount: '',
     contract: '',
+    petitions: '',
 };
 
 const mutations = {
@@ -83,6 +84,9 @@ const mutations = {
     },
     [types.PERSONAL_APPLY_CONTRACT](state, newMode) {
         state.contract = newMode;
+    },
+    [types.PERSONAL_APPLY_PETITIONS](state, newMode) {
+        state.petitions = newMode;
     }
 };
 
@@ -105,6 +109,11 @@ const actions = {
     personalGetContract: ({commit, dispatch}) => {
         api.contractGet().then((profile) => {
             commit(types.PERSONAL_APPLY_CONTRACT, profile);
+        });
+    },
+    personalGetPetitions: ({commit, dispatch}) => {
+        api.petitionsGet().then((profile) => {
+            commit(types.PERSONAL_APPLY_PETITIONS, profile);
         });
     },
     personalUpdateOrders: ({commit}) => {

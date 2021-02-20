@@ -160,6 +160,9 @@ class Api {
     contractGet() {
         return this._promiseBitrixRequest('instrument2:rest.api.contract.get');
     }
+    petitionsGet() {
+        return this._promiseBitrixRequest('instrument2:rest.api.petitions.get');
+    }
     changePassowrd(currentPass, newPass) {
         return this._promiseBitrixRequest('instrument2:rest.api.user.change.password', {
             currentPass: currentPass,

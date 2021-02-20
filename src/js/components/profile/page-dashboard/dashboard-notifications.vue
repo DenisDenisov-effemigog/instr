@@ -53,24 +53,32 @@ export default {
     data(){
         return{
             tooltipFlag: false,
-             notificationData:[
-                 {
-                     title:'Вопрос по гарантии',
-                     date:'12.03.2021',
-                     status:'Готово'
-                 },
-                 {
-                     title:'Запрос на удаление адреса',
-                     date:'12.03.2021',
-                     status:'Готово'
-                 },
-                 {
-                     title:'Запрос на удаление адреса',
-                     date:'12.03.2021',
-                     status:'Готово'
-                 }
-             ]
+            // notificationData:[
+            //      {
+            //          title:'Вопрос по гарантии',
+            //          date:'12.03.2021',
+            //          status:'Готово'
+            //      },
+            //      {
+            //          title:'Запрос на удаление адреса',
+            //          date:'12.03.2021',
+            //          status:'Готово'
+            //      },
+            //      {
+            //          title:'Запрос на удаление адреса',
+            //          date:'12.03.2021',
+            //          status:'Готово'
+            //      }
+            //  ]
         }
+    },
+    mounted() {
+        this.$store.dispatch('personalGetPetitions');
+    },
+    computed: {
+        notificationData() {
+            return this.cloneOverJson(this.$store.state.personal.petitions);
+        },
     }
 }
 </script>

@@ -12,6 +12,7 @@
             </div>
             <div class="dashboard__bottom">
                 <dashboard-curator></dashboard-curator>
+                <dashboard-petitions></dashboard-petitions>
                 <dashboard-orders></dashboard-orders>
             </div>
         </div>
@@ -32,6 +33,7 @@
     import DashboardDiscount from './page-dashboard/dashboard-discount.vue'
     import DashboardNotifications from './page-dashboard/dashboard-notifications.vue'
     import DashboardOrders from './page-dashboard/dashboard-orders.vue'
+    import DashboardPetitions from './page-dashboard/dashboard-petitions.vue'
 export default {
     name: "page-dashboard",
     components:{
@@ -40,7 +42,8 @@ export default {
         DashboardCurator, 
         DashboardOrders, 
         DashboardNotifications,
-        CreditorDebt
+        CreditorDebt,
+        DashboardPetitions
     },
     data() {
             return {
