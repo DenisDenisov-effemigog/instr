@@ -34,7 +34,10 @@
         // flex-grow: 1
         // flex-shrink: 1
         +desktop-small
-            margin: 2.5rem 0 0 0
+            margin: 3.5rem 0 0 0
+        &:first-of-type
+            +desktop-small
+                margin-top: 2rem
         &:last-of-type
             margin-bottom: 5.8125rem
             +desktop-small
@@ -59,6 +62,9 @@
             .finance-progress__item--next-payment,
             .finance-progress__payment-link
                 display: none
+            .finance-progress__list
+                +mobile
+                    margin-top: 0
         &--limit
             .finance-progress__head,
             .finance-progress__item--next-payment,

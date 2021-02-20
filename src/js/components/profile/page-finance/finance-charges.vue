@@ -7,10 +7,10 @@
         <ul class="finance-charges"
             :class="{'finance-charges--arrears': arrears, 'finance-charges--expanded': expanded}"
         >
-            <li class="finance-charges__item finance-charges__item--head">
-                <div class="finance-charges__sum">{{ $tc('profile_finance.head.sum') }}</div>
-                <div class="finance-charges__date">{{ $tc('profile_finance.head.date') }}</div>
-                <div class="finance-charges__left-days">{{ $tc('profile_finance.head.left_days') }}</div>
+            <li class="finance-charges__item">
+                <div class="profile__table-header finance-charges__sum">{{ $tc('profile_finance.head.sum') }}</div>
+                <div class="profile__table-header finance-charges__date">{{ $tc('profile_finance.head.date') }}</div>
+                <div class="profile__table-header finance-charges__left-days">{{ $tc('profile_finance.head.left_days') }}</div>
             </li>
             <li class="finance-charges__item" v-for="item in charges" v-if="arrears && item.days < 0">
                 <div class="finance-charges__sum">{{ currency(item.sum) }} {{ $tc('text.currency') }}</div>

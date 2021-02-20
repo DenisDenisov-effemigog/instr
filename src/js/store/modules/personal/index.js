@@ -42,6 +42,7 @@ const state = {
     financeData: [],
     orders: [],
     addresses: [],
+    feeds: [],
     
     manager: '',
     discount: '',
@@ -64,11 +65,9 @@ const mutations = {
         state.orders = orders;
     },
     [types.PERSONAL_APPLY_FINANCE](state, financeData) {
-        console.log('mut fin', financeData);
         state.financeData = financeData;
     },
     [types.PERSONAL_ADDRESSES](state, addresses) {
-        console.log('mut', addresses);
         state.addresses = addresses;
     },
     [types.PERSONAL_APPLY_MANAGER](state, newMode) {
@@ -82,6 +81,9 @@ const mutations = {
     },
     [types.PERSONAL_APPLY_PETITIONS](state, newMode) {
         state.petitions = newMode;
+    },
+    [types.PERSONAL_APPLY_FEEDS](state, feeds) {
+        state.feeds = feeds;
     }
 };
 
@@ -136,6 +138,11 @@ const actions = {
             //if(answer.addresses) {
                 commit(types.PERSONAL_ADDRESSES, addresses);
             //}
+        });
+    },
+    personalUpdateFeeds: ({commit}) => {
+        api.personalFeedsList().then((feeds) => {
+            commit(types.PERSONAL_APPLY_FEEDS, addresses);
         });
     },
 }

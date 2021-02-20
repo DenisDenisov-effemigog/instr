@@ -27,8 +27,8 @@
             line-height: $line-height_3
             height: 3.25rem
         &--head
-            font-family: $font-montserrat-semibold
-            font-weight: $font-weight_semibold
+            // font-family: $font-montserrat-semibold
+            // font-weight: $font-weight_semibold
             height: 2.75rem
             +desktop-small
                 height: 3.75rem
@@ -38,8 +38,12 @@
             +desktop-small
                 height: 3.75rem
         & div
-            +flex-container
-            height: 100%
+            display: flex
+            align-self: center
+            height: $line-height_4
+            overflow: hidden
+            +desktop-small
+                height: $line-height_3
 
     &__sum
         width: 30%
