@@ -16,10 +16,7 @@ export default {
         checkout: '/checkout/',
         success: '/checkout/%success%',
         error : '/checkout/%error%',
-
         catalog : '/catalog/',
-        conditions : '/conditions/',
-        delivery : '/delivery/',
         search : '/search/',
         
         auth: '/auth/',
