@@ -91,10 +91,11 @@
                 }
             },
             scroll(){
-                let target = this.$refs.tabs;
-                let stickyCardHeight = 80;
-                let targetOffsetTop = target.offsetTop - stickyCardHeight;    
-                window.scroll({top: targetOffsetTop, behavior: 'smooth'});
+                if (window.innerWidth > 767) {
+                    this.scrollTop('.product-tabs__tabs', 80);
+                } else {
+                    this.scrollTop('.product-tabs__tabs', 10);
+                } 
                 this.showTab('features')
             },
             touchStart(e){

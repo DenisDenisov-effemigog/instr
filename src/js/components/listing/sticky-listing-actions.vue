@@ -50,10 +50,10 @@
                 }
             },
             getPosition() {
-                let element = document.querySelector('.listing__grid');
+                let element = document.querySelector('.listing__content');
                 let yPosition = 0;
                 while(element) {
-                    yPosition += (element.offsetTop - element.scrollTop + element.clientTop - 39);
+                    yPosition += (element.offsetTop - element.scrollTop + element.clientTop);
                     element = element.offsetParent;
                 }
                 this.scrollOffset = yPosition
