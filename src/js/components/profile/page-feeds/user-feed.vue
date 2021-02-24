@@ -18,7 +18,7 @@
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__repeat'"></use>
                     </svg>
                 </a>
-                <a :href="feed.link_yml" download>
+                <a :href="feed.link" download>
                     <svg viewBox="0 0 20 20">
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__download'"></use>
                     </svg>

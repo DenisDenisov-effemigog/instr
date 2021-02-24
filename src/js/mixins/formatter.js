@@ -17,8 +17,8 @@ export default {
         },
         localDate: function (value, local) { // local - String difining local: 'ru', 'en-GB' etc.
             value = value + ', 0';
-            console.log(value, local, new Date(Date.UTC(value)));
-            const date = new Date(Date.UTC(value))
+            console.log(value, local, new Date(value));
+            const date = new Date(value)
             return date.toLocaleDateString(local)
         }  // перевод формата даты (value) ГГГГ.ММ.ДД в ДД.ММ.ГГГГ с передачей аргумента local текущей локации/места
     }

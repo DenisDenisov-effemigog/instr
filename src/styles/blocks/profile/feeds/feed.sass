@@ -3,11 +3,15 @@
     +flex-container
     flex-wrap: wrap
     &--deleting
-        padding: .5rem 0
+        +tablet
+            padding: .5rem 0
         .feed__date,
         .feed__update
             display: none
-
+        .feed__actions
+            +mobile
+                width: 100%
+                padding: .5625rem 0
     &__title
         color: $black
         width: 100%
@@ -21,6 +25,8 @@
     &__date
         +flex-container
         width: 50%
+        +mobile
+            color: $light-grey
         +tablet
             justify-content: center
             width: percentage(2 / 9)
@@ -55,7 +61,7 @@
                 fill: $icon-grey
     &__deletion
         +flex-container
-        width: 50%
+        width: 100%
         +tablet
             width: 10.5rem
             padding-left: 1.25rem

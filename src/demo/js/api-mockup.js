@@ -525,7 +525,7 @@ let demoFeeds = {
             'filter2': '',
             'brand1': 'Denzel',
             'brand2': '',
-            'link_yml': '/images/country/globus.png'
+            'link': '/images/country/globus.png'
         },
         {
             'id': 2,
@@ -536,7 +536,7 @@ let demoFeeds = {
             'filter2': '',
             'brand1': 'Denzel',
             'brand2': '',
-            'link_yml': '/images/country/map.png'
+            'link': '/images/country/map.png'
         },
         {
             'id': 1,
@@ -547,7 +547,7 @@ let demoFeeds = {
             'filter2': '',
             'brand1': 'Denzel',
             'brand2': '',
-            'link_yml': '/images/country/globus.png'
+            'link': '/images/country/globus.png'
         },
         {
             'id': 2,
@@ -558,7 +558,7 @@ let demoFeeds = {
             'filter2': '',
             'brand1': 'Denzel',
             'brand2': '',
-            'link_yml': '/images/country/map.png'
+            'link': '/images/country/map.png'
         }
     ],
     readyFeeds: [
