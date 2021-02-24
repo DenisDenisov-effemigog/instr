@@ -334,12 +334,12 @@ let demoDiscount = [
     },
     {
         title: "Силовое",
-        discount: 7,
+        discount: 0,
         date: '31.12.2021'
     },
     {
         title: "Россия",
-        discount: 10,
+        discount: 20,
         date: '31.12.2021'
     }
 ];
