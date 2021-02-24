@@ -135,6 +135,7 @@
         },
         watch: {
             storeAmount(newValue) {
+                console.log(newValue)
                 if(!this._debounce_timer) {
                     this.amount = newValue;
                 }

@@ -142,7 +142,7 @@ const actions = {
     },
     personalUpdateFeeds: ({commit}) => {
         api.personalFeedsList().then((feeds) => {
-            commit(types.PERSONAL_APPLY_FEEDS, addresses);
+            commit(types.PERSONAL_APPLY_FEEDS, feeds);
         });
     },
 }

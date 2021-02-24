@@ -38,7 +38,7 @@
             >{{ $tc('text.error') }}</span>
         </label>
         <div class="profile-modal__text">{{ $tc('change_pass.text') }}</div>
-        <input type="submit" class="profile-modal__button" value="Сохранить">
+        <input type="submit" class="profile-modal__button" :value="$tc('input.text.save')">
     </form>
 </template>
 

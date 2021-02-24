@@ -105,6 +105,8 @@ import deliveryDate from './components/checkout/delivery-date.vue'
 import receiveAddress from './components/checkout/receive-address.vue'
 /* contacts */ 
 import contactsForm from './components/contacts/contacts-form.vue'
+/* favorites */
+import favoritesListing from './components/favorites/favorites-listing.vue'
 /* errors */
 import errorsPromo from './components/errors/errors-promo.vue'
 
@@ -207,5 +209,6 @@ export default {
         creditorDebt,
         dashboardPetitions,
         discountsCalculation,
+        favoritesListing,
     },
 }

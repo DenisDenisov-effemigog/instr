@@ -68,7 +68,7 @@
                     <div class="cart-card__cancel-delete"
                         :class="{'cart-card__cancel-delete--out-of-stock': !product.available}"
                         @click="deleteItem = false">
-                        {{ $tc('cart.item.cancel_deletion') }}
+                        {{ $tc('text.cancel_deletion') }}
                     </div>
                 </div>
 
@@ -121,7 +121,7 @@
                 <span class="cart-card__cancel-delete"
                     @click="deleteItem = false"
                     v-else
-                >{{ $tc('cart.item.cancel_deletion') }}</span>
+                >{{ $tc('text.cancel_deletion') }}</span>
             </div>
             <div class="cart-card__delete" v-if="product.available">
                 <svg v-if="deleteItem" @click="clearItem(product.id)">
@@ -183,7 +183,7 @@
                 });
             },
             toFav() {
-
+                /*todo add to favorite*/
             }
         },
     }
