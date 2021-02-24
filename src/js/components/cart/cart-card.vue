@@ -183,7 +183,7 @@
                 });
             },
             toFav() {
-
+                /*todo add to favorite*/
             }
         },
     }

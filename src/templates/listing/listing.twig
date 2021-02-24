@@ -11,13 +11,15 @@
             ></component>
         </div>
     {% endif %}
-    <div class="listing__shields">
-        {% for shield in shields %}
-            <div class="listing__shield">
-                {{ shield }}
-            </div>
-        {% endfor %}
-    </div>
+    {% if shields %}
+        <div class="listing__shields">
+            {% for shield in shields %}
+                <div class="listing__shield">
+                    {{ shield }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
     <div class="listing__content">
         <div class="listing__sidebar">
             {% if filters.filters is not empty %}

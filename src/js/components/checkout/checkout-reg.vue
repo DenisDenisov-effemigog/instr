@@ -198,9 +198,12 @@
             registerError() {
                 let vm = this
                 vm.$v.$touch();
-                window.scroll({ top: vm.$el, behavior: 'smooth'})
+                if (window.innerWidth > 767) {
+                    this.scrollTop('.checkout__content', 150);
+                } else {
+                    this.scrollTop('.checkout__content', 70);
+                }
             }
         }
-        
     }
 </script>

@@ -21,6 +21,10 @@ export default {
             }
             // не уверена насчет .listing__actions, что думаете? не придумала, как скрыть его
         },
+        scrollTop(element, heightGup) {
+            let topScroll = document.querySelector(element).offsetTop - heightGup
+            window.scroll({ top: topScroll, behavior: 'smooth'})
+        },
         /* getDays: function (date) {
             const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
             const firstDate = new Date(date);

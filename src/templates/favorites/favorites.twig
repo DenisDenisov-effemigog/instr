@@ -1,0 +1,16 @@
+<component is="favorites-listing"
+           :favorite-categories="{{ favoriteCategories|json_encode()|e('html_attr') }}"
+           :items-quantity="{{ filters.match|json_encode()|e('html_attr') }}"
+           :pagination="{{ pagination|json_encode|e('html_attr') }}"
+           :hash="{{ filters.hash|json_encode|e('html_attr') }}"
+>
+    <template v-slot:actions>
+        <component is="sticky-listing-actions"
+                   :filters="{{ filters|json_encode|e('html_attr') }}"
+                   :points="{{ sort_types|json_encode|e('html_attr') }}"
+                   :selectopen-select="{{ sort_type|json_encode|e('html_attr') }}"
+                   :view="{{ view_type|json_encode|e('html_attr') }}"
+                   :favorite-listing="true"
+        ></component>
+    </template>
+</component>

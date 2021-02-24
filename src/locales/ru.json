@@ -155,6 +155,19 @@
     "profile.dashboard.petitions_title": "Обращения",
     "profile.dashboard.petitions_add": "Создать",
     "profile.dashboard.petitions_info": "Обращений нет",
+    "profile.dashboard.personal_discount_subtitle": "Скидка на группу товаров",
+    "profile.dashboard.personal_discount_date": "Действует до:",
+    "profile.dashboard.personal_discount_info_title": "Дополнительная скидка на первый заказ",
+    "profile.dashboard.personal_discount_info_first_order": "Внимание это ваш первый заказ, в качестве подарка вам предоставлена скидка 2% на весь заказ.",
+    "profile.dashboard.personal_discount_info_text_1_1": "*Данная скидка включает в себя персональную скидку по категории",
+    "profile.dashboard.personal_discount_info_text_1_2": " и скидку по задаче",
+    "profile.dashboard.personal_discount_info_text_2_1": "*Данная скидка является ",
+    "profile.dashboard.personal_discount_info_text_2_2": "фиксированной",
+    "profile.dashboard.personal_discount_info_text_2_3": ", предоставляется на период и не зависит от оборота.",
+    "profile.discounts.calculation_title": "Расчет",
+    "profile.discounts.conditions_title": "Условия программы",
+    "profile.discounts.conditions_text": "Действие накопительной скидки сохраняется в течение трех последующих календарных месяцев с момента первой отгрузки. Если по результатам общей суммарной выборки одного из трех последующих месяцев сумма отгрузок превышает порог установленной скидки, то размер скидки увеличивается в соответствии с действующей",
+    "profile.discounts.conditions_link": "шкалой.",
     "profile_feeds.subtitle": "Готовые выгрузки",
     "profile_feeds.add": "Создать новую выгрузку",
     "profile_feeds.header.title": "Название выгрузки",
@@ -352,5 +365,9 @@
     "errors.500_copy-text":"Промокод скопирован.",
 
     "search-response.title":"По запросу 'ъъ'",
-    "search-response.text":"Не найдено ни одного товара"
+    "search-response.text":"Не найдено ни одного товара",
+    
+    "favorites.title":"Избранное",
+    "favorites.button.delete":"Удалить все",
+    "favorites.text.category":"Категория"
 }

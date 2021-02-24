@@ -57,6 +57,7 @@ import dashboardOrders from './components/profile/page-dashboard/dashboard-order
 import dashboardCurator from './components/profile/page-dashboard/dashboard-curator.vue';
 import dashboardPetitions from './components/profile/page-dashboard/dashboard-petitions.vue';
 import dashboardNotifications from './components/profile/page-dashboard/dashboard-notifications.vue';
+import discountsCalculation from './components/profile/page-discounts/discounts-calculation.vue';
 import pagePersonal from './components/profile/page-personal.vue';
 import pageAppeals from './components/profile/page-appeals.vue';
 import pageFeeds from './components/profile/page-feeds.vue';
@@ -104,6 +105,8 @@ import deliveryDate from './components/checkout/delivery-date.vue'
 import receiveAddress from './components/checkout/receive-address.vue'
 /* contacts */ 
 import contactsForm from './components/contacts/contacts-form.vue'
+/* favorites */
+import favoritesListing from './components/favorites/favorites-listing.vue'
 /* errors */
 import errorsPromo from './components/errors/errors-promo.vue'
 
@@ -205,5 +208,7 @@ export default {
         dashboardNotifications,
         creditorDebt,
         dashboardPetitions,
+        discountsCalculation,
+        favoritesListing,
     },
 }

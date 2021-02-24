@@ -1,7 +1,7 @@
 <template>
     <div class="listing__actions"
         :class="{'listing__actions--sticky': fixed}">
-        <component is="filter-button" :filters="filersMobile" v-if="filersMobile.filters.length"></component>
+        <component is="filter-button" :filters="filersMobile" v-if="filersMobile.filters.length || favoriteListing"></component>
         <component is="select-list"
                    class="listing__select"
                    :points="pointsMobile"
@@ -38,6 +38,10 @@
             view:{
                 type: String,
                 required: true,
+            },
+            favoriteListing: {
+                required: false,
+                default: false
             }
         },
         methods: {
@@ -50,10 +54,10 @@
                 }
             },
             getPosition() {
-                let element = document.querySelector('.listing__grid');
+                let element = document.querySelector('.listing__content');
                 let yPosition = 0;
                 while(element) {
-                    yPosition += (element.offsetTop - element.scrollTop + element.clientTop - 39);
+                    yPosition += (element.offsetTop - element.scrollTop + element.clientTop);
                     element = element.offsetParent;
                 }
                 this.scrollOffset = yPosition

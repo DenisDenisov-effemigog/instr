@@ -72,7 +72,12 @@
                 let vm = this
                 api.goToPage(vm.hash, page).then((answer) => {
                     vm.$eventBus.$emit('apply-listing', answer.output);
-                    window.scroll({ top: document.querySelector('body').offsetTop, behavior: 'smooth'})
+
+                    if (window.innerWidth > 767) {
+                        this.scrollTop('.listing', 130);
+                    } else {
+                        this.scrollTop('.listing', 50);
+                    }
                 }).catch(errors => {
                     console.error(errors);
                 });

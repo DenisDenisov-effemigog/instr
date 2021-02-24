@@ -193,9 +193,9 @@
                         }, '', answer.url);
 
                         if (window.innerWidth > 767) {
-                            this.scrollTop('.breadcrumbs');
+                            this.scrollTop('.listing', 130);
                         } else {
-                            this.scrollTop('.listing__actions');
+                            this.scrollTop('.listing', 50);
                         }
                     }
                 }).catch(errors => {
@@ -218,13 +218,6 @@
                 this.internal.page_count = this.internal.page_count + this.filters.page_count
                 this.applyFilters(false);
             },
-            scrollTop(element) {
-                let topScroll = document.querySelector(element).offsetTop
-                if (window.innerWidth > 767) {
-                    topScroll = topScroll - 171
-                }
-                window.scroll({ top: topScroll, behavior: 'smooth'})
-            }
         },
     }
 </script>
