@@ -52,11 +52,18 @@
         methods: {
             addFavorite() {
                 let vm = this
-                api.addFavorite(vm.id).then(answer => {
+                
+                vm.$store.dispatch('favoritesChange', {
+                    productId: vm.id
+                }).finally(() => {
+                    vm.inFavorite = !vm.inFavorite
+                    vm.$eventBus.$emit('change-favorite')
+                });
+                /*api.addFavorite(vm.id).then(answer => {
                     vm.inFavorite = answer
                 }).catch(errors => {
                     console.error(errors);
-                })
+                })*/
             }
         }
     }

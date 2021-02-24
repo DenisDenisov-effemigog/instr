@@ -340,5 +340,9 @@
     "errors.500_copy-text":"Промокод скопирован.",
 
     "search-response.title":"По запросу 'ъъ'",
-    "search-response.text":"Не найдено ни одного товара"
+    "search-response.text":"Не найдено ни одного товара",
+    
+    "favorites.title":"Избранное",
+    "favorites.button.delete":"Удалить все",
+    "favorites.text.category":"Категория"
 }

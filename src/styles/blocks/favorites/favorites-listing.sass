@@ -1,0 +1,67 @@
+.favorites-listing
+    @extend .container
+    margin-bottom: 5rem
+    +desktop
+        margin-bottom: 6.5rem
+    
+    &__header
+        display: flex
+        align-items: baseline
+        margin: 1.5rem 0
+        flex-wrap: wrap
+        +desktop
+            margin-bottom: 0
+            
+    &__title
+        @extend .title-3
+        display: inline
+        +desktop
+            font-size: $font-size_5
+            line-height: $line-height_5
+        
+    &__delete-button
+        margin-left: auto
+        @extend .link-blue
+        @extend .show-more
+        +mobile
+            width: 100%
+            margin-top: 1.188rem
+        svg
+            width: $size_20
+            height: $size_20
+            fill: $blue
+            margin-right: .25rem
+        
+    &__content
+        @extend .columns
+        margin-top: -.25rem
+        +desktop
+            margin-top: .75rem
+        
+    &__sidebar
+        @extend .column--sidebar
+        
+        &_title
+            @extend .title-4
+            transition: .2s
+            cursor: pointer
+            padding-bottom: 1rem
+            
+        &_category
+            @extend .text-2
+            color: $grey
+            padding-bottom: 1rem
+            cursor: pointer
+            +tablet
+                &:hover
+                    color: $black
+                    
+            & svg
+                fill: $icon-grey
+                width: $size_12
+                height: $size_12
+                margin-right: .75rem
+        
+    &__products
+        @extend .column--content
+        

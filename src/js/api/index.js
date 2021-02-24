@@ -289,6 +289,9 @@ class Api {
             id: id,
         });
     }
+    getFavorites() {
+        return this._promiseBitrixRequest('instrument2:rest.api.get.favorite');
+    }
     addCompare(id) {
         return this._promiseBitrixRequest('instrument2:rest.api.cart.compare', {
             id: id,

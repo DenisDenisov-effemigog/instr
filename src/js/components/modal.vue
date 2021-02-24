@@ -68,7 +68,8 @@
                     <h3 class="modal__title">{{ $tc('filters.title') }}</h3>
                     <filter-clear-btn :mobileFlag=true></filter-clear-btn>
                 </div>
-                <slot name="listingcat"></slot>
+                <slot name="listingcat" v-if="props === 0"></slot>
+                <slot name="favoritecat" v-else></slot>
                 <component is="filters" :filters="props"></component>
             </div>
             <!-- Диалоговое окно -->

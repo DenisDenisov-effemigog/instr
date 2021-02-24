@@ -588,8 +588,8 @@ let demoFeeds = {
     ]
 }
 
-let demoListingResult= {
-    products: [
+let demoMockupFavorites = 
+    [
         {
             'id': 1,
             'title': 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel',
@@ -599,7 +599,7 @@ let demoListingResult= {
             'stock': 100,
             'oldPrice': 3819.358,
             'newPrice': 2819.365,
-            'is_favorite': false,
+            'is_favorite': true,
             'is_compare': false,
             'images': [
                 {id: 1, img: './demo_images/product/image_50.png'},
@@ -633,7 +633,7 @@ let demoListingResult= {
             'stock': 100,
             'oldPrice': 3819,
             'newPrice': 2819,
-            'is_favorite': false,
+            'is_favorite': true,
             'is_compare': false,
             'images': [
                 {id: 1, img: './demo_images/product/image_50.png'},
@@ -658,22 +658,7 @@ let demoListingResult= {
                 },
             ]
         },
-    ],
-    pagination: {
-        'total': 93,
-        'current': 5,
-        'url_previous': '/some/category/page/4',
-        'url_next': '/some/category/page/6',
-        'url_last': '/some/category/page/last',
-        'urls':
-            [
-                {title: '5', url: '/some/category/page/5'},
-                {title: '6', url: '/some/category/page/6'},
-                {title: '7', url: '/some/category/page/7'},
-                {title: '8', url: '/some/category/page/8'},
-            ]
-    }
-};
+    ];
 
 let demoSortingListing = {
     products: [
@@ -807,7 +792,7 @@ let favorites = [
         'stock': 100,
         'oldPrice': 3819,
         'newPrice': 2819,
-        'is_favorite': false,
+        'is_favorite': true,
         'is_compare': false,
         'images': [
             {id: 1, img: './demo_images/product/image_50.png'},
@@ -1873,6 +1858,16 @@ window.runAction = function (action, config) {
                         data: {
                             status: 1,
                             answer: favorite.is_favorite 
+                        }
+                    }
+                });
+                break;
+            case 'instrument2:rest.api.get.favorite':
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                            answer: demoMockupFavorites
                         }
                     }
                 });

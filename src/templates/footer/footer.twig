@@ -15,18 +15,21 @@
            :phone-mask="{{ phone_mask|json_encode|e('html_attr') }}"
 >
     <template v-slot:listingcat>
-        {% if filters.filters is not empty %}
-            <div class="listing__subcategories listing__subcategories--filter">
-                {% for subcategory in listingCategories.subcategories|slice(0, 1) %}
-                    {% include '../listing/listing-subcategories.twig' with {'subcategory': subcategory, 'main': true} %}
+        <div class="listing__subcategories listing__subcategories--filter">
+            {% for subcategory in listingCategories.subcategories|slice(0, 1) %}
+                {% include '../listing/listing-subcategories.twig' with {'subcategory': subcategory, 'main': true} %}
+            {% endfor %}
+            <component is="all-categories">
+                {% for subcategory in listingCategories.subcategories|slice(1) %}
+                    {% include '../listing/listing-subcategories.twig' with {'subcategory': subcategory, 'main': false} %}
                 {% endfor %}
-                <component is="all-categories">
-                    {% for subcategory in listingCategories.subcategories|slice(1) %}
-                        {% include '../listing/listing-subcategories.twig' with {'subcategory': subcategory, 'main': false} %}
-                    {% endfor %}
-                </component>
-            </div>
-        {% endif %}
+            </component>
+        </div>
+    </template>
+    <template v-slot:favoritecat>
+        {% for category in favoriteCategories %}
+            <div>{{ category }}</div>
+        {% endfor %}
     </template>
 </component>
 <component is="sticky-mobile-button"></component>
