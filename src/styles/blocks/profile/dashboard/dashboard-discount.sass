@@ -16,16 +16,15 @@
         margin-top: 1.5rem
         +tablet 
             margin-top: 1rem
-    &__item 
-        width: calc(100% / 3)
-        padding: 0 0.25rem 
-        border-right: 1px solid  $border-color_4
-        +tablet
-            padding: 0 0.75rem
-        &:last-child
-            border: none
-            padding: 0
-        
+        .discount-item 
+            width: calc(100% / 3)
+            padding: 0 0.25rem 
+            border-right: 1px solid  $border-color_4
+            +tablet
+                padding: 0 0.75rem
+            &:last-child
+                border: none
+                padding: 0
     &__desc
         display: flex
         justify-content: space-between
@@ -40,3 +39,4 @@
         @extend .text-7
         font-weight: 700
         color: $green
+    

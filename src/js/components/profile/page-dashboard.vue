@@ -7,7 +7,7 @@
         <div class="dashboard__main">
             <div class="dashboard__top">
                 <creditor-debt :financeCharges="financeData.charges"></creditor-debt>
-                <dashboard-discount></dashboard-discount>
+                <dashboard-discount :className="personal"></dashboard-discount>
                 <dashboard-contract></dashboard-contract>
             </div>
             <div class="dashboard__bottom">

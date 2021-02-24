@@ -1,0 +1,53 @@
+.personal-discount
+    margin-top: 1.5rem
+    +tablet
+        margin-top: 1.875rem
+    &__list
+        display: flex
+        justify-content: space-between
+        align-items: center
+        overflow-x: auto
+        +tablet
+            overflow: initial
+        @extend .text-3
+        font-weight: 400
+        color: $border-color
+        .discount-item
+            min-width: 15.125rem
+            cursor: pointer
+            padding: 1rem
+            margin-right: 1rem
+            +tablet
+                margin-right: 0
+                padding: 1.5rem
+                width: calc( 100% / 3 - 1.5rem)
+            &:last-child
+                margin-right: 0
+            &--active
+                width: 21rem
+                box-shadow: 0px 2px 8px rgba(181, 195, 208, 0.25)
+                border-radius: 4px
+                .personal-discount__date
+                    margin-top: 1.25rem
+                    color: $light-grey
+                .personal-discount__text
+                    color: $black  
+                .personal-discount__discount  
+                    color: $green
+                .personal-discount__subtitle
+                    color: $grey
+    &__desc
+        display: flex
+        justify-content: space-between
+        color: $light-grey
+    &__text
+        @extend  .title-6
+        font-weight: 700
+        align-self: flex-end
+    &__discount
+        font-size: $font-size_2
+        line-height: $line-height_2
+        font-weight: 700
+    &__date
+        margin-top: 1rem
+    
