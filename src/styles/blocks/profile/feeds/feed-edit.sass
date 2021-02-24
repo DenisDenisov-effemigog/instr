@@ -1,0 +1,55 @@
+.feed-edit
+    margin-top: 1.5rem
+    +tablet
+        margin-top: 3.375rem
+    &__header
+        +flex-container
+        margin-bottom: 1rem
+        +tablet
+            margin-bottom: 1.5rem
+    &__title
+        @extend .subtitle-2
+    &__close
+        display: flex
+        svg
+            width: 1.25rem
+            height: 1.25rem
+            fill: $grey
+            margin-right: .5rem
+    &__form
+        @extend .text-3
+        +flex-container
+        flex-wrap: wrap
+        margin: 0 -.75rem
+        .select
+            margin-bottom: 1rem
+            .select__button
+                padding-top: .6875rem
+                padding-bottom: .6875rem
+    &__column
+        width: 100%
+        padding: 0 .75rem
+        +tablet
+            width: 50%
+        +desktop
+            width: percentage(1 / 3)
+    &__label
+        @extend .form__label
+    &__input
+        @extend .form__input
+    &__placeholder
+        position: absolute
+        top: .75rem
+        left: 1rem
+    &__buttons
+        +flex-container
+    &__save
+        @extend .button
+    &__copy
+        +flex-container
+        color: $blue
+        svg
+            width: 1.25rem
+            height: 1.25rem
+            fill: $blue
+            margin-right: .5rem

@@ -521,17 +521,41 @@ let demoFeeds = {
             'filter1': '',
             'filter2': '',
             'brand1': 'Denzel',
-            'brand2': ''
+            'brand2': '',
+            'link_yml': '/images/country/globus.png'
         },
         {
             'id': 2,
-            'title': 'Выгрузка новинки',
+            'title': 'Выгрузка всех выгрузок новинки',
             'date': '2020, 04, 15, 16, 56',
             'updateDate': '2020, 04, 15, 16, 56',
             'filter1': '',
             'filter2': '',
             'brand1': 'Denzel',
-            'brand2': ''
+            'brand2': '',
+            'link_yml': '/images/country/map.png'
+        },
+        {
+            'id': 1,
+            'title': 'Выгрузка лопат и молотков',
+            'date': '2020, 04, 15, 16, 56',
+            'updateDate': '2020, 04, 15, 16, 56',
+            'filter1': '',
+            'filter2': '',
+            'brand1': 'Denzel',
+            'brand2': '',
+            'link_yml': '/images/country/globus.png'
+        },
+        {
+            'id': 2,
+            'title': 'Моя выгрузка лопат и молотков номер 5',
+            'date': '2020, 04, 15, 16, 56',
+            'updateDate': '2020, 04, 15, 16, 56',
+            'filter1': '',
+            'filter2': '',
+            'brand1': 'Denzel',
+            'brand2': '',
+            'link_yml': '/images/country/map.png'
         }
     ],
     readyFeeds: [
