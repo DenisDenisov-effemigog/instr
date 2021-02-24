@@ -8,22 +8,22 @@
             :class="{'finance-charges--arrears': arrears, 'finance-charges--expanded': expanded}"
         >
             <li class="finance-charges__item">
-                <div class="profile__table-header finance-charges__sum">{{ $tc('profile_finance.head.sum') }}</div>
-                <div class="profile__table-header finance-charges__date">{{ $tc('profile_finance.head.date') }}</div>
-                <div class="profile__table-header finance-charges__left-days">{{ $tc('profile_finance.head.left_days') }}</div>
+                <div class="profile__table-header finance-charges__sum"><span>{{ $tc('profile_finance.head.sum') }}</span></div>
+                <div class="profile__table-header finance-charges__date"><span>{{ $tc('profile_finance.head.date') }}</span></div>
+                <div class="profile__table-header finance-charges__left-days"><span>{{ $tc('profile_finance.head.left_days') }}</span></div>
             </li>
             <li class="finance-charges__item" v-for="item in charges" v-if="arrears && item.days < 0">
-                <div class="finance-charges__sum">{{ currency(item.sum) }} {{ $tc('text.currency') }}</div>
-                <div class="finance-charges__date">{{ item.date }}</div>
+                <div class="finance-charges__sum"><span>{{ currency(item.sum) }} {{ $tc('text.currency') }}</span></div>
+                <div class="finance-charges__date"><span>{{ item.date }}</span></div>
                 <div class="finance-charges__left-days finance-charges__left-days--arrears">
-                    - {{ $tc('profile_finance.days', -item.days) }}
+                    <span>- {{ $tc('profile_finance.days', -item.days) }}</span>
                 </div>
             </li>
             <li class="finance-charges__item" v-for="item in charges" v-if="!arrears && item.days >= 0">
-                <div class="finance-charges__sum">{{ currency(item.sum) }} {{ $tc('text.currency') }}</div>
-                <div class="finance-charges__date">{{ item.date }}</div>
+                <div class="finance-charges__sum"><span>{{ currency(item.sum) }} {{ $tc('text.currency') }}</span></div>
+                <div class="finance-charges__date"><span>{{ item.date }}</span></div>
                 <div class="finance-charges__left-days">
-                    {{ $tc('profile_finance.days', item.days) }}
+                    <span>{{ $tc('profile_finance.days', item.days) }}</span>
                 </div>
             </li>
         </ul>

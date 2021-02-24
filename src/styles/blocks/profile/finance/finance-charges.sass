@@ -39,11 +39,13 @@
                 height: 3.75rem
         & div
             display: flex
-            align-self: center
-            height: $line-height_4
-            overflow: hidden
-            +desktop-small
-                height: $line-height_3
+            align-items: center
+            height: 100%
+            & span
+                height: $line-height_4
+                overflow: hidden
+                +desktop-small
+                    height: $line-height_3
 
     &__sum
         width: 30%
