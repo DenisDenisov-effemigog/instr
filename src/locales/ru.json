@@ -26,6 +26,7 @@
     "link.add_address": "Добавить адрес",
     
     "input.text.in_cart": "В корзине",
+    "input.text.save": "Сохранить",
     "input.text.write-ask": "Напишите свой вопрос",
     "input.text.mail-answer": "Email для ответа",
     
@@ -153,6 +154,12 @@
     "profile.dashboard.petitions_title": "Обращения",
     "profile.dashboard.petitions_add": "Создать",
     "profile.dashboard.petitions_info": "Обращений нет",
+    "profile_feeds.add": "Создать новую выгрузку",
+    "profile_feeds.header.title": "Название выгрузки",
+    "profile_feeds.header.date": "Дата создания",
+    "profile_feeds.header.update": "Обновление",
+    "profile_feeds.header.actions": "Действия",
+    "profile_feeds.edit": "Редактирование",
     
     "change_pass.current": "Текущий пароль",
     "change_pass.new": "Новый пароль",
