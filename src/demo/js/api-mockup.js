@@ -329,15 +329,18 @@ let demoManager = {
 let demoDiscount = [
     {
         title: "Импорт",
-        discount: 11
+        discount: 11,
+        date: '31.12.2021'
     },
     {
         title: "Силовое",
-        discount: 7
+        discount: 0,
+        date: '31.12.2021'
     },
     {
         title: "Россия",
-        discount: 10
+        discount: 20,
+        date: '31.12.2021'
     }
 ];
 let demoContract = [

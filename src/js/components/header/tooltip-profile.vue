@@ -44,6 +44,12 @@
                         icon: 'home'
                     },
                     {
+                        title: 'link.discounts',
+                        url: '/my/discounts',
+                        // exact: true,
+                        personType: [1,2],
+                    },
+                    {
                         title: 'link.orders_list',
                         url: '/account/orders',
                         personType: 1,
