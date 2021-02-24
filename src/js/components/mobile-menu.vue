@@ -7,6 +7,7 @@
             <component is="home-menu" 
                        :countries="countries" 
                        :activeCountry="activeCountry" 
+                       :headerLinks="headerLinks" 
                        v-if="menuLink === 'home'"
             ></component>
         </div>
@@ -26,6 +27,10 @@ export default {
         activeCountry: {
             required: true,
             type: String
+        },
+        headerLinks: {
+            type: Array,
+            required: true
         }
     },
     data(){

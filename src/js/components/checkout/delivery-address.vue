@@ -203,7 +203,6 @@
             addressError() {
                 let vm = this
                 vm.$v.$touch();
-                window.scroll({ top: vm.$el, behavior: 'smooth'})
             }
         }
     }

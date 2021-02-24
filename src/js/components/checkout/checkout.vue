@@ -176,6 +176,14 @@
                 type: String,
                 required: true,
             },
+            conditionsLink: {
+                type: String,
+                required: true
+            },
+            deliveryLink: {
+                type: String,
+                required: true
+            },
         },
         data(){
             return {
@@ -197,8 +205,6 @@
                 pointAddress: this.deliveryPoints[0],
                 deliveryAddress: '',
                 deliveryNewAddress: {},
-                conditionsLink: config.links.conditions,
-                deliveryLink: config.links.delivery,
             }
         },
         computed: {

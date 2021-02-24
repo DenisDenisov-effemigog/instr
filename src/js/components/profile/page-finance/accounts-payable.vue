@@ -1,44 +1,46 @@
 <template>
-    <div class="finance__layout finance__layout--credit-debt">
-        <div class="finance__creditor-debt">
-            <h4 class="finance__subtitle">{{ $tc('profile_finance.title.payable') }}</h4>
-            <component is="creditor-debt" 
-                :financeCharges="financeCharges"
-                :dashboard="false"
-            ></component>
-        </div>
-        <div class="finance-prgs-crcl">
-            <vue-ellipse-progress
-                :progress="progressBar"
-                :angle="angle"
-                :color="color"
-                empty-color="#D0D6DC"
-                :size="184"
-                :thickness="24"
-                :empty-thickness="24"
-                :gap="2"
-                :animation="animation"
-                :legend="false"
-                line="butt"
-            >
-                <div class="finance-prgs-crcl__days"
-                    :class="{'finance-prgs-crcl__days--error': arrears}"
-                    slot="legend-caption"
-                >
-                    <span v-if="arrears">- </span>
-                    {{ $tc('profile_finance.days', Math.abs(this.latestArrears.days)) }}
-                </div>
-            </vue-ellipse-progress>
-            <div class="finance-prgs-crcl__text"
-                :class="{'finance-prgs-crcl__text--error': arrears}"
-                v-if="arrears"
-            >
-                Поставки временно заблокированы до погашения просроченной дебиторской задолженности!
+    <div class="finance__layout">
+        <div class="columns">
+            <div class="finance__progress-bar finance__progress-bar--payable">
+                <h4 class="finance__subtitle">{{ $tc('profile_finance.title.payable') }}</h4>
+                <component is="finance-progress" 
+                    :financeCharges="financeCharges"
+                    :dashboard="false"
+                ></component>
             </div>
-            <div class="finance-prgs-crcl__text" v-else>
-                <span>Осталось до даты погашения задолженности. Оплатить до:&nbsp;
-                    <span class="finance-prgs-crcl__payment-date">{{ this.latestArrears.date }}</span>
-                </span>
+            <div class="finance-prgs-crcl">
+                <vue-ellipse-progress
+                    :progress="progressBar"
+                    :angle="angle"
+                    :color="color"
+                    empty-color="#D0D6DC"
+                    :size="184"
+                    :thickness="24"
+                    :empty-thickness="24"
+                    :gap="2"
+                    :animation="animation"
+                    :legend="false"
+                    line="butt"
+                >
+                    <div class="finance-prgs-crcl__days"
+                        :class="{'finance-prgs-crcl__days--error': arrears}"
+                        slot="legend-caption"
+                    >
+                        <span v-if="arrears">- </span>
+                        {{ $tc('profile_finance.days', Math.abs(this.latestArrears.days)) }}
+                    </div>
+                </vue-ellipse-progress>
+                <div class="finance-prgs-crcl__text"
+                    :class="{'finance-prgs-crcl__text--error': arrears}"
+                    v-if="arrears"
+                >
+                    Поставки временно заблокированы до погашения просроченной дебиторской задолженности!
+                </div>
+                <div class="finance-prgs-crcl__text" v-else>
+                    <span>Осталось до даты погашения задолженности. Оплатить до:&nbsp;
+                        <span class="finance-prgs-crcl__payment-date">{{ this.latestArrears.date }}</span>
+                    </span>
+                </div>
             </div>
         </div>
     </div>

@@ -440,18 +440,23 @@ for(let i = 0; i < 5; ++i) {
     }).pop();
 
     let days = Math.floor(Math.random() * 10) + 10;
+
+    let shipped = [true, false].sort(function (a, b) {
+        return 0.5 - Math.random()
+    }).pop();
     
     financeData.charges.push({
         id: i+1,
         'sum': sum,
         'date': date,
         'days': days,
-        'latest': false
+        'latest': false,
+        'shipped': shipped
     });
 }
-financeData.charges[0].days = 1;
+financeData.charges[0].days = -6;
 financeData.charges[0].date = '21.12.2020';
-financeData.charges[1].days = 2;
+financeData.charges[1].days = -4;
 financeData.charges[0].latest = true
 
 for(let i = 0; i < 6; ++i) {
@@ -508,6 +513,83 @@ let demoAddressList = [
         'statusDesc': 'К сожалению, адрес не прошел проверку модератора. Подробнее по горячей линии: 8 800-765-87-51',
     }
 ];
+
+let demoFeeds = {
+    userFeeds: [
+        {
+            'id': 1,
+            'title': 'Выгрузка новинки',
+            'date': '2020, 04, 15, 16, 56',
+            'updateDate': '2020, 04, 15, 16, 56',
+            'filter1': '',
+            'filter2': '',
+            'brand1': 'Denzel',
+            'brand2': ''
+        },
+        {
+            'id': 2,
+            'title': 'Выгрузка новинки',
+            'date': '2020, 04, 15, 16, 56',
+            'updateDate': '2020, 04, 15, 16, 56',
+            'filter1': '',
+            'filter2': '',
+            'brand1': 'Denzel',
+            'brand2': ''
+        }
+    ],
+    readyFeeds: [
+        {
+            'title': 'Полный прайс-лист',
+            'link_yml': '/images/country/globus.png',
+            'link_xlsx': '/images/country/map.png',
+        },
+        {
+            'title': 'Все бренды',
+            'link_yml': '/images/country/globus.png',
+            'link_xlsx': '/images/country/map.png',
+        },
+        {
+            'title': 'Gross',
+            'link_yml': '/images/country/globus.png',
+            'link_xlsx': '/images/country/map.png',
+        },
+        {
+            'title': 'Matrix',
+            'link_yml': '/images/country/globus.png',
+            'link_xlsx': '/images/country/map.png',
+        },
+        {
+            'title': 'Средства индивидуальной защиты',
+            'link_yml': '/images/country/globus.png',
+            'link_xlsx': '/images/country/map.png',
+        },
+        {
+            'title': 'Полный прайс-лист',
+            'link_yml': '/images/country/globus.png',
+            'link_xlsx': '/images/country/map.png',
+        },
+        {
+            'title': 'Все бренды',
+            'link_yml': '/images/country/globus.png',
+            'link_xlsx': '/images/country/map.png',
+        },
+        {
+            'title': 'Gross',
+            'link_yml': '/images/country/globus.png',
+            'link_xlsx': '/images/country/map.png',
+        },
+        {
+            'title': 'Matrix',
+            'link_yml': '/images/country/globus.png',
+            'link_xlsx': '/images/country/map.png',
+        },
+        {
+            'title': 'Средства индивидуальной защиты',
+            'link_yml': '/images/country/globus.png',
+            'link_xlsx': '/images/country/map.png',
+        }
+    ]
+}
 
 let demoListingResult= {
     products: [
@@ -1396,6 +1478,16 @@ window.runAction = function (action, config) {
                                     total: 5
                                 }
                             },
+                        }
+                    }
+                });
+                break;
+            case 'instrument2:rest.api.user.feeds.get':
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                            answer: demoFeeds
                         }
                     }
                 });

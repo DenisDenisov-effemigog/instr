@@ -1,12 +1,12 @@
 <template>
     <div class="dashboard" v-if="loaded">
         <div class="dashboard__head">
-            <h2 class="dashboard__title">Сводка</h2>
+            <h2 class="profile__title">{{ $tc('link.dashboard') }}</h2>
             <dashboard-notifications></dashboard-notifications>
         </div>
         <div class="dashboard__main">
             <div class="dashboard__top">
-                <creditor-debt :financeCharges="financeData.charges"></creditor-debt>
+                <finance-progress :financeCharges="financeData.charges"></finance-progress>
                 <dashboard-discount :className="personal"></dashboard-discount>
                 <dashboard-contract></dashboard-contract>
             </div>
@@ -27,7 +27,7 @@
 </template>
 
 <script>
-    import CreditorDebt from './creditor-debt.vue'
+    import financeProgress from './finance-progress.vue'
     import DashboardContract from './page-dashboard/dashboard-contract.vue'
     import DashboardCurator from './page-dashboard/dashboard-curator.vue'
     import DashboardDiscount from './page-dashboard/dashboard-discount.vue'
@@ -42,7 +42,7 @@ export default {
         DashboardCurator, 
         DashboardOrders, 
         DashboardNotifications,
-        CreditorDebt,
+        financeProgress,
         DashboardPetitions
     },
     data() {

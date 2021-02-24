@@ -98,9 +98,8 @@
                 this.scrollToTop()
             },
             scrollToTop() {
-                window.scroll({ top: document.querySelector('body').offsetTop, behavior: 'smooth'})
+                this.scrollTop('body', 0);
             }
         }
-
     }
 </script>

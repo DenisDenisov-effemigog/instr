@@ -16,17 +16,8 @@ export default {
         checkout: '/checkout/',
         success: '/checkout/%success%',
         error : '/checkout/%error%',
-
         catalog : '/catalog/',
-        conditions : '/conditions/',
-        delivery : '/delivery/',
         search : '/search/',
-        about : '/about/',
-        branches : '/branches/',
-        points : '/points/',
-        cooperation : '/cooperation/',
-        brands : '/brands/',
-        shares : '/shares/',
         
         auth: '/auth/',
         auth_restore: '/auth/restore/',

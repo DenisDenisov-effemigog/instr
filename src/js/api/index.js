@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { date } from 'locutus/php/datetime';
 
 if (window.runAction == undefined) {
     window.runAction = function (action, payload) {
@@ -195,6 +196,30 @@ class Api {
     }
     personalAddressList() {
         return this._promiseBitrixRequest('instrument2:rest.api.user.address.get', {});
+    }
+    addFeedToList(title, date, filter1, filter2, brand1, brand2) {
+        return this._promiseBitrixRequest('instrument2:rest.api.user.feeds.add', {
+            title: title,
+            date: date,
+            updateDate: date,
+            filter1: filter1,
+            filter2: filter2,
+            brand1: brand1,
+            brand2: brand2
+        });
+    }
+    editFeedInList(id) {
+        return this._promiseBitrixRequest('instrument2:rest.api.user.feeds.edit', {
+            id: id
+        });
+    }
+    deleteFeedFromList(id) {
+        return this._promiseBitrixRequest('instrument2:rest.api.user.feeds.delete', {
+            id: id
+        });
+    }
+    personalFeedsList() {
+        return this._promiseBitrixRequest('instrument2:rest.api.user.feeds.get', {});
     }
     sortOrders(params) {
         return this._promiseBitrixRequest('instrument2:rest.api.sortOrders.get', {

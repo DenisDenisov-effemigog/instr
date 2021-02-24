@@ -15,7 +15,6 @@
             loadMore() {
                 let vm = this;
                 vm.$eventBus.$emit('load-listing');
-                window.scroll({ top: document.querySelector('body').offsetTop, behavior: 'smooth'})
             },
         },
     }

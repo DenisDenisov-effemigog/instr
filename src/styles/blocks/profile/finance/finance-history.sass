@@ -19,6 +19,9 @@
             padding: 1rem
             flex-wrap: nowrap
             justify-content: normal
+        &:nth-of-type(2)
+            +until($desktop-small)
+                padding-top: 0
         &--head
             background: $shield
             border: none
