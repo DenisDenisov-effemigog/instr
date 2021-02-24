@@ -166,6 +166,11 @@
     "profile.discounts.conditions_title": "Условия программы",
     "profile.discounts.conditions_text": "Действие накопительной скидки сохраняется в течение трех последующих календарных месяцев с момента первой отгрузки. Если по результатам общей суммарной выборки одного из трех последующих месяцев сумма отгрузок превышает порог установленной скидки, то размер скидки увеличивается в соответствии с действующей",
     "profile.discounts.conditions_link": "шкалой.",
+    "profile.appeals.title": "Обращения",
+    "profile.appeals.open_title": "Открытые обращения",
+    "profile.appeals.close_title": "Закрытые обращения",
+    "profile.appeals.subtitle": "Уточнение характеристик товара ",
+    "profile.appeals.btn": "Создать обращение",
     
     "change_pass.current": "Текущий пароль",
     "change_pass.new": "Новый пароль",

@@ -69,6 +69,12 @@
                         external: true,
                         icon: 'delivery'
                     },
+                    {
+                        title: 'link.appeals',
+                        url: '/my/appeals/',
+                        personType: [2],
+                        //external: true
+                    },
                 ],
             }
         },
