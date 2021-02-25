@@ -14,9 +14,9 @@
     {% if shields %}
         <div class="listing__shields">
             {% for shield in shields %}
-                <div class="listing__shield">
-                    {{ shield }}
-                </div>
+                <a href='{{shield.url}}' class="listing__shield">
+                    {{ shield.title }}
+                </a>
             {% endfor %}
         </div>
     {% endif %}
