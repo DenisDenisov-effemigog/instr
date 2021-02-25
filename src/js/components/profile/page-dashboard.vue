@@ -12,7 +12,8 @@
             </div>
             <div class="dashboard__bottom">
                 <dashboard-curator></dashboard-curator>
-                <dashboard-petitions></dashboard-petitions>
+                <!-- #TODO временно отключено -->
+                <!-- <dashboard-petitions></dashboard-petitions> -->
                 <dashboard-orders></dashboard-orders>
             </div>
         </div>
