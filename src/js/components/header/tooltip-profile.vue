@@ -69,6 +69,13 @@
                         external: true,
                         icon: 'delivery'
                     },
+                    // #TODO блок обращения
+                    // {
+                    //     title: 'link.appeals',
+                    //     url: '/my/appeals/',
+                    //     personType: [2],
+                    //     //external: true
+                    // },
                 ],
             }
         },

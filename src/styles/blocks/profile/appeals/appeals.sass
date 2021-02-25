@@ -1,0 +1,42 @@
+.appeals
+    &__head
+        +tablet
+            display: flex
+            align-items: center
+            justify-content: space-between
+    &__title
+        @extend .title-5
+        font-weight: 700
+    &__btn
+        @extend .text-2
+        @extend .link-blue
+        display: flex
+        align-items: center
+        width: fit-content
+        margin-top: 1rem
+        +tablet 
+            margin-top: 0
+        & svg
+            width: $size_14
+            height: $size_14
+            fill: $blue
+            margin-right: 0.625rem  
+    &__main
+        margin-top: 2.5rem
+        +tablet 
+            margin-top: 2rem
+    &__subtitle
+        @extend .text-1
+        font-weight: 700
+    &__list
+        margin-top: 1.5rem
+    &__item
+        padding: 1rem
+        background: $shield
+        margin-bottom: 0.5rem
+        +tablet 
+            margin-bottom: 1rem
+            padding: 1.5rem 2rem
+        &:last-child
+            margin-bottom: 0
+    

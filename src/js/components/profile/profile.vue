@@ -104,18 +104,19 @@ export default {
                     personType: [2],
                     //external: true
                 },
-                {
-                    title: 'link.feeds',
-                    url: '/my/feeds/',
-                    personType: [2],
-                    //external: true
-                },
-                {
-                    title: 'link.appeals',
-                    url: '/my/appeals/',
-                    personType: [2],
-                    //external: true
-                },
+                // #TODO блоки выгрузки и обращения
+                // {
+                //     title: 'link.feeds',
+                //     url: '/my/feeds/',
+                //     personType: [2],
+                //     //external: true
+                // },
+                // {
+                //     title: 'link.appeals',
+                //     url: '/my/appeals/',
+                //     personType: [2],
+                //     //external: true
+                // },
             ],
             currentPage: 'my-profile',
             mobile: false,
