@@ -4,7 +4,7 @@
             <h3 class="dashboard-curator__title">{{ $tc('profile.dashboard.curator_title') }}</h3>
             <div class="dashboard-curator__img">
                 <div class="dashboard-curator__pic">
-                    <img src="./demo_images/dashboard/manager.png" alt="">
+                    <img :src="managerData.photo" alt="">
                 </div>
                 <div v-show="!managerData" class="dashboard-curator__icon">
                     <svg viewBox="0 0 16 16">

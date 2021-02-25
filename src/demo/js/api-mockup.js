@@ -24,10 +24,10 @@ let demoMockupBasket = [
         url: '/product/gumky-bagazhni-450-600-900-mm-3-sht-sparta/',
         sku: 12345,
         images: [
-            {id: 1, img: './demo_images/product/image_50.png'},
-            {id: 2, img: './demo_images/product/image_51.png'},
-            {id: 3, img: './demo_images/product/image_52.png'},
-            {id: 4, img: './demo_images/product/image_53.png'},
+            {id: 1, img: '/demo_images/product/image_50.png'},
+            {id: 2, img: '/demo_images/product/image_51.png'},
+            {id: 3, img: '/demo_images/product/image_52.png'},
+            {id: 4, img: '/demo_images/product/image_53.png'},
         ],
         price: 2819,
         discount: 26,
@@ -60,10 +60,10 @@ let demoMockupBasket = [
         url: '/product/gumky-bagazhni-450-600-900-mm-3-sht-sparta/',
         sku: 34567,
         images: [
-            {id: 1, img: './demo_images/product/image_50.png'},
-            {id: 2, img: './demo_images/product/image_51.png'},
-            {id: 3, img: './demo_images/product/image_52.png'},
-            {id: 4, img: './demo_images/product/image_53.png'},
+            {id: 1, img: '/demo_images/product/image_50.png'},
+            {id: 2, img: '/demo_images/product/image_51.png'},
+            {id: 3, img: '/demo_images/product/image_52.png'},
+            {id: 4, img: '/demo_images/product/image_53.png'},
         ],
         price: 19,
         discount: 26,
@@ -96,10 +96,10 @@ let demoMockupBasket = [
         url: '/product/gumky-bagazhni-450-600-900-mm-3-sht-sparta/',
         sku: 11111,
         images: [
-            {id: 1, img: './demo_images/product/image_50.png'},
-            {id: 2, img: './demo_images/product/image_51.png'},
-            {id: 3, img: './demo_images/product/image_52.png'},
-            {id: 4, img: './demo_images/product/image_53.png'},
+            {id: 1, img: '/demo_images/product/image_50.png'},
+            {id: 2, img: '/demo_images/product/image_51.png'},
+            {id: 3, img: '/demo_images/product/image_52.png'},
+            {id: 4, img: '/demo_images/product/image_53.png'},
         ],
         price: 19,
         discount: 26,
@@ -132,10 +132,10 @@ let demoMockupBasket = [
         url: '/product/gumky-bagazhni-450-600-900-mm-3-sht-sparta/',
         sku: 2345,
         images: [
-            {id: 1, img: './demo_images/product/image_50.png'},
-            {id: 2, img: './demo_images/product/image_51.png'},
-            {id: 3, img: './demo_images/product/image_52.png'},
-            {id: 4, img: './demo_images/product/image_53.png'},
+            {id: 1, img: '/demo_images/product/image_50.png'},
+            {id: 2, img: '/demo_images/product/image_51.png'},
+            {id: 3, img: '/demo_images/product/image_52.png'},
+            {id: 4, img: '/demo_images/product/image_53.png'},
         ],
         price: 19,
         discount: 26,
@@ -322,6 +322,7 @@ let demoProfile = {
     'address': 'Название адреса'
 };
 let demoManager = {
+    photo:'/demo_images/dashboard/manager.png',
     name:'Хорошилова Ирина Николаевна',
     phone: '8-925-234-69-14',
     mail:'i.horoshilova@instrument.ru'
