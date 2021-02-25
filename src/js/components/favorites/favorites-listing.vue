@@ -19,6 +19,7 @@
                     </svg>
                     {{ category }}
                 </div>
+                <slot name="filters"></slot>
             </div>
             <div class="favorites-listing__products">
                 <slot name="actions"></slot>
