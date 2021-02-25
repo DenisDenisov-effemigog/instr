@@ -6,7 +6,7 @@
             <div class="feed__update">{{ localDate(feed.date, $tc('local')) }}</div>
             <div class="feed__actions" v-if="deleting">
                 <div class="feed__deletion">
-                    <a @click.prevent="deleting=false">{{ $t('text.cancel_deletion') }}</a>
+                    <a @click.prevent="deleting=false">{{ $t('button.cancel') }}</a>
                     <svg @click="deleteFeed">
                         <use :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
                     </svg>

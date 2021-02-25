@@ -1,0 +1,178 @@
+.comparisons
+    margin-bottom: 4.25rem
+    +desktop
+        margin-bottom: 15rem
+    &__header
+        +flex-container
+        margin: 1.5rem 0
+        +tablet
+            margin-bottom: 2rem
+    &__title
+        @extend .title-3
+        +tablet
+            font-size: $font-size_5
+            line-height: $line-height_5
+    &__delete-all
+        @extend .link-blue
+        @extend .show-more
+        svg
+            fill: $blue
+            width: $size_16
+            height: $size_18
+            margin-right: .5rem
+
+    &__top
+        &--fixed
+            position: fixed
+            top: 0
+            width: 100%
+            padding: 1rem 0
+            background-color: $white
+            z-index: 12
+            box-shadow: 0px 2px 8px rgba($shadow, 0.25)
+            +desktop
+                padding: 1.875rem 0
+            .select,
+            label
+                +mobile
+                    display: none
+            .comparisons__slider-actions
+                +mobile
+                    margin-top: 0
+            .comparisons__card
+                +mobile
+                    border: none
+        .container
+            +desktop
+                display: flex
+
+    &__category-selection
+        background-color: $shield
+        padding: 1.5rem
+        +desktop
+            width: 25%
+    &__checkbox
+        +checkbox
+    &__checkbox-label
+        margin-top: 1.25rem
+    &__checkbox-text
+        margin-left: 1.75rem
+        +mobile
+            font-size: $font-size_3
+            line-height: $line-height_3
+
+    &__slider-actions
+        @extend .text-2
+        +flex-container
+        margin-top: 1.5rem
+        color: $light-grey
+        +desktop
+            margin-top: 3.375rem
+    &__slider-btns
+        display: flex
+    &__slider-btn
+        +flex-container-center
+        width: 2.5rem
+        height: 2.5rem
+        border-radius: $border-radius
+        background-color: $white
+        &:first-of-type
+            margin-right: .5rem
+        svg
+            fill: $light-grey
+            width: $size_16
+            height: $size_12
+
+    &__cards
+        display: flex
+        +mobile
+            margin: 0 -1rem
+        +desktop
+            width: 75%
+    &__card
+        border: 1px solid $pre-white
+        padding: 0 1rem 1rem 1rem
+        +tablet
+            display: flex
+        +desktop
+            padding: 1.5rem
+            border: 1px solid $border-color_4
+            border-left: none
+        .slider-photo-card
+            flex-shrink: .125
+            +tablet
+                margin-right: 1rem
+        .slider-photo-card__slide
+            height: 141px
+    &__card-description
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        .card__name
+            height: 5rem
+            margin-bottom: .5rem
+            +tablet
+                height: 6.25rem
+                margin-bottom: 1rem
+    &__card-btns
+        +flex-container
+        .add-to-cart
+            width: 6.75rem
+            +tablet
+                width: 7.8125rem
+        .add-to-cart__add
+            padding-right: 0
+            padding-left: 0
+    &__card-del-btn
+        fill: $light-grey
+        width: $size_16
+        height: $size_18
+
+    &__comparing
+        display: flex
+        margin-top: -1px
+
+    &__sidebar
+        @extend .title-4
+        width: 25%
+        padding: 2.5rem 1.5rem
+        border: 1px solid $border-color_4
+        +until($desktop)
+            display: none
+    &__sidebar-item:not(:last-of-type)
+        margin-bottom: 2rem
+
+    &__descriptions
+        @extend .text-2
+        display: flex
+        color: $grey
+        +desktop
+            font-size: $font-size
+            line-height: $line-height
+            width: 75%
+    &__description
+        flex: auto
+        +desktop
+            padding: 2.5rem 1.5rem
+            border-right: 1px solid $border-color_4
+        li:not(:last-of-type)
+            margin-bottom: 2rem
+
+
+    &__deploy
+        @extend .link-blue
+        @extend .show-more
+        +flex-container
+        width: fit-content
+        margin-top: 1.5rem
+        +desktop
+            margin-top: 2rem
+        &--extended
+            svg
+                transform: rotate(180deg)
+        svg
+            fill: $blue
+            width: $size_16
+            height: $size_10
+            margin-left: .625rem
+            transition: .35s
