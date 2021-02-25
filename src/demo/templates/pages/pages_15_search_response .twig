@@ -1953,10 +1953,6 @@
         'activeCountry': 'Россия',
         'headerLinks': headerLinks,
     } %}
-    {% include '../../../templates/search-response/search-response.twig' with {
-        'searchAnswer': 'шуруп',
-        'searchResult': true
-    } %}
     {% include '../../../templates/listing/listing.twig' with {
         'products': products,
         'sort_types': sort_types,
@@ -1967,6 +1963,7 @@
         'view_type': view_type,
         'pagination': pagination,
         'titleFlag': false,
+        'searchAnswer': 'шуруп'
     } %}
     {% include '../../../templates/footer/footer.twig'  with {
         'countries': countries,
