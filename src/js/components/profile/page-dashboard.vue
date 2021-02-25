@@ -2,7 +2,8 @@
     <div class="dashboard" v-if="loaded">
         <div class="dashboard__head">
             <h2 class="profile__title">{{ $tc('link.dashboard') }}</h2>
-            <dashboard-notifications></dashboard-notifications>
+            <!-- #TODO временно отключено -->
+            <!-- <dashboard-notifications></dashboard-notifications> -->
         </div>
         <div class="dashboard__main">
             <div class="dashboard__top">

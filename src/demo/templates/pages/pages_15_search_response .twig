@@ -1,6 +1,6 @@
 {% extends "../layout.twig" %}
 
-{% block title %}Pages | 13 "Ничего не найдено"{% endblock %}
+{% block title %}Pages | 15 "Ответ на поиск"{% endblock %}
 
 {% set categories = [
     {
@@ -1199,73 +1199,12 @@
 
 {% set view_type = 'gridview' %}
 
-{% set shields = [
-    {
-        title:'Лебедки автомобильные',
-        url: ''    
-    }, 
-    {
-        title:'Масленки',
-        url: ''    
-    }, 
-    {
-        title:'Мебель гаражная',
-        url: ''    
-    }, 
-    {
-        title:'Моечные машины высокого давления',
-        url: ''    
-    }, 
-    {
-        title:'Домкраты',
-        url: ''    
-    }, 
-    {
-        title:'Насосы гидравлические',
-        url: ''    
-    }, 
-    {
-        title:'Аксессуары автомобильные',
-        url: ''    
-    }, 
-    {
-        title:'Перчатки',
-        url: ''    
-    }, 
-    {
-        title:'Поддоны для сбора масла',
-        url: ''    
-    }, 
-    {
-        title:'Подставки под машину регулируемые',
-        url: ''    
-    }, 
-    {
-        title:'Прессы гидравлические',
-        url: ''    
-    }, 
-    {
-        title:'Пробники автомобильные',
-        url: ''    
-    }, 
-    {
-        title:'Растяжки гидравлические',
-        url: ''    
-    }, 
-    {
-        title:'Пневмоинструмент',
-        url: ''    
-    }, 
-    {
-        title:'Тали',
-        url: ''
-    },
-] %}
+{% set shields = [] %}
 
 {% set filters = {
     'page_count': 20,
     'sort': 'popular',
-    'match': '13',
+    'match': 13,
     'section_id': 178500,
     'hash': 'JnnUHIo**(&87868HHkjYUI@wewe',
     'filters': [
@@ -2016,19 +1955,18 @@
     } %}
     {% include '../../../templates/search-response/search-response.twig' with {
         'searchAnswer': 'ъъ',
-        'searchResult': false
+        'searchResult': true
     } %}
     {% include '../../../templates/listing/listing.twig' with {
         'products': products,
         'sort_types': sort_types,
         'sort_type': sort_type,
-        'shields': shields,
         'listingCategories': listingCategories[0],
         'listingCategoryTitle': listingCategories[0].title,
         'filters': filters,
         'view_type': view_type,
         'pagination': pagination,
-        'titleFlag': true,
+        'titleFlag': false,
     } %}
     {% include '../../../templates/footer/footer.twig'  with {
         'countries': countries,
