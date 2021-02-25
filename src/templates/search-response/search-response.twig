@@ -1,11 +1,13 @@
-{% if not searchResult %}
     <div class="search-response">
         <h2 class="search-response__title">{{ 'search-response.title'|trans }} "{{searchAnswer}}"</h2>
-        <div class="search-response__text">{{ 'search-response.text'|trans }}</div>
+        {% if not searchResult %}
+            <div class="search-response__text">{{ 'search-response.text'|trans }}</div>
+        {% else %}
+            <div class="search-response__text-block">
+                <div class="search-response__text">{{ 'search-response.text-success'|trans }}</div>
+                <component is="listing-items-quantity"
+                           :items-quantity="{{ filters.match|json_encode()|e('html_attr') }}"
+                ></component>
+            </div>
+        {% endif %}
     </div>
-{% else %}
-    <div class="search-response">
-        <h2 class="search-response__title">По запросу "шуруп"</h2>
-        <div class="search-response__text">найдено 5 товаров</div>
-    </div>
-{% endif %}

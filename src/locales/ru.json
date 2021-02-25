@@ -371,6 +371,7 @@
 
     "search-response.title":"По запросу",
     "search-response.text":"Не найдено ни одного товара",
+    "search-response.text-success":"Найдено",
     
     "favorites.title":"Избранное",
     "favorites.button.delete":"Удалить все",
