@@ -12,14 +12,7 @@
         </div>
         <div class="favorites-listing__content">
             <div class="favorites-listing__sidebar">
-                <div class="favorites-listing__sidebar_title">{{ $tc('favorites.text.category') }}</div><!--TODO arrow for hide categories-->
-                <div class="favorites-listing__sidebar_category" v-for="(category, index) in favoriteCategories" @click="changeCategory(index)">
-                    <svg viewBox="-2 -1 12 12">
-                        <use xlink:href="/images/sprite.svg#check" v-show="categoryActive === index"></use>
-                    </svg>
-                    {{ category }}
-                </div>
-                <slot name="filters"></slot>
+                <favorites-listing-category :favoriteCategories="favoriteCategories"></favorites-listing-category>
             </div>
             <div class="favorites-listing__products">
                 <slot name="actions"></slot>
@@ -55,10 +48,12 @@
 </template>
 
 <script>
+import FavoritesListingCategory from './favorites-listing-category.vue';
 
     export default {
         name: "favorites-listing",
         components: {
+             FavoritesListingCategory
         },
         props: {
             favoriteCategories: {
