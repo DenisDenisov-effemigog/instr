@@ -5,6 +5,7 @@
         </div>
         <div class="finance-progress__main"
             :class="{'finance-progress__main--no-debt': !dashboard && arrears === 0}"
+             v-if="contract.length"
         >
             <!-- Progress Bar -->
             <div class="finance-progress__progress">
@@ -142,9 +143,9 @@
                     </div>
                 </div>
                 <div class="finance-progress__payment">
-                    <a href="" class="finance-progress__payment-link">
+                    <span class="finance-progress__payment-link">
                         {{ $tc('profile_finance.title.charges', leftCharges) }}
-                    </a>
+                    </span>
                     <div class="finance-progress__payment-text" v-if="!dashboard && arrears > 0">{{ $tc('profile_finance.credit_debt.delay') }}</div>
                     <div class="finance-progress__payment-text" v-else-if="!dashboard && arrears === 0">{{ $tc('profile_finance.credit_debt.left_days') }}</div>
                     <div class="finance-progress__payment-price finance-progress__payment-price--bold" v-if="dashboard">
@@ -160,7 +161,9 @@
                     </div>
                 </div>
             </div>
-
+        </div>
+        <div v-else class="dashboard-contract__item dashboard-contract__item--info">
+            <span>{{ $tc('profile.dashboard.contract_item_info') }}</span>
         </div>
     </div>
 </template>
@@ -180,13 +183,16 @@
             productLimit: {
                 type: Boolean,
                 default: false
+            },
+            contract: {
+                required: true
             }
         },
         data(){
             return{
                 limit: {
                     start: 0,
-                    limit: 100000,
+                    limit: 100000,/*todo лимит должен придти из сервера*/
                 },
                 currentTooltip: false,
                 expiredTooltip: false,

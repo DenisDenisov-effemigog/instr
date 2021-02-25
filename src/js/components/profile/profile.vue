@@ -45,6 +45,7 @@
                 <router-view
                     :points="points"
                     :selectopenSelect="selectopenSelect"
+                    :contract="profile.contract"
                 ></router-view>
             </transition>
         </div>
@@ -154,6 +155,7 @@ export default {
     mounted() {
         //this.$store.dispatch('personalUpdateShortProfile');
         this.$store.dispatch('personalUpdateProfile');
+        this.$store.dispatch('personalGetContract');
     },
     created() {
         window.addEventListener('resize', this.updateWidth);
