@@ -16,10 +16,10 @@ export default {
             return parts.join('.');
         },
         localDate: function (value, local) { // local - String difining local: 'ru', 'en-GB' etc.
-            value = value + ', 0';
-            console.log(value, local, new Date(value));
-            const date = new Date(value)
-            return date.toLocaleDateString(local)
-        }  // перевод формата даты (value) ГГГГ.ММ.ДД в ДД.ММ.ГГГГ с передачей аргумента local текущей локации/места
+            const date = new Date(value);
+            const hours = date.getHours()
+            const min = date.getMinutes()
+            return `${hours}:${min} ${date.toLocaleDateString(local)}`
+        }  // перевод формата даты (value) "ГГГГ.ММ.ДД:время" в "время ДД.ММ.ГГГГ" с передачей аргумента local текущей локации/места
     }
 }
