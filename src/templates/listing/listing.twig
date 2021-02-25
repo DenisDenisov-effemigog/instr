@@ -14,9 +14,9 @@
     {% if shields %}
         <div class="listing__shields">
             {% for shield in shields %}
-                <div class="listing__shield">
-                    {{ shield }}
-                </div>
+                <a href='{{shield.url}}' class="listing__shield">
+                    {{ shield.title }}
+                </a>
             {% endfor %}
         </div>
     {% endif %}
@@ -61,10 +61,11 @@
                         </component>
                     {% endfor %}
                 </div>
+            {% endif %}
                 <div class="listing__sidebar_filters">  
                     {% include './filter.twig' with {'filters': filters} %}
                 </div>
-            {% else %}
+            {%  if filters.filters is empty  %}
                 <div class="listing__subcategories">
                     {% for subcategory in listingCategories.subcategories %}
                         <div class="listing__subcategory">

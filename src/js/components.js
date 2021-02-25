@@ -107,6 +107,7 @@ import receiveAddress from './components/checkout/receive-address.vue'
 import contactsForm from './components/contacts/contacts-form.vue'
 /* favorites */
 import favoritesListing from './components/favorites/favorites-listing.vue'
+import favoritesListingCategory from './components/favorites/favorites-listing-category.vue'
 /* comparisons */
 import comparisonsListing from './components/comparisons/comparisons-listing.vue'
 /* errors */
@@ -212,6 +213,7 @@ export default {
         dashboardPetitions,
         discountsCalculation,
         favoritesListing,
+        favoritesListingCategory,
         comparisonsListing,
     },
 }

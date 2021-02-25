@@ -2,17 +2,19 @@
     <div class="dashboard" v-if="loaded">
         <div class="dashboard__head">
             <h2 class="profile__title">{{ $tc('link.dashboard') }}</h2>
-            <dashboard-notifications></dashboard-notifications>
+            <!-- #TODO временно отключено -->
+            <!-- <dashboard-notifications></dashboard-notifications> -->
         </div>
         <div class="dashboard__main">
             <div class="dashboard__top">
-                <finance-progress :financeCharges="financeData.charges"></finance-progress>
+                <finance-progress :financeCharges="financeData.charges" :contract="contract"></finance-progress>
                 <dashboard-discount :className="personal"></dashboard-discount>
                 <dashboard-contract></dashboard-contract>
             </div>
             <div class="dashboard__bottom">
                 <dashboard-curator></dashboard-curator>
-                <dashboard-petitions></dashboard-petitions>
+                <!-- #TODO временно отключено -->
+                <!-- <dashboard-petitions></dashboard-petitions> -->
                 <dashboard-orders></dashboard-orders>
             </div>
         </div>
@@ -44,6 +46,11 @@ export default {
         DashboardNotifications,
         financeProgress,
         DashboardPetitions
+    },
+    props: {
+        contract: {
+            required: true
+        }  
     },
     data() {
             return {

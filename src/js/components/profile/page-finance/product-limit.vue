@@ -4,9 +4,10 @@
         <div class="columns">
             <div class="finance__progress-bar finance__progress-bar--limit">
                 <component is="finance-progress" 
-                    :financeCharges="financeCharges"
-                    :dashboard="false"
-                    :productLimit="true"
+                           :financeCharges="financeCharges"
+                           :dashboard="false"
+                           :productLimit="true"
+                           :contract="contract"
                 ></component>
             </div>
         </div>
@@ -19,6 +20,9 @@
         props: {
             financeCharges: {
                 type: Array
+            },
+            contract: {
+                required: true
             }
         },
     }

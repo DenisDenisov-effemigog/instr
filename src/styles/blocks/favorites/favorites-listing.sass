@@ -45,7 +45,6 @@
             @extend .title-4
             transition: .2s
             cursor: pointer
-            padding-bottom: 1rem
             
         &_category
             @extend .text-2
@@ -64,4 +63,26 @@
         
     &__products
         @extend .column--content
+    
+    &__sidebar_head
+        display: flex
+        justify-content: space-between
+        align-items: center
+        padding-bottom: 1rem
+
+    &__sidebar_hide
+        cursor: pointer
+        width: 1.875rem
+        height: 1.25rem
+        display: flex
+        align-items: center
+        justify-content: center
+        transform: rotate(0deg)
+        transition: transform 0.35s
+        & svg
+            width: $size_14
+            height: $size_14
+        &--rotate
+            transform: rotate(180deg)
+
         

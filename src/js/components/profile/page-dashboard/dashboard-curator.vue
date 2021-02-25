@@ -3,17 +3,20 @@
         <div class="dashboard-curator__head">
             <h3 class="dashboard-curator__title">{{ $tc('profile.dashboard.curator_title') }}</h3>
             <div class="dashboard-curator__img">
-                <div class="dashboard-curator__pic">
-                    <img src="./demo_images/dashboard/manager.png" alt="">
-                </div>
-                <div v-show="!managerData" class="dashboard-curator__icon">
+                <div v-if="!managerData.name" class="dashboard-curator__icon">
                     <svg viewBox="0 0 16 16">
                         <use :xlink:href="templatePath + `images/sprite.svg#icons__user`"></use>
                     </svg>
                 </div>
+                <div class="dashboard-curator__pic" v-else>
+                    <img :src="managerData.photo" alt="">
+                </div>
             </div>
         </div>
-        <div class="dashboard-curator__main">
+        <div class="dashboard-curator__main" v-if="!managerData.name">
+            <div class="dashboard-curator__info">{{ $tc('profile.dashboard.curator_info') }}</div>
+        </div>
+        <div class="dashboard-curator__main" v-else>
             <div class="dashboard-curator__name">{{managerData.name}}</div>
             <div class="dashboard-curator__phone">
                 <svg>
@@ -27,13 +30,12 @@
                 </svg>
                 {{managerData.mail}}
             </div>
-            <div class="dashboard-curator__btn">
+            <a :href="'tel:' + managerData.phone" class="dashboard-curator__btn">
                 <svg>
                     <use :xlink:href="templatePath + `images/sprite.svg#icons__phone`"></use>
                 </svg>
                 {{ $tc('profile.dashboard.curator_btn') }}
-            </div>
-            <div v-show="!managerData" class="dashboard-curator__info">{{ $tc('profile.dashboard.curator_info') }}</div>
+            </a>
         </div>
     </div>
 </template>

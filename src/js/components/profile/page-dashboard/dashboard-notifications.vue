@@ -35,7 +35,7 @@
                             </div>
                         </li>
                     </ul>
-                    <div class="dashboard-notifications__clear">
+                    <div class="dashboard-notifications__clear" @click="removeNotifications">
                         <svg>
                             <use :xlink:href="templatePath + `images/sprite.svg#icons__del`"></use>
                         </svg>
@@ -53,23 +53,6 @@ export default {
     data(){
         return{
             tooltipFlag: false,
-            // notificationData:[
-            //      {
-            //          title:'Вопрос по гарантии',
-            //          date:'12.03.2021',
-            //          status:'Готово'
-            //      },
-            //      {
-            //          title:'Запрос на удаление адреса',
-            //          date:'12.03.2021',
-            //          status:'Готово'
-            //      },
-            //      {
-            //          title:'Запрос на удаление адреса',
-            //          date:'12.03.2021',
-            //          status:'Готово'
-            //      }
-            //  ]
         }
     },
     mounted() {
@@ -79,6 +62,11 @@ export default {
         notificationData() {
             return this.cloneOverJson(this.$store.state.personal.petitions);
         },
+    },
+    methods: {
+        removeNotifications() {
+            /*todo api for clear notifications*/
+        }
     }
 }
 </script>

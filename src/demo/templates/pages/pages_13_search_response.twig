@@ -1200,7 +1200,66 @@
 {% set view_type = 'gridview' %}
 
 {% set shields = [
-    'Лебедки автомобильные', 'Масленки', 'Мебель гаражная', 'Моечные машины высокого давления', 'Домкраты', 'Насосы гидравлические', 'Аксессуары автомобильные', 'Перчатки', 'Поддоны для сбора масла', 'Подставки под машину регулируемые', 'Прессы гидравлические', 'Пробники автомобильные', 'Растяжки гидравлические', 'Пневмоинструмент', 'Тали',
+    {
+        title:'Лебедки автомобильные',
+        url: ''    
+    }, 
+    {
+        title:'Масленки',
+        url: ''    
+    }, 
+    {
+        title:'Мебель гаражная',
+        url: ''    
+    }, 
+    {
+        title:'Моечные машины высокого давления',
+        url: ''    
+    }, 
+    {
+        title:'Домкраты',
+        url: ''    
+    }, 
+    {
+        title:'Насосы гидравлические',
+        url: ''    
+    }, 
+    {
+        title:'Аксессуары автомобильные',
+        url: ''    
+    }, 
+    {
+        title:'Перчатки',
+        url: ''    
+    }, 
+    {
+        title:'Поддоны для сбора масла',
+        url: ''    
+    }, 
+    {
+        title:'Подставки под машину регулируемые',
+        url: ''    
+    }, 
+    {
+        title:'Прессы гидравлические',
+        url: ''    
+    }, 
+    {
+        title:'Пробники автомобильные',
+        url: ''    
+    }, 
+    {
+        title:'Растяжки гидравлические',
+        url: ''    
+    }, 
+    {
+        title:'Пневмоинструмент',
+        url: ''    
+    }, 
+    {
+        title:'Тали',
+        url: ''
+    },
 ] %}
 
 {% set filters = {
@@ -1955,7 +2014,10 @@
         'activeCountry': 'Россия',
         'headerLinks': headerLinks,
     } %}
-    {% include '../../../templates/search-response/search-response.twig' %}
+    {% include '../../../templates/search-response/search-response.twig' with {
+        'searchAnswer': 'ъъ',
+        'searchResult': false
+    } %}
     {% include '../../../templates/listing/listing.twig' with {
         'products': products,
         'sort_types': sort_types,
@@ -1966,7 +2028,7 @@
         'filters': filters,
         'view_type': view_type,
         'pagination': pagination,
-        'titleFlag': true 
+        'titleFlag': true,
     } %}
     {% include '../../../templates/footer/footer.twig'  with {
         'countries': countries,

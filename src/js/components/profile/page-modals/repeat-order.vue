@@ -11,7 +11,7 @@
                     v-for="product in products.products"
                 >
                     <div class="order-modal__special_img">
-                        <img :src="product.images[0].img" alt=""> <!--TODO не приходит картинка из-за роутера-->
+                        <img :src="product.images[0].img" alt="">
                     </div>
                     <div class="order-modal__special_info">
                         <div class="order-modal__special_article">{{ $tc('text.articul') }}: {{ product.sku }}</div>
