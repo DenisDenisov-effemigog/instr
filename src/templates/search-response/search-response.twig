@@ -1,4 +1,11 @@
-<div class="search-response">
-    <h2 class="search-response__title">{{ 'search-response.title'|trans }}</h2>
-    <div class="search-response__text">{{ 'search-response.text'|trans }}</div>
-</div>
+{% if not searchResult %}
+    <div class="search-response">
+        <h2 class="search-response__title">{{ 'search-response.title'|trans }} "{{searchAnswer}}"</h2>
+        <div class="search-response__text">{{ 'search-response.text'|trans }}</div>
+    </div>
+{% else %}
+    <div class="search-response">
+        <h2 class="search-response__title">По запросу "шуруп"</h2>
+        <div class="search-response__text">найдено 5 товаров</div>
+    </div>
+{% endif %}

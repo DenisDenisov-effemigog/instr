@@ -41,7 +41,7 @@ export default {
             this.showButton = true;
             this.linkUrl = url
             this.disabled = false;
-            this.items = items //передаём количество товаров   
+            this.items = Number(items) //передаём количество товаров   
             this.titlePartFirst = firstPart //передаём текст кнопки, который пишется в первом ряду
             this.titlePartSecond = secondPart //передаём текст кнопки, который пишется во втором ряду, не забыть добавить в файл локализаций json варианты pluralization
             if (this.items === 0) {
