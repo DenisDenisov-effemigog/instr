@@ -2,12 +2,12 @@
     <div class="dashboard-contract">
         <div class="dashboard-contract__head">
             <h3 class="dashboard-contract__title"> {{ $tc('profile.dashboard.contract_title') }}</h3>
-            <div v-show="contractArr.length == 0" class="dashboard-contract__btn">
-                <svg viewBox="0 0 16 16">
-                        <use :xlink:href="templatePath + `images/sprite.svg#icons__noti`"></use>
+            <!--<div v-show="contractArr.length == 0" class="dashboard-contract__btn">
+                <svg viewBox="0 4 20 20">
+                    <use :xlink:href="templatePath + `images/sprite.svg#icons__edit`"></use>
                 </svg>
                 <span>{{ $tc('profile.dashboard.contract_btn') }}</span>
-            </div>
+            </div> todo временно отключено-->
         </div>
         <div class="dashboard-contract__main">
             <ul class="dashboard-contract__list">

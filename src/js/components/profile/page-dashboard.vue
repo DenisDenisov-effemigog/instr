@@ -7,7 +7,7 @@
         </div>
         <div class="dashboard__main">
             <div class="dashboard__top">
-                <finance-progress :financeCharges="financeData.charges"></finance-progress>
+                <finance-progress :financeCharges="financeData.charges" :contract="contract"></finance-progress>
                 <dashboard-discount :className="personal"></dashboard-discount>
                 <dashboard-contract></dashboard-contract>
             </div>
@@ -46,6 +46,11 @@ export default {
         DashboardNotifications,
         financeProgress,
         DashboardPetitions
+    },
+    props: {
+        contract: {
+            required: true
+        }  
     },
     data() {
             return {

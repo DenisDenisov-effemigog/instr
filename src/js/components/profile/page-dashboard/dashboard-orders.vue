@@ -7,7 +7,8 @@
         </div>
         <div class="dashboard-orders__main">
             <ul class="dashboard-orders__list">
-                <li v-for="item in ordersData" class="dashboard-orders__item">
+                <li v-if="!ordersData.length" class="dashboard-orders__item dashboard-orders__item--info">{{ $tc('profile.dashboard.order_info') }}  </li>
+                <li v-for="item in ordersData" class="dashboard-orders__item" v-else>
                     <div class="dashboard-orders__item-top">
                         <div class="dashboard-orders__number">
                             #{{item.number}}
@@ -25,7 +26,6 @@
                         </div>
                     </div>
                 </li>
-                <li v-show="!ordersData" class="dashboard-orders__item dashboard-orders__item--info">{{ $tc('profile.dashboard.order_info') }}  </li>
             </ul>
         </div>
     </div>
@@ -36,7 +36,7 @@ export default {
     name:"dashboard-orders",
     data(){
         return{
-            ordersData:[
+            ordersData:[ /*todo from base*/
                 {
                     number:'123456',
                     price:'30 000',

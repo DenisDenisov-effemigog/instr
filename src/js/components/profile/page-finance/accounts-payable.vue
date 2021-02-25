@@ -4,8 +4,9 @@
             <div class="finance__progress-bar finance__progress-bar--payable">
                 <h4 class="finance__subtitle">{{ $tc('profile_finance.title.payable') }}</h4>
                 <component is="finance-progress" 
-                    :financeCharges="financeCharges"
-                    :dashboard="false"
+                           :financeCharges="financeCharges"
+                           :dashboard="false"
+                           :contract="contract"
                 ></component>
             </div>
             <div class="finance-prgs-crcl">
@@ -52,6 +53,9 @@
         props: {
             financeCharges: {
                 type: Array
+            },
+            contract: {
+                required: true
             }
         },
         data() {

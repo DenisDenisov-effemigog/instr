@@ -1,21 +1,21 @@
 <template>
     <div class="finance" v-if="loaded">
-        <div class="finance__header" :class="{'finance__header--download': !!financeDataAll}">
+        <div class="finance__header" :class="{'finance__header--download': !!contract.length}">
             <h2 class="profile__title">{{ $tc('link.finance') }}</h2>
-            <a class="profile__link" :href="financeDataAll.invoice" download  v-if="!!financeDataAll">
+            <a class="profile__link" :href="financeDataAll.invoice" download v-if="!!contract.length">
                 {{ $tc('profile_finance.download') }}
                 <svg>
                     <use :xlink:href="templatePath + `images/sprite.svg#icons__download`"></use>
                 </svg>
             </a>
         </div>
-        <div class="profile__empty-content" v-if="!financeDataAll">
+        <div class="profile__empty-content" v-if="!contract.length">
             <p class="finance__text">{{ $tc('profile_finance.empty_text') }}</p>
             <a :href="catalogLink" class="profile__catalogue-btn">{{ $tc('button.move_to_catalog') }}</a>
         </div>
         <div v-else>
-            <product-limit :financeCharges="financeDataAll.charges"></product-limit>
-            <accounts-payable :financeCharges="financeDataAll.charges"></accounts-payable>
+            <product-limit :financeCharges="financeDataAll.charges" :contract="contract"></product-limit>
+            <accounts-payable :financeCharges="financeDataAll.charges" :contract="contract"></accounts-payable>
             <finance-charges :financeCharges="financeDataAll.charges" :arrears="true"></finance-charges>
             <finance-charges :financeCharges="financeDataAll.charges"></finance-charges>
             <operation-history :financeHistory="financeDataAll.history"></operation-history>
@@ -40,6 +40,11 @@
     export default {
         name:"page-finance",
         components: { productLimit, accountsPayable, financeCharges, operationHistory},
+        props: {
+            contract: {
+                required: true
+            }
+        },
         data() {
             return {
                 loaded: false,
