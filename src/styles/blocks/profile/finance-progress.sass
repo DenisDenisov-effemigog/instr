@@ -25,10 +25,8 @@
     &__progress-line
         width: 100%
         position: relative
-        cursor: pointer
         height: 1rem
         border-radius: 4px
-        background: $pre-white
         +tablet
             height: 1.625rem
     &__progress-current
@@ -51,6 +49,15 @@
         height: 1rem
         border-radius: 4px
         cursor: pointer
+        +tablet
+            height: 1.625rem
+    &__progress-bg
+        position: absolute
+        cursor: pointer
+        top: 0
+        width: 100%
+        left: 0
+        background: $pre-white
         +tablet
             height: 1.625rem
     &__progress-price

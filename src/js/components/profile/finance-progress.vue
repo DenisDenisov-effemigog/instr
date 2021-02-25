@@ -10,6 +10,16 @@
             <div class="finance-progress__progress">
                 <div  class="finance-progress__progress-line">
                     <!-- for Product Limit -->
+                    <div @mouseleave="closeTooltip" v-if="productLimit"
+                        @mouseenter="showBgTooltip" 
+                        class="finance-progress__progress-bg" 
+                    >
+                        <div v-show="bgTooltip" 
+                            class="finance-progress__progress-tooltip finance-progress__progress-tooltip--current"
+                        >
+                            {{currency(bgTooltipDesc)}} {{ $tc('text.currency') }}
+                        </div>
+                    </div>
                     <div @mouseleave="closeTooltip" v-if="productLimit" 
                         @mouseenter="showCurrentTooltip" 
                         class="finance-progress__progress-current" 
@@ -22,7 +32,16 @@
                         </div>
                     </div>
                     <!-- end of Product Limit -->
-
+                    <div @mouseleave="closeTooltip" v-if="!productLimit"
+                        @mouseenter="showBgTooltip" 
+                        class="finance-progress__progress-bg" 
+                    >
+                        <div v-show="bgTooltip" 
+                            class="finance-progress__progress-tooltip finance-progress__progress-tooltip--current"
+                        >
+                            {{currency(bgTooltipDesc)}} {{ $tc('text.currency') }}
+                        </div>
+                    </div>
                     <div @mouseleave="closeTooltip" v-if="!productLimit && arrears > 0" 
                         @mouseenter="showLongerTooltip" 
                         class="finance-progress__progress-expired" 
@@ -171,11 +190,13 @@
                 },
                 currentTooltip: false,
                 expiredTooltip: false,
+                bgTooltip: false,
                 shippedOrders: 0,
                 totalPay: 0,
                 arrears: 0,
                 nextPayment: {},
-                leftCharges: 0
+                leftCharges: 0,
+                bgDesc: 0
             }
         },
         methods:{
@@ -185,11 +206,16 @@
             showCurrentTooltip(){
                 this.currentTooltip = true
             },
+             showBgTooltip(){
+                this.bgTooltip = true
+            },
             closeTooltip(){
                 if(this.expiredTooltip){
                     this.expiredTooltip = false
-                }else{
+                }else if(this.currentTooltip){
                     this.currentTooltip = false
+                }else{
+                    this.bgTooltip = false
                 }
             }
         },
@@ -208,7 +234,9 @@
                     if (item.latest) this.nextPayment = {...item};
                 })
                 this.leftCharges = this.financeCharges.length - arrearsQty
-                
+            },
+            bgTooltipDesc(){
+                return this.limit.limit - this.totalPay
             },
             setCurrentWidth(){
                 let width = (this.totalPay - this.arrears) * 100 / this.limit.limit
