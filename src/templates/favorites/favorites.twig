@@ -4,6 +4,11 @@
            :pagination="{{ pagination|json_encode|e('html_attr') }}"
            :hash="{{ filters.hash|json_encode|e('html_attr') }}"
 >
+    <template v-slot:filters>
+        <div class="listing__sidebar_filters">
+            {% include '../listing/filter.twig' with {'filters': filters} %}
+        </div>
+    </template>
     <template v-slot:actions>
         <component is="sticky-listing-actions"
                    :filters="{{ filters|json_encode|e('html_attr') }}"
