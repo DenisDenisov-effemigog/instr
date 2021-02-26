@@ -114,9 +114,9 @@ export default {
             this.$emit("searchClick", this.activeSearch) // возвращаем лого, закрываем поиск (передаём false)
             this.$eventBus.$emit("close-catalog"); //закрываем моб.каталог при выходе из поиска
         },
-        clickOutside() {
+        clickOutside(event) {
             let vm = this;
-            if(window.innerWidth > 760 && vm.focused) {
+            if(window.innerWidth > 760 && vm.focused && event.toElement.className !== 'search__clear-text') {
                 vm.exitSearch()
             }
         },
