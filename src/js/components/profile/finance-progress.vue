@@ -144,11 +144,10 @@
                 </div>
                 <div class="finance-progress__payment">
                     <router-link 
-                        class="finance-progress__payment-link"
                         tag="span" 
                         :to="'/my/finances/'"
-                    >
-                        {{ $tc('profile_finance.title.charges', leftCharges) }}
+                    >   
+                        <span @click="passIndex" class="finance-progress__payment-link"> {{ $tc('profile_finance.title.charges', leftCharges) }}</span>
                     </router-link>
                     <div class="finance-progress__payment-text" v-if="!dashboard && arrears > 0">{{ $tc('profile_finance.credit_debt.delay') }}</div>
                     <div class="finance-progress__payment-text" v-else-if="!dashboard && arrears === 0">{{ $tc('profile_finance.credit_debt.left_days') }}</div>
@@ -227,6 +226,9 @@
                 }else{
                     this.bgTooltip = false
                 }
+            },
+            passIndex(){
+                this.$eventBus.$emit("passIndex", 4)
             }
         },
         computed:{
