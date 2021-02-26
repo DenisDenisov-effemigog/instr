@@ -20,17 +20,17 @@
         methods: {
             mouseWheel(){
                 let windowPosition = window.pageYOffset
-                console.log(windowPosition, this.scrollOffset);
                 windowPosition > this.scrollOffset ? this.fixed = true : this.fixed = false
             },
             getPosition() {
                 let element = this.$el;
+                let bottomElement = document.querySelector('.comparisons__bottom');
                 let yPosition = 0;
-                while(element) {
-                    yPosition += (element.offsetTop - element.scrollTop + element.clientTop);
-                    element = element.offsetParent;
+                while(bottomElement) {
+                    yPosition += (bottomElement.offsetTop - bottomElement.scrollTop + bottomElement.clientTop);
+                    bottomElement = bottomElement.offsetParent;
                 }
-                this.scrollOffset = yPosition
+                this.scrollOffset = yPosition - element.offsetHeight
                 this.mouseWheel()
                 return this.scrollOffset
             }

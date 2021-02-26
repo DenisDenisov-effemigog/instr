@@ -21,7 +21,13 @@
             height: $size_18
             margin-right: .5rem
 
+    //  top part of comparison
+
     &__top
+        transition: .35s
+        +desktop
+            header: 14rem
+        // fixing top part upside
         &--fixed
             position: fixed
             top: 0
@@ -42,11 +48,20 @@
             .comparisons__card
                 +mobile
                     border: none
+            ~ .comparisons__bottom
+                margin-top: 28.0625rem
+                +tablet
+                    margin-top: 28rem
+                +desktop
+                    margin-top: 19.75rem
         .container
             +desktop
                 display: flex
 
     &__category-selection
+        display: flex
+        flex-direction: column
+        justify-content: space-between
         background-color: $shield
         padding: 1.5rem
         +desktop
@@ -66,8 +81,8 @@
         +flex-container
         margin-top: 1.5rem
         color: $light-grey
-        +desktop
-            margin-top: 3.375rem
+        // +desktop
+        //     margin-top: 3.375rem
     &__slider-btns
         display: flex
     &__slider-btn
@@ -83,21 +98,30 @@
             width: $size_16
             height: $size_12
 
+    // top sliders
+
     &__cards
-        display: flex
         +mobile
             margin: 0 -1rem
         +desktop
             width: 75%
-        .agile__slide
+        // .agile,
+        // .agile__list,
+        .agile__slide,
             display: flex
+            align-items: stretch
+        // .agile__track
+        //     flex: auto
     &__card
+        display: flex
+        flex-direction: column
         border: 1px solid $pre-white
         padding: 0 1rem 1rem 1rem
         flex: auto
-        // min-width: 50%
         +tablet
-            display: flex
+            flex-direction: row
+        +tablet-only
+            padding-top: 1rem
         +desktop
             padding: 1.5rem
             border: 1px solid $border-color_4
@@ -108,6 +132,8 @@
                 margin-right: 1rem
         .slider-photo-card__slide
             height: 141px
+        .slider-photo-card__dot
+            display: block
     &__card-description
         display: flex
         flex-direction: column
@@ -132,6 +158,10 @@
         width: $size_16
         height: $size_18
 
+    // bottom part of comparison
+
+    &__bottom
+        @extend .container
     &__comparing
         display: flex
         margin-top: -1px
@@ -146,16 +176,21 @@
     &__sidebar-item:not(:last-of-type)
         margin-bottom: 2rem
 
+    // bottom sliders
+
     &__descriptions
         @extend .text-2
-        display: flex
         color: $grey
         +desktop
             font-size: $font-size
             line-height: $line-height
             width: 75%
+        .agile
+            flex: auto
     &__description
         flex: auto
+        border-top: 1px solid $border-color_4
+        border-bottom: 1px solid $border-color_4
         +desktop
             padding: 2.5rem 1.5rem
             border-right: 1px solid $border-color_4

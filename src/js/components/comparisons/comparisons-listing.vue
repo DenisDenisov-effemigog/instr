@@ -1,5 +1,5 @@
 <template>
-    <section class="comparisons" v-if="loaded">
+    <section class="comparisons">
         <div class="container">
             <div class="comparisons__header">
                 <h2 class="comparisons__title">{{ $tc('comparisons.title') }}</h2>
@@ -13,22 +13,24 @@
         </div>
         <comparisons-top>
             <div class="comparisons__category-selection">
-                <select-list
-                    :points="categories"
-                    :selectopenSelect="defaultCategory"
-                >
-                </select-list>
-                <label>
-                    <input
-                        class="comparisons__checkbox"
-                        type="checkbox">
-                    <span class="comparisons__checkbox-label">
-                        <svg class="comparisons__checkbox-svg" viewBox="0 0 10 8">
-                            <use :xlink:href="templatePath + 'images/sprite.svg#icons__checked'"></use>
-                        </svg>
-                    </span>
-                    <span class="comparisons__checkbox-text">{{ $tc('comparisons.text.only_differences') }}</span>
-                </label>
+                <div>
+                    <select-list
+                        :points="categories"
+                        :selectopenSelect="defaultCategory"
+                    >
+                    </select-list>
+                    <label>
+                        <input
+                            class="comparisons__checkbox"
+                            type="checkbox">
+                        <span class="comparisons__checkbox-label">
+                            <svg class="comparisons__checkbox-svg" viewBox="0 0 10 8">
+                                <use :xlink:href="templatePath + 'images/sprite.svg#icons__checked'"></use>
+                            </svg>
+                        </span>
+                        <span class="comparisons__checkbox-text">{{ $tc('comparisons.text.only_differences') }}</span>
+                    </label>
+                </div>
                 <div class="comparisons__slider-actions">
                     <div class="comparisons__slider-text">
                         1-{{shownItemsQnty}} {{ $tc('text.of') }} {{ qnty }} {{ $tc('comparisons.text.products') }}
@@ -48,8 +50,8 @@
                 </div>
             </div>
             <div class="comparisons__cards">
-                <agile ref="thumbnails" :as-nav-for="[$refs.main]" :options="options">
-                    <div class="comparisons__card" v-for="product in comparisons">
+                <agile ref="thumbnails" :as-nav-for="asNavFor2" :options="options">
+                    <div class="comparisons__card" v-for="(product, index) in comparisons">
                         <component is="slider-photo-card" 
                                 :cardSize="'short'"
                                 :images="product.images"
@@ -72,13 +74,13 @@
                 </agile>
             </div>
         </comparisons-top>
-        <div class="container">
+        <div class="comparisons__bottom">
             <div class="comparisons__comparing">
                 <ul class="comparisons__sidebar">
                     <li class="comparisons__sidebar-item" v-for="item in Object.values(featuresTitle)">{{ item }}</li>
                 </ul>
                 <div class="comparisons__descriptions">
-                    <agile ref="main" :options="mainOptions">
+                    <agile ref="main" :as-nav-for="asNavFor1" :options="options">
                         <ul class="comparisons__description" v-for="product in comparisons">
                             <li>
                                 <div></div>
@@ -102,13 +104,6 @@
             </a>
         </div>
     </section>
-    <div v-else class="preloader">
-        <svg viewBox="0 0 145 145">
-            <use :xlink:href="templatePath + 'images/sprite.svg#preloader'"></use>
-        </svg>
-        <div class="preloader__loading preloader__loading--first"></div>
-        <div class="preloader__loading preloader__loading--second"></div>
-    </div>
 </template>
 
 <script>
@@ -126,7 +121,6 @@
         },
         data() {
             return {
-                loaded: false,
                 categories: [
                     { 'label': 'Дрель-шуруповерт', 'value': 1 },
                     { 'label': 'Шуруповерт', 'value': 2 },
@@ -156,6 +150,7 @@
                     dots: false,
                     slidesToShow: 2,
                     unagile: false,
+                    mobileFirst: true,
 
                     responsive: [
                         {
@@ -166,37 +161,19 @@
                         }
                     ]
                 },
-                mainOptions: {
-                    infinite: false,
-                    navButtons: false,
-                    dots: false,
-                    slidesToShow: 2,
-                    unagile: false,
-
-                    responsive: [
-                        {
-                            breakpoint: 768,
-                            settings: {
-                                slidesToShow: 3
-                            }
-                        }
-                    ]
-                }
                 
             }
         },
         methods: {
-            loading(){
-                let vm = this
-                setTimeout(function () {
-                    vm.loaded = true
-                }, 500)
-            },
             changeShownQnty() {
                 if (window.innerWidth < 768) {
                     this.shownItemsQnty = 2
-                } else if (this.qnty > 2) {
+                    this.qnty < 3 ? this.options.unagile = true : this.options.unagile = false
+                } else if (window.innerWidth > 767 && this.qnty > 2) {
                     this.shownItemsQnty = 3
+                    this.qnty == 3 ? this.options.unagile = true : this.options.unagile = false
+                } else if (this.qnty < 3) {
+                    this.options.responsive[0].settings.slidesToShow = 2;
                 }
             },
             deployList() {
@@ -213,13 +190,12 @@
             
         },
         created() {
-            this.loading();
-            this.changeShownQnty;
             window.addEventListener('resize', this.changeShownQnty);
         },
         mounted () {
+            this.changeShownQnty();
             this.asNavFor1.push(this.$refs.thumbnails)
-            this.asNavFor2.push(this.$refs.main)
+		    this.asNavFor2.push(this.$refs.main)
         }
 
     }
