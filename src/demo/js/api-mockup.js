@@ -1952,6 +1952,74 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
+            case 'instrument2:rest.api.search.get.history':
+                
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                            answer: [
+                                {title: "Шуруп", link: ''},
+                                {title: "Шуруповерт", link: ''},
+                                {title: "Шуруповерт какой-нибудь", link: ''}
+                            ]
+                        }
+                    }
+                });
+                break;
+            case 'instrument2:rest.api.search.clear.history':
+                
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                            answer: []
+                        }
+                    }
+                });
+                break;
+            case 'instrument2:rest.api.search':
+                
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                            answer: {
+                                shields: [
+                                    {title: "Лебедки автомобильные", link: ''},
+                                    {title: 'Масленки', link: ''},
+                                    {title: 'Мебель гаражная', link: ''},
+                                    {title: 'Гидравлические опоры', link: ''},
+                                    {title: 'Моечные машины высокого давления', link: ''},
+                                    {title: 'Домкраты', link: ''},
+                                    {title: 'Аксессуары автомобильные', link: ''}
+                                ],
+                                products: [
+                                    {
+                                        title: 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel 52 сс',
+                                        img: '/images/search/item.png',
+                                        price: 2819,
+                                        link: ''
+                                    },
+                                    {
+                                        title: 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel 52 сс',
+                                        img: '/images/search/item.png',
+                                        price: 2819,
+                                        link: ''
+                                    },
+                                    {
+                                        title: 'Trimmer pe benzina GT-52S, multifunctional, 52 сс, 3 cp, tija din 2 parti//Denzel 52 сс',
+                                        img: '/images/search/item.png',
+                                        price: 2819,
+                                        link: ''
+                                    }
+                                ],
+                                url: ''
+                            }
+                        }
+                    }
+                });
+                break;
         }
     });    
 };
