@@ -68,7 +68,7 @@
                     <div class="cart-card__cancel-delete"
                         :class="{'cart-card__cancel-delete--out-of-stock': !product.available}"
                         @click="deleteItem = false">
-                        {{ $tc('text.cancel_deletion') }}
+                        {{ $tc('button.cancel') }}
                     </div>
                 </div>
 
@@ -121,7 +121,7 @@
                 <span class="cart-card__cancel-delete"
                     @click="deleteItem = false"
                     v-else
-                >{{ $tc('text.cancel_deletion') }}</span>
+                >{{ $tc('button.cancel') }}</span>
             </div>
             <div class="cart-card__delete" v-if="product.available">
                 <svg v-if="deleteItem" @click="clearItem(product.id)">

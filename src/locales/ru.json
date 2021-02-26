@@ -5,6 +5,8 @@
     "button.add_to_cart.tooltip.part2": "шт. так как в таком количестве товара нет на складе",
     "button.go_payment": "Перейти к оплате",
     "button.move_to_catalog": "Перейти в каталог",
+    "button.cancel": "Отменить",
+    "button.delete-all":"Удалить все",
 
     "local": "ru",
     
@@ -52,11 +54,12 @@
     "text.in": "в",
     "text.from": "от",
     "text.to": "до",
+    "text.of": "из",
     "text.currency": "₽",
     "text.item_currency": "₽/шт",
     "text.free": "бесплатно",
     "text.description": "Описание",
-    "text.cancel_deletion": "Отменить",
+    "text.category":"Категория",
 
     "title.enter": "Войти",
     "title.entrance": "Вход",
@@ -374,6 +377,10 @@
     "search-response.text-success":"Результаты поиска по запросу",
     
     "favorites.title":"Избранное",
-    "favorites.button.delete":"Удалить все",
-    "favorites.text.category":"Категория"
+
+    "comparisons.title":"Сравнение",
+    "comparisons.text.only_differences":"Показывать только различия",
+    "comparisons.text.products":"товаров",
+    "comparisons.text.deploy":"Развернуть все"
+
 }

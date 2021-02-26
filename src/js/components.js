@@ -108,6 +108,8 @@ import contactsForm from './components/contacts/contacts-form.vue'
 /* favorites */
 import favoritesListing from './components/favorites/favorites-listing.vue'
 import favoritesListingCategory from './components/favorites/favorites-listing-category.vue'
+/* comparisons */
+import comparisonsListing from './components/comparisons/comparisons-listing.vue'
 /* errors */
 import errorsPromo from './components/errors/errors-promo.vue'
 
@@ -211,6 +213,7 @@ export default {
         dashboardPetitions,
         discountsCalculation,
         favoritesListing,
-        favoritesListingCategory
+        favoritesListingCategory,
+        comparisonsListing,
     },
 }

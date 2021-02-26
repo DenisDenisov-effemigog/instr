@@ -7,7 +7,7 @@
             ></component>
             <div class="favorites-listing__delete-button" @click="deleteFavorites">
                 <svg><use xlink:href="/images/sprite.svg#icons__del"></use></svg>
-                {{ $tc('favorites.button.delete') }}
+                {{ $tc('button.delete-all') }}
             </div>
         </div>
         <div class="favorites-listing__content">

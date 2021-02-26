@@ -520,46 +520,46 @@ let demoFeeds = {
         {
             'id': 1,
             'title': 'Выгрузка новинки',
-            'date': '2020, 04, 15, 16, 56',
-            'updateDate': '2020, 04, 15, 16, 56',
+            'date': '2020-04-15T16:56',
+            'updateDate': '2020-04-15T16:56',
             'filter1': '',
             'filter2': '',
             'brand1': 'Denzel',
             'brand2': '',
-            'link_yml': '/images/country/globus.png'
+            'link': '/images/country/globus.png'
         },
         {
             'id': 2,
             'title': 'Выгрузка всех выгрузок новинки',
-            'date': '2020, 04, 15, 16, 56',
-            'updateDate': '2020, 04, 15, 16, 56',
+            'date': '2020-04-15T16:56',
+            'updateDate': '2020-04-15T16:56',
             'filter1': '',
             'filter2': '',
             'brand1': 'Denzel',
             'brand2': '',
-            'link_yml': '/images/country/map.png'
+            'link': '/images/country/map.png'
         },
         {
             'id': 1,
             'title': 'Выгрузка лопат и молотков',
-            'date': '2020, 04, 15, 16, 56',
-            'updateDate': '2020, 04, 15, 16, 56',
+            'date': '2020-04-15T16:56',
+            'updateDate': '2020-04-15T16:56',
             'filter1': '',
             'filter2': '',
             'brand1': 'Denzel',
             'brand2': '',
-            'link_yml': '/images/country/globus.png'
+            'link': '/images/country/globus.png'
         },
         {
             'id': 2,
             'title': 'Моя выгрузка лопат и молотков номер 5',
-            'date': '2020, 04, 15, 16, 56',
-            'updateDate': '2020, 04, 15, 16, 56',
+            'date': '2020-04-15T16:56',
+            'updateDate': '2020-04-15T16:56',
             'filter1': '',
             'filter2': '',
             'brand1': 'Denzel',
             'brand2': '',
-            'link_yml': '/images/country/map.png'
+            'link': '/images/country/map.png'
         }
     ],
     readyFeeds: [
