@@ -1,41 +1,50 @@
 <div class="errors">
 	<div class="errors__img">
-        <img src="./demo_images/errors/404.png">
+        {% if errorType == '404' %}
+            <img src="./demo_images/errors/404.png">
+        {% endif %}
+        {% if errorType == '500' %}
+            <img src="./demo_images/errors/500.png">
+        {% endif %}
+        {% if errorType == '403' %}
+            <img src="./demo_images/errors/403.png">
+        {% endif %}
 	</div>
 	<div class="errors__main">
-		<h2 class="errors__title">{{ 'errors.404_title'|trans }}</h2>
+		<h2 class="errors__title">
+            {% if errorType == '404' %}
+                {{ 'errors.404_title'|trans }}
+            {% endif %}
+            {% if errorType == '403' %}
+                {{ 'errors.403_title'|trans }}
+            {% endif %}
+            {% if errorType == '500' %}
+                {{ 'errors.500_title'|trans }}
+            {% endif %}
+        </h2>
         <div class="errors__desc">
-            <div class="errors__text">{{ 'errors.404_text'|trans }}</div>
+            <div class="errors__text">
+                {% if errorType == '404' %}
+                    {{ 'errors.404_text'|trans }}
+                {% endif %}
+                {% if errorType == '403' %}
+                    {{ 'errors.403_text'|trans }}
+                {% endif %}
+                {% if errorType == '500' %}
+                    {{ 'errors.500_text'|trans }}
+                {% endif %}
+            </div>
+            {% if errorType == '500' %}
+                <div class="errors__text-promo">{{ 'errors.500_sale'|trans }}</div>
+            {% endif %}
         </div>
-		<div class="errors__btn">
-			<a class="errors__btn-link" href="/">{{ 'errors.404_btn'|trans }}</a>
-		</div>
-	</div>
-</div>
-<div class="errors">
-	<div class="errors__img">
-        <img src="./demo_images/errors/403.png">
-	</div>
-	<div class="errors__main">
-		<h2 class="errors__title">{{ 'errors.403_title'|trans }}</h2>
-        <div class="errors__desc">
-            <div class="errors__text">{{ 'errors.403_text'|trans }}</div>
-        </div>
-		<div class="errors__btn">
-			<a class="errors__btn-link" href="/">{{ 'errors.404_btn'|trans }}</a>
-		</div>
-	</div>
-</div>
-<div class="errors">
-	<div class="errors__img">
-        <img src="./demo_images/errors/500.png">
-	</div>
-	<div class="errors__main">
-		<h2 class="errors__title">{{ 'errors.500_title'|trans }}</h2>
-        <div class="errors__desc">
-            <div class="errors__text">{{ 'errors.500_text'|trans }}</div>
-		    <div class="errors__text-promo">{{ 'errors.500_sale'|trans }}</div>
-        </div>
-		<component is="errors-promo"></component>
+        {% if errorType == '404' or errorType == '403' %}
+            <div class="errors__btn">
+                <a class="errors__btn-link" href="/">{{ 'errors.404_btn'|trans }}</a>
+            </div>
+        {% endif %}
+        {% if errorType == '500' %}
+            <component is="errors-promo"></component>
+        {% endif %}
 	</div>
 </div>

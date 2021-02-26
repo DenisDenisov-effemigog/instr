@@ -7,20 +7,20 @@
                     <span>{{profile.personTypePrint}}</span>
                 </p>
             </div>
-            <ul class="profile__menu-list"  @click="clickTab">
-                <template v-for="item in computedLinks">
-                    <router-link tag="li" 
-                                 class="profile__menu-link" 
-                                 :exact="!!item.exact" 
-                                 active-class="profile__menu-link--active" 
-                                 :to="item.url"
+            <ul class="profile__menu-list"  >
+                <li v-for="(item, index) in computedLinks"  @click="clickTab(index)" >
+                    <router-link tag="div" 
+                        class="profile__menu-link"
+                        active-class="profile__menu-link--active"
+                        :exact="!!item.exact"  
+                        :to="item.url"
                     >
                         <span>{{ $tc(item.title) }}</span>
                         <svg class="" viewBox="0 0 6 10">
                             <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                         </svg>
                     </router-link>
-                </template>  
+                </li>  
                 <div ref="bg" class="profile__menu-bg"></div>  
             </ul>
             <div class="profile__menu-mobile">
@@ -68,6 +68,7 @@ export default {
     },
     data() {
         return {
+            currentIndex: 0,
             links: [
                 {
                     title: 'link.dashboard',
@@ -162,6 +163,7 @@ export default {
         this.updateWidth()
         this.$eventBus.$on("closeDetails", this.closeOrders)
         this.$eventBus.$on("openDetails", this.openDetails)
+        this.$eventBus.$on("passIndex", this.clickTab)
         if(window.innerWidth < 1024) {
             this.$eventBus.$on("hideMenu", this.openPage)
             this.$eventBus.$on("hideBreadcrumbs", this.openList)
@@ -171,11 +173,11 @@ export default {
         this.$eventBus.$off('hideMenu');
     },
     methods: {
-        clickTab(e){
-            if(window.innerWidth > 768){
-                let profileLink = e.target.closest('.profile__menu-link')
-                this.$refs.bg.style.top = profileLink.offsetTop + 'px'
-                this.$refs.bg.style.height = profileLink.clientHeight + 'px'
+        clickTab(index){
+            if(window.innerWidth > 1022){
+                this.currentIndex = index
+                this.$refs.bg.style.top = this.currentIndex * 56 + 'px'
+                this.$refs.bg.style.height = 56 + 'px'
             }
         },
         trimPath(value) {

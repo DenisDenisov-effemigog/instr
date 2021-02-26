@@ -7,8 +7,18 @@
         </div>
         <div class="dashboard__main">
             <div class="dashboard__top">
-                <finance-progress :financeCharges="financeData.charges" :contract="contract"></finance-progress>
-                <dashboard-discount :className="personal"></dashboard-discount>
+                <router-link
+                    tag="span"
+                    :to="'/my/finances/'"
+                >
+                    <finance-progress :financeCharges="financeData.charges" :contract="contract"></finance-progress>
+                </router-link>
+                <router-link
+                    tag="div" 
+                    :to="'/my/discounts/'"
+                >
+                     <dashboard-discount :className="'personal'"></dashboard-discount>
+                </router-link>
                 <dashboard-contract></dashboard-contract>
             </div>
             <div class="dashboard__bottom">
@@ -71,6 +81,7 @@ export default {
     mounted(){
         this.$eventBus.$emit('hideMenu');
         this.$store.dispatch('personalUpdateFinanceData');
+        this.$store.dispatch('personalUpdateOrders');
     },
     computed: {
         financeData() {

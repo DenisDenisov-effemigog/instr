@@ -11,9 +11,19 @@
                     </svg>
                 </div>
                 <form action="" class="mobile-search__form">
-                    <input type="text" class="mobile-search__input" :class="{'header__search-input_focused': focused}" :placeholder="$tc('header.search.placeholder_mobile')">
+                    <input type="text" 
+                           class="mobile-search__input" 
+                           :class="{'header__search-input_focused': focused}" 
+                           :placeholder="$tc('header.search.placeholder_mobile')"
+                           v-model="value"
+                           @keyup="startSearch"
+                    >
                     <button class="mobile-search__btn">{{ $tc('header.search.btn_find') }}</button>
-                     <search :focused=focused></search> 
+                     <search :focused=focused
+                             :searchShields="searchShields"
+                             :searchProducts="searchProducts"
+                             :searchLink="searchLink"
+                     ></search> 
                 </form>
             </div>
             <div class="header__search-mobile-btn" v-else @click="searchClick">
@@ -21,12 +31,21 @@
             </div>
         </div>
         <form action="" class="header__search-form">
-            <input @focus="focus" type="text" class="header__search-input" :class="{'header__search-input_focused': focused}" :placeholder="$tc('header.search.placeholder')">
+            <input @focus="focus" type="text" 
+                   class="header__search-input" 
+                   :class="{'header__search-input_focused': focused}" 
+                   :placeholder="$tc('header.search.placeholder')"
+                   v-model="value"
+                   @keyup="startSearch"
+            >
                 <svg v-show="focused" class="header__search-form-icon">
                     <use :xlink:href="templatePath + 'images/sprite.svg#icons__mag'"></use>
                 </svg>
             <search
                 :focused="focused"
+                :searchShields="searchShields"
+                :searchProducts="searchProducts"
+                :searchLink="searchLink"
             ></search>
         </form>
     </div>
@@ -35,6 +54,9 @@
 <script>
     import search from './search.vue';
     import ClickOutside from "vue-click-outside";
+    import * as Api from '../../../api/index'
+
+    let api = Api.getInstance();
 
 export default {
     name: "header-search",
@@ -46,9 +68,16 @@ export default {
     },
     data(){
         return{
+            value: '',
             focused:false,
-            activeSearch: false
+            activeSearch: false,
+            searchShields: [],
+            searchProducts: [],
+            searchLink: '',
         }
+    },
+    mounted() {
+        this.$store.dispatch('searchGetHistory');
     },
     created(){
         this.$eventBus.$on("closeSearch", this.exitSearch)
@@ -59,6 +88,16 @@ export default {
         },
         closeSearch(){
             this.focused = false
+        },
+        startSearch() {
+            let vm = this
+            api.startSearch(vm.value).then(answer => {
+                vm.searchShields = answer.shields
+                vm.searchProducts = answer.products
+                vm.searchLink = answer.url
+            }).catch(errors => {
+                console.error(errors);
+            })
         },
         searchClick(){
             this.activeSearch = true;
@@ -75,9 +114,9 @@ export default {
             this.$emit("searchClick", this.activeSearch) // возвращаем лого, закрываем поиск (передаём false)
             this.$eventBus.$emit("close-catalog"); //закрываем моб.каталог при выходе из поиска
         },
-        clickOutside() {
+        clickOutside(event) {
             let vm = this;
-            if(window.innerWidth > 760 && vm.focused) {
+            if(window.innerWidth > 760 && vm.focused && event.toElement.className !== 'search__clear-text') {
                 vm.exitSearch()
             }
         },
