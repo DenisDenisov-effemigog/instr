@@ -1,5 +1,5 @@
 <template>
-    <div :class="className + '-discount'">
+    <div :class="className + '-discount'" @click="passIndex">
         <h3 v-show="className == 'dashboard'" :class="className + '-discount__title'">{{ $tc('profile.dashboard.discount_title') }}</h3>
         <ul :class="className + '-discount__list'">
             <li v-for="(discount, index) in discountArr" class="discount-item" :class="{ 'discount-item--active': index == currentIndex }" @click="currentTab(index, discount.discount)">
@@ -76,8 +76,11 @@ export default {
                 this.openInfo = true
                 this.currentDiscount = discount
             }
-            
-
+        },
+         passIndex(){
+            if(this.className != 'personal'){
+                this.$eventBus.$emit("passIndex", 2)
+            }
         }
     }
 }
