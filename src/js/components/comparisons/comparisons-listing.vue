@@ -34,12 +34,12 @@
                         1-{{shownItemsQnty}} {{ $tc('text.of') }} {{ qnty }} {{ $tc('comparisons.text.products') }}
                     </div>
                     <div class="comparisons__slider-btns">
-                        <a class="comparisons__slider-btn">
+                        <a class="comparisons__slider-btn" @click="$refs.thumbnails.goToPrev()">
                             <svg>
                                 <use xlink:href="/images/sprite.svg#arrows__arr-long-left"></use>
                             </svg>
                         </a>
-                        <a class="comparisons__slider-btn">
+                        <a class="comparisons__slider-btn" @click="$refs.thumbnails.goToNext()">
                             <svg>
                                 <use xlink:href="/images/sprite.svg#arrows__arr-long-right"></use>
                             </svg>
@@ -48,26 +48,28 @@
                 </div>
             </div>
             <div class="comparisons__cards">
-                <div class="comparisons__card" v-for="product in comparisons">
-                    <component is="slider-photo-card" 
-                            :cardSize="'short'"
-                            :images="product.images"
-                    ></component>
-                    <div class="comparisons__card-description">
-                        <div class="card__code">{{ product.code }}</div>
-                        <a :href="product.link" class="card__name">{{ product.title }}</a>
-                        <div class="comparisons__card-btns">
-                            <component is="add-to-cart" 
-                                :productId="product.id"
-                                :max-amount="product.stock"
-                            >
-                            </component>
-                            <svg class="comparisons__card-del-btn">
-                                <use xlink:href="/images/sprite.svg#icons__delete"></use>
-                            </svg>
+                <agile ref="thumbnails" :as-nav-for="[$refs.main]" :options="options">
+                    <div class="comparisons__card" v-for="product in comparisons">
+                        <component is="slider-photo-card" 
+                                :cardSize="'short'"
+                                :images="product.images"
+                        ></component>
+                        <div class="comparisons__card-description">
+                            <div class="card__code">{{ product.code }}</div>
+                            <a :href="product.link" class="card__name">{{ product.title }}</a>
+                            <div class="comparisons__card-btns">
+                                <component is="add-to-cart" 
+                                    :productId="product.id"
+                                    :max-amount="product.stock"
+                                >
+                                </component>
+                                <svg class="comparisons__card-del-btn">
+                                    <use xlink:href="/images/sprite.svg#icons__delete"></use>
+                                </svg>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </agile>
             </div>
         </comparisons-top>
         <div class="container">
@@ -76,15 +78,17 @@
                     <li class="comparisons__sidebar-item" v-for="item in Object.values(featuresTitle)">{{ item }}</li>
                 </ul>
                 <div class="comparisons__descriptions">
-                    <ul class="comparisons__description" v-for="product in comparisons">
-                        <li>
-                            <div></div>
-                            {{ product.newPrice }}
-                        </li>
-                        <li v-for="item in Object.entries(featuresTitle)" v-if="item[0] !== 'price'">
-                            {{ item[1] }}
-                        </li>
-                    </ul>
+                    <agile ref="main" :options="mainOptions">
+                        <ul class="comparisons__description" v-for="product in comparisons">
+                            <li>
+                                <div></div>
+                                {{ product.newPrice }}
+                            </li>
+                            <li v-for="item in Object.entries(featuresTitle)" v-if="item[0] !== 'price'">
+                                {{ item[1] }}
+                            </li>
+                        </ul>
+                    </agile>
                 </div>
             </div>
             <a class="comparisons__deploy"
@@ -110,10 +114,11 @@
 <script>
     import comparisonsTop from './sticky-comparisons-top.vue';
     import selectList from '../partials/select-list.vue';
+    import { VueAgile } from 'vue-agile';
 
     export default {
         name: 'comparisons-listing',
-        components: { comparisonsTop, selectList },
+        components: { comparisonsTop, selectList, agile: VueAgile },
         props: {
             comparingItems: {
                 type: Array
@@ -142,6 +147,40 @@
                     'barcode': 'Штрихкод',
                     'spindleRotationalSpeed': 'Частота вращения шпинделя',
                     'certificationLink': 'Ссылка на сертификат'
+                },
+                asNavFor1: [],
+			    asNavFor2: [],
+                options: {
+                    infinite: false,
+                    navButtons: false,
+                    dots: false,
+                    slidesToShow: 2,
+                    unagile: false,
+
+                    responsive: [
+                        {
+                            breakpoint: 768,
+                            settings: {
+                                slidesToShow: 3
+                            }
+                        }
+                    ]
+                },
+                mainOptions: {
+                    infinite: false,
+                    navButtons: false,
+                    dots: false,
+                    slidesToShow: 2,
+                    unagile: false,
+
+                    responsive: [
+                        {
+                            breakpoint: 768,
+                            settings: {
+                                slidesToShow: 3
+                            }
+                        }
+                    ]
                 }
                 
             }
@@ -175,8 +214,13 @@
         },
         created() {
             this.loading();
+            this.changeShownQnty;
             window.addEventListener('resize', this.changeShownQnty);
         },
+        mounted () {
+            this.asNavFor1.push(this.$refs.thumbnails)
+            this.asNavFor2.push(this.$refs.main)
+        }
 
     }
 </script>
