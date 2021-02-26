@@ -19,6 +19,7 @@
                     <select-list
                         :points="categories"
                         :selectopenSelect="defaultCategory"
+                        :placeholder="$tc('text.category')"
                     >
                     </select-list>
                     <label>
@@ -85,7 +86,7 @@
                 <ul class="comparisons__sidebar">
                     <li class="comparisons__sidebar-item" v-for="item in Object.values(featuresTitle)">{{ item }}</li>
                 </ul>
-                
+
                 <div class="comparisons__descriptions">
                     <!-- bottom slider -->
                     <agile ref="main" :as-nav-for="asNavFor1" :options="options">

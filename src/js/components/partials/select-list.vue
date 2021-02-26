@@ -1,7 +1,10 @@
 <template>
 <div class="select" @click="openSelect = !openSelect" v-click-outside="closeOutside">
     <div class="select__button" :class="{'select__button--active':openSelect}">
-        <span>{{ currentPoint.label }}</span>
+        <span>
+            <span class="select__placeholder" v-if="!!placeholder">{{placeholder}}</span>:&nbsp;
+            <span>{{ currentPoint.label }}</span>
+        </span>
         <svg :viewBox="viewbox" class="select__arrow">
             <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-down'"></use>
         </svg>
@@ -67,6 +70,10 @@ export default {
         selectName: { //передаём название селекта
             type: String,
             default: null
+        },
+        placeholder: { // передаем плейсхолдер внутри селекта
+            type: String,
+            default: ''
         }
     },
     data(){

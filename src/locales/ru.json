@@ -59,6 +59,7 @@
     "text.item_currency": "₽/шт",
     "text.free": "бесплатно",
     "text.description": "Описание",
+    "text.category":"Категория",
 
     "title.enter": "Войти",
     "title.entrance": "Вход",
@@ -376,7 +377,6 @@
     "search-response.text-success":"Результаты поиска по запросу",
     
     "favorites.title":"Избранное",
-    "favorites.text.category":"Категория",
 
     "comparisons.title":"Сравнение",
     "comparisons.text.only_differences":"Показывать только различия",
