@@ -162,7 +162,10 @@
 
     &__bottom
         @extend .container
+        +until($desktop)
+            margin-top: 2rem
     &__comparing
+        position: relative
         display: flex
         margin-top: -1px
 
@@ -172,14 +175,27 @@
         padding: 2.5rem 1.5rem
         border: 1px solid $border-color_4
         +until($desktop)
-            display: none
-    &__sidebar-item:not(:last-of-type)
-        margin-bottom: 2rem
+            position: absolute
+            top: 0
+            width: 100%
+            padding: 0
+            border: none
+    &__sidebar-item
+        +until($desktop)
+            font-size: $font-size_3
+            line-height: $line-height_3
+            padding: .25rem .5rem
+            background-color: $pre-white
+        &:not(:last-of-type)
+            margin-bottom: 3.75rem
+            +desktop
+                margin-bottom: 2rem
 
     // bottom sliders
 
     &__descriptions
         @extend .text-2
+        width: 100%
         color: $grey
         +desktop
             font-size: $font-size
@@ -187,15 +203,30 @@
             width: 75%
         .agile
             flex: auto
+        .agile__slide
+            li
+                +until($desktop)
+                    padding-left: 1rem
+        .agile__slide--active
+            li
+                +until($desktop)
+                    padding-right: 1rem
+                    padding-left: 0
     &__description
         flex: auto
-        border-top: 1px solid $border-color_4
-        border-bottom: 1px solid $border-color_4
+        +desktop
+            border-top: 1px solid $border-color_4
+            border-bottom: 1px solid $border-color_4
         +desktop
             padding: 2.5rem 1.5rem
             border-right: 1px solid $border-color_4
-        li:not(:last-of-type)
-            margin-bottom: 2rem
+        li
+            +until($desktop)
+                margin: 2.75rem 0 4.25rem 0
+                border-right: 1px solid $border-color_4 
+            &:not(:last-of-type)   
+                +desktop
+                    margin-bottom: 2rem
 
 
     &__deploy

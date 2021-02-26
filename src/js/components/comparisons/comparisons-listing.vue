@@ -11,6 +11,8 @@
                 </a>
             </div>
         </div>
+
+        <!-- top part of comparison -->
         <comparisons-top>
             <div class="comparisons__category-selection">
                 <div>
@@ -50,6 +52,7 @@
                 </div>
             </div>
             <div class="comparisons__cards">
+                <!-- top slider -->
                 <agile ref="thumbnails" :as-nav-for="asNavFor2" :options="options">
                     <div class="comparisons__card" v-for="(product, index) in comparisons">
                         <component is="slider-photo-card" 
@@ -74,12 +77,17 @@
                 </agile>
             </div>
         </comparisons-top>
+
+        <!-- bottom part of comparison -->
+
         <div class="comparisons__bottom">
             <div class="comparisons__comparing">
                 <ul class="comparisons__sidebar">
                     <li class="comparisons__sidebar-item" v-for="item in Object.values(featuresTitle)">{{ item }}</li>
                 </ul>
+                
                 <div class="comparisons__descriptions">
+                    <!-- bottom slider -->
                     <agile ref="main" :as-nav-for="asNavFor1" :options="options">
                         <ul class="comparisons__description" v-for="product in comparisons">
                             <li>
@@ -103,6 +111,7 @@
                 </svg>
             </a>
         </div>
+        <!-- end of bottom part -->
     </section>
 </template>
 
