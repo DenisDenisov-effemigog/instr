@@ -76,6 +76,7 @@ export default {
     mounted(){
         this.$eventBus.$emit('hideMenu');
         this.$store.dispatch('personalUpdateFinanceData');
+        this.$store.dispatch('personalUpdateOrders');
     },
     computed: {
         financeData() {

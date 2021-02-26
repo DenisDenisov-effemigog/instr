@@ -12,7 +12,7 @@
         <div class="dashboard-orders__main">
             <ul class="dashboard-orders__list">
                 <li v-if="!ordersData.length" class="dashboard-orders__item dashboard-orders__item--info">{{ $tc('profile.dashboard.order_info') }}  </li>
-                <li v-for="item in ordersData" class="dashboard-orders__item" v-else>
+                <li v-for="(item, index) in ordersData" v-show="index < 3" class="dashboard-orders__item" v-else>
                     <div class="dashboard-orders__item-top">
                         <div class="dashboard-orders__number">
                             #{{item.number}}
@@ -26,7 +26,7 @@
                             {{item.date}}                         
                         </div>
                         <div class="dashboard-orders__status">
-                            {{item.status}}                        
+                            {{item.status.label}}                        
                         </div>
                     </div>
                 </li>
@@ -38,23 +38,14 @@
 <script>
 export default {
     name:"dashboard-orders",
-    data(){
-        return{
-            ordersData:[ /*todo from base*/
-                {
-                    number:'123456',
-                    price:'30 000',
-                    date:'12.03.2021',
-                    status:'В сборке'
-                },
-                {
-                    number:'123456',
-                    price:'130 000',
-                    date:'12.03.2021',
-                    status:'В сборке'
+    computed: {
+        ordersData() {
+            return this.$store.state.personal.orders.filter(order => {
+                if(order.status.value === 'waiting'){
+                    return order
                 }
-            ]
-        }
-    }
+            });
+        },
+    },
 }
 </script>
