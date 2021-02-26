@@ -15,6 +15,9 @@ const mutations = {
     [types.LISTING_APPLY_FAVORITES](state, data) {
         state.favorites = data;
     },
+    [types.LISTING_APPLY_COMPARE](state, data) {
+        state.comparisons = data;
+    },
 };
 
 const actions = {
@@ -79,8 +82,8 @@ const actions = {
         });
     },
 
-    comparingProducts: ({commit}, newMode) => {
-        commit(types.LISTING_APPLY_COMPARE, newMode);
+    comparingProducts: ({commit, dispatch}, data) => {
+        commit(types.LISTING_APPLY_COMPARE, data);
     },
 }
 

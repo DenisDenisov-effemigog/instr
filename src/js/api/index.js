@@ -297,7 +297,10 @@ class Api {
             id: id,
         });
     }
-    
+    getCompare() {
+        return this._promiseBitrixRequest('instrument2:rest.api.get.compare');
+    }
+
     searchGetHistory() {
         return this._promiseBitrixRequest('instrument2:rest.api.search.get.history',);
     }

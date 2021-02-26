@@ -688,6 +688,146 @@ let demoMockupFavorites =
         },
     ];
 
+let demoMockupComparisons = 
+    [
+        {
+            'id': 1,
+            'title': 'Дрель-шуруповерт аккумуляторная CDL-12-02, Li-Ion, 12 В, 1.5 А*ч, 2 аккумулятора Denzel',
+            'link': '',
+            'code': 717950,
+            'available': true,
+            'stock': 100,
+            'oldPrice': 3819.358,
+            'newPrice': 2819.365,
+            'is_favorite': true,
+            'is_compare': false,
+            'images': [
+                {id: 1, img: './demo_images/product/image_50.png'},
+                {id: 2, img: './demo_images/product/image_51.png'},
+                {id: 3, img: './demo_images/product/image_52.png'},
+                {id: 4, img: './demo_images/product/image_53.png'},
+            ],
+            'tooltips': [
+                {
+                    'id': 1,
+                    'title': 'Новинка',
+                    'text': 'Товар находится в акционной категории товаров “Новинка”',
+                    'link': '',
+                    'status': 'new',
+                },
+                {
+                    'id': 2,
+                    'title': 'Акция',
+                    'text': 'Товар участвует в акции “Акция”',
+                    'link': '',
+                    'status': 'promo',
+                },
+            ]
+        },
+        {
+            'id': 2,
+            'title': 'Дрель-шуруповерт аккумуляторная CDL-12-02, Li-Ion, 12 В, 1.5 А*ч, 2 аккумулятора Denzel',
+            'link': '',
+            'code': 717950,
+            'available': true,
+            'stock': 100,
+            'oldPrice': 3819,
+            'newPrice': 2819,
+            'is_favorite': true,
+            'is_compare': false,
+            'images': [
+                {id: 1, img: './demo_images/product/image_50.png'},
+                {id: 2, img: './demo_images/product/image_51.png'},
+                {id: 3, img: './demo_images/product/image_52.png'},
+                {id: 4, img: './demo_images/product/image_53.png'},
+            ],
+            'tooltips': [
+                {
+                    'id': 1,
+                    'title': 'Новинка',
+                    'text': 'Товар находится в акционной категории товаров “Новинка”',
+                    'link': '',
+                    'status': 'new',
+                },
+                {
+                    'id': 2,
+                    'title': 'Акция',
+                    'text': 'Товар участвует в акции “Акция”',
+                    'link': '',
+                    'status': 'promo',
+                },
+            ]
+        },
+        {
+            'id': 3,
+            'title': 'Дрель-шуруповерт аккумуляторная CDL-12-02, Li-Ion, 12 В, 1.5 А*ч, 2 аккумулятора Denzel',
+            'link': '',
+            'code': 717950,
+            'available': true,
+            'stock': 100,
+            'oldPrice': 3819,
+            'newPrice': 2819,
+            'is_favorite': true,
+            'is_compare': false,
+            'images': [
+                {id: 1, img: './demo_images/product/image_50.png'},
+                {id: 2, img: './demo_images/product/image_51.png'},
+                {id: 3, img: './demo_images/product/image_52.png'},
+                {id: 4, img: './demo_images/product/image_53.png'},
+            ],
+            'tooltips': [
+                {
+                    'id': 1,
+                    'title': 'Новинка',
+                    'text': 'Товар находится в акционной категории товаров “Новинка”',
+                    'link': '',
+                    'status': 'new',
+                },
+                {
+                    'id': 2,
+                    'title': 'Акция',
+                    'text': 'Товар участвует в акции “Акция”',
+                    'link': '',
+                    'status': 'promo',
+                },
+            ]
+        },
+        {
+            'id': 4,
+            'title': 'Дрель-шуруповерт аккумуляторная CDL-12-02, Li-Ion, 12 В, 1.5 А*ч, 2 аккумулятора Denzel',
+            'link': '',
+            'code': 717950,
+            'available': true,
+            'stock': 100,
+            'oldPrice': 3819,
+            'newPrice': 2819,
+            'is_favorite': true,
+            'is_compare': false,
+            'images': [
+                {id: 1, img: './demo_images/product/image_50.png'},
+                {id: 2, img: './demo_images/product/image_51.png'},
+                {id: 3, img: './demo_images/product/image_52.png'},
+                {id: 4, img: './demo_images/product/image_53.png'},
+            ],
+            'tooltips': [
+                {
+                    'id': 1,
+                    'title': 'Новинка',
+                    'text': 'Товар находится в акционной категории товаров “Новинка”',
+                    'link': '',
+                    'status': 'new',
+                },
+                {
+                    'id': 2,
+                    'title': 'Акция',
+                    'text': 'Товар участвует в акции “Акция”',
+                    'link': '',
+                    'status': 'promo',
+                },
+            ]
+        },
+    ];
+
 let demoSortingListing = {
     products: [
         {
@@ -1909,6 +2049,16 @@ window.runAction = function (action, config) {
                         data: {
                             status: 1,
                             answer: compare.is_compare
+                        }
+                    }
+                });
+                break;
+            case 'instrument2:rest.api.get.compare':
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                            answer: demoMockupComparisons
                         }
                     }
                 });
