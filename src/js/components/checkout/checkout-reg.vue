@@ -36,7 +36,7 @@
                         type="text"
                         :mask="codeMask"
                         name="code"
-                        :tokens="tokens"
+                        :tokens="codeTokens"
                         :masked="true"
                         @focusout="buildPersonData"
                         v-model.trim="$v.code.$model"
@@ -85,7 +85,7 @@
                         :class="{'checkout-reg__input--error': $v.phone.$error}"
                         type="tel"
                         :mask="phoneMask"
-                        :tokens="tokens"
+                        :tokens="phoneTokens"
                         :masked="true"
                         name="phone"
                         id="phone"
@@ -192,8 +192,8 @@
                 code: null,
                 phone: null,
                 newEmail: '',
-                tokens: config.phoneTokens,
-                tokens: config.codeTokens
+                phoneTokens: config.phoneTokens,
+                codeTokens: config.codeTokens
             }
         },
         created() {
