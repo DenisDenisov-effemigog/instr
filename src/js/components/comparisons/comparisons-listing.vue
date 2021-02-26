@@ -69,7 +69,7 @@
                                     :max-amount="product.stock"
                                 >
                                 </component>
-                                <svg class="comparisons__card-del-btn">
+                                <svg class="comparisons__card-del-btn" @click="deleteItem(product.id)">
                                     <use xlink:href="/images/sprite.svg#icons__delete"></use>
                                 </svg>
                             </div>
@@ -188,6 +188,13 @@
             },
             deployList() {
                 this.extended = !this.extended
+            },
+            deleteItem(id) {
+                this.comparisons.forEach((item, index) => {
+                    if (item.id == id) {
+                        this.comparisons.splice(index, 1)
+                    }
+                })
             }
         },
         computed: {
