@@ -143,9 +143,13 @@
                     </div>
                 </div>
                 <div class="finance-progress__payment">
-                    <span class="finance-progress__payment-link">
+                    <router-link 
+                        class="finance-progress__payment-link"
+                        tag="span" 
+                        :to="'/my/finances/'"
+                    >
                         {{ $tc('profile_finance.title.charges', leftCharges) }}
-                    </span>
+                    </router-link>
                     <div class="finance-progress__payment-text" v-if="!dashboard && arrears > 0">{{ $tc('profile_finance.credit_debt.delay') }}</div>
                     <div class="finance-progress__payment-text" v-else-if="!dashboard && arrears === 0">{{ $tc('profile_finance.credit_debt.left_days') }}</div>
                     <div class="finance-progress__payment-price finance-progress__payment-price--bold" v-if="dashboard">

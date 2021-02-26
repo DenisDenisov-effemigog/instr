@@ -8,7 +8,12 @@
         <div class="dashboard__main">
             <div class="dashboard__top">
                 <finance-progress :financeCharges="financeData.charges" :contract="contract"></finance-progress>
-                <dashboard-discount :className="personal"></dashboard-discount>
+                <router-link
+                    tag="div" 
+                    :to="'/my/discounts/'"
+                >
+                     <dashboard-discount :className="personal"></dashboard-discount>
+                </router-link>
                 <dashboard-contract></dashboard-contract>
             </div>
             <div class="dashboard__bottom">

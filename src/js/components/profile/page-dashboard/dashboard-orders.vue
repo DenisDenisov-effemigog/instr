@@ -1,5 +1,9 @@
 <template>
-    <div class="dashboard-orders">
+    <router-link 
+        class="dashboard-orders"
+        tag="div" 
+        :to="'/my/orders/'"
+    >
         <div class="dashboard-orders__head">
             <h3 class="dashboard-orders__title">
                 {{ $tc('profile.dashboard.order_title') }}  
@@ -28,7 +32,7 @@
                 </li>
             </ul>
         </div>
-    </div>
+    </router-link>
 </template>
 
 <script>
