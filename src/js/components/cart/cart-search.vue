@@ -90,15 +90,15 @@ export default {
         saveChanges() {
             this.value = this.$v.value.$model;
             let newVal = this.value.split('\n')
-            let arr = []
+            let arr = {}
             for (let i = 0; i < newVal.length; i++){
-                if(newVal[i].split(' ').length > 2) {
-                    arr.push(newVal[i].split(' ').splice(1))
-                } else {
-                    arr.push(newVal[i].split(' '))
+                let prearr = []
+                prearr.push(newVal[i].split(' '))
+
+                for (let i = 0; i < prearr.length; i++){
+                    arr[prearr[i][0]] = prearr[i][1]
                 }
             }
-            
             this.$store.dispatch('searchItem', arr);
         }
     },
