@@ -30,14 +30,17 @@
                         v-if="$v.name.$error">{{ $tc('text.error') }}</div>
                 </label>
                 <label v-show="!IndividualFlag" class="checkout-reg__label">
-                    <input
+                    <the-mask
                         class="checkout-reg__input"
                         :class="{'checkout-reg__input--error': $v.code.$error}"
                         type="text"
+                        :mask="codeMask"
                         name="code"
+                        :tokens="tokens"
+                        :masked="true"
                         @focusout="buildPersonData"
                         v-model.trim="$v.code.$model"
-                    >
+                    />
                     <span class="checkout-reg__label-text"
                         :class="{'checkout-reg__label-text--up': $v.code.required}"
                     >{{ $tc('title.tin') }}</span>
@@ -169,6 +172,10 @@
                 type: String,
                 required: true,
             },
+            codeMask:{
+                type: String,
+                required: true,
+            },
             currentTab:{
                 type:String,
                 required: true
@@ -182,10 +189,11 @@
             return{
                 name: '',
                 company: '',
-                code: '',
+                code: null,
                 phone: null,
                 newEmail: '',
-                tokens: config.phoneTokens
+                tokens: config.phoneTokens,
+                tokens: config.codeTokens
             }
         },
         created() {

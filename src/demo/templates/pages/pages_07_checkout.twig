@@ -936,7 +936,7 @@
     'name' : 'Ivan',
     'last_name' : 'Sidorov',
     'personType': 2,
-    'authorized': true,
+    'authorized': false,
 }%}
 
 {% set payments = [
@@ -1117,6 +1117,7 @@
         'discounts': discounts,
         'salePrice': 7500,
         'phone_mask': '+7 (F##) ###-##-##',
+        'code_mask': '#######',
         'conditionsLink': '/privacy-policy/',
         'deliveryLink': '/delivery/'
     } %}
@@ -1125,6 +1126,7 @@
         'activeCountry': 'Россия',
         'user': user,
         'phone_mask': '+7 (F##) ###-##-##',
+        'code_mask': '#######',
         'footerLinks': footerLinks,
         'headerLinks': headerLinks,
     } %}
