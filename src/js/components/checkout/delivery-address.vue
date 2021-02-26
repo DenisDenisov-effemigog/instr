@@ -73,7 +73,7 @@
                     >{{ $tc('title.building') }}</span>
                     <svg viewBox="0 0 24 24"
                          class="form__label-icon"
-                         v-if="!!building"
+                         v-if="$v.building.required"
                          @click="$v.building.$model = ''"
                     >
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
@@ -96,7 +96,7 @@
                     >{{ $tc('title.floor') }}</span>
                     <svg viewBox="0 0 24 24"
                          class="form__label-icon"
-                         v-if="!!floor"
+                         v-if="$v.floor.required"
                          @click="$v.floor.$model = ''"
                     >
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
@@ -179,8 +179,10 @@
                 required
             },
             building:{
+                required
             },
             floor:{
+                required
             },
             apart:{
                 required
