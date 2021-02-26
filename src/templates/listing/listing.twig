@@ -1,16 +1,19 @@
 <div class="listing">
-    {% if titleFlag == true %}
         <div class="listing__header">
-            <h1 class="listing__title">{{ 'listing.filters.title'|trans }}</h1>
+            {% if titleFlag == true %}
+                <h1 class="listing__title">{{ 'listing.filters.title'|trans }}</h1>
+            {% elseif searchAnswer %}
+                <h1 class="listing__title">{{ 'search-response.text-success'|trans }} "{{ searchAnswer }}"</h1>
+                <component is="listing-items-quantity"
+                           :items-quantity="{{ filters.match|json_encode()|e('html_attr') }}"
+                ></component>
+            {% else %}
+                <h1 class="listing__title">{{ listingCategoryTitle }}</h1>
+                <component is="listing-items-quantity"
+                           :items-quantity="{{ filters.match|json_encode()|e('html_attr') }}"
+                ></component>
+            {% endif %}
         </div>
-    {% else %}
-        <div class="listing__header">
-            <h1 class="listing__title">{{ listingCategoryTitle }}</h1>
-            <component is="listing-items-quantity" 
-                    :items-quantity="{{ filters.match|json_encode()|e('html_attr') }}"
-            ></component>
-        </div>
-    {% endif %}
     {% if shields %}
         <div class="listing__shields">
             {% for shield in shields %}

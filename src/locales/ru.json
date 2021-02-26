@@ -373,7 +373,7 @@
 
     "search-response.title":"По запросу",
     "search-response.text":"Не найдено ни одного товара",
-    "search-response.text-success":"Найдено",
+    "search-response.text-success":"Результаты поиска по запросу",
     
     "favorites.title":"Избранное",
     "favorites.text.category":"Категория",
