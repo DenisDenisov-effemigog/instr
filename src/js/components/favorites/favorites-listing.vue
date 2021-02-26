@@ -13,6 +13,7 @@
         <div class="favorites-listing__content">
             <div class="favorites-listing__sidebar">
                 <favorites-listing-category :favoriteCategories="favoriteCategories"></favorites-listing-category>
+                <slot name="filters"></slot>
             </div>
             <div class="favorites-listing__products">
                 <slot name="actions"></slot>
