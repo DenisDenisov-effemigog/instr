@@ -155,11 +155,15 @@
                                :max-amount="{{ product.stock }}"
                     ></component>
 				</component>
-                <component is="product-discount-info"
-                           :product-discounts="{{ product.discounts|json_encode()|e('html_attr') }}"
-                           :authorized="{{ user.authorized }}"
-                >
-                </component>
+                    <component is="product-discount-info"
+                               :product-discounts="{{ product.discounts|json_encode()|e('html_attr') }}"
+                            {% if user is empty or user.authorized == false %}
+                               :authorized="false"
+                            {% else %}
+                               :authorized="true"
+                            {% endif %}
+                    >
+                    </component>
 			</div>
 		</div>
 	</div>

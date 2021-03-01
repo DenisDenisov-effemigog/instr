@@ -2074,6 +2074,17 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
+            case 'instrument2:rest.api.clear.favorite':
+                demoMockupFavorites = []
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                            answer: demoMockupFavorites
+                        }
+                    }
+                });
+                break;
             case 'instrument2:rest.api.cart.compare':
                 let compare = compares.find(item => item.id === config.data.id)
                 compare.is_compare = !compare.is_compare

@@ -8,11 +8,11 @@
                 </svg>
             </div>
         </div>
-        <div v-show="openFlag" class="favorites-listing__sidebar_category" v-for="(category, index) in favoriteCategories" @click="changeCategory(index)">
+        <div v-show="openFlag" class="favorites-listing__sidebar_category" v-for="(category, index) in favoriteCategories" @click="changeCategory(index, category.value)">
             <svg viewBox="-2 -1 12 12">
                 <use xlink:href="/images/sprite.svg#check" v-show="categoryActive === index"></use>
             </svg>
-            {{ category }}
+            {{ category.label }}
         </div>
         <slot name="filters"></slot>
     </div>
@@ -34,9 +34,9 @@ export default {
         }
     },
     methods:{
-        changeCategory(index) {
+        changeCategory(index, category) {
             this.categoryActive = index
-            /*TODO api change cat*/
+            this.$eventBus.$emit('changed-fav-cat', category);
         },
     }
 }
