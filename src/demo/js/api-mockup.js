@@ -700,7 +700,7 @@ let demoMockupComparisons =
             'oldPrice': 3819.358,
             'newPrice': 2819.365,
             'is_favorite': true,
-            'is_compare': false,
+            'is_compare': true,
             'images': [
                 {id: 1, img: './demo_images/product/image_50.png'},
                 {id: 2, img: './demo_images/product/image_51.png'},
@@ -734,7 +734,7 @@ let demoMockupComparisons =
             'oldPrice': 3819,
             'newPrice': 2819,
             'is_favorite': true,
-            'is_compare': false,
+            'is_compare': true,
             'images': [
                 {id: 1, img: './demo_images/product/image_50.png'},
                 {id: 2, img: './demo_images/product/image_51.png'},
@@ -767,8 +767,8 @@ let demoMockupComparisons =
             'stock': 100,
             'oldPrice': 3819,
             'newPrice': 2819,
-            'is_favorite': true,
-            'is_compare': false,
+            'is_favorite': false,
+            'is_compare': true,
             'images': [
                 {id: 1, img: './demo_images/product/image_50.png'},
                 {id: 2, img: './demo_images/product/image_51.png'},
@@ -802,7 +802,7 @@ let demoMockupComparisons =
             'oldPrice': 3819,
             'newPrice': 2819,
             'is_favorite': true,
-            'is_compare': false,
+            'is_compare': true,
             'images': [
                 {id: 1, img: './demo_images/product/image_50.png'},
                 {id: 2, img: './demo_images/product/image_51.png'},
@@ -836,7 +836,7 @@ let demoMockupComparisons =
             'oldPrice': 3819,
             'newPrice': 2819,
             'is_favorite': true,
-            'is_compare': false,
+            'is_compare': true,
             'images': [
                 {id: 1, img: './demo_images/product/image_50.png'},
                 {id: 2, img: './demo_images/product/image_51.png'},

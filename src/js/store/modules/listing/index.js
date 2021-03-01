@@ -83,6 +83,7 @@ const actions = {
     },
 
     comparisonsChange: ({commit, dispatch, state}, params) => {
+        console.log('params', params);
         let productId = params.productId;
 
         return new Promise((resolve, reject) => {

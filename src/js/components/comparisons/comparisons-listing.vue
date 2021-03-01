@@ -44,13 +44,12 @@
             return {
                 catalogLink: config.links.catalog,
                 loaded: false,
-                comparingItems: [],
             }
         },
         
         computed: {
-            comparisons() {
-                return this.$store.state.listing.comparisons.filter(item => item.is_favorite === true)
+            comparingItems() {
+                return this.$store.state.listing.comparisons.filter(item => item.is_compare === true)
             },
         },
 
@@ -63,10 +62,6 @@
             },
             clearAll() {
                 this.$store.dispatch('comparisonsClearAll');
-                let vm = this
-                setTimeout(function () {
-                    vm.comparingItems = vm.comparisons
-                }, 300)
             }
         },
 
@@ -76,11 +71,6 @@
         
         mounted () {
             this.$store.dispatch('comparisonsUpdateProducts');
-            let vm = this
-            setTimeout(function () {
-                vm.comparingItems = vm.comparisons
-            }, 300)
-            
         }
 
     }

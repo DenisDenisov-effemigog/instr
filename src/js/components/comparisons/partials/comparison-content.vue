@@ -204,15 +204,21 @@
                 this.extended = !this.extended
             },
             deleteItem(id) {
-                this.comparisons.forEach((item, index) => {
-                    if (item.id == id) {
-                        this.comparisons.splice(index, 1);
-                        this.$refs.thumbnails.goTo(0) // don't forget this
-                        if (this.qnty == 2) {
-                            this.shownItemsQnty = this.qnty
-                        }
-                    }
-                })
+                // this.comparisons.forEach((item, index) => {
+                //     if (item.id == id) {
+                //         this.comparisons.splice(index, 1);
+                //         this.$refs.thumbnails.goTo(0) // don't forget this
+                //         if (this.qnty == 2) {
+                //             this.shownItemsQnty = this.qnty
+                //         }
+                //     }
+                // })
+                let vm = this;
+                vm.$store.dispatch('comparisonsChange', {
+                    productId: vm.id
+                }).finally(() => {
+                    vm.is_compare = !vm.is_compare
+                });
             },
             changeComparisons() {
                 console.log('changing comparison')
@@ -228,7 +234,7 @@
         },
         created() {
             window.addEventListener('resize', this.changeShownQnty);
-            this.$eventBus.$on('change-to-compare', this.changeComparisons);
+            // this.$eventBus.$on('change-to-compare', this.changeComparisons);
         },
         mounted() {
             this.changeShownQnty();
