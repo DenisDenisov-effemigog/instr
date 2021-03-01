@@ -131,7 +131,14 @@
                 return this.valueInput && this.results.length === 0
             }
         },
+        created() {
+            this.$eventBus.$on('autocomplete-error', this.autocompleteError)
+        },
         methods: {
+            autocompleteError(){
+                let vm = this
+                vm.$v.$touch();
+            },
             submitItem(item) {
                 if (!this.noResults) {
                     this.valueInput = item.name;

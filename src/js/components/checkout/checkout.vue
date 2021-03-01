@@ -316,6 +316,8 @@
                                     orderData.delivery = vm.currentDeliveryPoint
                                     orderData.deliveryAddress = vm.deliveryNewAddress
                                 } else {
+                                    vm.$eventBus.$emit('address-error')
+                                    vm.$eventBus.$emit('autocomplete-error')
                                 }
                             } else if (vm.currentDeliveryPoint === 'receive') {
                                 orderData.personeType = vm.personType
@@ -325,7 +327,6 @@
                             }
                         } else {
                             vm.$eventBus.$emit('register-error')
-                            vm.$eventBus.$emit('address-error')
                         }
                     } else if (vm.personType === 2) {
                         if (vm.userData.name && vm.userData.company && vm.userData.code && vm.userData.phone && vm.userData.newEmail) {
@@ -340,6 +341,8 @@
                                     orderData.delivery = vm.currentDeliveryPoint
                                     orderData.deliveryAddress = vm.deliveryNewAddress
                                 } else {
+                                    vm.$eventBus.$emit('address-error')
+                                    vm.$eventBus.$emit('autocomplete-error')
                                 }
                             } else if (vm.currentDeliveryPoint === 'receive') {
                                 orderData.personeType = vm.personType
@@ -349,8 +352,6 @@
                             }
                         } else {
                             vm.$eventBus.$emit('register-error')
-                            vm.$eventBus.$emit('address-error')
-
                         }
                     }
                 } else if (vm.user.authorized) {
@@ -368,6 +369,7 @@
                                 orderData.deliveryAddress = vm.deliveryNewAddress
                             } else {
                                 vm.$eventBus.$emit('address-error')
+                                
                             }
                         } else if (vm.addresses.length) {
                             orderData.delivery = vm.currentDeliveryPoint
@@ -408,8 +410,10 @@
                     }
                     if (vm.currentDeliveryPoint === 'delivery' && !vm.addresses.length) {
                         vm.$eventBus.$emit('address-error')
+                        
                     }
                 }
+                console.log(orderData);
             }
         },
     }
