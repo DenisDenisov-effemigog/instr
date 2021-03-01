@@ -156,7 +156,7 @@ class Api {
         return this._promiseBitrixRequest('instrument2:rest.api.manager.get');
     }
     discountGet() {
-        return this._promiseBitrixRequest('instrument2:rest.api.discount.get');
+        return this._promiseBitrixRequest('instrument2:rest.api.discount.list');
     }
     contractGet() {
         return this._promiseBitrixRequest('instrument2:rest.api.contract.get');

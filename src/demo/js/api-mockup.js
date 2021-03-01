@@ -329,6 +329,61 @@ let demoManager = {
 };
 let demoDiscount = [
     {
+        "name":"Импорт",
+        "code":"import",
+        "value":20,
+        "boost_value":0,
+        "fixed":false,
+        "date": '31.12.2021',
+        "level":{
+            "current":{
+                "turnover":500000,
+                "percent":10
+            },
+            "next":{
+                "turnover":1000000,
+                "percent":25
+            }
+        }
+    },
+    {
+        "name":"Силовое",
+        "code":"power",
+        "value":0,
+        "boost_value":2,
+        "fixed":false,
+        "date": '31.12.2021',
+        "level":{
+            "current":{
+                "turnover":0,
+                "percent":0
+            },
+            "next":{
+                "turnover":100000,
+                "percent":5
+            }
+        }
+    },
+    {
+        "name":"Россия",
+        "code":"russia",
+        "value":20,
+        "boost_value":0,
+        "fixed":true,
+        "date": '31.12.2021',
+        "level":{
+            "current":{
+                "turnover":500000,
+                "percent":20
+            },
+            "next":{
+                "turnover":1000000,
+                "percent":25
+            }
+        }
+    }
+
+    /*{
         title: "Импорт",
         discount: 11,
         date: '31.12.2021'
@@ -342,7 +397,7 @@ let demoDiscount = [
         title: "Россия",
         discount: 20,
         date: '31.12.2021'
-    }
+    }*/
 ];
 let demoContract = [
     {
@@ -1543,7 +1598,7 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
-            case 'instrument2:rest.api.discount.get':
+            case 'instrument2:rest.api.discount.list':
                 resolve({
                     data: {
                         data: {
