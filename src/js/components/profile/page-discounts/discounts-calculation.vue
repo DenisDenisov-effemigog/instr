@@ -27,31 +27,46 @@ export default {
         amountOrders:{
             type: Number,
             required: true
+        },
+        discounts: {
+            type: Array,
+            required: true
         }
     },
     data(){
         return{
-            calculationArr:[
+            calculationArr: [
                 {
                     title: 'Фактический оборот в декабре:',
-                    desc: 50000,
+                    desc: this.discounts[0].level.current.turnover,
                 },
                 {
                     title: 'Расчетная скидка в декабре:',
-                    desc: 5,
+                    desc: this.discounts[0].level.current.percent,
                     discount: true
                 },
                 {
                     title: 'Необходимый оборот для сохранения скидки:',
-                    desc: 150000,
+                    desc: this.discounts[0].level.next.turnover,
                 },
                 {
                     title: 'Прогнозируемая скидка в январе:',
-                    desc: 10,
+                    desc: this.discounts[0].level.next.percent,
                     discount: true,
                     green: true
                 }
             ]
+        }
+    },
+    created() {
+        this.$eventBus.$on('current-discount', this.changeTab)
+    },
+    methods: {
+        changeTab(index) {
+            this.calculationArr[0].desc = this.discounts[index].level.current.turnover
+            this.calculationArr[1].desc = this.discounts[index].level.current.percent
+            this.calculationArr[2].desc = this.discounts[index].level.next.turnover
+            this.calculationArr[3].desc = this.discounts[index].level.next.percent
         }
     }
 }

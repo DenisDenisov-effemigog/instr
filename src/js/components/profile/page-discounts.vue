@@ -1,8 +1,15 @@
 <template>
-    <div class="discounts">
+    <div class="discounts" v-if="loaded">
         <h2 class="discounts__title">{{ $tc('profile.dashboard.discount_title') }}</h2>
-        <dashboard-discount :amountOrders="ordersAll.length" :className="className"></dashboard-discount>
-        <discounts-calculation :amountOrders="ordersAll.length"></discounts-calculation>
+        <dashboard-discount 
+            :amountOrders="ordersAll.length" 
+            :className="className"
+            :discounts="discountArr"
+        ></dashboard-discount>
+        <discounts-calculation 
+            :amountOrders="ordersAll.length"
+            :discounts="discountArr"
+        ></discounts-calculation>
         <div class="discounts-conditions">
             <h3 class="discounts-conditions__title">{{ $tc('profile.discounts.conditions_title') }}</h3>
             <div class="discounts-conditions__main">
@@ -11,6 +18,13 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div v-else class="preloader">
+        <svg viewBox="0 0 145 145">
+            <use :xlink:href="templatePath + 'images/sprite.svg#preloader'"></use>
+        </svg>
+        <div class="preloader__loading preloader__loading--first"></div>
+        <div class="preloader__loading preloader__loading--second"></div>
     </div>
 </template>
 
@@ -22,19 +36,33 @@ import DiscountsCalculation from './page-discounts/discounts-calculation.vue';
         name:"page-discounts",
         data() {
             return {
-                className:"personal"
+                className:"personal",
+                loaded: false,
             }
         },
-        methods: {
-        },
-        mounted(){
+        mounted() {
             this.$eventBus.$emit('hideMenu');
             this.$store.dispatch('personalUpdateOrders');
+            this.$store.dispatch('personalGetDiscount');
         },
-        computed:{
+        computed: {
+            discountArr() {
+                return this.cloneOverJson(this.$store.state.personal.discount);
+            },
             ordersAll() {
                 return this.$store.state.personal.orders;
             },
-        }
+        },
+        created() {
+            this.loading()
+        },
+        methods: {
+            loading(){
+                let vm = this
+                setTimeout(function () {
+                    vm.loaded = true
+                }, 500)
+            },
+        },
     }
 </script>

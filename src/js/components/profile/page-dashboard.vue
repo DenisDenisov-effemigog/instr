@@ -17,7 +17,10 @@
                     tag="div" 
                     :to="'/my/discounts/'"
                 >
-                     <dashboard-discount :className="'personal'"></dashboard-discount>
+                     <dashboard-discount 
+                         :className="'dashboard'"
+                         :discounts="discountArr"
+                     ></dashboard-discount>
                 </router-link>
                 <dashboard-contract></dashboard-contract>
             </div>
@@ -82,10 +85,14 @@ export default {
         this.$eventBus.$emit('hideMenu');
         this.$store.dispatch('personalUpdateFinanceData');
         this.$store.dispatch('personalUpdateOrders');
+        this.$store.dispatch('personalGetDiscount');
     },
     computed: {
         financeData() {
             return this.$store.state.personal.financeData;
+        },
+        discountArr() {
+            return this.cloneOverJson(this.$store.state.personal.discount);
         },
     }
 }
