@@ -5,7 +5,8 @@ let api = Api.getInstance();
 
 const state = {
     view_mode: 'gridview',
-    favorites: []
+    favorites: [],
+    comparisons: []
 };
 
 const mutations = {
@@ -82,8 +83,10 @@ const actions = {
         });
     },
 
-    comparingProducts: ({commit, dispatch}, data) => {
-        commit(types.LISTING_APPLY_COMPARE, data);
+    comparisonsApplyResponseProducts: ({commit}) => {
+        api.getCompare().then((data) => {
+            commit(types.LISTING_APPLY_COMPARE, data)
+        });
     },
 }
 
