@@ -1,5 +1,5 @@
 <template>
-    <section class="comparisons">
+    <section class="comparisons" v-if="loaded">
         <div class="container">
             <div class="comparisons__header">
                 <h2 class="comparisons__title">{{ $tc('comparisons.title') }}</h2>
@@ -23,6 +23,14 @@
         </div>
         
     </section>
+
+    <div v-else class="preloader">
+        <svg viewBox="0 0 145 145">
+            <use :xlink:href="templatePath + 'images/sprite.svg#preloader'"></use>
+        </svg>
+        <div class="preloader__loading preloader__loading--first"></div>
+        <div class="preloader__loading preloader__loading--second"></div>
+    </div>
 </template>
 
 <script>
@@ -35,6 +43,7 @@
         data() {
             return {
                 catalogLink: config.links.catalog,
+                loaded: false,
                 comparingItems: [],
             }
         },
@@ -46,9 +55,19 @@
         },
 
         methods: {
+            loading(){
+                let vm = this
+                setTimeout(function () {
+                    vm.loaded = true
+                }, 500)
+            },
             deleteAll() {
                 this.comparingItems.splice(0, this.comparingItems.length)
             }
+        },
+
+        created() {
+            this.loading()
         },
         
         mounted () {
