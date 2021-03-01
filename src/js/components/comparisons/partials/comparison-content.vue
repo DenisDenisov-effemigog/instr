@@ -42,7 +42,7 @@
                     </div>
                 </div>
             </div>
-            <div class="comparisons__cards" :class="{}">
+            <div class="comparisons__cards">
                 <!-- top slider -->
                 <agile ref="thumbnails" :as-nav-for="asNavFor2" :options="options" @after-change="currentSlide($event)">
                     <div class="comparisons__card" 

@@ -4,7 +4,7 @@
             <div class="comparisons__header">
                 <h2 class="comparisons__title">{{ $tc('comparisons.title') }}</h2>
                 <a class="comparisons__delete-all" v-if="comparingItems.length > 0"
-                    @click="deleteAll"
+                    @click="clearAll"
                 >
                     <svg>
                         <use xlink:href="/images/sprite.svg#icons__delete"></use>
@@ -61,8 +61,12 @@
                     vm.loaded = true
                 }, 500)
             },
-            deleteAll() {
-                this.comparingItems.splice(0, this.comparingItems.length)
+            clearAll() {
+                this.$store.dispatch('comparisonsClearAll');
+                let vm = this
+                setTimeout(function () {
+                    vm.comparingItems = vm.comparisons
+                }, 300)
             }
         },
 
