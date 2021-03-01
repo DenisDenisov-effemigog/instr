@@ -379,8 +379,10 @@
     "favorites.title":"Избранное",
 
     "comparisons.title":"Сравнение",
+    "comparisons.is_empty":"Ваш список сравнения пока пуст.",
     "comparisons.text.only_differences":"Показывать только различия",
     "comparisons.text.products":"товаров",
+    "comparisons.text.no_products_chosen":"Товар не выбран",
     "comparisons.text.deploy":"Развернуть все"
 
 }

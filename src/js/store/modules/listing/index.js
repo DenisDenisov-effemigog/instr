@@ -5,7 +5,8 @@ let api = Api.getInstance();
 
 const state = {
     view_mode: 'gridview',
-    favorites: []
+    favorites: [],
+    comparisons: []
 };
 
 const mutations = {
@@ -15,6 +16,9 @@ const mutations = {
     [types.LISTING_APPLY_FAVORITES](state, data) {
         state.favorites = data;
     },
+    [types.LISTING_APPLY_COMPARE](state, data) {
+        state.comparisons = data;
+    },
 };
 
 const actions = {
@@ -22,29 +26,6 @@ const actions = {
         commit(types.LISTING_APPLY_VIEW_MODE, newMode);
     },
     favoritesApplyResponseProducts: ({commit, dispatch}, data) => {
-        //debugger;
-        // let products = [];
-        // data.forEach((product) => {
-        //     products.push({
-        //         id: product.id,
-        //         name: product.name,
-        //         url: product.url,
-        //         sku: product.sku,
-        //         images: product.images,
-        //         price: product.price,
-        //         discount: product.discount,
-        //         allPrice: product.allPrice,
-        //         totalPrice: product.totalPrice,
-        //         available: product.available,
-        //         stock: product.stock,
-        //         basket_quantity: product.basket_quantity,
-        //         tooltips: product.tooltips,
-        //         basket_extra_quantity: product.basket_extra_quantity,
-        //
-        //         basket_confirmed: true
-        //     });
-        // });
-
         commit(types.LISTING_APPLY_FAVORITES, data);
     },
 
@@ -79,8 +60,16 @@ const actions = {
         });
     },
 
-    comparingProducts: ({commit}, newMode) => {
-        commit(types.LISTING_APPLY_COMPARE, newMode);
+    favoritesClearAll: ({commit, state}) => {
+        api.clearFavorites().then(() => {
+            commit(types.LISTING_APPLY_FAVORITES, []);
+        });
+    },
+
+    comparisonsApplyResponseProducts: ({commit}) => {
+        api.getCompare().then((data) => {
+            commit(types.LISTING_APPLY_COMPARE, data)
+        });
     },
 }
 

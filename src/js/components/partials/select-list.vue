@@ -2,7 +2,7 @@
 <div class="select" @click="openSelect = !openSelect" v-click-outside="closeOutside">
     <div class="select__button" :class="{'select__button--active':openSelect}">
         <span>
-            <span class="select__placeholder" v-if="!!placeholder">{{placeholder}}</span>:&nbsp;
+            <span class="select__placeholder" v-if="!!placeholder">{{placeholder}}:&nbsp;</span>
             <span>{{ currentPoint.label }}</span>
         </span>
         <svg :viewBox="viewbox" class="select__arrow">

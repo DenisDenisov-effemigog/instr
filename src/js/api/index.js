@@ -292,12 +292,18 @@ class Api {
     getFavorites() {
         return this._promiseBitrixRequest('instrument2:rest.api.get.favorite');
     }
+    clearFavorites() {
+        return this._promiseBitrixRequest('instrument2:rest.api.clear.favorite');
+    }
     addCompare(id) {
         return this._promiseBitrixRequest('instrument2:rest.api.cart.compare', {
             id: id,
         });
     }
-    
+    getCompare() {
+        return this._promiseBitrixRequest('instrument2:rest.api.get.compare');
+    }
+
     searchGetHistory() {
         return this._promiseBitrixRequest('instrument2:rest.api.search.get.history',);
     }

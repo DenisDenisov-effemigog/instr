@@ -40,6 +40,7 @@
                     hash: '',
                     sort: '',
                     view: '',
+                    favCategories: '',
                 },
                 _debounce_timer: null
             }
@@ -88,6 +89,7 @@
           this.$eventBus.$on('add-sorting', this.changeSort)  
           this.$eventBus.$on('changed-view', this.changeView)  
           this.$eventBus.$on('load-listing', this.loadListing)  
+          this.$eventBus.$on('changed-fav-cat', this.changeFavCategories)  
         },
         methods: {
 
@@ -95,6 +97,7 @@
                 return {
                     sort: this.internal.sort,
                     view: this.internal.view,
+                    favCategories: this.internal.favCategories,
                     page_count: this.internal.page_count
                 }
             },
@@ -105,6 +108,7 @@
                 if(!add) {
                     this.internal.sort = data.sort;
                     this.internal.view = data.view;
+                    this.internal.favCategories = data.favCategories;
                     this.internal.page_count = data.page_count;
                 }
 
@@ -204,6 +208,10 @@
             },
             changeSort(value) {
                 this.internal.sort = value;
+                this.applyFilters(false);
+            },
+            changeFavCategories(value) {
+                this.internal.favCategories = value;
                 this.applyFilters(false);
             },
             changeView(value) {

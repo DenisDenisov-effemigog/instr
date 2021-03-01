@@ -5,7 +5,7 @@
             <component is="listing-items-quantity"
                        :itemsQuantity="itemsQuantity"
             ></component>
-            <div class="favorites-listing__delete-button" @click="deleteFavorites">
+            <div class="favorites-listing__delete-button" @click="clearFavorites">
                 <svg><use xlink:href="/images/sprite.svg#icons__del"></use></svg>
                 {{ $tc('button.delete-all') }}
             </div>
@@ -77,36 +77,20 @@ import FavoritesListingCategory from './favorites-listing-category.vue';
         data(){
             return{
                 categoryActive: 0,
-                favorites: []
             }
         },
         mounted() {
             this.$store.dispatch('favoritesUpdateProducts');
-            let vm = this
-            setTimeout(function () {
-                vm.favorites = vm.products
-            }, 300)
         },
         computed: {
-            products(){
+            favorites(){
                 return this.$store.state.listing.favorites.filter(item => item.is_favorite === true)
             }
         },
-        created() {
-            this.$eventBus.$on('change-favorite', this.changeFav)
-        },
         methods:{
-            changeCategory(index) {
-                this.categoryActive = index
-                /*TODO api change cat*/
+            clearFavorites() {
+                this.$store.dispatch('favoritesClearAll');
             },
-            deleteFavorites() {
-                /*TODO api for delete*/
-            },
-            changeFav() {
-                this.favorites = this.$store.state.listing.favorites.filter(item => item.is_favorite === true)
-                /*todo динамика отображения в избранном реализована немного не правильно. Обговорить с бэком и сделать по аналогии с товарами в корзине*/
-            }
         },
     }
 </script>
