@@ -24,15 +24,17 @@
                 </div>
                 <div class="comparisons__slider-actions">
                     <div class="comparisons__slider-text">
-                        1-{{shownItemsQnty}} {{ $tc('text.of') }} {{ qnty }} {{ $tc('comparisons.text.products') }}
+                        <span v-if="qnty == 1">1 </span>
+                        <span v-else>1-{{shownItemsQnty}} </span>
+                        {{ $tc('text.of') }} {{ qnty }} {{ $tc('comparisons.text.products') }}
                     </div>
                     <div class="comparisons__slider-btns">
-                        <a class="comparisons__slider-btn" @click="$refs.thumbnails.goToPrev()">
+                        <a class="comparisons__slider-btn" @click="slideToPrev">
                             <svg>
                                 <use xlink:href="/images/sprite.svg#arrows__arr-long-left"></use>
                             </svg>
                         </a>
-                        <a class="comparisons__slider-btn" @click="$refs.thumbnails.goToNext()">
+                        <a class="comparisons__slider-btn" @click="slideToNext">
                             <svg>
                                 <use xlink:href="/images/sprite.svg#arrows__arr-long-right"></use>
                             </svg>
@@ -42,10 +44,10 @@
             </div>
             <div class="comparisons__cards" :class="{}">
                 <!-- top slider -->
-                <agile ref="thumbnails" :as-nav-for="asNavFor2" :options="options">
+                <agile ref="thumbnails" :as-nav-for="asNavFor2" :options="options" @after-change="currentSlide($event)">
                     <div class="comparisons__card" 
                         :class="{'comparisons__card--width-50': comparisons.length == 1}"
-                        v-for="(product, index) in comparisons"
+                        v-for="(product, index) in comparisons" :key="index"
                     >
                         <component is="slider-photo-card" 
                                 :cardSize="'short'"
@@ -74,7 +76,7 @@
             </div>
         </comparisons-top>
 
-        <!-- bottom part of comparison -->
+        <!-- the bottom part of comparison -->
 
         <div class="comparisons__bottom">
             <div class="comparisons__comparing">
@@ -111,7 +113,7 @@
                 </svg>
             </a>
         </div>
-        <!-- end of bottom part -->
+        <!-- the end of bottom part -->
     </div>
 </template>
 
@@ -156,7 +158,6 @@
                     navButtons: false,
                     dots: false,
                     slidesToShow: 2,
-                    unagile: false,
 
                     responsive: [
                         {
@@ -167,20 +168,34 @@
                         }
                     ]
                 },
+                currentSlideNumber: 0,
                 shownItemsQnty: 2,
                 extended: false,
             }
         },
         methods: {
+            slideToPrev() {
+                if (window.innerWidth > 767 && this.qnty > 3) {
+                    this.$refs.thumbnails.goToPrev()
+                } else if (window.innerWidth < 768 && this.qnty == 3) {
+                    this.$refs.thumbnails.goToPrev()
+                }
+            },
+            slideToNext() {
+                if (window.innerWidth > 767 && this.qnty > 3 && this.currentSlideNumber !== (this.qnty - this.shownItemsQnty)) {
+                    this.$refs.thumbnails.goToNext()
+                } else if (window.innerWidth < 768 && this.qnty == 3 && this.currentSlideNumber !== (this.qnty - this.shownItemsQnty)) {
+                    this.$refs.thumbnails.goToNext()
+                }
+            },
+            currentSlide(event) {
+                this.currentSlideNumber = event.currentSlide;
+            },
             changeShownQnty() {
                 if (window.innerWidth < 768) {
                     this.shownItemsQnty = 2
-                    this.qnty < 3 ? this.options.unagile = true : this.options.unagile = false
-                    console.log('< 768', this.qnty, this.options.unagile)
                 } else if (window.innerWidth > 767 && this.qnty > 2) {
                     this.shownItemsQnty = 3
-                    this.qnty == 3 ? this.options.unagile = true : this.options.unagile = false
-                    console.log('> 767', this.qnty, this.options.unagile)
                 } else if (this.qnty < 3) {
                     this.options.responsive[0].settings.slidesToShow = 2;
                 }
@@ -191,9 +206,16 @@
             deleteItem(id) {
                 this.comparisons.forEach((item, index) => {
                     if (item.id == id) {
-                        this.comparisons.splice(index, 1)
+                        this.comparisons.splice(index, 1);
+                        this.$refs.thumbnails.goTo(0) // don't forget this
+                        if (this.qnty == 2) {
+                            this.shownItemsQnty = this.qnty
+                        }
                     }
                 })
+            },
+            changeComparisons() {
+                console.log('changing comparison')
             }
         },
         computed: {
@@ -206,6 +228,7 @@
         },
         created() {
             window.addEventListener('resize', this.changeShownQnty);
+            this.$eventBus.$on('change-to-compare', this.changeComparisons);
         },
         mounted() {
             this.changeShownQnty();

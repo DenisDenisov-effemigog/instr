@@ -56,7 +56,6 @@
             let vm = this
             setTimeout(function () {
                 vm.comparingItems = vm.comparisons
-                console.log(vm.comparingItems)
             }, 300)
             
         }
