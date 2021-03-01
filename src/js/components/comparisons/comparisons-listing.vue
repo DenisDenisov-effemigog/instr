@@ -3,7 +3,9 @@
         <div class="container">
             <div class="comparisons__header">
                 <h2 class="comparisons__title">{{ $tc('comparisons.title') }}</h2>
-                <a class="comparisons__delete-all">
+                <a class="comparisons__delete-all" v-if="comparingItems.length > 0"
+                    @click="deleteAll"
+                >
                     <svg>
                         <use xlink:href="/images/sprite.svg#icons__delete"></use>
                     </svg>
@@ -39,12 +41,18 @@
         
         computed: {
             comparisons() {
-                return this.$store.state.listing.comparisons
+                return this.$store.state.listing.comparisons.filter(item => item.is_favorite === true)
             },
+        },
+
+        methods: {
+            deleteAll() {
+                this.comparingItems.splice(0, this.comparingItems.length)
+            }
         },
         
         mounted () {
-            this.$store.dispatch('comparisonsApplyResponseProducts');
+            this.$store.dispatch('comparisonsUpdateProducts');
             let vm = this
             setTimeout(function () {
                 vm.comparingItems = vm.comparisons

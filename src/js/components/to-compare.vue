@@ -48,12 +48,18 @@
         },
         methods: {
             addCompare() {
-                let vm = this
-                api.addCompare(vm.id).then(answer => {
-                    vm.inCompare = answer
-                }).catch(errors => {
-                    console.error(errors);
-                })
+                let vm = this;
+                vm.$store.dispatch('comparisonsChange', {
+                    productId: vm.id
+                }).finally(() => {
+                    vm.inCompare = !vm.inCompare
+                    vm.$eventBus.$emit('change-to-compare')
+                });
+                // api.addCompare(vm.id).then(answer => {
+                //     vm.inCompare = answer
+                // }).catch(errors => {
+                //     console.error(errors);
+                // })
             }
         }
     }

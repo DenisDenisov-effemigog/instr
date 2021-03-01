@@ -83,9 +83,33 @@ const actions = {
         });
     },
 
-    comparisonsApplyResponseProducts: ({commit}) => {
-        api.getCompare().then((data) => {
-            commit(types.LISTING_APPLY_COMPARE, data)
+    comparisonsApplyResponseProducts: ({commit, dispatch}, data) => {
+        commit(types.LISTING_APPLY_COMPARE, data)
+    },
+
+    comparisonsUpdateProducts: ({dispatch}) => {
+        return new Promise((resolve, reject) => {
+            api.getCompare().then(
+                (data) => {
+                    dispatch('comparisonsApplyResponseProducts', data);
+                    resolve();
+                },
+                () => reject()
+            );
+        });
+    },
+
+    comparisonsChange: ({commit, dispatch, state}, params) => {
+        let productId = params.productId;
+
+        return new Promise((resolve, reject) => {
+            api.addCompare(productId).then(
+                (data) => {
+                    dispatch('comparisonsUpdateProducts', data);
+                    resolve();
+                },
+                () => reject()
+            );
         });
     },
 }

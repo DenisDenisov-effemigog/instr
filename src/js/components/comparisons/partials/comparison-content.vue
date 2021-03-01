@@ -40,7 +40,7 @@
                     </div>
                 </div>
             </div>
-            <div class="comparisons__cards">
+            <div class="comparisons__cards" :class="{}">
                 <!-- top slider -->
                 <agile ref="thumbnails" :as-nav-for="asNavFor2" :options="options">
                     <div class="comparisons__card" 
@@ -176,9 +176,11 @@
                 if (window.innerWidth < 768) {
                     this.shownItemsQnty = 2
                     this.qnty < 3 ? this.options.unagile = true : this.options.unagile = false
+                    console.log('< 768', this.qnty, this.options.unagile)
                 } else if (window.innerWidth > 767 && this.qnty > 2) {
                     this.shownItemsQnty = 3
                     this.qnty == 3 ? this.options.unagile = true : this.options.unagile = false
+                    console.log('> 767', this.qnty, this.options.unagile)
                 } else if (this.qnty < 3) {
                     this.options.responsive[0].settings.slidesToShow = 2;
                 }
