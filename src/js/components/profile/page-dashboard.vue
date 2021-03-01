@@ -17,7 +17,7 @@
                     tag="div" 
                     :to="'/my/discounts/'"
                 >
-                     <dashboard-discount :className="'personal'"></dashboard-discount>
+                     <dashboard-discount :className="'dashboard'"></dashboard-discount>
                 </router-link>
                 <dashboard-contract></dashboard-contract>
             </div>

@@ -206,6 +206,9 @@
 
     &__menu-tooltip-layout
         @extend .tooltip__item
+        margin-bottom: 0.5rem
+        &::last-child
+            margin-bottom: 0
         &:hover svg
             fill: $icon-black
         & > svg
