@@ -31,7 +31,6 @@
                         placeholder="Укажите артикул и количество товара в виде: 12334443 54"
                     ></textarea-autosize>
                 </div>
-                <span class="form__error-text" v-if="$v.$error">*{{ $tc('text.required') }}</span>
             </label>
             <button type="button" class="cart-search__btn" @click="submit">{{ $tc('cart.search.button') }}</button>
         </form>
