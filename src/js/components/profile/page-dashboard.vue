@@ -18,7 +18,7 @@
                     :to="'/my/discounts/'"
                 >
                      <dashboard-discount 
-                         :className="'personal'"
+                         :className="'dashboard'"
                          :discounts="discountArr"
                      ></dashboard-discount>
                 </router-link>

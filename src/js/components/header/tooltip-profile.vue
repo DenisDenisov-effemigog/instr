@@ -1,14 +1,15 @@
 <template>
     <div class="header__menu-tooltip">
-        <router-link tag="div" v-for="item in computedLinks"
-                     class="header__menu-tooltip-layout"
+        <router-link tag="div" v-for="(item, index) in computedLinks"
                      :exact="!!item.exact"
                      :to="item.url"
         >
-            <svg>
-                <use :xlink:href="templatePath + 'images/sprite.svg#icons__' + item.icon"></use>
-            </svg>
-            <span>{{ $tc(item.title) }}</span>
+            <div class="header__menu-tooltip-layout" @click="passIndex(index)">
+                <svg>
+                    <use :xlink:href="templatePath + 'images/sprite.svg#icons__' + item.icon"></use>
+                </svg>
+                <span>{{ $tc(item.title) }}</span>
+            </div>
         </router-link>
         <div href="" class="header__menu-tooltip-layout" @click.prevent="exit">
             <svg>
@@ -32,13 +33,13 @@
                 links: [
                      {
                         title: 'link.dashboard',
-                        url: '/account/dashboard',
+                        url: '/my/dashboard',
                         // exact: true,
                         personType: [1,2],
                     },
                     {
                         title: 'link.my_profile',
-                        url: '/account/',
+                        url: '/my/profile',
                         exact: true,
                         personType: 1,
                         icon: 'home'
@@ -48,23 +49,24 @@
                         url: '/my/discounts',
                         // exact: true,
                         personType: [1,2],
+                        icon: 'sale'
                     },
                     {
                         title: 'link.orders_list',
-                        url: '/account/orders',
+                        url: '/my/orders',
                         personType: 1,
                         icon: 'order'
                     },
                     {
                         title: 'link.finance',
-                        url: '/account/finance',
+                        url: '/my/finances',
                         personType: 2, 
                         external: true,
                         icon: 'card'
                     },
                     {
                         title: 'link.my_addresses',
-                        url: '/account/adresses',
+                        url: '/my/address',
                         personType: 2, 
                         external: true,
                         icon: 'delivery'
@@ -100,6 +102,9 @@
             },
             exit() {
                 /*TODO реализовать выход из профиля, редирект на главную*/
+            },
+            passIndex(index){
+                this.$eventBus.$emit("passIndex", index)
             }
         }
     }
