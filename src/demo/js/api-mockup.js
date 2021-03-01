@@ -2108,6 +2108,17 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
+            case 'instrument2:rest.api.clear.compare':
+                demoMockupComparisons = []
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                            answer: demoMockupComparisons
+                        }
+                    }
+                });
+                break;
             case 'instrument2:rest.api.location.find.city':
                 
                 resolve({
