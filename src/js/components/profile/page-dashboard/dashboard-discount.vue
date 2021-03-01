@@ -8,33 +8,36 @@
                 </div>
                 <div :class="className + '-discount__desc'">
                     <div :class="className + '-discount__text'">{{discount.title}}</div>
-                    <div :class="className + '-discount__discount'">{{discount.discount}}%</div>
+                    <div :class="className + '-discount__discount'">
+                        {{discount.discount}}%
+                        <span v-show="index == 2 && className == 'personal' && footnotesFlag" class="personal-discount__footnotes">*</span>
+                    </div>
                 </div>
                 <div v-show="className == 'personal'" :class="className + '-discount__date'">
                    {{ $tc('profile.dashboard.personal_discount_date') }} {{discount.date }}
                 </div>
             </li>
         </ul>
-        <div v-show="className == 'personal' && openInfo" class="personal-discount__info">
-            <div v-show="currentDiscount == 0" class="personal-discount__info-head">
+        <div v-show="className == 'personal'" class="personal-discount__info">
+            <div v-show="amountOrders == 0 && currentIndex != 2" class="personal-discount__info-head">
                 <div class="personal-discount__info-title"> {{ $tc('profile.dashboard.personal_discount_info_title') }}</div>
                 <div class="personal-discount__info-discount">2%</div>
             </div>
             <div class="personal-discount__info-main">
-                <div v-if="currentDiscount == 0" class="personal-discount__info-desc">
+                <div v-if="amountOrders == 0 && currentIndex != 2" class="personal-discount__info-desc">
                     {{ $tc('profile.dashboard.personal_discount_info_first_order') }}
                 </div>
-                <div v-else-if="currentDiscount > 12 && currentDiscount < 20" class="personal-discount__info-desc">
+                <div v-else-if="amountOrders > 0 && currentIndex != 2" class="personal-discount__info-desc">
                     {{ $tc('profile.dashboard.personal_discount_info_text_1_1') }}
                     <span>11%</span>
                     {{ $tc('profile.dashboard.personal_discount_info_text_1_2') }}
                     <span>2%</span>
                 </div>
-                <div v-else class="personal-discount__info-desc">
+                <div v-show="currentIndex == 2 && footnotesFlag" class="personal-discount__info-desc">
                     {{ $tc('profile.dashboard.personal_discount_info_text_2_1') }} <span>{{ $tc('profile.dashboard.personal_discount_info_text_2_2') }}</span> {{ $tc('profile.dashboard.personal_discount_info_text_2_3') }}
                 </div>
             </div>  
-            <div v-show="currentDiscount == 0" class="personal-discount__info-btn">
+            <div v-show="amountOrders == 0 && currentIndex != 2" class="personal-discount__info-btn">
                 {{ $tc('button.move_to_catalog') }}
                 <svg>
                     <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-right'"></use>
@@ -52,13 +55,16 @@ export default {
             type: String,
             required: true,
             default: 'dashboard'
+        },
+        amountOrders:{
+            type: Number,
+            required: true
         }
     },
     data(){
         return{
             currentIndex: 0,
-            openInfo: false,
-            currentDiscount: 11
+            footnotesFlag: true
         }
     },
     mounted() {
@@ -72,10 +78,7 @@ export default {
     methods:{
         currentTab(index, discount){
             this.currentIndex = index
-            if(discount == 0 || discount > 12 && discount < 20 || discount == 20){
-                this.openInfo = true
-                this.currentDiscount = discount
-            }
+            
         },
          passIndex(){
             if(this.className != 'personal'){

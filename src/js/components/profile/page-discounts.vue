@@ -1,8 +1,8 @@
 <template>
     <div class="discounts">
         <h2 class="discounts__title">{{ $tc('profile.dashboard.discount_title') }}</h2>
-        <dashboard-discount :className="className"></dashboard-discount>
-        <discounts-calculation></discounts-calculation>
+        <dashboard-discount :amountOrders="ordersAll.length" :className="className"></dashboard-discount>
+        <discounts-calculation :amountOrders="ordersAll.length"></discounts-calculation>
         <div class="discounts-conditions">
             <h3 class="discounts-conditions__title">{{ $tc('profile.discounts.conditions_title') }}</h3>
             <div class="discounts-conditions__main">
@@ -29,6 +29,12 @@ import DiscountsCalculation from './page-discounts/discounts-calculation.vue';
         },
         mounted(){
             this.$eventBus.$emit('hideMenu');
+            this.$store.dispatch('personalUpdateOrders');
         },
+        computed:{
+            ordersAll() {
+                return this.$store.state.personal.orders;
+            },
+        }
     }
 </script>
