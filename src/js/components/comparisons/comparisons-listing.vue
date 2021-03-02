@@ -17,9 +17,9 @@
         <comparison-content v-if="comparingItems.length > 0"
             :comparingItems="comparingItems"
         ></comparison-content>
-        <div class="container" v-else>
-            <div>{{ $tc('comparisons.is_empty') }}</div>
-            <a :href="catalogLink" class="profile__catalogue-btn">{{ $tc('button.move_to_catalog') }}</a>
+        <div class="comparisons__empty" v-else>
+            <div class="text-5">{{ $tc('comparisons.is_empty') }}</div>
+            <a :href="catalogLink" class="comparisons__catalogue-btn">{{ $tc('button.move_to_catalog') }}</a>
         </div>
         
     </section>

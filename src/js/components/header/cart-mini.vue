@@ -1,10 +1,11 @@
 <template>
-    <a ref="cart" :href="cartLink" class="header__menu-link header__menu-link--cart-active">
+    <a ref="cart" :href="cartLink" class="header__menu-link"
+        :class="{'header__menu-link--active': active}">
         <svg class="header__menu-icon">
             <use :xlink:href="templatePath + 'images/sprite.svg#icons__cart'"></use>
         </svg>
         <p class="header__menu-text">{{ $tc('header.menu.cart') }}</p>
-        <span class="header__mini-cart" v-if="productsQuantity > 0">
+        <span class="header__mini-cloud" v-if="productsQuantity > 0">
             {{productsQuantity}}
         </span>
     </a>
@@ -16,16 +17,16 @@
     export default {
         name: "cart-mini",
         props: {
-            mobile: {
+            active: {
                 type: Boolean,
                 required: false,
                 default: false
             }
         },
         data() {
-          return {
-              cartLink: config.links.cart
-          }  
+            return {
+                cartLink: config.links.cart
+            }  
         },
         computed: {
             productsQuantity() {

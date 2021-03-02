@@ -2,6 +2,7 @@
     <div class="discounts" v-if="loaded">
         <h2 class="discounts__title">{{ $tc('profile.dashboard.discount_title') }}</h2>
         <dashboard-discount 
+            :footnotesFlag="discountArr.fixed"
             :amountOrders="ordersAll.length" 
             :className="className"
             :discounts="discountArr"

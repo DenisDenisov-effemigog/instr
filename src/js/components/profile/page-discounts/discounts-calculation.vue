@@ -6,7 +6,7 @@
         <div class="discounts-calculation__main">
             <ul class="discounts-calculation__list">
                 <li class="discounts-calculation__item" v-for="item in calculationArr">
-                    <div class="discounts-calculation__subtitle">{{item.title}}</div>
+                    <div class="discounts-calculation__subtitle">{{$tc(item.title)}}</div>
                     <div class="discounts-calculation__desc" :class="{'discounts-calculation__desc--green': item.green}">
                         <span>{{item.desc}}</span>
                         <span v-if="item.discount">
@@ -37,20 +37,20 @@ export default {
         return{
             calculationArr: [
                 {
-                    title: 'Фактический оборот в декабре:',
+                    title: 'profile.discounts.calculation_item_1',
                     desc: this.discounts[0].level.current.turnover,
                 },
                 {
-                    title: 'Расчетная скидка в декабре:',
+                    title: 'profile.discounts.calculation_item_2',
                     desc: this.discounts[0].level.current.percent,
                     discount: true
                 },
                 {
-                    title: 'Необходимый оборот для сохранения скидки:',
+                    title: 'profile.discounts.calculation_item_3',
                     desc: this.discounts[0].level.next.turnover,
                 },
                 {
-                    title: 'Прогнозируемая скидка в январе:',
+                    title: 'profile.discounts.calculation_item_4',
                     desc: this.discounts[0].level.next.percent,
                     discount: true,
                     green: true
