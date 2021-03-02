@@ -178,9 +178,8 @@
                 this.$store.dispatch('basketSendQuantity', {
                     productId: productId,
                     quantity: 0
-                }).finally(() => {
-                    
-                });
+                })
+                this.$store.dispatch('basketOrderCalc')
             },
             toFav() {
                 /*todo add to favorite*/

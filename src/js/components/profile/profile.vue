@@ -35,7 +35,7 @@
         
         <div class="profile__content" v-show="!showMenu && mobile || !mobile">
             <router-link
-                :to="'/'"
+                :to="'/my'"
             >
                 <div class="breadcrumbs" @click="goBack" v-if="!showMenu && mobile && !listOpened">
                     <svg class="breadcrumbs__back" viewBox="0 0 18 15">

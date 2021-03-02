@@ -1,7 +1,7 @@
 <template>
     <div class="cart-order">
         <cart-order-head
-            :currentPrice="productsPrice"
+            :currentPrice="productsPrice.base_price"
             :salePrice="salePrice"
         ></cart-order-head>
         <div class="cart-order__content">
@@ -11,21 +11,21 @@
                     <li class="cart-order__item">
                         <div class="cart-order__text">{{ $tc('cart.order.all_price') }}</div>
                         <div class="cart-order__price">
-                            {{ currency(productsPrice) }}
+                            {{ currency(productsPrice.base_price) }}
                             <span>{{ $tc('text.currency') }}</span>
                         </div>
                     </li>
-                    <li class="cart-order__item" v-for="item in productsSales">
+                    <li class="cart-order__item" v-for="item in productsPrice.discounts">
                         <div class="cart-order__text">{{ $tc('text.discount') }}</div>
                         <div class="cart-order__price cart-order__price--green">
-                            {{ currency(item) }}
+                            {{ currency(item.value) }}
                             <span>{{ $tc('text.currency') }}</span>
                         </div>
                     </li>
                     <li class="cart-order__item cart-order__item--total">
                         <div class="cart-order__text cart-order__text--total">{{ $tc('cart.order.your_price')}}</div>
                         <div class="cart-order__total-price">
-                            {{ currency(getTotalPrice) }}
+                            {{ currency(productsPrice.price) }}
                             <span>{{ $tc('text.currency') }}</span>
                             </div>
                     </li>
@@ -47,6 +47,7 @@
 <script>
 import cartOrderHead from './cart-order-head.vue'
 import config from "../../config";
+import store from "../../store";
 
 export default {
     components: { cartOrderHead },
@@ -54,11 +55,7 @@ export default {
     props: {
         productsPrice: {
             required: true,
-            type: Number
-        },
-        productsSales: {
-            required: true,
-            type: Array
+            type: Object
         },
         place: {
             required: false,
@@ -73,19 +70,7 @@ export default {
     data(){
         return{
             fixedFlag: false,
-            checkoutLink: config.links.checkout
-        }
-    },
-    computed:{
-        getTotalPrice(){
-            let vm = this
-            if(!vm.productsSales.length){
-                return vm.productsPrice
-            } else{
-                const reducer = (accumulator, currentValue) => accumulator + currentValue;
-                return vm.productsPrice - vm.productsSales.reduce(reducer)
-            }
-            
+            checkoutLink: config.links.checkout,
         }
     },
     created(){
@@ -101,7 +86,7 @@ export default {
             } else {
                 this.fixedFlag = false
             }
-        }
+        },
     }
 }
 </script>

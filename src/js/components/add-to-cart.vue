@@ -135,7 +135,6 @@
         },
         watch: {
             storeAmount(newValue) {
-                console.log(newValue)
                 if(!this._debounce_timer) {
                     this.amount = newValue;
                 }
@@ -180,6 +179,7 @@
                         vm._loading_timer = null;
                     }
                 });
+                this.$store.dispatch('basketOrderCalc')
             },
             startSetAmount() {
                 let vm = this;

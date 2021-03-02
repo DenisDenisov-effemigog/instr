@@ -162,6 +162,7 @@
             combineCarts(){
                 this.successFlag = true
                 this.$store.dispatch('combineCarts', this.checked);
+                this.$store.dispatch('basketOrderCalc')
             }
         }
     }

@@ -40,7 +40,7 @@
                     ></selected-items>
                     <cart-order-head 
                         :mobileFlag="true"
-                        :currentPrice="productsPrice"
+                        :currentPrice="productsPrice.base_price"
                         :salePrice="salePrice"
                     ></cart-order-head>
                     <div class="cart__purchases" :class="{'cart__purchases--table': changedView === 'table_cards'}">
@@ -84,7 +84,6 @@
                 <div class="cart__sidebar">
                     <cart-order
                         :productsPrice="productsPrice"
-                        :productsSales="discounts"
                         :salePrice="salePrice"
                     ></cart-order>
                 </div>
@@ -115,11 +114,7 @@
             salePrice:{
                 type: Number,
                 required: true,
-            },
-            discounts:{
-                type: Array,
-                required: true,
-            }  
+            }, 
         },
         data(){
             return{
@@ -127,6 +122,11 @@
                 changedView: this.view,
                 notAvailable: []
             }
+        },
+        mounted() {
+            this.$store.dispatch('cartSetViewMode', this.view);
+            this.$store.dispatch('getOldBasket');
+            this.$store.dispatch('basketOrderCalc');
         },
         computed: {
             products() {
@@ -144,8 +144,7 @@
                 });
             },
             productsPrice() {
-                const basketData = this.$store.getters.basketProductsSummary;
-                return parseFloat((basketData.price).toFixed(3));
+                return this.$store.state.basket.summury
             },
         },
         methods: {
@@ -171,10 +170,6 @@
         },
         created() {
             window.addEventListener('resize', this.tableMode)
-        },
-        mounted() {
-            this.$store.dispatch('cartSetViewMode', this.view);
-            this.$store.dispatch('getOldBasket');
         },
     }
 </script>

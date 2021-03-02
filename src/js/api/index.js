@@ -116,9 +116,12 @@ class Api {
             {arr: arr}
         );
     }
-    /*personalProfileSummary() {
-        return this._promiseBitrixRequest('instrument2:rest.api.user.get', {});
-    }*/
+    OrderCalc(payment_id, delivery_id) {
+        return this._promiseBitrixRequest('instrument2:rest.api.order.calc', {
+            payment_id: payment_id,
+            delivery_id: delivery_id
+        });
+    }
     authSignIn(email, password) {
         return this._promiseBitrixRequest('instrument2:rest.api.auth.sign_in', {
             email: email,

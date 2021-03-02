@@ -791,7 +791,21 @@ let demoMockupComparisons =
                     'link': '',
                     'status': 'promo',
                 },
-            ]
+            ],
+            'otherOptions': {
+                'Вес': '2.55 кг',
+                'Длина в упаковке': '490 мм',
+                'Число ступеней регулировки крутящего момента': '18+1',
+                'Наличие реверса': 'есть',
+                'Тип скидки': 'Силовое',
+                'Емкость аккумулятора': '1.5 А*ч',
+                'Индикатор заряда аккумуляторной батареи': 'есть',
+                'Штрихкод': '4044996171296',
+                'Частота вращения шпинделя': '0-350/0-1350 об/мин',
+                'Ссылка на сертификат': 'ttps://instrument.ru/info/sertif/Сертификаты (импорт)/ЕАЭС RU C-CN.ПФ02.В.01621-20.pdf',
+                'Частота вращения шпинделя': '0-350/0-1350 об/мин',
+                'Ссылка на сертификат': 'ttps://instrument.ru/info/sertif/Сертификаты (импорт)/ЕАЭС RU C-CN.ПФ02.В.01621-20.pdf'
+            }
         },
         {
             'id': 2,
@@ -800,8 +814,8 @@ let demoMockupComparisons =
             'code': 717950,
             'available': true,
             'stock': 100,
-            'oldPrice': 3819,
-            'newPrice': 2819,
+            'oldPrice': 4218,
+            'newPrice': 4218,
             'is_favorite': true,
             'is_compare': true,
             'images': [
@@ -825,7 +839,21 @@ let demoMockupComparisons =
                     'link': '',
                     'status': 'promo',
                 },
-            ]
+            ],
+            'otherOptions': {
+                'Вес': '1.8 кг',
+                'Длина в упаковке': '350 мм',
+                'Число ступеней регулировки крутящего момента': '21+1',
+                'Наличие реверса': 'есть',
+                'Тип скидки': 'Силовое',
+                'Емкость аккумулятора': '1.5 А*ч',
+                'Индикатор заряда аккумуляторной батареи': 'есть',
+                'Штрихкод': '4044996171296',
+                'Частота вращения шпинделя': '0-350/0-1350 об/мин',
+                'Ссылка на сертификат': 'ttps://instrument.ru/info/sertif/Сертификаты (импорт)/ЕАЭС RU C-CN.ПФ02.В.01621-20.pdf',
+                'Частота вращения шпинделя': '0-350/0-1350 об/мин',
+                'Ссылка на сертификат': 'ttps://instrument.ru/info/sertif/Сертификаты (импорт)/ЕАЭС RU C-CN.ПФ02.В.01621-20.pdf'
+            }
         },
         {
             'id': 3,
@@ -834,8 +862,8 @@ let demoMockupComparisons =
             'code': 717950,
             'available': true,
             'stock': 100,
-            'oldPrice': 3819,
-            'newPrice': 2819,
+            'oldPrice': 2051,
+            'newPrice': 2051,
             'is_favorite': false,
             'is_compare': true,
             'images': [
@@ -859,7 +887,21 @@ let demoMockupComparisons =
                     'link': '',
                     'status': 'promo',
                 },
-            ]
+            ],
+            'otherOptions': {
+                'Вес': '1.9 кг',
+                'Длина в упаковке': '240 мм',
+                'Число ступеней регулировки крутящего момента': '',
+                'Наличие реверса': '',
+                'Тип скидки': 'Силовое',
+                'Емкость аккумулятора': '1.5 А*ч',
+                'Индикатор заряда аккумуляторной батареи': '',
+                'Штрихкод': '4044996171296',
+                'Частота вращения шпинделя': '0-350/0-1350 об/мин',
+                'Ссылка на сертификат': 'ttps://instrument.ru/info/sertif/Сертификаты (импорт)/ЕАЭС RU C-CN.ПФ02.В.01621-20.pdf',
+                'Частота вращения шпинделя': '0-350/0-1350 об/мин',
+                'Ссылка на сертификат': 'ttps://instrument.ru/info/sertif/Сертификаты (импорт)/ЕАЭС RU C-CN.ПФ02.В.01621-20.pdf'
+            }
         },
         {
             'id': 4,
@@ -893,7 +935,21 @@ let demoMockupComparisons =
                     'link': '',
                     'status': 'promo',
                 },
-            ]
+            ],
+            'otherOptions': {
+                'Вес': '2.55 кг',
+                'Длина в упаковке': '490 мм',
+                'Число ступеней регулировки крутящего момента': '18+1',
+                'Наличие реверса': 'есть',
+                'Тип скидки': 'Силовое',
+                'Емкость аккумулятора': '1.5 А*ч',
+                'Индикатор заряда аккумуляторной батареи': 'есть',
+                'Штрихкод': '4044996171296',
+                'Частота вращения шпинделя': '0-350/0-1350 об/мин',
+                'Ссылка на сертификат': 'ttps://instrument.ru/info/sertif/Сертификаты (импорт)/ЕАЭС RU C-CN.ПФ02.В.01621-20.pdf',
+                'Частота вращения шпинделя': '0-350/0-1350 об/мин',
+                'Ссылка на сертификат': 'ttps://instrument.ru/info/sertif/Сертификаты (импорт)/ЕАЭС RU C-CN.ПФ02.В.01621-20.pdf'
+            }
         },
         {
             'id': 5,
@@ -927,7 +983,21 @@ let demoMockupComparisons =
                     'link': '',
                     'status': 'promo',
                 },
-            ]
+            ],
+            'otherOptions': {
+                'Вес': '2.55 кг',
+                'Длина в упаковке': '240 мм',
+                'Число ступеней регулировки крутящего момента': '',
+                'Наличие реверса': '',
+                'Тип скидки': 'Силовое',
+                'Емкость аккумулятора': '1.5 А*ч',
+                'Индикатор заряда аккумуляторной батареи': '',
+                'Штрихкод': '4044996171296',
+                'Частота вращения шпинделя': '0-350/0-1350 об/мин',
+                'Ссылка на сертификат': 'ttps://instrument.ru/info/sertif/Сертификаты (импорт)/ЕАЭС RU C-CN.ПФ02.В.01621-20.pdf',
+                'Частота вращения шпинделя': '0-350/0-1350 об/мин',
+                'Ссылка на сертификат': 'ttps://instrument.ru/info/sertif/Сертификаты (импорт)/ЕАЭС RU C-CN.ПФ02.В.01621-20.pdf'
+            }
         },
     ];
 
@@ -1539,24 +1609,6 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
-            case 'instrument2:rest.api.auth.sign_in':
-                resolve({
-                    data: {
-                        data: {
-                            status: 1,
-                        }
-                    }
-                });
-                break;
-            case 'instrument2:rest.api.auth.sign_up':
-                resolve({
-                    data: {
-                        data: {
-                            status: 1,
-                        }
-                    }
-                });
-                break;
             case 'instrument2:rest.api.basket.get':
                 resolve({
                     data: {
@@ -1588,6 +1640,44 @@ window.runAction = function (action, config) {
                         data: {
                             status: 1,
                             answer: demoCloneOverJson(demoMockupBasket)
+                        }
+                    }
+                });
+                break;
+            case 'instrument2:rest.api.order.calc':
+                
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                            answer: {
+                                base_price: 12345,
+                                price: 1234,
+                                delivery_price: 100,
+                                discounts: {
+                                    personal: {percent: 5, value: 387},
+                                    action: {percent: 3, value: 115},
+                                    total: {percent: 8, value: 502},
+                                },
+                            }
+                        }
+                    }
+                });
+                break;
+            case 'instrument2:rest.api.auth.sign_in':
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                        }
+                    }
+                });
+                break;
+            case 'instrument2:rest.api.auth.sign_up':
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
                         }
                     }
                 });

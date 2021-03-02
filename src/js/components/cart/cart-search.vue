@@ -99,6 +99,7 @@ export default {
                 }
             }
             this.$store.dispatch('searchItem', arr);
+            this.$store.dispatch('basketOrderCalc')
         }
     },
 }
