@@ -1,6 +1,6 @@
 <template>
     <a ref="cart" :href="cartLink" class="header__menu-link"
-        :class="{'header__menu-link--active': productsQuantity > 0}">
+        :class="{'header__menu-link--active': active}">
         <svg class="header__menu-icon">
             <use :xlink:href="templatePath + 'images/sprite.svg#icons__cart'"></use>
         </svg>
@@ -17,7 +17,7 @@
     export default {
         name: "cart-mini",
         props: {
-            mobile: {
+            active: {
                 type: Boolean,
                 required: false,
                 default: false

@@ -1,6 +1,6 @@
 <template>
     <a :href="compareLink" class="header__menu-link"
-        :class="{'header__menu-link--active': productsQuantity > 0}">
+        :class="{'header__menu-link--active': active}">
         <svg class="header__menu-icon" viewBox="-2 0 19 20">
             <use :xlink:href="templatePath + 'images/sprite.svg#icons__graf'" ></use>
         </svg>
@@ -17,11 +17,11 @@
     export default {
         name: "compare-mini",
         props: {
-            // mobile: {
-            //     type: Boolean,
-            //     required: false,
-            //     default: false
-            // }
+            active: {
+                type: Boolean,
+                required: false,
+                default: false
+            }
         },
         data() {
             return {
@@ -29,11 +29,9 @@
             }  
         },
         computed: {
-            products() {
-                return this.$store.state.listing.comparisons.filter(item => item.is_compare === true);
-            },
             productsQuantity() {
-                return this.products.length;
+                const products = this.$store.state.listing.comparisons.filter(item => item.is_compare === true);
+                return products.length;
             }, 
         },
         mounted () {
