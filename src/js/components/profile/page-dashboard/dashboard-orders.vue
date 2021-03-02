@@ -12,13 +12,13 @@
             <div class="dashboard-orders__main">
                 <ul class="dashboard-orders__list">
                     <li v-if="!ordersData.length" class="dashboard-orders__item dashboard-orders__item--info">{{ $tc('profile.dashboard.order_info') }}  </li>
-                    <li v-for="(item, index) in ordersData" v-show="index < 3" class="dashboard-orders__item" v-else>
+                    <li v-for="(item, index) in ordersData" class="dashboard-orders__item" v-else>
                         <div class="dashboard-orders__item-top">
                             <div class="dashboard-orders__number">
                                 #{{item.number}}
                             </div>
                             <div class="dashboard-orders__price">
-                                {{item.price}} {{ $tc('text.currency') }}                    
+                                {{item.priceTotal}} {{ $tc('text.currency') }}                    
                             </div>
                         </div>
                         <div class="dashboard-orders__item-bottom">
@@ -46,11 +46,7 @@ export default {
     },
     computed: {
         ordersData() {
-            return this.$store.state.personal.orders.filter(order => {
-                if(order.status.value === 'waiting'){
-                    return order
-                }
-            });
+            return this.$store.state.personal.currentOrders
         },
     },
 }

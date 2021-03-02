@@ -14,8 +14,8 @@
             <a :href="catalogLink" class="profile__catalogue-btn">{{ $tc('button.move_to_catalog') }}</a>
         </div>
         <div v-else>
-            <product-limit :financeCharges="financeDataAll.charges" :contract="contract"></product-limit>
-            <accounts-payable :financeCharges="financeDataAll.charges" :contract="contract"></accounts-payable>
+            <product-limit :financeCharges="financeDataAll" :contract="contract"></product-limit>
+            <accounts-payable :financeCharges="financeDataAll" :contract="contract"></accounts-payable>
             <finance-charges :financeCharges="financeDataAll.charges" :arrears="true"></finance-charges>
             <finance-charges :financeCharges="financeDataAll.charges"></finance-charges>
             <operation-history :financeHistory="financeDataAll.history"></operation-history>

@@ -321,12 +321,124 @@ let demoProfile = {
     'email': 'konstantynopolsky@gmail.com',
     'address': 'Название адреса'
 };
-let demoManager = {
-    photo:'/demo_images/dashboard/manager.png',
-    name:'Хорошилова Ирина Николаевна',
-    phone: '8-925-234-69-14',
-    mail:'i.horoshilova@instrument.ru'
-};
+let dashboardParams = {
+    manager: {
+        photo:'/demo_images/dashboard/manager.png',
+        name:'Хорошилова Ирина Николаевна',
+        phone: '8-925-234-69-14',
+        mail:'i.horoshilova@instrument.ru'
+    },
+    discounts: [
+        {
+            title: 'Импорт',
+            discount: 20,
+            date: '31.12.2021'
+        },
+        {
+            title: 'Силовое',
+            discount: 0,
+            date: '31.12.2021'
+        },
+        {
+            title: 'Россия',
+            discount: 20,
+            date: '31.12.2021'
+        },
+    ],
+    contract: [
+        {
+            title:'Договор №',
+            info:'19/000'
+        },
+        {
+            title:'Срок действия',
+            info:'с 17.12.2019 по 31.12.2020'
+        },
+        {
+            title:'Пролонгация',
+            info:'Да'
+        },
+        {
+            title:'Отсрочка платежа',
+            info:'14 дней'
+        },
+        {
+            title:'Товарный лимит',
+            info:'100 000 ₽'
+        },
+        {
+            title:'Остаток товарного лимита',
+            info:'30 000 ₽'
+        }
+    ],
+    petitions: [
+        {
+            title:'Вопрос по гарантии',
+            date:'12.03.2021',
+            status:'Есть ответ',
+            success: true
+        },
+        {
+            title:'Запрос на удаление адреса',
+            date:'12.03.2021',
+            status:'В работе',
+            success: false
+        },
+    ],
+    order: [
+        {
+            number:1,
+            date:'11.03.2021',
+            priceTotal:2345,
+            status: {
+                label:'В сборке',
+                value:'waiting'
+            }
+        },
+        {
+            number:2,
+            date:'18.03.2021',
+            priceTotal:245342,
+            status: {
+                label:'В сборке',
+                value:'waiting'
+            }
+        },
+        {
+            number:3,
+            date:'28.03.2021',
+            priceTotal:34366,
+            status: {
+                label:'В сборке',
+                value:'waiting'
+            }
+        },
+    ],
+    finance: {
+        statistic: {
+            limit:100000,
+            arrears:30000,
+            debt:80000
+        },
+        schedule:[ 
+            {
+                sum:30000,
+                date:'15.02.2021',
+                days:-45
+            },
+            {
+                sum:30000,
+                date:'15.03.2021',
+                days:13
+            },
+            {
+                sum:20000,
+                date:'15.04.2021',
+                days:43
+            },
+        ]
+    }
+}
 let demoDiscount = [
     {
         "name":"Импорт",
@@ -399,46 +511,6 @@ let demoDiscount = [
         date: '31.12.2021'
     }*/
 ];
-let demoContract = [
-    {
-        title:'Договор №',
-        info:'19/000'
-    },
-    {
-        title:'Срок действия',
-        info:'с 17.12.2019 по 31.12.2020'
-    },
-    {
-        title:'Пролонгация',
-        info:'Да'
-    },
-    {
-        title:'Отсрочка платежа',
-        info:'14 дней'
-    },
-    {
-        title:'Товарный лимит',
-        info:'100 000 ₽'
-    },
-    {
-        title:'Остаток товарного лимита',
-        info:'30 000 ₽'
-    }
-];
-let demoPetitions = [
-    {
-        title:'Вопрос по гарантии',
-        date:'12.03.2021',
-        status:'Есть ответ',
-        success: true
-    },
-    {
-        title:'Запрос на удаление адреса',
-        date:'12.03.2021',
-        status:'В работе',
-        success: false
-    },
-]
 let demoOrders = [];
 //let baseOrderDate = new Date('2020-02-14');
 for(let i = 0; i < 76; ++i) {
@@ -495,6 +567,28 @@ for(let i = 0; i < 76; ++i) {
 
 let financeData = {
     invoice: '/images/country/globus.png',
+    statistic: {
+        limit:100000,
+        arrears:30000,
+        debt:80000
+    },
+    schedule:[
+        {
+            sum:30000,
+            date:'15.02.2021',
+            days:-45
+        },
+        {
+            sum:30000,
+            date:'15.03.2021',
+            days:13
+        },
+        {
+            sum:20000,
+            date:'15.04.2021',
+            days:43
+        },
+    ],
     charges: [],
     history: [],
 };
@@ -1692,12 +1786,12 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
-            case 'instrument2:rest.api.manager.get':
+            case 'instrument2:rest.api.user.dashboard':
                 resolve({
                     data: {
                         data: {
                             status: 1,
-                            answer: demoManager
+                            answer: dashboardParams
                         }
                     }
                 });
@@ -1708,26 +1802,6 @@ window.runAction = function (action, config) {
                         data: {
                             status: 1,
                             answer: demoDiscount
-                        }
-                    }
-                });
-                break;
-            case 'instrument2:rest.api.contract.get':
-                resolve({
-                    data: {
-                        data: {
-                            status: 1,
-                            answer: demoContract
-                        }
-                    }
-                });
-                break;
-            case 'instrument2:rest.api.petitions.get':
-                resolve({
-                    data: {
-                        data: {
-                            status: 1,
-                            answer: demoPetitions
                         }
                     }
                 });

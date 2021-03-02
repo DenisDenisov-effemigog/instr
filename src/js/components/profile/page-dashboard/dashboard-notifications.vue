@@ -55,9 +55,6 @@ export default {
             tooltipFlag: false,
         }
     },
-    mounted() {
-        this.$store.dispatch('personalGetPetitions');
-    },
     computed: {
         notificationData() {
             return this.cloneOverJson(this.$store.state.personal.petitions);

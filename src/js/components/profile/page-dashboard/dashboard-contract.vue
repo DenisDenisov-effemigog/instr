@@ -33,9 +33,6 @@ export default {
             
         }
     },
-    mounted() {
-        this.$store.dispatch('personalGetContract');
-    },
     computed: {
         contractArr() {
             return this.cloneOverJson(this.$store.state.personal.contract);

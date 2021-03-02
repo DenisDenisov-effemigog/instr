@@ -47,6 +47,7 @@ const state = {
     manager: '',
     discount: '',
     contract: '',
+    currentOrders: [],
     petitions: '',
 };
 
@@ -79,6 +80,9 @@ const mutations = {
     [types.PERSONAL_APPLY_CONTRACT](state, newMode) {
         state.contract = newMode;
     },
+    [types.PERSONAL_APPLY_CURRENTORDERS](state, newMode) {
+        state.currentOrders = newMode;
+    },
     [types.PERSONAL_APPLY_PETITIONS](state, newMode) {
         state.petitions = newMode;
     },
@@ -93,24 +97,18 @@ const actions = {
             commit(types.PERSONAL_APPLY_PROFILE, profile);
         });
     },
-    personalGetManager: ({commit, dispatch}) => {
-        api.managerGet().then((profile) => {
-            commit(types.PERSONAL_APPLY_MANAGER, profile);
+    personalDashboard: ({commit, dispatch}) => {
+        api.userDashboard().then((profile) => {
+            commit(types.PERSONAL_APPLY_MANAGER, profile.manager);
+            commit(types.PERSONAL_APPLY_CONTRACT, profile.contract);
+            commit(types.PERSONAL_APPLY_PETITIONS, profile.petitions);
+            commit(types.PERSONAL_APPLY_CURRENTORDERS, profile.order);
+            commit(types.PERSONAL_APPLY_FINANCE, profile.finance);
         });
     },
     personalGetDiscount: ({commit, dispatch}) => {
         api.discountGet().then((profile) => {
             commit(types.PERSONAL_APPLY_DISCOUNT, profile);
-        });
-    },
-    personalGetContract: ({commit, dispatch}) => {
-        api.contractGet().then((profile) => {
-            commit(types.PERSONAL_APPLY_CONTRACT, profile);
-        });
-    },
-    personalGetPetitions: ({commit, dispatch}) => {
-        api.petitionsGet().then((profile) => {
-            commit(types.PERSONAL_APPLY_PETITIONS, profile);
         });
     },
     personalUpdateOrders: ({commit}) => {

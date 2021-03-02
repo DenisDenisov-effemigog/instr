@@ -160,7 +160,6 @@ export default {
     mounted() {
         //this.$store.dispatch('personalUpdateShortProfile');
         this.$store.dispatch('personalUpdateProfile');
-        this.$store.dispatch('personalGetContract');
     },
     created() {
         window.addEventListener('resize', this.updateWidth);

@@ -47,9 +47,6 @@ export default {
            
         }
     },
-    mounted() {
-        this.$store.dispatch('personalGetPetitions');
-    },
     computed: {
         petitionsData() {
             return this.cloneOverJson(this.$store.state.personal.petitions);

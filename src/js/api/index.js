@@ -155,17 +155,11 @@ class Api {
             message: message,
         });
     }
-    managerGet() {
-        return this._promiseBitrixRequest('instrument2:rest.api.manager.get');
+    userDashboard() {
+        return this._promiseBitrixRequest('instrument2:rest.api.user.dashboard');
     }
     discountGet() {
         return this._promiseBitrixRequest('instrument2:rest.api.discount.list');
-    }
-    contractGet() {
-        return this._promiseBitrixRequest('instrument2:rest.api.contract.get');
-    }
-    petitionsGet() {
-        return this._promiseBitrixRequest('instrument2:rest.api.petitions.get');
     }
     changePassowrd(currentPass, newPass) {
         return this._promiseBitrixRequest('instrument2:rest.api.user.change.password', {

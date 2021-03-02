@@ -11,7 +11,11 @@
                     tag="span"
                     :to="'/my/finances/'"
                 >
-                    <finance-progress :financeCharges="financeData.charges" :contract="contract"></finance-progress>
+                    <finance-progress 
+                        :finance="financeData.statistic" 
+                        :financeCharges="financeData.schedule" 
+                        :contract="contract"
+                    ></finance-progress>
                 </router-link>
                 <router-link
                     tag="div" 
@@ -83,8 +87,7 @@ export default {
     },
     mounted(){
         this.$eventBus.$emit('hideMenu');
-        this.$store.dispatch('personalUpdateFinanceData');
-        this.$store.dispatch('personalUpdateOrders');
+        this.$store.dispatch('personalDashboard');
         this.$store.dispatch('personalGetDiscount');
     },
     computed: {

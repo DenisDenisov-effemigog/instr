@@ -3,8 +3,9 @@
         <div class="columns">
             <div class="finance__progress-bar finance__progress-bar--payable">
                 <h4 class="finance__subtitle">{{ $tc('profile_finance.title.payable') }}</h4>
-                <component is="finance-progress" 
-                           :financeCharges="financeCharges"
+                <component is="finance-progress"
+                           :finance="financeCharges.statistic"
+                           :financeCharges="financeCharges.schedule"
                            :dashboard="false"
                            :contract="contract"
                 ></component>
@@ -52,7 +53,7 @@
         name: 'accounts-payable',
         props: {
             financeCharges: {
-                type: Array
+                type: Object
             },
             contract: {
                 required: true
@@ -70,7 +71,7 @@
         computed: {
             latestArrears() {
                 let latest = {}
-                this.financeCharges.forEach(item => {
+                this.financeCharges.charges.forEach(item => {
                     if (item.latest) latest = {...item}
                 })
                 return latest

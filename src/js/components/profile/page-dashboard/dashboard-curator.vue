@@ -47,9 +47,6 @@ export default {
         return{
         }
     },
-    mounted() {
-        this.$store.dispatch('personalGetManager');
-    },
     computed: {
         managerData() {
             return this.cloneOverJson(this.$store.state.personal.manager);
