@@ -7,10 +7,6 @@
             :className="className"
             :discounts="discountArr"
         ></dashboard-discount>
-        <discounts-calculation 
-            :amountOrders="ordersAll.length"
-            :discounts="discountArr"
-        ></discounts-calculation>
         <div class="discounts-conditions">
             <h3 class="discounts-conditions__title">{{ $tc('profile.discounts.conditions_title') }}</h3>
             <div class="discounts-conditions__main">
@@ -31,9 +27,8 @@
 
 <script>
 import dashboardDiscount from './page-dashboard/dashboard-discount.vue'
-import DiscountsCalculation from './page-discounts/discounts-calculation.vue';
     export default {
-    components: { dashboardDiscount,DiscountsCalculation  },
+    components: { dashboardDiscount },
         name:"page-discounts",
         data() {
             return {
