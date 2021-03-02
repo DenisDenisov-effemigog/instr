@@ -35,10 +35,10 @@
                     :class="{'finance-prgs-crcl__text--error': arrears}"
                     v-if="arrears"
                 >
-                    Поставки временно заблокированы до погашения просроченной дебиторской задолженности!
+                    {{ $tc('profile_finance.progress_circle.delay-report') }}
                 </div>
                 <div class="finance-prgs-crcl__text" v-else>
-                    <span>Осталось до даты погашения задолженности. Оплатить до:&nbsp;
+                    <span>{{ $tc('profile_finance.progress_circle.report') }}&nbsp;
                         <span class="finance-prgs-crcl__payment-date">{{ this.latestArrears.date }}</span>
                     </span>
                 </div>

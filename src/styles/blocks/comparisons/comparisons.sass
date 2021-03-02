@@ -46,8 +46,8 @@
                 +mobile
                     margin-top: 0
             .comparisons__card
-                +mobile
-                    border: none
+                // +mobile
+                //     border: none
             ~ .comparisons__bottom
                 margin-top: 28.0625rem
                 +tablet
@@ -102,21 +102,27 @@
     // top sliders
 
     &__cards
+        margin-top: 1rem
         +mobile
-            margin: 0 -1rem
+            margin: 1rem -1rem 0 -1rem
         +desktop
+            margin-top: 0
             width: 75%
-        // .agile,
-        // .agile__list,
         .agile__slide,
             display: flex
             align-items: stretch
-        // .agile__track
-        //     flex: auto
+        .agile__slide--active
+            border-right: 1px solid $pre-white
+            +desktop
+                border-left: none !important
+            + .agile__slide
+                +tablet-only
+                    border-right: 1px solid $pre-white
     &__card
         display: flex
         flex-direction: column
-        border: 1px solid $pre-white
+        border-top: 1px solid $pre-white
+        border-bottom: 1px solid $pre-white
         padding: 0 1rem 1rem 1rem
         flex: auto
         +tablet
@@ -148,9 +154,9 @@
 
                 margin-right: 1rem
         .slider-photo-card__slide
-            height: 141px
-        .slider-photo-card__dot
-            display: block
+            height: 124px
+            +desktop
+                height: 141px
     &__card-description
         display: flex
         flex-direction: column
@@ -188,29 +194,29 @@
         margin-top: -1px
 
     &__sidebar
-        @extend .title-4
-        display: grid
-        grid-gap: 2rem
         width: 25%
         padding: 2.5rem 1.5rem
         border: 1px solid $border-color_4
         +until($desktop)
             position: absolute
             top: 0
-            grid-gap: 3.75rem
             width: 100%
             padding: 0
             border: none
+            display: none
     &__sidebar-item
+        @extend .title-4
         +until($desktop)
             font-size: $font-size_3
             line-height: $line-height_3
             padding: .25rem .5rem
             background-color: $pre-white
-        // &:not(:last-of-type)
-        //     margin-bottom: 3.75rem
-        //     +desktop
-        //         margin-bottom: 2rem
+            width: 200%
+        +tablet-only
+            width: 300%
+        &:not(:last-of-type)
+            +desktop
+                margin-bottom: 2rem
 
     // bottom sliders
 
@@ -218,27 +224,34 @@
         @extend .text-2
         width: 100%
         color: $grey
+        margin-top: .5rem
         +desktop
             font-size: $font-size
             line-height: $line-height
             width: 75%
+            margin-top: 0
         .agile
             flex: auto
         .agile__slide
-            display: grid
-            li
+            .comparisons__description-text
                 +until($desktop)
                     padding-left: 1rem
         .agile__slide--active
-            li
+            .comparisons__description-text
                 +until($desktop)
                     padding-right: 1rem
                     padding-left: 0
+                    border-right: 1px solid $border-color_4
+        .agile__slide--active + .agile__slide
+            .comparisons__description-text
+                +tablet-only
+                    padding-right: 1rem
+                    padding-left: 1rem
+                    border-right: 1px solid $border-color_4 
+
     &__description
         flex: auto
-        grid-gap: 3.75rem
         +desktop
-            grid-gap: 2rem
             border: 1px solid $border-color_4
             border-left: none
             padding: 2.5rem 1.5rem
@@ -246,11 +259,18 @@
             width: 50%
         li
             +until($desktop)
-                // margin: 2.75rem 0 4.25rem 0
-                border-right: 1px solid $border-color_4 
+                margin: 1.5rem 0 0 0
+                // border-right: 1px solid $border-color_4 
             &:not(:last-of-type)   
                 +desktop
-                    // margin-bottom: 2rem
+                    margin-bottom: 2rem
+            .comparisons__sidebar-item
+                color: $black
+                +desktop
+                    display: none
+    &__description-text
+        +until($desktop)
+            margin-top: 1rem
 
 
     &__deploy

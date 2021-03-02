@@ -92,12 +92,13 @@
                             :class="{'comparisons__description--no-product': comparisons.length === 1}"
                             v-for="product in comparisons">
                             <li>
-                                <div></div>
-                                {{ product.newPrice }}
+                                <div class="comparisons__sidebar-item">{{ $tc('"text.price"') }}</div>
+                                <div class="comparisons__description-text">{{ product.newPrice }}</div>
                             </li>
                             <li v-for="item in Object.entries(product.otherOptions)">
-                                <span v-if="!!item[1]">{{ item[1] }}</span>
-                                <span v-else>—</span>
+                                <div class="comparisons__sidebar-item">{{ item[0] }}</div>
+                                <div class="comparisons__description-text" v-if="!!item[1]">{{ item[1] }}</div>
+                                <div class="comparisons__description-text" v-else>—</div>
                             </li>
                         </ul>
                         <!-- the second comparison is not chosen -->
