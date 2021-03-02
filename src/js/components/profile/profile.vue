@@ -34,12 +34,16 @@
         </div>
         
         <div class="profile__content" v-show="!showMenu && mobile || !mobile">
-            <div class="breadcrumbs" @click="goBack" v-if="!showMenu && mobile && !listOpened">
-                <svg class="breadcrumbs__back" viewBox="0 0 18 15">
-                    <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
-                </svg>
-                <span>{{ $tc('link.back') }}</span>
-            </div>
+            <router-link
+                :to="'/'"
+            >
+                <div class="breadcrumbs" @click="goBack" v-if="!showMenu && mobile && !listOpened">
+                    <svg class="breadcrumbs__back" viewBox="0 0 18 15">
+                        <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
+                    </svg>
+                    <span>{{ $tc('link.back') }}</span>
+                </div>
+            </router-link>
 
             <transition name="fade" mode="out-in">
                 <router-view
