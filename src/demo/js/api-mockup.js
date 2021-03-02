@@ -1539,24 +1539,6 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
-            case 'instrument2:rest.api.auth.sign_in':
-                resolve({
-                    data: {
-                        data: {
-                            status: 1,
-                        }
-                    }
-                });
-                break;
-            case 'instrument2:rest.api.auth.sign_up':
-                resolve({
-                    data: {
-                        data: {
-                            status: 1,
-                        }
-                    }
-                });
-                break;
             case 'instrument2:rest.api.basket.get':
                 resolve({
                     data: {
@@ -1588,6 +1570,44 @@ window.runAction = function (action, config) {
                         data: {
                             status: 1,
                             answer: demoCloneOverJson(demoMockupBasket)
+                        }
+                    }
+                });
+                break;
+            case 'instrument2:rest.api.order.calc':
+                
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                            answer: {
+                                base_price: 12345,
+                                price: 1234,
+                                delivery_price: 100,
+                                discounts: [
+                                    {percent: 5, value: 387},
+                                    {percent: 3, value: 115},
+                                    {percent: 8, value: 502},
+                                ],
+                            }
+                        }
+                    }
+                });
+                break;
+            case 'instrument2:rest.api.auth.sign_in':
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                        }
+                    }
+                });
+                break;
+            case 'instrument2:rest.api.auth.sign_up':
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
                         }
                     }
                 });

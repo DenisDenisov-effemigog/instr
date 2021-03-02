@@ -95,9 +95,8 @@
             </div>
         </div>
         <div v-show="successFlag === 'pay' && value === 'new' && loaded" class="checkout__order">
-            <cart-order :productsPrice="productsPrice" 
-                        :productsSales="discounts"
-                        :salePrice="salePrice"
+            <cart-order :salePrice="salePrice"
+                        :productsPrice="productsPrice"
                         :place="'checkout'"
             ></cart-order>
             <div class="checkout__btn-wrap checkout__btn-wrap--mobile"
@@ -165,10 +164,6 @@
                 required: true,
                 type: Array
             },
-            discounts: {
-                required: true,
-                type: Array
-            },
             salePrice:{
                 type: Number,
                 required: true,
@@ -213,10 +208,6 @@
             }
         },
         computed: {
-            productsPrice() {
-                const basketData = this.$store.getters.basketProductsSummary;
-                return parseFloat((basketData.price).toFixed(3));
-            },
             addresses() {
                 let selectAddresses = []
                 this.$store.state.personal.addresses.map(address=>{
@@ -226,8 +217,12 @@
                 })
                 return selectAddresses;
             },
+            productsPrice() {
+                return this.$store.state.basket.summury
+            }
         },
         mounted() {
+            this.$store.dispatch('basketOrderCalc');
             this.$store.dispatch('personalUpdateAddresses');
         },
         created(){
