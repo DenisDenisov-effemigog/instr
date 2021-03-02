@@ -25,7 +25,7 @@
                 <div class="comparisons__slider-actions">
                     <div class="comparisons__slider-text">
                         <span v-if="qnty == 1">1 </span>
-                        <span v-else>1-{{shownItemsQnty}} </span>
+                        <span v-else>{{currentSlideNumber + 1}}-{{currentSlideNumber + shownItemsQnty}} </span>
                         {{ $tc('text.of') }} {{ qnty }} {{ $tc('comparisons.text.products') }}
                     </div>
                     <div class="comparisons__slider-btns">
@@ -81,25 +81,27 @@
         <div class="comparisons__bottom">
             <div class="comparisons__comparing">
                 <ul class="comparisons__sidebar">
-                    <li class="comparisons__sidebar-item" v-for="item in Object.values(featuresTitle)">{{ item }}</li>
+                    <li class="comparisons__sidebar-item">Цена</li>
+                    <li class="comparisons__sidebar-item" v-for="item in Object.keys(comparisons[0].otherOptions)">{{ item }}</li>
                 </ul>
 
                 <div class="comparisons__descriptions">
                     <!-- bottom slider -->
                     <agile ref="main" :as-nav-for="asNavFor1" :options="options">
                         <ul class="comparisons__description"
-                            :class="{'comparisons__description--no-product': comparisons.length == 1}"
+                            :class="{'comparisons__description--no-product': comparisons.length === 1}"
                             v-for="product in comparisons">
                             <li>
                                 <div></div>
                                 {{ product.newPrice }}
                             </li>
-                            <li v-for="item in Object.entries(featuresTitle)" v-if="item[0] !== 'price'">
-                                {{ item[1] }}
+                            <li v-for="item in Object.entries(product.otherOptions)">
+                                <span v-if="!!item[1]">{{ item[1] }}</span>
+                                <span v-else>—</span>
                             </li>
                         </ul>
                         <!-- the second comparison is not chosen -->
-                        <ul class="comparisons__description comparisons__description--no-product" v-if="comparisons.length == 1"></ul>
+                        <ul class="comparisons__description comparisons__description--no-product" v-if="comparisons.length === 1"></ul>
                     </agile>
                 </div>
             </div>
@@ -138,19 +140,6 @@
                     { 'label': 'Гвоздодер', 'value': 3 },
                 ],
                 defaultCategory: { 'label': 'Дрель-шуруповерт', 'value': 1 },
-                featuresTitle: {
-                    'price': 'Цена',
-                    'weight': 'Вес',
-                    'packagingLength': 'Длина в упаковке',
-                    'torqueAdjustment': 'Число ступеней регулировки крутящего момента',
-                    'reverse': 'Наличие реверса',
-                    'discountType': 'Тип скидки',
-                    'accumulatorCapacity': 'Емкость аккумулятора',
-                    'batteryChargeIndicator': 'Индикатор заряда аккумуляторной батареи',
-                    'barcode': 'Штрихкод',
-                    'spindleRotationalSpeed': 'Частота вращения шпинделя',
-                    'certificationLink': 'Ссылка на сертификат'
-                },
                 asNavFor1: [],
 			    asNavFor2: [],
                 options: {
@@ -196,6 +185,7 @@
                     this.shownItemsQnty = 2
                 } else if (window.innerWidth > 767 && this.qnty > 2) {
                     this.shownItemsQnty = 3
+                    if (this.currentSlideNumber >= this.qnty - this.shownItemsQnty) this.$refs.thumbnails.goTo(this.qnty - this.shownItemsQnty)
                 } else if (this.qnty < 3) {
                     this.options.responsive[0].settings.slidesToShow = 2;
                 }
@@ -215,9 +205,9 @@
                 // })
                 let vm = this;
                 vm.$store.dispatch('comparisonsChange', {
-                    productId: vm.id
+                    productId: id
                 }).finally(() => {
-                    vm.is_compare = !vm.is_compare
+                    // vm.is_compare = !vm.is_compare
                 });
             },
             changeComparisons() {
