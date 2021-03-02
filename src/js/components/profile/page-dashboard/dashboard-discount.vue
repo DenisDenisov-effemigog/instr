@@ -19,14 +19,13 @@
             </li>
         </ul>
         <div v-for="(discount, index) in discounts" v-show="className === 'personal' && currentIndex == index" class="personal-discount__info">
-            <div v-show="!discount.fixed" class="personal-discount__info-head">
+            <div v-show="!discount.fixed && discount.boost_value > 0" class="personal-discount__info-head">
                 <div class="personal-discount__info-title"> {{ $tc('profile.dashboard.personal_discount_info_title') }}</div>
-                <div v-if="discount.boost_value == 0" class="personal-discount__info-discount">2%</div>
-                <div v-else class="personal-discount__info-discount">{{discount.boost_value}}%</div>
+                <div class="personal-discount__info-discount">{{discount.boost_value}}%</div>
             </div>
             <div class="personal-discount__info-main">
-                <div v-if="!discount.fixed" class="personal-discount__info-desc">
-                    {{ $tc('profile.dashboard.personal_discount_info_first_order') }}
+                <div v-show="!discount.fixed  && discount.boost_value > 0" class="personal-discount__info-desc">
+                    {{ $tc('profile.dashboard.personal_discount_info_first_order_1') }} {{discount.boost_value}}% {{ $tc('profile.dashboard.personal_discount_info_first_order_2') }}
                 </div>
                 <!-- #TODO вывод персональной скидки -->
                 <!-- <div class="personal-discount__info-desc">
@@ -35,17 +34,17 @@
                     {{ $tc('profile.dashboard.personal_discount_info_text_1_2') }}
                     <span>2%</span>
                 </div> -->
-                <div v-else class="personal-discount__info-desc">
+                <div v-show="discount.fixed" class="personal-discount__info-desc">
                     {{ $tc('profile.dashboard.personal_discount_info_text_2_1') }} <span>{{ $tc('profile.dashboard.personal_discount_info_text_2_2') }}</span> {{ $tc('profile.dashboard.personal_discount_info_text_2_3') }}
                 </div>
             </div>  
-            <div v-show="!discount.fixed" class="personal-discount__info-btn">
+            <a :href="catalogLink" v-show="!discount.fixed  && discount.boost_value > 0" class="personal-discount__info-btn">
                 {{ $tc('button.move_to_catalog') }}
                 <svg>
                     <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-right'"></use>
                 </svg>
-            </div>
-            <discounts-calculation v-show="discount.boost_value > 0" 
+            </a>
+            <discounts-calculation v-show="discount.boost_value == 0" 
                 :discounts="discounts"
             ></discounts-calculation>
         </div>
@@ -54,6 +53,7 @@
 
 <script>
 import DiscountsCalculation from '../page-discounts/discounts-calculation.vue';
+import config from "../../../config";
 
 export default {
     name: "dashboard-discount",
@@ -78,6 +78,7 @@ export default {
     data(){
         return{
             currentIndex: 0,
+            catalogLink: config.links.catalog,
         }
     },
     methods:{

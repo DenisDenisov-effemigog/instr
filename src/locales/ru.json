@@ -161,7 +161,8 @@
     "profile.dashboard.personal_discount_subtitle": "Скидка на группу товаров",
     "profile.dashboard.personal_discount_date": "Действует до:",
     "profile.dashboard.personal_discount_info_title": "Дополнительная скидка на первый заказ",
-    "profile.dashboard.personal_discount_info_first_order": "Внимание это ваш первый заказ, в качестве подарка вам предоставлена скидка 2% на весь заказ.",
+    "profile.dashboard.personal_discount_info_first_order_1": "Внимание это ваш первый заказ, в качестве подарка вам предоставлена скидка",
+    "profile.dashboard.personal_discount_info_first_order_2": "на весь заказ.",
     "profile.dashboard.personal_discount_info_text_1_1": "*Данная скидка включает в себя персональную скидку по категории",
     "profile.dashboard.personal_discount_info_text_1_2": " и скидку по задаче",
     "profile.dashboard.personal_discount_info_text_2_1": "*Данная скидка является ",
@@ -348,6 +349,8 @@
     "checkout.delivery-address.street.error": "Ошибка, улица не найдена",
 
     "page-brand.title":"Производитель",
+    
+    "brands.title":"Бренды",
 
     "contacts.title":"Контакты московского филиала ООО «МИР ИНСТРУМЕНТА»",
     "contacts.head_title":"Контактные данные",
