@@ -46,12 +46,7 @@
                 </div>
             </li>
             <li class="header__menu-item">
-                <a :href="compareLink" class="header__menu-link">
-                    <svg class="header__menu-icon" viewBox="-2 0 19 20">
-                        <use :xlink:href="templatePath + 'images/sprite.svg#icons__graf'" ></use>
-                    </svg>
-                    <p class="header__menu-text">{{ $tc('header.menu.compare') }}</p>
-                </a>
+                <component is="compare-mini"></component>
             </li>
             <li class="header__menu-item">
                 <a :href="favoritesLink" class="header__menu-link">
@@ -88,7 +83,6 @@ export default {
     data(){
         return{
             activeSearch: false,
-            compareLink: config.links.compare,
             favoritesLink: config.links.favorites
         }
     },

@@ -14,12 +14,13 @@
                 </a>
             </li>
             <li class="header__menu-item">
-                <a :href="compareLink" class="header__menu-link">
+                <component is="compare-mini"></component>
+                <!-- <a :href="compareLink" class="header__menu-link">
                     <svg class="header__menu-icon">
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__graf'"></use>
                     </svg>
                     <p class="header__menu-text">{{ $tc('link.to_compare') }}</p>
-                </a>
+                </a> -->
             </li>
             <li class="header__menu-item">
                 <a :href="favoritesLink" class="header__menu-link">
@@ -50,15 +51,16 @@
                 </a>
             </li>
             <li class="header__menu-item">
-                <a :href="cartLink" class="header__menu-link header__menu-link--cart-active">
+                <component is="cart-mini"></component>
+                <!-- <a :href="cartLink" class="header__menu-link header__menu-link--active">
                     <svg class="header__menu-icon">
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__cart'"></use>
                     </svg>
                     <p class="header__menu-text">{{ $tc('header.menu.cart') }}</p>
-                    <span class="header__mini-cart" v-if="productsQuantity > 0">
+                    <span class="header__mini-cloud" v-if="productsQuantity > 0">
                         {{productsQuantity}}
                     </span>
-                </a>
+                </a> -->
             </li>
         </ul>
     </div>
@@ -75,9 +77,9 @@ export default {
     data(){
         return{
             menuLink: '',
-            compareLink: config.links.compare,
+            // compareLink: config.links.compare,
             favoritesLink: config.links.favorites,
-            cartLink: config.links.cart,
+            // cartLink: config.links.cart,
             profileLink: config.links.personal,
         }
     },
@@ -107,11 +109,11 @@ export default {
             this.menuLink = ''
         },
     },
-    computed: {
-        productsQuantity() {
-            const basketData = this.$store.getters.basketProductsSummary;
-            return basketData.quantity;
-        },
-    }
+    // computed: {
+    //     productsQuantity() {
+    //         const basketData = this.$store.getters.basketProductsSummary;
+    //         return basketData.quantity;
+    //     },
+    // }
 }
 </script>
