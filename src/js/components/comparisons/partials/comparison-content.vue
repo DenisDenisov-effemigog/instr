@@ -177,14 +177,14 @@
             slideToPrev() {
                 if (window.innerWidth > 767 && this.qnty > 3) {
                     this.$refs.thumbnails.goToPrev()
-                } else if (window.innerWidth < 768 && this.qnty == 3) {
+                } else if (window.innerWidth < 768) {
                     this.$refs.thumbnails.goToPrev()
                 }
             },
             slideToNext() {
                 if (window.innerWidth > 767 && this.qnty > 3 && this.currentSlideNumber !== (this.qnty - this.shownItemsQnty)) {
                     this.$refs.thumbnails.goToNext()
-                } else if (window.innerWidth < 768 && this.qnty == 3 && this.currentSlideNumber !== (this.qnty - this.shownItemsQnty)) {
+                } else if (window.innerWidth < 768 && this.qnty > 2 && this.currentSlideNumber !== (this.qnty - this.shownItemsQnty)) {
                     this.$refs.thumbnails.goToNext()
                 }
             },
