@@ -457,11 +457,8 @@ for(let i = 0; i < 76; ++i) {
         date: '31.12.2020',
         status: newOrdeStatus,
         paid: Math.random() > 0.5,
-        count: Math.floor(99 * Math.random()),//оставить одно
         qty: getRandomInt(2,8),
         discount: 10,
-        economy: 1000,
-        price: 1001819,
         priceTotal: 1000819,
         
         documents:
@@ -470,12 +467,29 @@ for(let i = 0; i < 76; ++i) {
                 {label: 'Загрузить еще что-нибудь', value: 'something', link: '/images/country/map.png'},
                 {label: 'Загрузить счет-фактуру', value: 'check', link: '/images/country/map-dots.png'}
             ],
-        currentDocument:
-            {label: 'Документы', value: 'documents'},
-        
-        address: 'Москва, Трехгорный Вал 3, ст. 26',
-        client: 'Константин Константинопольский konstantynopolsky@gmail.com +7 (910) 872-92-89',
+
+        delivery_address: 'Москва, Трехгорный Вал 3, ст. 26',
+        delivery_person: 'Константин Константинопольский konstantynopolsky@gmail.com +7 (910) 872-92-89',
         payment: 'Оплата онлайн по карте',
+        basket:[
+            {
+                id:123,
+                name:"Trimmer pe benzina GT-52S, multifunctional, 52 сс",
+                url:"/product/areometr-dlya-vymiryuvannya-shchilnosti-elektrolitu-sparta/",
+                sku:"1230056",
+                basket_quantity:3,
+                priceTotal:1051.50,
+                price:350.50,
+                base_price:400,
+                discount:12,
+                images:[
+                    {
+                        img:"/upload/iblock/f62/60541.970.jpg"
+                    }
+                ]
+            }
+        ]
+
     });
 }
 
@@ -1778,29 +1792,16 @@ window.runAction = function (action, config) {
                     id: foundOrder.id,
                     number: foundOrder.number,
                     date: foundOrder.date,
-                    address: foundOrder.address,
+                    delivery_address: foundOrder.delivery_address,
                     status: foundOrder.status,
-                    client: foundOrder.client,
+                    delivery_person: foundOrder.delivery_person,
                     paid: foundOrder.paid,
                     discount: foundOrder.discount,
-                    economy: foundOrder.economy,
-                    count: foundOrder.count,
                     payment: foundOrder.payment,
-                    price: foundOrder.price,
                     priceTotal: foundOrder.priceTotal,
                     qty: foundOrder.qty,
                     documents: foundOrder.documents,
-                    currentDocument: foundOrder.currentDocument,
-                    /*prices: {
-                        base: foundOrder.prices.base,
-                        tax: 0.2 * foundOrder.prices.base,
-                        delivery: 0
-                    },
-                    payment: {
-                        id: 113,
-                        name: 'NayPay'
-                    },*/
-                    basket: demoMockupBasket,
+                    basket: foundOrder.basket,
                 };
 
                 resolve({
@@ -1812,60 +1813,6 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;    
-            case 'instrument2:rest.api.user.get': //TODO not used yet
-                resolve({
-                    data: {
-                        data: {
-                            status: 1,
-                            answer: {
-                                /*
-                                base: {
-                                    fullname: 'Gregory Luton',
-                                    avatar: {
-                                        full: '/demo_images/profile.jpg',
-                                        "50": '/demo_images/profile.jpg',
-                                    },
-                                    company: {
-                                        name: 'Acme LLS',
-                                        address: 'Unused address field'
-                                    },
-                                    phone: 'Unused phone field',
-                                    email: 'Unused email field'
-                                },
-                                orders: {
-                                    active: 89,
-                                    delivered: 11,
-                                    canceled: 8
-                                },
-                                person: {
-                                    id: -100,
-                                    first_name: 'Unused',
-                                    last_name: 'Unused',
-                                    email: 'unused@unused',
-                                    phone: '123unused',
-                                    default: true,
-                                    user_id: 123545
-                                },
-                                addresses: demoAddressList,
-                                contract: {
-                                    id: 12354321,
-                                    date: 1603092502,
-                                    url: '/path/to/contract',
-                                },
-                                dept: {
-                                    value: 8000,
-                                    max: 11000,
-                                },
-                                pricing: {
-                                    value: 2,
-                                    max: 4,
-                                }
-                                */
-                            }
-                        }
-                    }
-                });
-                break;
             case 'instrument2:rest.api.sortOrders.get':
 
                 if (!config.data || !config.data.params) {

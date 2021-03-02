@@ -1,6 +1,6 @@
 <template>
     <div>        
-        <div class="order__desc" @click.stop="openDetails(index)">
+        <div class="order__desc" @click.stop="openDetails">
             <div class="order__number">#{{order.number}}</div>
             <div class="order__date">{{order.date}}</div>
             <div class="order__status"
@@ -86,7 +86,7 @@ export default {
             
             this.opened = !this.opened;
         },
-        openDetails(index){
+        openDetails(){
             this.$router.push('/my/orders/' + this.order.id + '/');
             this.$eventBus.$emit('hideBreadcrumbs', true);
             this.$eventBus.$emit('closeTitle')
