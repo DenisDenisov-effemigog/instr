@@ -69,6 +69,9 @@ export default {
             type: Object,
             required: true,
         },
+        preLink:{
+            type:String
+        }
     },
     data() {
         return {

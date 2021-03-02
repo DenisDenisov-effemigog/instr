@@ -1654,11 +1654,11 @@ window.runAction = function (action, config) {
                                 base_price: 12345,
                                 price: 1234,
                                 delivery_price: 100,
-                                discounts: [
-                                    {percent: 5, value: 387},
-                                    {percent: 3, value: 115},
-                                    {percent: 8, value: 502},
-                                ],
+                                discounts: {
+                                    personal: {percent: 5, value: 387},
+                                    action: {percent: 3, value: 115},
+                                    total: {percent: 8, value: 502},
+                                },
                             }
                         }
                     }
