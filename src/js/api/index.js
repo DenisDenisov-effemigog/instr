@@ -295,9 +295,9 @@ class Api {
     clearFavorites() {
         return this._promiseBitrixRequest('instrument2:rest.api.clear.favorite');
     }
-    addCompare(id) {
+    addCompare(productId) {
         return this._promiseBitrixRequest('instrument2:rest.api.cart.compare', {
-            id: id,
+            id: productId,
         });
     }
     getCompare() {
