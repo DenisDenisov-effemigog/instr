@@ -1,5 +1,5 @@
 <template>
-    <div v-show="amountOrders > 0" class="discounts-calculation">
+    <div class="discounts-calculation">
         <div class="discounts-calculation__head">
             <h3 class="discounts-calculation__title">{{ $tc('profile.discounts.calculation_title') }}</h3>
         </div>
@@ -24,10 +24,6 @@
 export default {
     name:"discounts-calculation",
     props:{
-        amountOrders:{
-            type: Number,
-            required: true
-        },
         discounts: {
             type: Array,
             required: true
