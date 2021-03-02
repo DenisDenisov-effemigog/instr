@@ -10,7 +10,7 @@
                      'delivery-option__wrap-delivery': delivery.type === 'delivery',
                      'delivery-option__wrap-receive': delivery.type === 'receive',
                  }"
-                 @click="changeDeliveryType(delivery.type)"
+                 @click="changeDeliveryType(delivery.type, delivery.id)"
             >
                 <div v-show="delivery.discount > 0" class="delivery-option__sale">{{ $tc('text.discount') }} -{{delivery.discount}}%</div>
                 <div class="delivery-option__title">{{ delivery.name }}</div>
@@ -78,9 +78,14 @@
             }
         },
         methods: {
-            changeDeliveryType(type){
+            changeDeliveryType(type, id){
                 this.currentOption = type
                 this.$eventBus.$emit('push-delivery', this.currentOption)
+                this.$store.dispatch('basketOrderCalc', {
+                    paymentId: null,
+                    deliveryId: id
+                }).finally(() => {
+                })
             }
         }
     }

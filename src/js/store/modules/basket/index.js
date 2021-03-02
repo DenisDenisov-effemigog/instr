@@ -7,7 +7,8 @@ const state = {
     products: [],
     old_products: [],
     loaded: false,
-    view_mode: 'horiz_cards'
+    view_mode: 'horiz_cards',
+    summury: {}
 };
 
 const mutations = {
@@ -20,6 +21,9 @@ const mutations = {
     },
     [types.CART_APPLY_VIEW_MODE](state, newMode) {
         state.view_mode = newMode;
+    },
+    [types.ORDER_APPLY_PRICES](state, data) {
+        state.summury = data;
     }
 };
 
@@ -154,7 +158,19 @@ const actions = {
                 () => reject()
             );
         });
-    }
+    },
+
+    basketOrderCalc: ({commit, dispatch}, params) => {
+        let paymentId
+        let deliveryId
+        if(params){
+            paymentId = params.paymentId
+            deliveryId = params.deliveryId
+        }
+        api.OrderCalc(paymentId, deliveryId).then((prices) => {
+            commit(types.ORDER_APPLY_PRICES, prices);
+        });
+    },
 }
 
 const getters = {

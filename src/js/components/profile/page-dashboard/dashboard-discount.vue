@@ -13,7 +13,7 @@
                         <span v-show="className === 'personal' && discount.fixed" class="personal-discount__footnotes">*</span>
                     </div>
                 </div>
-                <div v-show="className === 'personal'" :class="className + '-discount__date'">
+                <div v-show="className === 'personal' && discount.date" :class="className + '-discount__date'">
                    {{ $tc('profile.dashboard.personal_discount_date') }} {{discount.date }}
                 </div>
             </li>
@@ -45,13 +45,21 @@
                     <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-right'"></use>
                 </svg>
             </div>
+            <discounts-calculation v-show="discount.boost_value > 0" 
+                :discounts="discounts"
+            ></discounts-calculation>
         </div>
     </div>
 </template>
 
 <script>
+import DiscountsCalculation from '../page-discounts/discounts-calculation.vue';
+
 export default {
     name: "dashboard-discount",
+    components:{
+        DiscountsCalculation
+    },
     props:{
         className:{
             type: String,
