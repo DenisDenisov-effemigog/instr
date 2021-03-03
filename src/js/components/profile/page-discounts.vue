@@ -6,12 +6,13 @@
             :amountOrders="ordersAll.length" 
             :className="className"
             :discounts="discountArr"
+            :preLink="preLink"
         ></dashboard-discount>
         <div class="discounts-conditions">
             <h3 class="discounts-conditions__title">{{ $tc('profile.discounts.conditions_title') }}</h3>
             <div class="discounts-conditions__main">
                 <div class="discounts-conditions__text">
-                    {{ $tc('profile.discounts.conditions_text') }} <a href="#" class="discounts-conditions__link">{{ $tc('profile.discounts.conditions_link') }}</a>
+                    {{ $tc('profile.discounts.conditions_text') }} <a :href="preLink" class="discounts-conditions__link">{{ $tc('profile.discounts.conditions_link') }}</a>
                 </div>
             </div>
         </div>
@@ -30,6 +31,11 @@ import dashboardDiscount from './page-dashboard/dashboard-discount.vue'
     export default {
     components: { dashboardDiscount },
         name:"page-discounts",
+        props:{
+            preLink:{
+                type:String
+            }
+        },
         data() {
             return {
                 className:"personal",

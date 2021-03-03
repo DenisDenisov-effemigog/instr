@@ -1767,6 +1767,15 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
+            case 'instrument2:rest.api.auth.out':
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                        }
+                    }
+                });
+                break;
             case 'instrument2:rest.api.auth.sign_up':
                 resolve({
                     data: {

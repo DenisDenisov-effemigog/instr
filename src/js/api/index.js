@@ -128,6 +128,11 @@ class Api {
             password: password
         });
     }
+    authOut() {
+        return this._promiseBitrixRequest('instrument2:rest.api.auth.out', {
+            
+        });
+    }
     authSignUp( type,name, company, tin, email, phone, nds) {
         return this._promiseBitrixRequest('instrument2:rest.api.auth.sign_up', {
             name: name,
