@@ -27,7 +27,7 @@
         </div>
     </template>
     <template v-slot:favoritecat>
-        {% for category in favoriteCategories %}
+        {% for category in listingCategories  %}
             <div class="favorites-listing__subcategory">{{ category.label }}</div>
         {% endfor %}
     </template>
