@@ -2,20 +2,20 @@
     <div class="favorites-listing">
         <div class="favorites-listing__header">
             <h1 class="favorites-listing__title">{{ $tc('favorites.title') }}</h1>
-            <component is="listing-items-quantity"
+            <component is="listing-items-quantity" v-show="favorites.length > 0"
                        :itemsQuantity="itemsQuantity"
             ></component>
-            <div class="favorites-listing__delete-button" @click="clearFavorites">
+            <div v-show="favorites.length > 0" class="favorites-listing__delete-button" @click="clearFavorites">
                 <svg><use xlink:href="/images/sprite.svg#icons__del"></use></svg>
                 {{ $tc('button.delete-all') }}
             </div>
         </div>
         <div class="favorites-listing__content">
-            <div class="favorites-listing__sidebar">
+            <div class="favorites-listing__sidebar"  v-if="favorites.length > 0">
                 <favorites-listing-category :favoriteCategories="favoriteCategories"></favorites-listing-category>
                 <slot name="filters"></slot>
             </div>
-            <div class="favorites-listing__products">
+            <div class="favorites-listing__products"  v-if="favorites.length > 0">
                 <slot name="actions"></slot>
                 <component is="listing-content"
                            :pagination="pagination"
@@ -43,6 +43,10 @@
                         </card>
                     </div>
                 </component>
+            </div>
+            <div class="favorites-listing__empty" v-else>
+                <div class="text-5">{{ $tc('favorites.is_empty') }}</div>
+                <a :href="catalogLink" class="favorites-listing__catalogue-btn">{{ $tc('button.move_to_catalog') }}</a>
             </div>
         </div>
     </div>

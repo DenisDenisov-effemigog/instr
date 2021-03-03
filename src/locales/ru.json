@@ -384,6 +384,7 @@
     "search-response.text-success":"Результаты поиска по запросу",
     
     "favorites.title":"Избранное",
+    "favorites.is_empty":"В Избранном пока ничего нет.",
 
     "comparisons.title":"Сравнение",
     "comparisons.is_empty":"Ваш список сравнения пока пуст.",
