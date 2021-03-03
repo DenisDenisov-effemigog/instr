@@ -50,6 +50,7 @@
                     :points="points"
                     :selectopenSelect="selectopenSelect"
                     :contract="profile.contract"
+                    :preLink="preLink"
                 ></router-view>
             </transition>
         </div>

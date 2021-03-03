@@ -18,17 +18,18 @@
             <div class="favorites-listing__products"  v-if="favorites.length > 0">
                 <slot name="actions"></slot>
                 <component is="listing-content"
-                           :pagination="pagination"
-                           :hash="hash"
+                    :pagination="pagination"
+                    :hash="hash"
                 >
                     <div class="listing__card" v-for="product in favorites">
                         <card
                             :change-icon="false"
                             :card-grid="'grid'"
                             :product="product"
-                        ><template v-slot:code>
-                            <div class="card__code">{{ product.code }}</div>
-                        </template>
+                        >
+                            <template v-slot:code>
+                                <div class="card__code">{{ product.code }}</div>
+                            </template>
                             <template v-slot:description>
                                 <a :href="product.link" class="card__name">
                                     {{ product.title }}
