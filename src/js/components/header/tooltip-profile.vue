@@ -21,7 +21,8 @@
 </template>
 
 <script>
-
+    import * as Api from '../../api/index'
+    let api = Api.getInstance()
     export default {
         components: {
         },
@@ -101,7 +102,14 @@
                 return value.replace(/^\/+|\/+$/g, '');
             },
             exit() {
-                /*TODO реализовать выход из профиля, редирект на главную*/
+                let vm = this;
+                api.authOut().then(() => {
+                    console.log('user out')
+                    // let ref = document.referrer;
+                    // window.location.replace(ref.length > 0 ? ref : '/');
+                }).catch((error) => {
+                    console.log(error)
+                });
             },
             passIndex(index){
                 this.$eventBus.$emit("passIndex", index)

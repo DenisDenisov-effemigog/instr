@@ -195,6 +195,7 @@
     
     "change_pass.current": "Текущий пароль",
     "change_pass.new": "Новый пароль",
+    "change_pass.confirm": "Подтвердить пароль",
     "change_pass.text": "Пароль должен быть длиной от 6 символов и содержать как минимум одну цифру и одну заглавную букву",
     
     "delete_profile.reason": "Причина № ",
@@ -384,6 +385,7 @@
     "search-response.text-success":"Результаты поиска по запросу",
     
     "favorites.title":"Избранное",
+    "favorites.is_empty":"В Избранном пока ничего нет.",
 
     "comparisons.title":"Сравнение",
     "comparisons.is_empty":"Ваш список сравнения пока пуст.",
