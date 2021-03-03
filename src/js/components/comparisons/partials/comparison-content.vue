@@ -92,10 +92,10 @@
                             :class="{'comparisons__description--no-product': comparisons.length === 1}"
                             v-for="product in comparisons">
                             <li>
-                                <div class="comparisons__sidebar-item">{{ $tc('"text.price"') }}</div>
+                                <div class="comparisons__sidebar-item">{{ $tc('text.price') }}</div>
                                 <div class="comparisons__description-text">{{ product.newPrice }}</div>
                             </li>
-                            <li v-for="item in Object.entries(product.otherOptions)">
+                            <li v-for="item in sliceList(product.otherOptions)">
                                 <div class="comparisons__sidebar-item">{{ item[0] }}</div>
                                 <div class="comparisons__description-text" v-if="!!item[1]">{{ item[1] }}</div>
                                 <div class="comparisons__description-text" v-else>—</div>
@@ -107,8 +107,8 @@
                 </div>
             </div>
             <a class="comparisons__deploy"
-                :class="{'comparisons__deploy--extended': extended}"
-                @click.prevent="deployList"
+                :class="{'comparisons__deploy--expanded': expanded}"
+                @click.prevent="expanded = !expanded"
             >
                 {{ $tc('comparisons.text.deploy') }}
                 <svg viewBox="-2 -2 16 10">
@@ -160,7 +160,7 @@
                 },
                 currentSlideNumber: 0,
                 shownItemsQnty: 2,
-                extended: false,
+                expanded: false,
             }
         },
         methods: {
@@ -191,9 +191,6 @@
                     this.options.responsive[0].settings.slidesToShow = 2;
                 }
             },
-            deployList() {
-                this.extended = !this.extended
-            },
             deleteItem(id) {
                 // this.comparisons.forEach((item, index) => {
                 //     if (item.id == id) {
@@ -213,7 +210,15 @@
             },
             changeComparisons() {
                 console.log('changing comparison')
-            }
+            },
+            sliceList(list) {
+                const array = Object.entries(list);
+                if (this.expanded) {
+                    return array
+                } else {
+                    return array.slice(0, 10)
+                }
+            },
         },
         computed: {
             comparisons() {
