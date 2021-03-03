@@ -36,7 +36,7 @@
             <div class="discount-info__offer-text">{{ $tc('product_card.offer.text') }}</div>
             <a class="discount-info__offer-btn"
                href="" 
-               @click.prevent="redirect"
+               @click.prevent="openModal('user', 'reg')"
             >{{ $tc('product_card.offer.button') }}</a>
         </div>
     </div>
@@ -77,12 +77,12 @@
             },
         },
         methods: {
-            openModal(){
+            // openModal(){
                 
+            // },
+            openModal(modal, props) {
+                this.$eventBus.$emit("openModal", modal, props, false, true)
             },
-            redirect() {
-                /*TODO открыть модальное окно регистрации*/
-            }
         },
     }
 </script>
