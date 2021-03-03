@@ -23,7 +23,7 @@
                             <div class="page-order__status">{{ order.status.label }}</div>
                         </div>
                         <ul class="page-order__desc-list">
-                            <li class="page-order__desc-item" v-for="(item, index) in deliveryInfo">
+                            <li class="page-order__desc-item" v-for="(item, index) in deliveryInfo" :key="index">
                                 <div class="page-order__desc-icon">
                                     <svg v-if="index === 1">
                                         <use :xlink:href="templatePath + `images/sprite.svg#icons__${item.icon}`"></use>
@@ -224,7 +224,6 @@ export default {
                 //debugger;
                 return item.available === false
             })
-            console.log('vm.products' , vm.products, 'result' , result);
             let repeatOrder = {
                 'products': result,
                 'orderNumber': vm.order.number

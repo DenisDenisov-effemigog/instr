@@ -167,11 +167,6 @@ class Api {
         return this._promiseBitrixRequest('instrument2:rest.api.discount.list');
     }
     changePassowrd(password, confirmPassword) {
-        // changePassowrd(currentPass, newPass) {
-        // return this._promiseBitrixRequest('instrument2:rest.api.user.change.password', {
-        //     currentPass: currentPass,
-        //     newPass: newPass,
-        // });
         return this._promiseBitrixRequest('instrument2:rest.api.user.base.change_password', {
             password: password,
             confirmPassword: confirmPassword,
@@ -190,8 +185,11 @@ class Api {
             id: id,
         });
     }
-    personalOrders() {
-        return this._promiseBitrixRequest('instrument2:rest.api.user.order.list', {});
+    personalOrders(status, page) {
+        return this._promiseBitrixRequest('instrument2:rest.api.user.order.list', {
+            status: status,
+            page: page
+        });
     }
     personalOrder(id) {
         return this._promiseBitrixRequest('instrument2:rest.api.user.order.get', {
@@ -227,11 +225,6 @@ class Api {
     }
     personalFeedsList() {
         return this._promiseBitrixRequest('instrument2:rest.api.user.feeds.get', {});
-    }
-    sortOrders(params) {
-        return this._promiseBitrixRequest('instrument2:rest.api.sortOrders.get', {
-            params: params
-        });
     }
     catalogGet(hash, params) {
         return this._promiseBitrixRequest('instrument2:rest.api.catalog.get', {

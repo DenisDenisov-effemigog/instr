@@ -527,11 +527,11 @@ for(let i = 0; i < 76; ++i) {
         id: i+1,
         number: 3254+i,
         date: '31.12.2020',
-        status: newOrdeStatus,
-        paid: Math.random() > 0.5,
-        qty: getRandomInt(2,8),
-        discount: 10,
         priceTotal: 1000819,
+        status: newOrdeStatus,
+        qty: getRandomInt(2,8),
+        paid: Math.random() > 0.5,
+        discount: 10,
         
         documents:
             [
@@ -1495,7 +1495,6 @@ let compares = [
     },
 ];
 
-//console.log(demoOrders);
 
 function demoSetBasketQuantity(productId, quantity) {
     let found = false;
@@ -1869,16 +1868,6 @@ window.runAction = function (action, config) {
                 }
                 break;
 
-            case 'instrument2:rest.api.user.change.password':
-                /*если пароли совпадают, заменить*/
-                resolve({
-                    data: {
-                        data: {
-                            status: 1,
-                        }
-                    }
-                });
-                break;
             case 'instrument2:rest.api.user.address.get':
                 resolve({
                     data: {
@@ -1950,22 +1939,50 @@ window.runAction = function (action, config) {
                 });
                 break;
             case 'instrument2:rest.api.user.order.list':
-                
-                resolve({
-                    data: {
+
+                if (!config.data) {
+                    reject(new Error('Wrong config'));
+                }
+
+                if (!config.data.status) {
+                    resolve({
                         data: {
-                            status: 1,
-                            answer: {
-                                orders: demoOrders,
-                                pagination: {
-                                    current: 1,
-                                    total: 5
-                                }
-                            },
+                            data: {
+                                status: 1,
+                                answer: {
+                                    orders: demoOrders,
+                                    pagination: {
+                                        current: 1,
+                                        total: 5
+                                    }
+                                },
+                            }
                         }
-                    }
-                });
+                    });
+                } else {
+                    const filterOrders = (status) => {
+                        return demoOrders.filter(order => {
+                            return order.status.value === status
+                        })
+                    }  
+                    const demoSortedOrders = filterOrders(config.data.status)
+                    resolve({
+                        data: {
+                            data: {
+                                status: 1,
+                                answer: {
+                                    orders: demoSortedOrders,
+                                    pagination: {
+                                        current: 1,
+                                        total: 5
+                                    }
+                                },
+                            }
+                        }
+                    });
+                }         
                 break;
+
             case 'instrument2:rest.api.user.order.get':
                 //debugger;
                 if (!config.data || !config.data.id) {
@@ -1996,15 +2013,15 @@ window.runAction = function (action, config) {
                     id: foundOrder.id,
                     number: foundOrder.number,
                     date: foundOrder.date,
-                    delivery_address: foundOrder.delivery_address,
+                    priceTotal: foundOrder.priceTotal,
                     status: foundOrder.status,
-                    delivery_person: foundOrder.delivery_person,
+                    qty: foundOrder.qty,
                     paid: foundOrder.paid,
                     discount: foundOrder.discount,
-                    payment: foundOrder.payment,
-                    priceTotal: foundOrder.priceTotal,
-                    qty: foundOrder.qty,
                     documents: foundOrder.documents,
+                    delivery_address: foundOrder.delivery_address,
+                    delivery_person: foundOrder.delivery_person,
+                    payment: foundOrder.payment,
                     basket: foundOrder.basket,
                 };
 
@@ -2016,31 +2033,7 @@ window.runAction = function (action, config) {
                         }
                     }
                 });
-                break;    
-            case 'instrument2:rest.api.sortOrders.get':
-
-                if (!config.data || !config.data.params) {
-                    reject(new Error('Wrong config'));
-                }
-                
-                const filterOrders = (status) => {
-                    return demoOrders.filter(order => {
-                        return order.status.value === status
-                    })
-                }
-                
-                let demoSortedOrders = filterOrders(config.data.params)
-                console.log('sorting', demoSortedOrders)
-
-                resolve({
-                    data: {
-                        data: {
-                            answer: demoSortedOrders,
-                            status: 1,
-                        }
-                    }
-                });
-                break;
+                break;   
             case 'instrument2:rest.api.catalog.next':
 
                 resolve({
