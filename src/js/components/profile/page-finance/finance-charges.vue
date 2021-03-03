@@ -1,8 +1,8 @@
 <template>
-    <div class="finance__layout" v-if="arrears && lengthOfArrears > 0 || !arrears && lengthOfNotArrears">
+    <div class="finance__layout" v-if="financeCharges.length">
         <h4 class="finance__subtitle" v-if="arrears">{{ $tc('profile_finance.title.arrears') }}</h4>
         <h4 class="finance__subtitle" v-else>
-            {{ $tc('profile_finance.title.charges', lengthOfNotArrears) }} {{ currency(sum) }} {{ $tc('text.currency') }}
+            {{ $tc('profile_finance.title.charges', financeCharges.length) }} {{ currency(sum) }} {{ $tc('text.currency') }}
         </h4>
         <ul class="finance-charges"
             :class="{'finance-charges--arrears': arrears, 'finance-charges--expanded': expanded}"
@@ -12,14 +12,14 @@
                 <div class="profile__table-header finance-charges__date"><span>{{ $tc('profile_finance.head.date') }}</span></div>
                 <div class="profile__table-header finance-charges__left-days"><span>{{ $tc('profile_finance.head.left_days') }}</span></div>
             </li>
-            <li class="finance-charges__item" v-for="item in charges" v-if="arrears && item.days < 0">
+            <li class="finance-charges__item" v-for="item in charges" v-if="arrears && financeCharges.length">
                 <div class="finance-charges__sum"><span>{{ currency(item.sum) }} {{ $tc('text.currency') }}</span></div>
                 <div class="finance-charges__date"><span>{{ item.date }}</span></div>
                 <div class="finance-charges__left-days finance-charges__left-days--arrears">
-                    <span>- {{ $tc('profile_finance.days', -item.days) }}</span>
+                    <span>- {{ $tc('profile_finance.days', item.days) }}</span>
                 </div>
             </li>
-            <li class="finance-charges__item" v-for="item in charges" v-if="!arrears && item.days >= 0">
+            <li class="finance-charges__item" v-for="item in charges" v-if="!arrears && financeCharges.length">
                 <div class="finance-charges__sum"><span>{{ currency(item.sum) }} {{ $tc('text.currency') }}</span></div>
                 <div class="finance-charges__date"><span>{{ item.date }}</span></div>
                 <div class="finance-charges__left-days">
@@ -27,7 +27,7 @@
                 </div>
             </li>
         </ul>
-        <a v-if="arrears && !expanded && lengthOfArrears > 3" 
+        <a v-if="arrears && !expanded && financeCharges.length > 3" 
             class="profile__link" 
             @click.prevent="expanded = true"
         >
@@ -36,7 +36,7 @@
                 <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-down'"></use>
             </svg>
         </a>
-        <a v-else-if="!arrears && !expanded && lengthOfNotArrears > 3"
+        <a v-else-if="!arrears && !expanded && financeCharges.length > 3"
             class="profile__link" 
             @click.prevent="expanded = true"
         >
@@ -63,29 +63,18 @@
         data() {
             return {
                 expanded: false,
-                sum: 0
             }
         },
         computed: {
             charges() {
                 return this.financeCharges
             },
-            lengthOfArrears() {
-                let count = 0;
+            sum() {
+                let sum = 0;
                 this.charges.forEach(item => {
-                    if (item.days < 0) count++
+                    sum += item.sum
                 })
-                return count
-            },
-            lengthOfNotArrears() {
-                let count = 0;
-                this.charges.forEach(item => {
-                    if (item.days >= 0) {
-                        count++;
-                        this.sum += item.sum
-                    }
-                })
-                return count
+                return sum
             },
         }
     }

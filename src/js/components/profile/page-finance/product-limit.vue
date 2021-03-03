@@ -5,7 +5,8 @@
             <div class="finance__progress-bar finance__progress-bar--limit">
                 <component is="finance-progress"
                            :finance="financeCharges.statistic"
-                           :financeCharges="financeCharges.schedule"
+                           :financeCharges="financeCharges.charges"
+                           :financeSchedule="financeCharges.schedule"
                            :dashboard="false"
                            :productLimit="true"
                            :contract="contract"
