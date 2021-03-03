@@ -164,7 +164,7 @@ class Api {
         return this._promiseBitrixRequest('instrument2:rest.api.user.dashboard');
     }
     discountGet() {
-        return this._promiseBitrixRequest('instrument2:rest.api.discount.list');
+        return this._promiseBitrixRequest('instrument2:rest.api.user.discount.list');
     }
     changePassowrd(password, confirmPassword) {
         // changePassowrd(currentPass, newPass) {

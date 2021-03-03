@@ -88,7 +88,6 @@ export default {
     mounted(){
         this.$eventBus.$emit('hideMenu');
         this.$store.dispatch('personalDashboard');
-        this.$store.dispatch('personalGetDiscount');
     },
     computed: {
         financeData() {

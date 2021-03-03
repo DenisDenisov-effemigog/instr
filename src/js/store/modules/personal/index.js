@@ -104,6 +104,7 @@ const actions = {
             commit(types.PERSONAL_APPLY_PETITIONS, profile.petitions);
             commit(types.PERSONAL_APPLY_CURRENTORDERS, profile.order);
             commit(types.PERSONAL_APPLY_FINANCE, profile.finance);
+            commit(types.PERSONAL_APPLY_DISCOUNT, profile.discounts);
         });
     },
     personalContract: ({commit, dispatch}) => {

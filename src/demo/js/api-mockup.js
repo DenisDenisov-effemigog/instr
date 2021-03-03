@@ -330,18 +330,18 @@ let dashboardParams = {
     },
     discounts: [
         {
-            title: 'Импорт',
-            discount: 20,
+            name: 'Импорт',
+            value: 20,
             date: '31.12.2021'
         },
         {
-            title: 'Силовое',
-            discount: 0,
+            name: 'Силовое',
+            value: 0,
             date: '31.12.2021'
         },
         {
-            title: 'Россия',
-            discount: 20,
+            name: 'Россия',
+            value: 20,
             date: '31.12.2021'
         },
     ],
@@ -1803,7 +1803,7 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
-            case 'instrument2:rest.api.discount.list':
+            case 'instrument2:rest.api.user.discount.list':
                 resolve({
                     data: {
                         data: {
