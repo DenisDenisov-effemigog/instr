@@ -104,6 +104,12 @@ const actions = {
             commit(types.PERSONAL_APPLY_PETITIONS, profile.petitions);
             commit(types.PERSONAL_APPLY_CURRENTORDERS, profile.order);
             commit(types.PERSONAL_APPLY_FINANCE, profile.finance);
+            commit(types.PERSONAL_APPLY_DISCOUNT, profile.discounts);
+        });
+    },
+    personalContract: ({commit, dispatch}) => {
+        api.userDashboard().then((profile) => {
+            commit(types.PERSONAL_APPLY_CONTRACT, profile.contract);
         });
     },
     personalGetDiscount: ({commit, dispatch}) => {

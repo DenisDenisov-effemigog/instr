@@ -4,8 +4,9 @@
             <div class="finance__progress-bar finance__progress-bar--payable">
                 <h4 class="finance__subtitle">{{ $tc('profile_finance.title.payable') }}</h4>
                 <component is="finance-progress"
-                           :finance="financeCharges.statistic"
-                           :financeCharges="financeCharges.schedule"
+                           :finance="finance"
+                           :financeCharges="financeCharges"
+                           :financeSchedule="financeSchedule"
                            :dashboard="false"
                            :contract="contract"
                 ></component>
@@ -29,7 +30,7 @@
                         slot="legend-caption"
                     >
                         <span v-if="arrears">- </span>
-                        {{ $tc('profile_finance.days', Math.abs(this.latestArrears.days)) }}
+                        {{ $tc('profile_finance.days', latestArrears.days) }}
                     </div>
                 </vue-ellipse-progress>
                 <div class="finance-prgs-crcl__text"
@@ -52,8 +53,17 @@
     export default {
         name: 'accounts-payable',
         props: {
+            finance: {
+                type: Object,
+                required: true
+            },
             financeCharges: {
-                type: Object
+                type: Array,
+                required: true
+            },
+            financeSchedule: {
+                type: Array,
+                required: true
             },
             contract: {
                 required: true
@@ -70,17 +80,18 @@
         },
         computed: {
             latestArrears() {
-                let latest = {}
-                this.financeCharges.charges.forEach(item => {
-                    if (item.latest) latest = {...item}
-                })
-                return latest
+                let vm = this
+                if(vm.financeCharges.length){
+                    return vm.financeCharges[0]
+                } else {
+                    return vm.financeSchedule[0]
+                }
             },
             progressBar() {
                 return (Math.abs(this.latestArrears.days) / this.limit) * 100
             },
             changeColor() {
-                if (this.latestArrears.days < 1) {
+                if (this.financeCharges.length) {
                     this.color = '#FF0000';
                     this.arrears = true;
                     this.animation = 'default 700 400'

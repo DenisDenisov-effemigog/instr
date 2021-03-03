@@ -13,7 +13,7 @@
                 >
                     <finance-progress 
                         :finance="financeData.statistic" 
-                        :financeCharges="financeData.schedule" 
+                        :financeSchedule="financeData.schedule" 
                         :contract="contract"
                     ></finance-progress>
                 </router-link>
@@ -88,7 +88,6 @@ export default {
     mounted(){
         this.$eventBus.$emit('hideMenu');
         this.$store.dispatch('personalDashboard');
-        this.$store.dispatch('personalGetDiscount');
     },
     computed: {
         financeData() {
