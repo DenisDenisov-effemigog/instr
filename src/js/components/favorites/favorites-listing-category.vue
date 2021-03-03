@@ -14,7 +14,6 @@
             </svg>
             {{ category.label }}
         </div>
-        <slot name="filters"></slot>
     </div>
 </template>
 
