@@ -1838,6 +1838,37 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
+
+            case 'instrument2:rest.api.user.base.change_password':
+                if (!config.data || !config.data.password || !config.data.confirmPassword) {
+                    reject(new Error('Wrong config'));
+                }
+                if (config.data.password === config.data.confirmPassword) {
+                    resolve({
+                        data: {
+                            data: {
+                                status: 1,
+                                answer: true
+                            }
+                        }
+                    });
+                } else {
+                    resolve({
+                        data: {
+                            data: {
+                                status: 0,
+                                errors: [
+                                    {
+                                        code: 'not_identical_passwords',
+                                        message: 'Not identical passwords'
+                                    }
+                                ]
+                            }
+                        }
+                    });
+                }
+                break;
+
             case 'instrument2:rest.api.user.change.password':
                 /*если пароли совпадают, заменить*/
                 resolve({

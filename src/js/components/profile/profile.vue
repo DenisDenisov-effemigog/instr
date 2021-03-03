@@ -8,7 +8,7 @@
                 </p>
             </div>
             <ul class="profile__menu-list"  >
-                <li v-for="(item, index) in computedLinks"  @click="clickTab(index)" >
+                <li v-for="(item, index) in computedLinks"  @click="clickTab(index)" :key="index">
                     <router-link tag="div" 
                         class="profile__menu-link"
                         active-class="profile__menu-link--active"
