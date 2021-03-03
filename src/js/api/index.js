@@ -161,10 +161,15 @@ class Api {
     discountGet() {
         return this._promiseBitrixRequest('instrument2:rest.api.discount.list');
     }
-    changePassowrd(currentPass, newPass) {
-        return this._promiseBitrixRequest('instrument2:rest.api.user.change.password', {
-            currentPass: currentPass,
-            newPass: newPass,
+    changePassowrd(password, confirmPassword) {
+        // changePassowrd(currentPass, newPass) {
+        // return this._promiseBitrixRequest('instrument2:rest.api.user.change.password', {
+        //     currentPass: currentPass,
+        //     newPass: newPass,
+        // });
+        return this._promiseBitrixRequest('instrument2:rest.api.user.base.change_password', {
+            password: password,
+            confirmPassword: confirmPassword,
         });
     }
     addAddress(address, message) {
