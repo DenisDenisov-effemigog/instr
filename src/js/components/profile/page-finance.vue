@@ -15,9 +15,14 @@
         </div>
         <div v-else>
             <product-limit :financeCharges="financeDataAll" :contract="contract"></product-limit>
-            <accounts-payable :financeCharges="financeDataAll" :contract="contract"></accounts-payable>
+            <accounts-payable 
+                :finance="financeDataAll.statistic" 
+                :financeCharges="financeDataAll.charges"
+                :financeSchedule="financeDataAll.schedule"
+                :contract="contract"
+            ></accounts-payable> <!--financeCharges - для проверки последнего дня оплаты-->
             <finance-charges :financeCharges="financeDataAll.charges" :arrears="true"></finance-charges>
-            <finance-charges :financeCharges="financeDataAll.charges"></finance-charges>
+            <finance-charges :financeCharges="financeDataAll.schedule"></finance-charges>
             <operation-history :financeHistory="financeDataAll.history"></operation-history>
         </div>
     </div>
@@ -40,11 +45,6 @@
     export default {
         name:"page-finance",
         components: { productLimit, accountsPayable, financeCharges, operationHistory},
-        props: {
-            contract: {
-                required: true
-            }
-        },
         data() {
             return {
                 loaded: false,
@@ -65,11 +65,15 @@
         mounted() {
             this.$store.dispatch('personalUpdateFinanceData');
             this.$eventBus.$emit('hideMenu')
+            this.$store.dispatch('personalContract');
         },
         computed: {
             financeDataAll() {
                 return this.$store.state.personal.financeData;
             },
+            contract(){
+                return this.$store.state.personal.contract
+            }
         }
     }
 </script>

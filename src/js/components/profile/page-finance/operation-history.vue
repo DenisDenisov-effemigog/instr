@@ -17,13 +17,15 @@
                     <span>{{ $tc(item.operation) }}</span>
                     <span 
                         class="finance-history__operation-number"
-                        v-show="item.operationNumber && $tc(item.operation) === $tc('profile_finance.purchasing')"
+                        v-show="item.order && $tc(item.operation) === $tc('profile_finance.purchasing')"
                     >
-                        #{{item.operationNumber}}
+                        #{{item.order}}
                     </span>
                 </div>
                 <div class="finance-history__code">{{item.code}}</div>
-                <div class="finance-history__order">#{{item.order}}</div>
+                <div class="finance-history__order" 
+                     v-show="item.order && $tc(item.operation) === $tc('profile_finance.purchasing')"
+                >#{{item.order}}</div>
             </li>
         </ul>
         <a v-if="!expanded && operations.length > 4" 

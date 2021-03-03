@@ -13,7 +13,7 @@
                 >
                     <finance-progress 
                         :finance="financeData.statistic" 
-                        :financeCharges="financeData.schedule" 
+                        :financeSchedule="financeData.schedule" 
                         :contract="contract"
                     ></finance-progress>
                 </router-link>

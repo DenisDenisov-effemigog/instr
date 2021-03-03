@@ -422,19 +422,14 @@ let dashboardParams = {
         },
         schedule:[ 
             {
-                sum:30000,
-                date:'15.02.2021',
-                days:-45
-            },
-            {
-                sum:30000,
-                date:'15.03.2021',
-                days:13
-            },
-            {
                 sum:20000,
                 date:'15.04.2021',
                 days:43
+            },
+            {
+                sum:30000,
+                date:'17.04.2021',
+                days:45
             },
         ]
     }
@@ -570,30 +565,33 @@ let financeData = {
     statistic: {
         limit:100000,
         arrears:30000,
-        debt:80000
+        debt:80000,
+        processing:20000,
+        shipped:60000
     },
     schedule:[
-        {
-            sum:30000,
-            date:'15.02.2021',
-            days:-45
-        },
-        {
-            sum:30000,
-            date:'15.03.2021',
-            days:13
-        },
         {
             sum:20000,
             date:'15.04.2021',
             days:43
         },
+        {
+            sum:30000,
+            date:'17.04.2021',
+            days:45
+        },
     ],
-    charges: [],
+    charges: [
+        {
+            sum:30000,
+            date:'15.02.2021',
+            days:16
+        },
+    ],
     history: [],
 };
 
-for(let i = 0; i < 5; ++i) {
+/*for(let i = 0; i < 5; ++i) {
 
     let sum = [10000, 20000].sort(function (a, b) {
         return 0.5 - Math.random()
@@ -614,14 +612,14 @@ for(let i = 0; i < 5; ++i) {
         'sum': sum,
         'date': date,
         'days': days,
-        'latest': false,
-        'shipped': shipped
+        // 'latest': false,
+        // 'shipped': shipped
     });
-}
-financeData.charges[0].days = -6;
+}*/
+/*financeData.charges[0].days = -6;
 financeData.charges[0].date = '21.12.2020';
 financeData.charges[1].days = -4;
-financeData.charges[0].latest = true
+financeData.charges[0].latest = true*/
 
 for(let i = 0; i < 6; ++i) {
 
@@ -644,7 +642,7 @@ for(let i = 0; i < 6; ++i) {
         'date': '23.12.2020',
         'time': '24:10',
         'operation': operation,
-        'operationNumber': 3895347+i,
+        // 'operationNumber': 3895347+i,
         'code': operationCode,
         'order': 325214+i,
         'status': status
