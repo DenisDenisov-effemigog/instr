@@ -30,6 +30,12 @@
                     </svg>
                     <span>{{ $tc(link.title) }}</span>
                 </div>
+                <div v-show="user.authorized" class="profile__menu-mobile_link" @click=exit>
+                    <svg viewBox="0 0 15 15">
+                        <use :xlink:href="templatePath + 'images/sprite.svg#icons__exit'"></use>
+                    </svg>
+                    <span>{{ $tc('profile.link.exit') }}</span>
+                </div>
             </div>
         </div>
         
@@ -58,7 +64,8 @@
 </template>
 
 <script>
-
+    import * as Api from '../../api/index'
+    let api = Api.getInstance()
 export default {
     name: "profile",
     props: {
@@ -72,7 +79,8 @@ export default {
         },
         preLink:{
             type:String
-        }
+        },
+        user: {required: true},
     },
     data() {
         return {
@@ -135,7 +143,6 @@ export default {
             menuMobile: [
                 {'title': 'nav.tel', 'icon': 'phone'},
                 {'title': 'nav.city', 'icon': 'pin'},
-                {'title': 'profile.link.exit', 'icon': 'exit'},
             ],
             listOpened: false
         };
@@ -180,6 +187,15 @@ export default {
         this.$eventBus.$off('hideMenu');
     },
     methods: {
+        exit(){
+            api.authOut().then(() => {
+                    console.log('user out')
+                    // let ref = document.referrer;
+                    // window.location.replace(ref.length > 0 ? ref : '/');
+                }).catch((error) => {
+                    console.log(error)
+                });
+        },
         clickTab(index){
             if(window.innerWidth > 1022){
                 this.currentIndex = index
