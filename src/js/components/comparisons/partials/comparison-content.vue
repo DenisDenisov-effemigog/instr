@@ -82,13 +82,13 @@
             <div class="comparisons__comparing">
                 <ul class="comparisons__sidebar">
                     <li class="comparisons__sidebar-item">Цена</li>
-                    <li class="comparisons__sidebar-item" v-for="item in Object.keys(comparisons[0].otherOptions)">{{ item }}</li>
+                    <li ref="sideItems" class="comparisons__sidebar-item" v-for="item in Object.keys(comparisons[0].otherOptions)">{{ item }}</li>
                 </ul>
 
                 <div class="comparisons__descriptions">
                     <!-- bottom slider -->
                     <agile ref="main" :as-nav-for="asNavFor1" :options="options">
-                        <ul class="comparisons__description"
+                        <ul ref="descList" class="comparisons__description"
                             :class="{'comparisons__description--no-product': comparisons.length === 1}"
                             v-for="product in comparisons">
                             <li>
@@ -219,6 +219,23 @@
                     return array.slice(0, 10)
                 }
             },
+            getSideItems(){
+                if(window.innerWidth > 1024){
+                    let sideItems = this.$refs.sideItems
+                    let descList = this.$refs.descList
+                    descList.forEach(function(list){
+                        for(let i = 1; i < list.children.length; i++){
+                            let sideItemsH = sideItems[i - 1].clientHeight
+                            let itemsHeight = list.children[i].clientHeight
+                            if(sideItemsH > itemsHeight){
+                                list.children[i].style.height = sideItemsH + 'px'
+                            }else{
+                                sideItems[i - 1].style.height = itemsHeight + 'px'
+                            }
+                        }
+                    })
+                }
+            }
         },
         computed: {
             comparisons() {
@@ -226,7 +243,7 @@
             },
             qnty() {
                 return this.comparingItems.length
-            },
+            }
         },
         created() {
             window.addEventListener('resize', this.changeShownQnty);
@@ -236,6 +253,8 @@
             this.changeShownQnty();
             this.asNavFor1.push(this.$refs.thumbnails);
             this.asNavFor2.push(this.$refs.main);
+            this.getSideItems()
+
         }
     }
 </script>
