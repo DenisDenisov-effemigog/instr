@@ -133,14 +133,14 @@ class Api {
             
         });
     }
-    authSignUp(type, name, company, tin, email, phone, nds) {
+    authSignUp(is_company, name, company, inn, email, phone, nds) {
         return this._promiseBitrixRequest('instrument2:rest.api.auth.sign_up', {
             name: name,
             company: company,
-            tin: tin,
+            inn: inn,
             email: email,
             phone: phone,
-            type: type,
+            is_company: is_company,
             nds: nds,
         });
     }
