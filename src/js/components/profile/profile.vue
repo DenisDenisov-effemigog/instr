@@ -57,6 +57,7 @@
                     :selectopenSelect="selectopenSelect"
                     :contract="profile.contract"
                     :preLink="preLink"
+                    :pagination="pagination"
                 ></router-view>
             </transition>
         </div>
@@ -81,6 +82,10 @@ export default {
             type:String
         },
         user: {required: true},
+        pagination: {
+            type: Object,
+            default: {}
+        }
     },
     data() {
         return {

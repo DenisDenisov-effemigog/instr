@@ -60,9 +60,12 @@
                 type: Object
             },
             hash: {
-                required: true,
                 type: String
             },
+            placement: {
+                type: String,
+                default: '.listing'
+            }
         },
         mounted() {
             this.internalPagination = this.pagination;
@@ -71,12 +74,16 @@
             goToPage(page) {
                 let vm = this
                 api.goToPage(vm.hash, page).then((answer) => {
-                    vm.$eventBus.$emit('apply-listing', answer.output);
+                    if (this.placement === '.listing') {
+                        vm.$eventBus.$emit('apply-listing', answer.output);
+                    } else if (this.placement === '.order__list') {
+
+                    }
 
                     if (window.innerWidth > 767) {
-                        this.scrollTop('.listing', 130);
+                        this.scrollTop(this.placement, 130);
                     } else {
-                        this.scrollTop('.listing', 50);
+                        this.scrollTop(this.placement, 50);
                     }
                 }).catch(errors => {
                     console.error(errors);

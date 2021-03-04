@@ -29,7 +29,13 @@
             <order-list v-model="details" :orders="paginatedOrders"></order-list>
         </div>
         <div class="order__pagination">
-            <order-pagination v-model="pageNumber" :pageAmount="showPages" v-if="ordersAll.length > 0"></order-pagination>
+            <component 
+                is="pagination"
+                :pagination="internalPagination"
+                :placement="'.order'"
+            >
+            </component>
+            <!-- <order-pagination v-model="pageNumber" :pageAmount="showPages" v-if="ordersAll.length > 0"></order-pagination> -->
         </div>
     </div>
     <div v-else class="preloader">
@@ -44,14 +50,14 @@
 <script>
     import selectList from '../partials/select-list.vue';
     import orderList from './page-orders/order-list.vue';
-    import orderPagination from './page-orders/order-pagination.vue'
+    // import orderPagination from './page-orders/order-pagination.vue'
     import config from "../../config";
 
     export default {
         components: { 
             selectList,
             orderList,
-            orderPagination,
+            // orderPagination,
         },
         name:"page-orders",
         props:{
@@ -63,6 +69,10 @@
                 type: Object,
                 required: true,
             },
+            pagination: {
+                type: Object,
+                default: {}
+            }
         },
         data(){
             return{
@@ -71,12 +81,14 @@
                 pageNumber: 1,
                 onPage: 10,
                 loaded: false,
-                catalogLink: config.links.catalog
+                catalogLink: config.links.catalog,
+                internalPagination: {},
             }
         },
         mounted() {
             this.$store.dispatch('personalUpdateOrders');
-            this.$eventBus.$emit('hideMenu')
+            this.$eventBus.$emit('hideMenu');
+            this.internalPagination = this.pagination;
         },
         created(){
             this.loading();
