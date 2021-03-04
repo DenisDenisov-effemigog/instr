@@ -1769,6 +1769,9 @@
     }
 ] %}
 
+{% set showTree = true
+%}
+
 {% set countries = [
     {title: 'Белоруссия', url: ''},
     {title: 'Болгария', url: ''},
@@ -2134,6 +2137,7 @@
         'filters': filters,
         'view_type': view_type,
         'pagination': pagination,
+        'showTree': showTree
     } %}
     {% include '../../../templates/footer/footer.twig'  with {
         'countries': countries,
