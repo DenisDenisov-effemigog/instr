@@ -489,22 +489,6 @@ let demoDiscount = [
             }
         }
     }
-
-    /*{
-        title: "Импорт",
-        discount: 11,
-        date: '31.12.2021'
-    },
-    {
-        title: "Силовое",
-        discount: 0,
-        date: '31.12.2021'
-    },
-    {
-        title: "Россия",
-        discount: 20,
-        date: '31.12.2021'
-    }*/
 ];
 let demoOrders = [];
 //let baseOrderDate = new Date('2020-02-14');
