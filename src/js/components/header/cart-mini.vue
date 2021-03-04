@@ -1,13 +1,15 @@
 <template>
     <a ref="cart" :href="cartLink" class="header__menu-link"
         :class="{'header__menu-link--active': active}">
-        <svg class="header__menu-icon">
-            <use :xlink:href="templatePath + 'images/sprite.svg#icons__cart'"></use>
-        </svg>
+        <div class="header__menu-icon-wrapper">
+            <svg class="header__menu-icon" viewBox="-2 -2 24 24">
+                <use :xlink:href="templatePath + 'images/sprite.svg#icons__cart'"></use>
+            </svg>
+            <span class="header__mini-cloud" v-if="productsQuantity > 0">
+                {{productsQuantity}}
+            </span>
+        </div>
         <p class="header__menu-text">{{ $tc('header.menu.cart') }}</p>
-        <span class="header__mini-cloud" v-if="productsQuantity > 0">
-            {{productsQuantity}}
-        </span>
     </a>
 </template>
 
@@ -30,6 +32,7 @@
         },
         computed: {
             productsQuantity() {
+                // debugger
                 const basketData = this.$store.getters.basketProductsSummary;
                 return basketData.quantity;
             },

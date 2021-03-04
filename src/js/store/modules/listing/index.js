@@ -104,8 +104,32 @@ const actions = {
     },
 }
 
+const getters = {
+    favotitesSummary: (state) => {
+        let quantity = 0;
+        state.favorites.every((item) => {
+            if (item.is_favorite) {
+                quantity++;
+            }
+            return true;
+        });
+        return quantity;
+    },
+    comparisonSummary: (state) => {
+        let quantity = 0;
+        state.comparisons.every(item => {
+            if (item.is_compare) {
+                quantity++;
+            }
+            return true;
+        })
+        return quantity;
+    },
+}
+
 export default {
     state,
     mutations,
-    actions
+    actions,
+    getters
 };

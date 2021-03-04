@@ -11,7 +11,7 @@
         </a>
         <ul class="pagination__list">
             <li class="pagination__item"
-                v-for="link in internalPagination.urls"
+                v-for="(link, index) in internalPagination.urls" :key="index"
                 :class="{'pagination__item--current': internalPagination.current == link.title}"
             >
                 <a :href="link.url" 
