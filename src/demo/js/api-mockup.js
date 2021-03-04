@@ -634,30 +634,6 @@ for(let i = 0; i < 6; ++i) {
 }
 
 let demoAddressList = [
-    {
-        'id': 12828,
-        'order': 1,
-        'address': '1062 Budapest, V1 Bajzautca, 35 1062 Budapest, V1 Bajzautca, 35 1062 Budapest, V1 Bajzautca, 35 Bajzautca',
-        'status': 'сonfirmed',
-        'statusPrint': 'Подтверждён',
-        'statusDesc': '',
-    },
-    {
-        'id': 12829,
-        'order': 2,
-        'address': 'II., FrankelLeóút 22 1062 Budapest, V1 Bajzautca, 351062 Budapest, V1 Bajzautca, 35',
-        'status': 'submitted',
-        'statusPrint': 'Отправлен на подтверждение',
-        'statusDesc': 'В данный момент адрес проходит проверку модератора. Следить за статусом адреса вы можете тут',
-    },
-    {
-        'id': 12830,
-        'order': 3,
-        'address': 'XXI., Áruháztér 8',
-        'status': 'not-сonfirmed',
-        'statusPrint': 'Не подтвержден',
-        'statusDesc': 'К сожалению, адрес не прошел проверку модератора. Подробнее по горячей линии: 8 800-765-87-51',
-    }
 ];
 
 let demoFeeds = {

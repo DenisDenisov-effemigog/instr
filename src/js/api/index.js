@@ -133,7 +133,7 @@ class Api {
             
         });
     }
-    authSignUp( type,name, company, tin, email, phone, nds) {
+    authSignUp(type, name, company, tin, email, phone, nds) {
         return this._promiseBitrixRequest('instrument2:rest.api.auth.sign_up', {
             name: name,
             company: company,
@@ -250,20 +250,26 @@ class Api {
             page: page,
         });
     }
-    orderValidate(data, agreement, message, date) {
+    orderValidate(user, payment_id, delivery_id, address, agreement, message, delivery_date) {
         return this._promiseBitrixRequest('instrument2:rest.api.order.validate', {
-            data: data,
+            user: user,
+            payment_id: payment_id,
+            delivery_id: delivery_id,
+            address: address,
             agreement: agreement,
             message: message,
-            date: date,
+            delivery_date: delivery_date,
         });
     }
-    orderCreate(data, agreement, message, date) {
+    orderCreate(user, payment_id, delivery_id, address, agreement, message, delivery_date) {
         return this._promiseBitrixRequest('instrument2:rest.api.order.create', {
-            data: data,
+            user: user,
+            payment_id: payment_id,
+            delivery_id: delivery_id,
+            address: address,
             agreement: agreement,
             message: message,
-            date: date,
+            delivery_date: delivery_date,
         });
     }
     finedCity(query) {

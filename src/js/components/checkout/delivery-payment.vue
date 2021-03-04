@@ -35,7 +35,7 @@ export default {
     },
     methods: {
         changeDeliveryPayment(type, id) {
-            this.$eventBus.$emit('push-payment', type)
+            this.$eventBus.$emit('push-payment', id)
             this.$store.dispatch('basketOrderCalc', {
                 paymentId: id,
                 deliveryId: null
