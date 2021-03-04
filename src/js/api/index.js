@@ -166,7 +166,7 @@ class Api {
     discountGet() {
         return this._promiseBitrixRequest('instrument2:rest.api.user.discount.list');
     }
-    changePassowrd(password, confirmPassword) {
+    changePassword(password, confirmPassword) {
         return this._promiseBitrixRequest('instrument2:rest.api.user.base.change_password', {
             password: password,
             confirmPassword: confirmPassword,

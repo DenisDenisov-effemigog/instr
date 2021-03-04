@@ -111,8 +111,7 @@
             },
             saveChanges() {
                 let vm = this
-                api.changePassowrd(vm.$v.newPassword.$model, vm.$v.confirmPassword.$model).then(() => {
-                // api.changePassowrd(vm.$v.password.$model, vm.$v.newPassword.$model).then(() => {
+                api.changePassword(vm.$v.newPassword.$model, vm.$v.confirmPassword.$model).then(() => {
                     vm.$eventBus.$emit('closeModal');
                 }).catch(error => {
                     console.log(error[0].message);

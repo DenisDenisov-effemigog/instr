@@ -24,7 +24,7 @@
                 <div ref="bg" class="profile__menu-bg"></div>  
             </ul>
             <div class="profile__menu-mobile">
-                <div class="profile__menu-mobile_link" v-for="link in menuMobile" :key="link">
+                <div class="profile__menu-mobile_link" v-for="(link, item) in menuMobile" :key="item">
                     <svg viewBox="0 0 15 15">
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__' + link.icon"></use>
                     </svg>
