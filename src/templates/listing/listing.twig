@@ -1,3 +1,4 @@
+{% set catalog = (showTree ? treeCategories : listCategories %}
 <div class="listing">
         <div class="listing__header">
             {% if titleFlag == true %}
@@ -28,9 +29,9 @@
             {% if filters.filters is not empty %}
                 <div class="listing__subcategories listing__subcategories--filter">
                     <div class="listing__subcategory-link">{{ listingCategoryTitle }}</div>
-                    {% for subcategory in listingCategories.subcategories|slice(0, 1) %}
+                    {% for subcategory in catalog.subcategories|slice(0, 1) %}
                         <component is="further-subcategories"
-                                   :categories="{{ listingCategories.subcategories|json_encode()|e('html_attr') }}"
+                                   :categories="{{ catalog.subcategories|json_encode()|e('html_attr') }}"
                                    :class-name="'listing'"
                         >
                             <template v-slot:subcategory-listing-part>
@@ -70,7 +71,7 @@
                 </div>
             {%  if filters.filters is empty  %}
                 <div class="listing__subcategories">
-                    {% for subcategory in listingCategories.subcategories %}
+                    {% for subcategory in catalog.subcategories %}
                         <div class="listing__subcategory">
                             <a href="{{ subcategory.url }}" class="listing__subcategory-link">{{subcategory.title}}</a>
                             <component is="further-subcategories"

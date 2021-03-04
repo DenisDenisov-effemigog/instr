@@ -920,7 +920,7 @@
     }
 ] %}
 
-{% set listingCategories = [
+{% set treeCategories = [
     {label: 'Автомобильный инструмент', value: 'avto'},
     {label: 'Измерительный инструмент', value: 'measuring'},
     {label: 'Режущий инструмент', value: 'cutting'},
@@ -1060,7 +1060,7 @@
     {% include '../../../templates/favorites/favorites.twig' with {
         'sort_types': sort_types,
         'sort_type': sort_type,
-        'listingCategories': listingCategories,
+        'treeCategories': treeCategories,
         'filters': filters,
         'view_type': view_type,
         'pagination': pagination,
@@ -1069,7 +1069,7 @@
         'countries': countries,
         'activeCountry': 'Россия',
         'user': user,
-        'listingCategories': listingCategories,
+        'treeCategories': treeCategories,
         'phone_mask': '+7 (F##) ###-##-##',
         'footerLinks': footerLinks,
         'headerLinks': headerLinks,

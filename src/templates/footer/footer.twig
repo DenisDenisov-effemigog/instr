@@ -16,18 +16,18 @@
 >
     <template v-slot:listingcat>
         <div class="listing__subcategories listing__subcategories--filter">
-            {% for subcategory in listingCategories.subcategories|slice(0, 1) %}
+            {% for subcategory in treeCategories.subcategories|slice(0, 1) %}
                 {% include '../listing/listing-subcategories.twig' with {'subcategory': subcategory, 'main': true} %}
             {% endfor %}
             <component is="all-categories">
-                {% for subcategory in listingCategories.subcategories|slice(1) %}
+                {% for subcategory in treeCategories.subcategories|slice(1) %}
                     {% include '../listing/listing-subcategories.twig' with {'subcategory': subcategory, 'main': false} %}
                 {% endfor %}
             </component>
         </div>
     </template>
     <template v-slot:favoritecat>
-        {% for category in listingCategories  %}
+        {% for category in treeCategories  %}
             <div class="favorites-listing__subcategory">{{ category.label }}</div>
         {% endfor %}
     </template>
