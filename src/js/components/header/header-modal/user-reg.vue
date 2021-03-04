@@ -222,8 +222,24 @@
         methods: {
             submit() {
                 this.$v.$touch();
-                if (!this.$v.$invalid && this.agreement) {
-                    this.register();
+                if (this.individualFlag){
+                    if (!this.$v.name.$invalid &&
+                        !this.$v.newEmail.$invalid && 
+                        !this.$v.phone.$invalid && 
+                        this.agreement
+                    ) {
+                        this.register();
+                    }
+                } else {
+                    if (!this.$v.name.$invalid &&
+                        !this.$v.company.$invalid &&
+                        !this.$v.tin.$invalid && 
+                        !this.$v.newEmail.$invalid && 
+                        !this.$v.phone.$invalid && 
+                        this.agreement
+                    ) {
+                        this.register();
+                    }
                 }
             },
 
@@ -231,11 +247,11 @@
                 let vm = this;
                 let type = ''
                 if (!vm.individualFlag){
-                    type = 'juridic'
+                    type = true
                 } else {
-                    type = 'fizic'
+                    type = false
                 }
-                api.authSignUp(type, vm.name,vm. company, vm.tin, vm.newEmail, vm.phone, vm.nds).then(() => {
+                api.authSignUp(type, vm.name, vm.company, vm.tin, vm.newEmail, vm.phone, vm.nds).then(() => {
                     vm.$eventBus.$emit('closeModal')
                     // window.location.replace(config.links.auth_thanks);
                 }).catch((errors) => {
