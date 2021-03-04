@@ -113,7 +113,6 @@ const getters = {
             }
             return true;
         });
-        console.log('quantity', quantity)
         return quantity;
     },
     comparisonSummary: (state) => {
@@ -124,7 +123,6 @@ const getters = {
             }
             return true;
         })
-        console.log('quantity', quantity)
         return quantity;
     },
 }

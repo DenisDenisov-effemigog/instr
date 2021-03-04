@@ -7,9 +7,9 @@
         display: flex
         &:hover
             color: $black
-        &:hover svg
+        &:hover .to-compare__icon-compare
             fill: $icon-black
-    & svg
+    &__icon-compare
         fill: $light-grey
         // width: 18px
         // height: 18px
@@ -21,14 +21,14 @@
         margin-left: .375rem
         +desktop
             margin-left: .75rem
-    &--active svg,
-    &--active:hover svg
+    &--active .to-compare__icon-compare,
+    &--active:hover .to-compare__icon-compare
         fill: $primary-red
     &--mobile
         padding-top: .75rem
         display: flex
         align-items: center
-        svg
+        .to-compare__icon-compare
             width: $size_12
             height: $size_10
         
