@@ -44,7 +44,7 @@
                     <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-right'"></use>
                 </svg>
             </a>
-            <discounts-calculation v-show="discount.boost_value == 0" 
+            <discounts-calculation v-if="discount.boost_value && discount.boost_value === 0" 
                 :discounts="discounts"
             ></discounts-calculation>
         </div>

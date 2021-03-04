@@ -489,22 +489,6 @@ let demoDiscount = [
             }
         }
     }
-
-    /*{
-        title: "Импорт",
-        discount: 11,
-        date: '31.12.2021'
-    },
-    {
-        title: "Силовое",
-        discount: 0,
-        date: '31.12.2021'
-    },
-    {
-        title: "Россия",
-        discount: 20,
-        date: '31.12.2021'
-    }*/
 ];
 let demoOrders = [];
 //let baseOrderDate = new Date('2020-02-14');
@@ -2248,7 +2232,7 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
-            case 'instrument2:rest.api.cart.favorite':
+            case 'instrument2:rest.api.favorite.toggle':
                 let favorite = favorites.find(item => item.id === config.data.id)
                 favorite.is_favorite = !favorite.is_favorite
                 
@@ -2261,7 +2245,7 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
-            case 'instrument2:rest.api.get.favorite':
+            case 'instrument2:rest.api.favorite.get':
                 resolve({
                     data: {
                         data: {
@@ -2271,7 +2255,7 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
-            case 'instrument2:rest.api.clear.favorite':
+            case 'instrument2:rest.api.favorite.clear':
                 demoMockupFavorites = []
                 resolve({
                     data: {
@@ -2282,7 +2266,7 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
-            case 'instrument2:rest.api.cart.compare':
+            case 'instrument2:rest.api.compare.toggle':
                 let compare = compares.find(item => item.id === config.data.id)
                 compare.is_compare = !compare.is_compare
                 
@@ -2295,7 +2279,7 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
-            case 'instrument2:rest.api.get.compare':
+            case 'instrument2:rest.api.compare.get':
                 resolve({
                     data: {
                         data: {
@@ -2305,7 +2289,7 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
-            case 'instrument2:rest.api.clear.compare':
+            case 'instrument2:rest.api.compare.clear':
                 demoMockupComparisons = []
                 resolve({
                     data: {
