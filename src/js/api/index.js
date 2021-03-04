@@ -285,26 +285,26 @@ class Api {
         });
     }
     addFavorite(id) {
-        return this._promiseBitrixRequest('instrument2:rest.api.cart.favorite', {
+        return this._promiseBitrixRequest('instrument2:rest.api.favorite.toggle', {
             id: id,
         });
     }
     getFavorites() {
-        return this._promiseBitrixRequest('instrument2:rest.api.get.favorite');
+        return this._promiseBitrixRequest('instrument2:rest.api.favorite.get');
     }
     clearFavorites() {
-        return this._promiseBitrixRequest('instrument2:rest.api.clear.favorite');
+        return this._promiseBitrixRequest('instrument2:rest.api.favorite.clear');
     }
     addCompare(productId) {
-        return this._promiseBitrixRequest('instrument2:rest.api.cart.compare', {
+        return this._promiseBitrixRequest('instrument2:rest.api.compare.toggle', {
             id: productId,
         });
     }
     getCompare() {
-        return this._promiseBitrixRequest('instrument2:rest.api.get.compare');
+        return this._promiseBitrixRequest('instrument2:rest.api.compare.get');
     }
     clearCompare() {
-        return this._promiseBitrixRequest('instrument2:rest.api.clear.compare');
+        return this._promiseBitrixRequest('instrument2:rest.api.compare.clear');
     }
 
     searchGetHistory() {

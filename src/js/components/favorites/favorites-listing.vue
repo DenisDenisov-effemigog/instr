@@ -55,6 +55,7 @@
 
 <script>
 import FavoritesListingCategory from './favorites-listing-category.vue';
+import config from "../../config";
 
     export default {
         name: "favorites-listing",
@@ -82,6 +83,7 @@ import FavoritesListingCategory from './favorites-listing-category.vue';
         data(){
             return{
                 categoryActive: 0,
+                catalogLink: config.links.catalog,
             }
         },
         mounted() {
