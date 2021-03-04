@@ -90,5 +90,7 @@ const app = new Vue({
     i18n,
     mounted() {
         store.dispatch('basketUpdateProducts');
+        store.dispatch('favoritesUpdateProducts');
+        store.dispatch('comparisonsUpdateProducts');
     }
 });

@@ -175,7 +175,6 @@ const actions = {
 
 const getters = {
     basketProductsSummary: (state) => {
-        //debugger;
         let quantity = 0;
         let price = 0;
         state.products.every((product) => {
@@ -192,7 +191,6 @@ const getters = {
     },
     basketProductQuantity: (state) => (productId) => {
         let quantity = 0;
-        //console.log('state.products', state.products);
         state.products.every((product) => {
             if (product.id == productId) {
                 quantity = product.basket_quantity;

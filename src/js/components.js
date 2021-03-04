@@ -19,6 +19,7 @@ import furtherSubcategories from './components/catalogue/catalogue-further-subca
 /*header*/
 import cartMini from './components/header/cart-mini.vue';
 import compareMini from './components/header/compare-mini.vue';
+import favoriteMini from './components/header/favorite-mini.vue';
 import headerBlock from './components/header/header-block.vue';
 import stickyHeader from './components/header/sticky-header.vue';
 import user from './components/header/header-modal/user.vue';
@@ -120,6 +121,7 @@ export default {
         topnavSwitch,
         cartMini,
         compareMini,
+        favoriteMini,
         headerBlock,
         stickyHeader,
         sliderMain,

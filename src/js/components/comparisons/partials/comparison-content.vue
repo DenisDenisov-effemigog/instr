@@ -62,9 +62,15 @@
                                     :max-amount="product.stock"
                                 >
                                 </component>
-                                <svg class="comparisons__card-del-btn" @click="deleteItem(product.id)">
-                                    <use xlink:href="/images/sprite.svg#icons__delete"></use>
-                                </svg>
+                                <component is="to-compare" 
+                                        class="card__button-block_to-compare" 
+                                        :id="product.id" 
+                                        :compare="product.is_compare"
+                                >
+                                    <svg class="comparisons__card-del-btn">
+                                        <use xlink:href="/images/sprite.svg#icons__delete"></use>
+                                    </svg>
+                                </component>
                             </div>
                         </div>
                     </div>
@@ -190,23 +196,6 @@
                 } else if (this.qnty < 3) {
                     this.options.responsive[0].settings.slidesToShow = 2;
                 }
-            },
-            deleteItem(id) {
-                // this.comparisons.forEach((item, index) => {
-                //     if (item.id == id) {
-                //         this.comparisons.splice(index, 1);
-                //         this.$refs.thumbnails.goTo(0) // don't forget this
-                //         if (this.qnty == 2) {
-                //             this.shownItemsQnty = this.qnty
-                //         }
-                //     }
-                // })
-                let vm = this;
-                vm.$store.dispatch('comparisonsChange', {
-                    productId: id
-                }).finally(() => {
-                    // vm.is_compare = !vm.is_compare
-                });
             },
             changeComparisons() {
                 console.log('changing comparison')

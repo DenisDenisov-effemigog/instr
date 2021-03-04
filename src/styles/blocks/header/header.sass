@@ -151,34 +151,45 @@
                     color: $primary-hover
                     & svg
                         fill: $icon-red
-            .header__menu-icon
-                fill: $light-grey
-                margin-bottom: .25rem
     &__menu-item
         padding-right: 1.5rem
         &:last-child
             padding-right: 0
     &__menu-link
         @extend .link-3 
-        cursor: pointer   
-        position: relative
+        cursor: pointer
         display: flex
         flex-direction: column
         justify-content: space-between
         align-items: center
-        +desktop-small
-            height: 3rem
+        // +desktop-small
+        //     height: 3rem
         &:hover
-            & > .header__menu-icon
+            & .header__menu-icon
                 fill: $icon-red
             .header__menu-tooltip
                 display: block
                 top: 3.625rem
+
+    &__menu-icon-wrapper
+        position: relative
+        display: flex
+        flex-direction: column
+        margin-bottom: .125rem
+        +desktop-small
+            margin-bottom: .25rem
+    &__menu-icon
+        transition: .35s
+        fill: $light-grey
+        width: $size_24
+        height: $size_24
+        +desktop-small
+            fill: $icon-black
     &__mini-cloud
         @extend .subtitle-2
         position: absolute
         top: -.625rem
-        right: 0
+        right: -1rem
         display: flex
         justify-content: center
         align-items: center
@@ -189,15 +200,14 @@
         background-color: $primary-red
         color: $white
         z-index: 4
-        +desktop-small
-            right: 0.375rem
 
-    &__menu-icon
-        transition: .35s
-        margin-bottom: .5rem
-        fill: $icon-black
-        width: $size_19
-        height: $size_20
+    &__menu-text
+        font-size: $font-size_11
+        line-height: $line-height_12
+        +desktop-small
+            font-size: $font-size_3
+            line-height: $line-height_3
+
     &__menu-tooltip
         @extend .tooltip
         transition: .35s

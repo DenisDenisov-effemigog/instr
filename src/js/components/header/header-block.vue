@@ -23,9 +23,11 @@
         <ul class="header__menu">
             <li class="header__menu-item">
                 <div class="header__menu-link">
-                    <svg class="header__menu-icon" viewBox="-2 0 19 20">
-                        <use :xlink:href="templatePath + 'images/sprite.svg#icons__user'"></use>
-                    </svg>
+                    <div class="header__menu-icon-wrapper">
+                        <svg class="header__menu-icon" viewBox="-4 -2 24 24">
+                            <use :xlink:href="templatePath + 'images/sprite.svg#icons__user'"></use>
+                        </svg>
+                    </div>
                     <p class="header__menu-text" v-if="!user.authorized">{{ $tc('title.enter') }}</p>
                     <div class="header__menu-tooltip" v-if="!user.authorized">
                         <div @click.prevent="openModal('user', 'login')" class="header__menu-tooltip-layout">
@@ -49,12 +51,7 @@
                 <component is="compare-mini"></component>
             </li>
             <li class="header__menu-item">
-                <a :href="favoritesLink" class="header__menu-link">
-                    <svg class="header__menu-icon">
-                        <use :xlink:href="templatePath + 'images/sprite.svg#icons__heart'"></use>
-                    </svg>
-                    <p class="header__menu-text">{{ $tc('header.menu.favorite') }}</p>
-                </a>
+                <component is="favorite-mini"></component>
             </li>
             <li class="header__menu-item">
                 <component is="cart-mini"></component>
@@ -67,7 +64,6 @@
     import showCatalogue from '../catalogue/show-catalogue.vue';
     import headerSearch from './search/header-search.vue';
     import tooltipProfile from './tooltip-profile.vue';
-    import config from "../../config";
 
 export default {
     name: "header-block",
@@ -83,7 +79,6 @@ export default {
     data(){
         return{
             activeSearch: false,
-            favoritesLink: config.links.favorites
         }
     },
     methods:{

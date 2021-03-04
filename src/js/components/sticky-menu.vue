@@ -15,26 +15,17 @@
             </li>
             <li class="header__menu-item">
                 <component is="compare-mini"></component>
-                <!-- <a :href="compareLink" class="header__menu-link">
-                    <svg class="header__menu-icon">
-                        <use :xlink:href="templatePath + 'images/sprite.svg#icons__graf'"></use>
-                    </svg>
-                    <p class="header__menu-text">{{ $tc('link.to_compare') }}</p>
-                </a> -->
             </li>
             <li class="header__menu-item">
-                <a :href="favoritesLink" class="header__menu-link">
-                    <svg class="header__menu-icon">
-                        <use :xlink:href="templatePath + 'images/sprite.svg#icons__heart'"></use>
-                    </svg>
-                    <p class="header__menu-text">{{ $tc('header.menu.favorite') }}</p>
-                </a>
+                <component is="favorite-mini"></component>
             </li>
             <li class="header__menu-item" v-if="!user.authorized">
                 <a :href="profileLink" class="header__menu-link" @click.prevent="clickMenu('profile')">
-                    <svg class="header__menu-icon">
-                        <use :xlink:href="templatePath + 'images/sprite.svg#icons__user'"></use>
-                    </svg>
+                    <div class="header__menu-icon-wrapper">
+                        <svg class="header__menu-icon" viewBox="-4 -2 24 24">
+                            <use :xlink:href="templatePath + 'images/sprite.svg#icons__user'"></use>
+                        </svg>
+                    </div>
                     <p class="header__menu-text">{{ $tc('title.enter') }}</p>
                 </a>
             </li>
@@ -44,23 +35,16 @@
                     :class="{'header__menu-link--active': menuLink === 'profile' || menuLink === 'search'}"
                     @click.prevent="clickMenu('profile')"
                 >
-                    <svg class="header__menu-icon">
-                        <use :xlink:href="templatePath + 'images/sprite.svg#icons__user'"></use>
-                    </svg>
+                    <div class="header__menu-icon-wrapper">
+                        <svg class="header__menu-icon" viewBox="-4 -2 24 24">
+                            <use :xlink:href="templatePath + 'images/sprite.svg#icons__user'"></use>
+                        </svg>
+                    </div>
                     <p class="header__menu-text">{{ $tc('header.menu.profile') }}</p>
                 </a>
             </li>
             <li class="header__menu-item">
                 <component is="cart-mini"></component>
-                <!-- <a :href="cartLink" class="header__menu-link header__menu-link--active">
-                    <svg class="header__menu-icon">
-                        <use :xlink:href="templatePath + 'images/sprite.svg#icons__cart'"></use>
-                    </svg>
-                    <p class="header__menu-text">{{ $tc('header.menu.cart') }}</p>
-                    <span class="header__mini-cloud" v-if="productsQuantity > 0">
-                        {{productsQuantity}}
-                    </span>
-                </a> -->
             </li>
         </ul>
     </div>
@@ -77,9 +61,6 @@ export default {
     data(){
         return{
             menuLink: '',
-            // compareLink: config.links.compare,
-            favoritesLink: config.links.favorites,
-            // cartLink: config.links.cart,
             profileLink: config.links.personal,
         }
     },
@@ -109,11 +90,5 @@ export default {
             this.menuLink = ''
         },
     },
-    // computed: {
-    //     productsQuantity() {
-    //         const basketData = this.$store.getters.basketProductsSummary;
-    //         return basketData.quantity;
-    //     },
-    // }
 }
 </script>

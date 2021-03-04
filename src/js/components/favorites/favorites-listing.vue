@@ -86,9 +86,6 @@ import config from "../../config";
                 catalogLink: config.links.catalog,
             }
         },
-        mounted() {
-            this.$store.dispatch('favoritesUpdateProducts');
-        },
         computed: {
             favorites(){
                 return this.$store.state.listing.favorites.filter(item => item.is_favorite === true)

@@ -9,7 +9,7 @@
             <h2 v-show='value === "new" && successFlag === "pay"' 
                 class="checkout__title"
             >{{ $tc('checkout.title') }}</h2>
-            <div v-show="successFlag === 'pay' && !user.authorized" 
+            <div v-show="successFlag === 'pay' && user && !user.authorized || !user && successFlag === 'pay'" 
                  class="checkout-choice"
             >
                 <div class="checkout-choice__title">{{ $tc('checkout.title.contacts') }}</div>
@@ -28,7 +28,7 @@
             </div>
             <div v-show="successFlag === 'pay'" class="checkout__content">
                 <div v-show='value === "new"' class="checkout__desc">
-                     <div class="checkout__tabs" v-if="!user.authorized">
+                     <div class="checkout__tabs" v-if="user && !user.authorized || !user">
                         <div class="checkout__tab"
                             :class="{'checkout__tab--active': currentTab === 'individual'}"
                             @click="showTab('individual')"
@@ -38,7 +38,7 @@
                             @click="showTab('corporate')"
                         >{{ $tc('title.person_corporate') }}</div>
                     </div>
-                    <checkout-reg v-if="!user.authorized"
+                    <checkout-reg v-if="user && !user.authorized || !user"
                         :IndividualFlag="IndividualFlag"
                         :currentTab="currentTab"
                         :phoneMask="phoneMask"
@@ -145,7 +145,7 @@
                 type: Array
             },
             user: {
-                required: true,
+                default: {},
                 type: Object
             },
             payments: {
@@ -199,8 +199,8 @@
                 userData: {},
                 personType: 2,
                 message: '',
-                currentDeliveryPoint: this.deliveries[0].type,
-                currentDeliveryPayment: this.payments[0].value,
+                currentDeliveryPoint: this.deliveries[0].id,
+                currentDeliveryPayment: this.payments[0].id,
                 date: '',
                 pointAddress: this.deliveryPoints[0],
                 deliveryAddress: '',
@@ -248,11 +248,11 @@
                 this.userData.phone = phone
                 this.userData.newEmail = newEmail
             },
-            buildDeliveryPoint(point){
-                this.currentDeliveryPoint = point
+            buildDeliveryPoint(id){
+                this.currentDeliveryPoint = id
             },
-            buildDeliveryPayment(type){
-                this.currentDeliveryPayment = type
+            buildDeliveryPayment(id){
+                this.currentDeliveryPayment = id
             },
             buildDeliveryAddress(name, address){
                 if(name === 'delivery-address'){
@@ -296,87 +296,112 @@
                     vm.deliveryAddress = vm.addresses[0]
                 }
                 
-                let orderData = {}
-                if (!vm.user.authorized) {
+                let userReg = {}
+                let addressDelivery = ''
+                if (vm.user && !vm.user.authorized || !vm.user) {
                     if (vm.personType === 1) {
                         if (vm.userData.name && vm.userData.phone && vm.userData.newEmail) {
-                            if (vm.currentDeliveryPoint === 'delivery') {
+                            if (vm.currentDeliveryPoint === 1) {
                                 if (vm.deliveryNewAddress.city && 
                                     vm.deliveryNewAddress.street && 
                                     vm.deliveryNewAddress.house && 
                                     vm.deliveryNewAddress.apart
                                 ) {
-                                    orderData.personeType = vm.personType
-                                    orderData.registrationData = vm.userData
-                                    orderData.delivery = vm.currentDeliveryPoint
-                                    orderData.deliveryAddress = vm.deliveryNewAddress
+                                    userReg.is_company = false
+                                    userReg.name = vm.userData.name
+                                    userReg.email = vm.userData.newEmail
+                                    userReg.phone = vm.userData.phone
+                                    addressDelivery = vm.deliveryNewAddress
                                 } else {
                                     vm.$eventBus.$emit('address-error')
                                     vm.$eventBus.$emit('autocomplete-error')
                                 }
-                            } else if (vm.currentDeliveryPoint === 'receive') {
-                                orderData.personeType = vm.personType
-                                orderData.registrationData = vm.userData
-                                orderData.delivery = vm.currentDeliveryPoint
-                                orderData.deliveryAddress = vm.pointAddress.label
+                            } else if (vm.currentDeliveryPoint === 2) {
+                                userReg.is_company = false
+                                userReg.name = vm.userData.name
+                                userReg.email = vm.userData.newEmail
+                                userReg.phone = vm.userData.phone
+                                addressDelivery = vm.pointAddress.label
                             }
                         } else {
                             vm.$eventBus.$emit('register-error')
                         }
                     } else if (vm.personType === 2) {
                         if (vm.userData.name && vm.userData.company && vm.userData.code && vm.userData.phone && vm.userData.newEmail) {
-                            if (vm.currentDeliveryPoint === 'delivery') {
+                            if (vm.currentDeliveryPoint === 1) {
                                 if (vm.deliveryNewAddress.city &&
                                     vm.deliveryNewAddress.street &&
                                     vm.deliveryNewAddress.house &&
                                     vm.deliveryNewAddress.apart
                                 ) {
-                                    orderData.personeType = vm.personType
-                                    orderData.registrationData = vm.userData
-                                    orderData.delivery = vm.currentDeliveryPoint
-                                    orderData.deliveryAddress = vm.deliveryNewAddress
+                                    userReg.is_company = true
+                                    userReg.name = vm.userData.name
+                                    userReg.company = vm.userData.company
+                                    userReg.inn = vm.userData.code
+                                    userReg.email = vm.userData.newEmail
+                                    userReg.phone = vm.userData.phone
                                 } else {
                                     vm.$eventBus.$emit('address-error')
                                     vm.$eventBus.$emit('autocomplete-error')
                                 }
-                            } else if (vm.currentDeliveryPoint === 'receive') {
-                                orderData.personeType = vm.personType
-                                orderData.registrationData = vm.userData
-                                orderData.delivery = vm.currentDeliveryPoint
-                                orderData.deliveryAddress = vm.pointAddress.label
+                            } else if (vm.currentDeliveryPoint === 2) {
+                                userReg.is_company = true
+                                userReg.name = vm.userData.name
+                                userReg.company = vm.userData.company
+                                userReg.inn = vm.userData.code
+                                userReg.email = vm.userData.newEmail
+                                userReg.phone = vm.userData.phone
+                                addressDelivery = vm.pointAddress.label
                             }
                         } else {
                             vm.$eventBus.$emit('register-error')
                         }
                     }
-                } else if (vm.user.authorized) {
-                    if (vm.currentDeliveryPoint === 'receive') {
-                        orderData.delivery = vm.currentDeliveryPoint
-                        orderData.deliveryAddress = vm.pointAddress.label
-                    } else if (vm.currentDeliveryPoint === 'delivery') {
+                } else if (vm.user && vm.user.authorized) {
+                    if (vm.currentDeliveryPoint === 2) {
+                        addressDelivery = vm.pointAddress.label
+                    } else if (vm.currentDeliveryPoint === 1) {
                         if (!vm.addresses.length) {
                             if (vm.deliveryNewAddress.city &&
                                 vm.deliveryNewAddress.street &&
                                 vm.deliveryNewAddress.house &&
                                 vm.deliveryNewAddress.apart
                             ) {
-                                orderData.delivery = vm.currentDeliveryPoint
-                                orderData.deliveryAddress = vm.deliveryNewAddress
+                                addressDelivery = vm.deliveryNewAddress
                             } else {
                                 vm.$eventBus.$emit('address-error')
-                                
+                                vm.$eventBus.$emit('autocomplete-error')
                             }
                         } else if (vm.addresses.length) {
-                            orderData.delivery = vm.currentDeliveryPoint
-                            orderData.deliveryAddress = vm.deliveryAddress.label
+                            addressDelivery = vm.deliveryAddress.label
                         }
                     }
                 }
                 
-                if (orderData.delivery) {
-                    api.orderValidate(orderData, vm.actionsAgreement, vm.message, vm.date).then(() => {
-                        api.orderCreate(orderData, vm.actionsAgreement, vm.message, vm.date).then(answer => {
-                            if (answer.order) {
+                if (this.user && this.user.authorized && addressDelivery.length ||
+                    this.user && this.user.authorized && Object.keys(addressDelivery).length ||
+                    !this.user && Object.keys(userReg).length && Object.keys(addressDelivery).length ||
+                    this.user && !this.user.authorized && Object.keys(userReg).length && Object.keys(addressDelivery).length
+                ) {
+                    api.orderValidate(
+                        userReg, 
+                        vm.currentDeliveryPayment, 
+                        vm.currentDeliveryPoint, 
+                        addressDelivery, 
+                        vm.actionsAgreement, 
+                        vm.message, 
+                        vm.date
+                    ).then(() => {
+                        api.orderCreate(
+                            userReg, 
+                            vm.currentDeliveryPayment, 
+                            vm.currentDeliveryPoint, 
+                            addressDelivery, 
+                            vm.actionsAgreement, 
+                            vm.message, 
+                            vm.date
+                        ).then(answer => {
+                            /*if (answer.order) {
 
                                 if(answer.payment_form) {
                                     let elem = document.createElement('div');
@@ -390,7 +415,7 @@
                                 } else {
                                     window.location.replace(config.links.order_success + answer.order);
                                 }
-                            }
+                            }*/
                         }).catch(errors => {
                             console.error('Cannot create order');
                             console.log(errors);
@@ -400,15 +425,15 @@
                         console.log(errors);
                     })
                 } else {
-                    if (!vm.user.authorized) {
+                    if (vm.user && !vm.user.authorized || !vm.user) {
                         vm.$eventBus.$emit('register-error')
                     }
-                    if (vm.currentDeliveryPoint === 'delivery' && !vm.addresses.length) {
+                    if (vm.currentDeliveryPoint === 1 && vm.user && !vm.addresses.length ||
+                        vm.currentDeliveryPoint === 1 && vm.user && !addressDelivery.length) {
                         vm.$eventBus.$emit('address-error')
-                        
+                        vm.$eventBus.$emit('autocomplete-error')
                     }
                 }
-                console.log(orderData);
             }
         },
     }

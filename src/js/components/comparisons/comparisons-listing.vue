@@ -68,10 +68,6 @@
         created() {
             this.loading()
         },
-        
-        mounted () {
-            this.$store.dispatch('comparisonsUpdateProducts');
-        }
 
     }
 </script>
