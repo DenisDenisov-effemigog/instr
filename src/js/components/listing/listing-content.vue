@@ -29,7 +29,10 @@
             <slot v-else></slot>
         </div>
         <div class="listing__pagination" v-if="internalPagination.current">
-            <component is="pagination-btn"></component>
+            <component is="pagination-btn"
+                :hash="hash" 
+                :currentPage="internalPagination.current"
+            ></component>
             <component 
                 is="pagination"
                 :pagination="internalPagination"
