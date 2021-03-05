@@ -117,19 +117,19 @@ const actions = {
             commit(types.PERSONAL_APPLY_DISCOUNT, profile);
         });
     },
-    personalUpdateOrders: ({commit}, status, page) => {
+    personalUpdateOrders: ({commit}, data) => {
+        let status = null;
+        let page = null
+        if (!!data) {
+            status = data.status;
+            page = data.page
+        }
         api.personalOrders(status, page).then((answer) => {
             commit(types.PERSONAL_APPLY_ORDERS, answer);
-            // if(answer.orders) {
-            //     commit(types.PERSONAL_APPLY_ORDERS, answer.orders);
-            // }
+        }).catch(errors => {
+            console.log(errors);
         });
     },
-    // personalSortOrders: ({commit}, status) => {
-    //     api.sortOrders(status).then((answer) => {
-    //         commit(types.PERSONAL_APPLY_ORDERS, answer);
-    //     });
-    // },
     personalUpdateFinanceData: ({commit}) => {
         api.personalFinance().then((answer) => {
             if(answer.financeData) {

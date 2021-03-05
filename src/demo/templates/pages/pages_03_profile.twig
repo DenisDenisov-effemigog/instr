@@ -1136,20 +1136,6 @@
     {title: 'Бренды', url: ''},
     {title: 'Акции', url: ''},
 ] %}
-{% set pagination = {
-    'total': 106,
-    'current': 3,
-    'url_previous': '/some/category/page/2',
-    'url_next': '/some/category/page/4',
-    'url_last': '/some/category/page/last',
-    'urls': 
-    [
-        {title: '1', url: '/some/category/page/1'},
-        {title: '2', url: '/some/category/page/2'},
-        {title: '3', url: ''},
-        {title: '4', url: '/some/category/page/4'},
-    ]
-} %}
 {% set footerLinks = {
     agreement: {title: 'Пользовательское соглашение', url: ''},
     contacts: {
@@ -1199,8 +1185,7 @@
         'sort_types': sort_types,
         'sort_type': sort_type,
         'pre_link': ' ',
-        'user': user,
-        'pagination': pagination,
+        'user': user
     } %}
     {% include '../../../templates/footer/footer.twig'  with {
         'countries': countries,
