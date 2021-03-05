@@ -73,21 +73,24 @@
         methods: {
             goToPage(page) {
                 let vm = this
-                api.goToPage(vm.hash, page).then((answer) => {
-                    if (this.placement === '.listing') {
+                if (vm.placement === '.listing') {
+                    api.goToPage(vm.hash, page).then((answer) => {
                         vm.$eventBus.$emit('apply-listing', answer.output);
-                    } else if (this.placement === '.order__list') {
-
-                    }
-
-                    if (window.innerWidth > 767) {
-                        this.scrollTop(this.placement, 130);
-                    } else {
-                        this.scrollTop(this.placement, 50);
-                    }
-                }).catch(errors => {
-                    console.error(errors);
-                });
+                        vm.scrollList();
+                    }).catch(errors => {
+                        console.log(errors);
+                    });
+                } else if (vm.placement === '.order') {
+                    vm.$eventBus.$emit('apply-orders-list', page);
+                    vm.scrollList();
+                }
+            },
+            scrollList() {
+                if (window.innerWidth > 767) {
+                    this.scrollTop(this.placement, 130);
+                } else {
+                    this.scrollTop(this.placement, 50);
+                }
             }
         }
     }

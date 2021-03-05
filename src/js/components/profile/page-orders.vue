@@ -4,12 +4,12 @@
             <h2 class="profile__title">{{ $tc(h1) }}</h2>
         </div>
 
-        <div v-if="ordersAll.length === 0" class="profile__empty-content">
+        <div v-if="ordersOnPage.length === 0" class="profile__empty-content">
             <div class="order__text">{{ $tc('profile_orders.empty_text') }}</div>
             <a :href="catalogLink" class="profile__catalogue-btn">{{ $tc('button.move_to_catalog') }}</a>
         </div>
 
-        <div class="order__info" v-if="!details && ordersAll.length !== 0">
+        <div class="order__info" v-if="!details && ordersOnPage.length !== 0">
             <div class="order__info-icon">
                 <svg>
                     <use :xlink:href="templatePath + 'images/sprite.svg#icons__wanted'"></use>
@@ -18,7 +18,7 @@
             <div class="order__info-text">{{ $tc('profile_orders.info_text') }}</div>
         </div>
         
-        <div class="order__info-select" v-if="!details && ordersAll.length !== 0">
+        <div class="order__info-select" v-if="!details && ordersOnPage.length !== 0">
             <select-list
                 :points="points"
                 :selectopenSelect="selectopenSelect"
@@ -26,7 +26,7 @@
             ></select-list>
         </div>
         <div class="order__main">
-            <order-list v-model="details" :orders="paginatedOrders"></order-list>
+            <order-list v-model="details" :orders="ordersOnPage"></order-list>
         </div>
         <div class="order__pagination">
             <component 
@@ -35,7 +35,7 @@
                 :placement="'.order'"
             >
             </component>
-            <!-- <order-pagination v-model="pageNumber" :pageAmount="showPages" v-if="ordersAll.length > 0"></order-pagination> -->
+            <!-- <order-pagination v-model="pageNumber" :pageAmount="showPages" v-if="ordersOnPage.length > 0"></order-pagination> -->
         </div>
     </div>
     <div v-else class="preloader">
@@ -69,33 +69,31 @@
                 type: Object,
                 required: true,
             },
-            pagination: {
-                type: Object,
-                default: {}
-            }
         },
         data(){
             return{
                 profile: [],
                 details: false,
-                pageNumber: 1,
-                onPage: 10,
+                // pageNumber: 1,
+                // onPage: 10,
                 loaded: false,
                 catalogLink: config.links.catalog,
-                internalPagination: {},
+                // internalPagination: {},
+                selectedStatus: ''
             }
         },
         mounted() {
             this.$store.dispatch('personalUpdateOrders');
             this.$eventBus.$emit('hideMenu');
-            this.internalPagination = this.pagination;
         },
         created(){
             this.loading();
             this.$eventBus.$on('apply-sorting', this.applySorting);
+            this.$eventBus.$on('apply-orders-list', this.applyOrdersList);
         },
         beforeDestroy() {
             // this.$eventBus.$off('apply-sorting');
+            this.$eventBus.$off('apply-orders-list');
         },
         methods:{
             loading(){
@@ -105,23 +103,37 @@
                 }, 500)
             },
             applySorting(status) {
-                this.$store.dispatch('personalUpdateOrders', status);
-                this.pageNumber = 1;
+                let data = {
+                    status: status,
+                    page: 1
+                }
+                this.$store.dispatch('personalUpdateOrders', data);
+                this.selectedStatus = status
+            },
+            applyOrdersList(page) {
+                let data = {
+                    status: this.selectedStatus,
+                    page: page
+                }
+                this.$store.dispatch('personalUpdateOrders', data);
             },
         },
         computed: {
-            ordersAll() {
+            ordersOnPage() {
                 return this.$store.state.personal.orders.orders;
             },
             h1() {
                 return this.$store.state.layout.h1;
             },
-            showPages() {
-                return Math.ceil(this.ordersAll.length / this.onPage);
-            },
-            paginatedOrders() {
-                return this.ordersAll.slice((this.pageNumber - 1) * this.onPage, this.pageNumber * this.onPage);
+            internalPagination() {
+                return this.$store.state.personal.orders.pagination
             }
+            // showPages() {
+            //     return Math.ceil(this.ordersOnPage.length / this.onPage);
+            // },
+            // paginatedOrders() {
+            //     return this.ordersOnPage.slice((this.pageNumber - 1) * this.onPage, this.pageNumber * this.onPage);
+            // }
         }
     }
 </script>

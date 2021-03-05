@@ -492,7 +492,7 @@ let demoDiscount = [
 ];
 let demoOrders = [];
 //let baseOrderDate = new Date('2020-02-14');
-for(let i = 0; i < 76; ++i) {
+for(let i = 0; i < 10; ++i) {
     /*let newOrderDate = new Date(baseOrderDate.valueOf());
     newOrderDate.setDate(newOrderDate.getDate() + i);
     newOrderDate = Math.round(newOrderDate.getTime()/1000);*/
@@ -1926,7 +1926,7 @@ window.runAction = function (action, config) {
                     reject(new Error('Wrong config'));
                 }
 
-                if (!config.data.status) {
+                if (!config.data.status && !config.data.page) {
                     resolve({
                         data: {
                             data: {
@@ -1934,13 +1934,50 @@ window.runAction = function (action, config) {
                                 answer: {
                                     orders: demoOrders,
                                     pagination: {
-                                        current: 1,
-                                        total: 5
+                                        'total': 105,
+                                        'current': 1,
+                                        'url_previous': '/some/category/page/2',
+                                        'url_next': '/some/category/page/4',
+                                        'url_last': '/some/category/page/last',
+                                        'urls': 
+                                        [
+                                            {title: '1', url: '/some/category/page/1'},
+                                            {title: '2', url: '/some/category/page/2'},
+                                            {title: '3', url: ''},
+                                            {title: '4', url: '/some/category/page/4'},
+                                        ]
                                     }
                                 },
                             }
                         }
                     });
+                    break;
+                } else if (!config.data.status && config.data.page) {
+                    resolve({
+                        data: {
+                            data: {
+                                status: 1,
+                                answer: {
+                                    orders: demoOrders,
+                                    pagination: {
+                                        'total': 104,
+                                        'current': +config.data.page,
+                                        'url_previous': '/some/category/page/2',
+                                        'url_next': '/some/category/page/4',
+                                        'url_last': '/some/category/page/last',
+                                        'urls': 
+                                        [
+                                            {title: '1', url: '/some/category/page/1'},
+                                            {title: '2', url: '/some/category/page/2'},
+                                            {title: '3', url: ''},
+                                            {title: '4', url: '/some/category/page/4'},
+                                        ]
+                                    }
+                                },
+                            }
+                        }
+                    });
+                    break;
                 } else {
                     const filterOrders = (status) => {
                         return demoOrders.filter(order => {
@@ -1955,15 +1992,25 @@ window.runAction = function (action, config) {
                                 answer: {
                                     orders: demoSortedOrders,
                                     pagination: {
-                                        current: 1,
-                                        total: 5
+                                        'total': 103,
+                                        'current': +config.data.page,
+                                        'url_previous': '/some/category/page/2',
+                                        'url_next': '/some/category/page/4',
+                                        'url_last': '/some/category/page/last',
+                                        'urls': 
+                                        [
+                                            {title: '1', url: '/some/category/page/1'},
+                                            {title: '2', url: '/some/category/page/2'},
+                                            {title: '3', url: ''},
+                                            {title: '4', url: '/some/category/page/4'},
+                                        ]
                                     }
                                 },
                             }
                         }
                     });
-                }         
-                break;
+                    break;
+                }
 
             case 'instrument2:rest.api.user.order.get':
                 //debugger;
