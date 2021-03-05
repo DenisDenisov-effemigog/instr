@@ -401,7 +401,7 @@
                             vm.message, 
                             vm.date
                         ).then(answer => {
-                            /*if (answer.order) {
+                            if (answer.order) {
 
                                 if(answer.payment_form) {
                                     let elem = document.createElement('div');
@@ -415,7 +415,7 @@
                                 } else {
                                     window.location.replace(config.links.order_success + answer.order);
                                 }
-                            }*/
+                            }
                         }).catch(errors => {
                             console.error('Cannot create order');
                             console.log(errors);
