@@ -920,6 +920,9 @@
     }
 ] %}
 
+{% set filtersTitle = "Автомобильный инструмент" %}
+{% set filtersSubTitle = "Аксессуары автомобильные" %}
+
 {% set treeCategories = [
     {
         'title': 'Автомобильный инструмент',
@@ -1156,6 +1159,26 @@
             {'title': 'Всё для рассады', 'url': '', 'subcategories':[]}
         ]
     },
+] %}
+
+{% set listCategory = [
+    {'title': 'Ареометры', 'url': '', 'checked': true},
+    {'title': 'Воронки', 'url': '', 'checked': false},
+    {'title': 'Держатели телефонов и планшетов', 'url': '', 'checked': false},
+    {'title': 'Знаки аварийной остановки', 'url': '', 'checked': false},
+    {'title': 'Канистры для топлива', 'url': '', 'checked': false},
+    {'title': 'Компрессоры автомобильные', 'url': '', 'checked': false},
+    {'title': 'Органайзеры', 'url': '', 'checked': false},
+    {'title': 'Пакеты для шин', 'url': '', 'checked': false},
+    {'title': 'Провода стартовые', 'url': '', 'checked': false},
+    {'title': 'Резинки багажные', 'url': '', 'checked': false},
+    {'title': 'Ремни багажные', 'url': '', 'checked': false},
+    {'title': 'Салфетки и губки', 'url': '', 'checked': false},
+    {'title': 'Скребки и водосгоны', 'url': '', 'checked': false},
+    {'title': 'Тросы буксировочные', 'url': '', 'checked': false},
+    {'title': 'Удобства в автомобиле', 'url': '', 'checked': false},
+    {'title': 'Щетки стеклоочистителя', 'url': '', 'checked': false},
+    {'title': 'Щетки-сметки', 'url': '',}
 ] %}
 
 
@@ -2044,6 +2067,9 @@
         'shields': shields,
         'treeCategories': treeCategories[0],
         'listingCategoryTitle': treeCategories[0].title,
+        'listCategory': listCategory,
+        'title': filtersTitle,
+        'sub_title': filtersSubTitle,
         'filters': filters,
         'view_type': view_type,
         'pagination': pagination,

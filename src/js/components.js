@@ -83,6 +83,7 @@ import filters from './components/listing/filters/filters.vue';
 import allCategories from './components/listing/all-categories.vue';
 import listingSubcategories from './components/listing/listing-subcategories.vue';
 import filterBlock from './components/listing/filters/filter-block.vue';
+import filterCategory from './components/listing/filters/filter-category.vue';
 import filterClearBtn from './components/listing/filters/filter-clear-btn.vue';
 import filterControlRange from './components/listing/filters/filter-control-range.vue';
 import FilterControlsCheckbox from './components/listing/filters/filter-controls-checkbox.vue';
@@ -219,5 +220,6 @@ export default {
         favoritesListing,
         favoritesListingCategory,
         comparisonsListing,
+        filterCategory,
     },
 }
