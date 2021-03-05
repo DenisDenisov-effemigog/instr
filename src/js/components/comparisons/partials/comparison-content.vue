@@ -86,9 +86,9 @@
 
         <div class="comparisons__bottom">
             <div class="comparisons__comparing">
-                <ul class="comparisons__sidebar">
-                    <li class="comparisons__sidebar-item">Цена</li>
-                    <li ref="sideItems" class="comparisons__sidebar-item" v-for="item in Object.keys(comparisons[0].otherOptions)">{{ item }}</li>
+                <ul ref="sideList" class="comparisons__sidebar">
+                    <li  class="comparisons__sidebar-item">Цена</li>
+                    <li  class="comparisons__sidebar-item" v-for="item in Object.keys(comparisons[0].otherOptions)">{{ item }}</li>
                 </ul>
 
                 <div class="comparisons__descriptions">
@@ -209,18 +209,20 @@
                 }
             },
             getSideItems(){
-                if(window.innerWidth > 1024){
-                    let sideItems = this.$refs.sideItems
+                if(window.innerWidth >= 1024){
+                    let sideItems = this.$refs.sideList.children
                     let descList = this.$refs.descList
                     descList.forEach(function(list){
-                        for(let i = 1; i < list.children.length; i++){
-                            let sideItemsH = sideItems[i - 1].clientHeight
-                            let itemsHeight = list.children[i].clientHeight
-                            if(sideItemsH > itemsHeight){
-                                list.children[i].style.height = sideItemsH + 'px'
-                            }else{
-                                sideItems[i - 1].style.height = itemsHeight + 'px'
-                            }
+                        if(list.closest('.agile__slides--regular')){
+                            for(let i = 1; i < list.children.length; i++){
+                                let sideItemsH = sideItems[i].clientHeight
+                                let itemsHeight = list.children[i].clientHeight
+                                if(sideItemsH > itemsHeight){
+                                    list.children[i].style.height = sideItemsH + 'px'
+                                }else{
+                                    sideItems[i].style.height = itemsHeight + 'px'
+                                }
+                            } 
                         }
                     })
                 }
@@ -242,7 +244,9 @@
             this.changeShownQnty();
             this.asNavFor1.push(this.$refs.thumbnails);
             this.asNavFor2.push(this.$refs.main);
-            this.getSideItems()
+            setTimeout(() => {
+                this.getSideItems()
+            }, 500);
 
         }
     }
