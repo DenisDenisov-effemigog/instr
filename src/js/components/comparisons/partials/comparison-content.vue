@@ -10,10 +10,11 @@
                         :placeholder="$tc('text.category')"
                     >
                     </select-list>
-                    <label>
+                    <label @click="filterComparison">
                         <input
                             class="comparisons__checkbox"
-                            type="checkbox">
+                            type="checkbox"
+                            v-model="checked">
                         <span class="comparisons__checkbox-label">
                             <svg class="comparisons__checkbox-svg" viewBox="0 0 10 8">
                                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__checked'"></use>
@@ -170,6 +171,9 @@
             }
         },
         methods: {
+            filterComparison(){
+                this.$store.dispatch('comparisonsFilter');
+            },
             slideToPrev() {
                 if (window.innerWidth > 767 && this.qnty > 3) {
                     this.$refs.thumbnails.goToPrev()
