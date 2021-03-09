@@ -1,7 +1,7 @@
 <template> 
     <div>
         <!-- top part of comparison -->
-        <comparisons-top>
+        <sticky-comparisons-top>
             <div class="comparisons__category-selection">
                 <div>
                     <select-list
@@ -14,7 +14,7 @@
                     <label>
                         <input
                             class="comparisons__checkbox"
-                         м   type="checkbox">
+                            type="checkbox">
                         <span class="comparisons__checkbox-label">
                             <svg class="comparisons__checkbox-svg" viewBox="0 0 10 8">
                                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__checked'"></use>
@@ -82,7 +82,7 @@
                     </div>
                 </agile>
             </div>
-        </comparisons-top>
+        </sticky-comparisons-top>
 
         <!-- the bottom part of comparison -->
 
@@ -106,11 +106,15 @@
                             v-for="(product, index) in comparisons"
                             :key="index">
                             <li>
-                                <div class="comparisons__sidebar-item">{{ $tc('text.price') }}</div>
+                                <div class="comparisons__sidebar-item">
+                                    <span v-if="index === 0">{{ $tc('text.price') }}</span>
+                                </div>
                                 <div class="comparisons__description-text">{{ product.newPrice }}</div>
                             </li>
-                            <li v-for="(item, index) in sliceList(product.otherOptions)" :key="index">
-                                <div class="comparisons__sidebar-item">{{ item[0] }}</div>
+                            <li v-for="(item, i) in sliceList(product.otherOptions)" :key="i">
+                                <div class="comparisons__sidebar-item">
+                                    <span v-if="index === 0">{{ item[0] }}</span>
+                                </div>
                                 <div class="comparisons__description-text" v-if="!!item[1]">{{ item[1] }}</div>
                                 <div class="comparisons__description-text" v-else>—</div>
                             </li>
@@ -122,7 +126,7 @@
             </div>
             <a class="comparisons__deploy"
                 :class="{'comparisons__deploy--expanded': expanded}"
-                @click.prevent="expanded = !expanded"
+                @click.prevent="expanded = true"
                 v-if="!expanded"
             >
                 {{ $tc('comparisons.text.deploy') }}
@@ -136,13 +140,13 @@
 </template>
 
 <script>
-    import comparisonsTop from './sticky-comparisons-top.vue';
+    import stickyComparisonsTop from './sticky-comparisons-top.vue';
     import selectList from '../../partials/select-list.vue';
     import { VueAgile } from 'vue-agile';
 
     export default {
         name: 'comparison-content',
-        components: { comparisonsTop, selectList, agile: VueAgile },
+        components: { stickyComparisonsTop, selectList, agile: VueAgile },
         props: {
             comparingItems: {
                 type: Array
