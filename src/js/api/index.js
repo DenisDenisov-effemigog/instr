@@ -4,12 +4,12 @@ import { date } from 'locutus/php/datetime';
 if (window.runAction == undefined) {
     window.runAction = function (action, payload) {
         //debugger;
-        console.log('runAction call from site');
+        console.log('runAction call from site', action, payload);
         return new Promise((resolve, reject) => {
             //debugger;
             let url = '/bitrix/services/main/ajax.php?action='+encodeURIComponent(action);
             let formData = new HttpDataTransfer(payload.data).getFormData();
-
+            console.log('execAction', action, url, formData);
             axios.post(url, formData, {
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded",
@@ -20,7 +20,7 @@ if (window.runAction == undefined) {
                     resolve(response);
                 })
                 .catch((response) => {
-                    console.error('[BX.ajax error]', response.errors);
+                    console.error('[BX.ajax error]', response, {action: action});
                     reject([{code: 'bx_sys_error', message: ''}]);
                 });
         });
@@ -41,13 +41,13 @@ class HttpDataTransfer
 
     _collectFormData(formData, data, name = '')
     {
-        if (typeof data === 'object')
+        if (typeof data === 'object' && data !== undefined && data !== null)
         {
             Object.keys(data).forEach((index) => {
                 this._collectFormData(formData, data[index], !name ? index : name + '['+index+']');
             });
         }
-        else
+        else if(data !== undefined && data !== null)
         {
             formData.append(name, data);
         }
@@ -81,12 +81,12 @@ class Api {
                             resolve(response.data.answer);
                         }
                     } else {
-                        console.error('[BX.ajax error]', response.errors);
+                        console.error('[BX.ajax error]', response, {action: action});
                         reject([{code: 'bx_sys_error', message: 'Invalid response'}]);
                     }
                 })
                 .catch((response) => {
-                    console.error('[BX.ajax error]', response.errors);
+                    console.error('[BX.ajax error]', response, {action: action});
                     reject([{code: 'bx_sys_error', message: ''}]);
                 });
         });
