@@ -199,7 +199,7 @@
                 userData: {},
                 personType: 2,
                 message: '',
-                currentDeliveryPoint: this.deliveries[0].id,
+                currentDeliveryPoint: this.deliveries[0].type,
                 currentDeliveryPayment: this.payments[0].id,
                 date: '',
                 pointAddress: this.deliveryPoints[0],
@@ -208,14 +208,19 @@
             }
         },
         computed: {
-            addresses() {
-                let selectAddresses = []
-                this.$store.state.personal.addresses.map(address=>{
-                    address.label = this.$tc('text.address') + ' №' + address.order + ': ' + address.address
-                    address.value = address.order
-                    selectAddresses.push(address)
-                })
-                return selectAddresses;
+            addresses: {
+                get: function() {
+                    let selectAddresses = []
+                    this.$store.state.personal.addresses.map(address=>{
+                        address.label = this.$tc('text.address') + ' №' + address.order + ': ' + address.address
+                        address.value = address.order
+                        selectAddresses.push(address)
+                    })
+                    return selectAddresses;
+                },
+                set: function() {
+                    
+                }
             },
             productsPrice() {
                 return this.$store.state.basket.summury
@@ -248,8 +253,8 @@
                 this.userData.phone = phone
                 this.userData.newEmail = newEmail
             },
-            buildDeliveryPoint(id){
-                this.currentDeliveryPoint = id
+            buildDeliveryPoint(point){
+                this.currentDeliveryPoint = point
             },
             buildDeliveryPayment(id){
                 this.currentDeliveryPayment = id
@@ -301,7 +306,7 @@
                 if (vm.user && !vm.user.authorized || !vm.user) {
                     if (vm.personType === 1) {
                         if (vm.userData.name && vm.userData.phone && vm.userData.newEmail) {
-                            if (vm.currentDeliveryPoint === 1) {
+                            if (vm.currentDeliveryPoint === 'delivery') {
                                 if (vm.deliveryNewAddress.city && 
                                     vm.deliveryNewAddress.street && 
                                     vm.deliveryNewAddress.house && 
@@ -316,7 +321,7 @@
                                     vm.$eventBus.$emit('address-error')
                                     vm.$eventBus.$emit('autocomplete-error')
                                 }
-                            } else if (vm.currentDeliveryPoint === 2) {
+                            } else if (vm.currentDeliveryPoint === 'receive') {
                                 userReg.is_company = false
                                 userReg.name = vm.userData.name
                                 userReg.email = vm.userData.newEmail
@@ -328,7 +333,7 @@
                         }
                     } else if (vm.personType === 2) {
                         if (vm.userData.name && vm.userData.company && vm.userData.code && vm.userData.phone && vm.userData.newEmail) {
-                            if (vm.currentDeliveryPoint === 1) {
+                            if (vm.currentDeliveryPoint === 'delivery') {
                                 if (vm.deliveryNewAddress.city &&
                                     vm.deliveryNewAddress.street &&
                                     vm.deliveryNewAddress.house &&
@@ -344,7 +349,7 @@
                                     vm.$eventBus.$emit('address-error')
                                     vm.$eventBus.$emit('autocomplete-error')
                                 }
-                            } else if (vm.currentDeliveryPoint === 2) {
+                            } else if (vm.currentDeliveryPoint === 'receive') {
                                 userReg.is_company = true
                                 userReg.name = vm.userData.name
                                 userReg.company = vm.userData.company
@@ -358,9 +363,9 @@
                         }
                     }
                 } else if (vm.user && vm.user.authorized) {
-                    if (vm.currentDeliveryPoint === 2) {
+                    if (vm.currentDeliveryPoint === 'receive') {
                         addressDelivery = vm.pointAddress.label
-                    } else if (vm.currentDeliveryPoint === 1) {
+                    } else if (vm.currentDeliveryPoint === 'delivery') {
                         if (!vm.addresses.length) {
                             if (vm.deliveryNewAddress.city &&
                                 vm.deliveryNewAddress.street &&
@@ -428,8 +433,8 @@
                     if (vm.user && !vm.user.authorized || !vm.user) {
                         vm.$eventBus.$emit('register-error')
                     }
-                    if (vm.currentDeliveryPoint === 1 && vm.user && !vm.addresses.length ||
-                        vm.currentDeliveryPoint === 1 && vm.user && !addressDelivery.length) {
+                    if (vm.currentDeliveryPoint === 'delivery' && vm.user && !vm.addresses.length ||
+                        vm.currentDeliveryPoint === 'delivery' && vm.user && !addressDelivery.length) {
                         vm.$eventBus.$emit('address-error')
                         vm.$eventBus.$emit('autocomplete-error')
                     }

@@ -102,12 +102,12 @@
                     <agile ref="main" :as-nav-for="asNavFor1" :options="options">
                         <ul ref="descList" class="comparisons__description"
                             :class="{'comparisons__description--no-product': qnty === 1}"
-                            v-for="product in comparisons">
+                            v-for="product in comparisons" :key="product.id">
                             <li>
                                 <div class="comparisons__sidebar-item">{{ $tc('text.price') }}</div>
                                 <div class="comparisons__description-text">{{ product.newPrice }}</div>
                             </li>
-                            <li v-for="item in sliceList(product.otherOptions)">
+                            <li v-for="(item, i) in sliceList(product.otherOptions)" :key="i">
                                 <div class="comparisons__sidebar-item">{{ item[0] }}</div>
                                 <div class="comparisons__description-text" v-if="!!item[1]">{{ item[1] }}</div>
                                 <div class="comparisons__description-text" v-else>—</div>
@@ -174,6 +174,7 @@
                 currentSlideNumber: 0,
                 shownItemsQnty: 2,
                 expanded: false,
+                onlyDiffer: false
             }
         },
         methods: {
