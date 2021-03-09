@@ -209,16 +209,23 @@
     &__sidebar-item
         @extend .title-4
         +until($desktop)
+            position: relative
             font-size: $font-size_3
             line-height: $line-height_3
             padding: .25rem .5rem
             background-color: $pre-white
             width: 200%
+            height: 1.75rem
         +tablet-only
             width: 300%
         &:not(:last-of-type)
             +desktop
                 margin-bottom: 2rem
+        span
+            position: absolute
+            top: 4px
+            left: 8px
+            z-index: 1
 
     // bottom sliders
 

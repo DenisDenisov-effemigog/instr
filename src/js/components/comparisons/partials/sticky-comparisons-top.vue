@@ -8,7 +8,7 @@
 
 <script>
     export default {
-        name: 'comparisons-top',
+        name: 'sticky-comparisons-top',
         data() {
             return {
                 fixed: false,
