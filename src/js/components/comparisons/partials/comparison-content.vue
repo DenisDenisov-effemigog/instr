@@ -88,8 +88,13 @@
         <div class="comparisons__bottom">
             <div class="comparisons__comparing">
                 <ul ref="sideList" class="comparisons__sidebar">
-                    <li  class="comparisons__sidebar-item">Цена</li>
-                    <li  class="comparisons__sidebar-item" v-for="item in Object.keys(comparisons[0].otherOptions)">{{ item }}</li>
+                    <li class="comparisons__sidebar-item">Цена</li>
+                    <li class="comparisons__sidebar-item"
+                        v-for="(item, index) in sliceList(comparisons[0].otherOptions)"
+                        :key="index"
+                    >
+                        {{ item[0] }}
+                    </li>
                 </ul>
 
                 <div class="comparisons__descriptions">
