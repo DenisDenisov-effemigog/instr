@@ -102,6 +102,12 @@ const actions = {
             commit(types.LISTING_APPLY_COMPARE, []);
         });
     },
+
+    comparisonsFilter: ({commit, state}) => {
+        api.filterCompare().then((data) => {
+            commit(types.LISTING_APPLY_COMPARE, data);
+        });
+    },
 }
 
 const getters = {

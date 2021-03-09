@@ -10,11 +10,11 @@
                         :placeholder="$tc('text.category')"
                     >
                     </select-list>
-                    <!-- filter show only differences -->
-                    <label>
+                    <label @click="filterComparison">
                         <input
                             class="comparisons__checkbox"
-                         м   type="checkbox">
+                            type="checkbox"
+                            v-model="checked">
                         <span class="comparisons__checkbox-label">
                             <svg class="comparisons__checkbox-svg" viewBox="0 0 10 8">
                                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__checked'"></use>
@@ -22,7 +22,6 @@
                         </span>
                         <span class="comparisons__checkbox-text">{{ $tc('comparisons.text.only_differences') }}</span>
                     </label>
-                    <!-- end of filter -->
                 </div>
                 <div class="comparisons__slider-actions">
                     <div class="comparisons__slider-text">
@@ -48,7 +47,7 @@
                 <!-- top slider -->
                 <agile ref="thumbnails" :as-nav-for="asNavFor2" :options="options" @after-change="currentSlide($event)">
                     <div class="comparisons__card" 
-                        :class="{'comparisons__card--width-50': qnty}"
+                        :class="{'comparisons__card--width-50': qnty == 1}"
                         v-for="(product, index) in comparisons" :key="index"
                     >
                         <component is="slider-photo-card" 
@@ -89,8 +88,8 @@
         <div class="comparisons__bottom">
             <div class="comparisons__comparing">
                 <ul ref="sideList" class="comparisons__sidebar">
-                    <li  class="comparisons__sidebar-item">Цена</li>
-                    <li  class="comparisons__sidebar-item"
+                    <li class="comparisons__sidebar-item">Цена</li>
+                    <li class="comparisons__sidebar-item"
                         v-for="(item, index) in sliceList(comparisons[0].otherOptions)"
                         :key="index"
                     >
@@ -103,13 +102,12 @@
                     <agile ref="main" :as-nav-for="asNavFor1" :options="options">
                         <ul ref="descList" class="comparisons__description"
                             :class="{'comparisons__description--no-product': qnty === 1}"
-                            v-for="(product, index) in comparisons"
-                            :key="index">
+                            v-for="product in comparisons">
                             <li>
                                 <div class="comparisons__sidebar-item">{{ $tc('text.price') }}</div>
                                 <div class="comparisons__description-text">{{ product.newPrice }}</div>
                             </li>
-                            <li v-for="(item, index) in sliceList(product.otherOptions)" :key="index">
+                            <li v-for="item in sliceList(product.otherOptions)">
                                 <div class="comparisons__sidebar-item">{{ item[0] }}</div>
                                 <div class="comparisons__description-text" v-if="!!item[1]">{{ item[1] }}</div>
                                 <div class="comparisons__description-text" v-else>—</div>
@@ -122,7 +120,7 @@
             </div>
             <a class="comparisons__deploy"
                 :class="{'comparisons__deploy--expanded': expanded}"
-                @click.prevent="expanded = !expanded"
+                @click.prevent="expanded = true"
                 v-if="!expanded"
             >
                 {{ $tc('comparisons.text.deploy') }}
@@ -179,6 +177,9 @@
             }
         },
         methods: {
+            filterComparison(){
+                this.$store.dispatch('comparisonsFilter');
+            },
             slideToPrev() {
                 if (window.innerWidth > 767 && this.qnty > 3) {
                     this.$refs.thumbnails.goToPrev()
