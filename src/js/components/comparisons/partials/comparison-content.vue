@@ -47,7 +47,7 @@
                 <!-- top slider -->
                 <agile ref="thumbnails" :as-nav-for="asNavFor2" :options="options" @after-change="currentSlide($event)">
                     <div class="comparisons__card" 
-                        :class="{'comparisons__card--width-50': comparisons.length == 1}"
+                        :class="{'comparisons__card--width-50': qnty == 1}"
                         v-for="(product, index) in comparisons" :key="index"
                     >
                         <component is="slider-photo-card" 
@@ -76,7 +76,7 @@
                         </div>
                     </div>
                     <!-- the second comparison is not chosen -->
-                    <div class="comparisons__card comparisons__card--no-product" v-if="comparisons.length == 1">
+                    <div class="comparisons__card comparisons__card--no-product" v-if="qnty == 1">
                         <div>{{ $tc('comparisons.text.no_products_chosen') }}</div>
                     </div>
                 </agile>
@@ -101,7 +101,7 @@
                     <!-- bottom slider -->
                     <agile ref="main" :as-nav-for="asNavFor1" :options="options">
                         <ul ref="descList" class="comparisons__description"
-                            :class="{'comparisons__description--no-product': comparisons.length === 1}"
+                            :class="{'comparisons__description--no-product': qnty === 1}"
                             v-for="product in comparisons">
                             <li>
                                 <div class="comparisons__sidebar-item">{{ $tc('text.price') }}</div>
@@ -114,13 +114,14 @@
                             </li>
                         </ul>
                         <!-- the second comparison is not chosen -->
-                        <ul class="comparisons__description comparisons__description--no-product" v-if="comparisons.length === 1"></ul>
+                        <ul class="comparisons__description comparisons__description--no-product" v-if="qnty === 1"></ul>
                     </agile>
                 </div>
             </div>
             <a class="comparisons__deploy"
                 :class="{'comparisons__deploy--expanded': expanded}"
-                @click.prevent="expanded = !expanded"
+                @click.prevent="expanded = true"
+                v-if="!expanded"
             >
                 {{ $tc('comparisons.text.deploy') }}
                 <svg viewBox="-2 -2 16 10">
