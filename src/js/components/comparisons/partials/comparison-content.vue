@@ -10,10 +10,11 @@
                         :placeholder="$tc('text.category')"
                     >
                     </select-list>
+                    <!-- filter show only differences -->
                     <label>
                         <input
                             class="comparisons__checkbox"
-                            type="checkbox">
+                         м   type="checkbox">
                         <span class="comparisons__checkbox-label">
                             <svg class="comparisons__checkbox-svg" viewBox="0 0 10 8">
                                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__checked'"></use>
@@ -21,6 +22,7 @@
                         </span>
                         <span class="comparisons__checkbox-text">{{ $tc('comparisons.text.only_differences') }}</span>
                     </label>
+                    <!-- end of filter -->
                 </div>
                 <div class="comparisons__slider-actions">
                     <div class="comparisons__slider-text">
@@ -46,7 +48,7 @@
                 <!-- top slider -->
                 <agile ref="thumbnails" :as-nav-for="asNavFor2" :options="options" @after-change="currentSlide($event)">
                     <div class="comparisons__card" 
-                        :class="{'comparisons__card--width-50': comparisons.length == 1}"
+                        :class="{'comparisons__card--width-50': qnty}"
                         v-for="(product, index) in comparisons" :key="index"
                     >
                         <component is="slider-photo-card" 
@@ -75,7 +77,7 @@
                         </div>
                     </div>
                     <!-- the second comparison is not chosen -->
-                    <div class="comparisons__card comparisons__card--no-product" v-if="comparisons.length == 1">
+                    <div class="comparisons__card comparisons__card--no-product" v-if="qnty == 1">
                         <div>{{ $tc('comparisons.text.no_products_chosen') }}</div>
                     </div>
                 </agile>
@@ -88,33 +90,40 @@
             <div class="comparisons__comparing">
                 <ul ref="sideList" class="comparisons__sidebar">
                     <li  class="comparisons__sidebar-item">Цена</li>
-                    <li  class="comparisons__sidebar-item" v-for="item in Object.keys(comparisons[0].otherOptions)">{{ item }}</li>
+                    <li  class="comparisons__sidebar-item"
+                        v-for="(item, index) in sliceList(comparisons[0].otherOptions)"
+                        :key="index"
+                    >
+                        {{ item[0] }}
+                    </li>
                 </ul>
 
                 <div class="comparisons__descriptions">
                     <!-- bottom slider -->
                     <agile ref="main" :as-nav-for="asNavFor1" :options="options">
                         <ul ref="descList" class="comparisons__description"
-                            :class="{'comparisons__description--no-product': comparisons.length === 1}"
-                            v-for="product in comparisons">
+                            :class="{'comparisons__description--no-product': qnty === 1}"
+                            v-for="(product, index) in comparisons"
+                            :key="index">
                             <li>
                                 <div class="comparisons__sidebar-item">{{ $tc('text.price') }}</div>
                                 <div class="comparisons__description-text">{{ product.newPrice }}</div>
                             </li>
-                            <li v-for="item in sliceList(product.otherOptions)">
+                            <li v-for="(item, index) in sliceList(product.otherOptions)" :key="index">
                                 <div class="comparisons__sidebar-item">{{ item[0] }}</div>
                                 <div class="comparisons__description-text" v-if="!!item[1]">{{ item[1] }}</div>
                                 <div class="comparisons__description-text" v-else>—</div>
                             </li>
                         </ul>
                         <!-- the second comparison is not chosen -->
-                        <ul class="comparisons__description comparisons__description--no-product" v-if="comparisons.length === 1"></ul>
+                        <ul class="comparisons__description comparisons__description--no-product" v-if="qnty === 1"></ul>
                     </agile>
                 </div>
             </div>
             <a class="comparisons__deploy"
                 :class="{'comparisons__deploy--expanded': expanded}"
                 @click.prevent="expanded = !expanded"
+                v-if="!expanded"
             >
                 {{ $tc('comparisons.text.deploy') }}
                 <svg viewBox="-2 -2 16 10">
