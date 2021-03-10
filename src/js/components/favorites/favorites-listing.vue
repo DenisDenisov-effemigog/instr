@@ -47,20 +47,21 @@
             </div>
             <div class="favorites-listing__empty" v-else>
                 <div class="text-5">{{ $tc('favorites.is_empty') }}</div>
-                <a :href="catalogLink" class="favorites-listing__catalogue-btn">{{ $tc('button.move_to_catalog') }}</a>
+                <catalogue-btn></catalogue-btn>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import CatalogueBtn from '../catalogue-btn.vue';
 import FavoritesListingCategory from './favorites-listing-category.vue';
-import config from "../../config";
 
     export default {
         name: "favorites-listing",
         components: {
-             FavoritesListingCategory
+            FavoritesListingCategory,
+            CatalogueBtn
         },
         props: {
             favoriteCategories: {
@@ -83,7 +84,6 @@ import config from "../../config";
         data(){
             return{
                 categoryActive: 0,
-                catalogLink: config.links.catalog,
             }
         },
         computed: {
