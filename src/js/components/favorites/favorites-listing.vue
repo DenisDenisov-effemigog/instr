@@ -21,7 +21,7 @@
                     :pagination="pagination"
                     :hash="hash"
                 >
-                    <div class="listing__card" v-for="product in favorites">
+                    <div class="listing__card" v-for="product in favorites" :key="product.id">
                         <card
                             :change-icon="false"
                             :card-grid="'grid'"

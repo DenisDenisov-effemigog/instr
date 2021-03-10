@@ -47,7 +47,7 @@
                 <!-- top slider -->
                 <agile ref="thumbnails" :as-nav-for="asNavFor2" :options="options" @after-change="currentSlide($event)">
                     <div class="comparisons__card" 
-                        :class="{'comparisons__card--width-50': comparisons.length == 1}"
+                        :class="{'comparisons__card--width-50': qnty == 1}"
                         v-for="(product, index) in comparisons" :key="index"
                     >
                         <component is="slider-photo-card" 
@@ -76,7 +76,7 @@
                         </div>
                     </div>
                     <!-- the second comparison is not chosen -->
-                    <div class="comparisons__card comparisons__card--no-product" v-if="comparisons.length == 1">
+                    <div class="comparisons__card comparisons__card--no-product" v-if="qnty == 1">
                         <div>{{ $tc('comparisons.text.no_products_chosen') }}</div>
                     </div>
                 </agile>
@@ -87,6 +87,7 @@
 
         <div class="comparisons__bottom">
             <div class="comparisons__comparing">
+<<<<<<< HEAD
                 <ul class="comparisons__list">
                     <li class="comparisons__item" v-for="(item, itemIndex) in Object.keys(comparisons[0].otherOptions)">
                         <div class="comparisons__sidebar">
@@ -107,32 +108,47 @@
                 <!-- <ul ref="sideList" class="comparisons__sidebar">
                     <li  class="comparisons__sidebar-item">Цена</li>
                     <li  class="comparisons__sidebar-item" v-for="item in Object.keys(comparisons[0].otherOptions)">{{ item }}</li>
+=======
+                <ul ref="sideList" class="comparisons__sidebar">
+                    <li class="comparisons__sidebar-item">Цена</li>
+                    <li class="comparisons__sidebar-item"
+                        v-for="(item, index) in sliceList(comparisons[0].otherOptions)"
+                        :key="index"
+                    >
+                        {{ item[0] }}
+                    </li>
+>>>>>>> a0b02346911e67a64ef3d76ea9c1e9f0d6b48b0a
                 </ul>
 
                 <div class="comparisons__descriptions"> -->
                     <!-- bottom slider -->
                     <!-- <agile ref="main" :as-nav-for="asNavFor1" :options="options">
                         <ul ref="descList" class="comparisons__description"
-                            :class="{'comparisons__description--no-product': comparisons.length === 1}"
-                            v-for="product in comparisons">
+                            :class="{'comparisons__description--no-product': qnty === 1}"
+                            v-for="product in comparisons" :key="product.id">
                             <li>
                                 <div class="comparisons__sidebar-item">{{ $tc('text.price') }}</div>
                                 <div class="comparisons__description-text">{{ product.newPrice }}</div>
                             </li>
-                            <li v-for="item in sliceList(product.otherOptions)">
+                            <li v-for="(item, i) in sliceList(product.otherOptions)" :key="i">
                                 <div class="comparisons__sidebar-item">{{ item[0] }}</div>
                                 <div class="comparisons__description-text" v-if="!!item[1]">{{ item[1] }}</div>
                                 <div class="comparisons__description-text" v-else>—</div>
                             </li>
                         </ul> -->
                         <!-- the second comparison is not chosen -->
+<<<<<<< HEAD
                         <!-- <ul class="comparisons__description comparisons__description--no-product" v-if="comparisons.length === 1"></ul>
+=======
+                        <ul class="comparisons__description comparisons__description--no-product" v-if="qnty === 1"></ul>
+>>>>>>> a0b02346911e67a64ef3d76ea9c1e9f0d6b48b0a
                     </agile>
                 </div> -->
             </div>
             <a class="comparisons__deploy"
                 :class="{'comparisons__deploy--expanded': expanded}"
-                @click.prevent="expanded = !expanded"
+                @click.prevent="expanded = true"
+                v-if="!expanded"
             >
                 {{ $tc('comparisons.text.deploy') }}
                 <svg viewBox="-2 -2 16 10">
@@ -185,6 +201,7 @@
                 currentSlideNumber: 0,
                 shownItemsQnty: 2,
                 expanded: false,
+                onlyDiffer: false
             }
         },
         methods: {

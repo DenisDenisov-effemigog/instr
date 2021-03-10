@@ -80,7 +80,7 @@
         methods: {
             changeDeliveryType(type, id){
                 this.currentOption = type
-                this.$eventBus.$emit('push-delivery', id)
+                this.$eventBus.$emit('push-delivery', this.currentOption)
                 this.$store.dispatch('basketOrderCalc', {
                     paymentId: null,
                     deliveryId: id
