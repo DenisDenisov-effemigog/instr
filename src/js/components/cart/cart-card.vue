@@ -182,7 +182,13 @@
                 this.$store.dispatch('basketOrderCalc')
             },
             toFav() {
-                /*todo add to favorite*/
+                let vm = this
+                
+                vm.$store.dispatch('favoritesChange', {
+                    productId: vm.id
+                }).finally(() => {
+                    vm.inFavorite = !vm.inFavorite
+                });
             }
         },
     }
