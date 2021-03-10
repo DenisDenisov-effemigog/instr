@@ -1,6 +1,7 @@
 import VueSlickCarousel from "vue-slick-carousel";
 /*elements*/
 import country from './components/country.vue';
+import catalogueBtn from './components/catalogue-btn.vue';
 import addAddressBtn from './components/add-address-btn.vue';
 import modal from './components/modal.vue';
 import mobileMenu from './components/mobile-menu.vue';
@@ -221,5 +222,6 @@ export default {
         favoritesListingCategory,
         comparisonsListing,
         filterCategory,
+        catalogueBtn
     },
 }

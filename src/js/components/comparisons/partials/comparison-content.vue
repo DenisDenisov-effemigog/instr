@@ -90,7 +90,22 @@
         <div class="comparisons__bottom">
             <div class="comparisons__comparing">
                 <ul class="comparisons__list">
-                    <li class="comparisons__item" v-for="(item, itemIndex) in Object.keys(comparisons[0].otherOptions)">
+                    <li v-show="!expanded" class="comparisons__item" v-for="(item, itemIndex) in sliceList(comparisons[0].otherOptions)">
+                        <div class="comparisons__sidebar">
+                            <div class="comparisons__sidebar-item">
+                                {{ item[0] }}
+                            </div>
+                        </div>
+                        <div class="comparisons__descriptions">
+                            <agile ref="main" :options="options" :as-nav-for="asNavFor1">
+                                <div class="comparisons__description" v-for="(product, index ) in comparisons" :key="index">
+                                    <div class="comparisons__description-text" v-if="!!product.otherOptions[item[0]]">{{product.otherOptions[item[0]]}}</div>
+                                    <div class="comparisons__description-text" v-else>—</div>
+                                </div>
+                            </agile> 
+                        </div>
+                    </li>
+                    <li v-show="expanded" class="comparisons__item"  v-for="(item, itemIndex) in Object.keys(comparisons[0].otherOptions)">
                         <div class="comparisons__sidebar">
                             <div class="comparisons__sidebar-item">
                                 {{ item }}
@@ -232,12 +247,11 @@
                 console.log('changing comparison')
             },
             sliceList(list) {
-                console.log(list);
                 const array = Object.entries(list);
                 if (this.expanded) {
                     return array
                 } else {
-                    return array.slice(0, 10)
+                    return array.slice(0, 5)
                 }
             },
             applyListing(content) {
@@ -267,6 +281,9 @@
             // comparisons() {
             //     return this.comparingItems;
             // },
+            showItem(){
+
+            },
             qnty() {
                 return this.comparisons.length
             }

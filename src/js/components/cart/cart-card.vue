@@ -64,7 +64,8 @@
                         <span class="cart-card__name-message">{{ $tc('cart.item.is_deleted') }}</span>
                         <span class="cart-card__name-title">{{ product.name }}</span>
                     </a>
-                    <div class="cart-card__in-favorite" @click="toFav">{{ $tc('cart.item.add_to_favorite') }}</div>
+                    <div v-if="favoriteFlag" class="cart-card__in-favorite" @click="toFav">{{ $tc('cart.item.toggle_to_favorite') }}</div> 
+                    <div v-else class="cart-card__in-favorite" @click="toFav">{{ $tc('cart.item.add_to_favorite') }}</div> 
                     <div class="cart-card__cancel-delete"
                         :class="{'cart-card__cancel-delete--out-of-stock': !product.available}"
                         @click="deleteItem = false">
@@ -158,6 +159,7 @@
         components: {cardStickers},
         data() {
             return {
+                favoriteFlag: false,
                 deleteItem: false,
             }
         },
@@ -182,7 +184,13 @@
                 this.$store.dispatch('basketOrderCalc')
             },
             toFav() {
-                /*todo add to favorite*/
+                this.favoriteFlag = !this.favoriteFlag
+                let vm = this
+                vm.$store.dispatch('favoritesChange', {
+                    productId: vm.id
+                }).finally(() => {
+                    vm.inFavorite = !vm.inFavorite
+                });
             }
         },
     }

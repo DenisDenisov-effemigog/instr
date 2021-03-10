@@ -21,7 +21,7 @@
         </comparison-content>
         <div class="comparisons__empty" v-else>
             <div class="text-5">{{ $tc('comparisons.is_empty') }}</div>
-            <a :href="catalogLink" class="comparisons__catalogue-btn">{{ $tc('button.move_to_catalog') }}</a>
+            <catalogue-btn></catalogue-btn>
         </div>
         
     </section>
@@ -36,15 +36,14 @@
 </template>
 
 <script>
+import CatalogueBtn from '../catalogue-btn.vue';
     import comparisonContent from './partials/comparison-content.vue';
-    import config from "../../config";
 
     export default {
         name: 'comparisons-listing',
-        components: { comparisonContent },
+        components: { comparisonContent, CatalogueBtn },
         data() {
             return {
-                catalogLink: config.links.catalog,
                 loaded: false,
             }
         },
