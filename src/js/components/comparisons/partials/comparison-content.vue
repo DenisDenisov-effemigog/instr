@@ -7,6 +7,7 @@
                     <select-list
                         :points="categories"
                         :selectopenSelect="defaultCategory"
+                        :sortingPage="'comparison'"
                         :placeholder="$tc('text.category')"
                     >
                     </select-list>
@@ -22,6 +23,7 @@
                         </span>
                         <span class="comparisons__checkbox-text">{{ $tc('comparisons.text.only_differences') }}</span>
                     </label>
+                    <slot></slot>
                 </div>
                 <div class="comparisons__slider-actions">
                     <div class="comparisons__slider-text">
@@ -104,6 +106,9 @@
                         </div>
                     </li>
                 </ul>
+
+                <!-- below is an old bottom part. keep it in case -->
+
                 <!-- <ul ref="sideList" class="comparisons__sidebar">
                     <li  class="comparisons__sidebar-item">Цена</li>
                     <li  class="comparisons__sidebar-item" v-for="item in Object.keys(comparisons[0].otherOptions)">{{ item }}</li>
@@ -160,6 +165,7 @@
         },
         data() {
             return {
+                comparisons: [],
                 categories: [
                     { 'label': 'Дрель-шуруповерт', 'value': 1 },
                     { 'label': 'Шуруповерт', 'value': 2 },
@@ -192,6 +198,8 @@
         methods: {
             filterComparison(){
                 this.$store.dispatch('comparisonsFilter');
+                console.log()
+                this.comparisons = this.comparingItems
             },
             slideToPrev() {
                 if (window.innerWidth > 767 && this.qnty > 3) {
@@ -232,6 +240,9 @@
                     return array.slice(0, 10)
                 }
             },
+            applyListing(content) {
+                this.comparisons = content.products
+            }
             // getSideItems(){
             //     if(window.innerWidth >= 1024){
             //         let sideItems = this.$refs.sideList.children
@@ -253,16 +264,20 @@
             // }
         },
         computed: {
-            comparisons() {
-                return this.comparingItems;
-            },
+            // comparisons() {
+            //     return this.comparingItems;
+            // },
             qnty() {
-                return this.comparingItems.length
+                return this.comparisons.length
             }
         },
         created() {
+            this.comparisons = this.comparingItems;
             window.addEventListener('resize', this.changeShownQnty);
-            // this.$eventBus.$on('change-to-compare', this.changeComparisons);
+            this.$eventBus.$on('apply-comparison', this.applyListing);
+        },
+        beforeDestroy() {
+            this.$eventBus.$off('apply-comparison');
         },
         mounted() {
             this.changeShownQnty();
