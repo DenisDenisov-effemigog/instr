@@ -15,7 +15,7 @@
                         <input
                             class="comparisons__checkbox"
                             type="checkbox"
-                            v-model="checked">
+                            :value="onlyDiffer">
                         <span class="comparisons__checkbox-label">
                             <svg class="comparisons__checkbox-svg" viewBox="0 0 10 8">
                                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__checked'"></use>
@@ -90,7 +90,7 @@
         <div class="comparisons__bottom">
             <div class="comparisons__comparing">
                 <ul class="comparisons__list">
-                    <li v-show="!expanded" class="comparisons__item" v-for="(item, itemIndex) in sliceList(comparisons[0].otherOptions)">
+                    <li class="comparisons__item"  v-for="(item, itemIndex) in sliceList(comparisons[0].otherOptions)">
                         <div class="comparisons__sidebar">
                             <div class="comparisons__sidebar-item">
                                 {{ item[0] }}
@@ -100,21 +100,6 @@
                             <agile ref="main" :options="options" :as-nav-for="asNavFor1">
                                 <div class="comparisons__description" v-for="(product, index ) in comparisons" :key="index">
                                     <div class="comparisons__description-text" v-if="!!product.otherOptions[item[0]]">{{product.otherOptions[item[0]]}}</div>
-                                    <div class="comparisons__description-text" v-else>—</div>
-                                </div>
-                            </agile> 
-                        </div>
-                    </li>
-                    <li v-show="expanded" class="comparisons__item"  v-for="(item, itemIndex) in Object.keys(comparisons[0].otherOptions)">
-                        <div class="comparisons__sidebar">
-                            <div class="comparisons__sidebar-item">
-                                {{ item }}
-                            </div>
-                        </div>
-                        <div class="comparisons__descriptions">
-                            <agile ref="main" :options="options" :as-nav-for="asNavFor1">
-                                <div class="comparisons__description" v-for="(product, index ) in comparisons" :key="index">
-                                    <div class="comparisons__description-text" v-if="!!product.otherOptions[item]">{{product.otherOptions[item]}}</div>
                                     <div class="comparisons__description-text" v-else>—</div>
                                 </div>
                             </agile> 
@@ -212,8 +197,12 @@
         },
         methods: {
             filterComparison(){
-                this.$store.dispatch('comparisonsFilter');
-                console.log()
+                this.onlyDiffer = !this.onlyDiffer;
+                if (this.onlyDiffer) {
+                    this.$store.dispatch('comparisonsFilter');
+                } else {
+                    this.$store.dispatch('comparisonsUpdateProducts')
+                }
                 this.comparisons = this.comparingItems
             },
             slideToPrev() {
@@ -243,18 +232,16 @@
                     this.options.responsive[0].settings.slidesToShow = 2;
                 }
             },
-            changeComparisons() {
-                console.log('changing comparison')
-            },
             sliceList(list) {
                 const array = Object.entries(list);
                 if (this.expanded) {
                     return array
                 } else {
-                    return array.slice(0, 5)
+                    return array.slice(0, 10)
                 }
             },
             applyListing(content) {
+                this.$refs.thumbnails.goTo(0);
                 this.comparisons = content.products
             }
             // getSideItems(){
@@ -281,11 +268,15 @@
             // comparisons() {
             //     return this.comparingItems;
             // },
-            showItem(){
-
-            },
             qnty() {
                 return this.comparisons.length
+            },
+            checkExpanded() {
+                if (this.comparisons[0].otherOptions.length < 10) {
+                    this.expanded = true
+                } else {
+                    this.expanded = false
+                }
             }
         },
         created() {
