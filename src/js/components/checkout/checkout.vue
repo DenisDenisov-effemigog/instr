@@ -211,7 +211,8 @@
             addresses: {
                 get: function() {
                     let selectAddresses = []
-                    this.$store.state.personal.addresses.map(address=>{
+                    let newArr = this.$store.state.personal.addresses.slice()
+                    newArr.map(address=>{
                         address.label = this.$tc('text.address') + ' №' + address.order + ': ' + address.address
                         address.value = address.order
                         selectAddresses.push(address)
