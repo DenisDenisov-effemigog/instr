@@ -88,7 +88,22 @@
         <div class="comparisons__bottom">
             <div class="comparisons__comparing">
                 <ul class="comparisons__list">
-                    <li class="comparisons__item" v-for="(item, itemIndex) in Object.keys(comparisons[0].otherOptions)">
+                    <li v-show="!expanded" class="comparisons__item" v-for="(item, itemIndex) in sliceList(comparisons[0].otherOptions)">
+                        <div class="comparisons__sidebar">
+                            <div class="comparisons__sidebar-item">
+                                {{ item[0] }}
+                            </div>
+                        </div>
+                        <div class="comparisons__descriptions">
+                            <agile ref="main" :options="options" :as-nav-for="asNavFor1">
+                                <div class="comparisons__description" v-for="(product, index ) in comparisons" :key="index">
+                                    <div class="comparisons__description-text" v-if="!!product.otherOptions[item[0]]">{{product.otherOptions[item[0]]}}</div>
+                                    <div class="comparisons__description-text" v-else>—</div>
+                                </div>
+                            </agile> 
+                        </div>
+                    </li>
+                    <li v-show="expanded" class="comparisons__item"  v-for="(item, itemIndex) in Object.keys(comparisons[0].otherOptions)">
                         <div class="comparisons__sidebar">
                             <div class="comparisons__sidebar-item">
                                 {{ item }}
@@ -104,31 +119,6 @@
                         </div>
                     </li>
                 </ul>
-                <!-- <ul ref="sideList" class="comparisons__sidebar">
-                    <li  class="comparisons__sidebar-item">Цена</li>
-                    <li  class="comparisons__sidebar-item" v-for="item in Object.keys(comparisons[0].otherOptions)">{{ item }}</li>
-                </ul>
-
-                <div class="comparisons__descriptions"> -->
-                    <!-- bottom slider -->
-                    <!-- <agile ref="main" :as-nav-for="asNavFor1" :options="options">
-                        <ul ref="descList" class="comparisons__description"
-                            :class="{'comparisons__description--no-product': qnty === 1}"
-                            v-for="product in comparisons" :key="product.id">
-                            <li>
-                                <div class="comparisons__sidebar-item">{{ $tc('text.price') }}</div>
-                                <div class="comparisons__description-text">{{ product.newPrice }}</div>
-                            </li>
-                            <li v-for="(item, i) in sliceList(product.otherOptions)" :key="i">
-                                <div class="comparisons__sidebar-item">{{ item[0] }}</div>
-                                <div class="comparisons__description-text" v-if="!!item[1]">{{ item[1] }}</div>
-                                <div class="comparisons__description-text" v-else>—</div>
-                            </li>
-                        </ul> -->
-                        <!-- the second comparison is not chosen -->
-                        <!-- <ul class="comparisons__description comparisons__description--no-product" v-if="comparisons.length === 1"></ul>
-                    </agile>
-                </div> -->
             </div>
             <a class="comparisons__deploy"
                 :class="{'comparisons__deploy--expanded': expanded}"
@@ -224,35 +214,18 @@
                 console.log('changing comparison')
             },
             sliceList(list) {
-                console.log(list);
                 const array = Object.entries(list);
                 if (this.expanded) {
                     return array
                 } else {
-                    return array.slice(0, 10)
+                    return array.slice(0, 5)
                 }
             },
-            // getSideItems(){
-            //     if(window.innerWidth >= 1024){
-            //         let sideItems = this.$refs.sideList.children
-            //         let descList = this.$refs.descList
-            //         descList.forEach(function(list){
-            //             if(list.closest('.agile__slides--regular')){
-            //                 for(let i = 1; i < list.children.length; i++){
-            //                     let sideItemsH = sideItems[i].clientHeight
-            //                     let itemsHeight = list.children[i].clientHeight
-            //                     if(sideItemsH > itemsHeight){
-            //                         list.children[i].style.height = sideItemsH + 'px'
-            //                     }else{
-            //                         sideItems[i].style.height = itemsHeight + 'px'
-            //                     }
-            //                 } 
-            //             }
-            //         })
-            //     }
-            // }
         },
         computed: {
+            showItem(){
+
+            },
             comparisons() {
                 return this.comparingItems;
             },

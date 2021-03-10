@@ -204,6 +204,15 @@
         +desktop
             display: flex
             align-items: center
+            &:first-child
+                .comparisons__sidebar,
+                .comparisons__description
+                    padding-top: 2.5rem
+            &:last-child
+                .comparisons__description
+                    padding-bottom: 2.5rem
+
+                
     &__sidebar
         width: 100%
         +desktop
@@ -261,7 +270,7 @@
     &__description
         flex: auto
         +desktop
-            padding: 1.5rem
+            padding: 1rem
             border-left: 1px solid $border-color_4
         &--no-product
             width: 50%
@@ -278,7 +287,7 @@
                     display: none
     &__description-text
         +until($desktop)
-            padding: 1rem 0
+            margin: 1rem 0
 
 
     &__deploy
