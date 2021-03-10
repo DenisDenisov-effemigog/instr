@@ -87,7 +87,6 @@
 
         <div class="comparisons__bottom">
             <div class="comparisons__comparing">
-<<<<<<< HEAD
                 <ul class="comparisons__list">
                     <li class="comparisons__item" v-for="(item, itemIndex) in Object.keys(comparisons[0].otherOptions)">
                         <div class="comparisons__sidebar">
@@ -108,16 +107,6 @@
                 <!-- <ul ref="sideList" class="comparisons__sidebar">
                     <li  class="comparisons__sidebar-item">Цена</li>
                     <li  class="comparisons__sidebar-item" v-for="item in Object.keys(comparisons[0].otherOptions)">{{ item }}</li>
-=======
-                <ul ref="sideList" class="comparisons__sidebar">
-                    <li class="comparisons__sidebar-item">Цена</li>
-                    <li class="comparisons__sidebar-item"
-                        v-for="(item, index) in sliceList(comparisons[0].otherOptions)"
-                        :key="index"
-                    >
-                        {{ item[0] }}
-                    </li>
->>>>>>> a0b02346911e67a64ef3d76ea9c1e9f0d6b48b0a
                 </ul>
 
                 <div class="comparisons__descriptions"> -->
@@ -137,11 +126,7 @@
                             </li>
                         </ul> -->
                         <!-- the second comparison is not chosen -->
-<<<<<<< HEAD
                         <!-- <ul class="comparisons__description comparisons__description--no-product" v-if="comparisons.length === 1"></ul>
-=======
-                        <ul class="comparisons__description comparisons__description--no-product" v-if="qnty === 1"></ul>
->>>>>>> a0b02346911e67a64ef3d76ea9c1e9f0d6b48b0a
                     </agile>
                 </div> -->
             </div>
