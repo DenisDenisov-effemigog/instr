@@ -37,13 +37,14 @@
                         url: '/my/dashboard',
                         // exact: true,
                         personType: [1,2],
+                        icon: 'home'
                     },
                     {
                         title: 'link.my_profile',
                         url: '/my/profile',
                         exact: true,
                         personType: 1,
-                        icon: 'home'
+                        icon: 'user1'
                     },
                     {
                         title: 'link.discounts',
