@@ -35,7 +35,7 @@ export default {
     methods:{
         changeCategory(index, category) {
             this.categoryActive = index
-            this.$eventBus.$emit('changed-fav-cat', category);
+            this.$eventBus.$emit('changed-category', category);
         },
     }
 }

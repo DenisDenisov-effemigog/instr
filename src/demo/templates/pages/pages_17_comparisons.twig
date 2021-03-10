@@ -949,6 +949,15 @@
     {title: 'Акции', url: ''},
 ] %}
 
+{% set filters = {
+    'page_count': 16,
+    'sort': 'popular',
+    'section_id': 178500,
+    'hash': 'JnnUHIo**(&87868HHkjYUI@wewe',
+    'filters': []
+}
+%}
+
 {% set footerLinks = {
     agreement: {title: 'Пользовательское соглашение', url: ''},
     contacts: {
@@ -1007,7 +1016,7 @@
         ]
     } %}
     {% include '../../../templates/comparisons/comparisons.twig' with {
-        'comparingItems': comparingItems,
+        'filters': filters,
     } %}
     {% include '../../../templates/footer/footer.twig'  with {
         'countries': countries,

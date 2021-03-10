@@ -7,6 +7,7 @@
                     <select-list
                         :points="categories"
                         :selectopenSelect="defaultCategory"
+                        :sortingPage="'comparison'"
                         :placeholder="$tc('text.category')"
                     >
                     </select-list>
@@ -22,6 +23,7 @@
                         </span>
                         <span class="comparisons__checkbox-text">{{ $tc('comparisons.text.only_differences') }}</span>
                     </label>
+                    <slot></slot>
                 </div>
                 <div class="comparisons__slider-actions">
                     <div class="comparisons__slider-text">
@@ -119,6 +121,34 @@
                         </div>
                     </li>
                 </ul>
+
+                <!-- below is an old bottom part. keep it in case -->
+
+                <!-- <ul ref="sideList" class="comparisons__sidebar">
+                    <li  class="comparisons__sidebar-item">Цена</li>
+                    <li  class="comparisons__sidebar-item" v-for="item in Object.keys(comparisons[0].otherOptions)">{{ item }}</li>
+                </ul>
+
+                <div class="comparisons__descriptions"> -->
+                    <!-- bottom slider -->
+                    <!-- <agile ref="main" :as-nav-for="asNavFor1" :options="options">
+                        <ul ref="descList" class="comparisons__description"
+                            :class="{'comparisons__description--no-product': qnty === 1}"
+                            v-for="product in comparisons" :key="product.id">
+                            <li>
+                                <div class="comparisons__sidebar-item">{{ $tc('text.price') }}</div>
+                                <div class="comparisons__description-text">{{ product.newPrice }}</div>
+                            </li>
+                            <li v-for="(item, i) in sliceList(product.otherOptions)" :key="i">
+                                <div class="comparisons__sidebar-item">{{ item[0] }}</div>
+                                <div class="comparisons__description-text" v-if="!!item[1]">{{ item[1] }}</div>
+                                <div class="comparisons__description-text" v-else>—</div>
+                            </li>
+                        </ul> -->
+                        <!-- the second comparison is not chosen -->
+                        <!-- <ul class="comparisons__description comparisons__description--no-product" v-if="comparisons.length === 1"></ul>
+                    </agile>
+                </div> -->
             </div>
             <a class="comparisons__deploy"
                 :class="{'comparisons__deploy--expanded': expanded}"
@@ -150,6 +180,7 @@
         },
         data() {
             return {
+                comparisons: [],
                 categories: [
                     { 'label': 'Дрель-шуруповерт', 'value': 1 },
                     { 'label': 'Шуруповерт', 'value': 2 },
@@ -182,6 +213,8 @@
         methods: {
             filterComparison(){
                 this.$store.dispatch('comparisonsFilter');
+                console.log()
+                this.comparisons = this.comparingItems
             },
             slideToPrev() {
                 if (window.innerWidth > 767 && this.qnty > 3) {
@@ -221,21 +254,47 @@
                     return array.slice(0, 5)
                 }
             },
+            applyListing(content) {
+                this.comparisons = content.products
+            }
+            // getSideItems(){
+            //     if(window.innerWidth >= 1024){
+            //         let sideItems = this.$refs.sideList.children
+            //         let descList = this.$refs.descList
+            //         descList.forEach(function(list){
+            //             if(list.closest('.agile__slides--regular')){
+            //                 for(let i = 1; i < list.children.length; i++){
+            //                     let sideItemsH = sideItems[i].clientHeight
+            //                     let itemsHeight = list.children[i].clientHeight
+            //                     if(sideItemsH > itemsHeight){
+            //                         list.children[i].style.height = sideItemsH + 'px'
+            //                     }else{
+            //                         sideItems[i].style.height = itemsHeight + 'px'
+            //                     }
+            //                 } 
+            //             }
+            //         })
+            //     }
+            // }
         },
         computed: {
+            // comparisons() {
+            //     return this.comparingItems;
+            // },
             showItem(){
 
             },
-            comparisons() {
-                return this.comparingItems;
-            },
             qnty() {
-                return this.comparingItems.length
+                return this.comparisons.length
             }
         },
         created() {
+            this.comparisons = this.comparingItems;
             window.addEventListener('resize', this.changeShownQnty);
-            // this.$eventBus.$on('change-to-compare', this.changeComparisons);
+            this.$eventBus.$on('apply-comparison', this.applyListing);
+        },
+        beforeDestroy() {
+            this.$eventBus.$off('apply-comparison');
         },
         mounted() {
             this.changeShownQnty();

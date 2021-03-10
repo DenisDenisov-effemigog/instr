@@ -40,7 +40,8 @@
                     hash: '',
                     sort: '',
                     view: '',
-                    favCategories: '',
+                    сategories: '',
+                    only_diff: ''
                 },
                 _debounce_timer: null
             }
@@ -89,7 +90,7 @@
           this.$eventBus.$on('add-sorting', this.changeSort)  
           this.$eventBus.$on('changed-view', this.changeView)  
           this.$eventBus.$on('load-listing', this.loadListing)  
-          this.$eventBus.$on('changed-fav-cat', this.changeFavCategories)  
+          this.$eventBus.$on('changed-category', this.changeCategories)  
         },
         methods: {
 
@@ -97,7 +98,7 @@
                 return {
                     sort: this.internal.sort,
                     view: this.internal.view,
-                    favCategories: this.internal.favCategories,
+                    сategories: this.internal.сategories,
                     page_count: this.internal.page_count
                 }
             },
@@ -108,7 +109,7 @@
                 if(!add) {
                     this.internal.sort = data.sort;
                     this.internal.view = data.view;
-                    this.internal.favCategories = data.favCategories;
+                    this.internal.сategories = data.сategories;
                     this.internal.page_count = data.page_count;
                 }
 
@@ -185,12 +186,16 @@
                 });
             },
 
-            applyFilters(changeState) {
+            applyFilters(changeState, location) {
                 let vm = this;
                 let params = vm.getPayloadParams();
 
                 api.catalogGet(this.internal.hash, params).then(answer => {
-                    vm.$eventBus.$emit('apply-listing', answer.output);
+                    if (!!location && location === 'comparison') {
+                        vm.$eventBus.$emit('apply-comparison', answer.output);
+                    } else {
+                        vm.$eventBus.$emit('apply-listing', answer.output);
+                    }
                     if (changeState) {
                         window.history.pushState({
                             output: answer.output
@@ -210,9 +215,9 @@
                 this.internal.sort = value;
                 this.applyFilters(false);
             },
-            changeFavCategories(value) {
-                this.internal.favCategories = value;
-                this.applyFilters(false);
+            changeCategories(value, location) {
+                this.internal.сategories = value;
+                this.applyFilters(false, location);
             },
             changeView(value) {
                 this.internal.view = value;
