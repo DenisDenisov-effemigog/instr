@@ -1,0 +1,67 @@
+<div class="warranty">
+    <div class="container">
+        <div class="warranty__head">
+            <h2 class="warranty__title">{{ 'warranty.title'|trans }}</h2>
+        </div>
+        <div class="warranty__main">
+            <div class="warranty__desc">
+                <p class="warranty__desc-text">{{ 'warranty.text_1'|trans }}</p>
+                <p class="warranty__desc-text">{{ 'warranty.text_2'|trans }}</p>
+                <ul class="warranty__desc-list">
+                    <li class="warranty__desc-item">{{ 'warranty.list_1_1'|trans }}</li>
+                    <li class="warranty__desc-item">{{ 'warranty.list_1_2'|trans }}</li>
+                    <li class="warranty__desc-item">{{ 'warranty.list_1_3'|trans }}</li>
+                    <li class="warranty__desc-item">{{ 'warranty.list_1_4'|trans }}</li>
+                    <li class="warranty__desc-item">{{ 'warranty.list_1_5'|trans }}</li>
+                </ul>
+                <p class="warranty__desc-text">{{ 'warranty.text_3'|trans }}</p>
+                <p class="warranty__desc-text">{{ 'warranty.text_4'|trans }}</p>
+                <ul class="warranty__desc-list">
+                    <li class="warranty__desc-item">{{ 'warranty.list_2_1'|trans }}</li>
+                    <li class="warranty__desc-item">{{ 'warranty.list_2_2'|trans }}</li>
+                    <li class="warranty__desc-item">{{ 'warranty.list_2_3'|trans }}</li>
+                    <li class="warranty__desc-item">{{ 'warranty.list_2_4'|trans }}</li>
+                    <li class="warranty__desc-item">{{ 'warranty.list_2_5'|trans }}</li>
+                    <li class="warranty__desc-item">{{ 'warranty.list_2_6'|trans }}</li>
+                </ul>
+                <p class="warranty__desc-text">{{ 'warranty.text_5'|trans }}</p>
+            </div>
+            <div class="warranty__service">
+                <h3 class="warranty__service-title">{{ 'warranty.service_title'|trans }}</h3>
+                <ul class="warranty__service-list">
+                    {% for item in service %}
+                        <li class="warranty__service-item">
+                            <div class="warranty__service-town">{{item.town}}</div>
+                            <div class="warranty__service-address">
+                                <div class="warranty__service-icons__icon">
+                                    <svg viewbox="2 0 21 21">
+                                        <use xlink:href="{{ templatePath }}images/sprite.svg#icons__location"></use>
+                                    </svg>
+                                </div>
+                                <p>{{item.address}}</p>
+                            </div>
+                            <div class="warranty__service-phone">
+                                <div class="warranty__service-icons__icon">
+                                    <svg viewbox="0 0 20 20">
+                                        <use xlink:href="{{ templatePath }}images/sprite.svg#icons__phone"></use>
+                                    </svg>
+                                </div>
+                                <p>{{item.phone}}</p>
+                            </div>
+                            {% if item.mail %}
+                                <div class="warranty__service-mail">
+                                    <div class="warranty__service-icons__icon">
+                                        <svg viewbox="2 0 21 21">
+                                            <use xlink:href="{{ templatePath }}images/sprite.svg#icons__mail"></use>
+                                        </svg>
+                                    </div>
+                                    <p>{{item.mail}}</p>
+                                </div>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
