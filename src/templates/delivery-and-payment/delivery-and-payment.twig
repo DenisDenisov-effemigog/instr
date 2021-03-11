@@ -1,0 +1,52 @@
+<section class="delivery-and-payment">
+    <div class="container">
+        <h2 class="delivery-and-payment__title">{{ 'delivery-and-payment.title'|trans }}</h2>
+        <div class="delivery-and-payment__block">
+            <h3 class="delivery-and-payment__block-title">{{ 'delivery-and-payment.payment.title'|trans }}</h3>
+            <p class="delivery-and-payment__text">{{ 'delivery-and-payment.payment.text_1'|trans }}</p>
+            <p class="delivery-and-payment__text">{{ 'delivery-and-payment.payment.text_2'|trans }}</p>
+            <div class="delivery-and-payment__subtitle">{{ 'delivery-and-payment.payment.noncash.title'|trans }}</div>
+            <p class="delivery-and-payment__text">{{ 'delivery-and-payment.payment.noncash.text_docs'|trans }}</p>
+            <ul class="delivery-and-payment__list delivery-and-payment__list--narrow">
+                <li>{{ 'delivery-and-payment.payment.noncash.doc-1'|trans }}</li>
+                <li>{{ 'delivery-and-payment.payment.noncash.doc-2'|trans }}</li>
+            </ul>
+            <p class="delivery-and-payment__text">{{ 'delivery-and-payment.payment.noncash.after_booking'|trans }}</p>
+            <div class="delivery-and-payment__subtitle delivery-and-payment__subtitle--narrow">
+                {{ 'delivery-and-payment.payment.cash.title'|trans }}
+            </div>
+            <p class="delivery-and-payment__text">{{ 'delivery-and-payment.payment.cash.text'|trans }}</p>
+        </div>
+        <div class="delivery-and-payment__block">
+            <h3 class="delivery-and-payment__block-title">{{ 'delivery-and-payment.delivery.title'|trans }}</h3>
+            <p class="delivery-and-payment__text">{{ 'delivery-and-payment.delivery.text'|trans }}</p>
+            <div class="delivery-and-payment__schedule">
+            <div class="delivery-and-payment__subtitle">{{ 'delivery-and-payment.work_schedule.title'|trans }}</div>
+                <div class="delivery-and-payment__schedule-block">
+                    <svg viewBox="0 0 12 12">
+                        <use xlink:href="{{ templatePath }}images/sprite.svg#icons__clock"></use>
+                    </svg>
+                    <div class="delivery-and-payment__schedule-text">
+                        <div>{{ 'delivery-and-payment.work_schedule.weekdays'|trans }}</div>
+                        <div>{{ 'delivery-and-payment.work_schedule.weekend'|trans }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="delivery-and-payment__block">
+            <h3 class="delivery-and-payment__block-title">{{ 'delivery-and-payment.receiving.title'|trans }}</h3>
+            <p class="delivery-and-payment__text">{{ 'delivery-and-payment.receiving.text'|trans }}</p>
+            <div class="delivery-and-payment__subtitle delivery-and-payment__subtitle--important">
+                {{ 'delivery-and-payment.receiving.important'|trans }}
+            </div>
+            <p class="delivery-and-payment__text">{{ 'delivery-and-payment.receiving.check'|trans }}</p>
+            <ul class="delivery-and-payment__list">
+                <li>{{ 'delivery-and-payment.receiving.defect_1'|trans }}</li>
+                <li>{{ 'delivery-and-payment.receiving.defect_2'|trans }}</li>
+                <li>{{ 'delivery-and-payment.receiving.defect_3'|trans }}</li>
+                <li>{{ 'delivery-and-payment.receiving.defect_4'|trans }}</li>
+            </ul>
+            <p class="delivery-and-payment__text">{{ 'delivery-and-payment.receiving.document_defects'|trans }}</p>
+        </div>
+    </div>
+</section>

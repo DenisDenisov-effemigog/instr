@@ -1,0 +1,75 @@
+.delivery-and-payment
+    margin-bottom: 10rem
+    +tablet
+        margin-bottom: 20.9375rem
+    .container *
+        +desktop
+            max-width: 58.5rem
+    &__title
+        @extend .title-10
+        margin: 1.5rem 0
+        +tablet
+            margin-bottom: 2.5rem
+    &__block:not(:last-of-type)
+        margin-bottom: 2.5rem
+        +tablet
+            margin-bottom: 3.5rem
+    &__block-title
+        @extend .title-5
+        margin-bottom: .5rem
+        +tablet
+            margin-bottom: 1rem
+    &__subtitle
+        @extend .title-4
+        margin: 1.5rem 0 1rem 0
+        +mobile
+            font-size: $font-size_3
+            line-height: $line-height_3
+            margin-bottom: .5rem
+        &--narrow
+            margin-bottom: .5rem
+        &--important
+            margin-bottom: .5rem
+            +tablet
+                margin: 2rem 0 .5rem 0
+    &__text
+        color: $grey
+        +mobile
+            font-size: $font-size_3
+    &__list
+        margin: 1.25rem 0 1rem .5rem
+        font-size: $font-size_3
+        line-height: $line-height_4
+        +tablet
+            margin: 2.5rem 0 2rem .5rem
+            font-size: $font-size
+        li
+            @extend .warranty__desc-item
+            padding-left: 1.5rem
+        &--narrow
+            +mobile
+                margin-top: 1rem
+                line-height: 19px
+            +tablet
+                margin: 1.5rem 0 1.5rem .5rem
+                line-height: $line-height
+            li
+                +tablet
+                    margin-top: 1.5rem
+    &__schedule
+        margin-top: -.5rem
+        +tablet
+            margin-top: 2rem
+    &__schedule-block
+        display: flex
+        +mobile
+            margin-top: 1rem
+        svg
+            width: $size_16
+            height: $size_16
+            fill: $black
+            flex: none
+            margin-right: .5rem
+    &__schedule-text
+        @extend .text-5
+        color: $grey
