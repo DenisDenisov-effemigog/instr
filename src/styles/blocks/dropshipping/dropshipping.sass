@@ -1,0 +1,72 @@
+.dropshipping
+    &__title
+        @extend .title-10
+        margin-top: 1.5rem
+    &__text
+        @extend .text-5
+        color: $grey
+        margin-top: 1rem
+        +tablet
+            margin-top: 1.5rem
+    &__snippets
+        display: flex
+        flex-direction: column
+        align-items: center
+        margin-top: 2.5rem
+        +desktop
+            flex-direction: row
+    &__snippet
+        display: flex
+        width: 100%
+        padding: 1.5rem
+        border: 1px solid $border-color
+        border-radius: $border-radius
+        +tablet
+            width: 20.5rem
+            padding: 2rem
+        +desktop
+            width: auto
+        svg
+            width: 3.5rem
+            height: 3.5rem
+            fill: $blue
+            flex: none
+    &__snippet-description
+        margin-left: 1.1875rem
+    &__snippet-title
+        @extend .title-4
+        margin-bottom: .5rem
+        +mobile
+            font-size: $font-size_3
+            line-height: $line-height_3
+    &__snippet-text
+        @extend .text-2
+        color: $grey
+        +tablet
+            font-size: $font-size
+            line-height: $line-height
+    &__array svg
+        fill: $border-color
+    &__array-right
+        width: $size_96
+        height: $size_16
+        margin: 0 1.5rem
+        +until($desktop)
+            display: none
+    &__array-bottom
+        width: $size_16
+        height: $size_32
+        margin: 1rem 0
+        +desktop
+            display: none
+    &__for-details
+        @extend .text-5
+        display: flex
+        flex-direction: column
+        margin: 2.5rem 0 9.625rem 0
+        text-align: center
+        +tablet
+            margin: 6.5rem 0 9.625rem 0
+    &__presentation
+        color: $blue
+    
