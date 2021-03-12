@@ -26,7 +26,9 @@
         props: {
             categories: {
                 type: Array,
-                default: [],
+                default() {
+                    return []
+                },
                 required: false
             },
             className:{
