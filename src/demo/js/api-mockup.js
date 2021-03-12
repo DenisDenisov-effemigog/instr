@@ -491,6 +491,25 @@ let demoDiscount = [
     }
 ];
 let demoOrders = [];
+let demoPoints = [
+    {
+        'label': 'Все заказы',
+        'value': ''
+    },
+    {
+        'label': 'Доставлен',
+        'value': 'done'
+    },
+    {
+        'label': 'В ожидании оплаты',
+        'value': 'waiting'
+    },
+    {
+        'label': 'Отменен',
+        'value': 'cancelled'
+    }
+];
+
 //let baseOrderDate = new Date('2020-02-14');
 for(let i = 0; i < 10; ++i) {
     /*let newOrderDate = new Date(baseOrderDate.valueOf());
@@ -2159,7 +2178,6 @@ window.runAction = function (action, config) {
                 });
                 break;
             case 'instrument2:rest.api.user.order.list':
-
                 if (!config.data) {
                     reject(new Error('Wrong config'));
                 }
@@ -2171,6 +2189,7 @@ window.runAction = function (action, config) {
                                 status: 1,
                                 answer: {
                                     orders: demoOrders,
+                                    points: demoPoints,
                                     pagination: {
                                         'total': 105,
                                         'current': 1,
@@ -2197,6 +2216,7 @@ window.runAction = function (action, config) {
                                 status: 1,
                                 answer: {
                                     orders: demoOrders,
+                                    points: demoPoints,
                                     pagination: {
                                         'total': 104,
                                         'current': +config.data.page,
@@ -2229,6 +2249,7 @@ window.runAction = function (action, config) {
                                 status: 1,
                                 answer: {
                                     orders: demoSortedOrders,
+                                    points: demoPoints,
                                     pagination: {
                                         'total': 103,
                                         'current': +config.data.page,

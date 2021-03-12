@@ -1109,7 +1109,7 @@
     },
 ] %}
 
-{% set sort_types = [
+{# {% set sort_types = [
     {
         'label': 'Все заказы',
         'value': ''
@@ -1126,7 +1126,7 @@
         'label': 'Отменен',
         'value': 'cancelled'
     }
-] %}
+] %} #}
 
 {% set sort_type = {
     'label': 'Все заказы',
@@ -1186,7 +1186,6 @@
         'headerLinks': headerLinks,
     } %}
     {% include '../../../templates/profile/profile.twig' with {
-        'sort_types': sort_types,
         'sort_type': sort_type,
         'pre_link': ' ',
         'user': user
