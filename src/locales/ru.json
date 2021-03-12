@@ -444,8 +444,6 @@
     "delivery-and-payment.delivery.title": "Доставка по Україні",
     "delivery-and-payment.delivery.text": "Доставка по Україні (з врахуванням адресної доставки) здійснюється «Новою Поштою» згідно тарифів данної компанії.",
     "delivery-and-payment.work_schedule.title": "Графік роботи магазину:",
-    "delivery-and-payment.work_schedule.weekdays": "Пн - Пт з 08:30 до 17:30",
-    "delivery-and-payment.work_schedule.weekend": "Сб - Нд - вихідний",
     "delivery-and-payment.receiving.title": "Отримання товару",
     "delivery-and-payment.receiving.text": "Про відправку товару Вас сповістять за допомогою sms-повідомлення, в якому буде вказано № декларації (ТТН). Для отримання вантажу необхідно повідомити перевізнику № декларації (ТТН) і мати при собі документ, що підтверджує Вашу особу: паспорт або водійське посвідчення.",
     "delivery-and-payment.receiving.important": "Важливо!",

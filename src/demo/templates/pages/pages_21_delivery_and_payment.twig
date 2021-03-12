@@ -949,6 +949,11 @@
     {title: 'Акции', url: ''},
 ] %}
 
+{% set schedule = {
+    weekdays : 'Пн - Пт з 08:30 до 17:30',
+    weekend : 'Сб - Нд - вихідний',
+}%}
+
 {% set footerLinks = {
     agreement: {title: 'Пользовательское соглашение', url: ''},
     contacts: {
@@ -1006,7 +1011,9 @@
             },
         ]
     } %}
-    {% include '../../../templates/delivery-and-payment/delivery-and-payment.twig' %}
+    {% include '../../../templates/delivery-and-payment/delivery-and-payment.twig' with {
+        'schedule': schedule
+    }%}
     {% include '../../../templates/footer/footer.twig'  with {
         'countries': countries,
         'activeCountry': 'Россия',

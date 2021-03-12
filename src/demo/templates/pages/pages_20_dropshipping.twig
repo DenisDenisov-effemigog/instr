@@ -949,6 +949,10 @@
     {title: 'Акции', url: ''},
 ] %}
 
+{% set presentation = {
+    link : '/images/country/globus.png',
+}%}
+
 {% set footerLinks = {
     agreement: {title: 'Пользовательское соглашение', url: ''},
     contacts: {
@@ -1006,7 +1010,9 @@
             },
         ]
     } %}
-    {% include '../../../templates/dropshipping/dropshipping.twig' %}
+    {% include '../../../templates/dropshipping/dropshipping.twig' with {
+        'presentation': presentation
+    } %}
     {% include '../../../templates/footer/footer.twig'  with {
         'countries': countries,
         'activeCountry': 'Россия',
