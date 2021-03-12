@@ -102,11 +102,14 @@
                                     <div class="comparisons__description-text" v-if="!!product.otherOptions[item[0]]">{{product.otherOptions[item[0]]}}</div>
                                     <div class="comparisons__description-text" v-else>—</div>
                                 </div>
+                                 <div class="comparisons__description comparisons__description--no-product" v-if="qnty == 1">
+
+                                </div>
                             </agile> 
                         </div>
                     </li>
                 </ul>
-
+               
                 <!-- below is an old bottom part. keep it in case -->
 
                 <!-- <ul ref="sideList" class="comparisons__sidebar">

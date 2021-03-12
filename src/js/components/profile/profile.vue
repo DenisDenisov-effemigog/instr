@@ -53,7 +53,6 @@
 
             <transition name="fade" mode="out-in">
                 <router-view
-                    :points="points"
                     :selectopenSelect="selectopenSelect"
                     :contract="profile.contract"
                     :preLink="preLink"
@@ -69,10 +68,6 @@
 export default {
     name: "profile",
     props: {
-        points:{
-            type: Array,
-            required: true,
-        },
         selectopenSelect:{
             type: Object,
             required: true,

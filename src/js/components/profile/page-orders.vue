@@ -20,7 +20,7 @@
         
         <div class="order__info-select" v-if="!details && ordersOnPage.length !== 0">
             <select-list
-                :points="points"
+                :points="ordersPoints"
                 :selectopenSelect="selectopenSelect"
                 :sortingPage="'orders'"
             ></select-list>
@@ -61,10 +61,6 @@
         },
         name:"page-orders",
         props:{
-            points:{
-                type: Array,
-                required: true,
-            },
             selectopenSelect:{
                 type: Object,
                 required: true,
@@ -121,6 +117,9 @@
         computed: {
             ordersOnPage() {
                 return this.$store.state.personal.orders.orders;
+            },
+            ordersPoints() {
+                return this.$store.state.personal.orders.points;
             },
             h1() {
                 return this.$store.state.layout.h1;
