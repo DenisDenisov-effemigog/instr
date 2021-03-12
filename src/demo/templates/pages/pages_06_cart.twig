@@ -1006,7 +1006,10 @@
             },
         ]
     } %}
-    {% include '../../../templates/cart/cart.twig' with {'salePrice': 7500} %}
+    {% include '../../../templates/cart/cart.twig' with {
+        'salePrice': 7500,
+        'user': user
+        } %}
     {% include '../../../templates/footer/footer.twig'  with {
         'countries': countries,
         'activeCountry': 'Россия',

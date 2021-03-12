@@ -3,6 +3,7 @@
         <component is="cart" 
                    :view="{{ view_type|json_encode|e('html_attr') }}"
                    :sale-price="{{ salePrice|json_encode|e('html_attr') }}"
+                   :user-authorized="{{ user.authorized|json_encode()|e('html_attr') }}"
         ></component>
     </div>
 </div>

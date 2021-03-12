@@ -36,6 +36,7 @@
                         </div>
                     </div>
                     <selected-items
+                        :userAuthorized="userAuthorized"
                         :products="oldProducts"
                     ></selected-items>
                     <cart-order-head 
@@ -115,6 +116,9 @@
                 type: Number,
                 required: true,
             }, 
+            userAuthorized:{
+                type: Boolean
+            }
         },
         data(){
             return{

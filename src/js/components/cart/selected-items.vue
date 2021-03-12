@@ -1,5 +1,5 @@
 <template>
-    <div class="selected-items" :class="{'selected-items--success': successFlag}">
+    <div v-show="userAuthorized && products.length != 0" class="selected-items" :class="{'selected-items--success': successFlag}">
         <div class="selected-items__head">
             <div v-if="successFlag" class="selected-items__head-desc">
                 <div class="selected-items__head-icon">
@@ -131,6 +131,9 @@
                 type: Array,
                 required: true,
             },
+            userAuthorized:{
+                type: Boolean
+            }
         },
         data(){
             return{

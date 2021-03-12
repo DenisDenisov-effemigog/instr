@@ -14,17 +14,15 @@
     &__desc
         @extend .text-5
         font-weight: 400
+        +tablet 
+            max-width: 58.5rem
     &__desc-text
         margin-top: 1.5rem
-        +tablet 
-            margin-top: 2rem
         &:first-child
             margin-top: 0
     &__desc-list
         margin-top: 1.5rem
         margin-left: 0.5rem
-        +tablet 
-            margin-top: 2rem
     &__desc-item
         position: relative
         margin-top: 1.5rem
@@ -72,6 +70,7 @@
     &__service-town
         font-weight: 700
         color: $black
+        padding-bottom: 0.5rem
     &__service-phone,
     &__service-address,
     &__service-mail
