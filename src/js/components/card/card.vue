@@ -130,7 +130,8 @@ export default {
             tooltipId: 0,
             cardPosition: 0,
             cartTopPosition: 0,
-            cartLeftPosition: 0
+            cartLeftPosition: 0,
+            cartOffsetTopPosition: 0
         }
     },
     methods: {
@@ -140,7 +141,7 @@ export default {
         cloneCard(btn){
             if(window.innerWidth > 987){
                 this.$eventBus.$emit("clickedToBtn")
-                if(this.cartLeftPosition > 0){
+                if(this.cartOffsetTopPosition > 0){
                     let card = btn.closest('.card')
                     let clone = card.cloneNode(true)
                     let cardTop = card.getBoundingClientRect().top + document.documentElement.scrollTop
@@ -170,6 +171,7 @@ export default {
         cartPosition(obj){
             this.cartTopPosition = obj.top
             this.cartLeftPosition = obj.left
+            this.cartOffsetTopPosition = obj.offsetTop
         }
     },
     mounted() {
