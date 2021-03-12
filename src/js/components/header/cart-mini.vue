@@ -49,7 +49,6 @@
                 cartPositionObj.top = cart.offsetTop + document.documentElement.scrollTop
                 cartPositionObj.left = cart.offsetLeft
                 cartPositionObj.offsetTop = cart.offsetTop
-                console.log(cartPositionObj);
                 if(cartPositionObj.left > 0){
                     this.$eventBus.$emit("cartPosition", cartPositionObj)
                 }
