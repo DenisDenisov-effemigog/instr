@@ -1111,7 +1111,11 @@
 
 {% set sort_types = [
     {
-        'label': 'Выполнен',
+        'label': 'Все заказы',
+        'value': ''
+    },
+    {
+        'label': 'Доставлен',
         'value': 'done'
     },
     {
@@ -1125,8 +1129,8 @@
 ] %}
 
 {% set sort_type = {
-    'label': 'Выполнен',
-    'value': 'done'
+    'label': 'Все заказы',
+    'value': ''
 } %}
 {% set headerLinks = [
     {title: 'О компании', url: ''},
