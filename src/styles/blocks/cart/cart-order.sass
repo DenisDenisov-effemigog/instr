@@ -45,13 +45,15 @@
         font-weight: 400
     &__content
         +desktop-small
-            padding-top: 1rem
+            padding-top: 2rem
     &__title
         @extend .title-5
     &__list
-        padding-top: 1rem
-        padding-bottom: 1.125rem
+        padding-top: .5rem
+        padding-bottom: 1rem
         border-bottom: 1px solid $border-color_4
+        +tablet
+            padding-bottom: 1.125rem
     &__item
         padding-top: 0.5rem
         display: flex
@@ -59,7 +61,7 @@
         &--total
             padding-top: 1.125rem
     &__text
-        @extend .text-2
+        @extend .text-5
         font-weight: 400
         color: $grey
         &--total

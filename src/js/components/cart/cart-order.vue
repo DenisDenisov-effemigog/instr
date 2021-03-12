@@ -15,7 +15,7 @@
                             <span>{{ $tc('text.currency') }}</span>
                         </div>
                     </li>
-                    <li class="cart-order__item" v-for="item in productsPrice.discounts">
+                    <li class="cart-order__item" v-for="(item, index) in productsPrice.discounts" :key="index">
                         <div class="cart-order__text">{{ $tc('text.discount') }}</div>
                         <div class="cart-order__price cart-order__price--green">
                             {{ currency(item.value) }}

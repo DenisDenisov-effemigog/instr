@@ -3,12 +3,12 @@
         <h2 class="checkout-delivery__title">{{ $tc('text.delivery') }}</h2>
         <div class="checkout-delivery__content">
             <div class="delivery-option">
-            <div v-for="delivery in deliveries"
+            <div v-for="delivery in deliveries" :key="delivery.name"
                  class="delivery-option__wrap"
                  :class="{
                      'delivery-option__wrap--active': currentOption === delivery.type, 
-                     'delivery-option__wrap-delivery': delivery.type === 'delivery',
-                     'delivery-option__wrap-receive': delivery.type === 'receive',
+                     'delivery-option__wrap--delivery': delivery.type === 'delivery',
+                     'delivery-option__wrap--receive': delivery.type === 'receive',
                  }"
                  @click="changeDeliveryType(delivery.type, delivery.id)"
             >

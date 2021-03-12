@@ -1,0 +1,30 @@
+.checkout-choice
+    padding-top: 2rem
+    +tablet
+        padding-top: 2.25rem
+    &__title
+        @extend .title-6
+        font-weight: 700
+    &__form
+        display: flex
+        flex-direction: column
+        margin-left: .125rem
+        padding-top: .5rem
+        +tablet
+            padding-top: 1.125rem
+    &__radio
+        @extend .radio
+        margin-top: 1rem
+    &__check
+        @extend .radio__check
+        +tablet
+            min-width: 1.25rem
+            height: 1.25rem
+        &::before
+            +tablet
+                width: 0.625rem!important
+                height: 0.625rem!important
+    &__radio-label
+        @extend .radio__label
+        @extend .text-5
+        font-weight: 400

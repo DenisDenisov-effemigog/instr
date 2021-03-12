@@ -1,7 +1,7 @@
 .delivery-date
     margin-top: 2rem
     +tablet
-        margin-top: 3.5rem
+        margin-top: 2.5rem
     &__title
         @extend .title-6
         font-weight: 700
@@ -12,21 +12,22 @@
         padding-top: 0.5rem
     &__calendar
         position: relative
-        padding-top: 1.5rem
         +tablet
             max-width: 21rem
     &__input-wrap
         margin-top: 1.5rem
     &__icon
         position: absolute
-        top: 60%
-        right: 0
+        top: 45%
+        right: .5rem
         z-index: 2
         width: 2rem
         height: 2rem
         display: flex
         align-items: center
         justify-content: center
+        +tablet
+            right: -.5rem
         & svg
             cursor: pointer
             width: $size_8

@@ -1,113 +1,117 @@
 <template>
-    <div ref="checkout" class="checkout" v-if="loaded">
-        <div class="checkout__main" 
-             :class="{'checkout__main--border-none': successFlag === 'success' || value !== 'new'}"
-        >
-            <h2 v-show='value === "experienced" && successFlag === "pay"' 
-                class="checkout__title"
-            >{{ $tc('modal.title.auth') }}</h2>
-            <h2 v-show='value === "new" && successFlag === "pay"' 
-                class="checkout__title"
-            >{{ $tc('checkout.title') }}</h2>
-            <div v-show="successFlag === 'pay' && user && !user.authorized || !user && successFlag === 'pay'" 
-                 class="checkout-choice"
+    <section ref="checkout" class="checkout" v-if="loaded">
+        <div class="columns">
+            <div class="checkout__main" 
+                :class="{'checkout__main--border-none': successFlag === 'success' || value !== 'new'}"
             >
-                <div class="checkout-choice__title">{{ $tc('checkout.title.contacts') }}</div>
-                <form action="" class="checkout-choice__form">
-                    <label class="checkout-choice__radio">
-                        <input name="choice" type="radio" value="new" v-model="value">
-                        <span class="checkout-choice__check"></span>
-                        <span class="checkout-choice__radio-label">{{ $tc('checkout.client_new') }}</span>
-                    </label>
-                    <label class="checkout-choice__radio">
-                        <input name="choice" type="radio" value="experienced" v-model="value">
-                        <span class="checkout-choice__check"></span>
-                        <span class="checkout-choice__radio-label">{{ $tc('checkout.client') }}</span>
-                    </label>
-                </form>
-            </div>
-            <div v-show="successFlag === 'pay'" class="checkout__content">
-                <div v-show='value === "new"' class="checkout__desc">
-                     <div class="checkout__tabs" v-if="user && !user.authorized || !user">
-                        <div class="checkout__tab"
-                            :class="{'checkout__tab--active': currentTab === 'individual'}"
-                            @click="showTab('individual')"
-                        >{{ $tc('title.person_individual') }}</div>
-                        <div class="checkout__tab"
-                            :class="{'checkout__tab--active': currentTab === 'corporate'}"
-                            @click="showTab('corporate')"
-                        >{{ $tc('title.person_corporate') }}</div>
-                    </div>
-                    <checkout-reg v-if="user && !user.authorized || !user"
-                        :IndividualFlag="IndividualFlag"
-                        :currentTab="currentTab"
-                        :phoneMask="phoneMask"
-                        :codeMask="codeMask"
-                    ></checkout-reg>
-                    <checkout-delivery
-                        :currentTab="currentTab"
-                        :deliveries="deliveries"
-                        :deliveryPoints="deliveryPoints"
-                        :addresses="addresses"
-                        :user="user"
-                        :cities="cities"
-                        :streets="streets"
-                    ></checkout-delivery>
-                    <delivery-date v-model="date"></delivery-date>
-                    <delivery-payment :payments="payments"></delivery-payment>
-                    <div class="delivery-comment">
-                        <div class="delivery-comment__title">{{ $tc('checkout.title.comments') }}</div>
-                        <div class="delivery-comment__form">
-                            <label class="delivery-comment__label-textarea">
-                                <textarea class="delivery-comment__textarea" 
-                                    v-model.trim="$v.message.$model"
-                                ></textarea>
-                                <span class="delivery-comment__label-text"
-                                    :class="{'delivery-comment__label-text--up': $v.message.required}"
-                                >{{$tc('text.message')}}</span>
-                            </label>
-                            <label class="delivery-comment__label">
-                                <input type="checkbox" name="agreement" v-model="actionsAgreement" class="delivery-comment__checkbox">
-                                <span class="delivery-comment__checkbox-label">
-                                    <svg class="delivery-comment__checkbox-svg" viewBox="0 0 10 8">
-                                        <use xlink:href="/images/sprite.svg#icons__checked"></use>
-                                        </svg>
-                                    </span>
-                                <span class="delivery-comment__checkbox-text">{{ $tc('checkout.checkbox_text') }}</span>
-                            </label>
+                <h2 v-show='value === "experienced" && successFlag === "pay"' 
+                    class="checkout__title"
+                >{{ $tc('modal.title.auth') }}</h2>
+                <h2 v-show='value === "new" && successFlag === "pay"' 
+                    class="checkout__title"
+                >{{ $tc('checkout.title') }}</h2>
+                <div v-show="successFlag === 'pay' && user && !user.authorized || !user && successFlag === 'pay'" 
+                    class="checkout-choice"
+                >
+                    <div class="checkout-choice__title">{{ $tc('checkout.title.contacts') }}</div>
+                    <form action="" class="checkout-choice__form">
+                        <label class="checkout-choice__radio">
+                            <input name="choice" type="radio" value="new" v-model="value">
+                            <span class="checkout-choice__check"></span>
+                            <span class="checkout-choice__radio-label">{{ $tc('checkout.client_new') }}</span>
+                        </label>
+                        <label class="checkout-choice__radio">
+                            <input name="choice" type="radio" value="experienced" v-model="value">
+                            <span class="checkout-choice__check"></span>
+                            <span class="checkout-choice__radio-label">{{ $tc('checkout.client') }}</span>
+                        </label>
+                    </form>
+                </div>
+                <div v-show="successFlag === 'pay'" class="checkout__content">
+                    <div v-show='value === "new"' class="checkout__desc">
+                        <div class="checkout__tabs" v-if="user && !user.authorized || !user">
+                            <div class="checkout__tab"
+                                :class="{'checkout__tab--active': currentTab === 'individual'}"
+                                @click="showTab('individual')"
+                            >{{ $tc('title.person_individual') }}</div>
+                            <div class="checkout__tab"
+                                :class="{'checkout__tab--active': currentTab === 'corporate'}"
+                                @click="showTab('corporate')"
+                            >{{ $tc('title.person_corporate') }}</div>
+                        </div>
+                        <checkout-reg v-if="user && !user.authorized || !user"
+                            :IndividualFlag="IndividualFlag"
+                            :currentTab="currentTab"
+                            :phoneMask="phoneMask"
+                            :codeMask="codeMask"
+                        ></checkout-reg>
+                        <checkout-delivery
+                            :currentTab="currentTab"
+                            :deliveries="deliveries"
+                            :deliveryPoints="deliveryPoints"
+                            :addresses="addresses"
+                            :user="user"
+                            :cities="cities"
+                            :streets="streets"
+                        ></checkout-delivery>
+                        <delivery-date v-model="date"></delivery-date>
+                        <delivery-payment :payments="payments"></delivery-payment>
+                        <div class="delivery-comment">
+                            <div class="delivery-comment__title">{{ $tc('checkout.title.comments') }}</div>
+                            <div class="delivery-comment__form">
+                                <label class="delivery-comment__label-textarea">
+                                    <textarea class="delivery-comment__textarea" 
+                                        v-model.trim="$v.message.$model"
+                                    ></textarea>
+                                    <span class="delivery-comment__label-text"
+                                        :class="{'delivery-comment__label-text--up': $v.message.required}"
+                                    >{{$tc('text.message')}}</span>
+                                </label>
+                                <label class="delivery-comment__label">
+                                    <input type="checkbox" name="agreement" v-model="actionsAgreement" class="delivery-comment__checkbox">
+                                    <span class="delivery-comment__checkbox-label">
+                                        <svg class="delivery-comment__checkbox-svg" viewBox="0 0 10 8">
+                                            <use xlink:href="/images/sprite.svg#icons__checked"></use>
+                                            </svg>
+                                        </span>
+                                    <span class="delivery-comment__checkbox-text">{{ $tc('checkout.checkbox_text') }}</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="checkout__btn-wrap">
+                            <div class="checkout__btn"
+                                @click="sendOrder"
+                            >{{ $tc('button.go_payment') }}</div>
+                        </div>
+                        <div class="checkout__info">
+                            {{ $tc('text.agreement') }}&nbsp; 
+                            <a :href="conditionsLink" class="checkout__info-link"> {{ $tc('link.agreement') }}</a>&nbsp;
+                            {{ $tc('text.more_info') }}&nbsp;
+                            <a :href="deliveryLink" class="checkout__info-link">{{ $tc('link.more_info') }}</a>.
                         </div>
                     </div>
-                    <div class="checkout__btn-wrap">
-                        <div class="checkout__btn"
-                            @click="sendOrder"
-                        >{{ $tc('button.go_payment') }}</div>
+                    <div v-show='value === "experienced"' class="checkout__login">
+                        <user-login></user-login>
                     </div>
-                    <div class="checkout__info">
-                        {{ $tc('text.agreement') }}&nbsp; 
-                        <a :href="conditionsLink" class="checkout__info-link"> {{ $tc('link.agreement') }}</a>&nbsp;
-                        {{ $tc('text.more_info') }}&nbsp;
-                        <a :href="deliveryLink" class="checkout__info-link">{{ $tc('link.more_info') }}</a>.
-                    </div>
-                </div>
-                <div v-show='value === "experienced"' class="checkout__login">
-                   <user-login></user-login>
                 </div>
             </div>
-        </div>
-        <div v-show="successFlag === 'pay' && value === 'new' && loaded" class="checkout__order">
-            <cart-order :salePrice="salePrice"
-                        :productsPrice="productsPrice"
-                        :place="'checkout'"
-            ></cart-order>
-            <div class="checkout__btn-wrap checkout__btn-wrap--mobile"
-                :class="{'checkout__btn-wrap--fixed': fixedFlag}"
+            <div v-show="successFlag === 'pay' && value === 'new' && loaded"
+                class="checkout__order checkout__order--tablet"
             >
-                <div class="checkout__btn"
-                    @click="sendOrder"
-                >{{ $tc('button.go_payment') }}</div>
+                <cart-order :salePrice="salePrice"
+                            :productsPrice="productsPrice"
+                            :place="'checkout'"
+                ></cart-order>
+                <div class="checkout__btn-wrap checkout__btn-wrap--mobile"
+                    :class="{'checkout__btn-wrap--fixed': fixedFlag}"
+                >
+                    <div class="checkout__btn"
+                        @click="sendOrder"
+                    >{{ $tc('button.go_payment') }}</div>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
     <div v-else class="preloader">
         <svg viewBox="0 0 145 145">
             <use :xlink:href="templatePath + 'images/sprite.svg#preloader'"></use>

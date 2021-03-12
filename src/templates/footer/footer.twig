@@ -44,50 +44,50 @@
 <footer class="footer">
     <div class="container">
 
-        <div class="footer__layout footer__layout_desktop">
+        <div class="footer__layout footer__layout--desktop">
             {# <svg viewBox="0 0 650 150">
                 <use xlink:href="{{ templatePath }}images/sprite.svg#logo"></use>
             </svg> #}
             <svg viewBox="0 0 148 48">
                 <use xlink:href="{{ templatePath }}images/sprite.svg#wt"></use>
             </svg>
-            <div class="footer__company footer__company_desktop">{{ 'footer.company'|trans }}</div>
+            <div class="footer__company footer__company--desktop">{{ 'footer.company'|trans }}</div>
             <a href="{{ footerLinks.agreement.url }}" 
-               class="footer__agreement footer__agreement_desktop"
+               class="footer__agreement footer__agreement--desktop"
             >
                 <span>{{ footerLinks.agreement.title }}</span>
             </a>
         </div>
-        <div class="footer__layout footer__layout_mobile">
+        <div class="footer__layout footer__layout--mobile">
             <svg viewBox="0 0 137 32">
                 <use xlink:href="{{ templatePath }}images/sprite.svg#tw"></use>
             </svg>
-            <div class="footer__company footer__company_desktop">{{ 'footer.company'|trans }}</div>
+            <div class="footer__company footer__company--desktop">{{ 'footer.company'|trans }}</div>
             <a href="{{ footerLinks.agreement.url }}"
-               class="footer__agreement footer__agreement_desktop"
+               class="footer__agreement footer__agreement--desktop"
             >{{ footerLinks.agreement.title }}</a>
         </div>
 
         <nav class="footer__menu">
-            <ul class="footer__menu-column footer__menu-column_desktop">
+            <ul class="footer__menu-column footer__menu-column--desktop">
                 <li class="footer__menu-title"><a href="{{ footerLinks.about.url }}">{{ footerLinks.about.title }}</a></li>
                 {% for link in footerLinks.about.links %}
                     <li class="footer__menu-item"><a href="{{ link.url }}">{{ link.title }}</a></li>
                 {% endfor %}
             </ul>
-            <ul class="footer__menu-column footer__menu-column_desktop">
+            <ul class="footer__menu-column footer__menu-column--desktop">
                 <li class="footer__menu-title"><a href="{{ footerLinks.help.url }}">{{ footerLinks.help.title }}</a></li>
                 {% for link in footerLinks.help.links %}
                     <li class="footer__menu-item"><a href="{{ link.url }}">{{ link.title }}</a></li>
                 {% endfor %}
             </ul>
-            <ul class="footer__menu-column footer__menu-column_desktop">
+            <ul class="footer__menu-column footer__menu-column--desktop">
                 <li class="footer__menu-title"><a href="{{ footerLinks.client.url }}">{{ footerLinks.client.title }}</a></li>
                 {% for link in footerLinks.client.links %}
                     <li class="footer__menu-item"><a href="{{ link.url }}">{{ link.title }}</a></li>
                 {% endfor %}
             </ul>
-            <div class="footer__menu-column footer__menu-column_mobile">
+            <div class="footer__menu-column footer__menu-column--mobile">
                 <div class="footer__menu-title">
                     <a href="{{ footerLinks.help.url }}">{{ footerLinks.help.title }}</a>
                 </div>
@@ -134,10 +134,10 @@
             </ul>
         </nav>
 
-        <a href="{{ footerLinks.agreement.url }}" class="footer__agreement footer__agreement_mobile">
+        <a href="{{ footerLinks.agreement.url }}" class="footer__agreement footer__agreement--mobile">
             <span>{{ footerLinks.agreement.title }}</span>
         </a>
-        <div class="footer__company footer__company_mobile">{{ 'footer.company'|trans }}</div>
+        <div class="footer__company footer__company--mobile">{{ 'footer.company'|trans }}</div>
 
     </div>
 </footer>
