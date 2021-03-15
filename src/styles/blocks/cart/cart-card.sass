@@ -48,6 +48,19 @@
             width: 100%
             flex-direction: row
             justify-content: space-between
+        .in-favorite
+            svg
+                display: none
+            &--active
+                .cart-card__in-favorite--inactive
+                    display: none
+                .cart-card__in-favorite--active
+                    display: block
+            &--inactive
+                .cart-card__in-favorite--inactive
+                    display: block
+                .cart-card__in-favorite--active
+                    display: none
     &__description
         +tablet
             width: 100%    

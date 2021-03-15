@@ -66,8 +66,15 @@
                         <span class="cart-card__name-message">{{ $tc('cart.item.is_deleted') }}</span>
                         <span class="cart-card__name-title">{{ product.name }}</span>
                     </a>
-                    <div v-if="favoriteFlag" class="cart-card__in-favorite" @click="toFav">{{ $tc('cart.item.toggle_to_favorite') }}</div> 
-                    <div v-else class="cart-card__in-favorite" @click="toFav">{{ $tc('cart.item.add_to_favorite') }}</div> 
+                    <!-- <div v-if="favoriteFlag" class="cart-card__in-favorite" @click="toFav">{{ $tc('cart.item.delete_from_favorite') }}</div> 
+                    <div v-else class="cart-card__in-favorite" @click="toFav">{{ $tc('cart.item.add_to_favorite') }}</div>  -->
+                    <component is="in-favorite"
+                        :id="product.id"
+                        :favorite="product.is_favorite"
+                    >
+                        <div class="cart-card__in-favorite cart-card__in-favorite--active">{{ $tc('cart.item.delete_from_favorite') }}</div>
+                        <div class="cart-card__in-favorite cart-card__in-favorite--inactive">{{ $tc('cart.item.add_to_favorite') }}</div>
+                    </component>
                     <div class="cart-card__cancel-delete"
                         :class="{'cart-card__cancel-delete--out-of-stock': !product.available}"
                         @click="deleteItem = false">

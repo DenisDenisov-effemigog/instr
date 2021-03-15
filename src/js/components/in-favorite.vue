@@ -1,7 +1,9 @@
 <template>
     <div
         class="in-favorite"
-        :class="{'in-favorite--active': inFavorite, 'in-favorite--mobile': mobile}"
+        :class="{'in-favorite--active': inFavorite,
+            'in-favorite--inactive': !inFavorite,
+            'in-favorite--mobile': mobile}"
         @click="addFavorite"
     >
         <svg v-if="!inFavorite" viewBox="0 0 18 16">
@@ -10,7 +12,8 @@
         <svg v-else viewBox="0 0 18 16">
             <use :xlink:href="templatePath + 'images/sprite.svg#icons__heart-full'"></use>
         </svg>
-            <span v-if="text">{{ $tc('link.in_favorite') }}</span>
+        <span v-if="text">{{ $tc('link.in_favorite') }}</span>
+        <slot></slot>
     </div>
 </template>
 
