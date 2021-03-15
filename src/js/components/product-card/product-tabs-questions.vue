@@ -48,7 +48,7 @@
                 <div class="product-tabs__question-text">{{newItem.question}}</div>
             </div>   
         </div>
-        <div class="product-tabs__answer" v-for="(question, index) in qAs">
+        <div class="product-tabs__answer" v-for="(question, index) in qAs" :key="index">
             <div class="product-tabs__content-title" v-show="question.name">{{question.name}}</div>
             <div class="product-tabs__question">
                 <svg  viewBox="0 0 18 18">

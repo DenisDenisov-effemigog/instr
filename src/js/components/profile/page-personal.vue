@@ -13,6 +13,7 @@
             <ul class="personalcab__columns">
                 <li class="personalcab__column" 
                     v-for="data in person"
+                    :key="data.index"
                     v-show="profile.personType === data.personType && profile.personType !== 2 || profile.personType === 2"
                 >
                     <svg viewBox="0 0 24 24">

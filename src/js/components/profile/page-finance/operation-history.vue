@@ -8,7 +8,7 @@
                 <div class="finance-history__operation">{{ $tc('profile_finance.head.operation') }}</div>
                 <div class="finance-history__code finance-history__code--head">{{ $tc('profile_finance.head.operation_code') }}</div>
             </li>
-            <li v-for="item in operations" class="finance-history__item">
+            <li v-for="item in operations" :key="item.id" class="finance-history__item">
                 <div class="finance-history__sum" 
                         :class="{'finance-history__sum--red': item.status}" 
                 ><span v-if="item.status">-</span><span v-else>+</span>{{ currency(item.sum) }} {{ $tc('text.currency') }}</div>

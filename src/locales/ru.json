@@ -297,7 +297,7 @@
     "cart.item.sku_text": "Артикул: ",
     "cart.item.is_deleted": "Удален: ",
     "cart.item.add_to_favorite": "Добавить в избранное",
-    "cart.item.toggle_to_favorite": "Удалить из избранного",
+    "cart.item.delete_from_favorite": "Удалить из избранного",
     "cart.selected_items.select_all": "Выбрать все",
     "cart.selected_items.head_title": "Продукты, выбранные до авторизации на сайте",
     "cart.selected_items.head_text": "Вы добавили некоторые продукты, когда не были авторизованы. Добавьте эти продукты в корзину",

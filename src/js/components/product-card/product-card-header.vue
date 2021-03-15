@@ -4,6 +4,7 @@
              :class="{'product-card__stickers--close': stickers}">
             <component is="card-stikers"
                        v-for="tooltip in tooltips"
+                       :key="tooltip.id"
                        :tooltip="tooltip"
             ></component>
         </div>

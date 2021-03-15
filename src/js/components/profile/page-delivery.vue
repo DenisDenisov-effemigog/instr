@@ -10,7 +10,7 @@
       
         <div class="delivery__list">
             <ul v-if="addresses.length > 0">
-                <li class="delivery__item" v-for="order in addresses">
+                <li class="delivery__item" v-for="order in addresses" :key="order.id">
                     <div class="delivery__desc">
                         <div class="delivery__order">{{ $tc('text.address') }} № {{order.order}}</div>
                         <div class="delivery__address">{{order.address}}</div>

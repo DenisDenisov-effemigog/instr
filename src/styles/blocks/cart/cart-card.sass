@@ -162,12 +162,11 @@
         white-space: nowrap
 
     &__in-favorite
-        @extend .link-blue
-        @extend .text-3
-        background-position: 0% 80%
-        white-space: nowrap
-        +mobile
+        svg
             display: none
+        div
+            +mobile
+                display: none
 
     &__cancel-delete
         @extend .link-blue
@@ -253,6 +252,8 @@
             .cart-card__in-favorite,
             .cart-card__cancel-delete
                 background-position: 0% 100%
+            .in-favorite__text
+                background-position: 0% 84%
 
     &--deleted
         @extend .text-2

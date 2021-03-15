@@ -5,7 +5,10 @@
         </div>
         <div class="dashboard-petitions__main">
             <ul class="dashboard-petitions__list">
-                <li v-for="item in petitionsData" class="dashboard-petitions__item">
+                <li v-for="item in petitionsData"
+                    :key="item.title"
+                    class="dashboard-petitions__item"
+                >
                     <div class="dashboard-petitions__item-top">
                         <div class="dashboard-petitions__subtitle">
                             {{item.title}}                                

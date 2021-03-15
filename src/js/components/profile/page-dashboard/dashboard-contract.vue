@@ -11,7 +11,9 @@
         </div>
         <div class="dashboard-contract__main">
             <ul class="dashboard-contract__list">
-                <li v-for="item in contractArr" class="dashboard-contract__item">
+                <li v-for="item in contractArr" class="dashboard-contract__item"
+                    :key="item.title"
+                >
                     <div class="dashboard-contract__dash">
                         <span>{{item.title}}</span>
                     </div>

@@ -2,7 +2,7 @@
     <div class="delivery-payment">
         <div class="delivery-payment__title">{{ $tc('checkout.title.payment') }}</div>
         <form action="" class="delivery-payment__form">
-            <label class="delivery-payment__radio" v-for="payment in payments">
+            <label class="delivery-payment__radio" v-for="payment in payments" :key="payment.id">
                 <input name="pay" 
                        type="radio" 
                        :value="payment.value" 

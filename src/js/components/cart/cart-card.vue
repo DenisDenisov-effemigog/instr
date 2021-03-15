@@ -8,6 +8,7 @@
             <div class="cart-card__stickers cart-card__stickers--mobile" v-if="product.available">
                 <card-stickers
                     v-for="tooltip in product.tooltips"
+                    :key="tooltip.id"
                     :tooltip="tooltip"
                 >
                 </card-stickers>
@@ -32,6 +33,7 @@
                         <div class="cart-card__stickers" v-if="product.available">
                             <card-stickers
                                 v-for="tooltip in product.tooltips"
+                                :key="tooltip.id"
                                 :tooltip="tooltip"
                             >
                             </card-stickers>
@@ -64,8 +66,12 @@
                         <span class="cart-card__name-message">{{ $tc('cart.item.is_deleted') }}</span>
                         <span class="cart-card__name-title">{{ product.name }}</span>
                     </a>
-                    <div v-if="favoriteFlag" class="cart-card__in-favorite" @click="toFav">{{ $tc('cart.item.toggle_to_favorite') }}</div> 
-                    <div v-else class="cart-card__in-favorite" @click="toFav">{{ $tc('cart.item.add_to_favorite') }}</div> 
+                    <component is="in-favorite" class="cart-card__in-favorite"
+                        :id="product.id"
+                        :favorite="product.is_favorite"
+                        :only-text="true"
+                    >
+                    </component>
                     <div class="cart-card__cancel-delete"
                         :class="{'cart-card__cancel-delete--out-of-stock': !product.available}"
                         @click="deleteItem = false">
@@ -112,10 +118,13 @@
                 <span v-if="!deleteItem">
                     {{ product.discount }}%
                 </span>
-                <span class="cart-card__in-favorite"
-                    @click="toFav"
+                <component is="in-favorite" class="cart-card__in-favorite"
+                    :id="product.id"
+                    :favorite="product.is_favorite"
+                    :only-text="true"
                     v-else
-                >{{ $tc('cart.item.add_to_favorite') }}</span>
+                >
+                </component>
             </div>
             <div class="table-header__new-price" v-if="product.available || deleteItem">
                 <span v-if="!deleteItem">{{ currency(product.price * amount) }}&nbsp;{{ $tc('text.currency') }}</span>
@@ -159,7 +168,6 @@
         components: {cardStickers},
         data() {
             return {
-                favoriteFlag: false,
                 deleteItem: false,
             }
         },
@@ -183,15 +191,6 @@
                 })
                 this.$store.dispatch('basketOrderCalc')
             },
-            toFav() {
-                this.favoriteFlag = !this.favoriteFlag
-                let vm = this
-                vm.$store.dispatch('favoritesChange', {
-                    productId: vm.id
-                }).finally(() => {
-                    vm.inFavorite = !vm.inFavorite
-                });
-            }
         },
     }
 </script>

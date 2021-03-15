@@ -5,7 +5,8 @@
         </div>
         <div class="discounts-calculation__main">
             <ul class="discounts-calculation__list">
-                <li class="discounts-calculation__item" v-for="item in calculationArr">
+                <li class="discounts-calculation__item"
+                    v-for="item in calculationArr" :key="item.title">
                     <div class="discounts-calculation__subtitle">{{$tc(item.title)}}</div>
                     <div class="discounts-calculation__desc" :class="{'discounts-calculation__desc--green': item.green}">
                         <span>{{item.desc}}</span>

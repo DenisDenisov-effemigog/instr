@@ -10,6 +10,7 @@
                     <li 
                         class="catalogue__category"
                         v-for="(category, index) in categories"
+                        :key="index"
                         @mouseover="hovered = index"
                         :class="{'catalogue__category_hovered': hovered === index}"
                     >

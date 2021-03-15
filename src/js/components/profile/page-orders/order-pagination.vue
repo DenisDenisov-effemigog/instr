@@ -11,6 +11,7 @@
         <ul class="pagination__list">
             <li class="pagination__item"
                 v-for="link in pages"
+                :key="link"
                 :class="{'pagination__item--current': current == link,
                     'pagination__item--dots': link === null}"
             >

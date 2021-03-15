@@ -16,10 +16,13 @@
                 </div>
                 <div class="dashboard-notifications__main">
                     <ul class="dashboard-notifications__list">
-                        <li v-for="item in notificationData" class="dashboard-notifications__item">
+                        <li v-for="item in notificationData"
+                            :key="item.title"
+                            class="dashboard-notifications__item"
+                        >
                             <div class="dashboard-notifications__item-top">
                                 <div class="dashboard-notifications__subtitle">
-                                    {{item.title}}                                
+                                    {{item.title}}
                                 </div>
                                 <svg>
                                     <use :xlink:href="templatePath + `images/sprite.svg#arrows__arr-long-right`"></use>

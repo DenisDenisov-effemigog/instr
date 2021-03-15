@@ -1,6 +1,8 @@
 <template>
     <div class="catalogue__subcategories">
-        <div class="catalogue__subcategory" v-for="subcategory in subcategories">
+        <div class="catalogue__subcategory" v-for="subcategory in subcategories"
+            :key="subcategory.title"
+        >
             <a :href="subcategory.url" class="catalogue__subcategory-link">{{subcategory.title}}</a>
             <furtherSubcategories :categories="subcategory.subcategories"></furtherSubcategories>
         </div>

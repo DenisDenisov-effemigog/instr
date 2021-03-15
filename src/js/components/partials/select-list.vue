@@ -14,7 +14,7 @@
         :class="{'select__dropdown--download': icon === 'icons__download'}"
     >
         <ul class="select__list" v-if="selectName === 'download-doc'">
-            <li @click="clickPoint(point)" v-for="point in points">
+            <li @click="clickPoint(point)" v-for="point in points" :key="point.value">
                 <a :href="point.link" download
                     class="select__item"
                     :class="{'select__item--active':currentPoint.value === point.value}"
@@ -31,6 +31,7 @@
                 class="select__item"
                 :class="{'select__item--active':currentPoint.value === point.value}"
                 v-for="point in points"
+                :key="point.value"
             >
                 <span>{{ point.label }}</span>
                 <svg>

@@ -1,6 +1,7 @@
 <template>
     <ul class="order__product-list" :class="{'order__product-list--open': opened}">
-        <li v-for="(product, index) in products" 
+        <li v-for="(product, index) in products"
+            :key="index"
             class="order__product-item" 
             v-if="index < 3 && !showAll || showAll"
         >

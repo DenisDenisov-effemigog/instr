@@ -8,7 +8,11 @@
                 </svg>
             </div>
         </div>
-        <div v-show="openFlag" class="favorites-listing__sidebar_category" v-for="(category, index) in favoriteCategories" @click="changeCategory(index, category.value)">
+        <div v-show="openFlag" class="favorites-listing__sidebar_category"
+            v-for="(category, index) in favoriteCategories"
+            :key="index"
+            @click="changeCategory(index, category.value)"
+        >
             <svg viewBox="-2 -1 12 12">
                 <use xlink:href="/images/sprite.svg#check" v-show="categoryActive === index"></use>
             </svg>

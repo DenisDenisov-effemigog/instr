@@ -9,6 +9,7 @@
             <ul class="order-modal__special_list">
                 <li class="order-modal__special_item"
                     v-for="product in products.products"
+                    :key="product.id"
                 >
                     <div class="order-modal__special_img">
                         <img :src="product.images[0].img" alt="">

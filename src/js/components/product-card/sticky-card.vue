@@ -8,6 +8,7 @@
                 <div class="sticky-card__desc">
                     <div class="sticky-card__stickers">
                         <card-stikers v-for="tooltip in product.tooltips"
+                                    :key="tooltip.id"
                                     :tooltip="tooltip"
                                     :cardPosition="cardPosition"
                         ></card-stikers>
