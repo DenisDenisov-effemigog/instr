@@ -21,6 +21,7 @@
                 <li 
                     class="catalogue__category" 
                     v-for="category in allCategories" 
+                    :key="category.title"
                     @click.prevent="openSubcategory(category)"
                 >
                     <a :href="category.url" class="catalogue__category-link">
@@ -35,6 +36,7 @@
                 <li 
                     class="catalogue__category" 
                     v-for="subcategory in currentCategory.subcategories"
+                    :key="subcategory.title"
                     @click.prevent="openSubSubcategory(subcategory)"
                 >
                     <a :href="subcategory.url" class="catalogue__subcategory-link_mobile">
@@ -48,6 +50,7 @@
             <ul class="catalogue__further-subcategories" v-if="subcategories">
                 <li 
                     v-for="category in currentSubategory.subcategories"
+                    :key="category.title"
                     @click.prevent="selectCategory(category)"
                 >
                     <a 

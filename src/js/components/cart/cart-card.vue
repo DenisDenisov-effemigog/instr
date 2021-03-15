@@ -8,6 +8,7 @@
             <div class="cart-card__stickers cart-card__stickers--mobile" v-if="product.available">
                 <card-stickers
                     v-for="tooltip in product.tooltips"
+                    :key="tooltip.id"
                     :tooltip="tooltip"
                 >
                 </card-stickers>
@@ -32,6 +33,7 @@
                         <div class="cart-card__stickers" v-if="product.available">
                             <card-stickers
                                 v-for="tooltip in product.tooltips"
+                                :key="tooltip.id"
                                 :tooltip="tooltip"
                             >
                             </card-stickers>

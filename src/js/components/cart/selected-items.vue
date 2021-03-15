@@ -63,7 +63,7 @@
         </div>
         <div v-show="expandFlag && !successFlag" class="selected-items__content">
             <div class="selected-items__list">
-                <div class="selected-item" v-for="product in products">
+                <div class="selected-item" v-for="product in products" :key="product.id">
                     <label class="selected-item__label">
                         <input ref="check" 
                                name="selectedItem" 

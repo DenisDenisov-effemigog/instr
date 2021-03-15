@@ -13,7 +13,9 @@
                 </svg>
             </template>
             <div class="photo-modal__main_slide"
-                 v-for="productImage in props.images">
+                 v-for="productImage in props.images"
+                 :key="productImage.id"
+            >
                 <img :src="productImage.img" alt="">
             </div>
             <template #nextArrow>
@@ -35,7 +37,9 @@
                     </svg>
                 </template>
                 <div class="photo-modal__previous_slide"
-                     v-for="productImage in props.images">
+                     v-for="productImage in props.images"
+                     :key="productImage.id"
+                >
                     <img :src="productImage.img" alt="">
                 </div>
                 <template #nextArrow>

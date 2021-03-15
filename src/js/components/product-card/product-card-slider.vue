@@ -12,7 +12,9 @@
                 </svg>
             </template>
             <div class="product-card-slider__previous_slide"
-                 v-for="productImage in productImages">
+                 v-for="productImage in productImages"
+                 :key="productImage.id"
+            >
                 <img :src="productImage.img" alt="">
             </div>
             <template #nextArrow>
@@ -30,6 +32,7 @@
         >
             <div class="product-card-slider__main_slide"
                  v-for="(productImage, index) in productImages"
+                 :key="index"
                  @click="openModal(index)" 
                  @mouseleave="hoverOff"
             >

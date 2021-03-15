@@ -12,14 +12,22 @@
                 <div class="profile__table-header finance-charges__date"><span>{{ $tc('profile_finance.head.date') }}</span></div>
                 <div class="profile__table-header finance-charges__left-days"><span>{{ $tc('profile_finance.head.left_days') }}</span></div>
             </li>
-            <li class="finance-charges__item" v-for="item in charges" v-if="arrears && financeCharges.length">
+            <li class="finance-charges__item"
+                v-for="(item, index) in charges"
+                :key="index"
+                v-if="arrears && financeCharges.length"
+            >
                 <div class="finance-charges__sum"><span>{{ currency(item.sum) }} {{ $tc('text.currency') }}</span></div>
                 <div class="finance-charges__date"><span>{{ item.date }}</span></div>
                 <div class="finance-charges__left-days finance-charges__left-days--arrears">
                     <span>- {{ $tc('profile_finance.days', item.days) }}</span>
                 </div>
             </li>
-            <li class="finance-charges__item" v-for="item in charges" v-if="!arrears && financeCharges.length">
+            <li class="finance-charges__item"
+                v-for="(item, index) in charges"
+                :key="index"
+                v-if="!arrears && financeCharges.length"
+            >
                 <div class="finance-charges__sum"><span>{{ currency(item.sum) }} {{ $tc('text.currency') }}</span></div>
                 <div class="finance-charges__date"><span>{{ item.date }}</span></div>
                 <div class="finance-charges__left-days">

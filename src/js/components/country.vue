@@ -6,7 +6,10 @@
                 <div class="country__choice">
                     <h2 class="country__title">{{ $tc('country.choose_country') }}</h2>
                     <ul class="country__list">
-                        <li v-for="country in countries" class="country__choice-item">
+                        <li v-for="country in countries"
+                            :key="country.title"
+                            class="country__choice-item"
+                        >
                             <a :href="country.url" 
                                class="country__choice-link" 
                                :class="{'country__choice-link--active': activeCountry === country.title}"

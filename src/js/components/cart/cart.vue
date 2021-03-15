@@ -57,6 +57,7 @@
                         <div class="cart__in-stock">
                             <cart-card
                                 v-for="product in products"
+                                :key="product.id"
                                 v-if="product.available"
                                 :product="product"
                                 :view="changedView"
@@ -71,6 +72,7 @@
                             <div class="cart__out-of-stock">
                                 <cart-card
                                     v-for="product in products"
+                                    :key="product.id"
                                     v-if="!product.available"
                                     :product="product"
                                     :view="changedView"

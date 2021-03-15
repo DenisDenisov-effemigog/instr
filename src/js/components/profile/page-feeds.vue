@@ -16,7 +16,10 @@
             <div class="feed__actions">{{ $tc('profile_feeds.header.actions')}}</div>
         </div>
         <ul class="feeds__list" v-if="feeds.userFeeds.length> 0">
-            <user-feed v-for="feed in feeds.userFeeds" :user-feed="feed"></user-feed>
+            <user-feed v-for="feed in feeds.userFeeds"
+                :key="feed.id"
+                :user-feed="feed">
+            </user-feed>
         </ul>
         <h3 class="feeds__subtitle">{{ $tc('profile_feeds.subtitle') }}</h3>
         <div class="feeds__update-info">{{ $tc('profile_feeds.update_info') }}</div>
@@ -25,7 +28,7 @@
             <div class="feed__download-format">{{ $tc('profile_feeds.header.download_format')}}</div>
         </div>
         <ul class="feeds__list feeds__list--ready">
-            <li class="feeds__item" v-for="feed in feeds.readyFeeds">
+            <li class="feeds__item" v-for="feed in feeds.readyFeeds" :key="feed.title">
                 <div class="feed">
                     <div class="feed__title">{{ feed.title }}</div>
                     <div class="feed__download-format">

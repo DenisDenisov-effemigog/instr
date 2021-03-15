@@ -1,6 +1,7 @@
 <template>
     <div class="header__menu-tooltip">
         <router-link tag="div" v-for="(item, index) in computedLinks"
+                     :key="index"
                      :exact="!!item.exact"
                      :to="item.url"
         >

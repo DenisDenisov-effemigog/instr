@@ -3,6 +3,7 @@
         @submit.prevent="submit">
         <label class="profile-modal__radio"
                v-for="(reason, index) in delationReasons"
+               :key="index"
                v-if="index !== delationReasons.length - 1"
         >
             <input
@@ -16,6 +17,7 @@
         </label>
         <label class="profile-modal__radio profile-modal__radio_column"
                v-for="(reason, index) in delationReasons"
+               :key="index"
                v-if="index === delationReasons.length - 1"
         >
             <span class="profile-modal__radio-input">

@@ -13,7 +13,7 @@
             <div class="appeals__open">
                 <h3 class="appeals__subtitle">{{ $tc('profile.appeals.open_title') }}</h3>
                 <ul class="appeals__list">
-                    <li class="appeals__item" v-for="item in openAppealsArr">
+                    <li class="appeals__item" v-for="item in openAppealsArr" :key="item.number">
                         <div class="appeals__top">
                             <div class="appeals__number">№ {{item.number}}{{ $tc('profile.appeals.subtitle') }}</div>
                             <div class="appeals__desc">{{item.desc}}</div>
@@ -28,7 +28,7 @@
             <div class="appeals__close">
                 <h3 class="appeals__subtitle">{{ $tc('profile.appeals.close_title') }}</h3>
                 <ul class="appeals__list">
-                    <li class="appeals__item" v-for="item in closeAppealsArr">
+                    <li class="appeals__item" v-for="item in closeAppealsArr" :key="item.number">
                         <div class="appeals__top">
                             <div class="appeals__number">№ {{item.number}}{{ $tc('profile.appeals.subtitle') }}</div>
                             <div class="appeals__desc">{{item.desc}}</div>

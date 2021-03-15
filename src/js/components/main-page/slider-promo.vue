@@ -1,7 +1,10 @@
 <template>
     <agile :options="options" class="agile_centered">
 
-        <div @click="openModal(slide)" class="slider-promo__slide" v-for="slide in promoBanners">
+        <div @click="openModal(slide)" class="slider-promo__slide"
+            v-for="slide in promoBanners"
+            :key="slide.id"
+        >
             <div class="slider-promo__slide_content" 
                  :class="'slider-promo__slide_content--' + slide.theme"
             >

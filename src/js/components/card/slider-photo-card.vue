@@ -5,10 +5,17 @@
             @touchmove="touchMove"
             @touchend="touchEnd" -->
             <div class="slider-photo-card__slide">
-                <img class="slider-photo-card__slide_image" v-for="slide in showSlide" :src="slide.img">
+                <img class="slider-photo-card__slide_image"
+                    v-for="slide in showSlide"
+                    :key="slide.id"
+                    :src="slide.img">
             </div>
             <div class="slider-photo-card__markers" @mouseleave="outSlide">
-                <div @mouseenter="hoverSlide(marker.id)" class="slider-photo-card__marker" v-for="marker in images" ></div>
+                <div @mouseenter="hoverSlide(marker.id)"
+                    class="slider-photo-card__marker"
+                    v-for="marker in images"
+                    :key="marker.id"
+                ></div>
             </div>
             <slider-photo-dots
                 :images="images"

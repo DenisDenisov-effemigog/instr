@@ -1,7 +1,7 @@
 <template>
     <div class="home-menu">
         <ul class="home-menu__links">
-            <li v-for="link in headerLinks">
+            <li v-for="link in headerLinks" :key="link.title">
                 <a :href="link.url" class="home-menu__link">
                     <span>{{ link.title }}</span>
                     <svg viewBox="0 0 6 10">
@@ -23,6 +23,7 @@
                 <div 
                     class="home-menu__link_content" 
                     v-if="showCountry" v-for="country in countries"
+                    :key="country.title"
                 >
                     <a :href="country.url"
                         class="home-menu__link_sublink"

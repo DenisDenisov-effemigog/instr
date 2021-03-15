@@ -3,7 +3,9 @@
         <div class="listing__grid"
              :class="{'listing__grid--horiz': activeDisplaying === 'horizview'}">
             <template v-if="content !== null">
-                <div class="listing__card" v-for="product in content.products">
+                <div class="listing__card" v-for="product in content.products"
+                    :key="product.id"
+                >
                     <card
                         :change-icon="false"
                         :card-grid="'grid'"

@@ -2,7 +2,12 @@
     <div :class="className + '-discount'" @click="passIndex">
         <h3 v-show="className === 'dashboard'" :class="className + '-discount__title'">{{ $tc('profile.dashboard.discount_title') }}</h3>
         <ul :class="className + '-discount__list'">
-            <li v-for="(discount, index) in discounts" class="discount-item" :class="{ 'discount-item--active': index === currentIndex }" @click="currentTab(index, discount.discount)">
+            <li v-for="(discount, index) in discounts"
+                :key="index"
+                class="discount-item" :class="{ 'discount-item--active':
+                index === currentIndex }"
+                @click="currentTab(index, discount.discount)"
+            >
                 <div v-show="className === 'personal'" :class="className + '-discount__subtitle'">
                     {{ $tc('profile.dashboard.personal_discount_subtitle') }}
                 </div>
@@ -18,7 +23,11 @@
                 </div>
             </li>
         </ul>
-        <div v-for="(discount, index) in discounts" v-show="className === 'personal' && currentIndex == index" class="personal-discount__info">
+        <div v-for="(discount, index) in discounts"
+            :key="index"
+            v-show="className === 'personal' && currentIndex == index"
+            class="personal-discount__info"
+        >
             <div v-show="!discount.fixed && discount.boost_value > 0" class="personal-discount__info-head">
                 <div class="personal-discount__info-title"> {{ $tc('profile.dashboard.personal_discount_info_title') }}</div>
                 <div class="personal-discount__info-discount">{{discount.boost_value}}%</div>
