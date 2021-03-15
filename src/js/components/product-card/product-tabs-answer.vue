@@ -34,6 +34,8 @@
             textHeight(e) {
                 if (this.$refs.text.clientHeight <= this.$refs.textBlock.clientHeight) {
                     return this.expandedText = true
+                }else{
+                    return this.expandedText = false
                 }
             }
         },
