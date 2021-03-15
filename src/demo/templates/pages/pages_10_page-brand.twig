@@ -922,11 +922,11 @@
 
 {% set treeCategories = [
     {
-        'title': 'Автомобильный инструмент',
+        'title': 'Каталог продукции',
         'url': '',
         'subcategories': [
             {
-                'title': 'Аксессуары автомобильные',
+                'title': 'Каталог продукции',
                 'url': '',
                 'subcategories': 
                 [
@@ -949,54 +949,7 @@
                     {'title': 'Щетки-сметки', 'url': '',}
                 ]
             },
-            {
-                'title': 'Домкраты',
-                'url': '',
-                'subcategories': 
-                [
-                    {'title': 'Домкраты гидравлические подкатные', 'url': '', 'checked': false},
-                    {'title': 'Домкраты гидравлические бутылочные', 'url': '', 'checked': false},
-                    {'title': 'Домкраты механические бутылочные', 'url': '', 'checked': false},
-                    {'title': 'Домкраты реечные', 'Домкраты ромбовые', 'url': '', 'checked': false}
-                ],
-            },
-            {
-                'title': 'Пневмоинструмент',
-                'url': '',
-                'subcategories': 
-                [
-                    {'title': 'Аксессуары к компрессору', 'url': '', 'checked': false},
-                    {'title': 'Гвозди для пневмо нейлера', 'url': '', 'checked': false},
-                    {'title': 'Краскораспылители', 'url': '', 'checked': false},
-                    {'title': 'Наборы пневмоинструмента', 'url': '', 'checked': false},
-                    {'title': 'Нейлеры пневматические', 'url': '', 'checked': false},
-                    {'title': 'Пистолеты пневматические', 'url': '', 'checked': false},
-                    {'title': 'Ремкомплекты для краскораспылителей', 'url': '', 'checked': false},
-                    {'title': 'Скобы для пневмостеплера', 'url': '', 'checked': false},
-                    {'title': 'Степлеры пневматические', 'url': '', 'checked': false},
-                    {'title': 'Шланги спиральные', 'url': '', 'checked': false}
-                ]
-            },
-            {'title': 'Пробники автомобильные', 'url': '', 'subcategories': []},
-            {'title': 'Перчатки', 'url': '', 'subcategories': []},
-            {'title': 'Растяжки гидравлические', 'url': '', 'subcategories': []},
-            {'title': 'Специальные приспособления', 'url': '', 'subcategories': []},
-            {'title': 'Тали', 'url': '', 'subcategories': []},
-            {'title': 'Поддоны для сбора масла', 'url': '', 'subcategories': []},
-            {'title': 'Тельферы', 'url': '', 'subcategories': []},
-            {'title': 'Лебедки автомобильные', 'url': '', 'subcategories': []},
-            {'title': 'Масленки', 'url': '', 'subcategories': []},
-            {'title': 'Мебель гаражная', 'url': '', 'subcategories': []},
-            {'title': 'Моечные машины высокого давления', 'url': '', 'subcategories': []},
-            {'title': 'Насосы гидравлические', 'url': '', 'subcategories': []},
-            {'title': 'Поддоны для сбора масла', 'url': '', 'subcategories': []},
-            {'title': 'Подставки под машину регулируемые', 'url': '', 'subcategories': []},
-            {'title': 'Прессы гидравлические', 'url': '', 'subcategories': []},
-            {'title': 'Специальные приспособления', 'url': '', 'subcategories': []},
-            {'title': 'Трубогибы гидравлические', 'url': '', 'subcategories': []},
-            {'title': 'Цилиндры гидравлические', 'url': '', 'subcategories': []},
-            {'title': 'Пробники автомобильные', 'url': '', 'subcategories': []},
-            {'title': 'Подставки под машину регулируемые', 'url': '', 'subcategories': []},
+            
         ]
     },
     {
@@ -1268,135 +1221,7 @@
     'match': '13',
     'section_id': 178500,
     'hash': 'JnnUHIo**(&87868HHkjYUI@wewe',
-    'filters': [
-        {
-            title: "Цена",
-            code: "price_base",
-            type: "range",
-            values: {
-                min: 1,
-                max: 100,
-                from: 1,
-                to: 100
-            },
-
-        },
-        {
-            title: "Бренд",
-            code: "brand",
-            type: "checkbox",
-            values: [
-                {
-                    title: "Denzel",
-                    value: "denzel",
-                    checked: false,
-                    available: true,
-                    count: 7
-                },
-                {
-                    title: "Сибртех",
-                    value: "sibteh",
-                    checked: false,
-                    available: true,
-                    count: 6
-                },
-                {
-                    title: "Gross",
-                    value: "gross",
-                    checked: false,
-                    available: true,
-                    count: 7
-                },
-                {
-                    title: "Matrix",
-                    value: "matrix",
-                    checked: false,
-                    available: true,
-                    count: 6
-                },
-                {
-                    title: "Stels",
-                    value: "stels",
-                    checked: false,
-                    available: true,
-                    count: 5
-                },
-                {
-                    title: "Sparta",
-                    value: "sparta",
-                    checked: false,
-                    available: true,
-                    count: 6
-                },
-                {
-                    title: "Russia",
-                    value: "russia",
-                    checked: false,
-                    available: true,
-                    count: 7
-                },
-            ]
-        },
-        {
-            title: "Тип скидки",
-            code: "sale_type",
-            type: "checkbox",
-            values: [
-                {
-                    title: "Силовое без скидки",
-                    value: "sale_1",
-                    checked: false,
-                    available: true,
-                    count: 2
-                },
-                {
-                    title: "Силовое",
-                    value: "sale_2",
-                    checked: false,
-                    available: true,
-                    count: 1
-                },
-                {
-                    title: "Россия без скидки",
-                    value: "sale_3",
-                    checked: false,
-                    available: true,
-                    count: 3
-                },
-                {
-                    title: "Импорт без скидки",
-                    value: "sale_4",
-                    checked: false,
-                    available: true,
-                    count: 4
-                },
-            ]
-        },
-        {
-            title: "Наличие товара",
-            code: "classifier_again",
-            type: "checkbox",
-            values: []
-        },
-        {
-            title: "",
-            code: "switch_toggle",
-            type: "switch",
-            values: [
-                {
-                    title: "Бестселлеры",
-                    value: "bestsellers",
-                    checked: false
-                },
-                {
-                    title: "Новинки",
-                    value: "news",
-                    checked: false
-                },
-            ]
-
-        },
-    ]
+    'filters': []
 }
 %}
 
@@ -1962,6 +1787,8 @@
     ]
 } %}
 
+{% set catalogTitle = "Каталог продукции" %}
+
 {% set brand = 
     {
         title: 'Denzel',
@@ -2074,7 +1901,8 @@
         'filters': filters,
         'view_type': view_type,
         'pagination': pagination,
-        'titleFlag': true 
+        'showTree': true,
+        'brandCatalog': true
     } %}
     {% include '../../../templates/footer/footer.twig'  with {
         'countries': countries,
