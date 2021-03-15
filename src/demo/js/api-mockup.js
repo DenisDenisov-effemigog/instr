@@ -2655,7 +2655,7 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
-            case 'instrument2:rest.api.search.get.history':
+            case 'instrument2:rest.api.search.query.history':
                 
                 resolve({
                     data: {
@@ -2670,7 +2670,7 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
-            case 'instrument2:rest.api.search.clear.history':
+            case 'instrument2:rest.api.search.query.clear.history':
                 
                 resolve({
                     data: {
@@ -2681,7 +2681,7 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
-            case 'instrument2:rest.api.search':
+            case 'instrument2:rest.api.search.query':
                 
                 resolve({
                     data: {

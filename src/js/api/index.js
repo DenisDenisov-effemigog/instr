@@ -317,15 +317,15 @@ class Api {
     }
 
     searchGetHistory() {
-        return this._promiseBitrixRequest('instrument2:rest.api.search.get.history',);
+        return this._promiseBitrixRequest('instrument2:rest.api.search.query.history',);
     }
 
     searchClearHistory() {
-        return this._promiseBitrixRequest('instrument2:rest.api.search.clear.history',);
+        return this._promiseBitrixRequest('instrument2:rest.api.search.query.clear.history',);
     }
 
     startSearch(value) {
-        return this._promiseBitrixRequest('instrument2:rest.api.search', {
+        return this._promiseBitrixRequest('instrument2:rest.api.search.query', {
             value: value
         });
     }
