@@ -28,6 +28,8 @@
         margin-right: 1.625rem
         &:hover .product-order__tooltip
             display: block
+    &__list
+        position: relative
     &__item
         padding-bottom: 0.5rem
         display: flex
@@ -55,10 +57,8 @@
         &--discount
             &-green
                 color: $green
-                position: relative
             &-blue
                 color: $blue
-                position: relative
     &__tooltip
         @extend .tooltip
         width: 20rem
@@ -70,19 +70,12 @@
             &:before
                 left: calc(50% - 2.75rem)
         +tablet
-            top: -7rem
+            top: 50%
+            transform: translateY(-50%)
             right: 105%
-            &::before
-                top: 71%
-                right: -.5625rem
-                left: auto
-                
+            &::before,
             &::after
-                top: 66%
-                right: -126px
-                left: auto
-                width: 8rem
-                height: 3rem
+                display: none
     &__tooltip-item
         @extend .text-3
         +flex-container
