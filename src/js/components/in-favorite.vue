@@ -2,7 +2,6 @@
     <div
         class="in-favorite"
         :class="{'in-favorite--active': inFavorite,
-            'in-favorite--inactive': !inFavorite,
             'in-favorite--mobile': mobile}"
         @click="addFavorite"
     >
@@ -13,7 +12,8 @@
             <use :xlink:href="templatePath + 'images/sprite.svg#icons__heart-full'"></use>
         </svg>
         <span v-if="text">{{ $tc('link.in_favorite') }}</span>
-        <slot></slot>
+        <div v-if="onlyText && !inFavorite" class="in-favorite__text">{{ $tc('cart.item.add_to_favorite') }}</div>
+        <div v-if="onlyText && inFavorite" class="in-favorite__text">{{ $tc('cart.item.delete_from_favorite') }}</div>
     </div>
 </template>
 
@@ -42,7 +42,11 @@
                 required: false,
                 default: false,
                 type: Boolean
-            }  
+            },
+            onlyText: {
+                default: false,
+                type: Boolean
+            }
         },
         data() {
             return{
