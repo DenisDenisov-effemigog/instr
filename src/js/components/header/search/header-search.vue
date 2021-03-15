@@ -91,13 +91,17 @@ export default {
         },
         startSearch() {
             let vm = this
-            api.startSearch(vm.value).then(answer => {
-                vm.searchShields = answer.shields
-                vm.searchProducts = answer.products
-                vm.searchLink = answer.url
-            }).catch(errors => {
-                console.error(errors);
-            })
+            if(vm.value.length > 3){
+                setTimeout(() => {
+                    api.startSearch(vm.value).then(answer => {
+                        vm.searchShields = answer.shields
+                        vm.searchProducts = answer.products
+                        vm.searchLink = answer.url
+                    }).catch(errors => {
+                        console.error(errors);
+                    })
+                }, 500);
+            }
         },
         searchClick(){
             this.activeSearch = true;
