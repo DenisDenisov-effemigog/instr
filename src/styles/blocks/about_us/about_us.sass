@@ -1,8 +1,11 @@
 .about-us
     margin-top: 1.5rem
+    margin-bottom: 9.375rem
+    +tablet
+        margin-bottom: 12.5rem
     &__main
+        @extend .columns
         margin-top: 1.5rem
-        margin-bottom: 9rem
         display: flex
         flex-direction: column
         +tablet
@@ -11,26 +14,32 @@
     &__title
         @extend .title-10
     &__pic
-        margin-top: 1.5rem
+        @extend .column
+        margin-top: 1rem
         width: 100%
         order: 2
         +tablet 
-            margin-right: 1.5rem
             margin-top: 0
-            width: 50%
+            width: percentage(5 / 12)
             max-width: 36rem
-            order: 1
+            order: 0
     &__img
         width: 100%
+        height: 100%
+        object-fit: cover
+        border-radius: 4px
+    &__desc-wrapper
+        @extend .column
+        display: flex
     &__desc
-      padding: 1.5rem 1rem
-      order: 1
-      border: 1px solid $border-color
-      border-radius: 4px
-      +tablet
-        padding: 2rem  
-        flex: 1
-        order: 2
+        padding: 1.5rem 1rem
+        order: 1
+        border: 1px solid $border-color
+        border-radius: 4px
+        +tablet
+            padding: 2rem  
+            flex: 1
+            order: 1
     &__text
         @extend .text-5
         font-weight: 400
