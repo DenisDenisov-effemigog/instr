@@ -81,6 +81,7 @@
                             <component is="further-subcategories"
                                        :categories="{{ subcategory.subcategories|json_encode()|e('html_attr') }}"
                                        :class-name="'listing'"
+                                       {% if brandCatalog %}class="listing__further-subcategories--desktop"{% endif %}
                             >
                                 <template v-slot:subcategory-listing-part>
                                     {% for subsubcategory in subcategory.subcategories|slice(0, 5) %}

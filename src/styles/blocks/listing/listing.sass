@@ -95,6 +95,12 @@
             padding-bottom: 1rem
         & .listing__subcategory-btn
             padding-bottom: 0
+        &--desktop
+            +tablet
+                padding-top: 2.5rem
+            & li
+                +tablet
+                    padding-bottom: 2rem
     &__further-subcategory
         @extend .text-2
         color: $grey
