@@ -4,17 +4,15 @@
     +tablet 
         margin-bottom: 12rem
     &__title
-        @extend .text-9
-        font-weight: 700
-        font-family: "Montserrat Bold", Arial, sans-serif
+        @extend .title-10
     &__main
         margin-top: 1rem
         color: $grey
         +tablet 
             margin-top: 2rem
     &__desc
-        @extend .text-5
-        font-weight: 400
+        +mobile
+            font-size: $font-size_3
         +tablet 
             max-width: 58.5rem
     &__desc-text
@@ -22,26 +20,13 @@
         &:first-child
             margin-top: 0
     &__desc-list
+        +list
         margin-top: 1.5rem
-        margin-left: 0.5rem
-    &__desc-item
-        position: relative
-        margin-top: 1.5rem
-        padding-left: 1rem
-        +tablet 
+        +tablet
             margin-top: 2rem
-        &:first-child
-            margin-top: 0
-        &::before
-            position: absolute
-            content: ''
-            width: 0.375rem
-            height: 0.375rem
-            background: $primary-red
-            border-radius: 50%
-            top: 0%
-            transform: translateY(100%)
-            left: 0px
+    &__desc-item
+        +mobile
+            margin-top: 1.625rem
     &__service
         margin-top: 2.5rem
         +tablet 
@@ -75,7 +60,7 @@
     &__service-phone,
     &__service-address,
     &__service-mail
-        margin-top: 0.5rem
+        margin-top: 0.375rem
         display: flex
 
 
