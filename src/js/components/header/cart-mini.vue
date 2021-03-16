@@ -45,11 +45,12 @@
         methods:{
             clickedToBtn(){
                 let cart = this.$refs.cart
-                let cartPositionObj= {}
-                cartPositionObj.top = cart.offsetTop + document.documentElement.scrollTop
-                cartPositionObj.left = cart.offsetLeft
-                cartPositionObj.offsetTop = cart.offsetTop
-                if(cartPositionObj.left > 0){
+                if(cart.closest('.header')){
+                    let cartPositionObj= {}
+                    cartPositionObj.top = cart.offsetTop + document.documentElement.scrollTop
+                    cartPositionObj.left = cart.offsetLeft
+                    cartPositionObj.offsetTop = cart.offsetTop
+                    console.log(cartPositionObj);
                     this.$eventBus.$emit("cartPosition", cartPositionObj)
                 }
             }
