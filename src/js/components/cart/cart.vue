@@ -1,98 +1,96 @@
 <template>
-    <section class="cart">
-        <div class="cart__content" v-if="products.length === 0">
-            <div class="cart__purchases-wrapper">
-                <div class="cart__header cart__header--empty">
-                    <div class="cart__title">{{ $tc('cart.title.empty') }}</div>
-                </div>
-                <div class="cart__purchases">
-                    <component is="cart-search"></component>
-                </div>
+    <div class="cart__content" v-if="products.length === 0">
+        <div class="cart__purchases-wrapper">
+            <div class="cart__header cart__header--empty">
+                <div class="cart__title">{{ $tc('cart.title.empty') }}</div>
+            </div>
+            <div class="cart__purchases">
+                <component is="cart-search"></component>
             </div>
         </div>
-        <div class="cart__content" v-else>
-            <div class="cart__purchases-wrapper">
-                <div class="cart__border-right">
-                    <div class="cart__header">
-                        <div class="cart__title">{{ $tc('cart.title.full') }}</div>
-                        <div class="cart__header-layout">
-                            <div class="cart__view-switcher">
-                                <label class="cart__view-switch" @click="changeView()">
-                                    <input
-                                        class="cart__view-switch-input"
-                                        type="checkbox"
-                                        name="mode"
-                                        v-model="table">
-                                    <span class="cart__view-switch-slider"></span>
-                                    <span class="cart__view-switch-label">{{ $tc('cart.view.table') }}</span>
-                                </label>
-                            </div>
-                            <div class="cart__clear-btn" @click="clearCart">
-                                <svg>
-                                    <use :xlink:href="templatePath + 'images/sprite.svg#icons__delete'"></use>
-                                </svg>
-                                {{ $tc('cart.clear') }}
-                            </div>
+    </div>
+    <div class="cart__content" v-else>
+        <div class="cart__purchases-wrapper">
+            <div class="cart__border-right">
+                <div class="cart__header">
+                    <div class="cart__title">{{ $tc('cart.title.full') }}</div>
+                    <div class="cart__header-layout">
+                        <div class="cart__view-switcher">
+                            <label class="cart__view-switch" @click="changeView()">
+                                <input
+                                    class="cart__view-switch-input"
+                                    type="checkbox"
+                                    name="mode"
+                                    v-model="table">
+                                <span class="cart__view-switch-slider"></span>
+                                <span class="cart__view-switch-label">{{ $tc('cart.view.table') }}</span>
+                            </label>
+                        </div>
+                        <div class="cart__clear-btn" @click="clearCart">
+                            <svg>
+                                <use :xlink:href="templatePath + 'images/sprite.svg#icons__delete'"></use>
+                            </svg>
+                            {{ $tc('cart.clear') }}
                         </div>
                     </div>
-                    <selected-items
-                        :userAuthorized="userAuthorized"
-                        :products="oldProducts"
-                    ></selected-items>
-                    <cart-order-head 
-                        :mobileFlag="true"
-                        :currentPrice="productsPrice.base_price"
-                        :salePrice="salePrice"
-                    ></cart-order-head>
-                    <div class="cart__purchases" :class="{'cart__purchases--table': changedView === 'table_cards'}">
+                </div>
+                <selected-items
+                    :userAuthorized="userAuthorized"
+                    :products="oldProducts"
+                ></selected-items>
+                <cart-order-head 
+                    :mobileFlag="true"
+                    :currentPrice="productsPrice.base_price"
+                    :salePrice="salePrice"
+                ></cart-order-head>
+                <div class="cart__purchases" :class="{'cart__purchases--table': changedView === 'table_cards'}">
+                    <div class="table-header" v-if="changedView === 'table_cards'">
+                        <div class="table-header__code">{{ $tc('cart.title.sku') }}</div>
+                        <div class="table-header__dscr">{{ $tc('cart.title.name') }}</div>
+                        <div class="table-header__qnty">{{ $tc('cart.title.qty') }}</div>
+                        <div class="table-header__price">{{ $tc('cart.title.price') }}</div>
+                        <div class="table-header__old-price">{{ $tc('cart.title.all_price') }}</div>
+                        <div class="table-header__discount">{{ $tc('cart.title.discount') }}</div>
+                        <div class="table-header__new-price">{{ $tc('cart.title.total_price') }}</div>
+                    </div>
+                    <div class="cart__in-stock">
+                        <cart-card
+                            v-for="product in products"
+                            :key="product.id"
+                            v-if="product.available"
+                            :product="product"
+                            :view="changedView"
+                        ></cart-card>
+                    </div>
+                    <div class="cart__purchases-out-of-stock" v-if="notAvailable.length > 0">
+                        <div class="cart__title cart__title--out-of-stock">{{ $tc('cart.title.out_of_stock') }}</div>
                         <div class="table-header" v-if="changedView === 'table_cards'">
                             <div class="table-header__code">{{ $tc('cart.title.sku') }}</div>
                             <div class="table-header__dscr">{{ $tc('cart.title.name') }}</div>
-                            <div class="table-header__qnty">{{ $tc('cart.title.qty') }}</div>
-                            <div class="table-header__price">{{ $tc('cart.title.price') }}</div>
-                            <div class="table-header__old-price">{{ $tc('cart.title.all_price') }}</div>
-                            <div class="table-header__discount">{{ $tc('cart.title.discount') }}</div>
-                            <div class="table-header__new-price">{{ $tc('cart.title.total_price') }}</div>
                         </div>
-                        <div class="cart__in-stock">
+                        <div class="cart__out-of-stock">
                             <cart-card
                                 v-for="product in products"
                                 :key="product.id"
-                                v-if="product.available"
+                                v-if="!product.available"
                                 :product="product"
                                 :view="changedView"
                             ></cart-card>
                         </div>
-                        <div class="cart__purchases-out-of-stock" v-if="notAvailable.length > 0">
-                            <div class="cart__title cart__title--out-of-stock">{{ $tc('cart.title.out_of_stock') }}</div>
-                            <div class="table-header" v-if="changedView === 'table_cards'">
-                                <div class="table-header__code">{{ $tc('cart.title.sku') }}</div>
-                                <div class="table-header__dscr">{{ $tc('cart.title.name') }}</div>
-                            </div>
-                            <div class="cart__out-of-stock">
-                                <cart-card
-                                    v-for="product in products"
-                                    :key="product.id"
-                                    v-if="!product.available"
-                                    :product="product"
-                                    :view="changedView"
-                                ></cart-card>
-                            </div>
-                        </div>
                     </div>
-                    <component is="cart-search"></component>
                 </div>
-            </div>
-            <div class="cart__sidebar-wrapper">
-                <div class="cart__sidebar">
-                    <cart-order
-                        :productsPrice="productsPrice"
-                        :salePrice="salePrice"
-                    ></cart-order>
-                </div>
+                <component is="cart-search"></component>
             </div>
         </div>
-    </section>
+        <div class="cart__sidebar-wrapper">
+            <div class="cart__sidebar">
+                <cart-order
+                    :productsPrice="productsPrice"
+                    :salePrice="salePrice"
+                ></cart-order>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
