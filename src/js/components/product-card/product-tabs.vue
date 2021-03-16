@@ -1,5 +1,5 @@
 <template>
-    <div class="product-tabs">
+    <section class="product-tabs">
         <div 
             class="container">
             <div class="product__tabs-wrapper">
@@ -51,7 +51,7 @@
                 </product-tabs-questions>
             </div>
         </div>
-    </div>
+    </section>
 </template>
 
 <script>

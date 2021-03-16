@@ -1,171 +1,171 @@
-<component is="product-card">
-<div class="product-card">
-	<div class="product-card__title">{{ product.name }}</div>
-	<div class="product-card__header">
-		<div class="product-card__favorite-btn">
-			<component is="in-favorite" 
-                       :text="true" 
-                       :id="{{ product.id|json_encode()|e('html_attr') }}" 
-                       :favorite="{{ product.is_favorite|json_encode()|e('html_attr') }}"
-            ></component>
-		</div>
-		<div class="product-card__compare-btn">
-            <component is="to-compare" 
-                       :text="true" 
-                       :id="{{ product.id|json_encode()|e('html_attr') }}"
-                       :compare="{{ product.is_compare|json_encode()|e('html_attr') }}"
-            ></component>
-		</div>
-		<component is="product-card-article">{{ product.sku }}</component>
-	</div>
-	<div class="product-card__content">
-		<div class="product-card__slider">
-            <component is="product-card-header" 
-                       :tooltips="{{ product.tooltips|json_encode()|e('html_attr') }}"
-                       :id="{{ product.id|json_encode()|e('html_attr') }}"
-                       :favorite="{{ product.is_favorite|json_encode()|e('html_attr') }}"
-                       :compare="{{ product.is_compare|json_encode()|e('html_attr') }}"
-            ></component>
-			<component is="product-card-slider"
-                       :product-images="{{ product.images|json_encode()|e('html_attr') }}" 
-                       :video-link="{{ product.videoUrl|json_encode()|e('html_attr') }}" 
-                       :thee-d-link="{{ product.threeDUrl|json_encode()|e('html_attr') }}" 
-            ></component>
-            <div class="product-card__slider_media">
-                <div class="product-card__media-buttons">
-                    {% if product.videoUrl %}
-                        <component is="media-button"
-                                   :svg="'play-btn'"
-                                   :action="'openVideo'"
-                                   :link="{{ product.videoUrl|json_encode()|e('html_attr') }}"
-                        ></component>
-                    {% endif %}
-                    {% if product.threeDUrl %}
-                        <component is="media-button"
-                                   :svg="'around-photo'"
-                                   :action="'openVideo'"
-                                   :link="{{ product.threeDUrl|json_encode()|e('html_attr') }}"
-                        ></component>
-                    {% endif %}
+<section class="product-card">
+    <component is="product-card">
+        <div class="product-card__title">{{ product.name }}</div>
+        <div class="product-card__header">
+            <div class="product-card__favorite-btn">
+                <component is="in-favorite" 
+                        :text="true" 
+                        :id="{{ product.id|json_encode()|e('html_attr') }}" 
+                        :favorite="{{ product.is_favorite|json_encode()|e('html_attr') }}"
+                ></component>
+            </div>
+            <div class="product-card__compare-btn">
+                <component is="to-compare" 
+                        :text="true" 
+                        :id="{{ product.id|json_encode()|e('html_attr') }}"
+                        :compare="{{ product.is_compare|json_encode()|e('html_attr') }}"
+                ></component>
+            </div>
+            <component is="product-card-article">{{ product.sku }}</component>
+        </div>
+        <div class="product-card__content">
+            <div class="product-card__slider">
+                <component is="product-card-header" 
+                        :tooltips="{{ product.tooltips|json_encode()|e('html_attr') }}"
+                        :id="{{ product.id|json_encode()|e('html_attr') }}"
+                        :favorite="{{ product.is_favorite|json_encode()|e('html_attr') }}"
+                        :compare="{{ product.is_compare|json_encode()|e('html_attr') }}"
+                ></component>
+                <component is="product-card-slider"
+                        :product-images="{{ product.images|json_encode()|e('html_attr') }}" 
+                        :video-link="{{ product.videoUrl|json_encode()|e('html_attr') }}" 
+                        :thee-d-link="{{ product.threeDUrl|json_encode()|e('html_attr') }}" 
+                ></component>
+                <div class="product-card__slider_media">
+                    <div class="product-card__media-buttons">
+                        {% if product.videoUrl %}
+                            <component is="media-button"
+                                    :svg="'play-btn'"
+                                    :action="'openVideo'"
+                                    :link="{{ product.videoUrl|json_encode()|e('html_attr') }}"
+                            ></component>
+                        {% endif %}
+                        {% if product.threeDUrl %}
+                            <component is="media-button"
+                                    :svg="'around-photo'"
+                                    :action="'openVideo'"
+                                    :link="{{ product.threeDUrl|json_encode()|e('html_attr') }}"
+                            ></component>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
-		</div>
-		<div class="product-card__description">
-			<div class="product-info">
-				<ul class="product-info__list">
-                    {% for feature in product.features.main|slice(0, 6) %}
-                        <li class="product-info__item">
-                            <div class="product-info__name">
-                                <div class="product-info__name_dash">
-                                    <span class="product-info__name_label">{{feature.title}}</span>
-                                </div>
-                            </div>
-                            <div class="product-info__desc">{{feature.value}}</div>
-                        </li>
-                    {% endfor %}
-				</ul>
-				<component is="product-info-all"></component>
-				<div class="product-info__brand">
-					<a href="{{ product.brand.link }}" class="product-info__brand-logo">
-						<img src="{{ product.brand.logo }}">
-					</a>
-					<a href="{{ product.guaranteeUrl }}" class="product-info__assurance">
-                        <svg class="product-info__assurance-icon">
-                            <use xlink:href="{{ templatePath }}images/sprite.svg#assurance__assurance-{{ product.guarantee }}"></use>
-                        </svg>
-					</a>
-				</div>
-			</div>
-			<div class="product-order">
-                {% if product.avalible %}
-				    <div class="product-order__stock">{{ 'product_card.in_stock'|trans }}</div>
-                {% endif %}
-				<component is="product-order-block">
-					<ul class="product-order__list">
-                        {% if user.personType == 2 and product.price.retail is not empty %}
-                            <li class="product-order__item product-order__item--retail">
-                                <p class="product-order__name" >{{ 'product_card.price.retail'|trans }}</p>
-                                    <div class="product-order__icon">
-                                        <svg>
-                                            <use xlink:href="{{ templatePath }}images/sprite.svg#icons__info"></use>
-                                        </svg>
-                                        <div class="product-order__tooltip"></div>
+            <div class="product-card__description">
+                <div class="product-info">
+                    <ul class="product-info__list">
+                        {% for feature in product.features.main|slice(0, 6) %}
+                            <li class="product-info__item">
+                                <div class="product-info__name">
+                                    <div class="product-info__name_dash">
+                                        <span class="product-info__name_label">{{feature.title}}</span>
                                     </div>
-                                <p class="product-order__price">
-                                    {{ product.price.retail|currency }} {{ 'text.currency'|trans }}
-                                </p>
+                                </div>
+                                <div class="product-info__desc">{{feature.value}}</div>
                             </li>
-                        {% endif %}
-                        {% if product.price.base is not empty %}
-                            <li class="product-order__item product-order__item--base">
-                                {% if user.personType == 2 %}
-                                    <p class="product-order__name">{{ 'text.price_base'|trans }}</p>
-                                {% else %}
-                                    <p class="product-order__name">{{ 'text.price_old'|trans }}</p>
-                                {% endif %}
-                                <p class="product-order__price">{{ product.price.base|currency }} {{ 'text.currency'|trans }}</p>
-                            </li>
-                        {% endif %}
-                        {% if product.discounts is not empty %}
-                            {% for discount in product.discounts %}
-                                {% if discount.type == 'total' %}
-                                    <li class="product-order__item product-order__item--discount-green">
-                                        <p class="product-order__name">{{ 'text.discount'|trans }} {{ discount.percent }}%</p>
-                                            <div class="product-order__icon">
-                                                <svg>
-                                                    <use xlink:href="{{ templatePath }}images/sprite.svg#icons__info"></use>
-                                                </svg>
-                                                <div class="product-order__tooltip">
-                                                    {% for discount in product.discounts %}
-                                                        {% if discount.type != 'сategory' and discount.type != 'total' %}
-                                                            <div class="product-order__tooltip-item{% if discount.type == 'action' %} product-order__tooltip-item--promo{% endif %}"
-                                                            >{{ discount.description }}<span>{{ discount.percent }}%</span>
-                                                            </div>
-                                                        {% elseif discount.type == 'total'%}
-                                                            <div class="product-order__tooltip-total">{{ discount.description }}<span>{{ discount.percent }}%</span></div>
-                                                        {% elseif discount.type == 'сategory'%}
-                                                            <div class="product-order__tooltip-note">{{ discount.description }} {{ discount.category_name }} {{ discount.percent }}%</div>
-                                                        {% endif %}
-                                                    {% endfor %}
-                                                </div>
-                                            </div>
-                                        <p class="product-order__price">{{ discount.value|currency }} {{ 'text.currency'|trans }}</p>
-                                    </li>
-                                {% endif %}
-                            {% endfor %}
-                        {% endif %}
-                        {% if product.price.sell is not empty %}
-                            <li class="product-order__item product-order__item--total">
-                                {% if user.personType == 2 %}
-                                    <p class="product-order__name">{{ 'text.price_yours'|trans }}</p>
-                                {% elseif product.price.base is empty and user.personType == 1 %}
-                                    <p class="product-order__name">{{ 'text.price'|trans }}</p>
-                                {% else %}
-                                    <p class="product-order__name">{{ 'text.price_new'|trans }}</p>
-                                {% endif %}
-                                <p class="product-order__price">{{ product.price.sell|currency }} {{ 'text.currency'|trans }}</p>
-                            </li>
-                        {% endif %}
-					</ul>
-                    <component is="add-to-cart"  
-                               :text="'input.text.in_cart'" 
-                               :button-title="'button.add_to_cart.long'"
-                               :size="'big'"
-                               :product-id="{{ product.id }}"
-                               :max-amount="{{ product.stock }}"
-                    ></component>
-				</component>
-                    <component is="product-discount-info"
-                               :product-discounts="{{ product.discounts|json_encode()|e('html_attr') }}"
-                            {% if user is empty or user.authorized == false %}
-                               :authorized="false"
-                            {% else %}
-                               :authorized="true"
+                        {% endfor %}
+                    </ul>
+                    <component is="product-info-all"></component>
+                    <div class="product-info__brand">
+                        <a href="{{ product.brand.link }}" class="product-info__brand-logo">
+                            <img src="{{ product.brand.logo }}">
+                        </a>
+                        <a href="{{ product.guaranteeUrl }}" class="product-info__assurance">
+                            <svg class="product-info__assurance-icon">
+                                <use xlink:href="{{ templatePath }}images/sprite.svg#assurance__assurance-{{ product.guarantee }}"></use>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="product-order">
+                    {% if product.avalible %}
+                        <div class="product-order__stock">{{ 'product_card.in_stock'|trans }}</div>
+                    {% endif %}
+                    <component is="product-order-block">
+                        <ul class="product-order__list">
+                            {% if user.personType == 2 and product.price.retail is not empty %}
+                                <li class="product-order__item product-order__item--retail">
+                                    <p class="product-order__name" >{{ 'product_card.price.retail'|trans }}</p>
+                                        <div class="product-order__icon">
+                                            <svg>
+                                                <use xlink:href="{{ templatePath }}images/sprite.svg#icons__info"></use>
+                                            </svg>
+                                            <div class="product-order__tooltip"></div>
+                                        </div>
+                                    <p class="product-order__price">
+                                        {{ product.price.retail|currency }} {{ 'text.currency'|trans }}
+                                    </p>
+                                </li>
                             {% endif %}
-                    >
+                            {% if product.price.base is not empty %}
+                                <li class="product-order__item product-order__item--base">
+                                    {% if user.personType == 2 %}
+                                        <p class="product-order__name">{{ 'text.price_base'|trans }}</p>
+                                    {% else %}
+                                        <p class="product-order__name">{{ 'text.price_old'|trans }}</p>
+                                    {% endif %}
+                                    <p class="product-order__price">{{ product.price.base|currency }} {{ 'text.currency'|trans }}</p>
+                                </li>
+                            {% endif %}
+                            {% if product.discounts is not empty %}
+                                {% for discount in product.discounts %}
+                                    {% if discount.type == 'total' %}
+                                        <li class="product-order__item product-order__item--discount-green">
+                                            <p class="product-order__name">{{ 'text.discount'|trans }} {{ discount.percent }}%</p>
+                                                <div class="product-order__icon">
+                                                    <svg>
+                                                        <use xlink:href="{{ templatePath }}images/sprite.svg#icons__info"></use>
+                                                    </svg>
+                                                    <div class="product-order__tooltip">
+                                                        {% for discount in product.discounts %}
+                                                            {% if discount.type != 'сategory' and discount.type != 'total' %}
+                                                                <div class="product-order__tooltip-item{% if discount.type == 'action' %} product-order__tooltip-item--promo{% endif %}"
+                                                                >{{ discount.description }}<span>{{ discount.percent }}%</span>
+                                                                </div>
+                                                            {% elseif discount.type == 'total'%}
+                                                                <div class="product-order__tooltip-total">{{ discount.description }}<span>{{ discount.percent }}%</span></div>
+                                                            {% elseif discount.type == 'сategory'%}
+                                                                <div class="product-order__tooltip-note">{{ discount.description }} {{ discount.category_name }} {{ discount.percent }}%</div>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </div>
+                                                </div>
+                                            <p class="product-order__price">{{ discount.value|currency }} {{ 'text.currency'|trans }}</p>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                            {% if product.price.sell is not empty %}
+                                <li class="product-order__item product-order__item--total">
+                                    {% if user.personType == 2 %}
+                                        <p class="product-order__name">{{ 'text.price_yours'|trans }}</p>
+                                    {% elseif product.price.base is empty and user.personType == 1 %}
+                                        <p class="product-order__name">{{ 'text.price'|trans }}</p>
+                                    {% else %}
+                                        <p class="product-order__name">{{ 'text.price_new'|trans }}</p>
+                                    {% endif %}
+                                    <p class="product-order__price">{{ product.price.sell|currency }} {{ 'text.currency'|trans }}</p>
+                                </li>
+                            {% endif %}
+                        </ul>
+                        <component is="add-to-cart"  
+                                :text="'input.text.in_cart'" 
+                                :button-title="'button.add_to_cart.long'"
+                                :size="'big'"
+                                :product-id="{{ product.id }}"
+                                :max-amount="{{ product.stock }}"
+                        ></component>
                     </component>
-			</div>
-		</div>
-	</div>
-</div>
-</component>
+                        <component is="product-discount-info"
+                                :product-discounts="{{ product.discounts|json_encode()|e('html_attr') }}"
+                                {% if user is empty or user.authorized == false %}
+                                :authorized="false"
+                                {% else %}
+                                :authorized="true"
+                                {% endif %}
+                        >
+                        </component>
+                </div>
+            </div>
+        </div>
+    </component>
+</section>
