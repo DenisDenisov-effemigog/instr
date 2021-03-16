@@ -16,6 +16,10 @@
         +desktop
             font-size: $font-size_5
             line-height: $line-height_5
+        &--mobile
+            @extend .title-7
+            +tablet
+                display: none
     
     &__items-cont
         font-size: $font-size_3
@@ -28,6 +32,9 @@
         +mobile
             flex-wrap: nowrap
             overflow-y: scroll
+        &--mobile
+            +tablet
+                display: none
         
     &__shield
         @extend .shield__item
@@ -63,6 +70,10 @@
         @extend .title-4
         transition: .2s
         cursor: pointer
+        &--desktop
+            +tablet
+                font-size: $font-size_6
+                line-height: $line-height_6
     &__subcategory-head
         display: flex
         justify-content: space-between
@@ -84,6 +95,12 @@
             padding-bottom: 1rem
         & .listing__subcategory-btn
             padding-bottom: 0
+        &--desktop
+            +tablet
+                padding-top: 2.5rem
+            & li
+                +tablet
+                    padding-bottom: 2rem
     &__further-subcategory
         @extend .text-2
         color: $grey

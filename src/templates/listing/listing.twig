@@ -2,24 +2,26 @@
         <div class="listing__header">
             {% if titleFlag == true %}
                 {% if filters.filters is not empty %}
-                    <h1 class="listing__title">{{ title}}</h1>
+                    <h2 class="listing__title">{{ title }}</h2>
                 {% else %}
-                    <h1 class="listing__title">{{ 'listing.filters.title'|trans }}</h1>
+                    <h2 class="listing__title">{{ 'listing.filters.title'|trans }}</h2>
                 {% endif %}
             {% elseif searchAnswer %}
-                <h1 class="listing__title">{{ 'search-response.text-success'|trans }} "{{ searchAnswer }}"</h1>
+                <h2 class="listing__title">{{ 'search-response.text-success'|trans }} "{{ searchAnswer }}"</h2>
                 <component is="listing-items-quantity"
                            :items-quantity="{{ filters.match|json_encode()|e('html_attr') }}"
                 ></component>
             {% else %}
-                <h1 class="listing__title">{{ listingCategoryTitle }}</h1>
+                <h2 class="listing__title {% if brandCatalog %}listing__title--mobile{% endif %}">
+                    {{ listingCategoryTitle }}
+                </h2>
                 <component is="listing-items-quantity"
                            :items-quantity="{{ filters.match|json_encode()|e('html_attr') }}"
                 ></component>
             {% endif %}
         </div>
     {% if shields %}
-        <div class="listing__shields">
+        <div class="listing__shields {% if brandCatalog %}listing__shields--mobile{% endif %}">
             {% for shield in shields %}
                 <a href='{{shield.url}}' class="listing__shield">
                     {{ shield.title }}
@@ -73,10 +75,13 @@
                 <div class="listing__subcategories">
                     {% for subcategory in treeCategories.subcategories %}
                         <div class="listing__subcategory">
-                            <a href="{{ subcategory.url }}" class="listing__subcategory-link">{{subcategory.title}}</a>
+                            <a href="{{ subcategory.url }}" class="listing__subcategory-link {% if brandCatalog %}listing__subcategory-link--desktop{% endif %}">
+                                {{subcategory.title}}
+                            </a>
                             <component is="further-subcategories"
                                        :categories="{{ subcategory.subcategories|json_encode()|e('html_attr') }}"
                                        :class-name="'listing'"
+                                       {% if brandCatalog %}class="listing__further-subcategories--desktop"{% endif %}
                             >
                                 <template v-slot:subcategory-listing-part>
                                     {% for subsubcategory in subcategory.subcategories|slice(0, 5) %}
