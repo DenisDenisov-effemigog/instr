@@ -91,9 +91,8 @@
                 let vm = this;
                 api.authSignIn(vm.email, vm.password).then(() => {
                     vm.$eventBus.$emit('closeModal')
-                    console.log('success')
-                    // let ref = document.referrer;
-                    // window.location.replace(ref.length > 0 ? ref : '/');
+                    let ref = document.referrer;
+                    window.location.replace(ref.length > 0 ? ref : '/');
                 }).catch((error) => {
                     console.log(error)
                 });

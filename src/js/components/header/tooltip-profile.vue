@@ -13,12 +13,12 @@
                 <span>{{ $tc(item.title) }}</span>
             </a>
         </router-link>
-        <div href="" class="header__menu-tooltip-layout" @click.prevent="exit">
+        <a href="" class="header__menu-tooltip-layout" @click.prevent="exit">
             <svg>
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__exit'"></use>
             </svg>
             {{ $tc('header.tooltip.exit') }}
-        </div>
+        </a>
     </div>
 </template>
 
