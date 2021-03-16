@@ -178,11 +178,12 @@ class Api {
             message: message,
         });
     }
-    deleteAddress(reason, message, id) {
+    deleteAddress(reason, message, id, value) {
         return this._promiseBitrixRequest('instrument2:rest.api.user.address.delete', {
             reason: reason,
             message: message,
             id: id,
+            address: value
         });
     }
     personalOrders(status, page) {
