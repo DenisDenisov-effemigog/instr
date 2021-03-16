@@ -1,5 +1,5 @@
 <template>
-    <div class="profile">
+    <section class="profile">
         <div class="profile__menu" v-if="showMenu">
             <div class="profile__company profile__company--mobile">
                 <h3 class="profile__company-name profile__company-name--mobile">{{ profile.company }}</h3>
@@ -59,7 +59,7 @@
                 ></router-view>
             </transition>
         </div>
-    </div>
+    </section>
 </template>
 
 <script>

@@ -1,0 +1,46 @@
+.contacts-head
+    margin-top: 1.5rem
+    +tablet
+        margin-top: 2rem
+    &__title
+        @extend .title-6
+        font-weight: 700
+    &__main
+        +tablet
+            display: flex
+    &__details
+       +tablet
+            padding: 2rem
+            border: 1px solid $border-color_4
+            border-radius: 4px
+            width: 50%
+            margin-right: 1.5rem
+    &__list
+        padding: 1.5rem 1rem
+        border: 1px solid $border-color_4
+        border-radius: 4px
+        margin-top: 1.5rem
+        +tablet
+            border: none
+            padding: 0
+    &__item
+        display: flex
+        padding-bottom: 0.75rem
+        &:last-child
+            padding-bottom: 0
+        +tablet
+            cursor: pointer
+            &:hover .contacts-head__text
+                color: $black
+            &:hover .contacts-head__icon svg
+                fill: $black
+    &__icon
+        margin-right: 0.625rem
+        & svg
+            width: 1.3125rem
+            height: 1.3125rem
+            fill: $grey
+    &__text
+        @extend .text-2
+        color: $light-grey
+        font-weight: 400
