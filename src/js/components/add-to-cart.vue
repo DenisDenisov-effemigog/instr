@@ -34,7 +34,7 @@
 			<div
 				class="add-to-cart__button add-to-cart__button--increase"
 				:disabled="increaseDisabled"
-				@click="increase"
+				@click="increase(false, $event.target)"
 			>
                 <svg viewBox="2 2 12 12">
                     <use :xlink:href="templatePath + 'images/sprite.svg#plus'"></use>
@@ -46,7 +46,7 @@
                 class="add-to-cart__add" 
                 :class="{'add-to-cart__add--smaller': changeIcon && width < 760}"
                 :disabled="disabled"
-                @click="increase"
+                @click="increase(true, $event.target)"
             >
                 <svg v-if="changeIcon && width < 760 && !disabled">
                     <use :xlink:href="templatePath + 'images/sprite.svg#icons__cart'"></use>
@@ -204,9 +204,11 @@
                 }
                 this.width = window.innerWidth;
             },
-            increase(event) {
-                let button = event.target;
-                this.$emit('cloneCard', button)
+            increase(clickFlag, event) {
+                let button = event
+                if(clickFlag){
+                    this.$emit('cloneCard', button)
+                }
                 if (this.amount < this.maxAmount) {
                     this.amount++;
                     if(this.changeIcon && this.width < 760) {
