@@ -1,16 +1,17 @@
 <template>
     <div class="header__menu-tooltip">
-        <router-link tag="div" v-for="(item, index) in computedLinks"
+        <router-link  v-for="(item, index) in computedLinks"
                      :key="index"
                      :exact="!!item.exact"
                      :to="item.url"
-        >
-            <div class="header__menu-tooltip-layout" @click="passIndex(index)">
+                      v-slot="{ href }"
+        >   
+            <a :href="href" class="header__menu-tooltip-layout" @click="passIndex(index)">
                 <svg>
                     <use :xlink:href="templatePath + 'images/sprite.svg#icons__' + item.icon"></use>
                 </svg>
                 <span>{{ $tc(item.title) }}</span>
-            </div>
+            </a>
         </router-link>
         <div href="" class="header__menu-tooltip-layout" @click.prevent="exit">
             <svg>
