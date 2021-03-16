@@ -67,14 +67,14 @@ export default {
                 if(event.toElement.className !== 'topnav__switch-text') {
                     this.openedCountry = false
                     this.$eventBus.$emit("closeCountry")
-                    this.toggleHtmlOverflow('auto')
+                    this.toggleHtmlOverflow('initial')
                     this.showBg = false
                     setTimeout(() => {
                         this.$refs.country.style.zIndex = -1
                     }, 360);
                 } 
             }
-            this.toggleHtmlOverflow('auto')
+            this.toggleHtmlOverflow('initial')
         },
         openCountry(){
             this.openedCountry = !this.openedCountry
@@ -83,7 +83,7 @@ export default {
                 this.showBg = true
                 this.$refs.country.style.zIndex = 30
             }else{
-                this.toggleHtmlOverflow('auto')
+                this.toggleHtmlOverflow('initial')
                 this.showBg = false
                 setTimeout(() => {
                     this.$refs.country.style.zIndex = -1

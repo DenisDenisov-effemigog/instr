@@ -163,7 +163,7 @@ export default {
             this.$eventBus.$emit("deleteActive");
             this.$eventBus.$emit("hide-button");
             if(modal != 'product-card'){
-                this.toggleHtmlOverflow('auto')
+                this.toggleHtmlOverflow('initial')
             }
         },
         closeOutside(event) {

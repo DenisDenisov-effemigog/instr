@@ -64,7 +64,7 @@
                 this.hovered = 0;
                 
                 if (!this.active) {
-                    this.toggleHtmlOverflow('auto')
+                    this.toggleHtmlOverflow('initial')
                 } else {
                     this.toggleHtmlOverflow('hidden')
                 }

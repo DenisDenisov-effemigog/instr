@@ -51,7 +51,7 @@ export default {
             this.$eventBus.$emit('notActiveButton');
         },
         closeMenuModal(){
-            this.toggleHtmlOverflow('auto')
+            this.toggleHtmlOverflow('initial')
             this.openModal = false;
         },
         closeOutside(event) {

@@ -43,7 +43,7 @@
                     />
                     <span class="checkout-reg__label-text"
                         :class="{'checkout-reg__label-text--up': $v.code.required}"
-                    >{{ $tc('title.tin') }}</span>
+                    >{{ $tc('title.vat') }}</span>
                     <svg viewBox="0 0 24 24"
                         class="checkout-reg__label-icon"
                         v-if="$v.code.required"
