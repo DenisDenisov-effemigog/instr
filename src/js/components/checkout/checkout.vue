@@ -203,7 +203,7 @@
                 userData: {},
                 personType: 2,
                 message: '',
-                currentDeliveryPoint: this.deliveries[0].type,
+                currentDeliveryId: this.deliveries[0].type,
                 currentDeliveryPayment: this.payments[0].id,
                 date: '',
                 pointAddress: this.deliveryPoints[0],
@@ -258,8 +258,8 @@
                 this.userData.phone = phone
                 this.userData.newEmail = newEmail
             },
-            buildDeliveryPoint(point){
-                this.currentDeliveryPoint = point
+            buildDeliveryPoint(id){
+                this.currentDeliveryId = id
             },
             buildDeliveryPayment(id){
                 this.currentDeliveryPayment = id
@@ -311,7 +311,7 @@
                 if (vm.user && !vm.user.authorized || !vm.user) {
                     if (vm.personType === 1) {
                         if (vm.userData.name && vm.userData.phone && vm.userData.newEmail) {
-                            if (vm.currentDeliveryPoint === 'delivery') {
+                            if (vm.currentDeliveryId === 1) {
                                 if (vm.deliveryNewAddress.city && 
                                     vm.deliveryNewAddress.street && 
                                     vm.deliveryNewAddress.house && 
@@ -326,7 +326,7 @@
                                     vm.$eventBus.$emit('address-error')
                                     vm.$eventBus.$emit('autocomplete-error')
                                 }
-                            } else if (vm.currentDeliveryPoint === 'receive') {
+                            } else if (vm.currentDeliveryId === 2) {
                                 userReg.is_company = false
                                 userReg.name = vm.userData.name
                                 userReg.email = vm.userData.newEmail
@@ -338,7 +338,7 @@
                         }
                     } else if (vm.personType === 2) {
                         if (vm.userData.name && vm.userData.company && vm.userData.code && vm.userData.phone && vm.userData.newEmail) {
-                            if (vm.currentDeliveryPoint === 'delivery') {
+                            if (vm.currentDeliveryId === 1) {
                                 if (vm.deliveryNewAddress.city &&
                                     vm.deliveryNewAddress.street &&
                                     vm.deliveryNewAddress.house &&
@@ -354,7 +354,7 @@
                                     vm.$eventBus.$emit('address-error')
                                     vm.$eventBus.$emit('autocomplete-error')
                                 }
-                            } else if (vm.currentDeliveryPoint === 'receive') {
+                            } else if (vm.currentDeliveryId === 2) {
                                 userReg.is_company = true
                                 userReg.name = vm.userData.name
                                 userReg.company = vm.userData.company
@@ -368,9 +368,9 @@
                         }
                     }
                 } else if (vm.user && vm.user.authorized) {
-                    if (vm.currentDeliveryPoint === 'receive') {
+                    if (vm.currentDeliveryId === 2) {
                         addressDelivery = vm.pointAddress.label
-                    } else if (vm.currentDeliveryPoint === 'delivery') {
+                    } else if (vm.currentDeliveryId === 1) {
                         if (!vm.addresses.length) {
                             if (vm.deliveryNewAddress.city &&
                                 vm.deliveryNewAddress.street &&
@@ -396,7 +396,7 @@
                     api.orderValidate(
                         userReg, 
                         vm.currentDeliveryPayment, 
-                        vm.currentDeliveryPoint, 
+                        vm.currentDeliveryId, 
                         addressDelivery, 
                         vm.actionsAgreement, 
                         vm.message, 
@@ -405,7 +405,7 @@
                         api.orderCreate(
                             userReg, 
                             vm.currentDeliveryPayment, 
-                            vm.currentDeliveryPoint, 
+                            vm.currentDeliveryId, 
                             addressDelivery, 
                             vm.actionsAgreement, 
                             vm.message, 
@@ -438,8 +438,8 @@
                     if (vm.user && !vm.user.authorized || !vm.user) {
                         vm.$eventBus.$emit('register-error')
                     }
-                    if (vm.currentDeliveryPoint === 'delivery' && vm.user && !vm.addresses.length ||
-                        vm.currentDeliveryPoint === 'delivery' && vm.user && !addressDelivery.length) {
+                    if (vm.currentDeliveryId === 1 && vm.user && !vm.addresses.length ||
+                        vm.currentDeliveryId === 1 && vm.user && !addressDelivery.length) {
                         vm.$eventBus.$emit('address-error')
                         vm.$eventBus.$emit('autocomplete-error')
                     }

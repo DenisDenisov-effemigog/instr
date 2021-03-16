@@ -1989,7 +1989,6 @@ window.runAction = function (action, config) {
                                 discounts: {
                                     personal: {percent: 5, value: 387},
                                     action: {percent: 3, value: 115},
-                                    total: {percent: 8, value: 502},
                                 },
                             }
                         }
