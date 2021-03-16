@@ -31,7 +31,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="delivery__icon" @click.prevent="deleteAddress(order.id)">
+                    <div class="delivery__icon" @click.prevent="deleteAddress(order.id, order.address)">
                         <svg v-if="order.status !== 'not confirmed'">
                             <use :xlink:href="templatePath + 'images/sprite.svg#icons__del'"></use>
                         </svg>
@@ -70,7 +70,8 @@ export default {
         updateAddress() {
             this.$store.dispatch('personalUpdateAddresses');
         },
-        deleteAddress(addressId) {
+        deleteAddress(addressId, value) {
+            console.log(value);
             // через массив передаем причины удаления и что удаляем - 2 элемеента
             this.$eventBus.$emit("openModal", 'profile-delete', [this.reasons, 'address', addressId], false, false)
         },

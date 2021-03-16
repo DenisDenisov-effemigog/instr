@@ -66,6 +66,10 @@
             id: {
                 type: Number,
                 required: false
+            },
+            address: {
+                type: String,
+                required: false
             }
         },
         validations: {
@@ -100,7 +104,7 @@
                         console.error(errors);
                     })
                 } else if (vm.type === 'address') {
-                    api.deleteAddress(vm.picked, vm.message, vm.id).then(() => {
+                    api.deleteAddress(vm.picked, vm.message, vm.id, vm.address).then(() => {
                         vm.$eventBus.$emit('closeModal')
                         vm.$eventBus.$emit('updateAddress')
                     }).catch(errors => {

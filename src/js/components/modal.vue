@@ -45,7 +45,8 @@
             <div class="modal__profile-edit" v-else-if="modal === 'profile-delete'">
                 <h3 class="modal__title" v-if="props[1] === 'profile'">{{ $tc('modal.title.profile_delete') }}</h3>
                 <h3 class="modal__title" v-else-if="props[1] === 'address'">{{ $tc('modal.title.address_delete') }}</h3>
-                <component is="delete-profile" :reasons="props[0]" :type="props[1]" :id="props[2]"></component>
+                <component is="delete-profile" v-if="props[1] === 'profile'" :reasons="props[0]" :type="props[1]" :id="props[2]"></component>
+                <component is="delete-profile" v-else-if="props[1] === 'address'" :reasons="props[0]" :type="props[1]" :address="props[3]" :id="props[2]"></component>
             </div>
             <div class="modal__profile-edit" v-else-if="modal === 'new-address'">
                 <h3 class="modal__title">{{ $tc('modal.title.address_add') }}</h3>
