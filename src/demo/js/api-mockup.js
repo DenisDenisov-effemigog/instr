@@ -2654,7 +2654,7 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
-            case 'instrument2:rest.api.search.query.history':
+            case 'instrument2:rest.api.search.history':
                 
                 resolve({
                     data: {
@@ -2669,7 +2669,7 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
-            case 'instrument2:rest.api.search.query.clear.history':
+            case 'instrument2:rest.api.search.clear':
                 
                 resolve({
                     data: {

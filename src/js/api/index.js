@@ -317,11 +317,11 @@ class Api {
     }
 
     searchGetHistory() {
-        return this._promiseBitrixRequest('instrument2:rest.api.search.query.history',);
+        return this._promiseBitrixRequest('instrument2:rest.api.search.history',);
     }
 
     searchClearHistory() {
-        return this._promiseBitrixRequest('instrument2:rest.api.search.query.clear.history',);
+        return this._promiseBitrixRequest('instrument2:rest.api.search.clear',);
     }
 
     startSearch(value) {
