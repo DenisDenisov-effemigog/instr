@@ -1,15 +1,17 @@
 .brands
     @extend .container
     margin-top: 1.5rem
+    margin-bottom: 12.25rem
+    +tablet
+        margin-bottom: 22.75rem
     &__title
-        @extend .title-5
+        @extend .title-3
     &__list
-        margin-top: 2rem
         display: flex
         flex-wrap: wrap
-        margin: 0 -0.5rem
+        margin: 1.5rem -.5rem 0 -.5rem
         +tablet
-            margin: 0 -0.75rem
+            margin: 1.25rem -.75rem 0 -.75rem
     &__item
         width: 50%
         padding: 0.5rem
@@ -30,9 +32,7 @@
                 .brands__link img
                     transform: scale(1.2)
     &__link
-        padding: 1.5rem 0.75rem
+        padding: 1.6875rem .75rem 1.25rem .75rem
         +tablet
-            padding: 4.03125rem 3.75rem
-
-            
-                
+            padding: 4.25rem 3.75rem 3.8125rem 3.75rem
+      
