@@ -4,21 +4,22 @@
     width: 100%
     height: 100vh
     z-index: 12
-    max-height: 0
-    -webkit-transition: max-height .25s
-    transition: max-height .25s
+    -webkit-transition: opacity .25s
+    transition: opacity .35s
     overflow: hidden
+    opacity: 0
+    z-index: -1
     +until($desktop-small)
         display: none
     &--open
-        max-height: 100vh
+        opacity: 1
     &__bg
         position: absolute
         opacity: 0
         background: $black
         width: 100%
         height: 100vh
-        transition: opacity .25s
+        transition: opacity .35s
         &--show
             opacity: .72
     &__wrapper
@@ -26,6 +27,12 @@
         background: #fff
         width: 100%
         top: 0
+        max-height: 0px
+        overflow: hidden
+        -webkit-transition: max-height .35s
+        transition: max-height .35s
+        &--show
+            max-height: 21.25rem
     &__container
         @extend .container
         display: flex
@@ -70,6 +77,12 @@
         height: 21.25rem
         margin: auto
         z-index: 0
+        max-height: 0px
+        overflow: hidden
+        -webkit-transition: max-height .35s
+        transition: max-height .35s
+        &--show
+            max-height: 21.25rem
     &__map
         position: absolute
         right: 0

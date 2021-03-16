@@ -1,7 +1,7 @@
 <template>
-    <div class="country" :class="{'country--open': openedCountry}">
+    <div ref="country" class="country" :class="{'country--open': openedCountry}">
         <div @click="closeChoiceCountry" class="country__bg" :class="{'country__bg--show': showBg}"></div>
-        <div class="country__wrapper"> 
+        <div class="country__wrapper" :class="{'country__wrapper--show': showBg}"> 
             <div class="country__container">
                 <div class="country__choice">
                     <h2 class="country__title">{{ $tc('country.choose_country') }}</h2>
@@ -28,7 +28,7 @@
                 </div>
             </div>
         </div>
-        <div class="country__map-wrapper">
+        <div class="country__map-wrapper" :class="{'country__map-wrapper--show': showBg}">
             <div class="country__map">
                 <img :src="templatePath + 'images/country/globus.png'" alt="" class="country__map-pic">
                 <!-- <img :src="templatePath + 'images/country/map-dots.png'" alt="" class="country__map-pic"> -->
@@ -67,6 +67,11 @@ export default {
                 if(event.toElement.className !== 'topnav__switch-text') {
                     this.openedCountry = false
                     this.$eventBus.$emit("closeCountry")
+                    this.toggleHtmlOverflow('auto')
+                    this.showBg = false
+                    setTimeout(() => {
+                        this.$refs.country.style.zIndex = -1
+                    }, 360);
                 } 
             }
             this.toggleHtmlOverflow('auto')
@@ -75,12 +80,14 @@ export default {
             this.openedCountry = !this.openedCountry
             if(this.openedCountry === true){
                 this.toggleHtmlOverflow('hidden')
-                setTimeout(() => {
-                    this.showBg = true
-                }, 150);
+                this.showBg = true
+                this.$refs.country.style.zIndex = 30
             }else{
                 this.toggleHtmlOverflow('auto')
                 this.showBg = false
+                setTimeout(() => {
+                    this.$refs.country.style.zIndex = -1
+                }, 360);
             }
         }
     },
