@@ -80,7 +80,7 @@ export default {
             
             if (this.menuLink === 'profile') {
                 if (this.user.authorized) {
-                    window.location.replace('/account')
+                    window.location.replace('/my')
                 } else {
                     this.$eventBus.$emit("openModal", 'user', 'login', false, true)
                 }

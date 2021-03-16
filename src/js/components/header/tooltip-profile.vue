@@ -1,9 +1,8 @@
 <template>
     <div class="header__menu-tooltip">
-        <router-link tag="div" v-for="(item, index) in computedLinks"
-                     :key="index"
-                     :exact="!!item.exact"
-                     :to="item.url"
+        <a v-for="(item, index) in computedLinks"
+            :key="index"
+            :href="item.url"
         >
             <div class="header__menu-tooltip-layout" @click="passIndex(index)">
                 <svg>
@@ -11,13 +10,13 @@
                 </svg>
                 <span>{{ $tc(item.title) }}</span>
             </div>
-        </router-link>
-        <div href="" class="header__menu-tooltip-layout" @click.prevent="exit">
+        </a>
+        <a href="" class="header__menu-tooltip-layout" @click.prevent="exit">
             <svg>
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__exit'"></use>
             </svg>
             {{ $tc('header.tooltip.exit') }}
-        </div>
+        </a>
     </div>
 </template>
 
