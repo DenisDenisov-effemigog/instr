@@ -1,0 +1,59 @@
+.contacts-trade
+    margin-top: 2rem
+    &__title
+        @extend .title-6
+        font-weight: 700
+    &__list
+        margin-top: 1.5rem
+        +tablet
+            margin-top: 0
+            display: flex
+            justify-content: space-between
+            flex-wrap: wrap
+    &__item
+        padding-bottom: 1rem
+        &:last-child
+            padding-bottom: 0
+        +tablet
+            padding-bottom: 0
+            padding-top: 1.5rem
+            width: calc(100% / 3 - 1rem)
+
+    &__subtitle
+        @extend .text-1
+        font-weight: 700
+    &__sublist
+        margin-top: 1rem
+    &__subitem
+        padding-bottom: 0.75rem
+        display: flex
+        &:last-child
+            padding-bottom: 0
+        +tablet
+            cursor: pointer
+            &:hover .contacts-trade__text
+                color: $black
+            &:hover .contacts-trade__icon svg
+                fill: $black
+    &__icon
+        margin-right: 0.625rem
+        & svg
+            width: 1.3125rem
+            height: 1.3125rem
+            fill: $grey
+    &__text
+        @extend .text-2
+        color: $light-grey
+        font-weight: 400
+    &__info
+        margin-top: 2rem
+        text-align: center
+        @extend .text-2
+        font-weight: 400
+        +tablet
+            width: 39%
+            margin: 5rem auto 0
+    &__info-link
+        @extend .text-2
+        font-weight: 400
+        color: $primary-red
