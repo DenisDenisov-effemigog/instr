@@ -25,7 +25,7 @@
                 class="user-reg__checkbox-input"
                 type="checkbox"
                 name="taxPayer"
-                :value="nds"
+                v-model="isVatPayer"
             >
             <span class="user-reg__checkbox-slider"></span>
             <span class="user-reg__checkbox-label">{{ $tc('user_reg.tax_payer') }}</span>
@@ -79,21 +79,21 @@
             <div class="user__error-text user__error-text--invalid"
                 v-if="$v.company.$error">{{ $tc('text.error') }}</div>
         </label>
-        <label v-show="!individualFlag" for="TIN" class="user__label">
+        <label v-show="!individualFlag" for="VAT" class="user__label">
             <input
                 class="user__input"
-                :class="{'user__input--error': $v.tin.$error}"
+                :class="{'user__input--error': $v.vat.$error}"
                 type="text"
-                name="TIN"
-                id="TIN"
-                v-model.trim="$v.tin.$model">
+                name="VAT"
+                id="VAT"
+                v-model.trim="$v.vat.$model">
             <span class="user__label-text"
-                :class="{'user__label-text--up': $v.tin.required}"
-            >{{ $tc('title.tin') }}</span>
+                :class="{'user__label-text--up': $v.vat.required}"
+            >{{ $tc('title.vat') }}</span>
             <svg viewBox="0 0 24 24"
                 class="user__label-icon"
-                v-if="$v.tin.required"
-                @click="$v.tin.$model = ''">
+                v-if="$v.vat.required"
+                @click="$v.vat.$model = ''">
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>
             <div class="user__error-text user__error-text--invalid"
@@ -194,7 +194,7 @@
             company: {
                 required
             },
-            tin: {
+            vat: {
                 required,
                 alphaNum
             },
@@ -209,11 +209,11 @@
         data() {
             return {
                 individualFlag: false,
-                nds: false,
+                isVatPayer: false,
                 agreement: true,
                 name: '',
                 company: '',
-                tin: '',
+                vat: '',
                 phone: '',
                 newEmail: '',
                 tokens: config.phoneTokens,
@@ -233,7 +233,7 @@
                 } else {
                     if (!this.$v.name.$invalid &&
                         !this.$v.company.$invalid &&
-                        !this.$v.tin.$invalid && 
+                        !this.$v.vat.$invalid && 
                         !this.$v.newEmail.$invalid && 
                         !this.$v.phone.$invalid && 
                         this.agreement
@@ -251,9 +251,9 @@
                 } else {
                     type = false
                 }
-                api.authSignUp(type, vm.name, vm.company, vm.tin, vm.newEmail, vm.phone, vm.nds).then(() => {
-                    vm.$eventBus.$emit('closeModal')
-                    // window.location.replace(config.links.auth_thanks);
+                api.authSignUp(type, vm.name, vm.company, vm.vat, vm.newEmail, vm.phone, vm.isVatPayer).then(() => {
+                    vm.$eventBus.$emit('closeModal');
+                    window.location.replace(config.links.auth_thanks);
                 }).catch((errors) => {
                     console.log(errors)
                 });
