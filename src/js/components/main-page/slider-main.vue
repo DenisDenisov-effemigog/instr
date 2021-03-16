@@ -1,5 +1,5 @@
 <template>
-    <div class="slider-main">
+    <section class="slider-main">
         <agile :options="options" 
                @after-change="showCurrentSlide($event)" 
                ref="mainSlider"
@@ -17,7 +17,7 @@
                 </svg>
             </template>
         </agile>
-    </div>
+    </section>
 </template>
 
 <script>
