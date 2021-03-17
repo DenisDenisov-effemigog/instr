@@ -2191,16 +2191,16 @@ window.runAction = function (action, config) {
                                     points: demoPoints,
                                     pagination: {
                                         'total': 105,
-                                        'current': 1,
-                                        'url_previous': '/some/category/page/2',
-                                        'url_next': '/some/category/page/4',
+                                        'current': 6,
+                                        'url_previous': '/some/category/page/1',
+                                        'url_next': '/some/category/page/7',
                                         'url_last': '/some/category/page/last',
                                         'urls': 
                                         [
-                                            {title: '1', url: '/some/category/page/1'},
-                                            {title: '2', url: '/some/category/page/2'},
-                                            {title: '3', url: ''},
                                             {title: '4', url: '/some/category/page/4'},
+                                            {title: '5', url: '/some/category/page/5'},
+                                            {title: '6', url: '/some/category/page/6'},
+                                            {title: '7', url: '/some/category/page/7'},
                                         ]
                                     }
                                 },
@@ -2219,15 +2219,15 @@ window.runAction = function (action, config) {
                                     pagination: {
                                         'total': 104,
                                         'current': +config.data.page,
-                                        'url_previous': '/some/category/page/2',
-                                        'url_next': '/some/category/page/4',
+                                        'url_previous': '/some/category/page/1',
+                                        'url_next': '/some/category/page/7',
                                         'url_last': '/some/category/page/last',
                                         'urls': 
                                         [
-                                            {title: '1', url: '/some/category/page/1'},
-                                            {title: '2', url: '/some/category/page/2'},
-                                            {title: '3', url: ''},
                                             {title: '4', url: '/some/category/page/4'},
+                                            {title: '5', url: '/some/category/page/5'},
+                                            {title: '6', url: '/some/category/page/6'},
+                                            {title: '7', url: '/some/category/page/7'},
                                         ]
                                     }
                                 },
@@ -2252,15 +2252,15 @@ window.runAction = function (action, config) {
                                     pagination: {
                                         'total': 103,
                                         'current': +config.data.page,
-                                        'url_previous': '/some/category/page/2',
-                                        'url_next': '/some/category/page/4',
+                                        'url_previous': '/some/category/page/1',
+                                        'url_next': '/some/category/page/7',
                                         'url_last': '/some/category/page/last',
                                         'urls': 
                                         [
-                                            {title: '1', url: '/some/category/page/1'},
-                                            {title: '2', url: '/some/category/page/2'},
-                                            {title: '3', url: ''},
                                             {title: '4', url: '/some/category/page/4'},
+                                            {title: '5', url: '/some/category/page/5'},
+                                            {title: '6', url: '/some/category/page/6'},
+                                            {title: '7', url: '/some/category/page/7'},
                                         ]
                                     }
                                 },

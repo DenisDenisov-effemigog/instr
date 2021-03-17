@@ -82,12 +82,8 @@ export default {
                 let windowPosition = window.pageYOffset + window.innerHeight
                 let cartInfoPosition = this.$refs.cartOrderInfo.offsetTop + this.$refs.cartOrderInfo.offsetHeight + 64
                 this.fixedFlag = windowPosition < cartInfoPosition;
-                console.log(window.pageYOffset, window.innerHeight )
-                console.log(this.$refs.cartOrderInfo.offsetTop, this.$refs.cartOrderInfo.offsetHeight + 64 )
-                console.log(this.fixedFlag )
             } else {
                 this.fixedFlag = false
-                console.log(this.fixedFlag )
             }
         },
     }

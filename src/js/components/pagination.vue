@@ -2,14 +2,25 @@
     <div class="pagination">
         <a  :href="internalPagination.url_previous" 
             class="pagination__arrow pagination__arrow-prev"
-            :class="{'pagination__arrow--disabled': internalPagination.current === 1}"
-            @click.prevent="goToPage(internalPagination.current - 1)"
+            :class="{'pagination__arrow--disabled': internalPagination.urls[0].title == 1}"
+            @click.prevent="slideToPrev"
         >
             <svg>
                 <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-left'"></use>
             </svg>
         </a>
         <ul class="pagination__list">
+            <li class="pagination__item" v-if="internalPagination.urls[0].title != 1"
+                :class="{'pagination__item--current': internalPagination.current === 1}"
+            >
+                <a :href="firstPageUrl" 
+                    class="pagination__link"
+                    @click.prevent="goToPage(1)"
+                >1</a>
+            </li>
+            <li class="pagination__item pagination__item--dots" v-if="internalPagination.urls[0].title != 1">
+                <div class="pagination__link">...</div>
+            </li>
             <li class="pagination__item"
                 v-for="(link, index) in internalPagination.urls" :key="index"
                 :class="{'pagination__item--current': internalPagination.current == link.title}"
@@ -19,10 +30,10 @@
                     @click.prevent="goToPage(link.title)"
                 >{{ link.title }}</a>
             </li>
-            <li class="pagination__item pagination__item--dots">
+            <li class="pagination__item pagination__item--dots" v-if="notLast">
                 <div class="pagination__link">...</div>
             </li>
-            <li class="pagination__item"
+            <li class="pagination__item" v-if="notLast"
                 :class="{'pagination__item--current': internalPagination.current == internalPagination.total}"
             >
                 <a :href="internalPagination.url_last" 
@@ -33,8 +44,8 @@
         </ul>
         <a  :href="internalPagination.url_next" 
             class="pagination__arrow pagination__arrow_next"
-            :class="{'pagination__arrow--disabled': internalPagination.current === internalPagination.total}"
-            @click.prevent="goToPage(internalPagination.current + 1)"
+            :class="{'pagination__arrow--disabled': !notLast}"
+            @click.prevent="slideToNext"
         >
             <svg>
                 <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
@@ -52,6 +63,8 @@
         data() {
             return {
                 internalPagination: {},
+                lastIteration: NaN,
+                firstPageUrl: ''
             }
         },
         props: {
@@ -69,6 +82,19 @@
         },
         mounted() {
             this.internalPagination = this.pagination;
+            this.lastIteration = Math.floor(this.internalPagination.total / 4);
+            this.firstPageUrl = internalPagination.urls[0].url.replace(/\d+$/, 1)
+        },
+        computed: {
+            currentIteration() {
+                return Math.floor(this.internalPagination.urls[3].title / 4)
+            },
+            isFirst() {
+                return 
+            },
+            notLast() {
+                return this.currentIteration === this.lastIteration ? false : true
+            }
         },
         methods: {
             goToPage(page) {
@@ -90,6 +116,26 @@
                     this.scrollTop(this.placement, 130);
                 } else {
                     this.scrollTop(this.placement, 50);
+                }
+            },
+            slideToPrev() {
+                if (this.internalPagination.urls[0].title != 1) {
+                    for (let i=0; i < this.internalPagination.urls.length; i++) {
+                        let page = +this.internalPagination.urls[i].title;
+                        let url = this.internalPagination.urls[i].url;
+                        this.internalPagination.urls[i].title = page - 3;
+                        this.internalPagination.urls[i].url = url.replace(/\d+$/, this.internalPagination.urls[i].title);
+                    }
+                }
+            },
+            slideToNext() {
+                if (this.notLast) {
+                    for (let i=0; i < this.internalPagination.urls.length; i++) {
+                        let page = +this.internalPagination.urls[i].title;
+                        let url = this.internalPagination.urls[i].url;
+                        this.internalPagination.urls[i].title = page + 3;
+                        this.internalPagination.urls[i].url = url.replace(/\d+$/, this.internalPagination.urls[i].title);
+                    }
                 }
             }
         }
