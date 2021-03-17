@@ -35,9 +35,13 @@ export default {
             
         }
     },
+    mounted() {
+        this.$store.dispatch('personalContract');
+    },
     computed: {
         contractArr() {
-            return this.cloneOverJson(this.$store.state.personal.contract);
+            // return this.cloneOverJson(this.$store.state.personal.contract); #TODO на время
+            return this.$store.state.personal.contract
         },
     }
 }
