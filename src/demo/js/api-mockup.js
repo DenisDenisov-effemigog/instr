@@ -389,7 +389,7 @@ let dashboardParams = {
         {
             number:1,
             date:'11.03.2021',
-            priceTotal:2345,
+            totalPrice:2345,
             status: {
                 label:'В сборке',
                 value:'waiting'
@@ -398,7 +398,7 @@ let dashboardParams = {
         {
             number:2,
             date:'18.03.2021',
-            priceTotal:245342,
+            totalPrice:245342,
             status: {
                 label:'В сборке',
                 value:'waiting'
@@ -407,7 +407,7 @@ let dashboardParams = {
         {
             number:3,
             date:'28.03.2021',
-            priceTotal:34366,
+            totalPrice:34366,
             status: {
                 label:'В сборке',
                 value:'waiting'
@@ -501,7 +501,7 @@ let demoPoints = [
         'value': 'done'
     },
     {
-        'label': 'В ожидании оплаты',
+        'label': 'В сборке',
         'value': 'waiting'
     },
     {
@@ -525,7 +525,7 @@ for(let i = 0; i < 10; ++i) {
         id: i+1,
         number: 3254+i,
         date: '31.12.2020',
-        priceTotal: 1000819,
+        totalPrice: 1000819,
         status: newOrdeStatus,
         qty: getRandomInt(2,8),
         paid: Math.random() > 0.5,
@@ -548,7 +548,7 @@ for(let i = 0; i < 10; ++i) {
                 url:"/product/areometr-dlya-vymiryuvannya-shchilnosti-elektrolitu-sparta/",
                 sku:"1230056",
                 basket_quantity:3,
-                priceTotal:1051.50,
+                totalPrice:1051.50,
                 price:350.50,
                 base_price:400,
                 discount:12,
@@ -2300,7 +2300,7 @@ window.runAction = function (action, config) {
                     id: foundOrder.id,
                     number: foundOrder.number,
                     date: foundOrder.date,
-                    priceTotal: foundOrder.priceTotal,
+                   totalPrice: foundOrder.totalPrice,
                     status: foundOrder.status,
                     qty: foundOrder.qty,
                     paid: foundOrder.paid,

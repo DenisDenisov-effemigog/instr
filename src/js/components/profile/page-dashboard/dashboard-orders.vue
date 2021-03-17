@@ -22,7 +22,7 @@
                                 #{{item.number}}
                             </div>
                             <div class="dashboard-orders__price">
-                                {{item.priceTotal}} {{ $tc('text.currency') }}                    
+                                {{item.totalPrice}} {{ $tc('text.currency') }}                    
                             </div>
                         </div>
                         <div class="dashboard-orders__item-bottom">
