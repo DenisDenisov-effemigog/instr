@@ -83,14 +83,14 @@
         mounted() {
             this.internalPagination = this.pagination;
             this.lastIteration = Math.floor(this.internalPagination.total / 4);
-            this.firstPageUrl = internalPagination.urls[0].url.replace(/\d+$/, 1)
+            this.firstPageUrl = this.internalPagination.urls[0].url.replace(/\d+$/, 1)
         },
         computed: {
             currentIteration() {
                 return Math.floor(this.internalPagination.urls[3].title / 4)
             },
             isFirst() {
-                return 
+                return this.currentIteration === this.lastIteration
             },
             notLast() {
                 return this.currentIteration === this.lastIteration ? false : true
@@ -130,11 +130,20 @@
             },
             slideToNext() {
                 if (this.notLast) {
-                    for (let i=0; i < this.internalPagination.urls.length; i++) {
-                        let page = +this.internalPagination.urls[i].title;
-                        let url = this.internalPagination.urls[i].url;
-                        this.internalPagination.urls[i].title = page + 3;
-                        this.internalPagination.urls[i].url = url.replace(/\d+$/, this.internalPagination.urls[i].title);
+                    if (this.currentIteration === this.lastIteration - 1) {
+                        for (let i=this.internalPagination.urls.length; i > 0; i--) {
+                            let page = +this.internalPagination.urls[i].title;
+                            let url = this.internalPagination.urls[i].url;
+                            this.internalPagination.urls[i].title = page + 3;
+                            this.internalPagination.urls[i].url = url.replace(/\d+$/, this.internalPagination.urls[i].title);
+                        }
+                    } else {
+                        for (let i=0; i < this.internalPagination.urls.length; i++) {
+                            let page = +this.internalPagination.urls[i].title;
+                            let url = this.internalPagination.urls[i].url;
+                            this.internalPagination.urls[i].title = page + 3;
+                            this.internalPagination.urls[i].url = url.replace(/\d+$/, this.internalPagination.urls[i].title);
+                        }
                     }
                 }
             }

@@ -1,5 +1,5 @@
 <template>
-    <agile :options="options" class="agile_centered">
+    <agile :options="options" class="agile--centered">
 
         <div @click="openModal(slide)" class="slider-promo__slide"
             v-for="slide in promoBanners"

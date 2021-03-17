@@ -1,5 +1,5 @@
 <template>
-    <agile :options="options" class="agile_centered">
+    <agile :options="options" class="agile--centered">
 
         <slot></slot>
 
