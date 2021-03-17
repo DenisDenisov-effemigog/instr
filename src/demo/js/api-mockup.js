@@ -501,7 +501,7 @@ let demoPoints = [
         'value': 'done'
     },
     {
-        'label': 'В ожидании оплаты',
+        'label': 'В сборке',
         'value': 'waiting'
     },
     {
