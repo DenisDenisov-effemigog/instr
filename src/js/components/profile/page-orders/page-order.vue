@@ -57,7 +57,7 @@
                             <ul class="order-desc__list">
                                 <li class="order-desc__item">
                                     <div class="order-desc__name">{{ $tc('text.price') }}</div>
-                                    <div class="order-desc__price">{{ currency(order.priceTotal + order.discount) }} {{ $tc('text.currency') }}</div>
+                                    <div class="order-desc__price">{{ currency(order.totalPrice + order.discount) }} {{ $tc('text.currency') }}</div>
                                 </li>
                                 <li class="order-desc__item order-desc__item--discount">
                                     <div class="order-desc__name">{{ $tc('text.discount') }}</div>
@@ -65,7 +65,7 @@
                                 </li>
                                 <li class="order-desc__item order-desc__item--total">
                                     <div class="order-desc__name order-desc__name--total">{{ $tc('text.price_yours') }}</div>
-                                    <div class="order-desc__price order-desc__price--total">{{ currency(order.priceTotal) }} {{ $tc('text.currency') }}</div>
+                                    <div class="order-desc__price order-desc__price--total">{{ currency(order.totalPrice) }} {{ $tc('text.currency') }}</div>
                                 </li>
                             </ul>
                             <div class="order-desc__btn"
