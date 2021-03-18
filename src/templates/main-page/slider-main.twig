@@ -1,17 +1,19 @@
 <section class="slider-main">
-    <component is="slider-main"
-            :main-slides="{{ mainSlides|json_encode()|e('html_attr') }}"
-    >
-        {% for slide in mainSlides %}
-            <div class="slider-main__slide">
-                <img class="slider-main__slide_img" 
-                    src="{{ slide.img }}"
-                >
-                <img class="slider-main__slide_img slider-main__slide_img--mob" 
-                    src="{{ slide.imgMob }}"
-                >
-                <!--<a :href="slide.link" class="slider-main__slide_link" >Подробнее</a> -->
-            </div>
-        {% endfor %}
-    </component>
+    <div class="container">
+        <component is="slider-main"
+                :main-slides="{{ mainSlides|json_encode()|e('html_attr') }}"
+        >
+            {% for slide in mainSlides %}
+                <div class="slider-main__slide">
+                    <img class="slider-main__image" 
+                        src="{{ slide.img }}"
+                    >
+                    <img class="slider-main__image slider-main__image--mob" 
+                        src="{{ slide.imgMob }}"
+                    >
+                    <!--<a :href="slide.link" class="slider-main__link" >Подробнее</a> -->
+                </div>
+            {% endfor %}
+        </component>
+    </div>
 </section>
