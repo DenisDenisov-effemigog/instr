@@ -47,14 +47,13 @@
             </span>
             
             <li class="pagination__item pagination__item--dots"
-                v-if="internalPagination.urls[arrayLength - 1].title < internalPagination.total - 1 &&
-                    internalPagination.urls[arrayLength - 1].title + 2 !== internalPagination.total"
+                v-if="internalPagination.urls[arrayLength - 1].title < internalPagination.total - 1 && dotsFlag"
             >
                 <div class="pagination__link">...</div>
             </li>
             <li class="pagination__item"
                 :class="{'pagination__item--current': internalPagination.current === lastArray[arrayLength - 2].title}"
-                v-if="internalPagination.urls[arrayLength - 1].title + 2 === internalPagination.total"
+                v-if="!dotsFlag"
             >
                 <a :href="lastArray[arrayLength - 2].url" 
                     class="pagination__link"
@@ -74,7 +73,7 @@
         </ul>
         <a  :href="internalPagination.url_next" 
             class="pagination__arrow pagination__arrow_next"
-            :class="{'pagination__arrow--disabled': !notLast || internalPagination.urls[arrayLength - 1].title + 2 === internalPagination.total}"
+            :class="{'pagination__arrow--disabled': !notLast || !dotsFlag}"
             @click.prevent="slideToNext"
         >
             <svg>
@@ -139,6 +138,9 @@
                     lastPage--;
                 }
                 return arr
+            },
+            dotsFlag() {
+                return this.internalPagination.urls[this.arrayLength - 1].title + 2 === this.internalPagination.total ? false : true
             }
         },
         methods: {
