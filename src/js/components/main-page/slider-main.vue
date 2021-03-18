@@ -1,23 +1,21 @@
 <template>
-    <section class="slider-main">
-        <agile :options="options" 
-               @after-change="showCurrentSlide($event)" 
-               ref="mainSlider"
-        >
-            <slot></slot>
-            
-            <template slot="prevButton">
-                <svg>
-                    <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
-                </svg>
-            </template>
-            <template slot="nextButton">
-                <svg>
-                    <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-right'"></use>
-                </svg>
-            </template>
-        </agile>
-    </section>
+    <agile :options="options" 
+            @after-change="showCurrentSlide($event)" 
+            ref="mainSlider"
+    >
+        <slot></slot>
+        
+        <template slot="prevButton">
+            <svg>
+                <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
+            </svg>
+        </template>
+        <template slot="nextButton">
+            <svg>
+                <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-right'"></use>
+            </svg>
+        </template>
+    </agile>
 </template>
 
 <script>
