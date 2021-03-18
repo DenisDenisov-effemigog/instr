@@ -47,10 +47,9 @@
                 let cart = this.$refs.cart
                 if(cart.closest('.header')){
                     let cartPositionObj= {}
-                    cartPositionObj.top = cart.offsetTop + document.documentElement.scrollTop
-                    cartPositionObj.left = cart.offsetLeft
-                    cartPositionObj.offsetTop = cart.offsetTop
-                    console.log(cartPositionObj);
+                    cartPositionObj.top = cart.getBoundingClientRect().top + document.documentElement.scrollTop
+                    cartPositionObj.left = cart.getBoundingClientRect().left
+                    cartPositionObj.offsetTop = cart.getBoundingClientRect().top
                     this.$eventBus.$emit("cartPosition", cartPositionObj)
                 }
             }
