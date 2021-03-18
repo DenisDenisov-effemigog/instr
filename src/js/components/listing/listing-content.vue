@@ -39,6 +39,7 @@
                 is="pagination"
                 :pagination="internalPagination"
                 :hash="hash" 
+                :page-mask="pageMask" 
             >
             </component>
         </div>
@@ -63,7 +64,11 @@
             hash: {
                 required: true,
                 type: String
-            }  
+            },
+            pageMask: {
+                required: true,
+                type: String
+            },
         },
         data() {
             return {

@@ -2,7 +2,7 @@
     <div class="pagination">
         <a  :href="internalPagination.url_previous" 
             class="pagination__arrow pagination__arrow-prev"
-            :class="{'pagination__arrow--disabled': internalPagination.urls[0].title == 1}"
+            :class="{'pagination__arrow--disabled': internalPagination.urls[0].title <= 1}"
             @click.prevent="slideToPrev"
         >
             <svg>
@@ -10,29 +10,58 @@
             </svg>
         </a>
         <ul class="pagination__list">
-            <li class="pagination__item" v-if="internalPagination.urls[0].title != 1"
+
+            <li class="pagination__item" v-if="internalPagination.urls[0].title > 1"
                 :class="{'pagination__item--current': internalPagination.current === 1}"
             >
-                <a :href="firstPageUrl" 
+                <a :href="pageMask + 1" 
                     class="pagination__link"
                     @click.prevent="goToPage(1)"
                 >1</a>
             </li>
-            <li class="pagination__item pagination__item--dots" v-if="internalPagination.urls[0].title != 1">
+            <li class="pagination__item pagination__item--dots" v-if="internalPagination.urls[0].title > 2">
+                <div class="pagination__link">...</div>
+            </li>
+
+            <span class="pagination__span" v-if="currentIteration === lastIteration">
+                <li class="pagination__item"
+                    v-for="(link, index) in lastArray.slice(0, arrayLength)" :key="index"
+                    :class="{'pagination__item--current': internalPagination.current == link.title}"
+                >
+                    <a :href="link.url" 
+                        class="pagination__link"
+                        @click.prevent="goToPage(link.title)"
+                    >{{ link.title }}</a>
+                </li>
+            </span>
+            <span class="pagination__span" v-else>
+                <li class="pagination__item"
+                    v-for="(link, index) in internalPagination.urls.slice(0, arrayLength)" :key="index"
+                    :class="{'pagination__item--current': internalPagination.current === +link.title}"
+                >
+                    <a :href="link.url" 
+                        class="pagination__link"
+                        @click.prevent="goToPage(link.title)"
+                    >{{ link.title }}</a>
+                </li>
+            </span>
+            
+            <li class="pagination__item pagination__item--dots"
+                v-if="internalPagination.urls[arrayLength - 1].title < internalPagination.total - 1 &&
+                    internalPagination.urls[arrayLength - 1].title + 2 !== internalPagination.total"
+            >
                 <div class="pagination__link">...</div>
             </li>
             <li class="pagination__item"
-                v-for="(link, index) in internalPagination.urls" :key="index"
-                :class="{'pagination__item--current': internalPagination.current == link.title}"
+                :class="{'pagination__item--current': internalPagination.current === lastArray[arrayLength - 2].title}"
+                v-if="internalPagination.urls[arrayLength - 1].title + 2 === internalPagination.total"
             >
-                <a :href="link.url" 
+                <a :href="lastArray[arrayLength - 2].url" 
                     class="pagination__link"
-                    @click.prevent="goToPage(link.title)"
-                >{{ link.title }}</a>
+                    @click.prevent="goToPage(lastArray[arrayLength - 2].title)"
+                >{{ lastArray[arrayLength - 2].title }}</a>
             </li>
-            <li class="pagination__item pagination__item--dots" v-if="notLast">
-                <div class="pagination__link">...</div>
-            </li>
+
             <li class="pagination__item" v-if="notLast"
                 :class="{'pagination__item--current': internalPagination.current == internalPagination.total}"
             >
@@ -41,10 +70,11 @@
                     @click.prevent="goToPage(internalPagination.total)"
                 >{{ internalPagination.total }}</a>
             </li>
+
         </ul>
         <a  :href="internalPagination.url_next" 
             class="pagination__arrow pagination__arrow_next"
-            :class="{'pagination__arrow--disabled': !notLast}"
+            :class="{'pagination__arrow--disabled': !notLast || internalPagination.urls[arrayLength - 1].title + 2 === internalPagination.total}"
             @click.prevent="slideToNext"
         >
             <svg>
@@ -64,15 +94,18 @@
             return {
                 internalPagination: {},
                 lastIteration: NaN,
-                firstPageUrl: ''
             }
         },
         props: {
             pagination: {
-                required: true,
-                type: Object
+                type: Object,
+                default: {}
             },
             hash: {
+                type: String
+            },
+            pageMask: {
+                required: true,
                 type: String
             },
             placement: {
@@ -81,19 +114,31 @@
             }
         },
         mounted() {
-            this.internalPagination = this.pagination;
-            this.lastIteration = Math.floor(this.internalPagination.total / 4);
-            this.firstPageUrl = this.internalPagination.urls[0].url.replace(/\d+$/, 1)
+            this.arrayLength;
+            this.internalPagination = this.cloneOverJson(this.pagination);
+            this.lastIteration = Math.ceil(this.internalPagination.total / this.arrayLength);
         },
         computed: {
-            currentIteration() {
-                return Math.floor(this.internalPagination.urls[3].title / 4)
+            arrayLength() {
+                return window.innerWidth < 768 ? 3 : 4
             },
-            isFirst() {
-                return this.currentIteration === this.lastIteration
+            currentIteration() {
+                return Math.ceil(this.internalPagination.urls[this.arrayLength - 1].title / this.arrayLength)
             },
             notLast() {
-                return this.currentIteration === this.lastIteration ? false : true
+                return this.currentIteration >= this.lastIteration ? false : true
+            },
+            lastArray() {
+                const arr = [];
+                let lastPage = this.internalPagination.total
+                for (let i = this.arrayLength - 1; i >= 0; i--) {
+                    arr.unshift({
+                        title: lastPage,
+                        url: this.pageMask + lastPage
+                    })
+                    lastPage--;
+                }
+                return arr
             }
         },
         methods: {
@@ -119,31 +164,23 @@
                 }
             },
             slideToPrev() {
-                if (this.internalPagination.urls[0].title != 1) {
-                    for (let i=0; i < this.internalPagination.urls.length; i++) {
+                if (this.internalPagination.urls[0].title - (this.arrayLength - 1) >= 1) {
+                    if (this.currentIteration === 1) {
+                        this.internalPagination.urls[0].title = this.arrayLength
+                    }
+                    for (let i=0; i < this.arrayLength; i++) {
                         let page = +this.internalPagination.urls[i].title;
-                        let url = this.internalPagination.urls[i].url;
-                        this.internalPagination.urls[i].title = page - 3;
-                        this.internalPagination.urls[i].url = url.replace(/\d+$/, this.internalPagination.urls[i].title);
+                        this.internalPagination.urls[i].title = page - (this.arrayLength - 1);
+                        this.internalPagination.urls[i].url = this.pageMask + this.internalPagination.urls[i].title;
                     }
                 }
             },
             slideToNext() {
                 if (this.notLast) {
-                    if (this.currentIteration === this.lastIteration - 1) {
-                        for (let i=this.internalPagination.urls.length; i > 0; i--) {
-                            let page = +this.internalPagination.urls[i].title;
-                            let url = this.internalPagination.urls[i].url;
-                            this.internalPagination.urls[i].title = page + 3;
-                            this.internalPagination.urls[i].url = url.replace(/\d+$/, this.internalPagination.urls[i].title);
-                        }
-                    } else {
-                        for (let i=0; i < this.internalPagination.urls.length; i++) {
-                            let page = +this.internalPagination.urls[i].title;
-                            let url = this.internalPagination.urls[i].url;
-                            this.internalPagination.urls[i].title = page + 3;
-                            this.internalPagination.urls[i].url = url.replace(/\d+$/, this.internalPagination.urls[i].title);
-                        }
+                    for (let i=0; i < this.arrayLength; i++) {
+                        let page = +this.internalPagination.urls[i].title;
+                        this.internalPagination.urls[i].title = page + (this.arrayLength - 1);
+                        this.internalPagination.urls[i].url = this.pageMask + this.internalPagination.urls[i].title;
                     }
                 }
             }
