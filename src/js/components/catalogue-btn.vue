@@ -8,7 +8,7 @@ export default {
     name:"catalogue-btn",
     data() {
         return {
-            catalogLink: config.links.catalog,
+            catalogLink: config.links.category,
         }
     },
 }
