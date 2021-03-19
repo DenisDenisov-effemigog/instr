@@ -2192,8 +2192,6 @@ window.runAction = function (action, config) {
                                     pagination: {
                                         'total': 105,
                                         'current': 6,
-                                        'url_previous': '/some/category/page/1',
-                                        'url_next': '/some/category/page/7',
                                         'url_last': '/some/category/page/last',
                                         'urls': 
                                         [
@@ -2201,7 +2199,8 @@ window.runAction = function (action, config) {
                                             {title: '5', url: '/some/category/page/5'},
                                             {title: '6', url: '/some/category/page/6'},
                                             {title: '7', url: '/some/category/page/7'},
-                                        ]
+                                        ],
+                                        'page_mask': '/some/category/page/'
                                     }
                                 },
                             }
@@ -2219,8 +2218,6 @@ window.runAction = function (action, config) {
                                     pagination: {
                                         'total': 104,
                                         'current': +config.data.page,
-                                        'url_previous': '/some/category/page/1',
-                                        'url_next': '/some/category/page/7',
                                         'url_last': '/some/category/page/last',
                                         'urls': 
                                         [
@@ -2228,7 +2225,8 @@ window.runAction = function (action, config) {
                                             {title: '5', url: '/some/category/page/5'},
                                             {title: '6', url: '/some/category/page/6'},
                                             {title: '7', url: '/some/category/page/7'},
-                                        ]
+                                        ],
+                                        'page_mask': '/some/category/page/'
                                     }
                                 },
                             }
@@ -2252,8 +2250,6 @@ window.runAction = function (action, config) {
                                     pagination: {
                                         'total': 103,
                                         'current': +config.data.page,
-                                        'url_previous': '/some/category/page/1',
-                                        'url_next': '/some/category/page/7',
                                         'url_last': '/some/category/page/last',
                                         'urls': 
                                         [
@@ -2261,7 +2257,8 @@ window.runAction = function (action, config) {
                                             {title: '5', url: '/some/category/page/5'},
                                             {title: '6', url: '/some/category/page/6'},
                                             {title: '7', url: '/some/category/page/7'},
-                                        ]
+                                        ],
+                                        'page_mask': '/some/category/page/'
                                     }
                                 },
                             }

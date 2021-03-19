@@ -32,7 +32,6 @@
             <component 
                 is="pagination"
                 :pagination="internalPagination"
-                :page-mask="pageMask"
                 :placement="'.order'"
             >
             </component>
@@ -65,10 +64,6 @@
             selectopenSelect:{
                 type: Object,
                 required: true,
-            },
-            pageMask: {
-                required: true,
-                type: String
             },
         },
         data(){

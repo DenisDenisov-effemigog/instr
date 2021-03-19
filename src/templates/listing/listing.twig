@@ -120,7 +120,6 @@
             <component is="listing-content" 
                        :pagination="{{ pagination|json_encode|e('html_attr') }}" 
                        :hash="{{ filters.hash|json_encode|e('html_attr') }}"
-                       :page-mask="{{ page_mask|json_encode|e('html_attr') }}"
             >
                 {% for product in products %}
                     <div class="listing__card">
