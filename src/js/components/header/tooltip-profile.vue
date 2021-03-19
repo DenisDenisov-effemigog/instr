@@ -61,13 +61,13 @@
                         personType: 1,
                         icon: 'order'
                     },
-                    {
-                        title: 'link.finance',
-                        url: '/my/finances',
-                        personType: 2, 
-                        external: true,
-                        icon: 'card'
-                    },
+                    // {
+                    //     title: 'link.finance',
+                    //     url: '/my/finances',
+                    //     personType: 2, 
+                    //     external: true,
+                    //     icon: 'card'
+                    // },
                     {
                         title: 'link.my_addresses',
                         url: '/my/address',

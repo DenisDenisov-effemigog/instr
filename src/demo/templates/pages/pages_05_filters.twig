@@ -1161,7 +1161,7 @@
     },
 ] %}
 
-{% set listCategory = [
+{% set listCategories = [
     {'title': 'Ареометры', 'url': '', 'checked': true},
     {'title': 'Воронки', 'url': '', 'checked': false},
     {'title': 'Держатели телефонов и планшетов', 'url': '', 'checked': false},
@@ -2035,6 +2035,9 @@
     },
 } %}
 
+{% set listCategoryView = 'filter'
+%}
+
 {% block content %}
 
     {% include '../../../templates/header/header.twig' with {
@@ -2066,12 +2069,13 @@
         'shields': shields,
         'treeCategories': treeCategories[0],
         'listingCategoryTitle': treeCategories[0].title,
-        'listCategory': listCategory,
+        'listCategories': listCategories,
         'title': filtersTitle,
         'sub_title': filtersSubTitle,
         'filters': filters,
         'view_type': view_type,
         'pagination': pagination,
+        'showTree': showTree
     } %}
     {% include '../../../templates/footer/footer.twig'  with {
         'countries': countries,
