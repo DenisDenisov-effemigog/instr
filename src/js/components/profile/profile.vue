@@ -110,12 +110,12 @@ export default {
                     personType: [1,2],
                     //external: true
                 },
-                {
-                    title: 'link.finance',
-                    url: '/my/finances/', 
-                    personType: [2],
-                    //external: true
-                },
+                // {
+                //     title: 'link.finance',
+                //     url: '/my/finances/', 
+                //     personType: [2],
+                //     //external: true
+                // },
                 {
                     title: 'link.my_addresses',
                     url: '/my/address/',
