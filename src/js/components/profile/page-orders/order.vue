@@ -12,7 +12,7 @@
                 {{order.status.label}}
             </div>
             
-            <span>{{ currency(order.qty) }}&nbsp;{{ $tc('text.product', order.qty) }}</span>
+            <span>{{ order.qty }}&nbsp;{{ $tc('text.product', order.qty) }}</span>
             <div class="order__price">{{ currency(order.totalPrice) }} {{ $tc('text.currency') }}</div>
             <div @click.stop="openModal('repeat-order')" class="order__btn">
                 <div class="order__btn-icon">
