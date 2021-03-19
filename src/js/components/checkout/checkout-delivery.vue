@@ -1,6 +1,6 @@
 <template>
     <div class="checkout-delivery">
-        <h2 class="checkout-delivery__title">{{ $tc('text.delivery') }}</h2>
+        <h3 class="checkout-delivery__title">{{ $tc('text.delivery') }}</h3>
         <div class="checkout-delivery__content">
             <div class="delivery-option">
             <div v-for="delivery in deliveries" :key="delivery.name"
@@ -80,8 +80,7 @@
         methods: {
             changeDeliveryType(type, id){
                 this.currentOption = type
-                console.log(this.currentOption);
-                this.$eventBus.$emit('push-delivery', id)
+                this.$eventBus.$emit('push-delivery', type, id)
                 this.$store.dispatch('basketOrderCalc', {
                     paymentId: null,
                     deliveryId: id

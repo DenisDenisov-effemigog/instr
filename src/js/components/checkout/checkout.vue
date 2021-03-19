@@ -13,7 +13,7 @@
                 <div v-show="successFlag === 'pay' && user && !user.authorized || !user && successFlag === 'pay'" 
                     class="checkout-choice"
                 >
-                    <div class="checkout-choice__title">{{ $tc('checkout.title.contacts') }}</div>
+                    <h3 class="checkout-choice__title">{{ $tc('checkout.title.contacts') }}</h3>
                     <form action="" class="checkout-choice__form">
                         <label class="checkout-choice__radio">
                             <input name="choice" type="radio" value="new" v-model="value">
@@ -57,7 +57,7 @@
                         <delivery-date v-model="date"></delivery-date>
                         <delivery-payment :payments="payments"></delivery-payment>
                         <div class="delivery-comment">
-                            <div class="delivery-comment__title">{{ $tc('checkout.title.comments') }}</div>
+                            <h3 class="delivery-comment__title">{{ $tc('checkout.title.comments') }}</h3>
                             <div class="delivery-comment__form">
                                 <label class="delivery-comment__label-textarea">
                                     <textarea class="delivery-comment__textarea" 
@@ -203,7 +203,8 @@
                 userData: {},
                 personType: 2,
                 message: '',
-                currentDeliveryId: this.deliveries[0].type,
+                currentDeliveryPoint: this.deliveries[0].type,
+                currentDeliveryId: this.deliveries[0].id,
                 currentDeliveryPayment: this.payments[0].id,
                 date: '',
                 pointAddress: this.deliveryPoints[0],
@@ -258,7 +259,8 @@
                 this.userData.phone = phone
                 this.userData.newEmail = newEmail
             },
-            buildDeliveryPoint(id){
+            buildDeliveryPoint(point, id){
+                this.currentDeliveryPoint = point
                 this.currentDeliveryId = id
             },
             buildDeliveryPayment(id){
@@ -311,7 +313,7 @@
                 if (vm.user && !vm.user.authorized || !vm.user) {
                     if (vm.personType === 1) {
                         if (vm.userData.name && vm.userData.phone && vm.userData.newEmail) {
-                            if (vm.currentDeliveryId === 1) {
+                            if (vm.currentDeliveryPoint === 'delivery') {
                                 if (vm.deliveryNewAddress.city && 
                                     vm.deliveryNewAddress.street && 
                                     vm.deliveryNewAddress.house && 
@@ -326,7 +328,7 @@
                                     vm.$eventBus.$emit('address-error')
                                     vm.$eventBus.$emit('autocomplete-error')
                                 }
-                            } else if (vm.currentDeliveryId === 2) {
+                            } else if (vm.currentDeliveryPoint === 'receive') {
                                 userReg.is_company = false
                                 userReg.name = vm.userData.name
                                 userReg.email = vm.userData.newEmail
@@ -338,7 +340,7 @@
                         }
                     } else if (vm.personType === 2) {
                         if (vm.userData.name && vm.userData.company && vm.userData.code && vm.userData.phone && vm.userData.newEmail) {
-                            if (vm.currentDeliveryId === 1) {
+                            if (vm.currentDeliveryPoint === 'delivery') {
                                 if (vm.deliveryNewAddress.city &&
                                     vm.deliveryNewAddress.street &&
                                     vm.deliveryNewAddress.house &&
@@ -354,7 +356,7 @@
                                     vm.$eventBus.$emit('address-error')
                                     vm.$eventBus.$emit('autocomplete-error')
                                 }
-                            } else if (vm.currentDeliveryId === 2) {
+                            } else if (vm.currentDeliveryPoint === 'receive') {
                                 userReg.is_company = true
                                 userReg.name = vm.userData.name
                                 userReg.company = vm.userData.company
@@ -368,9 +370,9 @@
                         }
                     }
                 } else if (vm.user && vm.user.authorized) {
-                    if (vm.currentDeliveryId === 2) {
+                    if (vm.currentDeliveryPoint === 'receive') {
                         addressDelivery = vm.pointAddress.label
-                    } else if (vm.currentDeliveryId === 1) {
+                    } else if (vm.currentDeliveryPoint === 'delivery') {
                         if (!vm.addresses.length) {
                             if (vm.deliveryNewAddress.city &&
                                 vm.deliveryNewAddress.street &&
@@ -438,8 +440,8 @@
                     if (vm.user && !vm.user.authorized || !vm.user) {
                         vm.$eventBus.$emit('register-error')
                     }
-                    if (vm.currentDeliveryId === 1 && vm.user && !vm.addresses.length ||
-                        vm.currentDeliveryId === 1 && vm.user && !addressDelivery.length) {
+                    if (vm.currentDeliveryPoint === 'delivery' && vm.user && !vm.addresses.length ||
+                        vm.currentDeliveryPoint === 'delivery' && vm.user && !addressDelivery.length) {
                         vm.$eventBus.$emit('address-error')
                         vm.$eventBus.$emit('autocomplete-error')
                     }

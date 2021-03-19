@@ -116,10 +116,10 @@ class Api {
             {arr: arr}
         );
     }
-    OrderCalc(payment_id, delivery_id) {
+    OrderCalc(payment_id, delivery_type) {
         return this._promiseBitrixRequest('instrument2:rest.api.order.calc', {
             payment_id: payment_id,
-            delivery_id: delivery_id
+            delivery_type: delivery_type
         });
     }
     authSignIn(email, password) {
