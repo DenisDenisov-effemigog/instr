@@ -56,6 +56,7 @@
                     :selectopenSelect="selectopenSelect"
                     :contract="profile.contract"
                     :preLink="preLink"
+                    :page-mask="pageMask"
                 ></router-view>
             </transition>
         </div>
@@ -76,6 +77,10 @@ export default {
             type:String
         },
         user: {required: true},
+        pageMask: {
+            required: true,
+            type: String
+        },
     },
     data() {
         return {

@@ -1978,7 +1978,7 @@
 ] %}
     
 {% set pagination = {
-    'total': 106,
+    'total': 105,
     'current': 6,
     'url_previous': '/some/category/page/1',
     'url_next': '/some/category/page/7',
@@ -2073,6 +2073,7 @@
         'filters': filters,
         'view_type': view_type,
         'pagination': pagination,
+        'page_mask': '/some/category/page/'
     } %}
     {% include '../../../templates/footer/footer.twig'  with {
         'countries': countries,

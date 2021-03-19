@@ -32,6 +32,7 @@
             <component 
                 is="pagination"
                 :pagination="internalPagination"
+                :page-mask="pageMask"
                 :placement="'.order'"
             >
             </component>
@@ -65,6 +66,10 @@
                 type: Object,
                 required: true,
             },
+            pageMask: {
+                required: true,
+                type: String
+            },
         },
         data(){
             return{
@@ -74,7 +79,6 @@
                 // onPage: 10,
                 loaded: false,
                 catalogLink: config.links.catalog,
-                // internalPagination: {},
                 selectedStatus: ''
             }
         },
