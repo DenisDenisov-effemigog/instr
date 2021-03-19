@@ -16,6 +16,7 @@
 
         <comparison-content v-if="comparingItems.length > 0"
             :comparingItems="comparingItems"
+            :categories="categories"
         >
             <slot></slot>
         </comparison-content>
@@ -42,6 +43,11 @@ import CatalogueBtn from '../catalogue-btn.vue';
     export default {
         name: 'comparisons-listing',
         components: { comparisonContent, CatalogueBtn },
+        props:{
+            categories:{
+                type: Array
+            }
+        },
         data() {
             return {
                 loaded: false,
