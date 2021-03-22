@@ -273,11 +273,11 @@
                     this.pointAddress = address
                 }
             },
-            buildNewDeliveryAddress(city,street,house,build,floor,apart) {
+            buildNewDeliveryAddress(city,street,house,building,floor,apart) {
                 this.deliveryNewAddress.city = city
                 this.deliveryNewAddress.street = street
                 this.deliveryNewAddress.house = house
-                this.deliveryNewAddress.build = build
+                this.deliveryNewAddress.building = building
                 this.deliveryNewAddress.floor = floor
                 this.deliveryNewAddress.apart = apart
             },
@@ -316,8 +316,7 @@
                             if (vm.currentDeliveryPoint === 'delivery') {
                                 if (vm.deliveryNewAddress.city && 
                                     vm.deliveryNewAddress.street && 
-                                    vm.deliveryNewAddress.house && 
-                                    vm.deliveryNewAddress.apart
+                                    vm.deliveryNewAddress.house
                                 ) {
                                     userReg.is_company = false
                                     userReg.name = vm.userData.name
@@ -343,8 +342,7 @@
                             if (vm.currentDeliveryPoint === 'delivery') {
                                 if (vm.deliveryNewAddress.city &&
                                     vm.deliveryNewAddress.street &&
-                                    vm.deliveryNewAddress.house &&
-                                    vm.deliveryNewAddress.apart
+                                    vm.deliveryNewAddress.house
                                 ) {
                                     userReg.is_company = true
                                     userReg.name = vm.userData.name
@@ -352,6 +350,7 @@
                                     userReg.inn = vm.userData.code
                                     userReg.email = vm.userData.newEmail
                                     userReg.phone = vm.userData.phone
+                                    addressDelivery = vm.deliveryNewAddress
                                 } else {
                                     vm.$eventBus.$emit('address-error')
                                     vm.$eventBus.$emit('autocomplete-error')
@@ -376,8 +375,7 @@
                         if (!vm.addresses.length) {
                             if (vm.deliveryNewAddress.city &&
                                 vm.deliveryNewAddress.street &&
-                                vm.deliveryNewAddress.house &&
-                                vm.deliveryNewAddress.apart
+                                vm.deliveryNewAddress.house
                             ) {
                                 addressDelivery = vm.deliveryNewAddress
                             } else {

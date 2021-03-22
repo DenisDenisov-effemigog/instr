@@ -64,7 +64,7 @@
                         name="building"
                         type="text"
                         class="form__input"
-                        v-model.trim="$v.building.$model"
+                        v-model.trim="building"
                         @focusout="buildAddress"
                     >
                     <span class="form__label-text"
@@ -72,8 +72,8 @@
                     >{{ $tc('title.building') }}</span>
                     <svg viewBox="0 0 24 24"
                          class="form__label-icon"
-                         v-if="$v.building.required"
-                         @click="$v.building.$model = ''"
+                         v-if="!!building"
+                         @click="building = ''"
                     >
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
                     </svg>
@@ -84,7 +84,7 @@
                         name="floor"
                         type="text"
                         class="form__input"
-                        v-model.trim="$v.floor.$model"
+                        v-model.trim="floor"
                         @focusout="buildAddress"
                     >
                     <span class="form__label-text"
@@ -92,8 +92,8 @@
                     >{{ $tc('title.floor') }}</span>
                     <svg viewBox="0 0 24 24"
                          class="form__label-icon"
-                         v-if="$v.floor.required"
-                         @click="$v.floor.$model = ''"
+                         v-if="!!floor"
+                         @click="floor = ''"
                     >
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
                     </svg>
@@ -104,16 +104,16 @@
                         name="apart"
                         type="text"
                         class="form__input"
-                        v-model.trim="$v.apart.$model"
+                        v-model.trim="apart"
                         @focusout="buildAddress"
                     >
                     <span class="form__label-text"
-                          :class="{'form__label-text--up': $v.apart.required}"
+                          :class="{'form__label-text--up': !!apart}"
                     >{{ $tc('title.apart') }}</span>
                     <svg viewBox="0 0 24 24"
                          class="form__label-icon"
-                         v-if="$v.apart.required"
-                         @click="$v.apart.$model = ''"
+                         v-if="!!apart"
+                         @click="apart = ''"
                     >
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
                     </svg>
@@ -170,15 +170,6 @@
             house:{
                 required
             },
-            building:{
-                required
-            },
-            floor:{
-                required
-            },
-            apart:{
-                required
-            }
         },
         created() {
             this.$eventBus.$on('address-error', this.addressError)

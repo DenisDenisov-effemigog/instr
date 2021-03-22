@@ -2622,8 +2622,8 @@ window.runAction = function (action, config) {
                                 'query': config.data,
                                 'list': 
                                     [
-                                        {'name': 'Киев', 'id': 1},
-                                        {'name': 'Харьков', 'id': 2},
+                                        {'name': 'Киев', 'id': '1'},
+                                        {'name': 'Харьков', 'id': '2'},
                                     ]
                                 }
 
@@ -2641,8 +2641,8 @@ window.runAction = function (action, config) {
                                 'query': config.data,
                                 'list': 
                                     [
-                                        {'name': 'Ленина', 'id': 101, 'city_id': 2},
-                                        {'name': 'Советская', 'id': 202, 'city_id': 2},
+                                        {'name': 'Ленина', 'id': '101', 'city_id': 2},
+                                        {'name': 'Советская', 'id': '202', 'city_id': 2},
                                 
                                     ]
                                 }

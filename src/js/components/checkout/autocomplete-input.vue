@@ -57,9 +57,9 @@
                 <div class="form__error-text form__error-text--invalid" v-if="noResults && itemName == 'city'">
                     {{ $tc('checkout.delivery-address.city.error') }}
                 </div>
-                <div class="form__error-text form__error-text--invalid" v-if="noResults && itemName == 'street'">
+                <!-- <div class="form__error-text form__error-text--invalid" v-if="noResults && itemName == 'street'">
                     {{ $tc('checkout.delivery-address.street.error') }}
-                </div>
+                </div> -->
 
                 <div class="form__error-text form__error-text--invalid" v-if="$v.valueInput.$error">
                     {{ $tc('text.error') }}
@@ -116,7 +116,7 @@
             event: 'change'
         },
         computed: {
-            cityId : {
+            valueId : {
                 get: function() {
                     return this.value;
                 },
@@ -135,18 +135,20 @@
             this.$eventBus.$on('autocomplete-error', this.autocompleteError)
         },
         methods: {
-            autocompleteError(){
+            autocompleteError() {
                 let vm = this
-                vm.$v.$touch();
+                if (vm.itemName === 'city') {
+                    vm.$v.$touch();
+                }
             },
             submitItem(item) {
                 if (!this.noResults) {
                     this.valueInput = item.name;
-                    this.cityId = item.id;
+                    this.valueId = item.id;
                     this.getValue({
                         value: this.valueInput,
                         itemName: this.itemName,
-                        cityId: this.cityId
+                        valueId: this.valueId
                     })
                 }
             },
@@ -161,14 +163,14 @@
                         vm.results = answer.list.filter(item => {
                             if(item.name.toLowerCase() === vm.valueInput.toLowerCase()) {
                                 console.log(item)
-                                vm.cityId = item.id
+                                vm.valueId = item.id
                             }
                             return item.name.toLowerCase()
                                 .startsWith(input.toLowerCase())
                         })
                     })
                 } else {
-                    api.finedStreet(input, vm.cityId).then(answer => {
+                    api.finedStreet(input, vm.valueId).then(answer => {
                         vm.results = answer.list.filter(item => {
                             return item.name.toLowerCase()
                                 .startsWith(input.toLowerCase())
