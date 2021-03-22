@@ -1,5 +1,5 @@
 <template>
-    <div class="pagination">
+    <div class="pagination" v-if="pagination.urls.length > 1">
         <a  class="pagination__arrow pagination__arrow-prev"
             :class="{'pagination__arrow--disabled': internalPagination.urls[0].title <= 1}"
             @click.prevent="slideToPrev"

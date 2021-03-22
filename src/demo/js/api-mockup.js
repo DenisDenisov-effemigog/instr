@@ -2248,15 +2248,12 @@ window.runAction = function (action, config) {
                                     orders: demoSortedOrders,
                                     points: demoPoints,
                                     pagination: {
-                                        'total': 103,
-                                        'current': +config.data.page,
+                                        'total': 1,
+                                        'current': 1,
                                         'url_last': '/some/category/page/last',
                                         'urls': 
                                         [
-                                            {title: '4', url: '/some/category/page/4'},
-                                            {title: '5', url: '/some/category/page/5'},
-                                            {title: '6', url: '/some/category/page/6'},
-                                            {title: '7', url: '/some/category/page/7'},
+                                            {title: '1', url: '/some/category/page/1'},
                                         ],
                                         'page_mask': '/some/category/page/'
                                     }

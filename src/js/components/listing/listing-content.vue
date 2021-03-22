@@ -30,8 +30,12 @@
             </template>
             <slot v-else></slot>
         </div>
-        <div class="listing__pagination" v-if="internalPagination.current">
+        <div class="listing__pagination"
+            :class="{'listing__pagination--end': internalPagination.current >= internalPagination.urls.length}"
+            v-if="internalPagination.urls.length > 1"
+        >
             <component is="pagination-btn"
+                v-if="internalPagination.current < internalPagination.urls.length"
                 :hash="hash" 
                 :currentPage="internalPagination.current"
             ></component>
@@ -63,11 +67,7 @@
             hash: {
                 required: true,
                 type: String
-            },
-            pageMask: {
-                required: true,
-                type: String
-            },
+            }
         },
         data() {
             return {
