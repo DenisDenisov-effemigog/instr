@@ -24,7 +24,7 @@
                     <use :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
                 </svg>
             </div>
-            <div v-else class="delivery-date__icon">
+            <div v-else class="delivery-date__icon delivery-date__icon--arrow">
                 <svg viewBox="0 0 12 10">
                     <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-down'"></use>
                 </svg>
