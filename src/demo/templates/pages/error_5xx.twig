@@ -1,235 +1,247 @@
-{% block title %}Pages | 22 ошибка 5хх{% endblock %}
+{% block title %}Pages | 22 ошибка 5хх
+{% endblock %}
 
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        html,body{
-            height: 100%;
-        }
-        body {
-            padding: 0;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-        }
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+			@font-face {
+				font-family: 'Montserrat Regular';
+				font-style: normal;
+				font-weight: 400;
+				src: url("../fonts/Montserrat-Regular.eot");
+				src: url("../fonts/Montserrat-Regular.ttf") format("ttf");
+				src: url("../fonts/Montserrat-Regular.woff") format("woff"), url("../fonts/Montserrat-Regular.woff2") format("woff2");
+				font-display: swap;
+			}
+			html,
+			body {
+				height: 100%;
+                font-family: "Montserrat Regular", Arial, sans-serif;
+			}
+			body {
+				padding: 0;
+				margin: 0;
+				display: flex;
+				flex-direction: column;
+			}
 
-        .errors {
-            margin: 5rem 2rem;
-            flex: 1;
-        }
+			.errors {
+				margin: 5rem 2rem;
+				flex: 1;
+			}
 
-        .container {
-            margin: 0 2rem;
-            min-height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+			.container {
+				margin: 0 2rem;
+				min-height: 80px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
 
-        .header {
-            width: 100%;
-            background-color: #ffffff;
-            box-shadow: 0 2px 8px rgb(181 195 208 / 25%);
-            
-        }
+			.header {
+				width: 100%;
+				background-color: #ffffff;
+				box-shadow: 0 2px 8px rgb(181 195 208 / 25%);
 
-        .header__logo svg {
-            fill: #dc0000;
-            width: 8.5625rem;
-            height: 2rem;
-        }
+			}
 
-        .errors__img {
-            width: 100%;
-        }
-        .errors__img img{
-            height: auto;
-            max-width: 100%;
-            max-height: 100%
-        }
-        .errors__title {
-            font-weight: 700;
-            font-size: 1.5rem;
-            line-height: 2rem;
-            font-family: "Montserrat Bold", Arial, sans-serif;
-        }
+			.header__logo svg {
+				fill: #dc0000;
+				width: 8.5625rem;
+				height: 2rem;
+			}
 
-        .errors__desc {
-            margin-top: 1.5rem;
-        }
+			.errors__img {
+				width: 100%;
+			}
+			.errors__img img {
+				height: auto;
+				max-width: 100%;
+				max-height: 100%
+			}
+			.errors__title {
+				font-weight: 700;
+				font-size: 1.5rem;
+				line-height: 2rem;
+				font-family: "Montserrat Bold", Arial, sans-serif;
+			}
 
-        .errors__text {
-            font-weight: 400;
-            font-size: 16px;
-            line-height: 1.5rem;
-        }
+			.errors__desc {
+				margin-top: 1.5rem;
+			}
 
-        .errors__text-promo {
-            margin-top: 1rem;
-        }
+			.errors__text {
+				font-weight: 400;
+				font-size: 16px;
+				line-height: 1.5rem;
+			}
 
-        .errors-promo {
-            margin-top: 1rem;
-        }
+			.errors__text-promo {
+				margin-top: 1rem;
+			}
 
-        .errors-promo__text {
-            padding: 0.75rem 1rem;
-            border: 1px solid #e7e7ec;
-            border-radius: 4px;
-            font-weight: 400;
-            color: #8a98a7;
-        }
+			.errors-promo {
+				margin-top: 1rem;
+			}
 
-        .errors-promo__btn {
-            margin-top: 1rem;
-            width: 100%;
-            height: 2.5rem;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: "Montserrat Bold", Arial, sans-serif;
-            font-size: 0.875rem;
-            font-weight: 700;
-            line-height: 1.25rem;
-            color: #ffffff;
-            text-align: center;
-            background-color: #dc0000;
-            border-radius: 0.25rem;
-            transition: .25s;
-            cursor: pointer;
-        }
+			.errors-promo__text {
+				padding: 0.75rem 1rem;
+				border: 1px solid #e7e7ec;
+				border-radius: 4px;
+				font-weight: 400;
+				color: #8a98a7;
+			}
 
-        @media (min-width: 768px) {
-            .errors {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                max-width: 88.5rem;
-                margin: 0 auto;
+			.errors-promo__btn {
+				margin-top: 1rem;
+				width: 100%;
+				height: 2.5rem;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				font-family: "Montserrat Bold", Arial, sans-serif;
+				font-size: 0.875rem;
+				font-weight: 700;
+				line-height: 1.25rem;
+				color: #ffffff;
+				text-align: center;
+				background-color: #dc0000;
+				border-radius: 0.25rem;
+				transition: 0.25s;
+				cursor: pointer;
+			}
+
+			@media(min-width: 768px) {
+				.errors {
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					max-width: 88.5rem;
+					margin: 0 auto;
+				}
+				.container {
+					max-width: 88.5rem;
+					margin: 0 auto;
+				}
+
+				.errors__img {
+					max-width: 27.1875rem;
+					margin-right: 2.8125rem;
+				}
+
+				.errors__main {
+					max-width: 28.5rem;
+				}
+
+				.title-8,
+				.errors__title {
+					font-size: 2.25rem;
+					line-height: 2.75rem;
+				}
+
+				.errors__desc {
+					margin-top: 2rem;
+				}
+
+				.errors__text {
+					margin-top: 1.5rem;
+				}
+
+				.errors-promo {
+					margin-top: 1.5rem;
+					display: flex;
+				}
+
+				.errors-promo__text {
+					margin-right: 1.5rem;
+				}
+
+				.errors-promo__btn {
+					margin-top: 0;
+					width: 13.6875rem;
+				}
+				.errors-promo__btn:hover {
+					background-color: #ff0000;
+				}
+			}
+		</style>
+		<title>Document</title>
+	</head>
+
+	<body>
+		<header class="header">
+			<div class="container">
+				<div class="header__logo">
+					<svg viewbox="0 0 148 48">
+						<use xlink:href="./images/sprite.svg#wt"></use>
+					</svg>
+				</div>
+			</div>
+		</header>
+		<section class="errors">
+			<div class="errors__img">
+				<img src="./demo_images/errors/500.png">
+			</div>
+			<div class="errors__main">
+				<h2 class="errors__title">
+					Ошибка сервера
+				</h2>
+				<div class="errors__desc">
+					<div class="errors__text">
+						Ошибка сервера. На сервере произошла непредвиденная ошибка. Пожалуйста подождите, вскоре она
+						                    будет
+						                    исправлена.
+					</div>
+					<div class="errors__text errors__text-promo">
+						Мы дарим вам промокод на скидку 10%. Обязательно возвращайтесь, когда сайт восстановит свою
+						                    работу!
+					</div>
+				</div>
+				<div class="errors-promo">
+					<div class="errors-promo__text">
+						YUBF-9876543123456
+					</div>
+					<div class="errors-promo__btn">Забрать промокод</div>
+				</div>
+			</div>
+		</section>
+		<script>
+			let errorsBtn = document.querySelector('.errors-promo__btn')
+            let copyFlag = true
+
+            function copyPromo() {
+            if (copyFlag) {
+            let element = document.querySelector('.errors-promo__text')
+            var range;
+            if (document.selection) {
+            range = document.body.createTextRange();
+            range.moveToElementText(element);
+            range.select();
+            } else if (window.getSelection) {
+            range = document.createRange();
+            range.selectNode(element);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
             }
-            .container {
-                max-width: 88.5rem;
-                margin: 0 auto;
+            element.textContent = "Промокод скопирован."
+            copyFlag = false
+            document.execCommand("copy");
+            }
             }
 
-            .errors__img {
-                max-width: 27.1875rem;
-                margin-right: 2.8125rem;
-            }
-
-            .errors__main {
-                max-width: 28.5rem;
-            }
-
-            .title-8,
-            .errors__title {
-                font-size: 2.25rem;
-                line-height: 2.75rem;
-            }
-
-            .errors__desc {
-                margin-top: 2rem;
-            }
-
-            .errors__text {
-                margin-top: 1.5rem;
-            }
-
-            .errors-promo {
-                margin-top: 1.5rem;
-                display: flex;
-            }
-
-            .errors-promo__text {
-                margin-right: 1.5rem;
-            }
-
-            .errors-promo__btn {
-                margin-top: 0;
-                width: 13.6875rem;
-            }
-            .errors-promo__btn:hover{
-                background-color: #ff0000;
-            }
-        }
-    </style>
-    <title>Document</title>
-</head>
-
-<body>
-    <header class="header">
-        <div class="container">
-            <div class="header__logo">
-                <svg viewBox="0 0 148 48">
-                    <use xlink:href="./images/sprite.svg#wt"></use>
-                </svg>
-            </div>
-        </div>
-    </header>
-    <section class="errors">
-        <div class="errors__img">
-            <img src="./demo_images/errors/500.png">
-        </div>
-        <div class="errors__main">
-            <h2 class="errors__title">
-                Ошибка сервера
-            </h2>
-            <div class="errors__desc">
-                <div class="errors__text">
-                    Ошибка сервера. На сервере произошла непредвиденная ошибка. Пожалуйста подождите, вскоре она
-                    будет
-                    исправлена.
-                </div>
-                <div class="errors__text errors__text-promo">
-                    Мы дарим вам промокод на скидку 10%. Обязательно возвращайтесь, когда сайт восстановит свою
-                    работу!
-                </div>
-            </div>
-            <div class="errors-promo">
-                <div class="errors-promo__text">
-                    YUBF-9876543123456
-                </div>
-                <div class="errors-promo__btn">Забрать промокод</div>
-            </div>
-        </div>
-    </section>
-    <script>
-        let errorsBtn = document.querySelector('.errors-promo__btn')
-        let copyFlag = true
-    
-        function copyPromo(){
-            if(copyFlag){
-                let element = document.querySelector('.errors-promo__text')
-                var range;
-                if (document.selection) {
-                    range = document.body.createTextRange();
-                    range.moveToElementText(element);
-                    range.select();
-                } else if (window.getSelection) {
-                    range = document.createRange();
-                    range.selectNode(element);
-                    window.getSelection().removeAllRanges();
-                    window.getSelection().addRange(range);
-                }
-                element.textContent = "Промокод скопирован."
-                copyFlag = false
-                document.execCommand("copy");
-            }
-        }
-
-        errorsBtn.addEventListener('click', function(){
+            errorsBtn.addEventListener('click', function () {
             copyPromo()
-        })
-    </script>
-</body>
+            })
+		</script>
+	</body>
 
 </html>
