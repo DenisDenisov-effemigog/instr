@@ -5,8 +5,9 @@
             <div class="comparisons__category-selection">
                 <div>
                     <select-list
+                        v-if="categories.length > 0"
                         :points="categories"
-                        :selectopenSelect="defaultCategory"
+                        :selectopenSelect="categories[0]"
                         :sortingPage="'comparison'"
                         :placeholder="$tc('text.category')"
                     >
@@ -172,7 +173,6 @@
         data() {
             return {
                 comparisons: [],
-                defaultCategory: { 'label': 'Дрель-шуруповерт', 'value': 1 },
                 asNavFor1: [],
 			    asNavFor2: [],
                 options: {
