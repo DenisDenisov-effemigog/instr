@@ -22,7 +22,7 @@
         ></header-search>
         <ul class="header__menu">
             <li class="header__menu-item">
-                <div class="header__menu-link">
+                <a :href="userLink" class="header__menu-link">
                     <div class="header__menu-icon-wrapper">
                         <svg class="header__menu-icon" viewBox="-4 -2 24 24">
                             <use :xlink:href="templatePath + 'images/sprite.svg#icons__user'"></use>
@@ -45,7 +45,7 @@
                     </div>
                     <p class="header__menu-text" v-if="user.authorized">{{ $tc('header.menu.profile') }}</p>
                     <component is="tooltip-profile" v-if="user.authorized"></component>
-                </div>
+                </a>
             </li>
             <li class="header__menu-item">
                 <component is="compare-mini"></component>
@@ -64,6 +64,7 @@
     import showCatalogue from '../catalogue/show-catalogue.vue';
     import headerSearch from './search/header-search.vue';
     import tooltipProfile from './tooltip-profile.vue';
+    import config from "../../config";
 
 export default {
     name: "header-block",
@@ -79,6 +80,7 @@ export default {
     data(){
         return{
             activeSearch: false,
+            userLink: config.links.personal_dashboard,
         }
     },
     methods:{
