@@ -64,7 +64,6 @@
                         name="building"
                         type="text"
                         class="form__input"
-                        :class="{'form__input--error': $v.building.$error}"
                         v-model.trim="$v.building.$model"
                         @focusout="buildAddress"
                     >
@@ -78,8 +77,6 @@
                     >
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
                     </svg>
-                    <div class="form__error-text form__error-text--invalid"
-                         v-if="$v.building.$error">{{ $tc('text.error') }}</div>
                 </label>
 
                 <label name="floor" class="form__label form__label--column">
@@ -87,7 +84,6 @@
                         name="floor"
                         type="text"
                         class="form__input"
-                        :class="{'form__input--error': $v.floor.$error}"
                         v-model.trim="$v.floor.$model"
                         @focusout="buildAddress"
                     >
@@ -101,8 +97,6 @@
                     >
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
                     </svg>
-                    <div class="form__error-text form__error-text--invalid"
-                         v-if="$v.floor.$error">{{ $tc('text.error') }}</div>
                 </label>
 
                 <label name="apart" class="form__label form__label--column">
@@ -110,7 +104,6 @@
                         name="apart"
                         type="text"
                         class="form__input"
-                        :class="{'form__input--error': $v.apart.$error}"
                         v-model.trim="$v.apart.$model"
                         @focusout="buildAddress"
                     >
@@ -124,8 +117,6 @@
                     >
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
                     </svg>
-                    <div class="form__error-text form__error-text--invalid"
-                         v-if="$v.apart.$error">{{ $tc('text.error') }}</div>
                 </label>
             </form>
         </div>
