@@ -80,7 +80,7 @@ export default {
             
             if (this.menuLink === 'profile') {
                 if (this.user.authorized) {
-                    window.location.replace('/my')
+                    window.location.replace(config.links.personal_dashboard)
                 } else {
                     this.$eventBus.$emit("openModal", 'user', 'login', false, true)
                 }
