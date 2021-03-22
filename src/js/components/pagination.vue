@@ -22,7 +22,7 @@
                 <div class="pagination__link">...</div>
             </li>
 
-            <span class="pagination__span" v-if="currentIteration === lastIteration">
+            <span class="pagination__span" v-if="currentIteration === lastIteration && internalPagination.urls.length < arrayLength">
                 <li class="pagination__item"
                     v-for="(link, index) in lastArray.slice(0, arrayLength)" :key="index"
                     :class="{'pagination__item--current': internalPagination.current == link.title}"
@@ -52,7 +52,7 @@
             </li>
             <li class="pagination__item"
                 :class="{'pagination__item--current': internalPagination.current === lastArray[arrayLength - 2].title}"
-                v-if="!dotsFlag"
+                v-if="!dotsFlag && internalPagination.urls.length >= arrayLength"
             >
                 <a :href="lastArray[arrayLength - 2].url" 
                     class="pagination__link"
@@ -108,17 +108,25 @@
             }
         },
         mounted() {
-            this.arrayLength;
             this.internalPagination = this.cloneOverJson(this.pagination);
+            this.arrayLength;
             this.lastIteration = Math.ceil(this.internalPagination.total / this.arrayLength);
             this.pageMask = this.pagination.page_mask
         },
         computed: {
             arrayLength() {
-                return window.innerWidth < 768 ? 3 : 4
+                if (window.innerWidth < 768) {
+                    return this.internalPagination.urls.length >= 3 ? 3 : this.internalPagination.urls.length
+                } else {
+                    return this.internalPagination.urls.length >= 4 ? 4 : this.internalPagination.urls.length
+                }
             },
             currentIteration() {
-                return Math.ceil(this.internalPagination.urls[this.arrayLength - 1].title / this.arrayLength)
+                if (this.internalPagination.urls.length >= this.arrayLength) {
+                    return Math.ceil(this.internalPagination.urls[this.arrayLength - 1].title / this.arrayLength)
+                } else {
+                    return 1
+                }
             },
             notLast() {
                 return this.currentIteration >= this.lastIteration ? false : true
@@ -136,7 +144,11 @@
                 return arr
             },
             dotsFlag() {
-                return this.internalPagination.urls[this.arrayLength - 1].title + 2 === this.internalPagination.total ? false : true
+                if (this.internalPagination.urls.length >= this.arrayLength) {
+                    return this.internalPagination.urls[this.arrayLength - 1].title + 2 === this.internalPagination.total ? false : true
+                } else {
+                    return false
+                }
             }
         },
         methods: {
