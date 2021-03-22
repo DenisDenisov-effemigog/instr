@@ -1,5 +1,5 @@
 <template>
-    <div class="cart__content" v-if="products.length === 0">
+    <div class="cart__content" v-if="products.length === 0 && loaded">
         <div class="cart__purchases-wrapper">
             <div class="cart__header cart__header--empty">
                 <div class="cart__title">{{ $tc('cart.title.empty') }}</div>
@@ -9,7 +9,7 @@
             </div>
         </div>
     </div>
-    <div class="cart__content" v-else>
+    <div class="cart__content" v-else-if="products.length > 0 && loaded">
         <div class="cart__purchases-wrapper">
             <div class="cart__border-right">
                 <div class="cart__header">
@@ -91,6 +91,13 @@
             </div>
         </div>
     </div>
+    <div v-else class="preloader">
+        <svg viewBox="0 0 145 145">
+            <use :xlink:href="templatePath + 'images/sprite.svg#preloader'"></use>
+        </svg>
+        <div class="preloader__loading preloader__loading--first"></div>
+        <div class="preloader__loading preloader__loading--second"></div>
+    </div>
 </template>
 
 <script>
@@ -122,6 +129,7 @@
         },
         data(){
             return{
+                loaded: false,
                 table: false,
                 changedView: this.view,
                 notAvailable: []
@@ -152,6 +160,12 @@
             },
         },
         methods: {
+            loading(){
+                let vm = this
+                setTimeout(function () {
+                    vm.loaded = true
+                }, 500)
+            },
             tableMode() {
                 if (window.innerWidth < 988) {
                     this.table = false;
@@ -173,6 +187,7 @@
             }
         },
         created() {
+            this.loading();
             window.addEventListener('resize', this.tableMode)
         },
     }
