@@ -71,8 +71,8 @@
                                     <input type="checkbox" name="agreement" v-model="actionsAgreement" class="delivery-comment__checkbox">
                                     <span class="delivery-comment__checkbox-label">
                                         <svg class="delivery-comment__checkbox-svg" viewBox="0 0 10 8">
-                                            <use xlink:href="/images/sprite.svg#icons__checked"></use>
-                                            </svg>
+                                            <use :xlink:href="templatePath + 'images/sprite.svg#icons__checked'"></use>
+                                        </svg>
                                         </span>
                                     <span class="delivery-comment__checkbox-text">{{ $tc('checkout.checkbox_text') }}</span>
                                 </label>
