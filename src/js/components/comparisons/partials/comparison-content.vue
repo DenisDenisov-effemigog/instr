@@ -35,12 +35,12 @@
                     <div class="comparisons__slider-btns">
                         <a class="comparisons__slider-btn" @click="slideToPrev">
                             <svg>
-                                <use xlink:href="/images/sprite.svg#arrows__arr-long-left"></use>
+                                <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-left'"></use>
                             </svg>
                         </a>
                         <a class="comparisons__slider-btn" @click="slideToNext">
                             <svg>
-                                <use xlink:href="/images/sprite.svg#arrows__arr-long-right"></use>
+                                <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arr-long-right'"></use>
                             </svg>
                         </a>
                     </div>
