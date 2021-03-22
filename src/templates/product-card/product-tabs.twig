@@ -10,34 +10,26 @@
             <div class="product-tabs__content-layout">
                 <div class="product-tabs__content-title">{{ 'product_card.tabs.main_features'|trans }}</div>
                 <ul class="product-tabs__features product-tabs__features_main">
-                    <li class="product-tabs__features-item">
-                        <div class="product-tabs__features-term">
-                            <div class="product-tabs__features-term-dash">
-                                <span class="product-tabs__features-term-label">{{ 'product_card.tabs.guarantee'|trans }}</span>
-                            </div>
-                        </div>
-                        <div class="product-tabs__features-value">
-                            <a href="{{ product.guaranteeUrl }}">{{ product.guarantee }} {{ 'product_card.tabs.years'|trans }}</a>
-                        </div>
-                    </li>
                     {% for feature in product.features.main %}
                         <li class="product-tabs__features-item">
                             <div class="product-tabs__features-term">
                                 <div class="product-tabs__features-term-dash">
-                                    <span class="product-tabs__features-term-label">{{feature.title}}</span>
+                                    <span class="product-tabs__features-term-label">{{ feature.title }}</span>
                                 </div>
                             </div>
                             <div class="product-tabs__features-value">
-                                {{feature.value}}
-                                {% if feature.country %}
-                                    <svg class="product-tabs__features-country" viewBox="0 0 36 24">
-                                        {% if feature.country == 'Germany' %}
-                                            <use xlink:href="{{ templatePath }}images/sprite.svg#countries__germany"></use>
-                                        {% elseif feature.country == 'China' %}
-                                            <use xlink:href="{{ templatePath }}images/sprite.svg#countries__china"></use>
-                                        {% endif %}
-                                    </svg>
-                                {% endif %}
+                                {% if feature.link %}<a href="{{ feature.link }}" target="_blank">{% endif %}
+                                    {{feature.value}}
+                                    {% if feature.country %}
+                                        <svg class="product-tabs__features-country" viewBox="0 0 36 24">
+                                            {% if feature.country == 'Germany' %}
+                                                <use xlink:href="{{ templatePath }}images/sprite.svg#countries__germany"></use>
+                                            {% elseif feature.country == 'China' %}
+                                                <use xlink:href="{{ templatePath }}images/sprite.svg#countries__china"></use>
+                                            {% endif %}
+                                        </svg>
+                                    {% endif %}
+                                {% if feature.link %}</a>{% endif %}
                             </div>
                         </li>
                     {% endfor %}
