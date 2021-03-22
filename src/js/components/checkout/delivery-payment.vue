@@ -1,6 +1,6 @@
 <template>
     <div class="delivery-payment">
-        <div class="delivery-payment__title">{{ $tc('checkout.title.payment') }}</div>
+        <h3 class="delivery-payment__title">{{ $tc('checkout.title.payment') }}</h3>
         <form action="" class="delivery-payment__form">
             <label class="delivery-payment__radio" v-for="payment in payments" :key="payment.id">
                 <input name="pay" 

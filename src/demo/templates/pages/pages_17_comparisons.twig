@@ -995,6 +995,15 @@
     },
 } %}
 
+{% set listCategories = [
+    { 'label': 'Дрель-шуруповерт', 'value': 1 },
+    { 'label': 'Шуруповерт', 'value': 2 },
+    { 'label': 'Гвоздодер', 'value': 3 },
+]%}
+
+{% set listCategoryView = 'select'
+%}
+
 {% block content %}
 
     {% include '../../../templates/header/header.twig' with {
@@ -1017,6 +1026,8 @@
     } %}
     {% include '../../../templates/comparisons/comparisons.twig' with {
         'filters': filters,
+        'showTree': showTree,
+        'listCategories': listCategories
     } %}
     {% include '../../../templates/footer/footer.twig'  with {
         'countries': countries,

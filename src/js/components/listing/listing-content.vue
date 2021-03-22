@@ -38,8 +38,7 @@
             <component 
                 is="pagination"
                 :pagination="internalPagination"
-                :hash="hash" 
-                :page-mask="pageMask" 
+                :hash="hash"
             >
             </component>
         </div>

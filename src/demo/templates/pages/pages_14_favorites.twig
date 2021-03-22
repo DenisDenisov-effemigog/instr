@@ -920,7 +920,7 @@
     }
 ] %}
 
-{% set treeCategories = [
+{% set listCategories = [
     {label: 'Автомобильный инструмент', value: 'avto'},
     {label: 'Измерительный инструмент', value: 'measuring'},
     {label: 'Режущий инструмент', value: 'cutting'},
@@ -981,16 +981,15 @@
 {% set pagination = {
     'total': 106,
     'current': 3,
-    'url_previous': '/some/category/page/2',
-    'url_next': '/some/category/page/4',
     'url_last': '/some/category/page/last',
     'urls': 
     [
         {title: '1', url: '/some/category/page/1'},
         {title: '2', url: '/some/category/page/2'},
-        {title: '3', url: ''},
+        {title: '3', url: '/some/category/page/3'},
         {title: '4', url: '/some/category/page/4'},
-    ]
+    ],
+    'page_mask': '/some/category/page/'
 } %}
 {% set headerLinks = [
     {title: 'О компании', url: ''},
@@ -1037,6 +1036,11 @@
     },
 } %}
 
+
+
+{% set listCategoryView = 'filter'
+%}
+
 {% block content %}
 
     {% include '../../../templates/header/header.twig' with {
@@ -1060,16 +1064,17 @@
     {% include '../../../templates/favorites/favorites.twig' with {
         'sort_types': sort_types,
         'sort_type': sort_type,
-        'treeCategories': treeCategories,
+        'listCategories': listCategories,
         'filters': filters,
         'view_type': view_type,
         'pagination': pagination,
+        'listCategoryView': listCategoryView,
     } %}
     {% include '../../../templates/footer/footer.twig'  with {
         'countries': countries,
         'activeCountry': 'Россия',
         'user': user,
-        'treeCategories': treeCategories,
+        'listCategories': listCategories,
         'phone_mask': '+7 (F##) ###-##-##',
         'footerLinks': footerLinks,
         'headerLinks': headerLinks,

@@ -1,7 +1,6 @@
 <template>
     <div class="pagination">
-        <a  :href="internalPagination.url_previous" 
-            class="pagination__arrow pagination__arrow-prev"
+        <a  class="pagination__arrow pagination__arrow-prev"
             :class="{'pagination__arrow--disabled': internalPagination.urls[0].title <= 1}"
             @click.prevent="slideToPrev"
         >
@@ -71,9 +70,8 @@
             </li>
 
         </ul>
-        <a  :href="internalPagination.url_next" 
-            class="pagination__arrow pagination__arrow_next"
-            :class="{'pagination__arrow--disabled': !notLast || !dotsFlag}"
+        <a  class="pagination__arrow pagination__arrow_next"
+            :class="{'pagination__arrow--disabled': !notLast || internalPagination.urls[arrayLength - 1].title + 2 === internalPagination.total}"
             @click.prevent="slideToNext"
         >
             <svg>
@@ -93,6 +91,7 @@
             return {
                 internalPagination: {},
                 lastIteration: NaN,
+                pageMask: '',
             }
         },
         props: {
@@ -101,10 +100,6 @@
                 default: {}
             },
             hash: {
-                type: String
-            },
-            pageMask: {
-                required: true,
                 type: String
             },
             placement: {
@@ -116,6 +111,7 @@
             this.arrayLength;
             this.internalPagination = this.cloneOverJson(this.pagination);
             this.lastIteration = Math.ceil(this.internalPagination.total / this.arrayLength);
+            this.pageMask = this.pagination.page_mask
         },
         computed: {
             arrayLength() {

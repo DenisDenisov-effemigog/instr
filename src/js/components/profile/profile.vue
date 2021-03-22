@@ -56,7 +56,6 @@
                     :selectopenSelect="selectopenSelect"
                     :contract="profile.contract"
                     :preLink="preLink"
-                    :page-mask="pageMask"
                 ></router-view>
             </transition>
         </div>
@@ -77,10 +76,6 @@ export default {
             type:String
         },
         user: {required: true},
-        pageMask: {
-            required: true,
-            type: String
-        },
     },
     data() {
         return {
@@ -110,12 +105,12 @@ export default {
                     personType: [1,2],
                     //external: true
                 },
-                {
-                    title: 'link.finance',
-                    url: '/my/finances/', 
-                    personType: [2],
-                    //external: true
-                },
+                // {
+                //     title: 'link.finance',
+                //     url: '/my/finances/', 
+                //     personType: [2],
+                //     //external: true
+                // },
                 {
                     title: 'link.my_addresses',
                     url: '/my/address/',

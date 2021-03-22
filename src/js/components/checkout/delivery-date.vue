@@ -1,6 +1,6 @@
 <template>
     <div class="delivery-date">
-        <div class="delivery-date__title">{{ $tc('checkout.title.date') }}</div>
+        <h3 class="delivery-date__title">{{ $tc('checkout.title.date') }}</h3>
         <div class="delivery-date__info">{{ $tc('checkout.text.date') }}</div>
         <div class="delivery-date__calendar">
             <date-picker 

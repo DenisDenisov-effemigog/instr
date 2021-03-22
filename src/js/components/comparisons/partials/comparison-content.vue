@@ -164,16 +164,14 @@
         props: {
             comparingItems: {
                 type: Array
+            },
+            categories:{
+                type: Array
             }
         },
         data() {
             return {
                 comparisons: [],
-                categories: [
-                    { 'label': 'Дрель-шуруповерт', 'value': 1 },
-                    { 'label': 'Шуруповерт', 'value': 2 },
-                    { 'label': 'Гвоздодер', 'value': 3 },
-                ],
                 defaultCategory: { 'label': 'Дрель-шуруповерт', 'value': 1 },
                 asNavFor1: [],
 			    asNavFor2: [],

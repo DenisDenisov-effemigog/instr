@@ -1,7 +1,7 @@
 <section class="listing">
         <div class="listing__header">
             {% if titleFlag == true %}
-                {% if filters.filters is not empty %}
+                {% if listCategoryView == 'select' or listCategoryView == 'filter' %}
                     <h2 class="listing__title">{{ title }}</h2>
                 {% else %}
                     <h2 class="listing__title">{{ 'listing.filters.title'|trans }}</h2>
@@ -31,47 +31,49 @@
     {% endif %}
     <div class="listing__content">
         <div class="listing__sidebar">
-            {% if filters.filters is not empty %}
+            {% if listCategoryView == 'select' or listCategoryView == 'filter' %}
                 <div class="listing__subcategories listing__subcategories--filter">
                     <div class="listing__subcategory-link">{{ sub_title}}</div>
-                        <component is="filter-category">
-                            <template v-slot:subcategory-listing-part>
-                                {% for subsubcategory in listCategory|slice(0, 5) %}
-                                    <li>
-                                        {% if subsubcategory.checked == true %}
-                                            <svg viewBox="-2 -1 12 12" class="listing__further-sc-icon">
-                                                <use :xlink:href="templatePath + 'images/sprite.svg#check'"></use>
-                                            </svg>
-                                        {% endif %}
+                        {% if listCategories is not empty%}
+                             <component is="filter-category">
+                                <template v-slot:subcategory-listing-part>
+                                    {% for subsubcategory in listCategories|slice(0, 5) %}
+                                        <li>
+                                            {% if subsubcategory.checked == true %}
+                                                <svg viewBox="-2 -1 12 12" class="listing__further-sc-icon">
+                                                    <use :xlink:href="templatePath + 'images/sprite.svg#check'"></use>
+                                                </svg>
+                                            {% endif %}
+                                                <a href="{{ subsubcategory.url }}" 
+                                                    class="listing__further-subcategory"
+                                                >
+                                                    {{ subsubcategory.title }}
+                                                </a>
+                                        </li>
+                                    {% endfor %}
+                                </template>
+                                <template v-slot:subcategory-listing-all>
+                                    {% for subsubcategory in listCategories %}
+                                        <li>
+                                            {% if subsubcategory.checked == true %}
+                                                <svg viewBox="-2 -1 12 12" class="listing__further-sc-icon">
+                                                    <use :xlink:href="templatePath + 'images/sprite.svg#check'"></use>
+                                                </svg>
+                                            {% endif %}
                                             <a href="{{ subsubcategory.url }}" 
-                                                class="listing__further-subcategory"
-                                            >
-                                                {{ subsubcategory.title }}
-                                            </a>
-                                    </li>
-                                {% endfor %}
-                            </template>
-                            <template v-slot:subcategory-listing-all>
-                                {% for subsubcategory in listCategory %}
-                                    <li>
-                                        {% if subsubcategory.checked == true %}
-                                            <svg viewBox="-2 -1 12 12" class="listing__further-sc-icon">
-                                                <use :xlink:href="templatePath + 'images/sprite.svg#check'"></use>
-                                            </svg>
-                                        {% endif %}
-                                        <a href="{{ subsubcategory.url }}" 
-                                           class="listing__further-subcategory"
-                                        >{{ subsubcategory.title }}</a>
-                                    </li>
-                                {% endfor %}
-                            </template>
-                        </component>
+                                            class="listing__further-subcategory"
+                                            >{{ subsubcategory.title }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </template>
+                            </component>
+                        {% endif %}
                 </div>
             {% endif %}
                 <div class="listing__sidebar_filters">  
                     {% include './filter.twig' with {'filters': filters} %}
                 </div>
-            {%  if filters.filters is empty  %}
+            {%  if showTree == true  %}
                 <div class="listing__subcategories">
                     {% for subcategory in treeCategories.subcategories %}
                         <div class="listing__subcategory">
@@ -118,7 +120,6 @@
             <component is="listing-content" 
                        :pagination="{{ pagination|json_encode|e('html_attr') }}" 
                        :hash="{{ filters.hash|json_encode|e('html_attr') }}"
-                       :page-mask="{{ page_mask|json_encode|e('html_attr') }}"
             >
                 {% for product in products %}
                     <div class="listing__card">
