@@ -32,7 +32,7 @@
                     :itemName="'street'"
                     :getValue="getValue"
                     @focusout="buildAddress"
-                    v-model="cityId"
+                    v-model="streetId"
                 >
                 </autocomplete-input>
 
@@ -162,7 +162,8 @@
                 building: '',
                 floor: '',
                 apart: '',
-                cityId: 0
+                cityId: '',
+                streetId: '',
             }
         },
         validations:{

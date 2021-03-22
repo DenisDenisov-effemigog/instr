@@ -96,7 +96,7 @@
                 type: Function
             },
             value: {
-                type: Number,
+                type: String,
                 required: true
             }
         },
