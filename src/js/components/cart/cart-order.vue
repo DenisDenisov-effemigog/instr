@@ -18,14 +18,14 @@
                     <li class="cart-order__item">
                         <div class="cart-order__text">{{ $tc('text.discount') }}</div>
                         <div class="cart-order__price cart-order__price--green">
-                            {{ currency(productsPrice.discounts.actions) }}
+                            {{ currency(productsPrice.discounts.action.value) }}
                             <span>{{ $tc('text.currency') }}</span>
                         </div>
                     </li>
                     <li class="cart-order__item">
                         <div class="cart-order__text">{{ $tc('text.discount') }}</div>
                         <div class="cart-order__price cart-order__price--green">
-                            {{ currency(productsPrice.discounts.personal) }}
+                            {{ currency(productsPrice.discounts.personal.value) }}
                             <span>{{ $tc('text.currency') }}</span>
                         </div>
                     </li>
