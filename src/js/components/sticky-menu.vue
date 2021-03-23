@@ -1,6 +1,6 @@
 <template>
     <div class="mobile-menu__buttons">
-        <ul class="header__menu header__menu_mobile">
+        <ul class="header__menu header__menu--mobile">
             <li class="header__menu-item">
                 <a
                     class="header__menu-link"
