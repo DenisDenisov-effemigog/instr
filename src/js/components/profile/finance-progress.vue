@@ -5,7 +5,7 @@
         </div>
         <div class="finance-progress__main"
             :class="{'finance-progress__main--no-debt': !dashboard && finance.arrears === 0}"
-             v-if="contract.length"
+             v-if="!!contract"
         >
             <!-- Progress Bar -->
             <div class="finance-progress__progress">

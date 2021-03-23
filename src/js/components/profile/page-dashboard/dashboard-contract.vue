@@ -19,7 +19,7 @@
                     </div>
                     <div class="dashboard-contract__info">{{item.info}}</div>
                 </li>
-                <li v-show="contractArr.length == 0" class="dashboard-contract__item dashboard-contract__item--info">
+                <li v-show="!!contractArr" class="dashboard-contract__item dashboard-contract__item--info">
                     <span>{{ $tc('profile.dashboard.contract_item_info') }}</span> 
                 </li>
             </ul>
@@ -40,8 +40,8 @@ export default {
     },
     computed: {
         contractArr() {
-            // return this.cloneOverJson(this.$store.state.personal.contract); #TODO на время
-            return this.$store.state.personal.contract
+            return this.cloneOverJson(this.$store.state.personal.contract);
+            // return this.$store.state.personal.contract
         },
     }
 }

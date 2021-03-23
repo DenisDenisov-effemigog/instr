@@ -3,15 +3,15 @@
 
         <catalogue-mobile :categories="categories"></catalogue-mobile>
 
-        <div class="catalogue_tablet">
+        <div ref="tablet" class="catalogue_tablet">
             <div class="container">
-                <ul class="catalogue__categories">
+                <ul ref="catList" class="catalogue__categories">
                     <div class="catalogue__categories-bg"></div>
                     <li 
                         class="catalogue__category"
                         v-for="(category, index) in categories"
                         :key="index"
-                        @mouseover="hovered = index"
+                        @mouseover="catMouseOver(index)"
                         :class="{'catalogue__category_hovered': hovered === index}"
                     >
                         <div>
@@ -21,10 +21,18 @@
                                     <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                                 </svg>
                             </a>
-                            <catalogue-subcategories :categories="category.subcategories"></catalogue-subcategories>
+                            
                         </div>
                     </li>
                 </ul>
+                <catalogue-subcategories
+                    v-for="(category, index) in categories" 
+                    v-show="index === hovered"
+                    :categories="category.subcategories"
+                    :openFlag ="index === hovered"
+                    @catHeight="catHeight"
+                >
+                </catalogue-subcategories>
             </div>
         </div>
     </div>
@@ -59,6 +67,13 @@
             this.$eventBus.$on("toggle-catalog", this.toggleCatalog);
         },
         methods: {
+            catMouseOver(index){
+                this.hovered = index
+                this.$eventBus.$emit("catMouseOver")
+            },
+            catHeight(height){
+                this.$refs.tablet.style.height = height + 'px'
+            },
             toggleCatalog(state) {
                 this.active = state;
                 this.hovered = 0;
