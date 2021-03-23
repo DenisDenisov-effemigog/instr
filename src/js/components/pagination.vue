@@ -107,13 +107,18 @@
                 default: '.listing'
             }
         },
+        created() {
+            this.updatePagination();
+        },
         mounted() {
-            this.internalPagination = this.cloneOverJson(this.pagination);
             this.arrayLength;
             this.lastIteration = Math.ceil(this.internalPagination.total / this.arrayLength);
             this.pageMask = this.pagination.page_mask
         },
         computed: {
+            updatePagination() {
+                this.internalPagination = this.cloneOverJson(this.pagination);
+            },
             arrayLength() {
                 if (window.innerWidth < 768) {
                     return this.internalPagination.urls.length >= 3 ? 3 : this.internalPagination.urls.length
