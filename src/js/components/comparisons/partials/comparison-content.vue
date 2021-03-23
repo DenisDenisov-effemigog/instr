@@ -5,7 +5,7 @@
             <div class="comparisons__category-selection">
                 <div>
                     <select-list
-                        v-if="categories.length > 0"
+                        v-if="!!categories"
                         :points="categories"
                         :selectopenSelect="categories[0]"
                         :sortingPage="'comparison'"
