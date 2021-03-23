@@ -12,11 +12,11 @@
                         :placeholder="$tc('text.category')"
                     >
                     </select-list>
-                    <label @click="filterComparison">
+                    <label @click.prevent="filterComparison">
                         <input
                             class="comparisons__checkbox"
                             type="checkbox"
-                            :value="onlyDiffer">
+                            v-model="onlyDiffer">
                         <span class="comparisons__checkbox-label">
                             <svg class="comparisons__checkbox-svg" viewBox="0 0 10 8">
                                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__checked'"></use>
@@ -72,7 +72,7 @@
                                         :compare="product.is_compare"
                                 >
                                     <svg class="comparisons__card-del-btn">
-                                        <use :xlink:href="templatePath + '/images/sprite.svg#icons__delete'"></use>
+                                        <use :xlink:href="templatePath + 'images/sprite.svg#icons__delete'"></use>
                                     </svg>
                                 </component>
                             </div>
@@ -168,11 +168,13 @@
             },
             categories:{
                 type: Array
+            },
+            showOnlyDiff: {
+                type: Function
             }
         },
         data() {
             return {
-                comparisons: [],
                 asNavFor1: [],
 			    asNavFor2: [],
                 options: {
@@ -197,15 +199,15 @@
             }
         },
         methods: {
-            filterComparison(){
-                this.onlyDiffer = !this.onlyDiffer;
-                if (this.onlyDiffer) {
-                    this.$store.dispatch('comparisonsFilter');
-                } else {
-                    this.$store.dispatch('comparisonsUpdateProducts')
-                }
-                this.comparisons = this.comparingItems
-            },
+            // filterComparison(){
+            //     this.onlyDiffer = !this.onlyDiffer;
+            //     if (this.onlyDiffer) {
+            //         this.$store.dispatch('comparisonsFilter');
+            //     } else {
+            //         this.$store.dispatch('comparisonsUpdateProducts')
+            //     }
+            //     this.comparisons = this.comparingItems
+            // },
             slideToPrev() {
                 if (window.innerWidth > 767 && this.qnty > 3) {
                     this.$refs.thumbnails.goToPrev()
@@ -244,6 +246,12 @@
             applyListing(content) {
                 this.$refs.thumbnails.goTo(0);
                 this.comparisons = content.products
+            },
+            filterComparison() {
+                this.onlyDiffer = !this.onlyDiffer;
+                this.showOnlyDiff({
+                    params: this.onlyDiffer
+                })
             }
             // getSideItems(){
             //     if(window.innerWidth >= 1024){
@@ -266,9 +274,9 @@
             // }
         },
         computed: {
-            // comparisons() {
-            //     return this.comparingItems;
-            // },
+            comparisons() {
+                return this.comparingItems;
+            },
             qnty() {
                 return this.comparisons.length
             },
@@ -281,7 +289,7 @@
             }
         },
         created() {
-            this.comparisons = this.comparingItems;
+            this.comparisons;
             window.addEventListener('resize', this.changeShownQnty);
             this.$eventBus.$on('apply-comparison', this.applyListing);
         },
