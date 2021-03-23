@@ -5,7 +5,7 @@
             <div class="comparisons__category-selection">
                 <div>
                     <select-list
-                        v-if="categories.length > 0"
+                        v-if="!!categories"
                         :points="categories"
                         :selectopenSelect="categories[0]"
                         :sortingPage="'comparison'"
@@ -72,7 +72,7 @@
                                         :compare="product.is_compare"
                                 >
                                     <svg class="comparisons__card-del-btn">
-                                        <use xlink:href="/images/sprite.svg#icons__delete"></use>
+                                        <use :xlink:href="templatePath + '/images/sprite.svg#icons__delete'"></use>
                                     </svg>
                                 </component>
                             </div>

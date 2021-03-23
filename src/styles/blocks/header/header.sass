@@ -137,7 +137,7 @@
         +desktop-small
             display: flex
             align-items: center
-        &_mobile
+        &--mobile
             display: flex
             justify-content: space-between
             padding: .75rem 1rem
@@ -153,25 +153,34 @@
                     & svg
                         fill: $icon-red
     &__menu-item
-        padding-right: 1.5rem
+        margin-right: 1.5rem
         position: relative
-        &:last-child
-            padding-right: 0
-    &__menu-link
-        @extend .link-3 
         cursor: pointer
-        display: flex
-        flex-direction: column
-        justify-content: space-between
-        align-items: center
-        // +desktop-small
-        //     height: 3rem
+        &:last-child
+            margin-right: 0
+        &--unauth 
+            a
+                pointer-events: none
+            &:hover
+                .header__menu-text
+                    color: $primary-hover
+                    transition: .35s
+                .header__menu-tooltip
+                    left: -150%
         &:hover
             & .header__menu-icon
                 fill: $icon-red
             .header__menu-tooltip
                 display: block
                 top: 110%
+    &__menu-link
+        @extend .link-3 
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        align-items: center
+        // +desktop-small
+        //     height: 3rem
 
     &__menu-icon-wrapper
         position: relative
