@@ -72,7 +72,7 @@
                                         :compare="product.is_compare"
                                 >
                                     <svg class="comparisons__card-del-btn">
-                                        <use xlink:href="/images/sprite.svg#icons__delete"></use>
+                                        <use :xlink:href="templatePath + '/images/sprite.svg#icons__delete'"></use>
                                     </svg>
                                 </component>
                             </div>
