@@ -7,7 +7,7 @@
                     @click="clearAll"
                 >
                     <svg>
-                        <use xlink:href="/images/sprite.svg#icons__delete"></use>
+                        <use :xlink:href="templatePath + 'images/sprite.svg#icons__delete'"></use>
                     </svg>
                     {{ $tc('button.delete-all') }}
                 </a>
