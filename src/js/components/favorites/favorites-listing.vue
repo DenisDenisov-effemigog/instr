@@ -6,7 +6,7 @@
                        :itemsQuantity="itemsQuantity"
             ></component>
             <div v-show="favorites.length > 0" class="favorites-listing__delete-button" @click="clearFavorites">
-                <svg><use xlink:href="/images/sprite.svg#icons__del"></use></svg>
+                <svg><use :xlink:href="templatePath + 'images/sprite.svg#icons__delete'"></use></svg>
                 {{ $tc('button.delete-all') }}
             </div>
         </div>
