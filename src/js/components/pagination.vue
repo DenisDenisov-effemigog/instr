@@ -108,7 +108,7 @@
             }
         },
         created() {
-            this.updatePagination();
+            this.updatePagination;
         },
         mounted() {
             this.arrayLength;
