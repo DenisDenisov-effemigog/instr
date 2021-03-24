@@ -277,6 +277,11 @@
                 } else {
                     this.expanded = false
                 }
+            },
+            deleteItemAtSliderEnd() {
+                if ((this.currentSlideNumber + this.shownItemsQnty > this.qnty) && (this.qnty > 3)) {
+                    this.$refs.thumbnails.goToPrev()
+                }
             }
         },
         created() {
@@ -293,6 +298,7 @@
                 this.asNavFor2.push(item);
             })
             this.asNavFor1.push(this.$refs.thumbnails);
+            this.deleteItemAtSliderEnd;
         }
     }
 </script>
