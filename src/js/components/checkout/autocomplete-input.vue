@@ -92,7 +92,7 @@
                 type: String,
                 required: true
             },
-            getValue: {
+            getId: {
                 type: Function
             },
             value: {
