@@ -170,8 +170,12 @@
                         })
                     })
                 } else {
-                    api.finedStreet(input, vm.valueId).then(answer => {
+                    api.finedStreet(input).then(answer => {
                         vm.results = answer.list.filter(item => {
+                            if(item.name.toLowerCase() === vm.valueInput.toLowerCase()) {
+                                console.log(item)
+                                vm.valueId = item.id
+                            }
                             return item.name.toLowerCase()
                                 .startsWith(input.toLowerCase())
                         })

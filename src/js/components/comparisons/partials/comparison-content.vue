@@ -199,15 +199,6 @@
             }
         },
         methods: {
-            // filterComparison(){
-            //     this.onlyDiffer = !this.onlyDiffer;
-            //     if (this.onlyDiffer) {
-            //         this.$store.dispatch('comparisonsFilter');
-            //     } else {
-            //         this.$store.dispatch('comparisonsUpdateProducts')
-            //     }
-            //     this.comparisons = this.comparingItems
-            // },
             slideToPrev() {
                 if (window.innerWidth > 767 && this.qnty > 3) {
                     this.$refs.thumbnails.goToPrev()

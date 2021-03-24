@@ -278,10 +278,9 @@ class Api {
             query: query,
         });
     }
-    finedStreet(query, id) {
+    finedStreet(query) {
         return this._promiseBitrixRequest('instrument2:rest.api.location.find.street', {
-            query: query,
-            id: id,
+            query: query
         });
     }
     sendQuestion(productId, email, message) {
