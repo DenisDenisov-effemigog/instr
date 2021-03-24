@@ -4,9 +4,9 @@
             <h2 class="profile__title">{{ $tc(h1) }}</h2>
         </div>
 
-        <div v-if="ordersOnPage.length === 0" class="profile__empty-content">
+        <div v-if="!!ordersOnPage" class="profile__empty-content">
             <div class="order__text">{{ $tc('profile_orders.empty_text') }}</div>
-            <a :href="catalogLink" class="profile__catalogue-btn">{{ $tc('button.move_to_catalog') }}</a>
+            <catalogue-btn></catalogue-btn>
         </div>
 
         <div class="order__info" v-if="!details && ordersOnPage.length !== 0">
@@ -51,12 +51,13 @@
     import selectList from '../partials/select-list.vue';
     import orderList from './page-orders/order-list.vue';
     // import orderPagination from './page-orders/order-pagination.vue'
-    import config from "../../config";
+    import CatalogueBtn from '../catalogue-btn.vue';
 
     export default {
         components: { 
             selectList,
             orderList,
+            CatalogueBtn,
             // orderPagination,
         },
         name:"page-orders",
@@ -73,7 +74,6 @@
                 // pageNumber: 1,
                 // onPage: 10,
                 loaded: false,
-                catalogLink: config.links.catalog,
                 selectedStatus: ''
             }
         },
