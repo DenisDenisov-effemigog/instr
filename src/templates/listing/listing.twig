@@ -73,7 +73,7 @@
                 <div class="listing__sidebar_filters">  
                     {% include './filter.twig' with {'filters': filters} %}
                 </div>
-            {%  if showTree == true  %}
+            {%  if listCategoryView == 'list'  %}
                 <div class="listing__subcategories">
                     {% for subcategory in treeCategories.subcategories %}
                         <div class="listing__subcategory">

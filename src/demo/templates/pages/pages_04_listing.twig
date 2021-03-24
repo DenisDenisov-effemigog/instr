@@ -2060,8 +2060,20 @@
     },
 ] %}
 
-{% set pagination = {}
-%}
+{% set pagination = {
+    'total': 106,
+    'current': 3,
+    'url_last': '/some/category/page/last',
+    'urls': 
+    [
+        {title: '1', url: '/some/category/page/1'},
+        {title: '2', url: '/some/category/page/2'},
+        {title: '3', url: '/some/category/page/3'},
+        {title: '4', url: '/some/category/page/4'},
+    ],
+    'page_mask': '/some/category/page/'
+} %}
+
 {% set headerLinks = [
     {title: 'О компании', url: ''},
     {title: 'Филиалы', url: ''},
