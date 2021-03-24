@@ -108,17 +108,14 @@
             }
         },
         created() {
-            this.updatePagination;
-        },
+            },
         mounted() {
+            this.updatePagination();
             this.arrayLength;
             this.lastIteration = Math.ceil(this.internalPagination.total / this.arrayLength);
             this.pageMask = this.pagination.page_mask
         },
         computed: {
-            updatePagination() {
-                this.internalPagination = this.cloneOverJson(this.pagination);
-            },
             arrayLength() {
                 if (window.innerWidth < 768) {
                     return this.internalPagination.urls.length >= 3 ? 3 : this.internalPagination.urls.length
@@ -157,12 +154,16 @@
             }
         },
         methods: {
+            updatePagination() {
+                this.internalPagination = this.cloneOverJson(this.pagination);
+            },
             goToPage(page) {
                 let vm = this
                 if (vm.placement === '.listing') {
                     api.goToPage(vm.hash, page).then((answer) => {
                         vm.$eventBus.$emit('apply-listing', answer.output);
                         vm.scrollList();
+                        vm.updatePagination();
                     }).catch(errors => {
                         console.log(errors);
                     });
