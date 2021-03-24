@@ -2638,8 +2638,8 @@ window.runAction = function (action, config) {
                                 'query': config.data,
                                 'list': 
                                     [
-                                        {'name': 'Ленина', 'id': '101', 'city_id': 2},
-                                        {'name': 'Советская', 'id': '202', 'city_id': 2},
+                                        {'name': 'Ленина', 'id': '101'},
+                                        {'name': 'Советская', 'id': '202'},
                                 
                                     ]
                                 }
