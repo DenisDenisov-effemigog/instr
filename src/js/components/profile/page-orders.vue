@@ -4,7 +4,7 @@
             <h2 class="profile__title">{{ $tc(h1) }}</h2>
         </div>
 
-        <div v-if="!!ordersOnPage" class="profile__empty-content">
+        <div v-if="!ordersOnPage" class="profile__empty-content">
             <div class="order__text">{{ $tc('profile_orders.empty_text') }}</div>
             <catalogue-btn></catalogue-btn>
         </div>
