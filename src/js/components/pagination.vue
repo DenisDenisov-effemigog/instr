@@ -165,8 +165,6 @@
                     }).catch(errors => {
                         console.log(errors);
                     });
-                    dubugger
-                    console.log(this.pagination, this.internalPagination)
                 } else if (vm.placement === '.order') {
                     vm.$eventBus.$emit('apply-orders-list', page);
                     vm.scrollList();

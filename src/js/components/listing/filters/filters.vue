@@ -227,9 +227,13 @@
                     console.error(errors);
                 });
             },
-            loadListing(){
+            loadListing(page){
                 this.internal.page_count = this.internal.page_count + this.filters.page_count
                 this.applyFilters(false);
+                api.goToPage(vm.hash, page).then((answer) => {
+                }).catch(errors => {
+                    console.log(errors);
+                });
             },
         },
     }

@@ -29,22 +29,7 @@
         methods:{
             loadMore(page) {
                 let vm = this;
-                vm.$eventBus.$emit('load-listing');
-                // api.goToPage(vm.hash, page).then((answer) => {
-                //     if (this.placement === '.listing') {
-                //         vm.$eventBus.$emit('apply-listing', answer.output);
-                //     } else if (this.placement === '.order__list') {
-
-                //     }
-
-                //     if (window.innerWidth > 767) {
-                //         this.scrollTop(this.placement, 130);
-                //     } else {
-                //         this.scrollTop(this.placement, 50);
-                //     }
-                // }).catch(errors => {
-                //     console.error(errors);
-                // });
+                vm.$eventBus.$emit('load-listing', page);
             },
         },
     }
