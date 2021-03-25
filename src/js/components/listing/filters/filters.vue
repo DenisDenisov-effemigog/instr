@@ -230,7 +230,7 @@
             loadListing(page){
                 this.internal.page_count = this.internal.page_count + this.filters.page_count
                 this.applyFilters(false);
-                api.goToPage(vm.hash, page).then((answer) => {
+                api.goToPage(this.internal.hash, page).then((answer) => {
                 }).catch(errors => {
                     console.log(errors);
                 });
