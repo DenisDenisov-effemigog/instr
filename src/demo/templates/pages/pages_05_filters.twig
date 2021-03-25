@@ -1978,7 +1978,7 @@
 ] %}
     
 {% set pagination = {
-    'total': 3,
+    'total': 6,
     'current': 2,
     'url_last': '/some/category/page/last',
     'urls': 
@@ -1986,8 +1986,9 @@
         {title: '1', url: '/some/category/page/1'},
         {title: '2', url: '/some/category/page/2'},
         {title: '3', url: '/some/category/page/3'},
+        {title: '4', url: '/some/category/page/4'},
     ],
-    'page_mask': '/some/category/page/'
+    'page_mask': '/some/category/page/#PAGE#'
 } %}
 {% set headerLinks = [
     {title: 'О компании', url: ''},
