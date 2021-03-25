@@ -71,9 +71,8 @@ export default {
             this.$store.dispatch('personalUpdateAddresses');
         },
         deleteAddress(addressId, value) {
-            console.log(value);
             // через массив передаем причины удаления и что удаляем - 2 элемеента
-            this.$eventBus.$emit("openModal", 'profile-delete', [this.reasons, 'address', addressId], false, false)
+            this.$eventBus.$emit("openModal", 'profile-delete', [this.reasons, 'address', addressId, value], false, false)
         },
         openTooltip(data){
             this.showToltip = data

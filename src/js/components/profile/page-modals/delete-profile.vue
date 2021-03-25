@@ -104,6 +104,7 @@
                         console.error(errors);
                     })
                 } else if (vm.type === 'address') {
+                    console.log(vm.address);
                     api.deleteAddress(vm.picked, vm.message, vm.id, vm.address).then(() => {
                         vm.$eventBus.$emit('closeModal')
                         vm.$eventBus.$emit('updateAddress')
