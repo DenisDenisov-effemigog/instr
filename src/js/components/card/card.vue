@@ -20,10 +20,12 @@
             <div class="card__image-block" 
                 :class="{'card__image-block--short-card': cardSize === 'short'}"
             >
-                <component is="slider-photo-card" 
+                <a :href="product.link">
+                    <component is="slider-photo-card" 
                         :cardSize="cardSize"
                         :images="product.images"
-                ></component>
+                    ></component>
+                </a>
     <!-- фото для горизонтальной карточки в десктопе -->
                 <img class="card__image-block--horiz" :src="this.product.images[0].img" alt="фото товара">
     <!--  -->
