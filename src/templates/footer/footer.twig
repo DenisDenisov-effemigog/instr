@@ -48,7 +48,7 @@
             {# <svg viewBox="0 0 650 150">
                 <use xlink:href="{{ templatePath }}images/sprite.svg#logo"></use>
             </svg> #}
-            <svg viewBox="0 0 148 48">
+            <svg viewBox="0 0 625 148">
                 <use xlink:href="{{ templatePath }}images/sprite.svg#wt"></use>
             </svg>
             <div class="footer__company footer__company--desktop">&#169; {{ 'footer.company'|trans }}</div>
@@ -70,26 +70,26 @@
 
         <nav class="footer__menu">
             <ul class="footer__menu-column footer__menu-column--desktop">
-                <li class="footer__menu-title"><a href="{{ footerLinks.about.url }}">{{ footerLinks.about.title }}</a></li>
+                <li class="footer__menu-title"><div>{{ footerLinks.about.title }}</div></li>
                 {% for link in footerLinks.about.links %}
                     <li class="footer__menu-item"><a href="{{ link.url }}">{{ link.title }}</a></li>
                 {% endfor %}
             </ul>
             <ul class="footer__menu-column footer__menu-column--desktop">
-                <li class="footer__menu-title"><a href="{{ footerLinks.help.url }}">{{ footerLinks.help.title }}</a></li>
+                <li class="footer__menu-title"><div>{{ footerLinks.help.title }}</div></li>
                 {% for link in footerLinks.help.links %}
                     <li class="footer__menu-item"><a href="{{ link.url }}">{{ link.title }}</a></li>
                 {% endfor %}
             </ul>
             <ul class="footer__menu-column footer__menu-column--desktop">
-                <li class="footer__menu-title"><a href="{{ footerLinks.client.url }}">{{ footerLinks.client.title }}</a></li>
+                <li class="footer__menu-title"><div>{{ footerLinks.client.title }}</div></li>
                 {% for link in footerLinks.client.links %}
                     <li class="footer__menu-item"><a href="{{ link.url }}">{{ link.title }}</a></li>
                 {% endfor %}
             </ul>
             <div class="footer__menu-column footer__menu-column--mobile">
                 <div class="footer__menu-title">
-                    <a href="{{ footerLinks.help.url }}">{{ footerLinks.help.title }}</a>
+                    <div>{{ footerLinks.help.title }}</div>
                 </div>
                 <ul>
                     {% for link in footerLinks.about.links %}
@@ -105,7 +105,7 @@
             </div>
             <ul class="footer__menu-column">
                 <li class="footer__menu-title">
-                    <a href="{{ footerLinks.contacts.url }}">{{ footerLinks.contacts.title }}</a>
+                    <div>{{ footerLinks.contacts.title }}</div>
                 </li>
                 <li class="footer__menu-item footer__menu-item_img">
                     <svg class="footer__menu-icon">
