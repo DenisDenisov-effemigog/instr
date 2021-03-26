@@ -10,7 +10,7 @@
                      'delivery-option__wrap--delivery': delivery.type === 'delivery',
                      'delivery-option__wrap--receive': delivery.type === 'receive',
                  }"
-                 @click="changeDeliveryType(delivery.type, delivery.id)"
+                 @click="changeDeliveryType(delivery.type, delivery.id, currentCity)"
             >
                 <div v-show="delivery.discount > 0" class="delivery-option__sale">{{ $tc('text.discount') }} -{{delivery.discount}}%</div>
                 <div class="delivery-option__title">{{ delivery.name }}</div>
@@ -28,7 +28,11 @@
                 :streets="streets"
             ></delivery-address>
             <receive-address v-else
-                             :deliveryPoints="deliveryPoints"
+                :deliveryPoints="deliveryPoints"
+                :cities="cities"
+                :currentCity="currentCity"
+                @getCity="getCity"
+                :deliveryId="deliveryId"
             ></receive-address>
         </div>
         </div>
@@ -71,22 +75,41 @@
                 type: Array,
                 required: true
             },
+            currentCity:{
+                type: Object,
+                required: true
+            }
         },
         data(){
             return{
-                currentOption: 'delivery'
+                currentOption: 'delivery',
+                deliveryId: 1
             }
         },
         methods: {
-            changeDeliveryType(type, id){
+            changeDeliveryType(type, id, city){
+                this.deliveryId = id
+                console.log(this.deliveryId);
                 this.currentOption = type
                 this.$eventBus.$emit('push-delivery', type, id)
                 this.$store.dispatch('basketOrderCalc', {
                     paymentId: null,
-                    deliveryId: id
+                    deliveryId: id,
+                    city: this.currentCity.name
+                }).finally(() => {
+                })
+            },
+            getCity(data){
+                this.$store.dispatch('basketOrderCalc', {
+                    paymentId: null,
+                    deliveryId: this.deliveryId,
+                    city: data.value
                 }).finally(() => {
                 })
             }
-        }
+        },
+        created() {
+            this.$eventBus.$on("getCity", this.getCity)
+        },
     }
 </script>
