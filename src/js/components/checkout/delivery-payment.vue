@@ -38,7 +38,8 @@ export default {
             this.$eventBus.$emit('push-payment', id)
             this.$store.dispatch('basketOrderCalc', {
                 paymentId: id,
-                deliveryId: null
+                deliveryId: null,
+                city: null
             }).finally(() => {
             })
         }

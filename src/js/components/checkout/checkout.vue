@@ -51,6 +51,7 @@
                             :deliveryPoints="deliveryPoints"
                             :addresses="addresses"
                             :user="user"
+                            :currentCity="currentCity"
                             :cities="cities"
                             :streets="streets"
                         ></checkout-delivery>
@@ -144,6 +145,10 @@
             }
         },
         props: {
+            currentCity:{
+                type: Object,
+                required: true
+            },
             deliveries: {
                 required: true,
                 type: Array

@@ -1,6 +1,16 @@
 <template>
     <div class="receive-address">
-        <div class="receive-address__select">
+        <div class="receive-address__tow">
+            <autocomplete-input
+                :itemsArray="cities"
+                :labelName="currentCity.name || $tc('title.city')"
+                :itemName="'city'"
+                :getValue="getValue"
+                @blur="buildAddress"
+                v-model="city"
+            ></autocomplete-input>
+        </div>
+        <div v-show="city" class="receive-address__select">
             <select-list
                 :points="deliveryPoints"
                 :selectopenSelect="deliveryPoints[0]"
@@ -12,20 +22,41 @@
 
 <script>
     import selectList from "../partials/select-list.vue"
+import AutocompleteInput from './autocomplete-input.vue'
 
     export default {
         name:"receive-address",
-        components:{ selectList },
+        components:{ selectList, AutocompleteInput},
         props: {
             deliveryPoints: {
                 required: true,
                 type: Array
             },
+            cities:{
+                type:Array,
+                required: true
+            },
+            currentCity:{
+                type: Object,
+                required: true
+            },
+            deliveryId:{
+                type: Number,
+                required: true
+            }
         },
         data(){
             return{
-                
+                city: this.currentCity.name,
             }
+        },
+        methods:{
+            buildAddress() {
+                this.$emit('getCity',  this.city)
+            },
+            getValue(data){
+                this.$emit('getCity',  data)
+            },
         }
     }
 </script>

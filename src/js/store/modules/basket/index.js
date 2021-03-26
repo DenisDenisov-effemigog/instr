@@ -163,9 +163,12 @@ const actions = {
     basketOrderCalc: ({commit, dispatch}, params) => {
         let paymentId
         let deliveryId
+        let city
+        console.log(params);
         if(params){
             paymentId = params.paymentId
             deliveryId = params.deliveryId
+            city = params.city
         }
         api.OrderCalc(paymentId, deliveryId).then((prices) => {
             commit(types.ORDER_APPLY_PRICES, prices);
