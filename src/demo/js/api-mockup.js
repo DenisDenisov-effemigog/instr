@@ -2190,7 +2190,7 @@ window.runAction = function (action, config) {
                                     orders: demoOrders,
                                     points: demoPoints,
                                     pagination: {
-                                        'total': 104,
+                                        'total': 7,
                                         'current': 5,
                                         'url_last': '/some/category/page/last',
                                         'urls': 
@@ -2216,15 +2216,14 @@ window.runAction = function (action, config) {
                                     orders: demoOrders,
                                     points: demoPoints,
                                     pagination: {
-                                        'total': 104,
+                                        'total': 6,
                                         'current': +config.data.page,
                                         'url_last': '/some/category/page/last',
                                         'urls': 
                                         [
-                                            {title: '1', url: '/some/category/page/1'},
-                                            {title: '2', url: '/some/category/page/2'},
-                                            {title: '3', url: '/some/category/page/3'},
                                             {title: '4', url: '/some/category/page/4'},
+                                            {title: '5', url: '/some/category/page/5'},
+                                            {title: '6', url: '/some/category/page/6'},
                                         ],
                                         'page_mask': '/some/category/page/#PAGE#'
                                     }
