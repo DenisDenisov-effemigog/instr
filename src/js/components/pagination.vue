@@ -22,8 +22,9 @@
                 >1</a>
             </li>
 
-            <li class="pagination__item" v-if="internalPagination.urls[0].title - 1 === 2
-                || (currentIteration === lastIteration && lastArray[0].title - 1 === 2)"
+            <li class="pagination__item" v-if="(internalPagination.urls[0].title - 1 === 2
+                || (currentIteration === lastIteration && lastArray[0].title - 1 === 2))
+                && +internalPagination.urls[1].title !== 2"
                 :class="{'pagination__item--current': internalPagination.current === 2 }"
             >
                 <a :href="pageMask.replace(/#PAGE#/g, 2)" 
@@ -35,7 +36,9 @@
                 <div class="pagination__link">...</div>
             </li>
 
-            <span class="pagination__span" v-if="currentIteration === lastIteration">
+            <span class="pagination__span last" v-if="currentIteration === lastIteration
+                && internalPagination.urls.length < arrayLength"
+            >
                 <li class="pagination__item"
                     v-for="(link, index) in lastArray.slice(0, arrayLength)" :key="index"
                     :class="{'pagination__item--current': internalPagination.current == link.title}"
@@ -58,22 +61,22 @@
                 </li>
             </span>
             
-            <li class="pagination__item pagination__item--dots"
-                v-if="dotsFlag && internalPagination.urls[internalPagination.urls.length - 1].title < internalPagination.total - 1"
-            >
-                <div class="pagination__link">...</div>
-            </li>
             <li class="pagination__item"
                 :class="{'pagination__item--current': internalPagination.current === lastArray[arrayLength - 2].title}"
-                v-else-if="currentIteration !== lastIteration"
+                v-if="penultFlag"
             >
                 <a :href="lastArray[arrayLength - 2].url" 
                     class="pagination__link"
                     @click.prevent="goToPage(lastArray[arrayLength - 2].title)"
                 >{{ lastArray[arrayLength - 2].title }}</a>
             </li>
+            <li class="pagination__item pagination__item--dots"
+                v-else-if="dotsFlag">
+                <div class="pagination__link">...</div>
+            </li>
 
-            <li class="pagination__item" v-if="notLast"
+            <li class="pagination__item last" v-if="(notLast || lastFlag)
+                && +internalPagination.urls[internalPagination.urls.length - 1].title !== +internalPagination.total"
                 :class="{'pagination__item--current': internalPagination.current == internalPagination.total}"
             >
                 <a :href="internalPagination.url_last" 
@@ -102,9 +105,10 @@
         name: 'pagination',
         data() {
             return {
-                lastIteration: NaN,
                 pageMask: '',
+                lastIteration: null,
                 currentIteration: 1,
+                penultFlag: null
             }
         },
         props: {
@@ -122,11 +126,10 @@
         },
         created() {
             this.internalPagination
+            this.countIteration();
         },
         mounted() {
             this.arrayLength;
-            this.lastIteration = Math.ceil(this.internalPagination.total / this.arrayLength);
-            this.countIteration();
             this.pageMask = this.pagination.page_mask
         },
         computed: {
@@ -169,21 +172,28 @@
                 return arr
             },
             dotsFlag() {
-                if (this.internalPagination.urls.length >= this.arrayLength) {
-                    return this.internalPagination.urls[this.arrayLength - 1].title + 2 === this.internalPagination.total ? false : true
+                if (this.currentIteration === this.lastIteration) {
+                    return this.lastArray[this.arrayLength - 1].title < this.internalPagination.total ? true : false
                 } else {
-                    return false
-                }
+                    return +this.internalPagination.urls[this.internalPagination.urls.length - 1].title < +this.internalPagination.total - 2 ? true : false
+                }  
+            },
+            lastFlag() {
+                return this.currentIteration === this.lastIteration && this.internalPagination.urls.length === this.arrayLength ? true : false
             }
         },
         methods: {
             countIteration() {
                 if (this.arrayLength > this.internalPagination.urls.length) {
                     const length = this.internalPagination.urls.length;
-                    this.currentIteration = Math.ceil(this.internalPagination.urls[length - 1].title / this.arrayLength)
+                    this.currentIteration = Math.ceil(this.internalPagination.urls[length - 1].title / (this.arrayLength - 1))
                 } else {
-                    this.currentIteration = Math.ceil(this.internalPagination.urls[this.arrayLength - 1].title / this.arrayLength)
+                    this.currentIteration = Math.ceil(this.internalPagination.urls[this.arrayLength - 1].title / (this.arrayLength - 1))
                 }
+                if (this.internalPagination.urls.length === this.arrayLength) {
+                    +this.internalPagination.urls[this.arrayLength - 1].title + 2 === +this.internalPagination.total ? this.penultFlag = true : this.penultFlag = false
+                } else this.penultFlag = false
+                this.lastIteration = Math.ceil(this.internalPagination.total / (this.arrayLength - 1));
             },
             goToPage(page) {
                 let vm = this
@@ -208,10 +218,17 @@
             },
             slideToPrev() {
                 if (this.internalPagination.urls[0].title - (this.arrayLength - 1) >= 1) {
-                    if (this.currentIteration === 1) {
+                    if (this.currentIteration === 2) {
                         this.internalPagination.urls[0].title = this.arrayLength
                     }
                     for (let i=0; i < this.arrayLength; i++) {
+                        if (this.internalPagination.urls.length < this.arrayLength) {
+                            this.internalPagination.urls.push({
+                                title: +this.internalPagination.urls[2].title + 1,
+                                url: this.pageMask.replace(/#PAGE#/g, +this.internalPagination.urls[2].title + 1)
+                            })
+                            this.countIteration()
+                        }
                         let page = +this.internalPagination.urls[i].title;
                         this.internalPagination.urls[i].title = page - (this.arrayLength - 1);
                         this.internalPagination.urls[i].url = this.pageMask.replace(/#PAGE#/g, this.internalPagination.urls[i].title);

@@ -224,9 +224,8 @@
 
     &__menu-tooltip-layout
         @extend .tooltip__item
-        margin-bottom: 0.5rem
-        &::last-child
-            margin-bottom: 0
+        &:not(:last-of-type)
+            margin-bottom: .5rem
         &:hover svg
             fill: $icon-black
         & > svg
