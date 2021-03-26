@@ -1,7 +1,7 @@
 <template>
     <div class="pagination" v-if="pagination.urls.length > 1">
         <a  class="pagination__arrow pagination__arrow-prev"
-            :class="{'pagination__arrow--disabled': internalPagination.urls[0].title <= 1 
+            :class="{'pagination__arrow--disabled': internalPagination.urls[0].title <= 2 
                 || internalPagination.urls[0].title - 1 === 2
                 || (currentIteration === lastIteration && lastArray[0].title - 1 === 2)
             }"
@@ -75,8 +75,7 @@
                 <div class="pagination__link">...</div>
             </li>
 
-            <li class="pagination__item last" v-if="(notLast || lastFlag)
-                && +internalPagination.urls[internalPagination.urls.length - 1].title !== +internalPagination.total"
+            <li class="pagination__item last" v-if="(notLast || lastLengthFlag) && lastFlag"
                 :class="{'pagination__item--current': internalPagination.current == internalPagination.total}"
             >
                 <a :href="internalPagination.url_last" 
@@ -87,7 +86,8 @@
 
         </ul>
         <a  class="pagination__arrow pagination__arrow_next"
-            :class="{'pagination__arrow--disabled': !notLast || internalPagination.urls[arrayLength - 1].title + 2 === internalPagination.total}"
+            :class="{'pagination__arrow--disabled': !notLast || penultFlag
+            || +internalPagination.urls[arrayLength - 1].title + (arrayLength - 2) >= internalPagination.total}"
             @click.prevent="slideToNext"
         >
             <svg>
@@ -108,7 +108,8 @@
                 pageMask: '',
                 lastIteration: null,
                 currentIteration: 1,
-                penultFlag: null
+                penultFlag: null,
+                lastFlag: null,
             }
         },
         props: {
@@ -122,6 +123,11 @@
             placement: {
                 type: String,
                 default: '.listing'
+            }
+        },
+        watch: {
+            internalPagination() {
+                this.countIteration()
             }
         },
         created() {
@@ -143,19 +149,6 @@
                     return this.internalPagination.total >= 4 ? 4 : this.internalPagination.total
                 }
             },
-            // currentIteration() {
-            //     if (this.arrayLength > this.internalPagination.urls.length) {
-            //         const length = this.internalPagination.urls.length;
-            //         return Math.ceil(this.internalPagination.urls[length - 1].title / this.arrayLength)
-            //     } else {
-            //         return Math.ceil(this.internalPagination.urls[this.arrayLength - 1].title / this.arrayLength)
-            //     }
-            //     // if (this.internalPagination.urls.length >= this.arrayLength) {
-            //     //     return Math.ceil(this.internalPagination.urls[this.arrayLength - 1].title / this.arrayLength)
-            //     // } else {
-            //     //     return 1
-            //     // }
-            // },
             notLast() {
                 return this.currentIteration >= this.lastIteration ? false : true
             },
@@ -178,8 +171,12 @@
                     return +this.internalPagination.urls[this.internalPagination.urls.length - 1].title < +this.internalPagination.total - 2 ? true : false
                 }  
             },
-            lastFlag() {
-                return this.currentIteration === this.lastIteration && this.internalPagination.urls.length === this.arrayLength ? true : false
+            lastLengthFlag() {
+                if (window.innerWidth > 767) {
+                    return this.currentIteration === this.lastIteration && this.internalPagination.urls.length === this.arrayLength ? true : false
+                } else {
+                    return false
+                }   
             }
         },
         methods: {
@@ -190,10 +187,22 @@
                 } else {
                     this.currentIteration = Math.ceil(this.internalPagination.urls[this.arrayLength - 1].title / (this.arrayLength - 1))
                 }
-                if (this.internalPagination.urls.length === this.arrayLength) {
+
+                if (window.innerWidth > 767) {
+                    if (this.internalPagination.urls.length === this.arrayLength) {
+                        +this.internalPagination.urls[this.arrayLength - 1].title + 2 === +this.internalPagination.total ? this.penultFlag = true : this.penultFlag = false
+                    } else this.penultFlag = false
+                } else {
                     +this.internalPagination.urls[this.arrayLength - 1].title + 2 === +this.internalPagination.total ? this.penultFlag = true : this.penultFlag = false
-                } else this.penultFlag = false
-                this.lastIteration = Math.ceil(this.internalPagination.total / (this.arrayLength - 1));
+                }
+
+                this.lastIteration = Math.ceil(this.pagination.total / (this.arrayLength - 1));
+
+                if (window.innerWidth > 767) {
+                    +this.internalPagination.urls[this.internalPagination.urls.length - 1].title !== +this.internalPagination.total ? this.lastFlag = true : this.lastFlag = false
+                } else {
+                    +this.internalPagination.urls[this.arrayLength - 1].title !== +this.internalPagination.total ? this.lastFlag = true : this.lastFlag = false
+                }
             },
             goToPage(page) {
                 let vm = this

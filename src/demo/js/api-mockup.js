@@ -2216,7 +2216,7 @@ window.runAction = function (action, config) {
                                     orders: demoOrders,
                                     points: demoPoints,
                                     pagination: {
-                                        'total': 6,
+                                        'total': 14,
                                         'current': +config.data.page,
                                         'url_last': '/some/category/page/last',
                                         'urls': 
@@ -2224,6 +2224,7 @@ window.runAction = function (action, config) {
                                             {title: '4', url: '/some/category/page/4'},
                                             {title: '5', url: '/some/category/page/5'},
                                             {title: '6', url: '/some/category/page/6'},
+                                            {title: '7', url: '/some/category/page/7'},
                                         ],
                                         'page_mask': '/some/category/page/#PAGE#'
                                     }
