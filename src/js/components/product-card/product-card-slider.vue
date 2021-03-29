@@ -7,18 +7,18 @@
             :asNavFor=this.$refs.main
         >
             <template #prevArrow>
-                <svg class="product-card-slider__previous_arrow" viewBox="0 0 10 10">
+                <svg class="product-card-slider__previous-arrow" viewBox="0 0 10 10">
                     <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-top'"></use>
                 </svg>
             </template>
-            <div class="product-card-slider__previous_slide"
+            <div class="product-card-slider__previous-slide"
                  v-for="productImage in productImages"
                  :key="productImage.id"
             >
                 <img :src="productImage.img" alt="">
             </div>
             <template #nextArrow>
-                <svg class="product-card-slider__previous_arrow" viewBox="0 0 12 12">
+                <svg class="product-card-slider__previous-arrow" viewBox="0 0 12 12">
                     <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-down'"></use>
                 </svg>
             </template>
@@ -30,13 +30,13 @@
             :asNavFor=this.$refs.previous
 
         >
-            <div class="product-card-slider__main_slide"
+            <div class="product-card-slider__main-slide"
                  v-for="(productImage, index) in productImages"
                  :key="index"
                  @click="openModal(index)" 
                  @mouseleave="hoverOff"
             >
-                <img @mouseenter="hoverOn" :src="productImage.img" alt="">
+                <img class="product-card-slider__main-image" @mouseenter="hoverOn" :src="productImage.img" alt="">
                 <div class="product-card-slider__zoom"
                     :class="{'product-card-slider__zoom--open': openZoom}"
                     ref="zoom"
@@ -85,6 +85,7 @@ export default {
             },
             settingsForPrev: {
                 dots: false,
+                centerMode: true,
                 slidesToShow: 4,
                 slidesToScroll: 1,
                 vertical: true,
