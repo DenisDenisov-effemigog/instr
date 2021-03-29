@@ -64,7 +64,7 @@ export default {
     methods:{
         closeChoiceCountry(event){
             if(window.innerWidth > 760) {
-                if(event.toElement.className !== 'topnav__switch-text') {
+                if(event.target.className !== 'topnav__switch-text') {
                     this.openedCountry = false
                     this.$eventBus.$emit("closeCountry")
                     this.toggleHtmlOverflow('initial')
