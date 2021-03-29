@@ -2,6 +2,9 @@
     margin: 0 auto
     max-width: 39.875rem
     height: 100%
+    * 
+        min-width: 0
+        min-height: 0
     &__title
         @extend .title-4
         margin-bottom: 1.5rem
@@ -11,31 +14,43 @@
         max-height: calc(100vh - 18.25rem)
         +desktop
             box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.16)
-        &_slide
-            outline: none
+    &__main-slide
+        position: relative
+        display: flex !important
+        justify-content: center
+        align-items: center
+        outline: none
+        +desktop
+            padding: 0 15%
+        &::after
+            content: ''
+            display: block
+            padding-bottom: 100%
             +desktop
-                padding: 0 15%
-        &_arrow
-            width: $size_20
-            height: $size_20
-            fill: $icon-grey
-            cursor: pointer
-            z-index: 1
-            +absolute-center-x
+                padding-bottom: 115%
+    &__main-image
+        position: absolute
+    &__main-arrow
+        width: $size_20
+        height: $size_20
+        fill: $icon-grey
+        cursor: pointer
+        z-index: 1
+        +absolute-center-x
+        +desktop
+            width: 1.875rem
+            height: 1.75rem
+            fill: $light-grey
+            &:hover
+                fill: $grey
+        &--prev
+            left: 0
             +desktop
-                width: 1.875rem
-                height: 1.75rem
-                fill: $light-grey
-                &:hover
-                    fill: $grey
-            &--prev
-                left: 0
-                +desktop
-                    left: -2.625rem
-            &--next
-                right: 0
-                +desktop
-                    right: -3.25rem
+                left: -2.625rem
+        &--next
+            right: 0
+            +desktop
+                right: -3.25rem
     &__previous
         max-width: 13rem
         width: 100%
@@ -44,34 +59,36 @@
         +desktop
             margin-right: 1.9375rem
             max-width: 22rem
-        &_slide
-            outline: none
-            max-width: 2.5rem
-            height: 2.5rem
-            border: 1px solid transparent
-            border-radius: $border-radius
-            overflow: hidden
-            cursor: pointer
-            +desktop
-                max-width: 3.5rem
-                height: 3.5rem
-                &:hover
-                    border-color: $border-color
-        &_arrow
-            width: .5625rem
-            height: $size_15
-            fill: $light-grey
-            cursor: pointer
-            +absolute-center-x
-            &:hover
-                fill: $grey
-            &--prev
-                left: -1.875rem
-            &--next
-                right: -.1875rem
 
-        & .slick-current .photo-modal__previous_slide
+        & .slick-current .photo-modal__previous-slide
             border-color: $light-grey
+    &__previous-slide
+        display: flex !important
+        justify-content: center
+        outline: none
+        max-width: 2.5rem
+        height: 2.5rem
+        border: 1px solid transparent
+        border-radius: $border-radius
+        overflow: hidden
+        cursor: pointer
+        +desktop
+            max-width: 3.5rem
+            height: 3.5rem
+            &:hover
+                border-color: $border-color
+    &__previous-arrow
+        width: .5625rem
+        height: $size_15
+        fill: $light-grey
+        cursor: pointer
+        +absolute-center-x
+        &:hover
+            fill: $grey
+        &--prev
+            left: -1.875rem
+        &--next
+            right: -.1875rem
             
     &__footer
         +flex-container-center

@@ -8,18 +8,18 @@
             :asNavFor="$refs.previous"
         >
             <template #prevArrow>
-                <svg class="photo-modal__main_arrow photo-modal__main_arrow--prev" viewBox="0 0 12 12">
+                <svg class="photo-modal__main-arrow photo-modal__main-arrow--prev" viewBox="0 0 12 12">
                     <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-left'"></use>
                 </svg>
             </template>
-            <div class="photo-modal__main_slide"
+            <div class="photo-modal__main-slide"
                  v-for="productImage in props.images"
                  :key="productImage.id"
             >
-                <img :src="productImage.img" alt="">
+                <img class="photo-modal__main-image" :src="productImage.img" alt="">
             </div>
             <template #nextArrow>
-                <svg class="photo-modal__main_arrow photo-modal__main_arrow--next" viewBox="0 0 11 10">
+                <svg class="photo-modal__main-arrow photo-modal__main-arrow--next" viewBox="0 0 11 10">
                     <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                 </svg>
             </template>
@@ -32,18 +32,18 @@
                 :asNavFor="$refs.main"
             >
                 <template #prevArrow>
-                    <svg class="photo-modal__previous_arrow photo-modal__previous_arrow--prev" viewBox="1 2 7 10">
+                    <svg class="photo-modal__previous-arrow photo-modal__previous-arrow--prev" viewBox="1 2 7 10">
                         <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-left'"></use>
                     </svg>
                 </template>
-                <div class="photo-modal__previous_slide"
+                <div class="photo-modal__previous-slide"
                      v-for="productImage in props.images"
                      :key="productImage.id"
                 >
                     <img :src="productImage.img" alt="">
                 </div>
                 <template #nextArrow>
-                    <svg class="photo-modal__previous_arrow photo-modal__previous_arrow--next" viewBox="0 1 6 11">
+                    <svg class="photo-modal__previous-arrow photo-modal__previous-arrow--next" viewBox="0 1 6 11">
                         <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
                     </svg>
                 </template>
@@ -95,6 +95,7 @@ export default {
             },
             settingsForPrev: {
                 dots: false,
+                centerMode: true,
                 slidesToShow: 4,
                 slidesToScroll: 1,
                 focusOnSelect: true,

@@ -3,6 +3,9 @@
     display: flex
     +tablet-only
         align-items: center
+    * 
+        min-width: 0
+        min-height: 0
     &__main
         width: 100%
         +tablet
@@ -12,33 +15,42 @@
             width: 80%
             margin: 0
             
-        &_slide
-            outline: none
-            position: relative
+    &__main-slide
+        outline: none
+        position: relative
+        display: flex !important
+        justify-content: center
+        align-items: center
+        &::after
+            content: ''
+            display: block
+            padding-bottom: 100%
+    &__main-image
+        position: absolute
     &__previous
         width: 3.5rem
         margin-right: 1rem
         +mobile
             display: none !important
-        &_slide
-            outline: none
-            cursor: pointer
-            border: 1px solid transparent
-            border-radius: $border-radius_2
-            overflow: hidden
-            &:hover
-                border: 1px solid $border-color
-        &_arrow
-            fill: $light-grey
-            width: 1.1875rem
-            height: 1.125rem
-            margin-left: 35%
-            cursor: pointer
-            &:hover
-                fill: $grey
-        & .slick-current .product-card-slider__previous_slide
+        & .slick-current .product-card-slider__previous-slide
             border: 1px solid $grey
             border-radius: $border-radius_2
+    &__previous-slide
+        outline: none
+        cursor: pointer
+        border: 1px solid transparent
+        border-radius: $border-radius_2
+        overflow: hidden
+        &:hover
+            border: 1px solid $border-color
+    &__previous-arrow
+        fill: $light-grey
+        width: 1.1875rem
+        height: 1.125rem
+        margin-left: 35%
+        cursor: pointer
+        &:hover
+            fill: $grey
     &__zoom
         display: none
         width: 100%
