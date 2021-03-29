@@ -108,13 +108,13 @@ export default {
             this.$eventBus.$emit("openModal", 'product-card', props, true, true, index)
         },
         hoverOn(){
-            if(window.innerWidth > 1024) {
+            if(window.innerWidth > 1130) {
                 this.openZoom = true
                 this.$eventBus.$emit('showStickers')
             }
         },
         hoverOff(){
-            if(window.innerWidth > 1024) {
+            if(window.innerWidth > 1130) {
                 this.openZoom = false
                 this.$eventBus.$emit('hideStickers')
             }
@@ -122,7 +122,7 @@ export default {
             this.y = 0
         },
         zoomImg(e){
-            if(window.innerWidth > 1024) {
+            if(window.innerWidth > 1130) {
                 let zoomSlide = this.$refs.zoom
                 let zoomSlideTop = zoomSlide.getBoundingClientRect().top + window.pageYOffset
                 let zoomSlideWidth = zoomSlide.getBoundingClientRect().width
