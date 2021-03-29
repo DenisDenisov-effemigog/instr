@@ -145,9 +145,9 @@ export default {
     methods:{
         openModal(modal, props, modalSize, closeBtn, index = 0){
             this.currentSlide = index
-            if(modal != 'product-card'){
+            // if(modal != 'product-card'){
                 this.toggleHtmlOverflow('hidden')
-            }
+            // }
             this.open = true
             this.modal = modal //Название модального окна, которое должно открыться
             this.props = props //передаём нужные пропсы
@@ -163,9 +163,9 @@ export default {
             this.modalBigger = false
             this.$eventBus.$emit("deleteActive");
             this.$eventBus.$emit("hide-button");
-            if(modal != 'product-card'){
+            // if(modal != 'product-card'){
                 this.toggleHtmlOverflow('initial')
-            }
+            // }
         },
         closeOutside(event) {
             if(event.toElement.className !== '') {

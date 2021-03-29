@@ -4,8 +4,8 @@
             class="container">
             <div class="product__tabs-wrapper">
                 <div ref="tabs" class="product-tabs__tabs"
-                    :class="{'product-tabs__tabs--center': currentTab === 'description',
-                             'product-tabs__tabs--end': currentTab === 'questions'}"
+                    :class="{'product-tabs__tabs--center': currentTab === 'description' && user.authorized,
+                             'product-tabs__tabs--end': currentTab === 'questions' && user.authorized}"
                     @touchmove="scrollTabs"
                     @touchstart="touchStart"
                     @touchend="touchEnd"
