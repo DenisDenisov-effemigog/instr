@@ -84,6 +84,7 @@ export default {
             this.$v.$touch();
             if (!this.$v.$invalid) {
                 this.saveChanges();
+                this.value = '';
             }
         },
         saveChanges() {
