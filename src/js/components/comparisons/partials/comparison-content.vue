@@ -142,7 +142,7 @@
             <a class="comparisons__deploy"
                 :class="{'comparisons__deploy--expanded': expanded}"
                 @click.prevent="expanded = true"
-                v-if="!expanded"
+                v-if="!expanded && Object.entries(comparisons[0].otherOptions).length > 10"
             >
                 {{ $tc('comparisons.text.deploy') }}
                 <svg viewBox="-2 -2 16 10">
