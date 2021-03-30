@@ -3,7 +3,7 @@
         <div class="receive-address__tow">
             <autocomplete-input
                 :itemsArray="cities"
-                :labelName="currentCity.name || $tc('title.city')"
+                :labelName="$tc('title.city')"
                 :itemName="'city'"
                 :getValue="getValue"
                 @blur="buildAddress"

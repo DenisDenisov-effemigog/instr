@@ -132,7 +132,8 @@
             }
         },
         created() {
-            this.$eventBus.$on('autocomplete-error', this.autocompleteError)
+            this.$eventBus.$on('autocomplete-error', this.autocompleteError);
+            this.search(this.value);
         },
         methods: {
             autocompleteError() {
