@@ -35,6 +35,7 @@
                     </div>
                 </div>
                 <selected-items
+                    v-if="!!oldProducts"
                     :userAuthorized="userAuthorized"
                     :products="oldProducts"
                 ></selected-items>
