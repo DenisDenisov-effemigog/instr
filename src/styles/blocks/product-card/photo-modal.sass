@@ -16,20 +16,17 @@
             box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.16)
     &__main-slide
         position: relative
-        display: flex !important
-        justify-content: center
-        align-items: center
         outline: none
         +desktop
             padding: 0 15%
         &::after
             content: ''
             display: block
-            padding-bottom: 100%
+            padding-bottom: 60vh
             +desktop
-                padding-bottom: 115%
-    &__main-image
-        position: absolute
+                padding-bottom: 50vh
+        img
+            +absolute-center
     &__main-arrow
         width: $size_20
         height: $size_20
@@ -63,8 +60,6 @@
         & .slick-current .photo-modal__previous-slide
             border-color: $light-grey
     &__previous-slide
-        display: flex !important
-        justify-content: center
         outline: none
         max-width: 2.5rem
         height: 2.5rem
@@ -72,11 +67,20 @@
         border-radius: $border-radius
         overflow: hidden
         cursor: pointer
+        position: relative
         +desktop
             max-width: 3.5rem
             height: 3.5rem
             &:hover
                 border-color: $border-color
+        &::after
+            content: ''
+            display: block
+            padding-bottom: 95%
+            +desktop
+                padding-bottom: 115%
+        img
+            +absolute-center
     &__previous-arrow
         width: .5625rem
         height: $size_15
