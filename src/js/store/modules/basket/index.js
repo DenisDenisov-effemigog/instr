@@ -51,6 +51,8 @@ const actions = {
                 basket_quantity: product.basket_quantity,
                 tooltips: product.tooltips,
                 basket_extra_quantity: product.basket_extra_quantity,
+                is_favorite: product.is_favorite,
+                is_compare: product.is_compare,
 
                 basket_confirmed: true
             });
