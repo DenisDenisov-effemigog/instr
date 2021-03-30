@@ -23,7 +23,7 @@
 
         <div class="cart-card__species" v-if="view === 'horiz_cards'">
             <div class="cart-card__code" v-if="!deleteItem">{{ $tc('cart.item.sku_text') }}{{ product.sku }}</div>
-
+            <!-- горизонтальная карточка -->
             <div class="cart-card__block">
                 <div class="cart-card__content" v-if="!deleteItem">
                     <div class="cart-card__description">
@@ -60,7 +60,7 @@
                     </div>
 
                 </div>
-
+                <!-- удаляемый товар горизонтальной карточки -->
                 <div class="cart-card__content" v-else>
                     <a :href="product.link" class="table-header__dscr">
                         <span class="cart-card__name-message">{{ $tc('cart.item.is_deleted') }}</span>
@@ -96,6 +96,7 @@
         </div>
 
         <div class="cart-card__block" v-else-if="view === 'table_cards'">
+            <!-- табличная карточка только десктоп -->
             <div class="table-header__code">{{ product.sku }}</div>
             <a class="table-header__dscr">
                 <span :href="product.url" class="cart-card__name">
