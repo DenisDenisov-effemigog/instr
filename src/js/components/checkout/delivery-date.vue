@@ -34,14 +34,13 @@
 </template>
 
 <script>
-import selectList from "../partials/select-list.vue"
 import DatePicker from 'vue2-datepicker';
 import moment, {Moment} from 'moment';
 
 
 export default{
     name:"delivery-date",
-    components: { selectList, DatePicker },
+    components: { DatePicker },
     props: {
       value: {required: true}  
     },
