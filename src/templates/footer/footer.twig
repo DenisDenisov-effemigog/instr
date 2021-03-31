@@ -27,9 +27,7 @@
         </div>
     </template>
     <template v-slot:favoritecat>
-        {% for category in treeCategories %}
-            <div class="favorites-listing__subcategory">{{ category.label }}</div>
-        {% endfor %}
+        <component is="favorites-listing-category" :favorite-categories="{{ listCategory|json_encode|e('html_attr') }}"></component>
     </template>
 </component>
 <component is="sticky-mobile-button"></component>
