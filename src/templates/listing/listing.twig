@@ -13,7 +13,7 @@
                 ></component>
             {% else %}
                 <h2 class="listing__title {% if brandCatalog %}listing__title--mobile{% endif %}">
-                    {{ listingCategoryTitle }}
+                    {{ 'listing.category.title'|trans }}
                 </h2>
                 <component is="listing-items-quantity"
                            :items-quantity="{{ filters.match|json_encode()|e('html_attr') }}"
