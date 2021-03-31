@@ -21,8 +21,7 @@
                     :labelName="$tc('title.city')"
                     :itemName="'city'"
                     :getValue="getValue"
-                    @focusout="buildAddress"
-                    v-model="cityId"
+                    v-model="city"
                 >
                 </autocomplete-input>
 
@@ -31,8 +30,7 @@
                     :labelName="$tc('title.street')"
                     :itemName="'street'"
                     :getValue="getValue"
-                    @focusout="buildAddress"
-                    v-model="streetId"
+                    v-model="street"
                 >
                 </autocomplete-input>
 
@@ -137,6 +135,13 @@
                 type:String,
                 required: true
             },
+            currentCity:{
+                type: Object,
+                default: {
+                    id: '',
+                    name: ''
+                }
+            },
             addresses:{
                 type:Array,
                 required: true
@@ -156,14 +161,12 @@
         },
         data(){
             return{
-                city: '',
+                city: this.currentCity.name,
                 street: '',
                 house: '',
                 building: '',
                 floor: '',
                 apart: '',
-                cityId: '',
-                streetId: '',
             }
         },
         validations:{
@@ -180,10 +183,11 @@
             },
             getValue(data){
                 if (data.itemName == 'city') {
-                    this.city = data.value
+                    this.city = data.value.name
                 } else if (data.itemName == 'street') {
-                    this.street = data.value
+                    this.street = data.value.name
                 }
+                this.buildAddress();
             },
             addressError() {
                 let vm = this

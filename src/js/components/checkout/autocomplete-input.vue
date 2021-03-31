@@ -103,7 +103,7 @@
         data() {
             return {
                 results: [],
-                valueInput: '',
+                foundItem: {}
             }
         },
         validations:{
@@ -116,7 +116,7 @@
             event: 'change'
         },
         computed: {
-            valueId : {
+            valueInput : {
                 get: function() {
                     return this.value;
                 },
@@ -132,7 +132,13 @@
             }
         },
         created() {
-            this.$eventBus.$on('autocomplete-error', this.autocompleteError)
+            this.$eventBus.$on('autocomplete-error', this.autocompleteError);
+            if (!!this.value) {
+                this.search(this.value);
+                if (!!this.foundItem) {
+                    this.submitItem(this.foundItem)
+                }
+            }
         },
         methods: {
             autocompleteError() {
@@ -144,11 +150,9 @@
             submitItem(item) {
                 if (!this.noResults) {
                     this.valueInput = item.name;
-                    this.valueId = item.id;
                     this.getValue({
-                        value: this.valueInput,
+                        value: item,
                         itemName: this.itemName,
-                        valueId: this.valueId
                     })
                 }
             },
@@ -162,19 +166,19 @@
                     api.finedCity(input).then(answer => {
                         vm.results = answer.list.filter(item => {
                             if(item.name.toLowerCase() === vm.valueInput.toLowerCase()) {
-                                console.log(item)
-                                vm.valueId = item.id
+                                vm.valueInput = item.name
+                                vm.foundItem = item
                             }
                             return item.name.toLowerCase()
                                 .startsWith(input.toLowerCase())
                         })
                     })
-                } else {
+                } else if (this.itemName === 'street') {
                     api.finedStreet(input).then(answer => {
                         vm.results = answer.list.filter(item => {
                             if(item.name.toLowerCase() === vm.valueInput.toLowerCase()) {
-                                console.log(item)
-                                vm.valueId = item.id
+                                vm.valueInput = item.name
+                                vm.foundItem = item
                             }
                             return item.name.toLowerCase()
                                 .startsWith(input.toLowerCase())

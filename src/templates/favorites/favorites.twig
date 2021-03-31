@@ -1,5 +1,5 @@
 <component is="favorites-listing"
-           :favorite-categories="{{ listCategories |json_encode()|e('html_attr') }}"
+           :favorite-categories="{{ listCategories|json_encode|e('html_attr') }}"
            :items-quantity="{{ filters.match|json_encode()|e('html_attr') }}"
            :pagination="{{ pagination|json_encode|e('html_attr') }}"
            :hash="{{ filters.hash|json_encode|e('html_attr') }}"
