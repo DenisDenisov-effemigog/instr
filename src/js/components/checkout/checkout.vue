@@ -147,7 +147,10 @@
         props: {
             currentCity:{
                 type: Object,
-                required: true
+                default: {
+                    id: '',
+                    name: ''
+                }
             },
             deliveries: {
                 required: true,

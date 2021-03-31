@@ -79,7 +79,10 @@
             },
             currentCity:{
                 type: Object,
-                required: true
+                default: {
+                    id: '',
+                    name: ''
+                }
             }
         },
         data(){
