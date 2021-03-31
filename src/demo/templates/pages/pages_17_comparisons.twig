@@ -995,7 +995,7 @@
     },
 } %}
 
-{% set listCategories = [
+{% set listCategory = [
     { 'label': 'Дрель-шуруповерт', 'value': 1 },
     { 'label': 'Шуруповерт', 'value': 2 },
     { 'label': 'Гвоздодер', 'value': 3 },
@@ -1030,7 +1030,7 @@
     {% include '../../../templates/comparisons/comparisons.twig' with {
         'filters': filters,
         'showTree': showTree,
-        'listCategories': listCategories
+        'listCategory': listCategory
     } %}
     {% include '../../../templates/footer/footer.twig'  with {
         'countries': countries,
