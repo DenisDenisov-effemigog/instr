@@ -29,7 +29,10 @@
         align-items: center
         justify-content: center
         &--arrow
+            transition: .2s
             z-index: -1
+        &--opened
+            transform: rotate(180deg)
         & svg
             cursor: pointer
             width: $size_8

@@ -9,6 +9,8 @@
                 :format='format'
                 :formatter="momentFormat"
                 :lang="lang"
+                @open="opened = true"
+                @close="opened = false"
             >
                 <template v-slot:icon-calendar>
                     <dir></dir>
@@ -24,8 +26,10 @@
                     <use :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
                 </svg>
             </div>
-            <div v-else class="delivery-date__icon delivery-date__icon--arrow">
-                <svg viewBox="0 0 12 10">
+            <div v-else class="delivery-date__icon delivery-date__icon--arrow"
+                :class="{'delivery-date__icon--opened': opened}"
+            >
+                <svg viewBox="0 -2 12 10">
                     <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-down'"></use>
                 </svg>
             </div>
@@ -59,6 +63,7 @@ export default{
                 monthFormat: 'MMMM',
                 dayFormat: 'D',
             },
+            opened: false
         }
     },
     model: {
@@ -93,6 +98,11 @@ export default{
                     
             }else{
                 e.preventDefault()
+            }
+        },
+        closeDatePicker() {
+            if (this.opened) {
+                this.opened = false
             }
         }
     },
