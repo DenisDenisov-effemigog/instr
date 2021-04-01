@@ -1,6 +1,6 @@
 <template>
     <ul :class="className + '__further-subcategories'" 
-        v-if="subcategories.length > 0">
+        v-if="!!subcategories">
         <slot v-if="className === 'listing' && !subcategoryShowAll" name="subcategory-listing-part"></slot>
         <slot v-else-if="className === 'listing' && subcategoryShowAll" name="subcategory-listing-all"></slot>
         <li v-else v-for="category in subcategories" :key="category.title">
