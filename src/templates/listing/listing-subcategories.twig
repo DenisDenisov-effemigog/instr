@@ -19,11 +19,6 @@
                 {% if brandCatalog %}
                     {% for subsubcategory in subcategory|slice(0, 5) %}
                         <li>
-                            {% if subsubcategory.checked == true %}
-                                <svg viewBox="-2 -1 12 12" class="listing__further-sc-icon">
-                                    <use :xlink:href="templatePath + 'images/sprite.svg#check'"></use>
-                                </svg>
-                            {% endif %}
                             <a href="{{ subsubcategory.url }}" class="listing__further-subcategory">{{ subsubcategory.title }}</a>
                         </li>
                     {% endfor %}
