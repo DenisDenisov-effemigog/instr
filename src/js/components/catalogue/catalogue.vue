@@ -87,9 +87,6 @@
             closeCatalog(event) {
                 let vm = this;
                 if(window.innerWidth > 760) {
-                    console.log(event)
-                    console.log(event.target)
-                    console.log(event.target.className)
                     if(event.target.className !== 'header__catalog-btn' && 
                         event.target.className !=='header__catalog-btn-line') {
                         vm.$eventBus.$emit('close-catalog'); // закрываем деск.каталог по клику снаружи

@@ -200,7 +200,6 @@ export default {
             api.personalOrder(this.$route.params.id).then((order) => {
                 this.order = order;
                 this.$eventBus.$emit('change-current-point', this.currentDocument)
-                console.log('this.order', this.order);
             }).catch((error) => {
                 this.$router.push('/my/orders/');
             });
