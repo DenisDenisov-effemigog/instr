@@ -87,7 +87,6 @@ export default{
         },
         clearInput(){
             this.newDate =''
-            console.log(this.newDate)
         },
         validDate(e){
             if(e.key >= 0 || e.key <= 9 || e.key == 'Backspace'  || e.key == 'ArrowLeft' || e.key == 'ArrowRight'){

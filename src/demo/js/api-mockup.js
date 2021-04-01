@@ -1772,8 +1772,6 @@ function demoSetBasketQuantity(productId, quantity) {
 }
 
 window.runAction = function (action, config) {
-    //console.log('runAction call from mockup');
-    //debugger;
     if(config) {
         config = demoCloneOverJson(config);
     }

@@ -166,7 +166,6 @@ const actions = {
         let paymentId
         let deliveryId
         let city
-        console.log(params);
         if(params){
             paymentId = params.paymentId
             deliveryId = params.deliveryId

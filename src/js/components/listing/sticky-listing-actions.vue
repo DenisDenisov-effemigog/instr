@@ -1,7 +1,7 @@
 <template>
     <div class="listing__actions"
         :class="{'listing__actions--sticky': fixed}">
-        <component is="filter-button" :filters="filersMobile" v-if="filersMobile.filters.length || favoriteListing"></component>
+        <component is="filter-button" :filters="filersMobile" v-if="!!filersMobile.filters || favoriteListing"></component>
         <component is="select-list"
                    class="listing__select"
                    :points="pointsMobile"

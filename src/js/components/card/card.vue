@@ -139,9 +139,6 @@ export default {
         }
     },
     methods: {
-        menuBtnClick(e){
-            console.log(e.target)
-        },
         cloneCard(btn){
             if(window.innerWidth > 987){
                 this.$eventBus.$emit("clickedToBtn")
