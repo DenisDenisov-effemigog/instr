@@ -1,11 +1,8 @@
 <section class="listing">
-        <div class="listing__header">
+        {# <div class="listing__header">
             {% if titleFlag == true %}
-                {% if listCategoryView == 'select' or listCategoryView == 'filter' %}
-                    <h2 class="listing__title">{{ title }}</h2>
-                {% else %}
+                
                     <h2 class="listing__title">{{ 'listing.filters.title'|trans }}</h2>
-                {% endif %}
             {% elseif searchAnswer %}
                 <h2 class="listing__title">{{ 'search-response.text-success'|trans }} "{{ searchAnswer }}"</h2>
                 <component is="listing-items-quantity"
@@ -13,13 +10,27 @@
                 ></component>
             {% else %}
                 <h2 class="listing__title {% if brandCatalog %}listing__title--mobile{% endif %}">
-                    {{ 'listing.category.title'|trans }}
+                    {{listingCategoryTitle}}
                 </h2>
                 <component is="listing-items-quantity"
                            :items-quantity="{{ filters.match|json_encode()|e('html_attr') }}"
                 ></component>
             {% endif %}
-        </div>
+        </div> #}
+        {% if titleFlag == true %}
+            <div class="listing__header">
+                {% if searchAnswer %}
+                    <h2 class="listing__title">{{ 'search-response.text-success'|trans }} "{{ searchAnswer }}"</h2>
+                {% elseif listCategoryView %}
+                    <h2 class="listing__title">{{ listingCategoryTitle }}</h2>
+                {% else %}
+                    <h2 class="listing__title">{{ 'listing.filters.title'|trans }}</h2>
+                {% endif %}
+                <component is="listing-items-quantity"
+                        :items-quantity="{{ filters.match|json_encode()|e('html_attr') }}"
+                ></component>
+            </div>
+        {% endif %}
     {% if shields %}
         <div class="listing__shields {% if brandCatalog %}listing__shields--mobile{% endif %}">
             {% for shield in shields %}
