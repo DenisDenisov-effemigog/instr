@@ -1,35 +1,69 @@
 <component is="listing-subcategories" :subcat-total="{{ subcategory.subcategories|length }}" :main="{{ main|json_encode()|e('html_attr') }}">
     <template v-slot:listing-subcategory-title>
-        <a href="{{ subcategory.url }}" class="listing__subcategory-link">{{subcategory.title}}</a>
+        {% if brandCatalog %}
+            <a class="listing__subcategory-link">{{title}}</a>
+        {% else %}
+            <a href="{{ subcategory.url }}" class="listing__subcategory-link">{{subcategory.title}}</a>
+        {% endif %}
     </template>
     <template v-slot:subcategories-content>
         <component is="further-subcategories"
-                   :categories="{{ subcategory.subcategories|json_encode()|e('html_attr') }}"
+                    {% if brandCatalog %}
+                        :categories="{{ subcategory|json_encode()|e('html_attr') }}"
+                    {% else %}
+                        :categories="{{ subcategory.subcategories|json_encode()|e('html_attr') }}"
+                    {% endif %}
                    :class-name="'listing'"
         >
             <template v-slot:subcategory-listing-part>
-                {% for subsubcategory in subcategory.subcategories|slice(0, 5) %}
-                    <li>
-                        {% if subsubcategory.checked == true %}
-                            <svg viewBox="-2 -1 12 12" class="listing__further-sc-icon">
-                                <use :xlink:href="templatePath + 'images/sprite.svg#check'"></use>
-                            </svg>
-                        {% endif %}
-                        <a href="{{ subsubcategory.url }}" class="listing__further-subcategory">{{ subsubcategory.title }}</a>
-                    </li>
-                {% endfor %}
+                {% if brandCatalog %}
+                    {% for subsubcategory in subcategory|slice(0, 5) %}
+                        <li>
+                            {% if subsubcategory.checked == true %}
+                                <svg viewBox="-2 -1 12 12" class="listing__further-sc-icon">
+                                    <use :xlink:href="templatePath + 'images/sprite.svg#check'"></use>
+                                </svg>
+                            {% endif %}
+                            <a href="{{ subsubcategory.url }}" class="listing__further-subcategory">{{ subsubcategory.title }}</a>
+                        </li>
+                    {% endfor %}
+                {% else %}
+                    {% for subsubcategory in subcategory.subcategories|slice(0, 5) %}
+                        <li>
+                            {% if subsubcategory.checked == true %}
+                                <svg viewBox="-2 -1 12 12" class="listing__further-sc-icon">
+                                    <use :xlink:href="templatePath + 'images/sprite.svg#check'"></use>
+                                </svg>
+                            {% endif %}
+                            <a href="{{ subsubcategory.url }}" class="listing__further-subcategory">{{ subsubcategory.title }}</a>
+                        </li>
+                    {% endfor %}
+                {% endif %}
             </template>
             <template v-slot:subcategory-listing-all>
-                {% for subsubcategory in subcategory.subcategories %}
-                    <li>
-                        {% if subsubcategory.checked == true %}
-                            <svg viewBox="-2 -1 12 12" class="listing__further-sc-icon">
-                                <use :xlink:href="templatePath + 'images/sprite.svg#check'"></use>
-                            </svg>
-                        {% endif %}
-                        <a href="{{ subsubcategory.url }}" class="listing__further-subcategory">{{ subsubcategory.title }}</a>
-                    </li>
-                {% endfor %}
+                {% if brandCatalog %}
+                    {% for subsubcategory in subcategory %}
+                        <li>
+                            {% if subsubcategory.checked == true %}
+                                <svg viewBox="-2 -1 12 12" class="listing__further-sc-icon">
+                                    <use :xlink:href="templatePath + 'images/sprite.svg#check'"></use>
+                                </svg>
+                            {% endif %}
+                            <a href="{{ subsubcategory.url }}" class="listing__further-subcategory">{{ subsubcategory.title }}</a>
+                        </li>
+                    {% endfor %}
+                {% else %}
+                    {% for subsubcategory in subcategory.subcategories %}
+                        <li>
+                            {% if subsubcategory.checked == true %}
+                                <svg viewBox="-2 -1 12 12" class="listing__further-sc-icon">
+                                    <use :xlink:href="templatePath + 'images/sprite.svg#check'"></use>
+                                </svg>
+                            {% endif %}
+                            <a href="{{ subsubcategory.url }}" class="listing__further-subcategory">{{ subsubcategory.title }}</a>
+                        </li>
+                    {% endfor %}
+                {% endif %}
             </template>
         </component>
     </template>

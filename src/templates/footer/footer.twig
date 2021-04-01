@@ -16,14 +16,18 @@
 >
     <template v-slot:listingcat>
         <div class="listing__subcategories listing__subcategories--filter">
-            {% for subcategory in treeCategories.subcategories|slice(0, 1) %}
-                {% include '../listing/listing-subcategories.twig' with {'subcategory': subcategory, 'main': true} %}
-            {% endfor %}
-            <component is="all-categories">
-                {% for subcategory in treeCategories.subcategories|slice(1) %}
-                    {% include '../listing/listing-subcategories.twig' with {'subcategory': subcategory, 'main': false} %}
+            {% if brandCatalog %}
+                {% include '../listing/listing-subcategories.twig' with {'subcategory': listCategory, 'main': true, 'brandCatalog': brandCatalog, 'title': sub_title} %}
+            {% else %}
+                {% for subcategory in treeCategories.subcategories|slice(0, 1) %}
+                    {% include '../listing/listing-subcategories.twig' with {'subcategory': subcategory, 'main': true} %}
                 {% endfor %}
-            </component>
+                <component is="all-categories">
+                    {% for subcategory in treeCategories.subcategories|slice(1) %}
+                        {% include '../listing/listing-subcategories.twig' with {'subcategory': subcategory, 'main': false} %}
+                    {% endfor %}
+                </component>
+            {% endif %}
         </div>
     </template>
     <template v-slot:favoritecat>

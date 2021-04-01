@@ -52,9 +52,16 @@
         
     &__subcategories
         &--filter
-            & .listing__further-subcategories li
+            .listing__further-subcategories li
                 position: relative
                 margin-left: 1.5rem
+        &--brand
+            & .listing__subcategory-link
+                +tablet
+                    font-size: $font-size_6
+                    line-height: $line-height_6
+            & > .listing__further-subcategories li
+                margin-left: 0
 
     &__subcategory
         padding: 1rem 0
