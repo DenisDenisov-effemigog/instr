@@ -99,11 +99,6 @@ export default{
             }else{
                 e.preventDefault()
             }
-        },
-        closeDatePicker() {
-            if (this.opened) {
-                this.opened = false
-            }
         }
     },
 }
