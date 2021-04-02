@@ -52,7 +52,7 @@
                     <div class="listing__subcategories {% if brandCatalog %}listing__subcategories--brand{% endif %}">
                         <div class="listing__subcategory-link">{{ sub_title}}</div>
                             {% if listCategory is not empty%}
-                                <component is="filter-category" {% if listCategory is not empty %} :show-button="{{ listCategory.length > 5 }} {% endif %}">
+                                <component is="filter-category" :categories="{{ listCategory|json_encode()|e('html_attr') }}">
                                     <template v-slot:subcategory-listing-part>
                                         {% for subsubcategory in listCategory|slice(0, 5) %}
                                             <li>
