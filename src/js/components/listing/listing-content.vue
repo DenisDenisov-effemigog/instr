@@ -32,7 +32,7 @@
         </div>
         <div class="listing__pagination"
             :class="{'listing__pagination--end': internalPagination.current >= internalPagination.total}"
-            v-if="internalPagination.urls.length > 1"
+            v-if="internalPagination.total > 1"
         >
             <component is="pagination-btn"
                 v-if="+internalPagination.current < +internalPagination.total"
@@ -107,7 +107,10 @@
                 }
             },
             loadListing(contents) {
-                this.content.product = contents.product;
+                if (!this.content) {
+                    this.content = {products: []}
+                }
+                this.content.products = contents.products;
                 this.internalPagination.current = this.internalPagination.current + 1
             }
         },
