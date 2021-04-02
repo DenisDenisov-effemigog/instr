@@ -117,20 +117,22 @@
                 this.internal.match = data.match;
                 
                 let filters = data.filters;
-                filters.forEach((item, index) => {
-                    if (item.type === 'range') {
-                        if (!('from' in item.values)) {
-                            filters[index].values.from = item.values.min;
+                if (!!filters) {
+                    filters.forEach((item, index) => {
+                        if (item.type === 'range') {
+                            if (!('from' in item.values)) {
+                                filters[index].values.from = item.values.min;
+                            }
+                            if (!('to' in item.values)) {
+                                filters[index].values.to = item.values.max;
+                            }
+    
+                            if(item.title.toLowerCase().includes('price')) {
+                                filters[index].is_price = true;
+                            }
                         }
-                        if (!('to' in item.values)) {
-                            filters[index].values.to = item.values.max;
-                        }
-
-                        if(item.title.toLowerCase().includes('price')) {
-                            filters[index].is_price = true;
-                        }
-                    }
-                });
+                    });
+                }
 
                 if(add) {
                     filters.forEach((item, index) => {
