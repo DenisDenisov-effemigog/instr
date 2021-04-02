@@ -239,7 +239,7 @@
                 this.internal.page_count = this.page_count;
                 this.applyFilters(false, 'loadListing');
                 this.internal.page_count = this.filters.page_count;
-                this.getPayloadParams()
+                this.changeView(this.internal.view);
             },
         },
     }
