@@ -235,6 +235,7 @@
                 });
             },
             loadListing(page){
+                debugger
                 this.page_count = +this.page_count + this.filters.page_count;
                 this.internal.page_count = this.page_count;
                 this.applyFilters(false);
