@@ -112,7 +112,7 @@
                     this.internal.view = data.view;
                     this.internal.сategories = data.сategories;
                     this.internal.page_count = data.page_count;
-                    this.page_count = data.page_count;
+                    this.page_count = +data.page_count;
                 }
 
                 this.internal.hash = data.hash;
@@ -244,8 +244,6 @@
                 // });
                 this.goToPage(page)
                 this.internal.page_count = this.filters.page_count;
-                this.applyFilters(false, 'loadListing');
-                this.goToPage(page + 1)
             },
             goToPage(page) {
                 api.goToPage(this.internal.hash, page).then((answer) => {
