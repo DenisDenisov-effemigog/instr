@@ -238,13 +238,21 @@
                 this.page_count = this.page_count + this.filters.page_count;
                 this.internal.page_count = this.page_count;
                 this.applyFilters(false);
+                // api.goToPage(this.internal.hash, page).then((answer) => {
+                // }).catch(errors => {
+                //     console.log(errors);
+                // });
+                this.goToPage(page)
+                this.internal.page_count = this.filters.page_count;
+                this.applyFilters(false, 'loadListing');
+                this.goToPage(page + 1)
+            },
+            goToPage(page) {
                 api.goToPage(this.internal.hash, page).then((answer) => {
                 }).catch(errors => {
                     console.log(errors);
                 });
-                this.internal.page_count = this.filters.page_count;
-                this.applyFilters(false, 'loadListing');
-            },
+            }
         },
     }
 </script>
