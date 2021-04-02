@@ -13,17 +13,18 @@
         +tablet
             margin: 1.25rem -.75rem 0 -.75rem
     &__item
-        width: 50%
-        padding: 0.5rem
+        width: calc(100% / 2 - 1rem)
+        margin: 0.5rem
+        background: $pre-white
         +tablet
-            width: 25%
-            padding: 0.75rem
+            width: calc(100% / 4 - 1.5rem)
+            margin: 0.75rem
             cursor: pointer
     &__wrap
-        background: $pre-white
         display: flex
         align-items: center
         justify-content: center
+        height: 100%
         +tablet
             .brands__link img
                     transition: 0.35s
@@ -33,6 +34,6 @@
                     transform: scale(1.2)
     &__link
         padding: 1.6875rem .75rem 1.25rem .75rem
-        +tablet
+        +desktop
             padding: 4.25rem 3.75rem 3.8125rem 3.75rem
       
