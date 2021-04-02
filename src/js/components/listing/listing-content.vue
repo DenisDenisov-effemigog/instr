@@ -35,7 +35,7 @@
             v-if="internalPagination.urls.length > 1"
         >
             <component is="pagination-btn"
-                v-if="internalPagination.current < internalPagination.urls.length"
+                v-if="+internalPagination.current < +internalPagination.total"
                 :hash="hash" 
                 :currentPage="internalPagination.current"
             ></component>
@@ -87,9 +87,11 @@
         created() {
             this.loading()
             this.$eventBus.$on('apply-listing', this.applyListing);
+            this.$eventBus.$on('apply-loaded-listing', this.loadListing);
         },
         beforeDestroy() {
             this.$eventBus.$off('apply-listing');
+            this.$eventBus.$off('apply-loaded-listing');
         },
         methods: {
             loading(){
@@ -104,6 +106,10 @@
                     this.internalPagination = contents.pagination;
                 }
             },
+            loadListing(contents) {
+                this.content.product = contents.product;
+                this.internalPagination.current = this.internalPagination.current + 1
+            }
         },
     }
 </script>

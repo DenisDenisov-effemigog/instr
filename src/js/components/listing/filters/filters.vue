@@ -199,7 +199,7 @@
                     if (!!location && location === 'comparison') {
                         vm.$eventBus.$emit('apply-comparison', answer.output);
                     } else if (!!location && location === 'loadListing') {
-                        
+                        vm.$eventBus.$emit('apply-loaded-listing', answer.output);
                     } else {
                         vm.$eventBus.$emit('apply-listing', answer.output);
                     }
@@ -238,19 +238,9 @@
                 this.page_count = +this.page_count + this.filters.page_count;
                 this.internal.page_count = this.page_count;
                 this.applyFilters(false);
-                // api.goToPage(this.internal.hash, page).then((answer) => {
-                // }).catch(errors => {
-                //     console.log(errors);
-                // });
-                // this.goToPage(page)
                 this.internal.page_count = this.filters.page_count;
+                this.getPayloadParams()
             },
-            goToPage(page) {
-                api.goToPage(this.internal.hash, page).then((answer) => {
-                }).catch(errors => {
-                    console.log(errors);
-                });
-            }
         },
     }
 </script>
