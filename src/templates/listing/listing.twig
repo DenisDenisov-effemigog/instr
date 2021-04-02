@@ -21,14 +21,19 @@
             <div class="listing__header">
                 {% if searchAnswer %}
                     <h2 class="listing__title">{{ 'search-response.text-success'|trans }} "{{ searchAnswer }}"</h2>
-                {% elseif listCategoryView %}
-                    <h2 class="listing__title">{{ listingCategoryTitle }}</h2>
-                {% else %}
-                    <h2 class="listing__title">{{ 'listing.filters.title'|trans }}</h2>
-                {% endif %}
-                <component is="listing-items-quantity"
+                    <component is="listing-items-quantity"
                         :items-quantity="{{ filters.match|json_encode()|e('html_attr') }}"
-                ></component>
+                    ></component>
+                {% elseif listCategoryView == 'select' or listCategoryView == 'filter' or listCategoryView == 'list' %}
+                    <h2 class="listing__title">{{ listingCategoryTitle }}</h2>
+                    <component is="listing-items-quantity"
+                        :items-quantity="{{ filters.match|json_encode()|e('html_attr') }}"
+                    ></component>
+                {% elseif listCategoryView == 'search' and searchAnswer is empty%}
+                    <h2 class="listing__title">{{ 'listing.filters.title'|trans }}</h2>
+                {% else %}
+                    <h2 class="listing__title">{{ 'listing.category.title'|trans }}</h2>
+                {% endif %}
             </div>
         {% endif %}
     {% if shields %}
@@ -76,10 +81,9 @@
                                 </component>
                             {% endif %}
                     </div>
+                {% elseif listCategoryView == 'search' %}
+                    <component is="favorites-listing-category" :favorite-categories="{{listCategory|json_encode()|e('html_attr')}}"></component>
                 {% endif %}
-                <div class="listing__sidebar_filters">  
-                    {% include './filter.twig' with {'filters': filters} %}
-                </div>
             {% endif %}
             {%  if showTree == true  %}
                 <div class="listing__subcategories">
@@ -116,6 +120,9 @@
                     {% endfor %}
                 </div>
             {% endif %}
+            <div class="listing__sidebar_filters">  
+                {% include './filter.twig' with {'filters': filters} %}
+            </div>
         </div>
         <div class="listing__products">
 

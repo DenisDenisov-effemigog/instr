@@ -191,6 +191,7 @@
                 let params = vm.getPayloadParams();
 
                 api.catalogGet(this.internal.hash, params).then(answer => {
+                    console.log(answer);
                     if (!!location && location === 'comparison') {
                         vm.$eventBus.$emit('apply-comparison', answer.output);
                     } else {
