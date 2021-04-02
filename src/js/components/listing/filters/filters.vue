@@ -237,7 +237,7 @@
             loadListing(page){
                 this.page_count = +this.page_count + this.filters.page_count;
                 this.internal.page_count = this.page_count;
-                this.applyFilters(false);
+                this.applyFilters(false, 'loadListing');
                 this.internal.page_count = this.filters.page_count;
                 this.getPayloadParams()
             },
