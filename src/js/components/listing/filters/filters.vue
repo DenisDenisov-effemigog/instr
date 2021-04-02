@@ -43,7 +43,8 @@
                     сategories: '',
                     only_diff: ''
                 },
-                _debounce_timer: null
+                _debounce_timer: null,
+                page_count: null
             }
         },
         mounted() {
@@ -111,6 +112,7 @@
                     this.internal.view = data.view;
                     this.internal.сategories = data.сategories;
                     this.internal.page_count = data.page_count;
+                    this.page_count = data.page_count;
                 }
 
                 this.internal.hash = data.hash;
@@ -196,6 +198,8 @@
                     console.log(answer);
                     if (!!location && location === 'comparison') {
                         vm.$eventBus.$emit('apply-comparison', answer.output);
+                    } else if (!!location && location === 'loadListing') {
+                        
                     } else {
                         vm.$eventBus.$emit('apply-listing', answer.output);
                     }
@@ -231,12 +235,15 @@
                 });
             },
             loadListing(page){
-                this.internal.page_count = this.internal.page_count + this.filters.page_count
+                this.page_count = this.page_count + this.filters.page_count;
+                this.internal.page_count = this.page_count;
                 this.applyFilters(false);
                 api.goToPage(this.internal.hash, page).then((answer) => {
                 }).catch(errors => {
                     console.log(errors);
                 });
+                this.internal.page_count = this.filters.page_count;
+                this.applyFilters(false, 'loadListing');
             },
         },
     }
