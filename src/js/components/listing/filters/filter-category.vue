@@ -17,15 +17,19 @@
     export default {
         name: "filter-category",
         props: {
-            showButton: {
-                type: Boolean,
-                default: true
+            categories: {
+                type: Array,
+                default: []
             }
         },
         data(){
             return{
                 subcategoryShowAll: false,
+                showButton: false
             }
         },
+        created() {
+            this.categories.length > 5 ? this.showButton = true : this.showButton = false
+        }
     }
 </script>
