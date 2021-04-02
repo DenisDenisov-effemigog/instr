@@ -31,7 +31,7 @@
             <slot v-else></slot>
         </div>
         <div class="listing__pagination"
-            :class="{'listing__pagination--end': internalPagination.current >= internalPagination.urls.length}"
+            :class="{'listing__pagination--end': internalPagination.current >= internalPagination.total}"
             v-if="internalPagination.urls.length > 1"
         >
             <component is="pagination-btn"
