@@ -135,8 +135,9 @@
             <component is="listing-content" 
                        :pagination="{{ pagination|json_encode|e('html_attr') }}" 
                        :hash="{{ filters.hash|json_encode|e('html_attr') }}"
+                       :products="{{ products|json_encode()|e('html_attr') }}"
             >
-                {% for product in products %}
+                {# {% for product in products %}
                     <div class="listing__card">
                         <card
                             :change-icon="false"
@@ -146,7 +147,7 @@
                             {% include '../partials/card.twig' with {'product': product} %}
                         </card>
                     </div>
-                {% endfor %}
+                {% endfor %} #}
             </component>
         </div>
     </div>
