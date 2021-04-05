@@ -89,8 +89,7 @@
         created() {
           this.$eventBus.$on('clear-filters', this.clearFilters)  
           this.$eventBus.$on('add-sorting', this.changeSort)  
-          this.$eventBus.$on('changed-view', this.changeView)  
-          this.$eventBus.$on('load-listing', this.loadListing)  
+          this.$eventBus.$on('changed-view', this.changeView)
           this.$eventBus.$on('changed-category', this.changeCategories)  
         },
         methods: {
@@ -233,13 +232,6 @@
                 }).catch(errors => {
                     console.error(errors);
                 });
-            },
-            loadListing(page){
-                this.page_count = +this.page_count + this.filters.page_count;
-                this.internal.page_count = this.page_count;
-                this.applyFilters(false, 'loadListing');
-                this.internal.page_count = this.filters.page_count;
-                this.changeView(this.internal.view);
             },
         },
     }

@@ -83,7 +83,7 @@
         },
         mounted() {
             this.internalPagination = this.pagination;
-            this.internalProducts = this.products;
+            this.internalProducts = this.cloneOverJson(this.products);
         },
         computed: {
             activeDisplaying() {
@@ -114,11 +114,9 @@
                 }
             },
             loadListing(contents) {
-                if (!this.content) {
-                    this.content = {products: []}
-                }
-                this.content.products.push(contents.products) = contents.products;
-                this.internalProducts = contents.products
+                this.content = contents;
+                this.internalPagination = contents.pagination;
+                this.internalProducts = this.internalProducts.concat(contents.products)
             }
         },
     }

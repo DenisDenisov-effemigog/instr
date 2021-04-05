@@ -133,6 +133,7 @@
         created() {
             this.internalPagination
             this.countIteration();
+            this.$eventBus.$on('load-listing', this.goToPage)
         },
         mounted() {
             this.arrayLength;
@@ -204,12 +205,16 @@
                     +this.internalPagination.urls[this.arrayLength - 1].title !== +this.internalPagination.total ? this.lastFlag = true : this.lastFlag = false
                 }
             },
-            goToPage(page) {
+            goToPage(page, loadMore) {
                 let vm = this
                 if (vm.placement === '.listing') {
                     api.goToPage(vm.hash, page).then((answer) => {
-                        vm.$eventBus.$emit('apply-listing', answer.output);
-                        vm.scrollList();
+                        if (loadMore === 'loadMore') {
+                            vm.$eventBus.$emit('apply-loaded-listing', answer.output);
+                        } else {
+                            vm.$eventBus.$emit('apply-listing', answer.output);
+                            vm.scrollList();
+                        }
                     }).catch(errors => {
                         console.log(errors);
                     });
