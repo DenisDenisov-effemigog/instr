@@ -2,31 +2,33 @@
     <div v-if="loaded">
         <div class="listing__grid"
              :class="{'listing__grid--horiz': activeDisplaying === 'horizview'}">
-            <div class="listing__card" v-for="product in internalProducts"
-                :key="product.id"
-            >
-                <card
-                    :change-icon="false"
-                    :card-grid="'grid'"
-                    :product="product"
+            <template v-if="content !== null">
+                <div class="listing__card" v-for="product in internalProducts"
+                    :key="product.id"
                 >
-                    <template v-slot:code>
-                        <div class="card__code">{{ product.code }}</div>
-                    </template>
-                    <template v-slot:description>
-                        <a :href="product.link" class="card__name">
-                            {{ product.title }}
-                        </a>
-                    </template>
-                    <template v-slot:price>
-                        <div class="card__price-block">
-                            <div class="card__old-price">{{ currency(product.oldPrice) }} {{ $tc('text.currency') }}</div>
-                            <div class="card__current-price">{{ currency(product.newPrice) }} {{ $tc('text.currency') }}</div>
-                        </div>
-                    </template>
-                </card>
-            </div>
-            <!-- <slot v-else></slot> -->
+                    <card
+                        :change-icon="false"
+                        :card-grid="'grid'"
+                        :product="product"
+                    >
+                        <template v-slot:code>
+                            <div class="card__code">{{ product.code }}</div>
+                        </template>
+                        <template v-slot:description>
+                            <a :href="product.link" class="card__name">
+                                {{ product.title }}
+                            </a>
+                        </template>
+                        <template v-slot:price>
+                            <div class="card__price-block">
+                                <div class="card__old-price">{{ currency(product.oldPrice) }} {{ $tc('text.currency') }}</div>
+                                <div class="card__current-price">{{ currency(product.newPrice) }} {{ $tc('text.currency') }}</div>
+                            </div>
+                        </template>
+                    </card>
+                </div>
+            </template>
+            <slot v-else></slot>
         </div>
         <div class="listing__pagination"
             :class="{'listing__pagination--end': internalPagination.current >= internalPagination.total}"
@@ -77,8 +79,6 @@
                 content: null,
                 internalPagination: {},
                 internalProducts: [],
-
-
             };
         },
         mounted() {
@@ -117,8 +117,8 @@
                 if (!this.content) {
                     this.content = {products: []}
                 }
-                this.content.products = contents.products;
-                this.internalPagination.current = this.internalPagination.current + 1
+                this.content.products.push(contents.products) = contents.products;
+                this.internalProducts = contents.products
             }
         },
     }
