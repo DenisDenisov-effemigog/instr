@@ -3,15 +3,18 @@
     flex-direction: row
     justify-content: flex-start
     width: 100%
-    border-bottom: 1px solid $border-color_3
     &__tab
         @extend .tabs-typo
         color: $light-grey
+        border-bottom: 1px solid $border-color_3
         cursor: pointer
-        padding-bottom: .4375rem
+        div
+            padding-bottom: .4375rem
         &--active
-            color: $black
-            border-bottom: 2px solid $primary-red
+            div
+                color: $black
+                margin-bottom: -1px
+                border-bottom: 2px solid $primary-red
         &:hover
             +tablet
                 color: $black
