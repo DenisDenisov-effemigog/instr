@@ -58,8 +58,8 @@ export default {
     },
     props: {
         productImages: {required: true, type: Array},
-        videoLink: {required: true, type: String},
-        theeDLink: {required: true, type: String},  
+        videoLink: {required: false, type: String},
+        theeDLink: {required: false, type: String},  
     },
     data() {
         return {
