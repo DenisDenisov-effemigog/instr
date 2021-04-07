@@ -127,12 +127,12 @@
                         this.startTouch = e.changedTouches[0].pageX
                         anchor = Math.round(anchor - (this.tabsWidth - this.tabsListWidth))
                         if(anchor <= this.$refs.tabs.getBoundingClientRect().left){
-                            this.scrollDigit += 3
+                            this.scrollDigit += 6
                         }
                     }else{
                         this.startTouch = e.changedTouches[0].pageX
                         if(anchor >= this.$refs.tabs.getBoundingClientRect().left){
-                            this.scrollDigit -=3
+                            this.scrollDigit -=6
                         }
                     }
                     this.$refs.tabs.style.transform = `translateX(-${this.scrollDigit}px)`
