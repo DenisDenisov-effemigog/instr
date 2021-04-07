@@ -16,7 +16,7 @@
             <svg viewBox="-2 -1 12 12">
                 <use :xlink:href="templatePath + 'images/sprite.svg#check'" v-show="categoryActive === index"></use>
             </svg>
-            {{ category.label }}
+            {{ category.title }}
         </div>
     </div>
 </template>
