@@ -4,7 +4,7 @@
             <div class="favorites-listing__sidebar_title">{{ $tc('text.category') }}</div>
             <div class="favorites-listing__sidebar_hide" :class="{'favorites-listing__sidebar_hide--rotate': openFlag}" @click="openFlag = !openFlag">
                 <svg viewBox="0 -3 14 14">
-                    <use xlink:href="/images/sprite.svg#arrows__arrow-down"></use>
+                    <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-down'"></use>
                 </svg>
             </div>
         </div>
@@ -14,7 +14,7 @@
             @click="changeCategory(index, category.value)"
         >
             <svg viewBox="-2 -1 12 12">
-                <use xlink:href="/images/sprite.svg#check" v-show="categoryActive === index"></use>
+                <use :xlink:href="templatePath + 'images/sprite.svg#check'" v-show="categoryActive === index"></use>
             </svg>
             {{ category.label }}
         </div>

@@ -15,21 +15,23 @@
            :phone-mask="{{ phone_mask|json_encode|e('html_attr') }}"
 >
     <template v-slot:listingcat>
-        <div class="listing__subcategories listing__subcategories--filter">
-            {% for subcategory in treeCategories.subcategories|slice(0, 1) %}
-                {% include '../listing/listing-subcategories.twig' with {'subcategory': subcategory, 'main': true} %}
-            {% endfor %}
-            <component is="all-categories">
-                {% for subcategory in treeCategories.subcategories|slice(1) %}
-                    {% include '../listing/listing-subcategories.twig' with {'subcategory': subcategory, 'main': false} %}
+        <div class="listing__subcategories">
+            {% if brandCatalog or not treeCategories.subcategories %}
+                {% include '../listing/listing-subcategories.twig' with {'subcategory': listCategory, 'main': true, 'brandCatalog': brandCatalog, 'title': sub_title} %}
+            {% else %}
+                {% for subcategory in treeCategories.subcategories|slice(0, 1) %}
+                    {% include '../listing/listing-subcategories.twig' with {'subcategory': subcategory, 'main': true} %}
                 {% endfor %}
-            </component>
+                <component is="all-categories">
+                    {% for subcategory in treeCategories.subcategories|slice(1) %}
+                        {% include '../listing/listing-subcategories.twig' with {'subcategory': subcategory, 'main': false} %}
+                    {% endfor %}
+                </component>
+            {% endif %}
         </div>
     </template>
     <template v-slot:favoritecat>
-        {% for category in treeCategories %}
-            <div class="favorites-listing__subcategory">{{ category.label }}</div>
-        {% endfor %}
+        <component is="favorites-listing-category" :favorite-categories="{{ listCategory|json_encode|e('html_attr') }}"></component>
     </template>
 </component>
 <component is="sticky-mobile-button"></component>

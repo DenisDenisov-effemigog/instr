@@ -22,12 +22,14 @@
             <delivery-address
                 v-if="currentOption === 'delivery'"
                 :currentTab="currentTab"
+                :currentCity="currentCity"
                 :addresses="addresses"
                 :user="user"
                 :cities="cities"
                 :streets="streets"
             ></delivery-address>
-            <receive-address v-else
+            <receive-address 
+                v-else-if="currentOption === 'receive'"
                 :deliveryPoints="deliveryPoints"
                 :cities="cities"
                 :currentCity="currentCity"
@@ -77,7 +79,10 @@
             },
             currentCity:{
                 type: Object,
-                required: true
+                default: {
+                    id: '',
+                    name: ''
+                }
             }
         },
         data(){
@@ -89,7 +94,6 @@
         methods: {
             changeDeliveryType(type, id, city){
                 this.deliveryId = id
-                console.log(this.deliveryId);
                 this.currentOption = type
                 this.$eventBus.$emit('push-delivery', type, id)
                 this.$store.dispatch('basketOrderCalc', {

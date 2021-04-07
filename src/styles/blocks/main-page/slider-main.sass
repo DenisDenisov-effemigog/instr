@@ -1,7 +1,7 @@
 .slider-main
     margin-top: 2rem
     margin-bottom: 2rem
-    max-height: 19.125rem
+    // max-height: 19.125rem
     overflow: hidden
     +desktop
         margin-top: 2.5rem
@@ -11,14 +11,14 @@
         overflow: hidden
         border-radius: $border-radius
         position: relative
-        height: 19.125rem
-        display: flex !important
-        align-items: flex-end
+        +tablet
+            display: flex !important
+            align-items: flex-end
+            height: 19.125rem
         +desktop
             height: 28.125rem
             padding: 3.125rem 5rem
     &__image
-        +absolute-full
         +full-content
         object-fit: contain
         object-position: center center
@@ -26,6 +26,7 @@
         display: none
         +tablet
             display: block
+            +absolute-full
         &--mob
             display: block
             +tablet

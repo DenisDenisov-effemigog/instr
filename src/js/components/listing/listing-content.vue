@@ -3,7 +3,7 @@
         <div class="listing__grid"
              :class="{'listing__grid--horiz': activeDisplaying === 'horizview'}">
             <template v-if="content !== null">
-                <div class="listing__card" v-for="product in content.products"
+                <div class="listing__card" v-for="product in internalProducts"
                     :key="product.id"
                 >
                     <card
@@ -31,11 +31,11 @@
             <slot v-else></slot>
         </div>
         <div class="listing__pagination"
-            :class="{'listing__pagination--end': internalPagination.current >= internalPagination.urls.length}"
-            v-if="internalPagination.urls.length > 1"
+            :class="{'listing__pagination--end': internalPagination.current >= internalPagination.total}"
+            v-if="internalPagination.total > 1"
         >
             <component is="pagination-btn"
-                v-if="internalPagination.current < internalPagination.urls.length"
+                v-if="+internalPagination.current < +internalPagination.total"
                 :hash="hash" 
                 :currentPage="internalPagination.current"
             ></component>
@@ -67,6 +67,10 @@
             hash: {
                 required: true,
                 type: String
+            },
+            products: {
+                type: Array,
+                required: true,
             }
         },
         data() {
@@ -74,10 +78,12 @@
                 loaded: false,
                 content: null,
                 internalPagination: {},
+                internalProducts: [],
             };
         },
         mounted() {
             this.internalPagination = this.pagination;
+            this.internalProducts = this.cloneOverJson(this.products);
         },
         computed: {
             activeDisplaying() {
@@ -87,9 +93,11 @@
         created() {
             this.loading()
             this.$eventBus.$on('apply-listing', this.applyListing);
+            this.$eventBus.$on('apply-loaded-listing', this.loadListing);
         },
         beforeDestroy() {
             this.$eventBus.$off('apply-listing');
+            this.$eventBus.$off('apply-loaded-listing');
         },
         methods: {
             loading(){
@@ -102,8 +110,14 @@
                 this.content = contents;
                 if(contents.pagination) {
                     this.internalPagination = contents.pagination;
+                    this.internalProducts = contents.products
                 }
             },
+            loadListing(contents) {
+                this.content = contents;
+                this.internalPagination = contents.pagination;
+                this.internalProducts = this.internalProducts.concat(contents.products)
+            }
         },
     }
 </script>

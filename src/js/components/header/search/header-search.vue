@@ -120,7 +120,7 @@ export default {
         },
         clickOutside(event) {
             let vm = this;
-            if(window.innerWidth > 760 && vm.focused && event.toElement.className !== 'search__clear-text') {
+            if(window.innerWidth > 760 && vm.focused && event.target.className !== 'search__clear-text') {
                 vm.exitSearch()
             }
         },

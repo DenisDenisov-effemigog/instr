@@ -157,7 +157,6 @@ export default {
                     item.active = vm.trimPath(vm.$route.path) === vm.trimPath(item.url);
                 }
                 type = item.personType.filter(type => this.profile.personType === type)
-                // console.log(type)
                 result.push(item);
             });
             return result;

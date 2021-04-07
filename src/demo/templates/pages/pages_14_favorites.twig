@@ -920,7 +920,7 @@
     }
 ] %}
 
-{% set listCategories = [
+{% set listCategory = [
     {label: 'Автомобильный инструмент', value: 'avto'},
     {label: 'Измерительный инструмент', value: 'measuring'},
     {label: 'Режущий инструмент', value: 'cutting'},
@@ -1036,6 +1036,7 @@
     },
 } %}
 
+{% set showTree = false %}
 
 
 {% set listCategoryView = 'filter'
@@ -1064,17 +1065,18 @@
     {% include '../../../templates/favorites/favorites.twig' with {
         'sort_types': sort_types,
         'sort_type': sort_type,
-        'listCategories': listCategories,
+        'listCategory': listCategory,
         'filters': filters,
         'view_type': view_type,
         'pagination': pagination,
         'listCategoryView': listCategoryView,
+        'showTree':showTree
     } %}
     {% include '../../../templates/footer/footer.twig'  with {
         'countries': countries,
         'activeCountry': 'Россия',
         'user': user,
-        'listCategories': listCategories,
+        'listCategory': listCategory,
         'phone_mask': '+7 (F##) ###-##-##',
         'footerLinks': footerLinks,
         'headerLinks': headerLinks,

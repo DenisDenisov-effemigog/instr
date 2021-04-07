@@ -16,7 +16,7 @@
                  v-for="productImage in props.images"
                  :key="productImage.id"
             >
-                <img class="photo-modal__main-image" :src="productImage.img" alt="">
+                <img :src="productImage.img" alt="">
             </div>
             <template #nextArrow>
                 <svg class="photo-modal__main-arrow photo-modal__main-arrow--next" viewBox="0 0 11 10">
@@ -95,7 +95,6 @@ export default {
             },
             settingsForPrev: {
                 dots: false,
-                centerMode: true,
                 slidesToShow: 4,
                 slidesToScroll: 1,
                 focusOnSelect: true,

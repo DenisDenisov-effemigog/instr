@@ -1,6 +1,6 @@
 <template>
     <div class="listing__pagination-btn"
-         @click="loadMore(currentPage)"
+         @click="loadMore(currentPage + 1)"
     >{{ $tc('link.load_more') }}</div>
 </template>
 
@@ -29,7 +29,7 @@
         methods:{
             loadMore(page) {
                 let vm = this;
-                vm.$eventBus.$emit('load-listing', page);
+                vm.$eventBus.$emit('load-listing', page, 'loadMore');
             },
         },
     }

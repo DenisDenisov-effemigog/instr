@@ -21,7 +21,6 @@ export default {
         if(window.innerWidth < 768){
             this.productOrderPosition = 0
             this.productOrderPosition = this.$refs.productOrderBlock.offsetTop + this.$refs.productOrderBlock.clientHeight
-            console.log(this.productOrderPosition);
         }else{
             this.productOrderPosition = 0
             this.productOrderPosition = this.$refs.productOrderBlock.offsetTop + this.$refs.productOrderBlock.clientHeight
@@ -33,7 +32,6 @@ export default {
             if(window.innerWidth < 768){
                 this.productOrderPosition = 0
                 this.productOrderPosition = this.$refs.productOrderBlock.offsetTop + this.$refs.productOrderBlock.clientHeight
-                 console.log(this.productOrderPosition);
             }else{
                 this.productOrderPosition = 0
                 this.productOrderPosition = this.$refs.productOrderBlock.offsetTop + this.$refs.productOrderBlock.clientHeight

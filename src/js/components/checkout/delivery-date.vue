@@ -9,6 +9,8 @@
                 :format='format'
                 :formatter="momentFormat"
                 :lang="lang"
+                @open="opened = true"
+                @close="opened = false"
             >
                 <template v-slot:icon-calendar>
                     <dir></dir>
@@ -24,8 +26,10 @@
                     <use :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
                 </svg>
             </div>
-            <div v-else class="delivery-date__icon delivery-date__icon--arrow">
-                <svg viewBox="0 0 12 10">
+            <div v-else class="delivery-date__icon delivery-date__icon--arrow"
+                :class="{'delivery-date__icon--opened': opened}"
+            >
+                <svg viewBox="0 -2 12 10">
                     <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-down'"></use>
                 </svg>
             </div>
@@ -34,14 +38,13 @@
 </template>
 
 <script>
-import selectList from "../partials/select-list.vue"
 import DatePicker from 'vue2-datepicker';
 import moment, {Moment} from 'moment';
 
 
 export default{
     name:"delivery-date",
-    components: { selectList, DatePicker },
+    components: { DatePicker },
     props: {
       value: {required: true}  
     },
@@ -60,6 +63,7 @@ export default{
                 monthFormat: 'MMMM',
                 dayFormat: 'D',
             },
+            opened: false
         }
     },
     model: {
@@ -88,7 +92,6 @@ export default{
         },
         clearInput(){
             this.newDate =''
-            console.log(this.newDate)
         },
         validDate(e){
             if(e.key >= 0 || e.key <= 9 || e.key == 'Backspace'  || e.key == 'ArrowLeft' || e.key == 'ArrowRight'){

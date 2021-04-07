@@ -1199,7 +1199,7 @@
 
 {% set view_type = 'gridview' %}
 
-{% set shields = [
+{# {% set shields = [
     {
         title:'Лебедки автомобильные',
         url: ''    
@@ -1260,7 +1260,7 @@
         title:'Тали',
         url: ''
     },
-] %}
+] %} #}
 
 {% set filters = {
     'page_count': 20,
@@ -2005,6 +2005,19 @@
     },
 } %}
 
+{% set showTree = false %}
+
+{% set listCategoryView = 'search'
+%}
+
+
+{% set listCategory = [
+    {label: 'Автомобильный инструмент', value: 'avto'},
+    {label: 'Измерительный инструмент', value: 'measuring'},
+    {label: 'Режущий инструмент', value: 'cutting'},
+    {label: 'Товары первой необходимости', value: 'essentials'}
+]%}
+
 {% block content %}
 
     {% include '../../../templates/header/header.twig' with {
@@ -2020,18 +2033,19 @@
         'products': products,
         'sort_types': sort_types,
         'sort_type': sort_type,
-        'shields': shields,
-        'treeCategories': treeCategories[0],
-        'listingCategoryTitle': treeCategories[0].title,
+        'listCategory':listCategory,
         'filters': filters,
+        'listCategoryView': listCategoryView,
         'view_type': view_type,
         'pagination': pagination,
         'titleFlag': true,
+        'showTree':showTree
     } %}
     {% include '../../../templates/footer/footer.twig'  with {
         'countries': countries,
         'activeCountry': 'Россия',
         'user': user,
+        'listCategory':listCategory,
         'phone_mask': '+7 (F##) ###-##-##',
         'footerLinks': footerLinks,
         'headerLinks': headerLinks,

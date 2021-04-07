@@ -42,7 +42,7 @@
                                 </div>
                             </li>
                         </ul>
-                        <div class="page-order__select">
+                        <div class="page-order__select" v-if="order.documents.length > 0">
                             <select-list
                                 :points="order.documents"
                                 :icon="icon"
@@ -82,7 +82,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="page-order__select page-order__select--mobile">
+                        <div class="page-order__select page-order__select--mobile" v-if="order.documents.length > 0">
                             <select-list
                                 :points="order.documents"
                                 :icon="icon"
@@ -155,6 +155,7 @@ export default {
     },
     mounted() {
         this.prepareOrder(this.$route.params.id);
+        console.log(this.order.documents, !!this.order.documents)
     },
     computed: {
         deliveryInfo() {
@@ -200,7 +201,6 @@ export default {
             api.personalOrder(this.$route.params.id).then((order) => {
                 this.order = order;
                 this.$eventBus.$emit('change-current-point', this.currentDocument)
-                console.log('this.order', this.order);
             }).catch((error) => {
                 this.$router.push('/my/orders/');
             });

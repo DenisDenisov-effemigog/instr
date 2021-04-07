@@ -4,7 +4,7 @@
             class="product-card-slider__previous"
             v-bind="settingsForPrev"
             ref="previous"
-            :asNavFor=this.$refs.main
+            :asNavFor="$refs.main"
         >
             <template #prevArrow>
                 <svg class="product-card-slider__previous-arrow" viewBox="0 0 10 10">
@@ -27,7 +27,7 @@
             class="product-card-slider__main"
             v-bind="settings"
             ref="main"
-            :asNavFor=this.$refs.previous
+            :asNavFor="$refs.previous"
 
         >
             <div class="product-card-slider__main-slide"
@@ -36,7 +36,7 @@
                  @click="openModal(index)" 
                  @mouseleave="hoverOff"
             >
-                <img class="product-card-slider__main-image" @mouseenter="hoverOn" :src="productImage.img" alt="">
+                <img @mouseenter="hoverOn" :src="productImage.img" alt="">
                 <div class="product-card-slider__zoom"
                     :class="{'product-card-slider__zoom--open': openZoom}"
                     ref="zoom"
@@ -58,8 +58,8 @@ export default {
     },
     props: {
         productImages: {required: true, type: Array},
-        videoLink: {required: true, type: String},
-        theeDLink: {required: true, type: String},  
+        videoLink: {required: false, type: String},
+        theeDLink: {required: false, type: String},  
     },
     data() {
         return {
@@ -85,7 +85,6 @@ export default {
             },
             settingsForPrev: {
                 dots: false,
-                centerMode: true,
                 slidesToShow: 4,
                 slidesToScroll: 1,
                 vertical: true,
@@ -95,7 +94,6 @@ export default {
                     {
                         breakpoint: 768,
                         settings: {
-                            
                         }
                     }
                 ]
@@ -137,8 +135,18 @@ export default {
             this.sliderHeader = sliderHeader
         }
     },
+    computed: {
+        navigationSlides() {
+            if (this.productImages.length < 4) {
+                this.settingsForPrev.slidesToShow = 2;
+            } else if (this.productImages.length < 5) {
+                this.settingsForPrev.slidesToShow = 3;
+            }
+        }
+    },
     created() {
-        this.$eventBus.$on('sliderHeader', this.sliderHeaderPosition)
+        this.$eventBus.$on('sliderHeader', this.sliderHeaderPosition);
+        this.navigationSlides;
     },
     mounted() {
         this.$nextTick(this.$forceUpdate);

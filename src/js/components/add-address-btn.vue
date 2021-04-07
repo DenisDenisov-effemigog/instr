@@ -14,7 +14,6 @@ export default {
     name:"add-address-btn",
     methods:{
         openModal(modal) {
-            console.log(modal)
             this.$eventBus.$emit("openModal", modal, '', false, false)
         }
     }

@@ -14,19 +14,15 @@
         +specialscreen
             width: 80%
             margin: 0
-            
     &__main-slide
         outline: none
         position: relative
-        display: flex !important
-        justify-content: center
-        align-items: center
         &::after
             content: ''
             display: block
             padding-bottom: 100%
-    &__main-image
-        position: absolute
+        img
+            +absolute-center
     &__previous
         width: 3.5rem
         margin-right: 1rem
@@ -36,6 +32,7 @@
             border: 1px solid $grey
             border-radius: $border-radius_2
     &__previous-slide
+        position: relative
         outline: none
         cursor: pointer
         border: 1px solid transparent
@@ -43,6 +40,12 @@
         overflow: hidden
         &:hover
             border: 1px solid $border-color
+        img
+            +absolute-center
+        &::after
+            content: ''
+            display: block
+            padding-bottom: 100%
     &__previous-arrow
         fill: $light-grey
         width: 1.1875rem

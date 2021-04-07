@@ -55,7 +55,7 @@ export default {
             this.openModal = false;
         },
         closeOutside(event) {
-            if(event.toElement.className === 'mobile-menu') {
+            if(event.target.className === 'mobile-menu') {
                 this.$eventBus.$emit("change-menu-icon") // меняем иконку моб.меню на бкргер
                 this.closeMenuModal()
             }

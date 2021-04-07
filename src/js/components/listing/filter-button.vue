@@ -25,7 +25,6 @@
             openModal(){
                 this.$eventBus.$emit("openModal", 'filters', this.filters, false, true);
                 this.$eventBus.$emit("sow-button", 'listing.filters.button', this.filters.match, 'text.product');
-                console.log(this.filters);
             },
         },
     }

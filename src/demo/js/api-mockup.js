@@ -1448,7 +1448,19 @@ let demoFilteredListing = {
     shields: [],
     // filters,
     view_type: 'grid',
-    pagination: {}
+    pagination: {
+        'total': 6,
+        'current': 6,
+        'url_last': '/some/category/page/last',
+        'urls': 
+        [
+            {title: '3', url: '/some/category/page/3'},
+            {title: '4', url: '/some/category/page/4'},
+            {title: '5', url: '/some/category/page/5'},
+            {title: '6', url: '/some/category/page/6'},
+        ],
+        'page_mask': '/some/category/page/#PAGE#'
+    }
 };
 
 let orderSuccessAnswer = {
@@ -1772,8 +1784,6 @@ function demoSetBasketQuantity(productId, quantity) {
 }
 
 window.runAction = function (action, config) {
-    //console.log('runAction call from mockup');
-    //debugger;
     if(config) {
         config = demoCloneOverJson(config);
     }

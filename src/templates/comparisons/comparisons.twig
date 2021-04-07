@@ -1,4 +1,4 @@
 <component is="comparisons-listing"
-    :categories="{{ listCategories |json_encode()|e('html_attr') }}">
+    :categories="{{ listCategory |json_encode()|e('html_attr') }}">
     {% include '../listing/filter.twig' with {'filters': filters} %}
 </component>

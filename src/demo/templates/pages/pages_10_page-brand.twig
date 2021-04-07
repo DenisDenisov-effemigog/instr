@@ -1221,7 +1221,66 @@
     'match': '13',
     'section_id': 178500,
     'hash': 'JnnUHIo**(&87868HHkjYUI@wewe',
-    'filters': []
+    'filters': [
+        {
+            title: "Цена",
+            code: "price_base",
+            type: "range",
+            values: {
+                min: 1,
+                max: 100,
+                from: 1,
+                to: 100
+            },
+
+        },
+        {
+            title: "Тип скидки",
+            code: "sale_type",
+            type: "checkbox",
+            values: [
+                {
+                    title: "Силовое без скидки",
+                    value: "sale_1",
+                    checked: false,
+                    available: true,
+                    count: 2
+                },
+                {
+                    title: "Силовое",
+                    value: "sale_2",
+                    checked: false,
+                    available: true,
+                    count: 1
+                },
+                {
+                    title: "Россия без скидки",
+                    value: "sale_3",
+                    checked: false,
+                    available: true,
+                    count: 3
+                },
+                {
+                    title: "Импорт без скидки",
+                    value: "sale_4",
+                    checked: false,
+                    available: true,
+                    count: 4
+                },
+            ]
+        },
+        {
+            title: "Наличие товара",
+            code: "classifier_again",
+            type: "switch",
+            values: [{
+                    title: "В наличии",
+                    value: "in_stock",
+                    checked: false,
+                    count: 19
+                }]
+        },
+    ]
 }
 %}
 
@@ -1863,6 +1922,27 @@
         ]
     },
 } %}
+{% set listCategoryView = 'list' %}
+{% set filtersTitle = "Автомобильный инструмент" %}
+{% set listCategory = [
+    {'title': 'Ареометры', 'url': '', 'checked': false},
+    {'title': 'Воронки', 'url': '', 'checked': false},
+    {'title': 'Держатели телефонов и планшетов', 'url': '', 'checked': false},
+    {'title': 'Знаки аварийной остановки', 'url': '', 'checked': false},
+    {'title': 'Канистры для топлива', 'url': '', 'checked': false},
+    {'title': 'Компрессоры автомобильные', 'url': '', 'checked': false},
+    {'title': 'Органайзеры', 'url': '', 'checked': false},
+    {'title': 'Пакеты для шин', 'url': '', 'checked': false},
+    {'title': 'Провода стартовые', 'url': '', 'checked': false},
+    {'title': 'Резинки багажные', 'url': '', 'checked': false},
+    {'title': 'Ремни багажные', 'url': '', 'checked': false},
+    {'title': 'Салфетки и губки', 'url': '', 'checked': false},
+    {'title': 'Скребки и водосгоны', 'url': '', 'checked': false},
+    {'title': 'Тросы буксировочные', 'url': '', 'checked': false},
+    {'title': 'Удобства в автомобиле', 'url': '', 'checked': false},
+    {'title': 'Щетки стеклоочистителя', 'url': '', 'checked': false},
+    {'title': 'Щетки-сметки', 'url': '',}
+] %}
 
 
 {% block content %}
@@ -1895,21 +1975,25 @@
         'sort_types': sort_types,
         'sort_type': sort_type,
         'shields': shields,
-        'treeCategories': treeCategories[0],
-        'listingCategoryTitle': treeCategories[0].title,
+        'listCategory': listCategory,
+        'sub_title': catalogTitle,
         'filters': filters,
         'view_type': view_type,
         'pagination': pagination,
-        'showTree': true,
+        'listCategoryView': listCategoryView,
+        'showTree': false,
         'brandCatalog': true
     } %}
     {% include '../../../templates/footer/footer.twig'  with {
         'countries': countries,
         'activeCountry': 'Россия',
         'user': user,
+        'listCategory': listCategory,
+        'sub_title': catalogTitle,
         'phone_mask': '+7 (F##) ###-##-##',
         'footerLinks': footerLinks,
         'headerLinks': headerLinks,
+        'brandCatalog': true
     } %}
     
 {% endblock %}

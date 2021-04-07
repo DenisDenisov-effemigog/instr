@@ -43,7 +43,8 @@
                     сategories: '',
                     only_diff: ''
                 },
-                _debounce_timer: null
+                _debounce_timer: null,
+                page_count: null
             }
         },
         mounted() {
@@ -88,8 +89,7 @@
         created() {
           this.$eventBus.$on('clear-filters', this.clearFilters)  
           this.$eventBus.$on('add-sorting', this.changeSort)  
-          this.$eventBus.$on('changed-view', this.changeView)  
-          this.$eventBus.$on('load-listing', this.loadListing)  
+          this.$eventBus.$on('changed-view', this.changeView)
           this.$eventBus.$on('changed-category', this.changeCategories)  
         },
         methods: {
@@ -111,26 +111,29 @@
                     this.internal.view = data.view;
                     this.internal.сategories = data.сategories;
                     this.internal.page_count = data.page_count;
+                    this.page_count = +data.page_count;
                 }
 
                 this.internal.hash = data.hash;
                 this.internal.match = data.match;
                 
                 let filters = data.filters;
-                filters.forEach((item, index) => {
-                    if (item.type === 'range') {
-                        if (!('from' in item.values)) {
-                            filters[index].values.from = item.values.min;
+                if (!!filters) {
+                    filters.forEach((item, index) => {
+                        if (item.type === 'range') {
+                            if (!('from' in item.values)) {
+                                filters[index].values.from = item.values.min;
+                            }
+                            if (!('to' in item.values)) {
+                                filters[index].values.to = item.values.max;
+                            }
+    
+                            if(item.title.toLowerCase().includes('price')) {
+                                filters[index].is_price = true;
+                            }
                         }
-                        if (!('to' in item.values)) {
-                            filters[index].values.to = item.values.max;
-                        }
-
-                        if(item.title.toLowerCase().includes('price')) {
-                            filters[index].is_price = true;
-                        }
-                    }
-                });
+                    });
+                }
 
                 if(add) {
                     filters.forEach((item, index) => {
@@ -191,8 +194,11 @@
                 let params = vm.getPayloadParams();
 
                 api.catalogGet(this.internal.hash, params).then(answer => {
+                    console.log(answer);
                     if (!!location && location === 'comparison') {
                         vm.$eventBus.$emit('apply-comparison', answer.output);
+                    } else if (!!location && location === 'loadListing') {
+                        vm.$eventBus.$emit('apply-loaded-listing', answer.output);
                     } else {
                         vm.$eventBus.$emit('apply-listing', answer.output);
                     }
@@ -225,14 +231,6 @@
                 api.catalogUpdate(this.internal.hash, params).then(() => {
                 }).catch(errors => {
                     console.error(errors);
-                });
-            },
-            loadListing(page){
-                this.internal.page_count = this.internal.page_count + this.filters.page_count
-                this.applyFilters(false);
-                api.goToPage(this.internal.hash, page).then((answer) => {
-                }).catch(errors => {
-                    console.log(errors);
                 });
             },
         },

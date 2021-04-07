@@ -168,7 +168,7 @@ export default {
             // }
         },
         closeOutside(event) {
-            if(event.toElement.className !== '') {
+            if(event.target.className !== '') {
                 this.closeModal() 
             }
         },

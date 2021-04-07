@@ -1,11 +1,8 @@
 <section class="listing">
-        <div class="listing__header">
+        {# <div class="listing__header">
             {% if titleFlag == true %}
-                {% if listCategoryView == 'select' or listCategoryView == 'filter' %}
-                    <h2 class="listing__title">{{ title }}</h2>
-                {% else %}
+                
                     <h2 class="listing__title">{{ 'listing.filters.title'|trans }}</h2>
-                {% endif %}
             {% elseif searchAnswer %}
                 <h2 class="listing__title">{{ 'search-response.text-success'|trans }} "{{ searchAnswer }}"</h2>
                 <component is="listing-items-quantity"
@@ -13,13 +10,32 @@
                 ></component>
             {% else %}
                 <h2 class="listing__title {% if brandCatalog %}listing__title--mobile{% endif %}">
-                    {{ listingCategoryTitle }}
+                    {{listingCategoryTitle}}
                 </h2>
                 <component is="listing-items-quantity"
                            :items-quantity="{{ filters.match|json_encode()|e('html_attr') }}"
                 ></component>
             {% endif %}
-        </div>
+        </div> #}
+        {% if titleFlag == true %}
+            <div class="listing__header">
+                {% if searchAnswer %}
+                    <h2 class="listing__title">{{ 'search-response.text-success'|trans }} "{{ searchAnswer }}"</h2>
+                    <component is="listing-items-quantity"
+                        :items-quantity="{{ filters.match|json_encode()|e('html_attr') }}"
+                    ></component>
+                {% elseif listCategoryView == 'select' or listCategoryView == 'filter' or listCategoryView == 'list' %}
+                    <h2 class="listing__title">{{ listingCategoryTitle }}</h2>
+                    <component is="listing-items-quantity"
+                        :items-quantity="{{ filters.match|json_encode()|e('html_attr') }}"
+                    ></component>
+                {% elseif listCategoryView == 'search' and searchAnswer is empty%}
+                    <h2 class="listing__title">{{ 'listing.filters.title'|trans }}</h2>
+                {% else %}
+                    <h2 class="listing__title">{{ 'listing.category.title'|trans }}</h2>
+                {% endif %}
+            </div>
+        {% endif %}
     {% if shields %}
         <div class="listing__shields {% if brandCatalog %}listing__shields--mobile{% endif %}">
             {% for shield in shields %}
@@ -31,49 +47,45 @@
     {% endif %}
     <div class="listing__content">
         <div class="listing__sidebar">
-            {% if listCategoryView == 'select' or listCategoryView == 'filter' %}
-                <div class="listing__subcategories listing__subcategories--filter">
-                    <div class="listing__subcategory-link">{{ sub_title}}</div>
-                        {% if listCategories is not empty%}
-                             <component is="filter-category">
-                                <template v-slot:subcategory-listing-part>
-                                    {% for subsubcategory in listCategories|slice(0, 5) %}
-                                        <li>
-                                            {% if subsubcategory.checked == true %}
-                                                <svg viewBox="-2 -1 12 12" class="listing__further-sc-icon">
-                                                    <use :xlink:href="templatePath + 'images/sprite.svg#check'"></use>
-                                                </svg>
-                                            {% endif %}
+            {% if showTree == false %}
+                {% if listCategoryView == 'select' or listCategoryView == 'filter' or listCategoryView == 'list' %}
+                    <div class="listing__subcategories {% if brandCatalog %}listing__subcategories--brand{% endif %}">
+                        <div class="listing__subcategory-link">{{ sub_title}}</div>
+                            {% if listCategory is not empty%}
+                                <component is="filter-category" :categories="{{ listCategory|json_encode()|e('html_attr') }}">
+                                    <template v-slot:subcategory-listing-part>
+                                        {% for subsubcategory in listCategory|slice(0, 5) %}
+                                            <li>
                                                 <a href="{{ subsubcategory.url }}" 
                                                     class="listing__further-subcategory"
                                                 >
                                                     {{ subsubcategory.title }}
                                                 </a>
-                                        </li>
-                                    {% endfor %}
-                                </template>
-                                <template v-slot:subcategory-listing-all>
-                                    {% for subsubcategory in listCategories %}
-                                        <li>
-                                            {% if subsubcategory.checked == true %}
-                                                <svg viewBox="-2 -1 12 12" class="listing__further-sc-icon">
-                                                    <use :xlink:href="templatePath + 'images/sprite.svg#check'"></use>
-                                                </svg>
-                                            {% endif %}
-                                            <a href="{{ subsubcategory.url }}" 
-                                            class="listing__further-subcategory"
-                                            >{{ subsubcategory.title }}</a>
-                                        </li>
-                                    {% endfor %}
-                                </template>
-                            </component>
-                        {% endif %}
-                </div>
+                                            </li>
+                                        {% endfor %}
+                                    </template>
+                                    <template v-slot:subcategory-listing-all>
+                                        {% for subsubcategory in listCategory %}
+                                            <li>
+                                                {% if subsubcategory.checked == true %}
+                                                    <svg viewBox="-2 -1 12 12" class="listing__further-sc-icon">
+                                                        <use :xlink:href="templatePath + 'images/sprite.svg#check'"></use>
+                                                    </svg>
+                                                {% endif %}
+                                                <a href="{{ subsubcategory.url }}" 
+                                                class="listing__further-subcategory"
+                                                >{{ subsubcategory.title }}</a>
+                                            </li>
+                                        {% endfor %}
+                                    </template>
+                                </component>
+                            {% endif %}
+                    </div>
+                {% elseif listCategoryView == 'search' %}
+                    <component is="favorites-listing-category" :favorite-categories="{{listCategory|json_encode()|e('html_attr')}}"></component>
+                {% endif %}
             {% endif %}
-                <div class="listing__sidebar_filters">  
-                    {% include './filter.twig' with {'filters': filters} %}
-                </div>
-            {%  if listCategoryView == 'list'  %}
+            {%  if showTree == true  %}
                 <div class="listing__subcategories">
                     {% for subcategory in treeCategories.subcategories %}
                         <div class="listing__subcategory">
@@ -108,6 +120,9 @@
                     {% endfor %}
                 </div>
             {% endif %}
+            <div class="listing__sidebar_filters">  
+                {% include './filter.twig' with {'filters': filters} %}
+            </div>
         </div>
         <div class="listing__products">
 
@@ -120,6 +135,7 @@
             <component is="listing-content" 
                        :pagination="{{ pagination|json_encode|e('html_attr') }}" 
                        :hash="{{ filters.hash|json_encode|e('html_attr') }}"
+                       :products="{{ products|json_encode()|e('html_attr') }}"
             >
                 {% for product in products %}
                     <div class="listing__card">

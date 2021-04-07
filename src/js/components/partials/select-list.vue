@@ -20,7 +20,7 @@
                     :class="{'select__item--active':currentPoint.value === point.value}"
                 >
                     <span>{{ point.label }}</span>
-                    <svg>
+                    <svg :viewBox="viewBox">
                         <use :xlink:href="templatePath + `images/sprite.svg#${icon}`"></use>
                     </svg>
                 </a>
@@ -34,7 +34,7 @@
                 :key="point.value"
             >
                 <span>{{ point.label }}</span>
-                <svg>
+                <svg :viewBox="viewBox">
                     <use :xlink:href="templatePath + `images/sprite.svg#${icon}`"></use>
                 </svg>
             </li>
@@ -80,11 +80,13 @@ export default {
     data(){
         return{
             openSelect: false,
-            currentPoint: {}
+            currentPoint: {},
+            viewBox: '',
         }
     },
     created() {
-        this.$eventBus.$on('change-current-point', this.changeCurrentPoint)
+        this.$eventBus.$on('change-current-point', this.changeCurrentPoint);
+        this.viewBoxPosition
     },
     methods:{
         clickPoint(data){
@@ -107,7 +109,17 @@ export default {
             this.currentPoint = item
         }
     },
+    computed: {
+        viewBoxPosition() {
+            if (this.icon === 'check') {
+                this.viewBox = '-4 -5 18 20'
+            } else if (this.icon === 'icons__download') {
+                this.viewBox = '1 0 18 20'
+            }
+        }
+    },
     mounted() {
+        this.popupItem = this.$el
         this.currentPoint = this.selectopenSelect;
     },
     directives: {

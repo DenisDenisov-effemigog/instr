@@ -77,7 +77,7 @@
         methods: {
             openModal(slide){
                 // через массив передаем оглавление, сообщение и текст кнопки модального окна - 3 элемеента
-                this.$eventBus.$emit("openModal", 'dialogue', [slide.modal.title, slide.modal.description, this.$tc('modal.link.action')], false, true)
+                // this.$eventBus.$emit("openModal", 'dialogue', [slide.modal.title, slide.modal.description, this.$tc('modal.link.action')], false, true)
             },
         },
     }

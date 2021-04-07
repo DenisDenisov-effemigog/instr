@@ -3,10 +3,12 @@
     +tablet
         margin-bottom: 3.5rem
     &__wrapper
-        border-bottom: 1px solid #dcdcdc
+        overflow: hidden
     &__tabs
+        @extend .container
         @extend .tabs
-        border: none
+        width: auto
+        // border: none
         // +mobile
         //     -ms-overflow-style: none
         //     overflow: -moz-scrollbars-none
@@ -25,10 +27,11 @@
     &__tab
         @extend .tabs__tab
         white-space: nowrap
+        // border-bottom: 1px solid #dcdcdc
         &:not(:last-child)
-            margin-right: 1.5rem
+            padding-right: 1.5rem
             +tablet
-                margin-right: 3.5rem
+                padding-right: 3.5rem
         &--active
             @extend .tabs__tab--active
     &__content
