@@ -19,7 +19,7 @@
                     </div>
                     <div class="dashboard-contract__info">{{item.info}}</div>
                 </li>
-                <li v-show="!!contractArr" class="dashboard-contract__item dashboard-contract__item--info">
+                <li v-show="!contractArr.length" class="dashboard-contract__item dashboard-contract__item--info">
                     <span>{{ $tc('profile.dashboard.contract_item_info') }}</span> 
                 </li>
             </ul>
