@@ -1,6 +1,5 @@
 <template>
     <section class="product-tabs">
-<<<<<<< HEAD
         <div 
             class="container">
             <div class="product-tabs__wrapper">
@@ -8,21 +7,6 @@
                     @touchmove="scrollTabs"
                     @touchstart="touchStart"
                     @click="clickTabs(currentTab)"
-=======
-        <div class="product-tabs__wrapper">
-            <div ref="tabs" class="product-tabs__tabs"
-                :class="{'product-tabs__tabs--center': currentTab === 'description' && user.authorized,
-                            'product-tabs__tabs--end': currentTab === 'questions' && user.authorized}"
-                @touchmove="scrollTabs"
-                @touchstart="touchStart"
-                @touchend="touchEnd"
-            >
-                <div
-                    v-if="features"
-                    class="product-tabs__tab"
-                    :class="{'product-tabs__tab--active': currentTab === 'features'}"
-                    @click.prevent="showTab('features')"
->>>>>>> 4462045236f7fed800e08cd9b01a88d668c9197e
                 >
                     <div >{{ $tc('product_card.tabs.features') }}</div>
                 </div>
