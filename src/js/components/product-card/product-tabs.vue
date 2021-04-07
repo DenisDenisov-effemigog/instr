@@ -1,5 +1,6 @@
 <template>
     <section class="product-tabs">
+<<<<<<< HEAD
         <div 
             class="container">
             <div class="product-tabs__wrapper">
@@ -7,33 +8,43 @@
                     @touchmove="scrollTabs"
                     @touchstart="touchStart"
                     @click="clickTabs(currentTab)"
+=======
+        <div class="product-tabs__wrapper">
+            <div ref="tabs" class="product-tabs__tabs"
+                :class="{'product-tabs__tabs--center': currentTab === 'description' && user.authorized,
+                            'product-tabs__tabs--end': currentTab === 'questions' && user.authorized}"
+                @touchmove="scrollTabs"
+                @touchstart="touchStart"
+                @touchend="touchEnd"
+            >
+                <div
+                    v-if="features"
+                    class="product-tabs__tab"
+                    :class="{'product-tabs__tab--active': currentTab === 'features'}"
+                    @click.prevent="showTab('features')"
+>>>>>>> 4462045236f7fed800e08cd9b01a88d668c9197e
                 >
-                    <div
-                        v-if="features"
-                        class="product-tabs__tab"
-                        :class="{'product-tabs__tab--active': currentTab === 'features'}"
-                        @click.prevent="showTab('features')"
-                    >
-                        {{ $tc('product_card.tabs.features') }}
-                    </div>
-                    <div
-                        v-if="description"
-                        class="product-tabs__tab"
-                        :class="{'product-tabs__tab--active': currentTab === 'description'}"
-                        @click.prevent="showTab('description')"
-                    >
-                        {{ $tc('product_card.tabs.description') }}
-                    </div>
-                    <div
-                        v-if="questions && !!user.authorized"
-                        class="product-tabs__tab"
-                        :class="{'product-tabs__tab--active': currentTab === 'questions'}"
-                        @click.prevent="showTab('questions')"
-                    >
-                        {{ $tc('product_card.tabs.questions') }}&nbsp;({{questions.length}})
-                    </div>
+                    <div >{{ $tc('product_card.tabs.features') }}</div>
+                </div>
+                <div
+                    v-if="description"
+                    class="product-tabs__tab"
+                    :class="{'product-tabs__tab--active': currentTab === 'description'}"
+                    @click.prevent="showTab('description')"
+                >
+                    <div >{{ $tc('product_card.tabs.description') }}</div>
+                </div>
+                <div
+                    v-if="questions && !!user.authorized"
+                    class="product-tabs__tab"
+                    :class="{'product-tabs__tab--active': currentTab === 'questions'}"
+                    @click.prevent="showTab('questions')"
+                >
+                    <div >{{ $tc('product_card.tabs.questions') }}&nbsp;({{questions.length}})</div>
                 </div>
             </div>
+        </div>
+        <div class="container">
             <div class="product-tabs__content">
                 <div v-if="currentTab === 'features'" class="product-tabs_content__container">
                     <slot name="features"></slot>
