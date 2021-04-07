@@ -1,12 +1,16 @@
 <template>
     <section class="product-tabs">
-        <div 
-            class="container">
-            <div class="product-tabs__wrapper">
-                <div ref="tabs" class="product-tabs__tabs"
-                    @touchmove="scrollTabs"
-                    @touchstart="touchStart"
-                    @click="clickTabs(currentTab)"
+        <div class="product-tabs__wrapper">
+            <div ref="tabs" class="product-tabs__tabs"
+                @touchmove="scrollTabs"
+                @touchstart="touchStart"
+                @click="clickTabs(currentTab)"
+            >
+                <div
+                    v-if="features"
+                    class="product-tabs__tab"
+                    :class="{'product-tabs__tab--active': currentTab === 'features'}"
+                    @click.prevent="showTab('features')"
                 >
                     <div >{{ $tc('product_card.tabs.features') }}</div>
                 </div>
@@ -140,7 +144,7 @@
                 elem.children.forEach(function(item){
                         digit += item.getBoundingClientRect().width
                     })
-                return vm.tabsWidth = digit + 48
+                return vm.tabsWidth = digit
             },
             getTabsListExplicitWidth(elem){
                 return this.tabsListWidth = elem.getBoundingClientRect().width
