@@ -30,9 +30,15 @@
             {% endif %}
         </div>
     </template>
+    {% if showTree == false %}
     <template v-slot:favoritecat>
         <component is="favorites-listing-category" :favorite-categories="{{ listCategory|json_encode|e('html_attr') }}"></component>
     </template>
+    {% elseif showTree == true %}
+    <template v-slot:favoritecat>
+        <component is="favorites-listing-category" :favorite-categories="{{ treeCategories|json_encode|e('html_attr') }}"></component>
+    </template>
+    {% endif %}
 </component>
 <component is="sticky-mobile-button"></component>
 {% if showStickyCard %}
