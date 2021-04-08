@@ -6,7 +6,7 @@
             <div v-for="delivery in deliveries" :key="delivery.name"
                  class="delivery-option__wrap"
                  :class="{
-                     'delivery-option__wrap--active': currentOption === delivery.type, 
+                     'delivery-option__wrap--active': deliveryId === delivery.id, 
                      'delivery-option__wrap--delivery': delivery.type === 'delivery',
                      'delivery-option__wrap--receive': delivery.type === 'receive',
                  }"
@@ -16,8 +16,9 @@
                 <div class="delivery-option__title">{{ delivery.name }}</div>
                 <div class="delivery-option__text">{{ delivery.description }}</div>
                 <div class="delivery-option__date">{{ delivery.date }}</div>
-                <div class="delivery-option__price" v-if="delivery.price > 0">{{ currency(delivery.price)}} {{ $tc('text.currency') }}</div>
-                <div class="delivery-option__price delivery-option__price--green" v-else>{{ $tc('text.free') }}</div>
+                <!-- #TODO скрыто пока не научились считать. пысы: когда научимся не забыть вернуть условия -->
+                <!-- <div class="delivery-option__price" v-if="delivery.price > 0">{{ currency(delivery.price)}} {{ $tc('text.currency') }}</div> -->
+                <div class="delivery-option__price delivery-option__price--green" v-if="delivery.price = 0">{{ $tc('text.free') }}</div>
             </div>
             <delivery-address
                 v-if="currentOption === 'delivery'"
@@ -88,12 +89,12 @@
         data(){
             return{
                 currentOption: 'delivery',
-                deliveryId: 1
+                deliveryId: this.deliveries[0].id
             }
         },
         methods: {
             changeDeliveryType(type, id, city){
-                let cityName =''
+                let cityName = city
                 if (this.currentCity && this.currentCity.name) {
                     cityName = this.currentCity.name
                 }
