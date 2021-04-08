@@ -6,7 +6,7 @@
             <div v-for="delivery in deliveries" :key="delivery.name"
                  class="delivery-option__wrap"
                  :class="{
-                     'delivery-option__wrap--active': currentOption === delivery.type, 
+                     'delivery-option__wrap--active': deliveryId === delivery.id, 
                      'delivery-option__wrap--delivery': delivery.type === 'delivery',
                      'delivery-option__wrap--receive': delivery.type === 'receive',
                  }"
@@ -88,12 +88,12 @@
         data(){
             return{
                 currentOption: 'delivery',
-                deliveryId: 1
+                deliveryId: this.deliveries[0].id
             }
         },
         methods: {
             changeDeliveryType(type, id, city){
-                let cityName =''
+                let cityName = city
                 if (this.currentCity && this.currentCity.name) {
                     cityName = this.currentCity.name
                 }

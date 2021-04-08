@@ -267,7 +267,6 @@
                         }
                         newArr.push(obj)
                     })
-                    console.log(newArr);
                 }
             },
             // getSideItems(){
