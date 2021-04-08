@@ -310,9 +310,9 @@ class Api {
     getCompare() {
         return this._promiseBitrixRequest('instrument2:rest.api.compare.get');
     }
-    filterCompare() {
-        return this._promiseBitrixRequest('instrument2:rest.api.compare.filter',);
-    }
+    // filterCompare() {
+    //     return this._promiseBitrixRequest('instrument2:rest.api.compare.filter',);
+    // }
     clearCompare() {
         return this._promiseBitrixRequest('instrument2:rest.api.compare.clear');
     }

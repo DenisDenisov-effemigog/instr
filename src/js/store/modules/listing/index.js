@@ -103,11 +103,11 @@ const actions = {
         });
     },
 
-    comparisonsFilter: ({commit, state}) => {
-        api.filterCompare().then((data) => {
-            commit(types.LISTING_APPLY_COMPARE, data);
-        });
-    },
+    // comparisonsFilter: ({commit, state}) => {
+    //     api.filterCompare().then((data) => {
+    //         commit(types.LISTING_APPLY_COMPARE, data);
+    //     });
+    // },
 }
 
 const getters = {

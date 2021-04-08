@@ -91,7 +91,7 @@
         <div class="comparisons__bottom">
             <div class="comparisons__comparing">
                 <ul class="comparisons__list">
-                    <li class="comparisons__item"  v-for="(item, itemIndex) in sliceList(otherOptions[0])">
+                    <li class="comparisons__item"  v-for="(item, itemIndex) in sliceList(otherOptions[0])" :key="itemIndex">
                         <div class="comparisons__sidebar">
                             <div class="comparisons__sidebar-item">
                                 {{ item[0] }}
@@ -142,7 +142,7 @@
             <a class="comparisons__deploy"
                 :class="{'comparisons__deploy--expanded': expanded}"
                 @click.prevent="expanded = true"
-                v-if="!expanded && Object.entries(comparisons[0].otherOptions).length > 10"
+                v-if="!expanded && Object.entries(otherOptions[0]).length > 10"
             >
                 {{ $tc('comparisons.text.deploy') }}
                 <svg viewBox="-2 -2 16 10">
@@ -169,9 +169,6 @@
             categories:{
                 type: Array
             },
-            showOnlyDiff: {
-                type: Function
-            }
         },
         data() {
             return {
@@ -241,33 +238,8 @@
             },
             filterComparison() {
                 this.onlyDiffer = !this.onlyDiffer;
-                if(this.onlyDiffer){
-                    let otherOptionsKeys = Object.keys(this.otherOptions[0])
-                    let uniqueKeysArr = []
-                    for(let i = 0; i < otherOptionsKeys.length; i++){
-                        let dubl = this.otherOptions[0][otherOptionsKeys[i]]
-                        this.otherOptions.filter(function(item){
-                            if(item[otherOptionsKeys[i]] !== dubl){
-                                if(uniqueKeysArr.indexOf(otherOptionsKeys[i]) == -1){
-                                    uniqueKeysArr.push(otherOptionsKeys[i]);
-                                }
-                                return uniqueKeysArr
-                            }
-                        })
-                    }
-                    let newArr = []
-                    this.otherOptions.filter(function(item){
-                        let obj = {}
-                        for(let i = 0; i <= uniqueKeysArr.length; i++){
-                            for( let key in item){
-                                if(key === uniqueKeysArr[i]){
-                                    obj[key] = item[key]
-                                }
-                            }; 
-                        }
-                        newArr.push(obj)
-                    })
-                    console.log(newArr);
+                if (this.onlyDiffer) {
+                    this.expanded = false
                 }
             },
             // getSideItems(){
@@ -294,13 +266,8 @@
             comparisons() {
                 return this.comparingItems;
             },
-            otherOptions(){
-                let otherOptionsArr = [];
-                this.comparisons.forEach(function(item){
-                    otherOptionsArr.push(item.otherOptions)
-                });
-                return otherOptionsArr
-
+            otherOptions() {
+                return this.onlyDiffer ? this.filteredOptions : this.comparisons.map(item => item.otherOptions)
             },
             qnty() {
                 return this.comparisons.length
@@ -316,7 +283,37 @@
                 if ((this.currentSlideNumber + this.shownItemsQnty > this.qnty) && (this.qnty > 3)) {
                     this.$refs.thumbnails.goToPrev()
                 }
-            }
+            },
+            filteredOptions() {
+                const vm = this;
+                const options = vm.comparisons.map(item => item.otherOptions);
+                const otherOptionsKeys = Object.keys(options[0]);
+                const uniqueKeysArr = [];
+                const newArr = [];
+                for(let i = 0; i < otherOptionsKeys.length; i++){
+                    let dubl = options[0][otherOptionsKeys[i]]
+                    options.forEach(function(item){
+                        if(item[otherOptionsKeys[i]] !== dubl){
+                            if(uniqueKeysArr.indexOf(otherOptionsKeys[i]) == -1){
+                                uniqueKeysArr.push(otherOptionsKeys[i]);
+                            }
+                            return uniqueKeysArr
+                        }
+                    })
+                }
+                options.forEach(function(item){
+                    let obj = {}
+                    for(let i = 0; i <= uniqueKeysArr.length; i++){
+                        for( let key in item){
+                            if(key === uniqueKeysArr[i]){
+                                obj[key] = item[key]
+                            }
+                        }; 
+                    }
+                    newArr.push(obj)
+                })
+                return newArr
+            },
         },
         created() {
             this.comparisons;

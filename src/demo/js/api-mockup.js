@@ -1096,229 +1096,229 @@ let demoMockupComparisons =
         },
     ];
 
-let demoMockupComparisonsFilter = 
-[
-    {
-        'id': 1101,
-        'title': 'Дрель-шуруповерт аккумуляторная CDL-12-02, Li-Ion, 12 В, 1.5 А*ч, 2 аккумулятора Denzel',
-        'link': '',
-        'code': 717950,
-        'available': true,
-        'stock': 100,
-        'oldPrice': 3819.358,
-        'newPrice': 2819.365,
-        'is_favorite': true,
-        'is_compare': true,
-        'images': [
-            {id: 1, img: './demo_images/product/image_50.png'},
-            {id: 2, img: './demo_images/product/image_51.png'},
-            {id: 3, img: './demo_images/product/image_52.png'},
-            {id: 4, img: './demo_images/product/image_53.png'},
-        ],
-        'tooltips': [
-            {
-                'id': 1,
-                'title': 'Новинка',
-                'text': 'Товар находится в акционной категории товаров “Новинка”',
-                'link': '',
-                'status': 'new',
-            },
-            {
-                'id': 2,
-                'title': 'Акция',
-                'text': 'Товар участвует в акции “Акция”',
-                'link': '',
-                'status': 'promo',
-            },
-        ],
-        'otherOptions': {
-            'Вес': '2.55 кг',
-            'Длина в упаковке': '490 мм',
-            'Число ступеней регулировки крутящего момента': '18+1',
-            'Штрихкод': '4044996171296',
-            'Частота вращения шпинделя': '0-350/0-1350 об/мин',
-            'Ссылка на сертификат': 'ttps://instrument.ru/info/sertif/Сертификаты (импорт)/ЕАЭС RU C-CN.ПФ02.В.01621-20.pdf',
-            'Частота вращения шпинделя': '0-350/0-1350 об/мин',
-            'Ссылка на сертификат': 'ttps://instrument.ru/info/sertif/Сертификаты (импорт)/ЕАЭС RU C-CN.ПФ02.В.01621-20.pdf'
-        }
-    },
-    {
-        'id': 2,
-        'title': 'Дрель-шуруповерт аккумуляторная CDL-12-02, Li-Ion, 12 В, 1.5 А*ч, 2 аккумулятора Denzel',
-        'link': '',
-        'code': 717950,
-        'available': true,
-        'stock': 100,
-        'oldPrice': 4218,
-        'newPrice': 4218,
-        'is_favorite': true,
-        'is_compare': true,
-        'images': [
-            {id: 1, img: './demo_images/product/image_50.png'},
-            {id: 2, img: './demo_images/product/image_51.png'},
-            {id: 3, img: './demo_images/product/image_52.png'},
-            {id: 4, img: './demo_images/product/image_53.png'},
-        ],
-        'tooltips': [
-            {
-                'id': 1,
-                'title': 'Новинка',
-                'text': 'Товар находится в акционной категории товаров “Новинка”',
-                'link': '',
-                'status': 'new',
-            },
-            {
-                'id': 2,
-                'title': 'Акция',
-                'text': 'Товар участвует в акции “Акция”',
-                'link': '',
-                'status': 'promo',
-            },
-        ],
-        'otherOptions': {
-            'Вес': '1.8 кг',
-            'Длина в упаковке': '350 мм',
-            'Число ступеней регулировки крутящего момента': '21+1',
-            'Штрихкод': '4044996171296',
-            'Частота вращения шпинделя': '0-350/0-1350 об/мин',
-            'Ссылка на сертификат': 'ttps://instrument.ru/info/sertif/Сертификаты (импорт)/ЕАЭС RU C-CN.ПФ02.В.01621-20.pdf',
-            'Частота вращения шпинделя': '0-350/0-1350 об/мин',
-            'Ссылка на сертификат': 'ttps://instrument.ru/info/sertif/Сертификаты (импорт)/ЕАЭС RU C-CN.ПФ02.В.01621-20.pdf'
-        }
-    },
-    {
-        'id': 3,
-        'title': 'Дрель-шуруповерт аккумуляторная CDL-12-02, Li-Ion, 12 В, 1.5 А*ч, 2 аккумулятора Denzel',
-        'link': '',
-        'code': 717950,
-        'available': true,
-        'stock': 100,
-        'oldPrice': 2051,
-        'newPrice': 2051,
-        'is_favorite': false,
-        'is_compare': true,
-        'images': [
-            {id: 1, img: './demo_images/product/image_50.png'},
-            {id: 2, img: './demo_images/product/image_51.png'},
-            {id: 3, img: './demo_images/product/image_52.png'},
-            {id: 4, img: './demo_images/product/image_53.png'},
-        ],
-        'tooltips': [
-            {
-                'id': 1,
-                'title': 'Новинка',
-                'text': 'Товар находится в акционной категории товаров “Новинка”',
-                'link': '',
-                'status': 'new',
-            },
-            {
-                'id': 2,
-                'title': 'Акция',
-                'text': 'Товар участвует в акции “Акция”',
-                'link': '',
-                'status': 'promo',
-            },
-        ],
-        'otherOptions': {
-            'Вес': '1.9 кг',
-            'Длина в упаковке': '240 мм',
-            'Число ступеней регулировки крутящего момента': '',
-            'Штрихкод': '4044996171296',
-            'Частота вращения шпинделя': '0-350/0-1350 об/мин',
-            'Ссылка на сертификат': 'ttps://instrument.ru/info/sertif/Сертификаты (импорт)/ЕАЭС RU C-CN.ПФ02.В.01621-20.pdf',
-            'Частота вращения шпинделя': '0-350/0-1350 об/мин',
-            'Ссылка на сертификат': 'ttps://instrument.ru/info/sertif/Сертификаты (импорт)/ЕАЭС RU C-CN.ПФ02.В.01621-20.pdf'
-        }
-    },
-    {
-        'id': 4,
-        'title': 'Дрель-шуруповерт аккумуляторная CDL-12-02, Li-Ion, 12 В, 1.5 А*ч, 2 аккумулятора Denzel',
-        'link': '',
-        'code': 717950,
-        'available': true,
-        'stock': 100,
-        'oldPrice': 3819,
-        'newPrice': 2819,
-        'is_favorite': true,
-        'is_compare': true,
-        'images': [
-            {id: 1, img: './demo_images/product/image_50.png'},
-            {id: 2, img: './demo_images/product/image_51.png'},
-            {id: 3, img: './demo_images/product/image_52.png'},
-            {id: 4, img: './demo_images/product/image_53.png'},
-        ],
-        'tooltips': [
-            {
-                'id': 1,
-                'title': 'Новинка',
-                'text': 'Товар находится в акционной категории товаров “Новинка”',
-                'link': '',
-                'status': 'new',
-            },
-            {
-                'id': 2,
-                'title': 'Акция',
-                'text': 'Товар участвует в акции “Акция”',
-                'link': '',
-                'status': 'promo',
-            },
-        ],
-        'otherOptions': {
-            'Вес': '2.55 кг',
-            'Длина в упаковке': '490 мм',
-            'Число ступеней регулировки крутящего момента': '18+1',
-            'Штрихкод': '4044996171296',
-            'Частота вращения шпинделя': '0-350/0-1350 об/мин',
-            'Ссылка на сертификат': 'ttps://instrument.ru/info/sertif/Сертификаты (импорт)/ЕАЭС RU C-CN.ПФ02.В.01621-20.pdf',
-            'Частота вращения шпинделя': '0-350/0-1350 об/мин',
-            'Ссылка на сертификат': 'ttps://instrument.ru/info/sertif/Сертификаты (импорт)/ЕАЭС RU C-CN.ПФ02.В.01621-20.pdf'
-        }
-    },
-    {
-        'id': 5,
-        'title': 'Дрель-шуруповерт аккумуляторная CDL-12-02, Li-Ion, 12 В, 1.5 А*ч, 2 аккумулятора Denzel',
-        'link': '',
-        'code': 717950,
-        'available': true,
-        'stock': 100,
-        'oldPrice': 3819,
-        'newPrice': 2819,
-        'is_favorite': true,
-        'is_compare': true,
-        'images': [
-            {id: 1, img: './demo_images/product/image_50.png'},
-            {id: 2, img: './demo_images/product/image_51.png'},
-            {id: 3, img: './demo_images/product/image_52.png'},
-            {id: 4, img: './demo_images/product/image_53.png'},
-        ],
-        'tooltips': [
-            {
-                'id': 1,
-                'title': 'Новинка',
-                'text': 'Товар находится в акционной категории товаров “Новинка”',
-                'link': '',
-                'status': 'new',
-            },
-            {
-                'id': 2,
-                'title': 'Акция',
-                'text': 'Товар участвует в акции “Акция”',
-                'link': '',
-                'status': 'promo',
-            },
-        ],
-        'otherOptions': {
-            'Вес': '2.55 кг',
-            'Длина в упаковке': '240 мм',
-            'Число ступеней регулировки крутящего момента': '',
-            'Штрихкод': '4044996171296',
-            'Частота вращения шпинделя': '0-350/0-1350 об/мин',
-            'Ссылка на сертификат': 'ttps://instrument.ru/info/sertif/Сертификаты (импорт)/ЕАЭС RU C-CN.ПФ02.В.01621-20.pdf',
-            'Частота вращения шпинделя': '0-350/0-1350 об/мин',
-            'Ссылка на сертификат': 'ttps://instrument.ru/info/sertif/Сертификаты (импорт)/ЕАЭС RU C-CN.ПФ02.В.01621-20.pdf'
-        }
-    },
-];
+// let demoMockupComparisonsFilter = 
+// [
+//     {
+//         'id': 1101,
+//         'title': 'Дрель-шуруповерт аккумуляторная CDL-12-02, Li-Ion, 12 В, 1.5 А*ч, 2 аккумулятора Denzel',
+//         'link': '',
+//         'code': 717950,
+//         'available': true,
+//         'stock': 100,
+//         'oldPrice': 3819.358,
+//         'newPrice': 2819.365,
+//         'is_favorite': true,
+//         'is_compare': true,
+//         'images': [
+//             {id: 1, img: './demo_images/product/image_50.png'},
+//             {id: 2, img: './demo_images/product/image_51.png'},
+//             {id: 3, img: './demo_images/product/image_52.png'},
+//             {id: 4, img: './demo_images/product/image_53.png'},
+//         ],
+//         'tooltips': [
+//             {
+//                 'id': 1,
+//                 'title': 'Новинка',
+//                 'text': 'Товар находится в акционной категории товаров “Новинка”',
+//                 'link': '',
+//                 'status': 'new',
+//             },
+//             {
+//                 'id': 2,
+//                 'title': 'Акция',
+//                 'text': 'Товар участвует в акции “Акция”',
+//                 'link': '',
+//                 'status': 'promo',
+//             },
+//         ],
+//         'otherOptions': {
+//             'Вес': '2.55 кг',
+//             'Длина в упаковке': '490 мм',
+//             'Число ступеней регулировки крутящего момента': '18+1',
+//             'Штрихкод': '4044996171296',
+//             'Частота вращения шпинделя': '0-350/0-1350 об/мин',
+//             'Ссылка на сертификат': 'ttps://instrument.ru/info/sertif/Сертификаты (импорт)/ЕАЭС RU C-CN.ПФ02.В.01621-20.pdf',
+//             'Частота вращения шпинделя': '0-350/0-1350 об/мин',
+//             'Ссылка на сертификат': 'ttps://instrument.ru/info/sertif/Сертификаты (импорт)/ЕАЭС RU C-CN.ПФ02.В.01621-20.pdf'
+//         }
+//     },
+//     {
+//         'id': 2,
+//         'title': 'Дрель-шуруповерт аккумуляторная CDL-12-02, Li-Ion, 12 В, 1.5 А*ч, 2 аккумулятора Denzel',
+//         'link': '',
+//         'code': 717950,
+//         'available': true,
+//         'stock': 100,
+//         'oldPrice': 4218,
+//         'newPrice': 4218,
+//         'is_favorite': true,
+//         'is_compare': true,
+//         'images': [
+//             {id: 1, img: './demo_images/product/image_50.png'},
+//             {id: 2, img: './demo_images/product/image_51.png'},
+//             {id: 3, img: './demo_images/product/image_52.png'},
+//             {id: 4, img: './demo_images/product/image_53.png'},
+//         ],
+//         'tooltips': [
+//             {
+//                 'id': 1,
+//                 'title': 'Новинка',
+//                 'text': 'Товар находится в акционной категории товаров “Новинка”',
+//                 'link': '',
+//                 'status': 'new',
+//             },
+//             {
+//                 'id': 2,
+//                 'title': 'Акция',
+//                 'text': 'Товар участвует в акции “Акция”',
+//                 'link': '',
+//                 'status': 'promo',
+//             },
+//         ],
+//         'otherOptions': {
+//             'Вес': '1.8 кг',
+//             'Длина в упаковке': '350 мм',
+//             'Число ступеней регулировки крутящего момента': '21+1',
+//             'Штрихкод': '4044996171296',
+//             'Частота вращения шпинделя': '0-350/0-1350 об/мин',
+//             'Ссылка на сертификат': 'ttps://instrument.ru/info/sertif/Сертификаты (импорт)/ЕАЭС RU C-CN.ПФ02.В.01621-20.pdf',
+//             'Частота вращения шпинделя': '0-350/0-1350 об/мин',
+//             'Ссылка на сертификат': 'ttps://instrument.ru/info/sertif/Сертификаты (импорт)/ЕАЭС RU C-CN.ПФ02.В.01621-20.pdf'
+//         }
+//     },
+//     {
+//         'id': 3,
+//         'title': 'Дрель-шуруповерт аккумуляторная CDL-12-02, Li-Ion, 12 В, 1.5 А*ч, 2 аккумулятора Denzel',
+//         'link': '',
+//         'code': 717950,
+//         'available': true,
+//         'stock': 100,
+//         'oldPrice': 2051,
+//         'newPrice': 2051,
+//         'is_favorite': false,
+//         'is_compare': true,
+//         'images': [
+//             {id: 1, img: './demo_images/product/image_50.png'},
+//             {id: 2, img: './demo_images/product/image_51.png'},
+//             {id: 3, img: './demo_images/product/image_52.png'},
+//             {id: 4, img: './demo_images/product/image_53.png'},
+//         ],
+//         'tooltips': [
+//             {
+//                 'id': 1,
+//                 'title': 'Новинка',
+//                 'text': 'Товар находится в акционной категории товаров “Новинка”',
+//                 'link': '',
+//                 'status': 'new',
+//             },
+//             {
+//                 'id': 2,
+//                 'title': 'Акция',
+//                 'text': 'Товар участвует в акции “Акция”',
+//                 'link': '',
+//                 'status': 'promo',
+//             },
+//         ],
+//         'otherOptions': {
+//             'Вес': '1.9 кг',
+//             'Длина в упаковке': '240 мм',
+//             'Число ступеней регулировки крутящего момента': '',
+//             'Штрихкод': '4044996171296',
+//             'Частота вращения шпинделя': '0-350/0-1350 об/мин',
+//             'Ссылка на сертификат': 'ttps://instrument.ru/info/sertif/Сертификаты (импорт)/ЕАЭС RU C-CN.ПФ02.В.01621-20.pdf',
+//             'Частота вращения шпинделя': '0-350/0-1350 об/мин',
+//             'Ссылка на сертификат': 'ttps://instrument.ru/info/sertif/Сертификаты (импорт)/ЕАЭС RU C-CN.ПФ02.В.01621-20.pdf'
+//         }
+//     },
+//     {
+//         'id': 4,
+//         'title': 'Дрель-шуруповерт аккумуляторная CDL-12-02, Li-Ion, 12 В, 1.5 А*ч, 2 аккумулятора Denzel',
+//         'link': '',
+//         'code': 717950,
+//         'available': true,
+//         'stock': 100,
+//         'oldPrice': 3819,
+//         'newPrice': 2819,
+//         'is_favorite': true,
+//         'is_compare': true,
+//         'images': [
+//             {id: 1, img: './demo_images/product/image_50.png'},
+//             {id: 2, img: './demo_images/product/image_51.png'},
+//             {id: 3, img: './demo_images/product/image_52.png'},
+//             {id: 4, img: './demo_images/product/image_53.png'},
+//         ],
+//         'tooltips': [
+//             {
+//                 'id': 1,
+//                 'title': 'Новинка',
+//                 'text': 'Товар находится в акционной категории товаров “Новинка”',
+//                 'link': '',
+//                 'status': 'new',
+//             },
+//             {
+//                 'id': 2,
+//                 'title': 'Акция',
+//                 'text': 'Товар участвует в акции “Акция”',
+//                 'link': '',
+//                 'status': 'promo',
+//             },
+//         ],
+//         'otherOptions': {
+//             'Вес': '2.55 кг',
+//             'Длина в упаковке': '490 мм',
+//             'Число ступеней регулировки крутящего момента': '18+1',
+//             'Штрихкод': '4044996171296',
+//             'Частота вращения шпинделя': '0-350/0-1350 об/мин',
+//             'Ссылка на сертификат': 'ttps://instrument.ru/info/sertif/Сертификаты (импорт)/ЕАЭС RU C-CN.ПФ02.В.01621-20.pdf',
+//             'Частота вращения шпинделя': '0-350/0-1350 об/мин',
+//             'Ссылка на сертификат': 'ttps://instrument.ru/info/sertif/Сертификаты (импорт)/ЕАЭС RU C-CN.ПФ02.В.01621-20.pdf'
+//         }
+//     },
+//     {
+//         'id': 5,
+//         'title': 'Дрель-шуруповерт аккумуляторная CDL-12-02, Li-Ion, 12 В, 1.5 А*ч, 2 аккумулятора Denzel',
+//         'link': '',
+//         'code': 717950,
+//         'available': true,
+//         'stock': 100,
+//         'oldPrice': 3819,
+//         'newPrice': 2819,
+//         'is_favorite': true,
+//         'is_compare': true,
+//         'images': [
+//             {id: 1, img: './demo_images/product/image_50.png'},
+//             {id: 2, img: './demo_images/product/image_51.png'},
+//             {id: 3, img: './demo_images/product/image_52.png'},
+//             {id: 4, img: './demo_images/product/image_53.png'},
+//         ],
+//         'tooltips': [
+//             {
+//                 'id': 1,
+//                 'title': 'Новинка',
+//                 'text': 'Товар находится в акционной категории товаров “Новинка”',
+//                 'link': '',
+//                 'status': 'new',
+//             },
+//             {
+//                 'id': 2,
+//                 'title': 'Акция',
+//                 'text': 'Товар участвует в акции “Акция”',
+//                 'link': '',
+//                 'status': 'promo',
+//             },
+//         ],
+//         'otherOptions': {
+//             'Вес': '2.55 кг',
+//             'Длина в упаковке': '240 мм',
+//             'Число ступеней регулировки крутящего момента': '',
+//             'Штрихкод': '4044996171296',
+//             'Частота вращения шпинделя': '0-350/0-1350 об/мин',
+//             'Ссылка на сертификат': 'ttps://instrument.ru/info/sertif/Сертификаты (импорт)/ЕАЭС RU C-CN.ПФ02.В.01621-20.pdf',
+//             'Частота вращения шпинделя': '0-350/0-1350 об/мин',
+//             'Ссылка на сертификат': 'ttps://instrument.ru/info/sertif/Сертификаты (импорт)/ЕАЭС RU C-CN.ПФ02.В.01621-20.pdf'
+//         }
+//     },
+// ];
 
 let demoSortingListing = {
     products: [
@@ -2598,16 +2598,16 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
-            case 'instrument2:rest.api.compare.filter':
-                resolve({
-                    data: {
-                        data: {
-                            status: 1,
-                            answer: demoMockupComparisonsFilter
-                        }
-                    }
-                });
-                break;
+            // case 'instrument2:rest.api.compare.filter':
+            //     resolve({
+            //         data: {
+            //             data: {
+            //                 status: 1,
+            //                 answer: demoMockupComparisonsFilter
+            //             }
+            //         }
+            //     });
+            //     break;
             case 'instrument2:rest.api.compare.clear':
                 demoMockupComparisons = []
                 resolve({

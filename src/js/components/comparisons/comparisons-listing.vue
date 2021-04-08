@@ -17,7 +17,6 @@
         <comparison-content v-if="comparingItems.length > 0"
             :comparingItems="comparingItems"
             :categories="categories"
-            :show-only-diff="onlyDifferences"
         >
             <slot></slot>
         </comparison-content>
@@ -52,20 +51,12 @@ import CatalogueBtn from '../catalogue-btn.vue';
         data() {
             return {
                 loaded: false,
-                differences: false,
             }
         },
         
         computed: {
             comparingItems() {
                 return this.$store.state.listing.comparisons.filter(item => item.is_compare === true)
-            },
-            filterComparison(){
-                if (this.differences) {
-                    this.$store.dispatch('comparisonsFilter');
-                } else {
-                    this.$store.dispatch('comparisonsUpdateProducts')
-                }
             },
         },
 
@@ -79,14 +70,10 @@ import CatalogueBtn from '../catalogue-btn.vue';
             clearAll() {
                 this.$store.dispatch('comparisonsClearAll');
             },
-            onlyDifferences(data) {
-                this.differences = data.params
-            },
         },
 
         created() {
             this.loading();
-            this.onlyDifferences();
         },
 
     }
