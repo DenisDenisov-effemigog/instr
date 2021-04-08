@@ -16,8 +16,9 @@
                 <div class="delivery-option__title">{{ delivery.name }}</div>
                 <div class="delivery-option__text">{{ delivery.description }}</div>
                 <div class="delivery-option__date">{{ delivery.date }}</div>
-                <div class="delivery-option__price" v-if="delivery.price > 0">{{ currency(delivery.price)}} {{ $tc('text.currency') }}</div>
-                <div class="delivery-option__price delivery-option__price--green" v-else>{{ $tc('text.free') }}</div>
+                <!-- #TODO скрыто пока не научились считать. пысы: когда научимся не забыть вернуть условия -->
+                <!-- <div class="delivery-option__price" v-if="delivery.price > 0">{{ currency(delivery.price)}} {{ $tc('text.currency') }}</div> -->
+                <div class="delivery-option__price delivery-option__price--green" v-if="delivery.price = 0">{{ $tc('text.free') }}</div>
             </div>
             <delivery-address
                 v-if="currentOption === 'delivery'"
