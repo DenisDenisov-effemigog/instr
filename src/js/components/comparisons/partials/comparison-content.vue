@@ -91,7 +91,7 @@
         <div class="comparisons__bottom">
             <div class="comparisons__comparing">
                 <ul class="comparisons__list">
-                    <li class="comparisons__item"  v-for="(item, itemIndex) in sliceList(comparisons[0].otherOptions)">
+                    <li class="comparisons__item"  v-for="(item, itemIndex) in sliceList(otherOptions[0])">
                         <div class="comparisons__sidebar">
                             <div class="comparisons__sidebar-item">
                                 {{ item[0] }}
@@ -100,7 +100,7 @@
                         <div class="comparisons__descriptions">
                             <agile ref="main" :options="options" :as-nav-for="asNavFor1">
                                 <div class="comparisons__description" v-for="(product, index ) in comparisons" :key="index">
-                                    <div class="comparisons__description-text" v-if="!!product.otherOptions[item[0]]">{{product.otherOptions[item[0]]}}</div>
+                                    <div class="comparisons__description-text" v-if="!!otherOptions[index][item[0]]">{{otherOptions[index][item[0]]}}</div>
                                     <div class="comparisons__description-text" v-else>—</div>
                                 </div>
                                  <div class="comparisons__description comparisons__description--no-product" v-if="qnty == 1">
@@ -237,13 +237,39 @@
             applyListing(content) {
                 this.$refs.thumbnails.goTo(0);
                 this.comparisons = content.products
+
             },
             filterComparison() {
                 this.onlyDiffer = !this.onlyDiffer;
-                this.showOnlyDiff({
-                    params: this.onlyDiffer
-                })
-            }
+                if(this.onlyDiffer){
+                    let otherOptionsKeys = Object.keys(this.otherOptions[0])
+                    let uniqueKeysArr = []
+                    for(let i = 0; i < otherOptionsKeys.length; i++){
+                        let dubl = this.otherOptions[0][otherOptionsKeys[i]]
+                        this.otherOptions.filter(function(item){
+                            if(item[otherOptionsKeys[i]] !== dubl){
+                                if(uniqueKeysArr.indexOf(otherOptionsKeys[i]) == -1){
+                                    uniqueKeysArr.push(otherOptionsKeys[i]);
+                                }
+                                return uniqueKeysArr
+                            }
+                        })
+                    }
+                    let newArr = []
+                    this.otherOptions.filter(function(item){
+                        let obj = {}
+                        for(let i = 0; i <= uniqueKeysArr.length; i++){
+                            for( let key in item){
+                                if(key === uniqueKeysArr[i]){
+                                    obj[key] = item[key]
+                                }
+                            }; 
+                        }
+                        newArr.push(obj)
+                    })
+                    console.log(newArr);
+                }
+            },
             // getSideItems(){
             //     if(window.innerWidth >= 1024){
             //         let sideItems = this.$refs.sideList.children
@@ -267,6 +293,14 @@
         computed: {
             comparisons() {
                 return this.comparingItems;
+            },
+            otherOptions(){
+                let otherOptionsArr = [];
+                this.comparisons.forEach(function(item){
+                    otherOptionsArr.push(item.otherOptions)
+                });
+                return otherOptionsArr
+
             },
             qnty() {
                 return this.comparisons.length
