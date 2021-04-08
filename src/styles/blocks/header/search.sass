@@ -22,7 +22,7 @@
     &--opened
         max-height: 100vh
         +tablet
-            max-height: 80vh
+            max-height: calc(100vh -200px)
         opacity: 1
         margin: 0 -1rem
         overflow: auto
@@ -79,7 +79,6 @@
         width: $size_18
         height: $size_18
     &__category
-        order: 1
         padding: 1rem 1rem 0.5rem 1rem
         +desktop
             border-bottom: 1px solid $border-color_2
