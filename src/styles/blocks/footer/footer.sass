@@ -89,6 +89,7 @@
             margin-top: 0
     &__menu-column
         //margin-top: 1.5rem
+        max-width: 16.875rem
         &--mobile
             margin-bottom: 1.75rem
             +tablet
@@ -105,6 +106,7 @@
     &__menu-title
         height: 1.25rem
         margin-bottom: .75rem
+        white-space: nowrap
         +tablet
             margin-bottom: 1rem
         & > a
@@ -133,16 +135,18 @@
             +tablet
                 font-size: $font-size_3
                 line-height: $line-height_8
-        &_img
+        &--img
             @extend .link-2
             max-width: 100%
             display: flex
             align-items: center
             &:hover > svg
                 fill: $icon-black
+        &--address
+            white-space: normal
     &__menu-icon
         fill: $icon-grey
-        width: $size_16
+        max-width: $size_16
         height: $size_16
         margin-right: .375rem
         +tablet
