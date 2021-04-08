@@ -61,7 +61,7 @@
         name: "listing-content",
         props: {
             pagination: {
-                required: true,
+                required: false,
                 type: Object
             },
             hash: {
@@ -82,7 +82,7 @@
             };
         },
         mounted() {
-            this.internalPagination = this.pagination;
+            if (this.pagination) this.internalPagination = this.pagination;
             this.internalProducts = this.cloneOverJson(this.products);
         },
         computed: {
