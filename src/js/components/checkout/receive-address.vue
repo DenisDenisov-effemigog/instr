@@ -49,13 +49,16 @@
         },
         data(){
             return{
-                city: this.currentCity.name,
+                city: '',
             }
+        },
+        created() {
+            if (this.currentCity && this.currentCity.name) this.city = this.currentCity.name
         },
         methods:{
             getValue(data){
                 this.$emit('getCity',  data)
             },
-        }
+        },
     }
 </script>

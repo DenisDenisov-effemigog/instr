@@ -1944,6 +1944,8 @@
     },
 } %}
 
+{% set showTree = false %}
+
 {% block content %}
 
     {% include '../../../templates/header/header.twig' with {
@@ -1962,7 +1964,8 @@
         'view_type': view_type,
         'pagination': pagination,
         'titleFlag': true,
-        'searchAnswer': 'шуруп'
+        'searchAnswer': 'шуруп',
+        'showTree':showTree
     } %}
     {% include '../../../templates/footer/footer.twig'  with {
         'countries': countries,
@@ -1971,6 +1974,7 @@
         'phone_mask': '+7 (F##) ###-##-##',
         'footerLinks': footerLinks,
         'headerLinks': headerLinks,
+        'showTree':showTree
     } %}
     
 {% endblock %}

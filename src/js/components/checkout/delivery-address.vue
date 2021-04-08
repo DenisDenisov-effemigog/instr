@@ -161,7 +161,7 @@
         },
         data(){
             return{
-                city: this.currentCity.name,
+                city: '',
                 street: '',
                 house: '',
                 building: '',
@@ -175,7 +175,8 @@
             },
         },
         created() {
-            this.$eventBus.$on('address-error', this.addressError)
+            this.$eventBus.$on('address-error', this.addressError);
+            if (this.currentCity && this.currentCity.name) this.city = this.currentCity.name
         },
         methods: {
             buildAddress() {

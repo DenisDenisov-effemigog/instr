@@ -93,13 +93,17 @@
         },
         methods: {
             changeDeliveryType(type, id, city){
+                let cityName =''
+                if (this.currentCity && this.currentCity.name) {
+                    cityName = this.currentCity.name
+                }
                 this.deliveryId = id
                 this.currentOption = type
                 this.$eventBus.$emit('push-delivery', type, id)
                 this.$store.dispatch('basketOrderCalc', {
                     paymentId: null,
                     deliveryId: id,
-                    city: this.currentCity.name
+                    city: cityName
                 }).finally(() => {
                 })
             },
