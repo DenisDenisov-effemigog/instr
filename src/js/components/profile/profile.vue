@@ -56,6 +56,7 @@
                     :selectopenSelect="selectopenSelect"
                     :contract="profile.contract"
                     :preLink="preLink"
+                    :reasons="reasons"
                 ></router-view>
             </transition>
         </div>
@@ -76,6 +77,10 @@ export default {
             type:String
         },
         user: {required: true},
+        reasons: {
+            type: Array,
+            required: true
+        }
     },
     data() {
         return {

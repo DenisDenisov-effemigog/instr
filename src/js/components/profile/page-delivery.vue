@@ -50,12 +50,15 @@ export default {
     components:{
         AddAddressBtn
     },
+    props: {
+        reasons: {
+            type: Array,
+            required: true
+        }
+    },
     data(){
         return{
             showToltip: 0,
-            reasons: [
-                'delete_profile.reason', 'delete_profile.reason', 'delete_profile.reason', 'delete_profile.reason_another'
-            ]
         }
     },
     mounted() {

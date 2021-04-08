@@ -2,11 +2,9 @@
     <section class="product-tabs">
         <div class="product-tabs__wrapper">
             <div ref="tabs" class="product-tabs__tabs"
-                :class="{'product-tabs__tabs--center': currentTab === 'description' && user.authorized,
-                            'product-tabs__tabs--end': currentTab === 'questions' && user.authorized}"
                 @touchmove="scrollTabs"
                 @touchstart="touchStart"
-                @touchend="touchEnd"
+                @click="clickTabs(currentTab)"
             >
                 <div
                     v-if="features"
@@ -76,11 +74,11 @@
             },
         data() {
             return {
-                startTouch:0,
                 moveTouch:0,
                 scrollDigit: 1,
                 currentTab: this.description ? 'features' : 'description',
-                lastTabPosition: 0
+                tabsListWidth: 0,
+                tabsWidth: 0
             }
         },
         methods: {
@@ -98,42 +96,67 @@
                 this.showTab('features')
             },
             touchStart(e){
-                let tabs = this.$refs.tabs.children
-                let lastTab = tabs[tabs.length - 1]
-                this.lastTabPosition = lastTab.clientWidth + lastTab.getBoundingClientRect().left
+                let tabs = this.$refs.tabs
                 this.startTouch = e.changedTouches[0].pageX
+                this.getTabsListCurrentWidth(tabs)
+                this.getTabsListExplicitWidth(tabs)
             },
             
-            touchEnd(){
+            clickTabs(currentTab){
+                let vm = this
+                if(window.innerWidth < 450){
+                    if(currentTab == 'features'){
+                        vm.scrollDigit = 0
+                    }
+                    if(currentTab == 'description'){
+                        vm.scrollDigit = Math.round((vm.tabsWidth - vm.tabsListWidth) / 2)
+                    }
+                    if(currentTab == 'questions'){
+                        vm.scrollDigit = Math.round(vm.tabsWidth - vm.tabsListWidth)
+                    }
+                    
+                }else{
+                    vm.scrollDigit = 0
+                }
+                vm.$refs.tabs.style.transform = `translateX(-${vm.scrollDigit}px)`
             },
             scrollTabs(e){
-                let windowW = window.innerWidth
-                if(this.startTouch > e.changedTouches[0].pageX){
-                    if(windowW < this.lastTabPosition){
-                        if(this.scrollDigit >= this.lastTabPosition - windowW){
-                            this.scrollDigit = this.lastTabPosition - windowW
-                        }else{
-                            this.scrollDigit +=3
+                if(window.innerWidth < 450){
+                    let anchor = 15
+                    if(this.startTouch > e.changedTouches[0].pageX){
+                        this.startTouch = e.changedTouches[0].pageX
+                        anchor = Math.round(anchor - (this.tabsWidth - this.tabsListWidth))
+                        if(anchor <= this.$refs.tabs.getBoundingClientRect().left){
+                            this.scrollDigit += 6
+                        }
+                    }else{
+                        this.startTouch = e.changedTouches[0].pageX
+                        if(anchor >= this.$refs.tabs.getBoundingClientRect().left){
+                            this.scrollDigit -=6
                         }
                     }
-                }else{
-                    if(this.scrollDigit <= 1){
-                        this.scrollDigit = 1
-                    }else{
-                        this.scrollDigit -=3
-                    }
+                    this.$refs.tabs.style.transform = `translateX(-${this.scrollDigit}px)`
                 }
-                this.$refs.tabs.style.transform = `translateX(-${this.scrollDigit}px)`
+            },
+            getTabsListCurrentWidth(elem){
+                const vm = this
+                let digit = 0
+                elem.children.forEach(function(item){
+                        digit += item.getBoundingClientRect().width
+                    })
+                return vm.tabsWidth = digit
+            },
+            getTabsListExplicitWidth(elem){
+                return this.tabsListWidth = elem.getBoundingClientRect().width
             }
         },
         computed: {
             questionsAnswers() {
                 return this.questions
-            }
+            },
         },
         created(){
             this.$eventBus.$on("click", this.scroll)
-        }
-
+        },
     }
 </script>

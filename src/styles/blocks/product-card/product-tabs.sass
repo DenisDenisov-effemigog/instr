@@ -5,9 +5,11 @@
     &__wrapper
         overflow: hidden
     &__tabs
-        @extend .container
         @extend .tabs
-        width: auto
+        @extend .container
+        width: 88.5rem
+        +mobile
+            width: auto
         // border: none
         // +mobile
         //     -ms-overflow-style: none
