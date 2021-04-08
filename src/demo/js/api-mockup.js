@@ -654,7 +654,7 @@ for(let i = 0; i < 6; ++i) {
 
 let demoAddressList = [
     {
-        'id': 12828,
+        'id': '12828',
         'order': 1,
         'address': '1062 Budapest, V1 Bajzautca, 35 1062 Budapest, V1 Bajzautca, 35 1062 Budapest, V1 Bajzautca, 35 Bajzautca',
         'status': 'сonfirmed',
@@ -662,7 +662,7 @@ let demoAddressList = [
         'statusDesc': '',
     },
     {
-        'id': 12829,
+        'id': '12829',
         'order': 2,
         'address': 'II., FrankelLeóút 22 1062 Budapest, V1 Bajzautca, 351062 Budapest, V1 Bajzautca, 35',
         'status': 'submitted',
@@ -670,7 +670,7 @@ let demoAddressList = [
         'statusDesc': 'В данный момент адрес проходит проверку модератора. Следить за статусом адреса вы можете тут',
     },
     {
-        'id': 12830,
+        'id': '12830',
         'order': 3,
         'address': 'XXI., Áruháztér 8',
         'status': 'not-сonfirmed',
@@ -2128,7 +2128,7 @@ window.runAction = function (action, config) {
                 break;
             case 'instrument2:rest.api.user.address.add':
                 demoAddressList.push({
-                    'id': 333,
+                    'id': '333',
                     'order': 1,
                     'address': config.data.address,
                     'status': 'submitted',
