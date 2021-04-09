@@ -171,7 +171,7 @@ const actions = {
             deliveryId = params.deliveryId
             city = params.city
         }
-        api.OrderCalc(paymentId, deliveryId).then((prices) => {
+        api.OrderCalc(paymentId, deliveryId, city).then((prices) => {
             commit(types.ORDER_APPLY_PRICES, prices);
         });
     },

@@ -38,7 +38,7 @@
                 }
             },
             deliveryId:{
-                type: Number,
+                type: String,
                 required: true
             }
         },
@@ -52,7 +52,7 @@
         },
         methods:{
             getValue(data){
-                this.$emit('getCity',  data)
+                this.$emit('getCity', data)
             },
         },
     }

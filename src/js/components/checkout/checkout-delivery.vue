@@ -101,7 +101,7 @@
                 this.$store.dispatch('basketOrderCalc', {
                     paymentId: null,
                     deliveryId: this.deliveryId,
-                    city: data.value
+                    city: data.name
                 }).finally(() => {
                 })
             }
