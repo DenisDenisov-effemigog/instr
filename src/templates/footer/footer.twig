@@ -19,7 +19,7 @@
             {% if brandCatalog %}
                 {% include '../listing/listing-subcategories.twig' with {'subcategory': listCategory, 'main': true, 'brandCatalog': brandCatalog, 'title': sub_title} %}
             {% elseif showTree == false %}
-                {% include '../listing/listing-subcategories.twig' with {'subcategory': listCategory, 'showTree':showTree, 'main': true,'title': sub_title} %}
+                {% include '../listing/listing-subcategories.twig' with {'subcategory': listCategory, 'showTree':showTree, 'main': true,'title': listingCategoryTitle} %}
             {% else %}
                 {% for subcategory in treeCategories.subcategories|slice(0, 1) %}
                     {% include '../listing/listing-subcategories.twig' with {'subcategory': subcategory, 'main': true} %}

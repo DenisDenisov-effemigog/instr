@@ -3,7 +3,7 @@
         {% if brandCatalog %}
             <a class="listing__subcategory-link">{{title}}</a>
         {% else %}
-            <a href="{{ subcategory.url }}" class="listing__subcategory-link">{{subcategory.title}}</a>
+            <a href="{{ subcategory.url }}" class="listing__subcategory-link">{{title}}</a>
         {% endif %}
     </template>
     <template v-slot:subcategories-content>
