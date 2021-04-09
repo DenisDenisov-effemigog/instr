@@ -16,17 +16,20 @@
 >
     <template v-slot:listingcat>
         <div class="listing__subcategories">
-            {% if showTree == false %}
+            {% if brandCatalog %}
                 {% include '../listing/listing-subcategories.twig' with {'subcategory': listCategory, 'main': true, 'brandCatalog': brandCatalog, 'title': sub_title} %}
+            {% elseif showTree == false %}
+                {% include '../listing/listing-subcategories.twig' with {'subcategory': listCategory, 'main': true,'title': sub_title} %}
             {% else %}
                 {% for subcategory in treeCategories.subcategories|slice(0, 1) %}
                     {% include '../listing/listing-subcategories.twig' with {'subcategory': subcategory, 'main': true} %}
                 {% endfor %}
-                <component is="all-categories">
+                {# #TODO пока скрыть #}
+                {# <component is="all-categories">
                     {% for subcategory in treeCategories.subcategories|slice(1) %}
                         {% include '../listing/listing-subcategories.twig' with {'subcategory': subcategory, 'main': false} %}
                     {% endfor %}
-                </component>
+                </component> #}
             {% endif %}
         </div>
     </template>
@@ -128,7 +131,7 @@
                     {{ 'nav.schedule'|trans }}
                 </li>
                 <li class="footer__menu-item footer__menu-item--img">
-                    <svg class="footer__menu-icon" viewBox="0 -1 16 16">
+                    <svg class="footer__menu-icon">
                         <use xlink:href="{{ templatePath }}images/sprite.svg#icons__email"></use>
                     </svg>
                     {{ 'nav.email'|trans }}
