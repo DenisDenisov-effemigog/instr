@@ -16,7 +16,7 @@
                    :class-name="'listing'"
         >
             <template v-slot:subcategory-listing-part>
-                {% if brandCatalog or showTree == false %}
+                {% if brandCatalog %}
                     {% for subsubcategory in subcategory|slice(0, 5) %}
                         <li class="thisisAListingCategory" >
                             <a href="{{ subsubcategory.url }}" class="listing__further-subcategory">{{ subsubcategory.title }}</a>
