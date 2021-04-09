@@ -1,6 +1,6 @@
 <component is="listing-subcategories" :subcat-total="{{ subcategory.subcategories|length }}" :main="{{ main|json_encode()|e('html_attr') }}">
     <template v-slot:listing-subcategory-title>
-        {% if brandCatalog or showTree == false %}
+        {% if brandCatalog %}
             <a class="listing__subcategory-link">{{title}}</a>
         {% else %}
             <a href="{{ subcategory.url }}" class="listing__subcategory-link">{{subcategory.title}}</a>
