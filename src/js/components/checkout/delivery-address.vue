@@ -17,7 +17,6 @@
             <form action="" class="delivery-address__form">
 
                 <autocomplete-input
-                    :itemsArray="cities"
                     :labelName="$tc('title.city')"
                     :itemName="'city'"
                     :getValue="getValue"
@@ -26,7 +25,6 @@
                 </autocomplete-input>
 
                 <autocomplete-input
-                    :itemsArray="streets"
                     :labelName="$tc('title.street')"
                     :itemName="'street'"
                     :getValue="getValue"
@@ -148,14 +146,6 @@
             },
             user:{
                 type:Object,
-                required: true
-            },
-            cities:{
-                type:Array,
-                required: true
-            },
-            streets:{
-                type:Array,
                 required: true
             },
         },

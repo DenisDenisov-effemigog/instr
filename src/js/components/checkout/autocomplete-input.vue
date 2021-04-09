@@ -6,6 +6,7 @@
         :get-result-value="setLabel"
         @submit="submitItem"
         auto-select
+        :debounce-time="500"
     >
         <template #default="{
             rootProps,
@@ -80,10 +81,6 @@
         name: 'autocomplete-input',
         components: { Autocomplete },
         props: {
-            itemsArray: {
-                type: Array,
-                required: true
-            },
             labelName: {
                 type: String,
                 required: true
@@ -124,9 +121,6 @@
                     this.$emit('change', newValue);
                 }
             },
-            items() {
-                return this.itemsArray
-            },
             noResults() {
                 return this.valueInput && this.results.length === 0
             }
@@ -135,16 +129,16 @@
             this.$eventBus.$on('autocomplete-error', this.autocompleteError);
             if (!!this.value) {
                 this.search(this.value);
-                if (!!this.foundItem) {
-                    this.submitItem(this.foundItem)
-                }
+                // if (!!this.foundItem) {
+                //     this.submitItem(this.foundItem)
+                // }
             }
         },
         methods: {
             autocompleteError() {
                 let vm = this
                 if (vm.itemName === 'city') {
-                    vm.$v.$touch();
+                    vm.$v.valueInput.$touch();
                 }
             },
             submitItem(item) {
@@ -161,8 +155,8 @@
             },
             search(input) {
                 let vm = this
-                this.valueInput = input
-                if (this.itemName === 'city') {
+                vm.valueInput = input
+                if (vm.itemName === 'city' && input.length > 0) {
                     api.finedCity(input).then(answer => {
                         vm.results = answer.list.filter(item => {
                             if(item.name.toLowerCase() === vm.valueInput.toLowerCase()) {
@@ -173,7 +167,7 @@
                                 .startsWith(input.toLowerCase())
                         })
                     })
-                } else if (this.itemName === 'street') {
+                } else if (vm.itemName === 'street' && input.length > 0) {
                     api.finedStreet(input).then(answer => {
                         vm.results = answer.list.filter(item => {
                             if(item.name.toLowerCase() === vm.valueInput.toLowerCase()) {
@@ -184,9 +178,8 @@
                                 .startsWith(input.toLowerCase())
                         })
                     })
-                }
-                
-                return this.results
+                } else if (input.length < 1) vm.results = []
+                return vm.results
             }
         },
     }

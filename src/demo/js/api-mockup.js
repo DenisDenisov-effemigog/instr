@@ -2631,6 +2631,9 @@ window.runAction = function (action, config) {
                                     [
                                         {'name': 'Киев', 'id': '1'},
                                         {'name': 'Харьков', 'id': '2'},
+                                        {'name': 'Каменка', 'id': '3'},
+                                        {'name': 'Калуш', 'id': '4'},
+                                        {'name': 'Куликов', 'id': '5'},
                                     ]
                                 }
 

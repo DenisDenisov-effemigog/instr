@@ -26,13 +26,10 @@
                 :currentCity="currentCity"
                 :addresses="addresses"
                 :user="user"
-                :cities="cities"
-                :streets="streets"
             ></delivery-address>
             <receive-address 
                 v-else-if="currentOption === 'receive'"
                 :deliveryPoints="deliveryPoints"
-                :cities="cities"
                 :currentCity="currentCity"
                 @getCity="getCity"
                 :deliveryId="deliveryId"
@@ -68,14 +65,6 @@
             },
             user:{
                 type:Object,
-                required: true
-            },
-            cities:{
-                type: Array,
-                required: true
-            },
-            streets:{
-                type: Array,
                 required: true
             },
             currentCity:{

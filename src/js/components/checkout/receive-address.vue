@@ -2,7 +2,6 @@
     <div class="receive-address">
         <div class="receive-address__tow">
             <autocomplete-input
-                :itemsArray="cities"
                 :labelName="$tc('title.city')"
                 :itemName="'city'"
                 :getValue="getValue"
@@ -30,10 +29,6 @@
             deliveryPoints: {
                 required: true,
                 type: Array
-            },
-            cities:{
-                type:Array,
-                required: true
             },
             currentCity:{
                 type: Object,
