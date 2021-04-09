@@ -10,7 +10,7 @@
                      'delivery-option__wrap--delivery': delivery.type === 'delivery',
                      'delivery-option__wrap--receive': delivery.type === 'receive',
                  }"
-                 @click="changeDeliveryType(delivery.type, delivery.id, currentCity)"
+                 @click="changeDeliveryType(delivery.type, delivery.id)"
             >
                 <div v-show="delivery.discount > 0" class="delivery-option__sale">{{ $tc('text.discount') }} -{{delivery.discount}}%</div>
                 <div class="delivery-option__title">{{ delivery.name }}</div>
@@ -82,8 +82,8 @@
             }
         },
         methods: {
-            changeDeliveryType(type, id, city){
-                let cityName = city
+            changeDeliveryType(type, id) {
+                let cityName = null
                 if (this.currentCity && this.currentCity.name) {
                     cityName = this.currentCity.name
                 }
@@ -101,7 +101,7 @@
                 this.$store.dispatch('basketOrderCalc', {
                     paymentId: null,
                     deliveryId: this.deliveryId,
-                    city: data.name
+                    city: data.value.name
                 }).finally(() => {
                 })
             }
