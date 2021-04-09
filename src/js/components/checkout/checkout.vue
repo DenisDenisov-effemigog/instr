@@ -213,12 +213,11 @@
         computed: {
             addresses: {
                 get: function() {
-                    let selectAddresses = []
-                    let newArr = this.$store.state.personal.addresses.slice()
-                    newArr.map(address=>{
+                    const newArr = this.$store.state.personal.addresses.slice()
+                    const selectAddresses = newArr.map(address=>{
                         address.label = this.$tc('text.address') + ' №' + address.order + ': ' + address.address
                         address.value = address.order
-                        selectAddresses.push(address)
+                        return address
                     })
                     return selectAddresses;
                 },

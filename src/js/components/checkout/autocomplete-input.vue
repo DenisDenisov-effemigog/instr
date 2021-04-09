@@ -6,7 +6,6 @@
         :get-result-value="setLabel"
         @submit="submitItem"
         auto-select
-        :debounce-time="500"
     >
         <template #default="{
             rootProps,
