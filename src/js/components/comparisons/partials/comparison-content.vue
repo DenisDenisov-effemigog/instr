@@ -98,7 +98,7 @@
                             </div>
                         </div>
                         <div class="comparisons__descriptions">
-                            <agile ref="main" :options="options" :as-nav-for="asNavFor1">
+                            <agile ref="main" :options="options" :as-nav-for="asNavFor1" @after-change="currentSlide2($event)">
                                 <div class="comparisons__description" v-for="(product, index ) in comparisons" :key="index">
                                     <div class="comparisons__description-text" v-if="!!otherOptions[index][item[0]]">{{otherOptions[index][item[0]]}}</div>
                                     <div class="comparisons__description-text" v-else>—</div>
@@ -210,8 +210,13 @@
                     this.$refs.thumbnails.goToNext()
                 }
             },
-            currentSlide(event) {
+            currentSlide(event){
                 this.currentSlideNumber = event.currentSlide;
+            },
+            currentSlide2(event){
+                    this.$refs.main.forEach(function(item){
+                        item.goTo(event.currentSlide)
+                    })
             },
             changeShownQnty() {
                 if (window.innerWidth < 768) {

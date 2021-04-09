@@ -70,7 +70,7 @@
             },
             products: {
                 type: Array,
-                required: true,
+                required: false,
             }
         },
         data() {
@@ -83,7 +83,8 @@
         },
         mounted() {
             if (this.pagination) this.internalPagination = this.pagination;
-            this.internalProducts = this.cloneOverJson(this.products);
+            if (this.products) this.internalProducts = this.cloneOverJson(this.products);
+            // this.internalProducts = this.cloneOverJson(this.products);
         },
         computed: {
             activeDisplaying() {
