@@ -19,6 +19,7 @@
         +desktop
             display: flex
             flex-direction: column
+            align-self: baseline
             justify-content: space-between
             width: percentage(4 / 12)
         & svg
@@ -89,7 +90,9 @@
             margin-top: 0
     &__menu-column
         //margin-top: 1.5rem
-        max-width: 16.875rem
+        max-width: 100%
+        +tablet
+            max-width: 16.875rem
         &--mobile
             margin-bottom: 1.75rem
             +tablet
@@ -148,6 +151,7 @@
         fill: $icon-grey
         max-width: $size_16
         height: $size_16
-        margin-right: .375rem
+        align-self: baseline
+        margin: .25rem .375rem 0 0
         +tablet
-            margin-right: .625rem
+            margin: .375rem .625rem 0 0
