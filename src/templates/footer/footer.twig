@@ -16,9 +16,8 @@
 >
     <template v-slot:listingcat>
         <div class="listing__subcategories">
-            {% if brandCatalog %}
-                {% include '../listing/listing-subcategories.twig' with {'subcategory': listCategory, 'main': true, 'brandCatalog': brandCatalog, 'title': sub_title} %}
-            {% elseif showTree == false %}
+            
+            {% if showTree == false or brandCatalog%}
                 {% include '../listing/listing-subcategories.twig' with {'subcategory': listCategory, 'showTree':showTree, 'main': true,'title': listingCategoryTitle} %}
             {% else %}
                 {% for subcategory in treeCategories.subcategories|slice(0, 1) %}
