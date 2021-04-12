@@ -981,12 +981,6 @@
     },
 } %}
 
-{% set errorsImg = {
-    404:"./demo_images/errors/404.png",
-    500:"./demo_images/errors/500.png",
-    403:"./demo_images/errors/403.png"
-} %}
-
 {% block content %}
 
     {% include '../../../templates/header/header.twig' with {
@@ -997,7 +991,6 @@
     } %}
     {% include '../../../templates/errors/errors.twig' with {
         'errorType': '404',
-        'errorsImg': errorsImg
     } %}
     {% include '../../../templates/footer/footer.twig'  with {
         'countries': countries,

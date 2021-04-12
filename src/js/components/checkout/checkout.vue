@@ -48,7 +48,7 @@
                         <checkout-delivery
                             :currentTab="currentTab"
                             :deliveries="deliveries"
-                            :deliveryPoints="deliveryPoints"
+                            :deliveryPoints="points"
                             :addresses="addresses"
                             :user="user"
                             :currentCity="currentCity"
@@ -227,6 +227,9 @@
             },
             productsPrice() {
                 return this.$store.state.basket.summury
+            },
+            points(){
+                return this.productsPrice.points
             }
         },
         mounted() {
