@@ -14,19 +14,19 @@
         :class="{'select__dropdown--download': icon === 'icons__download'}"
     >
         <ul class="select__list" v-if="selectName === 'download-doc'">
-            <li @click="clickPoint(point)" v-for="point in points" :key="point.id">
+            <li @click="clickPoint(point)" v-for="point in points" :key="point.value">
                 <a :href="point.link" download
                     class="select__item"
-                    :class="{'select__item--active':currentPoint.id === point.id}"
+                    :class="{'select__item--active':currentPoint.value === point.value}"
                 >
-                    <span>{{ point.address }}</span>
+                    <span>{{ point.label }}</span>
                     <svg :viewBox="viewBox">
                         <use :xlink:href="templatePath + `images/sprite.svg#${icon}`"></use>
                     </svg>
                 </a>
             </li>
         </ul>
-        <ul class="select__list" v-else>
+        <ul class="select__list" v-else-if="selectName === 'receive-address'">
             <li @click="clickPoint(point)"
                 class="select__item"
                 :class="{'select__item--active':currentPoint.id === point.id}"
@@ -34,6 +34,19 @@
                 :key="point.id"
             >
                 <span>{{ point.address }}</span>
+                <svg :viewBox="viewBox">
+                    <use :xlink:href="templatePath + `images/sprite.svg#${icon}`"></use>
+                </svg>
+            </li>
+        </ul>
+        <ul class="select__list" v-else>
+            <li @click="clickPoint(point)"
+                class="select__item"
+                :class="{'select__item--active':currentPoint.value === point.value}"
+                v-for="point in points"
+                :key="point.value"
+            >
+                <span>{{ point.label }}</span>
                 <svg :viewBox="viewBox">
                     <use :xlink:href="templatePath + `images/sprite.svg#${icon}`"></use>
                 </svg>
@@ -93,13 +106,13 @@ export default {
             let vm = this;
             vm.currentPoint = data
             if (vm.sortingPage === 'listing') {
-                vm.$eventBus.$emit('add-sorting', vm.currentPoint.id);
+                vm.$eventBus.$emit('add-sorting', vm.currentPoint.value);
             } else if (vm.sortingPage === 'orders') {
-                vm.$eventBus.$emit('apply-sorting', vm.currentPoint.id);
+                vm.$eventBus.$emit('apply-sorting', vm.currentPoint.value);
             } else if (vm.selectName === 'receive-address') {
                 vm.$eventBus.$emit('change-select-point', vm.selectName, vm.currentPoint);
             } else if (vm.sortingPage === 'comparison') {
-                this.$eventBus.$emit('changed-category', vm.currentPoint.id, 'comparison')
+                this.$eventBus.$emit('changed-category', vm.currentPoint.value, 'comparison')
             }
         },
         closeOutside() {
