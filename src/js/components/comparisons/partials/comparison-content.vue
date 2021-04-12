@@ -10,6 +10,7 @@
                         :selectopenSelect="categories[0]"
                         :sortingPage="'comparison'"
                         :placeholder="$tc('text.category')"
+                        :selectName="'comparisons'"
                     >
                     </select-list>
                     <label @click.prevent="filterComparison">
