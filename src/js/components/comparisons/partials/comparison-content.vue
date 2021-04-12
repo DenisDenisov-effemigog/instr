@@ -193,7 +193,8 @@
                 currentSlideNumber: 0,
                 shownItemsQnty: 2,
                 expanded: false,
-                onlyDiffer: false
+                onlyDiffer: false,
+                comparisons: []
             }
         },
         methods: {
@@ -269,9 +270,6 @@
             // }
         },
         computed: {
-            comparisons() {
-                return this.comparingItems;
-            },
             otherOptions() {
                 return this.onlyDiffer ? this.filteredOptions : this.comparisons.map(item => item.otherOptions)
             },
@@ -322,7 +320,7 @@
             },
         },
         created() {
-            this.comparisons;
+            this.comparisons = this.comparingItems;
             window.addEventListener('resize', this.changeShownQnty);
             this.$eventBus.$on('apply-comparison', this.applyListing);
         },
