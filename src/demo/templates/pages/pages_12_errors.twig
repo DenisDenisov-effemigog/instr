@@ -2014,7 +2014,8 @@
         'headerLinks': headerLinks,
     } %}
     {% include '../../../templates/errors/errors.twig' with {
-        'errorType': '403' 
+        'errorType': '403',
+        'errorsImg': errorsImg
     } %} {#тип ошибки 403 и 404. В зависимости от этого будет меняться шаблон#}
     {% include '../../../templates/listing/listing.twig' with {
         'products': products,
