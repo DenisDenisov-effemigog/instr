@@ -3,7 +3,8 @@
     <div class="select__button" :class="{'select__button--active':openSelect}">
         <span>
             <span class="select__placeholder" v-if="!!placeholder">{{placeholder}}:&nbsp;</span>
-            <span>{{ currentPoint.label }}</span>
+            <span v-if="selectName='receive-address'">{{ currentPoint.short }}</span>
+            <span v-else>{{ currentPoint.label }}</span>
         </span>
         <svg :viewBox="viewbox" class="select__arrow">
             <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-down'"></use>
@@ -93,7 +94,7 @@ export default {
     data(){
         return{
             openSelect: false,
-            currentPoint: {},
+            // currentPoint: {},
             viewBox: '',
         }
     },
@@ -129,11 +130,15 @@ export default {
             } else if (this.icon === 'icons__download') {
                 this.viewBox = '1 0 18 20'
             }
+        },
+        currentPoint(){
+            return this.selectopenSelect
         }
     },
     mounted() {
         this.popupItem = this.$el
-        this.currentPoint = this.selectopenSelect;
+        this.currentPoint
+        // this.currentPoint = this.selectopenSelect;
     },
     directives: {
         ClickOutside
