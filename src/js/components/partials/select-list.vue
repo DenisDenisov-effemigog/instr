@@ -3,7 +3,7 @@
     <div class="select__button" :class="{'select__button--active':openSelect}">
         <span>
             <span class="select__placeholder" v-if="!!placeholder">{{placeholder}}:&nbsp;</span>
-            <span v-if="selectName='receive-address'">{{ currentPoint.short }}</span>
+            <span v-if="selectName ==='receive-address'">{{ currentPoint.short }}</span>
             <span v-else>{{ currentPoint.label }}</span>
         </span>
         <svg :viewBox="viewbox" class="select__arrow">
@@ -84,6 +84,7 @@ export default {
         },
         selectName: { //передаём название селекта
             type: String,
+            required: false,
             default: null
         },
         placeholder: { // передаем плейсхолдер внутри селекта
