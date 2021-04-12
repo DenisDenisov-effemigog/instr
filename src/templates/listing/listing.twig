@@ -31,7 +31,7 @@
                     ></component>
                 {% elseif listCategoryView == 'search' and searchAnswer is empty%}
                     <h2 class="listing__title">{{ 'listing.filters.title'|trans }}</h2>
-                {% else %}
+                {% elseif is empty listCategoryView %}
                     <h2 class="listing__title">{{ 'listing.category.title'|trans }}</h2>
                 {% endif %}
             </div>
