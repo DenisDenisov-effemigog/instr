@@ -194,7 +194,6 @@
                 shownItemsQnty: 2,
                 expanded: false,
                 onlyDiffer: false,
-                comparisons: []
             }
         },
         methods: {
@@ -240,7 +239,8 @@
             },
             applyListing(content) {
                 this.$refs.thumbnails.goTo(0);
-                this.comparisons = content.products
+                console.log(content)
+                //this.comparisons = content.products
 
             },
             filterComparison() {
@@ -270,6 +270,9 @@
             // }
         },
         computed: {
+            comparisons() {
+                return this.comparingItems;
+            },
             otherOptions() {
                 return this.onlyDiffer ? this.filteredOptions : this.comparisons.map(item => item.otherOptions)
             },
@@ -320,7 +323,7 @@
             },
         },
         created() {
-            this.comparisons = this.comparingItems;
+            this.comparisons;
             window.addEventListener('resize', this.changeShownQnty);
             this.$eventBus.$on('apply-comparison', this.applyListing);
         },
