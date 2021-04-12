@@ -25,15 +25,16 @@
                         :items-quantity="{{ filters.match|json_encode()|e('html_attr') }}"
                     ></component>
                 {% elseif listCategoryView == 'select' or listCategoryView == 'filter' or listCategoryView == 'list' %}
-                    <h2 class="listing__title">{{ listingCategoryTitle }}</h2>
+                    {% if listingCategoryTitle is empty %}
+                        <h2 class="listing__title">{{ 'listing.category.title'|trans }}</h2>
+                    {% else %}
+                        <h2 class="listing__title">{{ listingCategoryTitle }}</h2>
+                    {% endif %}
                     <component is="listing-items-quantity"
                         :items-quantity="{{ filters.match|json_encode()|e('html_attr') }}"
                     ></component>
                 {% elseif listCategoryView == 'search' and searchAnswer is empty%}
                     <h2 class="listing__title">{{ 'listing.filters.title'|trans }}</h2>
-                {% endif %}
-                {% if listingCategoryTitle is empty %}
-                    <h2 class="listing__title">{{ 'listing.category.title'|trans }}</h2>
                 {% endif %}
             </div>
         {% endif %}
