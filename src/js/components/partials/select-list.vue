@@ -14,12 +14,12 @@
         :class="{'select__dropdown--download': icon === 'icons__download'}"
     >
         <ul class="select__list" v-if="selectName === 'download-doc'">
-            <li @click="clickPoint(point)" v-for="point in points" :key="point.value">
+            <li @click="clickPoint(point)" v-for="point in points" :key="point.id">
                 <a :href="point.link" download
                     class="select__item"
-                    :class="{'select__item--active':currentPoint.value === point.value}"
+                    :class="{'select__item--active':currentPoint.id === point.id}"
                 >
-                    <span>{{ point.label }}</span>
+                    <span>{{ point.address }}</span>
                     <svg :viewBox="viewBox">
                         <use :xlink:href="templatePath + `images/sprite.svg#${icon}`"></use>
                     </svg>
@@ -29,11 +29,11 @@
         <ul class="select__list" v-else>
             <li @click="clickPoint(point)"
                 class="select__item"
-                :class="{'select__item--active':currentPoint.value === point.value}"
+                :class="{'select__item--active':currentPoint.id === point.id}"
                 v-for="point in points"
-                :key="point.value"
+                :key="point.id"
             >
-                <span>{{ point.label }}</span>
+                <span>{{ point.address }}</span>
                 <svg :viewBox="viewBox">
                     <use :xlink:href="templatePath + `images/sprite.svg#${icon}`"></use>
                 </svg>
@@ -93,13 +93,13 @@ export default {
             let vm = this;
             vm.currentPoint = data
             if (vm.sortingPage === 'listing') {
-                vm.$eventBus.$emit('add-sorting', vm.currentPoint.value);
+                vm.$eventBus.$emit('add-sorting', vm.currentPoint.id);
             } else if (vm.sortingPage === 'orders') {
-                vm.$eventBus.$emit('apply-sorting', vm.currentPoint.value);
+                vm.$eventBus.$emit('apply-sorting', vm.currentPoint.id);
             } else if (vm.selectName === 'receive-address') {
                 vm.$eventBus.$emit('change-select-point', vm.selectName, vm.currentPoint);
             } else if (vm.sortingPage === 'comparison') {
-                this.$eventBus.$emit('changed-category', vm.currentPoint.value, 'comparison')
+                this.$eventBus.$emit('changed-category', vm.currentPoint.id, 'comparison')
             }
         },
         closeOutside() {
