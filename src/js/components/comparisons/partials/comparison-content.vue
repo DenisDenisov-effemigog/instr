@@ -194,6 +194,8 @@
                 shownItemsQnty: 2,
                 expanded: false,
                 onlyDiffer: false,
+                applyFilter: false,
+                filteredProducts: []
             }
         },
         methods: {
@@ -239,12 +241,15 @@
             },
             applyListing(content) {
                 this.$refs.thumbnails.goTo(0);
-                console.log(content)
-                //this.comparisons = content.products
-
+                this.applyFilter = true;
+                this.onlyDiffer = false;
+                this.expanded = false;
+                this.filteredProducts = content.products
             },
             filterComparison() {
-                this.onlyDiffer = !this.onlyDiffer;
+                if (this.comparisons.length !== 1) {
+                    this.onlyDiffer = !this.onlyDiffer;
+                }
                 if (this.onlyDiffer) {
                     this.expanded = false
                 }
@@ -271,7 +276,7 @@
         },
         computed: {
             comparisons() {
-                return this.comparingItems;
+                return this.applyFilter ? this.filteredProducts : this.comparingItems;
             },
             otherOptions() {
                 return this.onlyDiffer ? this.filteredOptions : this.comparisons.map(item => item.otherOptions)
