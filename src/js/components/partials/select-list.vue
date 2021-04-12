@@ -95,7 +95,7 @@ export default {
     data(){
         return{
             openSelect: false,
-            // currentPoint: {},
+            currentPoint: {},
             viewBox: '',
         }
     },
@@ -132,14 +132,14 @@ export default {
                 this.viewBox = '1 0 18 20'
             }
         },
-        currentPoint(){
-            return this.selectopenSelect
-        }
+        // currentPoint(){
+        //     return this.selectopenSelect
+        // }
     },
     mounted() {
         this.popupItem = this.$el
         this.currentPoint
-        // this.currentPoint = this.selectopenSelect;
+        this.currentPoint = this.selectopenSelect;
     },
     directives: {
         ClickOutside
