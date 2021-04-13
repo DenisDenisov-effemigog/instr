@@ -6,6 +6,7 @@
         :get-result-value="setLabel"
         @submit="submitItem"
         auto-select
+        ref="autocomplete"
     >
         <template #default="{
             rootProps,
@@ -99,7 +100,6 @@
         data() {
             return {
                 results: [],
-                foundItem: {}
             }
         },
         validations:{
@@ -128,9 +128,6 @@
             this.$eventBus.$on('autocomplete-error', this.autocompleteError);
             if (!!this.value) {
                 this.search(this.value);
-                // if (!!this.foundItem) {
-                //     this.submitItem(this.foundItem)
-                // }
             }
         },
         methods: {
@@ -147,38 +144,36 @@
                         value: item,
                         itemName: this.itemName,
                     })
+                    this.$refs.autocomplete.value = ''
                 }
             },
             setLabel(item) {
                 return item.name;
             },
             search(input) {
-                let vm = this
-                vm.valueInput = input
-                if (vm.itemName === 'city' && input.length > 0) {
-                    api.finedCity(input).then(answer => {
-                        vm.results = answer.list.filter(item => {
-                            if(item.name.toLowerCase() === vm.valueInput.toLowerCase()) {
-                                vm.valueInput = item.name
-                                vm.foundItem = item
-                            }
+                this.valueInput = input;
+                this.results = [];
+                if (this.itemName === 'city' && input.length > 0) {
+                    return api.finedCity(input).then(answer => {
+                        this.results = answer.list.filter(item => {
                             return item.name.toLowerCase()
                                 .startsWith(input.toLowerCase())
                         })
+                        return this.results
+                    }).catch(errors => {
+                        console.log(errors);
                     })
-                } else if (vm.itemName === 'street' && input.length > 0) {
-                    api.finedStreet(input).then(answer => {
-                        vm.results = answer.list.filter(item => {
-                            if(item.name.toLowerCase() === vm.valueInput.toLowerCase()) {
-                                vm.valueInput = item.name
-                                vm.foundItem = item
-                            }
+                } else if (this.itemName === 'street' && input.length > 0) {
+                    return api.finedStreet(input).then(answer => {
+                        this.results = answer.list.filter(item => {
                             return item.name.toLowerCase()
                                 .startsWith(input.toLowerCase())
                         })
+                        return this.results
+                    }).catch(errors => {
+                        console.log(errors);
                     })
-                } else if (input.length < 1) vm.results = []
-                return vm.results
+                } else return this.results
             }
         },
     }
