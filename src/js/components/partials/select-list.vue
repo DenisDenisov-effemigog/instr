@@ -138,7 +138,7 @@ export default {
     },
     mounted() {
         this.popupItem = this.$el
-        this.currentPoint
+        // this.currentPoint
         this.currentPoint = this.selectopenSelect;
     },
     directives: {
