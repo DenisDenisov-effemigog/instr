@@ -214,18 +214,39 @@
             },
             currentSlide(event){
                 let vm = this
-                vm.currentSlideNumber = event.currentSlide;
-                if(vm.qnty <= vm.currentSlideNumber + vm.shownItemsQnty){
-                    vm.$refs.thumbnails.goTo(vm.qnty - vm.shownItemsQnty)
-                    vm.$refs.main.forEach(function(item){
-                        item.goTo(vm.qnty - vm.shownItemsQnty)
-                    })
+                if (window.innerWidth > 768 && this.qnty > 3) {
+                    vm.currentSlideNumber = event.currentSlide;
+                    if(vm.qnty <= vm.currentSlideNumber + vm.shownItemsQnty){
+                        vm.$refs.thumbnails.goTo(vm.qnty - vm.shownItemsQnty)
+                        vm.$refs.main.forEach(function(item){
+                            item.goTo(vm.qnty - vm.shownItemsQnty)
+                        })
+                    }else{
+                        this.$refs.main.forEach(function(item){
+                            item.goTo(event.currentSlide)
+                        })
+                        vm.$refs.thumbnails.goTo(event.currentSlide)
+                    }
+                }else if (window.innerWidth < 768 && this.qnty > 2){
+                    vm.currentSlideNumber = event.currentSlide;
+                    if(vm.qnty <= vm.currentSlideNumber + vm.shownItemsQnty){
+                        vm.$refs.thumbnails.goTo(vm.qnty - vm.shownItemsQnty)
+                        vm.$refs.main.forEach(function(item){
+                            item.goTo(vm.qnty - vm.shownItemsQnty)
+                        })
+                    }else{
+                        this.$refs.main.forEach(function(item){
+                            item.goTo(event.currentSlide)
+                        })
+                        vm.$refs.thumbnails.goTo(event.currentSlide)
+                    }
                 }else{
                     this.$refs.main.forEach(function(item){
-                        item.goTo(event.currentSlide)
-                    })
-                    vm.$refs.thumbnails.goTo(event.currentSlide)
+                            item.goTo(0)
+                        })
+                        vm.$refs.thumbnails.goTo(0)
                 }
+                
             },
             changeShownQnty() {
                 if (window.innerWidth < 768) {
