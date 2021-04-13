@@ -49,7 +49,7 @@
             </div>
             <div class="comparisons__cards">
                 <!-- top slider -->
-                <agile ref="thumbnails" :as-nav-for="asNavFor2" :options="options" @after-change="currentSlide($event)">
+                <agile ref="thumbnails" :options="options" @after-change="currentSlide($event)">
                     <div class="comparisons__card" 
                         :class="{'comparisons__card--width-50': qnty == 1}"
                         v-for="(product, index) in comparisons" :key="index"
@@ -99,7 +99,7 @@
                             </div>
                         </div>
                         <div class="comparisons__descriptions">
-                            <agile ref="main" :options="options" :as-nav-for="asNavFor1" @after-change="currentSlide2($event)">
+                            <agile ref="main" :options="options" @after-change="currentSlide($event)">
                                 <div class="comparisons__description" v-for="(product, index ) in comparisons" :key="index">
                                     <div class="comparisons__description-text" v-if="!!otherOptions[index][item[0]]">{{otherOptions[index][item[0]]}}</div>
                                     <div class="comparisons__description-text" v-else>—</div>
@@ -180,7 +180,6 @@
                     navButtons: false,
                     dots: false,
                     slidesToShow: 2,
-
                     responsive: [
                         {
                             breakpoint: 768,
@@ -214,12 +213,40 @@
                 }
             },
             currentSlide(event){
-                this.currentSlideNumber = event.currentSlide;
-            },
-            currentSlide2(event){
+                let vm = this
+                if (window.innerWidth > 768 && this.qnty > 3) {
+                    vm.currentSlideNumber = event.currentSlide;
+                    if(vm.qnty <= vm.currentSlideNumber + vm.shownItemsQnty){
+                        vm.$refs.thumbnails.goTo(vm.qnty - vm.shownItemsQnty)
+                        vm.$refs.main.forEach(function(item){
+                            item.goTo(vm.qnty - vm.shownItemsQnty)
+                        })
+                    }else{
+                        this.$refs.main.forEach(function(item){
+                            item.goTo(event.currentSlide)
+                        })
+                        vm.$refs.thumbnails.goTo(event.currentSlide)
+                    }
+                }else if (window.innerWidth < 768 && this.qnty > 2){
+                    vm.currentSlideNumber = event.currentSlide;
+                    if(vm.qnty <= vm.currentSlideNumber + vm.shownItemsQnty){
+                        vm.$refs.thumbnails.goTo(vm.qnty - vm.shownItemsQnty)
+                        vm.$refs.main.forEach(function(item){
+                            item.goTo(vm.qnty - vm.shownItemsQnty)
+                        })
+                    }else{
+                        this.$refs.main.forEach(function(item){
+                            item.goTo(event.currentSlide)
+                        })
+                        vm.$refs.thumbnails.goTo(event.currentSlide)
+                    }
+                }else{
                     this.$refs.main.forEach(function(item){
-                        item.goTo(event.currentSlide)
-                    })
+                            item.goTo(0)
+                        })
+                        vm.$refs.thumbnails.goTo(0)
+                }
+                
             },
             changeShownQnty() {
                 if (window.innerWidth < 768) {
