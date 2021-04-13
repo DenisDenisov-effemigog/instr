@@ -1783,14 +1783,11 @@ function demoSetBasketQuantity(productId, quantity) {
     }
 }
 
-window.runAction = function (action, config) {
+function runLocal (action, config) {
     if(config) {
         config = demoCloneOverJson(config);
     }
-
-    console.warn('API CALL ' + action);
-    console.log(config);
-
+    
     return new Promise((resolve, reject) => {
         //debugger;
         switch (action) {
@@ -2687,6 +2684,18 @@ window.runAction = function (action, config) {
                     }
                 });
                 break;
+            case 'instrument2:rest.api.lang.all':
+                
+                let lang = 'ru';
+                
+                dictionary = {};
+                dictionary[lang] = require('./locales/'+dictionary+'.json');
+                
+                resolve({
+                    locale: lang,
+                    dictionary: dictionary
+                })
+                break;
             case 'instrument2:rest.api.search.query':
                 
                 resolve({
@@ -2730,5 +2739,10 @@ window.runAction = function (action, config) {
                 });
                 break;
         }
-    });    
+    }).then((response) => {
+        console.warn('[API.LOCAL]', action, config, response);
+        return response;
+    })    
 };
+
+window.apiRouter = runLocal;

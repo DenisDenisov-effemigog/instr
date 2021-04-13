@@ -1,32 +1,6 @@
 import axios from 'axios';
 import { date } from 'locutus/php/datetime';
 
-if (window.runAction == undefined) {
-    window.runAction = function (action, payload) {
-        //debugger;
-        console.log('runAction call from site', action, payload);
-        return new Promise((resolve, reject) => {
-            //debugger;
-            let url = '/bitrix/services/main/ajax.php?action='+encodeURIComponent(action);
-            let formData = new HttpDataTransfer(payload.data).getFormData();
-            console.log('execAction', action, url, formData);
-            axios.post(url, formData, {
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                }
-            })
-                .then((response) => {
-                    //debugger;
-                    resolve(response);
-                })
-                .catch((response) => {
-                    console.error('[BX.ajax error]', response, {action: action});
-                    reject([{code: 'bx_sys_error', message: ''}]);
-                });
-        });
-    };
-}
-
 /**
  *      let params = {outer: {inner: "value"}};
  *      let formData = new HttpDataTransfer(params).getFormData();
@@ -61,35 +35,153 @@ class HttpDataTransfer
     }
 }
 
+class ApiRequest
+{
+    static runNoWait(action, payload)
+    {
+        return new Promise((resolve, reject) => {
+            axios.post(
+                '/bitrix/services/main/ajax.php?action='+encodeURIComponent(action),
+                new HttpDataTransfer(payload.data).getFormData(), //=> object to FormData
+                {
+                    headers: 
+                    {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                    }
+                }
+            )
+            .then((response) => {
+                console.warn("[API.BX]", action, payload, response);
+                resolve(response);
+            })
+            .catch((response) => {
+                console.error('[BX.ajax error]', response, {action: action});
+                reject([{code: 'bx_sys_error', message: ''}]);
+            });
+
+        });
+    }
+    
+    constructor(action, payload) 
+    {
+        this.action = action;
+        this.payload = payload;
+        
+        this.cacheble = false;
+        this.ttl = 86400; //seconds
+    }
+    
+    setCacheble(cacheble)
+    {
+        this.cacheble = cacheble;
+    }
+    
+    setTtl(seconds)
+    {
+        this.ttl = seconds;
+    }
+    
+    getCacheKey()
+    {
+        return "BXREST_"+this.action;
+    }
+    
+    cacheAvailable()
+    {
+        try
+        {
+            let item = this.readCache();
+            if(item.ttl < Date.now()) return false;
+            return true;
+        }
+        catch (e) 
+        {
+            return false;
+        }     
+    }
+    
+    readCache()
+    {
+        return JSON.parse(localStorage.getItem(this.getCacheKey()));
+    }
+    
+    writeCache(data)
+    {
+        localStorage.setItem(
+            this.getCacheKey(), 
+            JSON.stringify({
+                data: data, 
+                ttl: Date.now() + this.ttl * 1000}
+            )
+        )
+    }
+    
+    resolve(response)
+    {
+        this.p_resolve(response.data.answer)
+    }
+    
+    reject(response, msg)
+    {
+        console.error('[BX.ajax error]', response, {action: action});
+        this.p_reject([{code: 'bx_sys_error', message: msg?msg:''}]);
+    }
+    
+    is_success(response)
+    {
+        if(!response.data || response.data.status === 0) return false;
+        if(response.data.errors && response.data.errors.length) return false;
+        return true;
+    }
+    
+    parse_answer(response)
+    {
+        if(this.is_success(response))
+        {
+            if(this.cacheble) this.writeCache(response.data.answer);
+            this.resolve(response);
+        }
+        else
+        {
+            this.reject(response);   
+        }
+    }
+    
+    process() 
+    {
+        return new Promise((resolve, reject) => {
+            this.p_resolve = resolve;
+            this.p_reject = reject;
+            
+            if(this.cacheble && this.cacheAvailable()) return resolve(this.readCache().data);
+            
+            if(!ApiRequest.method) return reject({code: 'gateway_error', message: 'Api router not found'})
+
+            ApiRequest.method(this.action, {data: this.payload})
+                .then((response) => this.parse_answer(response.data))
+                .catch((response) => this.reject(response))
+        });
+    }
+}
+
+if(window.apiRouter)
+{
+    ApiRequest.method = window.apiRouter;
+}
+else
+{
+    ApiRequest.method = ApiRequest.runNoWait;
+}
+
 class Api {
 
-    _promiseBitrixRequest(action, payload) {
-        //debugger;
-        return new Promise((resolve, reject) => {
-            //debugger;
-            runAction(action, {
-                data: payload
-            })
-                .then((response) => {
-                    // debugger;
-                    console.log('[response]', response);
-                    if (response && response.data) {
-                        response = response.data;
-                        if (response.data.status === 0) {
-                            reject(response.data.errors)
-                        } else if (response.data.status === 1) {
-                            resolve(response.data.answer);
-                        }
-                    } else {
-                        console.error('[BX.ajax error]', response, {action: action});
-                        reject([{code: 'bx_sys_error', message: 'Invalid response'}]);
-                    }
-                })
-                .catch((response) => {
-                    console.error('[BX.ajax error]', response, {action: action});
-                    reject([{code: 'bx_sys_error', message: ''}]);
-                });
-        });
+    _promiseBitrixRequest(action, payload, cacheable = false) {
+        let request = new ApiRequest(action, payload);
+        request.setCacheble(cacheable);
+        if(parseInt(cacheable)) 
+            request.setTtl(cacheable);
+        
+        return request.process();
     }
     getBasket() {
         return this._promiseBitrixRequest('instrument2:rest.api.basket.get');
@@ -329,6 +421,11 @@ class Api {
         return this._promiseBitrixRequest('instrument2:rest.api.search.query', {
             value: value
         });
+    }
+    
+    loadLangData()
+    {
+        return this._promiseBitrixRequest('instrument2:rest.api.lang.all', {}, true);
     }
 }
 

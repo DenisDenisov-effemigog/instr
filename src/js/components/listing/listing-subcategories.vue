@@ -10,7 +10,7 @@
                  v-if="subcatTotal"
             >
                 <svg viewBox="0 0 16 7">
-                    <use xlink:href="/images/sprite.svg#arrows__arrow-down"></use>
+                    <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-down'"></use>
                 </svg>
             </div>
         </div>

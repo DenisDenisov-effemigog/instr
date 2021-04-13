@@ -13,6 +13,7 @@ import TextareaAutosize from 'vue-textarea-autosize';
 import VueEllipseProgress from 'vue-ellipse-progress';
 import Autocomplete from '@trevoreyre/autocomplete-vue';
 import 'vue2-datepicker/locale/ru';
+import * as Api from "./js/api";
 
 Vue.use(TextareaAutosize)
 Vue.use(VueI18n);
@@ -25,16 +26,26 @@ Vue.use(ivSlider);
 Vue.use(VueEllipseProgress);
 Vue.use(Autocomplete);
 
-function loadLocaleMessages () {
-    let messages = [];
-    messages['ru'] = require('./locales/ru.json');
-    messages['ua'] = require('./locales/ua.json');
-    return messages;
+let waiters = [];
+
+function loadDefaultLocale() {
+
+    let lang = 'ru';
+
+    dictionary = {};
+    dictionary[lang] = require('./locales/'+dictionary+'.json');
+    
+    return {
+        locale: lang,
+        dictionary: dictionary
+    };
 }
 
+//loadDefaultLocale();
+
 const i18n = new VueI18n({
-    locale: 'ru',
-    messages: loadLocaleMessages(),
+    locale: null,
+    messages: {},
     pluralizationRules: {
         /**
          * @param choice {number} a choice index given by the input to $tc: `$tc('path.to.rule', choiceIndex)`
@@ -86,7 +97,16 @@ const i18n = new VueI18n({
     }
 });
 
-i18n.locale = 'ua'
+waiters.push(Api.getInstance().loadLangData().then(function(answer){
+    i18n.locale = answer.locale;
+    
+    Object.keys(answer.dictionary).forEach(function(lang){
+        let dictionaty = answer.dictionary[lang];
+        i18n.setLocaleMessage(lang, dictionaty);
+    })
+}))
+
+//i18n.locale = 'ua'
 
 Vue.prototype.$eventBus = new Vue();
 
@@ -106,14 +126,18 @@ Vue.directive('scroll', {
     }
 });
 
-const app = new Vue({
-    el: '#app',
-    store,
-    router,
-    i18n,
-    mounted() {
-        store.dispatch('basketUpdateProducts');
-        store.dispatch('favoritesUpdateProducts');
-        store.dispatch('comparisonsUpdateProducts');
-    }
-});
+let app = undefined;
+Promise.all(waiters).then(function(){
+    app = new Vue({
+        el: '#app',
+        store,
+        router,
+        i18n,
+        mounted() {
+            store.dispatch('basketUpdateProducts');
+            store.dispatch('favoritesUpdateProducts');
+            store.dispatch('comparisonsUpdateProducts');
+        }
+    });
+})
+
