@@ -3,7 +3,7 @@
     <div class="select__button" :class="{'select__button--active':openSelect}">
         <span>
             <span class="select__placeholder" v-if="!!placeholder">{{placeholder}}:&nbsp;</span>
-            <span v-if="selectName ==='receive-address'">{{ currentPoint.short }}</span>
+            <span v-if="selectName ==='receive-address'">{{ current }}</span>
             <span v-else>{{ currentPoint.label }}</span>
         </span>
         <svg :viewBox="viewbox" class="select__arrow">
@@ -132,9 +132,9 @@ export default {
                 this.viewBox = '1 0 18 20'
             }
         },
-        // currentPoint(){
-        //     return this.selectopenSelect
-        // }
+        current(){
+            return this.selectopenSelect[0].short
+        }
     },
     mounted() {
         this.popupItem = this.$el
