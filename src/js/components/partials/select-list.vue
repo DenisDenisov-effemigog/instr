@@ -97,7 +97,7 @@ export default {
             openSelect: false,
             currentPoint: {},
             viewBox: '',
-            currentShortPoint: this.selectopenSelect[0].short
+            currentShortPoint: this.selectopenSelect.short
         }
     },
     created() {
