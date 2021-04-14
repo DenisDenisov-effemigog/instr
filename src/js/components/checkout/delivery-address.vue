@@ -29,6 +29,7 @@
                     :itemName="'street'"
                     :getValue="getValue"
                     v-model="street"
+                    :cityId="city_id"
                 >
                 </autocomplete-input>
 
@@ -157,6 +158,7 @@
                 building: '',
                 floor: '',
                 apart: '',
+                city_id: 0,
             }
         },
         validations:{
@@ -175,6 +177,7 @@
             getValue(data){
                 if (data.itemName == 'city') {
                     this.city = data.value.name
+                    this.city_id = Number(data.value.id)
                 } else if (data.itemName == 'street') {
                     this.street = data.value.name
                 }
