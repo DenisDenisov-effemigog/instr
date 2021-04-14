@@ -3,7 +3,7 @@
     <div class="select__button" :class="{'select__button--active':openSelect}">
         <span>
             <span class="select__placeholder" v-if="!!placeholder">{{placeholder}}:&nbsp;</span>
-            <span v-if="selectName ==='receive-address'">{{ current.short }}</span>
+            <span v-if="selectName ==='receive-address'">{{ current }}</span>
             <span v-else>{{ currentPoint.label }}</span>
         </span>
         <svg :viewBox="viewbox" class="select__arrow">
@@ -97,7 +97,6 @@ export default {
             openSelect: false,
             currentPoint: {},
             viewBox: '',
-            currentShortPoint: this.selectopenSelect.short
         }
     },
     created() {
@@ -115,7 +114,6 @@ export default {
             } else if (vm.selectName === 'receive-address') {
                 vm.$eventBus.$emit('change-select-point', vm.selectName, vm.currentPoint);
             } else if (vm.sortingPage === 'comparison') {
-                this.currentShortPoint = vm.currentPoint.short
                 this.$eventBus.$emit('changed-category', vm.currentPoint.value, 'comparison')
             }
         },
@@ -135,7 +133,7 @@ export default {
             }
         },
         current(){
-            return this.currentShortPoint
+            return this.currentPoint.short
         }
     },
     mounted() {
