@@ -8,7 +8,7 @@
         </a>
 	</div>
 	<h2 class="collection__title">{{ 'main_page.collection.title'|trans }}</h2>
-	<div class="collection__content collection__content_desktop">
+	<div class="collection__content collection__content--desktop">
 		{% for collection in collections %}
 			<a class="collection__block" href="{{ collection.link }}">
 				<div class="collection__card">
@@ -20,7 +20,7 @@
 			</a>
 		{% endfor %}
 	</div>
-	<component is="slider-collection">
+	<component is="slider-collection" class="collection__content--mobile">
 		{% for collection in collections %}
 			<a class="collection__block" href="{{ collection.link }}">
 				<div class="collection__card">

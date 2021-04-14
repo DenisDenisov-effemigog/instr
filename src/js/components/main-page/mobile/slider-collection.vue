@@ -1,5 +1,5 @@
 <template>
-    <div class="collection__content collection__content_mobile">
+    <div class="collection__content">
         <agile :options="options">
             <slot></slot>
         </agile>
