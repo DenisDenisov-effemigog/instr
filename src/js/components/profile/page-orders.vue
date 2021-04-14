@@ -33,6 +33,7 @@
                 is="pagination"
                 :pagination="internalPagination"
                 :placement="'.order'"
+                v-if="internalPagination.urls.length > 0"
             >
             </component>
             <!-- <order-pagination v-model="pageNumber" :pageAmount="showPages" v-if="ordersOnPage.length > 0"></order-pagination> -->

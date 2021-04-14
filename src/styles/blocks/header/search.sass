@@ -27,10 +27,11 @@
         margin: 0 -1rem
         overflow: auto
     &__result
-        order: 2
+        order: 1
         padding-bottom: 1rem
         font-size: $font-size_4
         +desktop
+            order: 2
             border-bottom: 1px solid $border-color_2
         &--close
             display: none
@@ -80,6 +81,8 @@
         height: $size_18
     &__category
         padding: 1rem 1rem 0.5rem 1rem
+        +until($desktop)
+            order: 0
         +desktop
             border-bottom: 1px solid $border-color_2
     &__category-title
@@ -99,16 +102,20 @@
         &--active
             @extend .shield__item--active
     &__items
-        display: none
-        +desktop
-            display: block
+        +until($desktop)
+            order: 2
+            margin-bottom: 1.5rem
+        // display: none
+        // +desktop
+        //     display: block
     &__items-title
         padding-top: 1rem
         padding-left: 1rem
         font-size: $font-size_3
         color: $black
     &__items-list
-        padding-top: 2.5rem
+        +desktop
+            padding-top: 2.5rem
         &_hidden
             overflow: hidden
             height: 17.8125rem
