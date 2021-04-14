@@ -92,6 +92,7 @@
             justify-content: flex-end
         font-weight: 700
         font-size: $font-size
+        white-space: nowrap
     &__btn
         +mobile
             order: 7
@@ -202,11 +203,12 @@
             width: 100%
             padding-top: 0.25rem
         & span
-            max-width: 13.125rem
             overflow: hidden
             text-overflow: ellipsis
             white-space: nowrap
             display: block
+            +tablet
+                max-width: 13.125rem
         &_tooltip
             @extend .tooltip
             width: 100%
@@ -220,6 +222,7 @@
             padding-top: 0.625rem
             color: $grey
     &__product-item-price
+        white-space: nowrap
         +tablet
             flex: 1
             max-width: 6.875rem
