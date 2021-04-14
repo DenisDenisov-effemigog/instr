@@ -1,11 +1,6 @@
 <template>
-    <div v-show="flag" class="header-all" v-scroll="handleScroll">
-        <div class="topnav">
-            <slot name="topnav"></slot>
-        </div>
-        <header class="header">
-            <slot name="header"></slot>
-        </header>
+    <div v-show="flag" v-scroll="handleScroll">
+        <slot></slot>
     </div>
 </template>
 
@@ -21,26 +16,12 @@
                 flag: true
             }
         },
-        computed: {
-            showHideHeader() {
-                if (window.innerWidth > 988) {
-                    const page = document.querySelector('.page');
-                    if (this.hidden) {
-                        page.classList.remove('page_header-hidden');
-                        page.classList.add('page_header-shown');
-                    } else {
-                        page.classList.add('page_header-hidden');
-                        page.classList.remove('page_header-shown');
-                    }
-                }
-            }
-        },
         methods: {
             handleScroll() {
-                if ( window.scrollY > 0) {
-                    setTimeout(this.autoHideHeader(), 150);
-                    this.$eventBus.$emit('headerIsHidden', this.hidden)
-                }
+                const vm = this;
+                if (window.scrollY > 0 && window.innerWidth > 988) {
+                    setTimeout(vm.autoHideHeader(), 150);
+                } else this.openHeader();
             },
             autoHideHeader() {
                 this.currentTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -52,12 +33,22 @@
                     //if scrolling up... 
                     //secondary nav is fixed
                     this.hidden = false;
-                    this.showHideHeader
+                    this.showHideHeader()        
                 } else if (this.currentTop > this.scrollOffset) {
                     //if scrolling down...	
                     //hide primary nav
                     this.hidden = true;
-                    this.showHideHeader
+                    this.showHideHeader()
+                }
+            },
+            showHideHeader() {
+                const page = document.querySelector('.page');
+                if (this.hidden) {
+                    page.classList.remove('page--header-hidden');
+                    page.classList.add('page--header-shown');
+                } else {
+                    page.classList.add('page--header-hidden');
+                    page.classList.remove('page--header-shown');
                 }
             },
             closeHeader(){

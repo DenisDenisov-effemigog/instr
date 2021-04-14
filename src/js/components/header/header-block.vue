@@ -1,17 +1,12 @@
 <template>
     <div class="container">
-        <a href="/" class="header__logo header__logo_desktop" v-show="!activeSearch">
-            <!-- <svg viewBox="0 0 650 150">
-                <use :xlink:href="templatePath + 'images/sprite.svg#logo'"></use>
-            </svg> -->
+        <!-- logos for desktop and mobile could be different -->
+        <a href="/" class="header__logo header__logo--desktop">
             <svg viewBox="0 0 625 148">
                 <use :xlink:href="templatePath + 'images/sprite.svg#wt'"></use>
             </svg>
         </a>
-        <a href="/" class="header__logo header__logo_mobile" v-show="!activeSearch">
-            <!-- <svg viewBox="0 0 650 150">
-                <use :xlink:href="templatePath + 'images/sprite.svg#logo'"></use>
-            </svg> -->
+        <a href="/" class="header__logo header__logo--mobile" v-show="!activeSearch">
             <svg viewBox="0 0 625 148">
                 <use :xlink:href="templatePath + 'images/sprite.svg#wt'"></use>
             </svg>

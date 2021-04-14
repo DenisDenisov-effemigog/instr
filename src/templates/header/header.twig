@@ -1,5 +1,5 @@
-<component is="sticky-header">
-    <template slot="topnav">
+<component is="sticky-header" class="header-all">
+    <div class="topnav">
         <div class="container">
             <nav class="topnav__nav">
                 <ul class="topnav__nav-list">
@@ -29,11 +29,11 @@
                 </div>
             </a>
         </div>
-    </template>
-    <template slot="header">
+    </div>
+    <header class="header">
         <component is="header-block" 
                    :categories="{{ categories|json_encode()|e('html_attr') }}"
                    :user="{{ user|json_encode()|e('html_attr') }}"
         ></component>
-    </template>
+    </header>
 </component>
