@@ -95,7 +95,12 @@
             value: {
                 type: String,
                 required: true
+            },
+            cityId:{
+                type: Number,
+                default: null
             }
+
         },
         data() {
             return {
@@ -138,6 +143,7 @@
                 }
             },
             submitItem(item) {
+                console.log(item);
                 if (!this.noResults) {
                     this.valueInput = item.name;
                     this.getValue({
@@ -164,11 +170,12 @@
                         console.log(errors);
                     })
                 } else if (this.itemName === 'street' && input.length > 0) {
-                    return api.finedStreet(input).then(answer => {
+                    return api.finedStreet(input, this.cityId).then(answer => {
                         this.results = answer.list.filter(item => {
                             return item.name.toLowerCase()
                                 .startsWith(input.toLowerCase())
                         })
+                        
                         return this.results
                     }).catch(errors => {
                         console.log(errors);
