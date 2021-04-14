@@ -1997,11 +1997,6 @@ function runLocal (action, config) {
                                     personal: {percent: 5, value: 387},
                                     action: {percent: 3, value: 115},
                                 },
-                                points: [{
-                                    address: 'Відділення №1: вул. Каракая, 32а',
-                                    id: '253',
-                                    short: 'Калуш, Каракая, 32а'
-                                }]
                             }
                         }
                     }
@@ -2690,16 +2685,15 @@ function runLocal (action, config) {
                 });
                 break;
             case 'instrument2:rest.api.lang.all':
-                
-                let lang = 'ru';
-                
-                dictionary = {};
-                dictionary[lang] = require('./locales/'+dictionary+'.json');
-                
+                console.warn("[API.local] system.lang - skipping!")
                 resolve({
-                    locale: lang,
-                    dictionary: dictionary
-                })
+                    data: {
+                        data: {
+                            status: 1,
+                            answer: null
+                        }
+                    }
+                });
                 break;
             case 'instrument2:rest.api.search.query':
                 

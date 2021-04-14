@@ -32,20 +32,23 @@ function loadDefaultLocale() {
 
     let lang = 'ru';
 
-    dictionary = {};
-    dictionary[lang] = require('./locales/'+dictionary+'.json');
+    let dictionary = {};
+    dictionary['ru'] = require('./locales/ru.json');
+    dictionary['ua'] = require('./locales/ua.json');
+
     
     return {
         locale: lang,
         dictionary: dictionary
-    };
+    }
 }
 
-//loadDefaultLocale();
+
+let lang = loadDefaultLocale();
 
 const i18n = new VueI18n({
-    locale: null,
-    messages: {},
+    locale: lang.locale,
+    messages: lang.dictionary,
     pluralizationRules: {
         /**
          * @param choice {number} a choice index given by the input to $tc: `$tc('path.to.rule', choiceIndex)`
@@ -98,12 +101,16 @@ const i18n = new VueI18n({
 });
 
 waiters.push(Api.getInstance().loadLangData().then(function(answer){
-    i18n.locale = answer.locale;
+    if(answer && answer.locale && answer.dictionary)
+    {
+        i18n.locale = answer.locale;
+
+        Object.keys(answer.dictionary).forEach(function(lang){
+            let dictionaty = answer.dictionary[lang];
+            i18n.setLocaleMessage(lang, dictionaty);
+        })
+    }
     
-    Object.keys(answer.dictionary).forEach(function(lang){
-        let dictionaty = answer.dictionary[lang];
-        i18n.setLocaleMessage(lang, dictionaty);
-    })
 }))
 
 //i18n.locale = 'ua'
