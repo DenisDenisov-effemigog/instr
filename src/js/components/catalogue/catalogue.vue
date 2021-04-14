@@ -26,7 +26,8 @@
                     </li>
                 </ul>
                 <catalogue-subcategories
-                    v-for="(category, index) in categories" 
+                    v-for="(category, index) in categories"
+                    :key="index"
                     v-show="index === hovered"
                     :categories="category.subcategories"
                     :openFlag ="index === hovered"

@@ -6,8 +6,8 @@
   >
     <div
       class="catalogue__subcategory"
-      v-for="subcategory in subcategories"
-      :key="subcategory.title"
+      v-for="(subcategory, index) in subcategories"
+      :key="index"
     >
       <a :href="subcategory.url" class="catalogue__subcategory-link">{{
         subcategory.title
