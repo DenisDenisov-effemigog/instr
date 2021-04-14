@@ -1997,6 +1997,11 @@ function runLocal (action, config) {
                                     personal: {percent: 5, value: 387},
                                     action: {percent: 3, value: 115},
                                 },
+                                points: [{
+                                    address: 'Відділення №1: вул. Каракая, 32а',
+                                    id: '253',
+                                    short: 'Калуш, Каракая, 32а'
+                                }]
                             }
                         }
                     }
