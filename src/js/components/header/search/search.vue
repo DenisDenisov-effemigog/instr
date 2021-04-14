@@ -31,7 +31,7 @@
         <div class="search__items" v-if="searchProducts.length">
             <h2 class="search__items-title">{{ $tc('header.search.products') }}</h2>
             <ul class="search__items-list">
-                <li v-for="item in searchProducts" class="search__item">
+                <li v-for="(item, index) in searchProducts" :key="index" class="search__item">
                     <a :href="item.link" class="search__item-info">
                         <div class="search__item-img">
                             <img :src="item.img" alt="" class="search-items__pic">
