@@ -281,6 +281,8 @@
     "cart.order.progress_text_start": "Внимание! Добавьте товар на сумму ",
     "cart.order.progress_text_end": " ₽, чтобы доставка стала бесплатной",
     "cart.order.all_price": "Цена без скидки",
+    "cart.order.discount_actions": "Скидка по акциям",
+    "cart.order.discount_personal": "Персональная скидка",
     "cart.order.your_price": "Ваша цена",
     "cart.order.info": "*Здесь может находиться какой нибудь поясняющий текст или предупреждающий.",
     "cart.order.button": "Оформить заказ",
