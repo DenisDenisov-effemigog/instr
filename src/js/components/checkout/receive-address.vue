@@ -11,7 +11,7 @@
         <div v-if="city && !!deliveryPoints && deliveryPoints.length > 0" class="receive-address__select">
             <select-list
                 :points="deliveryPoints"
-                :selectopenSelect="deliveryPoints[0]"
+                :selectopenSelect="{}"
                 :selectName="'receive-address'"
             ></select-list>
         </div>

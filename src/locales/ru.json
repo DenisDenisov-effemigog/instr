@@ -349,6 +349,7 @@
     "checkout.date_placeholder": "Не выбрано (не обязательно)",
     "checkout.delivery-address.city.error": "Ошибка, город не найден",
     "checkout.delivery-address.street.error": "Ошибка, улица не найдена",
+    "checkout.receive-address.choose_address": "Выберите адрес",
 
     "page-brand.title":"Производитель",
     
