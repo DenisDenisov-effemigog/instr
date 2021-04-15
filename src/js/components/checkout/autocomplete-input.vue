@@ -40,7 +40,8 @@
                         v-bind="resultProps[index]"
                         class="autocomplete-result"
                     >
-                        {{ result.name }}
+                        <span>{{ result.name }}</span>
+                        <span v-if="!!result.info">, {{ result.info }}</span>
                     </li>
                 </ul>
 
