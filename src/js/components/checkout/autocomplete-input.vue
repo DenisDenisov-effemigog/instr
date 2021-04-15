@@ -97,7 +97,7 @@
                 required: true
             },
             cityId:{
-                type: Number,
+                type: String,
                 default: null
             }
 
@@ -143,7 +143,6 @@
                 }
             },
             submitItem(item) {
-                console.log(item);
                 if (!this.noResults) {
                     this.valueInput = item.name;
                     this.getValue({
