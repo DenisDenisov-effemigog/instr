@@ -158,7 +158,7 @@
                 building: '',
                 floor: '',
                 apart: '',
-                city_id: 0,
+                city_id: '',
             }
         },
         validations:{
@@ -177,7 +177,7 @@
             getValue(data){
                 if (data.itemName == 'city') {
                     this.city = data.value.name
-                    this.city_id = Number(data.value.id)
+                    this.city_id = data.value.id
                 } else if (data.itemName == 'street') {
                     this.street = data.value.name
                 }

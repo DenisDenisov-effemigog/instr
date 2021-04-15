@@ -191,7 +191,7 @@
                 },
                 currentSlideNumber: 0,
                 shownItemsQnty: 2,
-                expanded: false,
+                expanded: this.checkExpanded,
                 onlyDiffer: false,
                 applyFilter: false,
                 filteredProducts: []
@@ -312,11 +312,7 @@
                 return this.comparisons.length
             },
             checkExpanded() {
-                if (this.comparisons[0].otherOptions.length < 10) {
-                    this.expanded = true
-                } else {
-                    this.expanded = false
-                }
+                return this.comparisons[0].otherOptions.length < 10 ? true : false
             },
             deleteItemAtSliderEnd() {
                 if ((this.currentSlideNumber + this.shownItemsQnty > this.qnty) && (this.qnty > 3)) {
