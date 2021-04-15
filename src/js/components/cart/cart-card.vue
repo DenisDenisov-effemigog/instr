@@ -41,11 +41,11 @@
                     </div>
                     <div class="cart-card__price-block" v-if="product.available">
                         <div class="cart-card__current-price">
-                            {{ currency(product.price * amount) }}&nbsp;{{ $tc('text.currency') }}
+                            {{ currency(+product.price * amount) }}&nbsp;{{ $tc('text.currency') }}
                         </div>
                         <div class="cart-card__old-price-element">
                             <div class="cart-card__old-price">
-                                {{ currency(product.price*amount/(100-product.discount)*100) }}&nbsp;{{ $tc('text.currency') }}
+                                {{ currency(+product.price*amount/(100-product.discount)*100) }}&nbsp;{{ $tc('text.currency') }}
                             </div>
                             <div class="cart-card__discount">{{ product.discount }}%</div>
                         </div>
@@ -56,7 +56,7 @@
                                     :max-amount="product.stock"
                                     :isCart="true">
                         </component>
-                        <div class="cart-card__price-per-one">{{ currency(product.price) }}&nbsp;{{ $tc('text.currency') }}&nbsp;/&nbsp;{{ $tc('text.count') }}</div>
+                        <div class="cart-card__price-per-one">{{ currency(+product.price) }}&nbsp;{{ $tc('text.currency') }}&nbsp;/&nbsp;{{ $tc('text.count') }}</div>
                     </div>
 
                 </div>
@@ -110,10 +110,10 @@
                 <span v-if="!deleteItem">{{ amount }}</span>
             </div>
             <div class="table-header__price" v-if="product.available">
-                <span v-if="!deleteItem">{{ product.price }}&nbsp;{{ $tc('text.currency') }}&nbsp;/&nbsp;{{ $tc('text.count') }}</span>
+                <span v-if="!deleteItem">{{ currency(+product.price) }}&nbsp;{{ $tc('text.currency') }}&nbsp;/&nbsp;{{ $tc('text.count') }}</span>
             </div>
             <div class="table-header__old-price" v-if="product.available">
-                <span v-if="!deleteItem">{{ currency(product.price*amount/(100-product.discount)*100) }}&nbsp;{{ $tc('text.currency') }}</span>
+                <span v-if="!deleteItem">{{ currency(+product.price*amount/(100-product.discount)*100) }}&nbsp;{{ $tc('text.currency') }}</span>
             </div>
             <div class="table-header__discount" v-if="product.available || deleteItem">
                 <span v-if="!deleteItem">
@@ -128,7 +128,7 @@
                 </component>
             </div>
             <div class="table-header__new-price" v-if="product.available || deleteItem">
-                <span v-if="!deleteItem">{{ currency(product.price * amount) }}&nbsp;{{ $tc('text.currency') }}</span>
+                <span v-if="!deleteItem">{{ currency(+product.price * amount) }}&nbsp;{{ $tc('text.currency') }}</span>
                 <span class="cart-card__cancel-delete"
                     @click="deleteItem = false"
                     v-else

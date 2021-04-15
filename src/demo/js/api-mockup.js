@@ -29,7 +29,7 @@ let demoMockupBasket = [
             {id: 3, img: '/demo_images/product/image_52.png'},
             {id: 4, img: '/demo_images/product/image_53.png'},
         ],
-        price: 2819,
+        price: '2919.222446',
         discount: 26,
         allPrice: 3819,
         totalPrice: 2819,

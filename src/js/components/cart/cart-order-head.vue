@@ -22,7 +22,7 @@
             </vue-ellipse-progress>
         </div>
         <div class="cart-order__head-text" v-if="currentPrice > salePrice">{{ $tc('cart.order.progress_success') }}</div>
-        <div class="cart-order__head-text" v-else>{{ $tc('cart.order.progress_text_start') }}{{ getPrice }}{{ $tc('cart.order.progress_text_end') }}</div>
+        <div class="cart-order__head-text" v-else>{{ $tc('cart.order.progress_text_start') }} {{ getPrice }} {{ $tc('cart.order.progress_text_end') }}</div>
     </div>
 </template>
 
