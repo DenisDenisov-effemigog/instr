@@ -139,6 +139,11 @@ export default {
         this.current
         this.currentPoint = this.selectopenSelect;
     },
+    watch: {
+        points() {
+            this.currentPoint = this.selectopenSelect
+        }
+    },
     directives: {
         ClickOutside
     },
