@@ -1,14 +1,9 @@
 <template>
 <div class="select" @click="openSelect = !openSelect" v-click-outside="closeOutside">
     <div class="select__button" :class="{'select__button--active':openSelect}">
-        <span v-if="selectName ==='receive-address' && Object.keys(currentPoint).length=== 0">
-            {{ $tc('checkout.receive-address.choose_address') }}
-        </span>
-        <span v-else>
-            <span class="select__placeholder" v-if="!!placeholder">{{placeholder}}:&nbsp;</span>
-            <span v-if="selectName ==='receive-address'">{{ currentPoint.short }}</span>
-            <span v-else>{{ currentPoint.label }}</span>
-        </span>
+        <span class="select__placeholder" v-if="!!placeholder">{{ placeholder }}:&nbsp;</span>
+        <span v-if="selectName ==='receive-address'">{{ current }}</span>
+        <span v-else>{{ currentPoint.label }}</span>
         <svg :viewBox="viewbox" class="select__arrow">
             <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-down'"></use>
         </svg>
@@ -135,13 +130,13 @@ export default {
                 this.viewBox = '1 0 18 20'
             }
         },
-        // current(){
-        //     return this.currentPoint.short
-        // }
+        current(){
+            return (Object.keys(this.currentPoint).length=== 0) ? this.$tc('checkout.receive-address.choose_address') : this.currentPoint.short
+        }
     },
     mounted() {
         this.popupItem = this.$el
-        // this.current
+        this.current
         this.currentPoint = this.selectopenSelect;
     },
     directives: {
