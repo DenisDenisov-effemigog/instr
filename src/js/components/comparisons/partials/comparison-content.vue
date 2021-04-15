@@ -92,7 +92,7 @@
         <div class="comparisons__bottom">
             <div class="comparisons__comparing">
                 <ul class="comparisons__list">
-                    <li class="comparisons__item"  v-for="(item, itemIndex) in sliceList(otherOptions[0])" :key="itemIndex">
+                    <li class="comparisons__item"  v-for="(item, itemIndex) in sliceList(otherOptions)" :key="itemIndex">
                         <div class="comparisons__sidebar">
                             <div class="comparisons__sidebar-item">
                                 {{ item[0] }}
@@ -259,7 +259,14 @@
                 }
             },
             sliceList(list) {
-                const array = Object.entries(list);
+                let digit = 0
+                let array;
+                list.forEach(function(item){
+                    if(Object.entries(item).length > digit){
+                        digit = Object.entries(item).length
+                        array = Object.entries(item);
+                    }
+                })
                 if (this.expanded) {
                     return array
                 } else {
