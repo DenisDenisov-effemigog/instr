@@ -192,7 +192,9 @@
             applyFilters(changeState, location) {
                 let vm = this;
                 let params = vm.getPayloadParams();
-
+                if(location == "comparison"){
+                    params.extension = "compare"
+                }
                 api.catalogGet(this.internal.hash, params).then(answer => {
                     console.log(answer);
                     if (!!location && location === 'comparison') {

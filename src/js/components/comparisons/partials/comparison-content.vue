@@ -310,7 +310,6 @@
         computed: {
             sliceList() {
                 let keyArr = this.getKeysOtherOptions(this.otherOptions)
-                console.log(keyArr);
                 if (this.expanded) {
                     return keyArr
                 } else {
