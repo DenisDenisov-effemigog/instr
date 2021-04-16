@@ -291,10 +291,13 @@
             reloadSlider(){
                 let vm = this
                 if(vm.otherOptions.length > 0){
-                    vm.$refs.thumbnails.reload()
-                    vm.$refs.main.forEach(function(item){
-                        item.reload()
-                    })
+                    setTimeout(() => {
+                        vm.$refs.thumbnails.reload()
+                        vm.$refs.main.forEach(function(item){
+                            item.reload()
+                        })
+                    }, 1000);
+                    
                 }
             }
             // getSideItems(){
