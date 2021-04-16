@@ -112,6 +112,7 @@ export default {
             } else if (vm.selectName === 'receive-address') {
                 vm.$eventBus.$emit('change-select-point', vm.selectName, vm.currentPoint);
             } else if (vm.sortingPage === 'comparison') {
+                this.$emit('slider')
                 this.$eventBus.$emit('changed-category', vm.currentPoint.value, 'comparison')
             }
         },

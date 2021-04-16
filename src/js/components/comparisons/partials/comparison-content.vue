@@ -11,6 +11,7 @@
                         :sortingPage="'comparison'"
                         :placeholder="$tc('text.category')"
                         :selectName="'comparisons'"
+                        @slider="reloadSlider"
                     >
                     </select-list>
                     <label @click.prevent="filterComparison">
@@ -287,6 +288,15 @@
                     this.expanded = false
                 }
             },
+            reloadSlider(){
+                let vm = this
+                if(vm.otherOptions.length > 0){
+                    vm.$refs.thumbnails.reload()
+                    vm.$refs.main.forEach(function(item){
+                        item.reload()
+                    })
+                }
+            }
             // getSideItems(){
             //     if(window.innerWidth >= 1024){
             //         let sideItems = this.$refs.sideList.children
