@@ -50,7 +50,7 @@
             </div>
             <div class="comparisons__cards">
                 <!-- top slider -->
-                <agile ref="thumbnails" :options="options" @after-change="currentSlide($event)">
+                <agile ref="thumbnails" :options="options" @after-change="currentSlide($event)" :key="comparisons.length">
                     <div class="comparisons__card" 
                         :class="{'comparisons__card--width-50': qnty == 1}"
                         v-for="(product, index) in comparisons" :key="index"
@@ -100,7 +100,7 @@
                             </div>
                         </div>
                         <div class="comparisons__descriptions">
-                            <agile ref="main" :options="options" @after-change="currentSlide($event)">
+                            <agile ref="main" :options="options" @after-change="currentSlide($event)" :key="comparisons.length">
                                 <div class="comparisons__description" v-for="(product, index ) in comparisons" :key="index">
                                     <div class="comparisons__description-text" v-if="!!otherOptions[index][item]">{{otherOptions[index][item]}}</div>
                                     <div class="comparisons__description-text" v-else>—</div>
