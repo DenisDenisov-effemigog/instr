@@ -10,18 +10,18 @@
                 <use :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
             </svg>
         </div> -->
-        <div  class="header__catalog-mobile" @click.prevent="openMenu">
-            <span class="header__catalog-btn-lines" :class="{'header__catalog-btn-lines--active': openedMenu}">
-                <span class="header__catalog-btn-line"></span>
-                <span class="header__catalog-btn-line"></span>
-                <span class="header__catalog-btn-line"></span>
+        <div  class="header__menu-mobile" @click.prevent="openMenu">
+            <span class="header__burger-lines" :class="{'header__burger-lines--active': openedMenu}">
+                <span class="header__burger-line"></span>
+                <span class="header__burger-line"></span>
+                <span class="header__burger-line"></span>
             </span>
         </div>
         <div class="header__catalog-btn" @click.prevent="open">
-            <span class="header__catalog-btn-lines" :class="{'header__catalog-btn-lines--active': active}">
-                <span class="header__catalog-btn-line"></span>
-                <span class="header__catalog-btn-line"></span>
-                <span class="header__catalog-btn-line"></span>
+            <span class="header__burger-lines" :class="{'header__burger-lines--active': active}">
+                <span class="header__burger-line"></span>
+                <span class="header__burger-line"></span>
+                <span class="header__burger-line"></span>
             </span>
             {{ $tc('header.catalogue') }}
         </div>

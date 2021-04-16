@@ -1,6 +1,6 @@
 <template>
     <div class="header__search"
-        :class="{'header__search_split': activeSearch}"
+        :class="{'header__search--split': activeSearch}"
         v-click-outside="clickOutside"
     >
         <div class="header__search-mobile">

@@ -31,9 +31,25 @@
         </div>
     </div>
     <header class="header">
-        <component is="header-block" 
+        <div class="container">
+            {# logos for desktop and mobile could be different #}
+            <a href="/" class="header__logo header__logo--desktop">
+                <svg viewBox="0 0 625 148">
+                    <use xlink:href="{{ templatePath }}images/sprite.svg#wt"></use>
+                </svg>
+            </a>
+            <a href="/" class="header__logo header__logo--mobile">
+                <svg viewBox="0 0 625 148">
+                    <use xlink:href="{{ templatePath }}images/sprite.svg#wt"></use>
+                </svg>
+            </a>
+            <component is="header-search"></component>
+            <component is="show-catalogue" :categories="{{ categories|json_encode()|e('html_attr') }}"></component>
+            <component is="header-menu" :user="{{ user|json_encode()|e('html_attr') }}"></component>
+        </div>
+        {# <component is="header-block" 
                    :categories="{{ categories|json_encode()|e('html_attr') }}"
                    :user="{{ user|json_encode()|e('html_attr') }}"
-        ></component>
+        ></component> #}
     </header>
 </component>
