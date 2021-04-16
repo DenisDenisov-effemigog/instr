@@ -92,16 +92,16 @@
         <div class="comparisons__bottom">
             <div class="comparisons__comparing">
                 <ul class="comparisons__list">
-                    <li class="comparisons__item"  v-for="(item, itemIndex) in sliceList(otherOptions)" :key="itemIndex">
+                    <li class="comparisons__item"  v-for="(item, itemIndex) in sliceList" :key="itemIndex">
                         <div class="comparisons__sidebar">
                             <div class="comparisons__sidebar-item">
-                                {{ item[0] }}
+                                {{ item }}
                             </div>
                         </div>
                         <div class="comparisons__descriptions">
                             <agile ref="main" :options="options" @after-change="currentSlide($event)">
                                 <div class="comparisons__description" v-for="(product, index ) in comparisons" :key="index">
-                                    <div class="comparisons__description-text" v-if="!!otherOptions[index][item[0]]">{{otherOptions[index][item[0]]}}</div>
+                                    <div class="comparisons__description-text" v-if="!!otherOptions[index][item]">{{otherOptions[index][item]}}</div>
                                     <div class="comparisons__description-text" v-else>—</div>
                                 </div>
                                  <div class="comparisons__description comparisons__description--no-product" v-if="qnty == 1">
@@ -143,7 +143,7 @@
             <a class="comparisons__deploy"
                 :class="{'comparisons__deploy--expanded': expanded}"
                 @click.prevent="expanded = true"
-                v-if="!expanded && Object.entries(otherOptions[0]).length > 10"
+                v-if="!expanded && keysLength > 10"
             >
                 {{ $tc('comparisons.text.deploy') }}
                 <svg viewBox="-2 -2 16 10">
@@ -189,9 +189,10 @@
                         }
                     ]
                 },
+                keysLength: 0,
                 currentSlideNumber: 0,
                 shownItemsQnty: 2,
-                expanded: this.checkExpanded,
+                expanded: false,
                 onlyDiffer: false,
                 applyFilter: false,
                 filteredProducts: []
@@ -258,20 +259,18 @@
                     this.options.responsive[0].settings.slidesToShow = 2;
                 }
             },
-            sliceList(list) {
-                let digit = 0
-                let array;
+            getKeysOtherOptions(list){
+                let newArr = Object.keys(list[0])
                 list.forEach(function(item){
-                    if(Object.entries(item).length > digit){
-                        digit = Object.entries(item).length
-                        array = Object.entries(item);
-                    }
+                    Object.keys(item).forEach(function(item){
+                        if(!newArr.includes(item)){
+                            newArr.push(item)
+                        }
+                    })
+                   
                 })
-                if (this.expanded) {
-                    return array
-                } else {
-                    return array.slice(0, 10)
-                }
+                this.keysLength = newArr.length
+                return newArr
             },
             applyListing(content) {
                 this.$refs.thumbnails.goTo(0);
@@ -309,6 +308,16 @@
             // }
         },
         computed: {
+            sliceList() {
+                let keyArr = this.getKeysOtherOptions(this.otherOptions)
+                console.log(keyArr);
+                if (this.expanded) {
+                    return keyArr
+                } else {
+                    return keyArr.slice(0, 10)
+                }
+                
+            },
             comparisons() {
                 return this.applyFilter ? this.filteredProducts : this.comparingItems;
             },
@@ -318,9 +327,6 @@
             qnty() {
                 return this.comparisons.length
             },
-            checkExpanded() {
-                return this.comparisons[0].otherOptions.length < 10 ? true : false
-            },
             deleteItemAtSliderEnd() {
                 if ((this.currentSlideNumber + this.shownItemsQnty > this.qnty) && (this.qnty > 3)) {
                     this.$refs.thumbnails.goToPrev()
@@ -329,7 +335,7 @@
             filteredOptions() {
                 const vm = this;
                 const options = vm.comparisons.map(item => item.otherOptions);
-                const otherOptionsKeys = Object.keys(options[0]);
+                const otherOptionsKeys = this.getKeysOtherOptions(options);
                 const uniqueKeysArr = [];
                 const newArr = [];
                 for(let i = 0; i < otherOptionsKeys.length; i++){
