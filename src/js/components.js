@@ -17,11 +17,14 @@ import paginationBtn from './components/partials/pagination-btn.vue';
 import catalogue from './components/catalogue/catalogue.vue';
 import catalogueSubcategories from './components/catalogue/catalogue-subcategories.vue';
 import furtherSubcategories from './components/catalogue/catalogue-further-subcategories.vue';
+import showCatalogue from './components/catalogue/show-catalogue.vue'
 /*header*/
 import cartMini from './components/header/cart-mini.vue';
 import compareMini from './components/header/compare-mini.vue';
 import favoriteMini from './components/header/favorite-mini.vue';
-import headerBlock from './components/header/header-block.vue';
+// import headerBlock from './components/header/header-block.vue';
+import headerSearch from './components/header/search/header-search.vue';
+import headerMenu from './components/header/header-menu.vue';
 import stickyHeader from './components/header/sticky-header.vue';
 import user from './components/header/header-modal/user.vue';
 import tooltipProfile from './components/header/tooltip-profile.vue';
@@ -124,7 +127,9 @@ export default {
         cartMini,
         compareMini,
         favoriteMini,
-        headerBlock,
+        // headerBlock,
+        headerSearch,
+        headerMenu,
         stickyHeader,
         sliderMain,
         sliderPromo,
@@ -182,6 +187,7 @@ export default {
         cardStikers,
         catalogueSubcategories,
         furtherSubcategories,
+        showCatalogue,
         filters,
         filterBlock,
         displayingCards,
