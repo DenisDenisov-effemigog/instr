@@ -37,6 +37,11 @@
                 required: false,
                 default: false,
                 type: Boolean
+            },
+            comparisonPage: {
+                required: false,
+                default: false,
+                type: Boolean
             }
         },
         data() {
@@ -55,6 +60,7 @@
                 }).finally(() => {
                     vm.inCompare = !vm.inCompare
                 });
+                if (this.comparisonPage) window.location = window.location.href
             }
         }
     }
