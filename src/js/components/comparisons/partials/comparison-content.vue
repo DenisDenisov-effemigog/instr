@@ -51,6 +51,9 @@
             <div class="comparisons__cards" ref="top">
                 <!-- top slider -->
                     <div class="comparisons__card" 
+                        @touchstart="touchstart"
+                        @touchmove="touchmove"
+                        @touchend="touchend"
                         :class="{'comparisons__card--width-50': qnty == 1}"
                         v-for="(product, index) in comparisons" :key="index"
                     >
@@ -91,7 +94,11 @@
 
         <div class="comparisons__bottom">
             <div class="comparisons__comparing">
-                <ul class="comparisons__list">
+                <ul class="comparisons__list"
+                    @touchstart="touchstart"
+                    @touchmove="touchmove"
+                    @touchend="touchend"
+                >
                     <li class="comparisons__item"  v-for="(item, itemIndex) in sliceList" :key="itemIndex">
                         <div class="comparisons__sidebar">
                             <div class="comparisons__sidebar-item">
@@ -111,34 +118,6 @@
                         </div>
                     </li>
                 </ul>
-               
-                <!-- below is an old bottom part. keep it in case -->
-
-                <!-- <ul ref="sideList" class="comparisons__sidebar">
-                    <li  class="comparisons__sidebar-item">Цена</li>
-                    <li  class="comparisons__sidebar-item" v-for="item in Object.keys(comparisons[0].otherOptions)">{{ item }}</li>
-                </ul>
-
-                <div class="comparisons__descriptions"> -->
-                    <!-- bottom slider -->
-                    <!-- <agile ref="main" :as-nav-for="asNavFor1" :options="options">
-                        <ul ref="descList" class="comparisons__description"
-                            :class="{'comparisons__description--no-product': qnty === 1}"
-                            v-for="product in comparisons" :key="product.id">
-                            <li>
-                                <div class="comparisons__sidebar-item">{{ $tc('text.price') }}</div>
-                                <div class="comparisons__description-text">{{ product.newPrice }}</div>
-                            </li>
-                            <li v-for="(item, i) in sliceList(product.otherOptions)" :key="i">
-                                <div class="comparisons__sidebar-item">{{ item[0] }}</div>
-                                <div class="comparisons__description-text" v-if="!!item[1]">{{ item[1] }}</div>
-                                <div class="comparisons__description-text" v-else>—</div>
-                            </li>
-                        </ul> -->
-                        <!-- the second comparison is not chosen -->
-                        <!-- <ul class="comparisons__description comparisons__description--no-product" v-if="comparisons.length === 1"></ul>
-                    </agile>
-                </div> -->
             </div>
             <a class="comparisons__deploy"
                 :class="{'comparisons__deploy--expanded': expanded}"
@@ -180,10 +159,29 @@
                 onlyDiffer: false,
                 applyFilter: false,
                 filteredProducts: [],
-                slideWidth:0
+                slideWidth:0,
+                startMove: 0
+
             }
         },
         methods: {
+            touchstart(event){
+                this.startMove = event.changedTouches[0].pageX
+            },
+            touchmove(event){
+                if(this.startMove < event.changedTouches[0].pageX){
+                    console.log('prev');
+                    this.slideToPrev()
+                    return
+                }else{
+                    console.log('next');
+                    this.slideToNext()
+                    return
+                }
+            },
+            touchend(){
+
+            },
             slideToPrev() {
                 let vm = this
                 if (vm.currentSlideNumber > 0 && window.innerWidth > 767 && this.qnty > 3) {
