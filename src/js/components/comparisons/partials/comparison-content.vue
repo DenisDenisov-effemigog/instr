@@ -71,6 +71,7 @@
                                         class="card__button-block_to-compare" 
                                         :id="product.id" 
                                         :compare="product.is_compare"
+                                        :comparisonPage="true"
                                 >
                                     <svg class="comparisons__card-del-btn">
                                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__delete'"></use>
