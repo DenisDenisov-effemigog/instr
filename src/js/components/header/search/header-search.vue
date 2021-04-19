@@ -5,7 +5,7 @@
     >
         <div class="header__search-mobile">
             <div class="mobile-search" v-if="activeSearch">
-                <div @click='exitSearch' class="mobile-search__pic">
+                <div @click.prevent='exitSearch' class="mobile-search__pic">
                     <svg class="mobile-search__pic-icon">
                         <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-left'"></use>
                     </svg>
@@ -26,7 +26,7 @@
                      ></search> 
                 </form>
             </div>
-            <div class="header__search-mobile-btn" v-else @click="searchClick">
+            <div class="header__search-mobile-btn" v-else @click.prevent="searchClick">
                 <img :src="templatePath + 'images/header/icons/mag.svg'" alt="" class="header__search-mobile-icon">
             </div>
         </div>
@@ -108,14 +108,14 @@ export default {
             this.focused = true;
             this.$eventBus.$emit("open-menu", 'search');
             this.$eventBus.$emit("hide-button");
-            this.$emit("searchClick", this.activeSearch) //скрываем лого, разворачиваем поиск (передаём true)
+            // this.$emit("searchClick", this.activeSearch) //скрываем лого, разворачиваем поиск (передаём true в header-block.vue)
         },
         exitSearch() {
             this.activeSearch = false;
             this.focused = false;
             this.$eventBus.$emit('change-menu-icon'); // меняем иконку моб.меню на бкргер
             this.$eventBus.$emit('close-menu'); //закрываем моб.меню
-            this.$emit("searchClick", this.activeSearch) // возвращаем лого, закрываем поиск (передаём false)
+            // this.$emit("searchClick", this.activeSearch) // возвращаем лого, закрываем поиск (передаём false в header-block.vue)
             this.$eventBus.$emit("close-catalog"); //закрываем моб.каталог при выходе из поиска
         },
         clickOutside(event) {
