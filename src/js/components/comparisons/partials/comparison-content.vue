@@ -2,6 +2,7 @@
     <div>
         <!-- top part of comparison -->
         <comparisons-top>
+            <pre>{{slideWidht}}</pre>
             <div class="comparisons__category-selection">
                 <div>
                     <select-list
@@ -11,7 +12,6 @@
                         :sortingPage="'comparison'"
                         :placeholder="$tc('text.category')"
                         :selectName="'comparisons'"
-                        @slider="reloadSlider"
                     >
                     </select-list>
                     <label @click.prevent="filterComparison">
@@ -48,9 +48,8 @@
                     </div>
                 </div>
             </div>
-            <div class="comparisons__cards">
+            <div class="comparisons__cards" ref="top">
                 <!-- top slider -->
-                <agile ref="thumbnails" :options="options" @after-change="currentSlide($event)" :key="comparisons.length">
                     <div class="comparisons__card" 
                         :class="{'comparisons__card--width-50': qnty == 1}"
                         v-for="(product, index) in comparisons" :key="index"
@@ -84,7 +83,6 @@
                     <div class="comparisons__card comparisons__card--no-product" v-if="qnty == 1">
                         <div>{{ $tc('comparisons.text.no_products_chosen') }}</div>
                     </div>
-                </agile>
             </div>
         </comparisons-top>
 
@@ -100,15 +98,15 @@
                             </div>
                         </div>
                         <div class="comparisons__descriptions">
-                            <agile ref="main" :options="options" @after-change="currentSlide($event)" :key="comparisons.length">
-                                <div class="comparisons__description" v-for="(product, index ) in comparisons" :key="index">
+                            <div class="comparisons__descriptions-wrap" ref="main">
+                                <div class="comparisons__description" :class="{'comparisons__description--mod': qnty <= 2}" v-for="(product, index ) in comparisons" :key="index">
                                     <div class="comparisons__description-text" v-if="!!otherOptions[index][item]">{{otherOptions[index][item]}}</div>
                                     <div class="comparisons__description-text" v-else>—</div>
                                 </div>
                                  <div class="comparisons__description comparisons__description--no-product" v-if="qnty == 1">
 
                                 </div>
-                            </agile> 
+                            </div>
                         </div>
                     </li>
                 </ul>
@@ -174,91 +172,55 @@
         },
         data() {
             return {
-                asNavFor1: [],
-			    asNavFor2: [],
-                options: {
-                    infinite: false,
-                    navButtons: false,
-                    dots: false,
-                    slidesToShow: 2,
-                    responsive: [
-                        {
-                            breakpoint: 768,
-                            settings: {
-                                slidesToShow: 3
-                            }
-                        }
-                    ]
-                },
                 keysLength: 0,
                 currentSlideNumber: 0,
                 shownItemsQnty: 2,
                 expanded: false,
                 onlyDiffer: false,
                 applyFilter: false,
-                filteredProducts: []
+                filteredProducts: [],
+                slideWidth:0
             }
         },
         methods: {
             slideToPrev() {
-                if (window.innerWidth > 767 && this.qnty > 3) {
-                    this.$refs.thumbnails.goToPrev()
-                } else if (window.innerWidth < 768) {
-                    this.$refs.thumbnails.goToPrev()
+                let vm = this
+                if (vm.currentSlideNumber > 0 && window.innerWidth > 767 && this.qnty > 3) {
+                    vm.currentSlideNumber--
+                    vm.$refs.top.style.transform = `translateX(-${vm.currentSlideNumber * vm.slideWidth}px)`
+                    vm.$refs.main.forEach(function(item){
+                        item.style.transform = `translateX(-${vm.currentSlideNumber * vm.slideWidth}px)`
+                    })
+                }else if(vm.currentSlideNumber > 0 && window.innerWidth < 767 && this.qnty > 2){
+                    vm.currentSlideNumber--
+                    vm.$refs.top.style.transform = `translateX(-${vm.currentSlideNumber * vm.slideWidth}px)`
+                    vm.$refs.main.forEach(function(item){
+                        item.style.transform = `translateX(-${vm.currentSlideNumber * vm.slideWidth}px)`
+                    })
                 }
             },
             slideToNext() {
-                if (window.innerWidth > 767 && this.qnty > 3 && this.currentSlideNumber !== (this.qnty - this.shownItemsQnty)) {
-                    this.$refs.thumbnails.goToNext()
-                } else if (window.innerWidth < 768 && this.qnty > 2 && this.currentSlideNumber !== (this.qnty - this.shownItemsQnty)) {
-                    this.$refs.thumbnails.goToNext()
-                }
-            },
-            currentSlide(event){
                 let vm = this
-                if (window.innerWidth > 768 && this.qnty > 3) {
-                    vm.currentSlideNumber = event.currentSlide;
-                    if(vm.qnty <= vm.currentSlideNumber + vm.shownItemsQnty){
-                        vm.$refs.thumbnails.goTo(vm.qnty - vm.shownItemsQnty)
-                        vm.$refs.main.forEach(function(item){
-                            item.goTo(vm.qnty - vm.shownItemsQnty)
-                        })
-                    }else{
-                        this.$refs.main.forEach(function(item){
-                            item.goTo(event.currentSlide)
-                        })
-                        vm.$refs.thumbnails.goTo(event.currentSlide)
-                    }
-                }else if (window.innerWidth < 768 && this.qnty > 2){
-                    vm.currentSlideNumber = event.currentSlide;
-                    if(vm.qnty <= vm.currentSlideNumber + vm.shownItemsQnty){
-                        vm.$refs.thumbnails.goTo(vm.qnty - vm.shownItemsQnty)
-                        vm.$refs.main.forEach(function(item){
-                            item.goTo(vm.qnty - vm.shownItemsQnty)
-                        })
-                    }else{
-                        this.$refs.main.forEach(function(item){
-                            item.goTo(event.currentSlide)
-                        })
-                        vm.$refs.thumbnails.goTo(event.currentSlide)
-                    }
-                }else{
-                    this.$refs.main.forEach(function(item){
-                            item.goTo(0)
-                        })
-                        vm.$refs.thumbnails.goTo(0)
+                if (window.innerWidth > 767 && this.qnty > 3 && vm.currentSlideNumber !== (vm.qnty - vm.shownItemsQnty)) {
+                    vm.currentSlideNumber++
+                    vm.$refs.top.style.transform = `translateX(-${vm.currentSlideNumber * vm.slideWidth}px)`
+                    vm.$refs.main.forEach(function(item){
+                        item.style.transform = `translateX(-${vm.currentSlideNumber * vm.slideWidth}px)`
+                    })
+                }else if(window.innerWidth < 767 && this.qnty > 2 && vm.currentSlideNumber !== (vm.qnty - vm.shownItemsQnty)){
+                    vm.currentSlideNumber++
+                    vm.$refs.top.style.transform = `translateX(-${vm.currentSlideNumber * vm.slideWidth}px)`
+                    vm.$refs.main.forEach(function(item){
+                        item.style.transform = `translateX(-${vm.currentSlideNumber * vm.slideWidth}px)`
+                    })
                 }
-                
             },
             changeShownQnty() {
                 if (window.innerWidth < 768) {
                     this.shownItemsQnty = 2
                 } else if (window.innerWidth > 767 && this.qnty > 2) {
                     this.shownItemsQnty = 3
-                    if (this.currentSlideNumber >= this.qnty - this.shownItemsQnty) this.$refs.thumbnails.goTo(this.qnty - this.shownItemsQnty)
-                } else if (this.qnty < 3) {
-                    this.options.responsive[0].settings.slidesToShow = 2;
-                }
+                }    
             },
             getKeysOtherOptions(list){
                 let newArr = Object.keys(list[0])
@@ -274,7 +236,12 @@
                 return newArr
             },
             applyListing(content) {
-                this.$refs.thumbnails.goTo(0);
+                let vm = this
+                this.currentSlideNumber = 0;
+                vm.$refs.top.style.transform = 'translateX(0)'
+                vm.$refs.main.forEach(function(item){
+                    item.style.transform = 'translateX(0)'
+                })
                 this.applyFilter = true;
                 this.onlyDiffer = false;
                 this.expanded = false;
@@ -288,39 +255,13 @@
                     this.expanded = false
                 }
             },
-            reloadSlider(){
-                let vm = this
-                if(vm.otherOptions.length > 0){
-                    setTimeout(() => {
-                        vm.$refs.thumbnails.reload()
-                        vm.$refs.main.forEach(function(item){
-                            item.reload()
-                        })
-                    }, 1000);
-                    
-                }
-            }
-            // getSideItems(){
-            //     if(window.innerWidth >= 1024){
-            //         let sideItems = this.$refs.sideList.children
-            //         let descList = this.$refs.descList
-            //         descList.forEach(function(list){
-            //             if(list.closest('.agile__slides--regular')){
-            //                 for(let i = 1; i < list.children.length; i++){
-            //                     let sideItemsH = sideItems[i].clientHeight
-            //                     let itemsHeight = list.children[i].clientHeight
-            //                     if(sideItemsH > itemsHeight){
-            //                         list.children[i].style.height = sideItemsH + 'px'
-            //                     }else{
-            //                         sideItems[i].style.height = itemsHeight + 'px'
-            //                     }
-            //                 } 
-            //             }
-            //         })
-            //     }
-            // }
+            getSlideWidht(){
+                this.slideWidth = this.$refs.top.children[0].offsetWidth
+                return this.slideWidth
+            },
         },
         computed: {
+            
             sliceList() {
                 let keyArr = this.getKeysOtherOptions(this.otherOptions)
                 if (this.expanded) {
@@ -339,11 +280,11 @@
             qnty() {
                 return this.comparisons.length
             },
-            deleteItemAtSliderEnd() {
-                if ((this.currentSlideNumber + this.shownItemsQnty > this.qnty) && (this.qnty > 3)) {
-                    this.$refs.thumbnails.goToPrev()
-                }
-            },
+            // deleteItemAtSliderEnd() {
+            //     if ((this.currentSlideNumber + this.shownItemsQnty > this.qnty) && (this.qnty > 3)) {
+            //         this.$refs.thumbnails.goToPrev()
+            //     }
+            // },
             filteredOptions() {
                 const vm = this;
                 const options = vm.comparisons.map(item => item.otherOptions);
@@ -378,17 +319,15 @@
         created() {
             this.comparisons;
             window.addEventListener('resize', this.changeShownQnty);
+            window.addEventListener('resize', this.getSlideWidht);
             this.$eventBus.$on('apply-comparison', this.applyListing);
         },
         beforeDestroy() {
             this.$eventBus.$off('apply-comparison');
         },
         mounted() {
+            this.getSlideWidht();
             this.changeShownQnty();
-            this.$refs.main.forEach(item => {
-                this.asNavFor2.push(item);
-            })
-            this.asNavFor1.push(this.$refs.thumbnails);
             this.deleteItemAtSliderEnd;
         }
     }
