@@ -1,9 +1,12 @@
 <template>
 <div class="select" @click="openSelect = !openSelect" v-click-outside="closeOutside">
     <div class="select__button" :class="{'select__button--active':openSelect}">
-        <span class="select__placeholder" v-if="!!placeholder">{{ placeholder }}:&nbsp;</span>
-        <span v-if="selectName ==='receive-address'">{{ current }}</span>
-        <span v-else>{{ currentPoint.label }}</span>
+        <span>
+            <span class="select__placeholder" v-if="!!placeholder">{{ placeholder }}:&nbsp;</span>
+            <span v-if="selectName ==='receive-address'">{{ current }}</span>
+            <span v-else>{{ currentPoint.label }}</span>
+        </span>
+        
         <svg :viewBox="viewbox" class="select__arrow">
             <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-down'"></use>
         </svg>
