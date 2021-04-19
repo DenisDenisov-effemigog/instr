@@ -9,22 +9,29 @@
             ></autocomplete-input>
         </div>
         <div v-if="city && !!deliveryPoints && deliveryPoints.length > 0" class="receive-address__select">
-            <select-list
+            <!-- <select-list
                 :points="deliveryPoints"
                 :selectopenSelect="{}"
                 :selectName="'receive-address'"
-            ></select-list>
+            ></select-list> -->
+            <input-select
+                :points="deliveryPoints"
+                v-model="address"
+                :city="city"
+            >
+            </input-select>
         </div>
     </div>
 </template>
 
 <script>
-    import selectList from "../partials/select-list.vue"
-    import AutocompleteInput from './autocomplete-input.vue'
+    import selectList from "../partials/select-list.vue";
+    import AutocompleteInput from './autocomplete-input.vue';
+    import inputSelect from './input-select.vue';
 
     export default {
         name:"receive-address",
-        components:{ selectList, AutocompleteInput},
+        components:{ selectList, AutocompleteInput, inputSelect},
         props: {
             deliveryPoints: {
                 required: true,
@@ -45,6 +52,7 @@
         data(){
             return{
                 city: '',
+                address: ''
             }
         },
         created() {
