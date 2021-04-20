@@ -160,8 +160,8 @@
                 applyFilter: false,
                 filteredProducts: [],
                 slideWidth:0,
-                startMove: 0
-
+                startMove: 0,
+                directionFlag: false
             }
         },
         methods: {
@@ -170,17 +170,19 @@
             },
             touchmove(event){
                 if(this.startMove < event.changedTouches[0].pageX){
-                    console.log('prev');
-                    this.slideToPrev()
-                    return
+                    this.directionFlag = true
+                    // this.slideToPrev()
                 }else{
-                    console.log('next');
-                    this.slideToNext()
-                    return
+                    this.directionFlag = false
+                    // this.slideToNext()
                 }
             },
             touchend(){
-
+                if(this.directionFlag){
+                    this.slideToPrev()
+                }else{
+                    this.slideToNext()
+                }
             },
             slideToPrev() {
                 let vm = this
@@ -254,6 +256,16 @@
                     this.expanded = false
                 }
             },
+            setSlideWidth(){
+                if(window.innerWidth < 768){
+                    let vm = this
+                    vm.$refs.main.forEach(function(item){
+                        item.children.forEach(function(elem){
+                            elem.style.minWidth = vm.slideWidth + 'px'
+                        })
+                    })
+                }
+            },
             getSlideWidht(){
                 this.slideWidth = this.$refs.top.children[0].offsetWidth
                 return this.slideWidth
@@ -319,6 +331,7 @@
             this.comparisons;
             window.addEventListener('resize', this.changeShownQnty);
             window.addEventListener('resize', this.getSlideWidht);
+            window.addEventListener('resize', this.setSlideWidth);
             this.$eventBus.$on('apply-comparison', this.applyListing);
         },
         beforeDestroy() {
@@ -326,6 +339,7 @@
         },
         mounted() {
             this.getSlideWidht();
+            this.setSlideWidth()
             this.changeShownQnty();
             this.deleteItemAtSliderEnd;
         }
