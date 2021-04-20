@@ -116,6 +116,7 @@
         },
         watch: {
             points() {
+                this.results = this.points
                 this.current = this.$tc('checkout.receive-address.choose_address')
             },
         },
