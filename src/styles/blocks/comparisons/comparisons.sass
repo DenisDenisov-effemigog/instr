@@ -2,6 +2,8 @@
     margin-bottom: 4.25rem
     +desktop
         margin-bottom: 15rem
+    & .container
+        overflow: hidden
     &__header
         +flex-container
         margin: 1.5rem 0
@@ -34,7 +36,7 @@
             width: 100%
             padding: 1rem 0
             background-color: $white
-            z-index: 12
+            z-index: 8
             box-shadow: 0px 2px 8px rgba($shadow, 0.25)
             +desktop
                 padding: 1.875rem 0
@@ -66,6 +68,7 @@
         padding: 1.5rem
         +desktop
             width: 25%
+            z-index: 1
     &__checkbox
         +checkbox
     &__checkbox-label
@@ -102,12 +105,15 @@
     // top sliders
 
     &__cards
+        display: flex
         margin-top: 1rem
+        transition: transform 0.35s ease 0s
         +mobile
             margin: 1rem -1rem 0 -1rem
         +desktop
             margin-top: 0
             width: 75%
+            z-index: 0
         .agile__slide,
             display: flex
             align-items: stretch
@@ -125,7 +131,9 @@
         border-bottom: 1px solid $pre-white
         padding: 0 1rem 1rem 1rem
         flex: auto
+        min-width: calc( 100% / 2)
         +tablet
+            min-width: calc( 100% / 3)
             flex-direction: row
         +tablet-only
             padding-top: 1rem
@@ -245,6 +253,7 @@
         @extend .text-2
         width: 100%
         color: $grey
+        overflow: hidden
         +desktop
             font-size: $font-size
             line-height: $line-height
@@ -268,12 +277,20 @@
                     padding-right: 1rem
                     padding-left: 1rem
                     border-right: 1px solid $border-color_4 
-
+        &-wrap
+            display: flex
+            transition: transform 0.35s ease 0s
     &__description
-        flex: auto
+        padding: 0 10px
+        min-width: calc( 100% / 2)
+        +tablet
+            min-width: calc( 100% / 3)
         +desktop
+            min-width: calc( 100% / 3)
             padding: 1rem
             border-left: 1px solid $border-color_4
+        &--mod
+            min-width: calc( 100% / 2)
         &--no-product
             width: 50%
         li
