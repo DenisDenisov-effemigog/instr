@@ -169,12 +169,12 @@
                 this.startMove = event.changedTouches[0].pageX
             },
             touchmove(event){
-                if(this.startMove < event.changedTouches[0].pageX){
+                console.log(1 + ' ' + this.startMove);
+                console.log(2 + ' ' + event.changedTouches[0].pageX);
+                if(this.startMove < event.changedTouches[0].pageX + 80){
                     this.directionFlag = true
-                    // this.slideToPrev()
-                }else{
+                }else if (this.startMove > event.changedTouches[0].pageX + 80){
                     this.directionFlag = false
-                    // this.slideToNext()
                 }
             },
             touchend(){
