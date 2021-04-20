@@ -2,7 +2,6 @@
     <div>
         <!-- top part of comparison -->
         <comparisons-top>
-            <pre>{{slideWidht}}</pre>
             <div class="comparisons__category-selection">
                 <div>
                     <select-list
@@ -121,7 +120,7 @@
             </div>
             <a class="comparisons__deploy"
                 :class="{'comparisons__deploy--expanded': expanded}"
-                @click.prevent="expanded = true"
+                @click.prevent="expandedClick()"
                 v-if="!expanded && keysLength > 10"
             >
                 {{ $tc('comparisons.text.deploy') }}
@@ -161,27 +160,31 @@
                 filteredProducts: [],
                 slideWidth:0,
                 startMove: 0,
-                directionFlag: false
+                directionFlag: '',
+                startTime: 0,
+                endTime: 0
             }
         },
         methods: {
             touchstart(event){
                 this.startMove = event.changedTouches[0].pageX
+                this.startTime = new Date().getTime()
             },
             touchmove(event){
-                console.log(1 + ' ' + this.startMove);
-                console.log(2 + ' ' + event.changedTouches[0].pageX);
-                if(this.startMove < event.changedTouches[0].pageX + 55){
+                if(this.startMove < event.changedTouches[0].pageX){
                     this.directionFlag = true
-                }if(this.startMove > event.changedTouches[0].pageX - 55){
+                }else{
                     this.directionFlag = false
                 }
             },
             touchend(){
+                this.endTime = new Date().getTime()
                 if(this.directionFlag){
-                    this.slideToPrev()
+                    if(this.endTime - this.startTime > 120)
+                        this.slideToPrev()
                 }else{
-                    this.slideToNext()
+                    if(this.endTime - this.startTime > 120)
+                        this.slideToNext()
                 }
             },
             slideToPrev() {
@@ -257,18 +260,21 @@
                 }
             },
             setSlideWidth(){
-                if(window.innerWidth < 1024){
                     let vm = this
                     vm.$refs.main.forEach(function(item){
                         item.children.forEach(function(elem){
                             elem.style.minWidth = vm.slideWidth + 'px'
                         })
                     })
-                }
             },
             getSlideWidht(){
                 this.slideWidth = this.$refs.top.children[0].offsetWidth
                 return this.slideWidth
+            },
+            expandedClick(){
+                let vm = this
+                vm.expanded = true;
+                vm.setSlideWidth()
             },
         },
         computed: {
