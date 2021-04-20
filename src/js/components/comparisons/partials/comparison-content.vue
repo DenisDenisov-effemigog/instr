@@ -171,9 +171,9 @@
             touchmove(event){
                 console.log(1 + ' ' + this.startMove);
                 console.log(2 + ' ' + event.changedTouches[0].pageX);
-                if(this.startMove < event.changedTouches[0].pageX + 80){
+                if(this.startMove < event.changedTouches[0].pageX + 55){
                     this.directionFlag = true
-                }else if (this.startMove > event.changedTouches[0].pageX + 80){
+                }if(this.startMove > event.changedTouches[0].pageX - 55){
                     this.directionFlag = false
                 }
             },
