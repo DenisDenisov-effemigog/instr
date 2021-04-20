@@ -108,8 +108,8 @@
                 let vm = this;
                 api.authOut().then(() => {
                     console.log('user out')
-                    // let ref = document.referrer;
-                    // window.location.replace(ref.length > 0 ? ref : '/');
+                    let ref = document.referrer;
+                    window.location.replace(ref.length > 0 ? ref : '/');
                 }).catch((error) => {
                     console.log(error)
                 });
