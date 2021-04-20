@@ -1,13 +1,13 @@
 <section class="errors">
 	<div class="errors__img">
        {% if errorType == '404' %}
-            <img src="./demo_images/errors/404.png">
+            <img src="{{templatePath}}/demo_images/errors/404.png" alt="404">
         {% endif %}
         {% if errorType == '500' %}
-            <img src="./demo_images/errors/500.png">
+            <img src="{{templatePath}}/demo_images/errors/500.png" alt="500">
         {% endif %}
         {% if errorType == '403' %}
-            <img src="./demo_images/errors/403.png">
+            <img src="{{templatePath}}/demo_images/errors/403.png" alt="403">
         {% endif %}
 	</div>
 	<div class="errors__main">
