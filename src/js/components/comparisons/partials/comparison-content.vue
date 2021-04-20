@@ -54,7 +54,7 @@
                         @touchstart="touchstart"
                         @touchmove="touchmove"
                         @touchend="touchend"
-                        :class="{'comparisons__card--width-50': qnty == 1}"
+                        :class="{'comparisons__card--width-50': qnty <= 2}"
                         v-for="(product, index) in comparisons" :key="index"
                     >
                         <component is="slider-photo-card" 
@@ -257,7 +257,7 @@
                 }
             },
             setSlideWidth(){
-                if(window.innerWidth < 768){
+                if(window.innerWidth < 1024){
                     let vm = this
                     vm.$refs.main.forEach(function(item){
                         item.children.forEach(function(elem){
