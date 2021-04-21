@@ -34,7 +34,7 @@ export default {
     codeTokens: {
         '#': {pattern: /\d/}
     },
-    // phoneMask: '+38(###)###-##-##', Идёт из базы
+    // phoneMask: '+380 (##)###-##-##', Идёт из базы
 
     passwordPattern: /^(?=.*\d)(?=.*[A-Z])(?=.*[a-zA-Z]).{6,}$/,
 

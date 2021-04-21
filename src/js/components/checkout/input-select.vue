@@ -88,7 +88,7 @@
             clickPoint(data){
                 let vm = this;
                 this.currentPoint = data
-                this.current = this.currentPoint.short
+                !!this.currentPoint.short ? this.current = this.currentPoint.short : this.current = this.currentPoint.address
                 this.$eventBus.$emit('change-select-point', this.selectName, this.currentPoint);
             },
             toggleSelect() {
@@ -112,6 +112,7 @@
             selectCurrent() {
                 if (this.current === '') this.current = this.$tc('checkout.receive-address.choose_address')
                 else if (!!this.currentPoint.short) this.current = this.currentPoint.short
+                else if (!!this.currentPoint.address) this.current = this.currentPoint.address
             }
         },
         watch: {
