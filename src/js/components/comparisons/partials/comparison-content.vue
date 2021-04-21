@@ -47,8 +47,9 @@
                     </div>
                 </div>
             </div>
-            <div class="comparisons__cards" ref="top">
-                <!-- top slider -->
+            <div class="comparisons__cards">
+                <div class="comparisons__cards-wrap" ref="top">
+                    <!-- top slider -->
                     <div class="comparisons__card" 
                         @touchstart="touchstart"
                         @touchmove="touchmove"
@@ -86,6 +87,7 @@
                     <div class="comparisons__card comparisons__card--no-product" v-if="qnty == 1">
                         <div>{{ $tc('comparisons.text.no_products_chosen') }}</div>
                     </div>
+                </div>
             </div>
         </comparisons-top>
 
