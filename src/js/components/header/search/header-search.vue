@@ -20,9 +20,10 @@
                     >
                     <button class="mobile-search__btn">{{ $tc('header.search.btn_find') }}</button>
                      <search :focused=focused
+                             :searchLink="searchLink"
                              :searchShields="searchShields"
                              :searchProducts="searchProducts"
-                             :searchLink="searchLink"
+                             v-if="!!searchLink && searchLink.length > 0"
                      ></search> 
                 </form>
             </div>
@@ -46,6 +47,7 @@
                 :searchShields="searchShields"
                 :searchProducts="searchProducts"
                 :searchLink="searchLink"
+                v-if="!!searchLink && searchLink.length > 0"
             ></search>
         </form>
     </div>
