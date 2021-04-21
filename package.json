@@ -52,6 +52,7 @@
     "vuex": "^3.5.1"
   },
   "devDependencies": {
+    "gulp-hash-src": "^0.1.6",
     "gulp-watch": "^5.0.1",
     "sass": "^1.28.0"
   },
