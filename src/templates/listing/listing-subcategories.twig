@@ -1,6 +1,6 @@
 <component is="listing-subcategories" :subcat-total="{{ subcategory.subcategories|length }}" :main="{{ main|json_encode()|e('html_attr') }}">
     <template v-slot:listing-subcategory-title>
-        {% if brandCatalog or showTree == false %}
+        {% if showTree == false %}
             {% if title is empty %}
                 <a class="listing__subcategory-link">{{ 'listing.category.title'|trans }}</a>
             {% else %}
@@ -12,7 +12,7 @@
     </template>
     <template v-slot:subcategories-content>
         <component is="further-subcategories"
-                    {% if brandCatalog or showTree == false %}
+                    {% if showTree == false %}
                         :categories="{{ subcategory|json_encode()|e('html_attr') }}"
                     {% else %}
                         :categories="{{ subcategory.subcategories|json_encode()|e('html_attr') }}"
@@ -20,7 +20,7 @@
                    :class-name="'listing'"
         >
             <template v-slot:subcategory-listing-part>
-                {% if brandCatalog or showTree == false %}
+                {% if showTree == false %}
                     {% for subsubcategory in subcategory|slice(0, 5) %}
                         <li class="thisisAListingCategory" >
                             <a href="{{ subsubcategory.url }}" class="listing__further-subcategory">{{ subsubcategory.title }}</a>
@@ -40,7 +40,7 @@
                 {% endif %}
             </template>
             <template v-slot:subcategory-listing-all>
-                {% if brandCatalog or showTree == false %}
+                {% if showTree == false %}
                     {% for subsubcategory in subcategory %}
                         <li >
                             {% if subsubcategory.checked == true %}
