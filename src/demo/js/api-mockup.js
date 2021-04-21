@@ -2794,7 +2794,7 @@ function runLocal (action, config) {
                                         link: ''
                                     }
                                 ],
-                                url: ''
+                                url: '/search/?q=item'
                             }
                         }
                     }
