@@ -264,6 +264,7 @@
             setSlideWidth(){
                     let vm = this
                     vm.$refs.main.forEach(function(item){
+                        console.log(item);
                         item.children.forEach(function(elem){
                             elem.style.minWidth = vm.slideWidth + 'px'
                         })
@@ -276,11 +277,12 @@
             expandedClick(){
                 let vm = this
                 vm.expanded = true;
-                vm.setSlideWidth()
+                setTimeout(() => {
+                    vm.setSlideWidth()
+                }, 0);
             },
         },
         computed: {
-            
             sliceList() {
                 let keyArr = this.getKeysOtherOptions(this.otherOptions)
                 if (this.expanded) {
