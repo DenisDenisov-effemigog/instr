@@ -105,9 +105,8 @@
     // top sliders
 
     &__cards
-        display: flex
+        overflow: hidden
         margin-top: 1rem
-        transition: transform 0.35s ease 0s
         +mobile
             margin: 1rem -1rem 0 -1rem
         +desktop
@@ -124,6 +123,9 @@
             + .agile__slide
                 +tablet-only
                     border-right: 1px solid $pre-white
+    &__cards-wrap
+        transition: transform 0.35s ease 0s
+        display: flex
     &__card
         display: flex
         flex-direction: column
