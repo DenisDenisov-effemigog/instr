@@ -22,7 +22,7 @@ const gulp = require('gulp'),
     vueify = require('vueify'),
     watch = require('gulp-watch'),
     vinyl_buffer = require('vinyl-buffer')
-    // hash_src = require("gulp-hash-src")
+    hash_src = require("gulp-hash-src")
 ;
 const { is_int } = require('locutus/php/var');
 
@@ -387,7 +387,7 @@ gulp.task('demo:templates:build', function () {
                 }
             ]
         }))
-        // .pipe(hash_src({build_dir: "./public/", src_path: './src/demo/templates/pages/'}))
+        .pipe(hash_src({build_dir: config.build.root, src_path: './src/demo/templates/pages/', exts:[".js", ".css"]}))
         .pipe(gulp.dest(config.build.root));
 });
 
