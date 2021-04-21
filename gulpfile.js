@@ -387,7 +387,7 @@ gulp.task('demo:templates:build', function () {
                 }
             ]
         }))
-        .pipe(hash_src({build_dir: "./public/", src_path: './src/demo/templates/pages/'}))
+        .pipe(hash_src({build_dir: "./public/", src_path: './src/demo/templates/pages/', exts:[".js", ".css"]}))
         .pipe(gulp.dest(config.build.root));
 });
 
