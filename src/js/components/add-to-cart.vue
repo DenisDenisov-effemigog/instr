@@ -24,7 +24,7 @@
                         :autofocus="autofocusFlag"
                     > 
                     <!-- временно отключаем меру подсчета -->
-                    <p v-else @click="inputMode = true" class="add-to-cart__amount">{{amount}} {{ $tc('text.count') }}</p>
+                    <p v-else @click="inputMode = true" class="add-to-cart__amount">{{storeAmount}} {{ $tc('text.count') }}</p>
                 </div>
                 <div v-show="tooltipFlag" class="add-to-cart__tooltip" :class="{'add-to-cart__tooltip--active':tooltipFlag}">
                     {{ $tc('button.add_to_cart.tooltip.part1') }} {{maxAmount}} {{ $tc('button.add_to_cart.tooltip.part2') }}
