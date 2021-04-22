@@ -24,7 +24,7 @@
                         :autofocus="autofocusFlag"
                     > 
                     <!-- временно отключаем меру подсчета -->
-                    <p v-else @click="inputMode = true" class="add-to-cart__amount">{{storeAmount}} {{ $tc('text.count') }}</p>
+                    <p v-else @click="inputMode = true" class="add-to-cart__amount">{{amount}} {{ $tc('text.count') }}</p>
                 </div>
                 <div v-show="tooltipFlag" class="add-to-cart__tooltip" :class="{'add-to-cart__tooltip--active':tooltipFlag}">
                     {{ $tc('button.add_to_cart.tooltip.part1') }} {{maxAmount}} {{ $tc('button.add_to_cart.tooltip.part2') }}
@@ -136,7 +136,7 @@
         watch: {
             storeAmount(newValue) {
                 if(!this._debounce_timer) {
-                    return newValue;
+                    this.amount = newValue;
                 }
             }
         },
@@ -192,7 +192,7 @@
                 }, config.debounce_timeout);
             },
             decrease() {
-                if (this.amount > this.allowedDecreaseAmount) {
+                if (this.storeAmount > this.allowedDecreaseAmount) {
                     this.amount--;
                     this.startSetAmount();
                 }
@@ -209,7 +209,7 @@
                 if(clickFlag){
                     this.$emit('cloneCard', button)
                 }
-                if (this.amount < this.maxAmount) {
+                if (this.storeAmount < this.maxAmount) {
                     this.amount++;
                     if(this.changeIcon && this.width < 760) {
                         this.disabled = true
@@ -230,13 +230,13 @@
             },
             changeVal(e){
                 this.amount = Number(e)
-                if (this.amount <= this.maxAmount && this.amount >= this.allowedDecreaseAmount){
+                if (this.storeAmount <= this.maxAmount && this.storeAmount >= this.allowedDecreaseAmount){
                     this.amount = Number(e)
                 }else{
-                    if (this.amount >= this.maxAmount){
+                    if (this.storeAmount >= this.maxAmount){
                         this.amount = this.maxAmount
                     }
-                    if (this.amount <= this.allowedDecreaseAmount){
+                    if (this.storeAmount <= this.allowedDecreaseAmount){
                         this.amount = this.allowedDecreaseAmount
                     }
                 }
