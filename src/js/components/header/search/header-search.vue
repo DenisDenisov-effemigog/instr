@@ -10,7 +10,7 @@
                         <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-left'"></use>
                     </svg>
                 </div>
-                <form @submit="goToSearch" class="mobile-search__form">
+                <form @submit.prevent="goToSearch" class="mobile-search__form">
                     <input type="text" 
                            class="mobile-search__input" 
                            :class="{'header__search-input_focused': focused}" 
