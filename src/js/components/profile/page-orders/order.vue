@@ -92,25 +92,22 @@ export default {
             this.$eventBus.$emit('closeTitle')
         },
         openModal(modal) {
-            let vm = this;
-            //debugger;
+            const vm = this;
             this.getOrderProducts().then(() => {
-
+                let available = vm.products[0].available
                 let result = vm.products.filter(function (item) {
-                    //debugger;
+                    available = available || item.available
                     return item.available === false
                 })
                 let repeatOrder = {
                     'products': result,
-                    'orderNumber': vm.order.number
+                    'orderNumber': vm.order.number,
+                    'orderId': vm.order.id,
+                    'disableBtn': !available
                 }
-
                 this.$eventBus.$emit("openModal", modal, repeatOrder, false, false)
-                
             }).catch((error) => {
             });
-            //debugger;
-            
         }
     }
 }

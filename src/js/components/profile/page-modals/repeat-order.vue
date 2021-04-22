@@ -21,12 +21,18 @@
                 </li>
             </ul>
         </div>
-        <a :href="cartLink" class="order-modal__btn">{{ $tc('link.go_cart') }}</a>
+        <a @click="addToCard" class="order-modal__btn"
+            :class="{'button--disabled': products.disableBtn}"
+        >
+            {{ $tc('link.go_cart') }}
+        </a>
     </div>
 </template>
 
 <script>
     import config from "../../../config";
+    import * as Api from '../../../api';
+    let api = Api.getInstance();
     
     export default {
         name:'repeat-order',
@@ -41,5 +47,14 @@
                 cartLink: config.links.cart
             }
         },
+        methods: {
+            addToCard() {
+                if (!this.products.disableBtn) {
+                    api.personalOrderRepaet(this.products.id).then(() => {
+                        window.location.replace(this.cartLink)
+                    })
+                }
+            }
+        }
     }
 </script>

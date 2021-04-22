@@ -155,7 +155,6 @@ export default {
     },
     mounted() {
         this.prepareOrder(this.$route.params.id);
-        console.log(this.order.documents, !!this.order.documents)
     },
     computed: {
         deliveryInfo() {
@@ -216,21 +215,19 @@ export default {
             this.fixedButton = false
         },
         openModal(modal) {
-
-            let vm = this;
-            //debugger;            
-
+            const vm = this;
+            let available = vm.order.basket[0].available;
             let result = vm.order.basket.filter(function (item) {
-                //debugger;
+                available = available || item.available
                 return item.available === false
             })
             let repeatOrder = {
                 'products': result,
-                'orderNumber': vm.order.number
+                'orderNumber': vm.order.number,
+                'orderId': vm.order.id,
+                'disableBtn': !available
             }
-
             this.$eventBus.$emit("openModal", modal, repeatOrder, false, false)
-
         },
     },
     created () {

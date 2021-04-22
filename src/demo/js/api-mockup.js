@@ -521,46 +521,65 @@ for(let i = 0; i < 10; ++i) {
             return 0.5 - Math.random()
         }).pop();
 
-    demoOrders.push({
-        id: i+1,
-        number: 3254+i,
-        date: '31.12.2020',
-        totalPrice: 1000819,
-        status: newOrdeStatus,
-        qty: getRandomInt(2,8),
-        paid: Math.random() > 0.5,
-        discount: 10,
-        
-        documents:
-            [
-                {label: 'Документы', value: 'documents', link: '/images/country/globus.png'},
-                {label: 'Загрузить еще что-нибудь', value: 'something', link: '/images/country/map.png'},
-                {label: 'Загрузить счет-фактуру', value: 'check', link: '/images/country/map-dots.png'}
-            ],
+    demoOrders.push(
+        {
+            id: i+1,
+            number: 3254+i,
+            date: '31.12.2020',
+            totalPrice: 1000819,
+            status: newOrdeStatus,
+            qty: getRandomInt(2,8),
+            paid: Math.random() > 0.5,
+            discount: 10,
+            
+            documents:
+                [
+                    {label: 'Документы', value: 'documents', link: '/images/country/globus.png'},
+                    {label: 'Загрузить еще что-нибудь', value: 'something', link: '/images/country/map.png'},
+                    {label: 'Загрузить счет-фактуру', value: 'check', link: '/images/country/map-dots.png'}
+                ],
 
-        delivery_address: 'Москва, Трехгорный Вал 3, ст. 26',
-        delivery_person: 'Константин Константинопольский konstantynopolsky@gmail.com +7 (910) 872-92-89',
-        payment: 'Оплата онлайн по карте',
-        basket:[
-            {
-                id:123,
-                name:"Trimmer pe benzina GT-52S, multifunctional, 52 сс",
-                url:"/product/areometr-dlya-vymiryuvannya-shchilnosti-elektrolitu-sparta/",
-                sku:"1230056",
-                basket_quantity:3,
-                totalPrice:1051.50,
-                price:350.50,
-                base_price:400,
-                discount:12,
-                images:[
-                    {
-                        img:"/upload/iblock/f62/60541.970.jpg"
-                    }
-                ]
-            }
-        ]
-
-    });
+            delivery_address: 'Москва, Трехгорный Вал 3, ст. 26',
+            delivery_person: 'Константин Константинопольский konstantynopolsky@gmail.com +7 (910) 872-92-89',
+            payment: 'Оплата онлайн по карте',
+            basket:[
+                {
+                    id:123,
+                    name:"Trimmer pe benzina GT-52S, multifunctional, 52 сс",
+                    url:"/product/areometr-dlya-vymiryuvannya-shchilnosti-elektrolitu-sparta/",
+                    sku:"1230056",
+                    basket_quantity:3,
+                    totalPrice:1051.50,
+                    price:350.50,
+                    base_price:400,
+                    discount:12,
+                    available: false,
+                    images:[
+                        {
+                            img:"/demo_images/product/image_50.png"
+                        }
+                    ]
+                },
+                {
+                    id:123,
+                    name:"Trimmer pe benzina GT-52S, multifunctional, 52 сс",
+                    url:"/product/areometr-dlya-vymiryuvannya-shchilnosti-elektrolitu-sparta/",
+                    sku:"1230056",
+                    basket_quantity:3,
+                    totalPrice:1051.50,
+                    price:350.50,
+                    base_price:400,
+                    discount:12,
+                    available: true,
+                    images:[
+                        {
+                            img:"/demo_images/product/image_50.png"
+                        }
+                    ]
+                }
+            ]
+        },
+    );
 }
 
 let financeData = {

@@ -290,6 +290,11 @@ class Api {
             id: id
         });
     }
+    personalOrderRepaet(id) {
+        return this._promiseBitrixRequest('instrument2:rest.api.user.order.repeat', {
+            id: id
+        });
+    }
     personalFinance() {
         return this._promiseBitrixRequest('instrument2:rest.api.user.finance.list', {});
     }

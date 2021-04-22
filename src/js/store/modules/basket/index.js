@@ -33,7 +33,6 @@ const actions = {
     },
     
     basketApplyResponseProducts: ({commit, dispatch}, data) => {
-        //debugger;
         let products = [];
         data.forEach((product) => {
             products.push({
@@ -62,11 +61,9 @@ const actions = {
     },
 
     basketUpdateProducts: ({dispatch}) => {
-        //debugger;
         return new Promise((resolve, reject) => {
             api.getBasket().then(
                 (data) => {
-                    //debugger;
                     dispatch('basketApplyResponseProducts', data);
                     resolve();
                 },
@@ -76,7 +73,6 @@ const actions = {
     },
 
     getOldBasket: ({commit}) => {
-        //debugger;
         api.getOldBasket().then((products) => {
                 commit(types.BASKET_APPLY_OLDPRODUCTS, products);
             },
@@ -87,7 +83,6 @@ const actions = {
         return new Promise((resolve, reject) => {
             api.combineCarts(arr).then(
                 (data) => {
-                    // debugger;
                     dispatch('basketApplyResponseProducts', data);
                     resolve();
                 },
@@ -97,15 +92,12 @@ const actions = {
     },
     
     basketSendQuantity: ({commit, dispatch, state}, params) => {
-        //debugger;
         let productId = params.productId;
         let quantity = params.quantity;
 
         return new Promise((resolve, reject) => {
-            //debugger;
             api.setBasketQuantity(productId, quantity).then(
                 (data) => {
-                    //debugger;
                     dispatch('basketApplyResponseProducts', data);
                     resolve();
                 },
@@ -153,7 +145,6 @@ const actions = {
         return new Promise((resolve, reject) => {
             api.searchItem(arr).then(
                 (data) => {
-                    // debugger;
                     dispatch('basketApplyResponseProducts', data);
                     resolve();
                 },
