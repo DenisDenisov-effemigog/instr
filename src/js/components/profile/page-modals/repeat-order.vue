@@ -50,8 +50,11 @@
         methods: {
             addToCard() {
                 if (!this.products.disableBtn) {
-                    api.personalOrderRepaet(this.products.id).then(() => {
+                    api.personalOrderRepaet(this.products.orderId).then(() => {
                         window.location.replace(this.cartLink)
+                    }).catch(errors => {
+                        console.error('Cannot repeat order');
+                        console.log(errors);
                     })
                 }
             }
