@@ -31,7 +31,7 @@
                 <img :src="templatePath + 'images/header/icons/mag.svg'" alt="" class="header__search-mobile-icon">
             </div>
         </div>
-        <form @submit="goToSearch" class="header__search-form">
+        <form @submit.prevent="goToSearch" class="header__search-form">
             <input @focus="focus" type="text" 
                    class="header__search-input" 
                    :class="{'header__search-input_focused': focused}" 
