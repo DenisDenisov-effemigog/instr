@@ -98,14 +98,14 @@
         <div class="cart-card__block" v-else-if="view === 'table_cards'">
             <!-- табличная карточка только десктоп -->
             <div class="table-header__code">{{ product.sku }}</div>
-            <a class="table-header__dscr">
-                <span :href="product.url" class="cart-card__name">
+            <div class="table-header__dscr">
+                <a :href="product.url" class="cart-card__name">
                     {{ product.name }}
-                </span>
+                </a>
                 <span class="cart-card__name-tooltip">
                     {{product.name}}
                 </span>
-            </a>
+            </div>
             <div class="table-header__qnty" v-if="product.available">
                 <span v-if="!deleteItem">{{ amount }}</span>
             </div>

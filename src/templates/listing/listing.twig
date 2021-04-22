@@ -39,7 +39,7 @@
             </div>
         {% endif %}
     {% if shields %}
-        <div class="listing__shields {% if brandCatalog %}listing__shields--mobile{% endif %}">
+        <div class="listing__shields">
             {% for shield in shields %}
                 <a href='{{shield.url}}' class="listing__shield">
                     {{ shield.title }}
@@ -51,7 +51,7 @@
         <div class="listing__sidebar">
             {% if showTree == false %}
                 {% if listCategoryView == 'select' or listCategoryView == 'filter' or listCategoryView == 'list' %}
-                    <div class="listing__subcategories {% if brandCatalog %}listing__subcategories--brand{% endif %}">
+                    <div class="listing__subcategories">
                         <div class="listing__subcategory-link">{{ sub_title}}</div>
                             {% if listCategory is not empty%}
                                 <component is="filter-category" :categories="{{ listCategory|json_encode()|e('html_attr') }}">
@@ -91,13 +91,12 @@
                 <div class="listing__subcategories">
                     {% for subcategory in treeCategories.subcategories %}
                         <div class="listing__subcategory">
-                            <a href="{{ subcategory.url }}" class="listing__subcategory-link {% if brandCatalog %}listing__subcategory-link--desktop{% endif %}">
+                            <a href="{{ subcategory.url }}" class="listing__subcategory-link">
                                 {{subcategory.title}}
                             </a>
                             <component is="further-subcategories"
                                        :categories="{{ subcategory.subcategories|json_encode()|e('html_attr') }}"
                                        :class-name="'listing'"
-                                       {% if brandCatalog %}class="listing__further-subcategories--desktop"{% endif %}
                             >
                                 <template v-slot:subcategory-listing-part>
                                     {% for subsubcategory in subcategory.subcategories|slice(0, 5) %}
