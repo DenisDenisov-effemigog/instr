@@ -124,10 +124,10 @@
                 return this.$store.getters.basketProductQuantity(this.productId);
             },
             increaseDisabled() {
-                return this.amount >= this.maxAmount;
+                return this.storeAmount >= this.maxAmount;
             },
             decreaseDisabled() {
-                return this.amount <= this.allowedDecreaseAmount;
+                return this.storeAmount <= this.allowedDecreaseAmount;
             },
             allowedDecreaseAmount() {
                 return this.isCart ? 1 : 0;
@@ -136,7 +136,7 @@
         watch: {
             storeAmount(newValue) {
                 if(!this._debounce_timer) {
-                    this.amount = newValue;
+                    return newValue;
                 }
             }
         },
