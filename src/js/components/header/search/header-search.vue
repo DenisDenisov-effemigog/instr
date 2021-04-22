@@ -10,7 +10,7 @@
                         <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-left'"></use>
                     </svg>
                 </div>
-                <form action="" class="mobile-search__form">
+                <form @submit="goToSearch" class="mobile-search__form">
                     <input type="text" 
                            class="mobile-search__input" 
                            :class="{'header__search-input_focused': focused}" 
@@ -31,7 +31,7 @@
                 <img :src="templatePath + 'images/header/icons/mag.svg'" alt="" class="header__search-mobile-icon">
             </div>
         </div>
-        <form action="" class="header__search-form">
+        <form @submit="goToSearch" class="header__search-form">
             <input @focus="focus" type="text" 
                    class="header__search-input" 
                    :class="{'header__search-input_focused': focused}" 
@@ -102,7 +102,12 @@ export default {
                     }).catch(errors => {
                         console.error(errors);
                     })
-                }, 500);
+                }, 300);
+            }
+        },
+        goToSearch() {
+            if (!!this.searchLink && this.searchLink.length > 0) {
+                window.location.replace(this.searchLink)
             }
         },
         searchClick(){
