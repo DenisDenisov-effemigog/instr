@@ -7,7 +7,7 @@
         >
             <div class="order__product-number"><span>{{ $tc('text.articul') }}:</span>{{ product.sku }}</div>
             <div class="order__product-desc">
-                <span>{{ product.name }}</span>
+                <a :href="product.url">{{ product.name }}</a>
                 <div class="order__product-desc_tooltip">
                     {{ product.name }}
                 </div>
