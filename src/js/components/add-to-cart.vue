@@ -124,10 +124,10 @@
                 return this.$store.getters.basketProductQuantity(this.productId);
             },
             increaseDisabled() {
-                return this.storeAmount >= this.maxAmount;
+                return this.amount >= this.maxAmount;
             },
             decreaseDisabled() {
-                return this.storeAmount <= this.allowedDecreaseAmount;
+                return this.amount <= this.allowedDecreaseAmount;
             },
             allowedDecreaseAmount() {
                 return this.isCart ? 1 : 0;
@@ -192,7 +192,7 @@
                 }, config.debounce_timeout);
             },
             decrease() {
-                if (this.storeAmount > this.allowedDecreaseAmount) {
+                if (this.amount > this.allowedDecreaseAmount) {
                     this.amount--;
                     this.startSetAmount();
                 }
@@ -209,7 +209,7 @@
                 if(clickFlag){
                     this.$emit('cloneCard', button)
                 }
-                if (this.storeAmount < this.maxAmount) {
+                if (this.amount < this.maxAmount) {
                     this.amount++;
                     if(this.changeIcon && this.width < 760) {
                         this.disabled = true
@@ -230,13 +230,13 @@
             },
             changeVal(e){
                 this.amount = Number(e)
-                if (this.storeAmount <= this.maxAmount && this.storeAmount >= this.allowedDecreaseAmount){
+                if (this.amount <= this.maxAmount && this.amount >= this.allowedDecreaseAmount){
                     this.amount = Number(e)
                 }else{
-                    if (this.storeAmount >= this.maxAmount){
+                    if (this.amount >= this.maxAmount){
                         this.amount = this.maxAmount
                     }
-                    if (this.storeAmount <= this.allowedDecreaseAmount){
+                    if (this.amount <= this.allowedDecreaseAmount){
                         this.amount = this.allowedDecreaseAmount
                     }
                 }
