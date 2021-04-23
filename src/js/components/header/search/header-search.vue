@@ -47,7 +47,7 @@
                 :searchShields="searchShields"
                 :searchProducts="searchProducts"
                 :searchLink="searchLink"
-                v-if="!!searchLink && searchLink.length > 0"
+                v-if="showDropDown"
             ></search>
         </form>
     </div>
@@ -76,6 +76,7 @@ export default {
             searchShields: [],
             searchProducts: [],
             searchLink: '',
+            showDropDown: false
         }
     },
     mounted() {
@@ -94,20 +95,21 @@ export default {
         startSearch() {
             let vm = this
             if(vm.value.length > 3){
-                setTimeout(() => {
-                    api.startSearch(vm.value).then(answer => {
+                api.startSearch(vm.value).then(answer => {
+                    vm.searchLink = answer.url
+                    setTimeout(() => {
                         vm.searchShields = answer.shields
                         vm.searchProducts = answer.products
-                        vm.searchLink = answer.url
-                    }).catch(errors => {
-                        console.error(errors);
-                    })
-                }, 300);
+                        vm.showDropDown = true
+                    }, 300);
+                }).catch(errors => {
+                    console.error(errors);
+                })
             }
         },
         goToSearch() {
             if (!!this.searchLink && this.searchLink.length > 0) {
-                window.location.replace(this.searchLink)
+                window.location.assign(this.searchLink)
             }
         },
         searchClick(){
