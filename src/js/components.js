@@ -1,6 +1,7 @@
 import VueSlickCarousel from "vue-slick-carousel";
 /*elements*/
 import country from './components/country.vue';
+import googleMap from './components/googleMap.vue';
 import catalogueBtn from './components/catalogue-btn.vue';
 import addAddressBtn from './components/add-address-btn.vue';
 import modal from './components/modal.vue';
@@ -228,6 +229,7 @@ export default {
         favoritesListingCategory,
         comparisonsListing,
         filterCategory,
-        catalogueBtn
+        catalogueBtn,
+        googleMap
     },
 }

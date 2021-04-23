@@ -1,3 +1,10 @@
+{% set locations =  {
+ imgClusterUrl: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
+  locations: [
+    {id: 1, lat: 50.409105, lng: 30.359184, name_point: 'А', title: 'Мир Инструмента'},
+  ],
+} %}
+
 <section class="contacts">
 	<h2 class="contacts-head__title">{{ 'contacts.title'|trans }}</h2>
 	<div class="contacts-head">
@@ -5,38 +12,46 @@
 			<div class="contacts-head__details">
 				<h3 class="contacts-head__title">{{ 'contacts.head_title'|trans }}</h3>
 				<ul class="contacts-head__list">
-					<li class="contacts-head__item">
-						<div class="contacts-head__icon">
-							<svg viewbox="0 0 16 16">
-								<use xlink:href="{{ templatePath }}images/sprite.svg#icons__phone"></use>
-							</svg>
-						</div>
-                        <div class="contacts-head__text">{{tradeMainOffice.phone}}</div>
-					</li>
-					<li class="contacts-head__item">
-						<div class="contacts-head__icon">
-							<svg  viewbox="-3 0 16 12">
-								<use xlink:href="{{ templatePath }}images/sprite.svg#icons__clock"></use>
-							</svg>
-						</div>
-						<div class="contacts-head__text">{{tradeMainOffice.schedule}}</div>
-					</li>
-					<li class="contacts-head__item">
-						<div class="contacts-head__icon">
-							<svg>
-								<use xlink:href="{{ templatePath }}images/sprite.svg#icons__mail"></use>
-							</svg>
-						</div>
-						<div class="contacts-head__text">{{tradeMainOffice.mail}}</div>
-					</li>
-					<li class="contacts-head__item">
-						<div class="contacts-head__icon">
-							<svg>
-								<use xlink:href="{{ templatePath }}images/sprite.svg#icons__location"></use>
-							</svg>
-						</div>
-						<div class="contacts-head__text">{{tradeMainOffice.address}}</div>
-					</li>
+					{% if tradeMainOffice.phone is not empty %}					
+						<li class="contacts-head__item">
+							<div class="contacts-head__icon">
+								<svg viewbox="0 0 16 16">
+									<use xlink:href="{{ templatePath }}images/sprite.svg#icons__phone"></use>
+								</svg>
+							</div>
+							<div class="contacts-head__text">{{tradeMainOffice.phone}}</div>
+						</li>
+					{% endif %}
+					{% if tradeMainOffice.schedule is not empty %}
+						<li class="contacts-head__item">
+							<div class="contacts-head__icon">
+								<svg  viewbox="-3 0 16 12">
+									<use xlink:href="{{ templatePath }}images/sprite.svg#icons__clock"></use>
+								</svg>
+							</div>
+							<div class="contacts-head__text">{{tradeMainOffice.schedule}}</div>
+						</li>
+					{% endif %}
+					{% if tradeMainOffice.mail is not empty %}
+						<li class="contacts-head__item">
+							<div class="contacts-head__icon">
+								<svg>
+									<use xlink:href="{{ templatePath }}images/sprite.svg#icons__mail"></use>
+								</svg>
+							</div>
+							<div class="contacts-head__text">{{tradeMainOffice.mail}}</div>
+						</li>
+					{% endif %}
+					{% if tradeMainOffice.address is not empty %}
+						<li class="contacts-head__item">
+							<div class="contacts-head__icon">
+								<svg>
+									<use xlink:href="{{ templatePath }}images/sprite.svg#icons__location"></use>
+								</svg>
+							</div>
+							<div class="contacts-head__text">{{tradeMainOffice.address}}</div>
+						</li>
+					{% endif %}
 				</ul>
 			</div>
 			<component is="contacts-form"
@@ -50,14 +65,15 @@
 		</h3>
 		<div
 			class="contacts-map__main">
-			<iframe
+			{# <iframe
 				width="600"
 				height="450"
 				style="border:0"
 				loading="lazy"
 				allowfullscreen
 				src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2542.6542983926347!2d30.35298821572994!3d50.410279979469955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cbb00d4152e7%3A0x27ddd046e58faa82!2z0YPQuy4g0KHQvtCx0L7RgNC90LDRjywgMTE0LCDQodC-0YTQuNC10LLRgdC60LDRjyDQkdC-0YDRidCw0LPQvtCy0LrQsCwg0JrQuNC10LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCwg0KPQutGA0LDQuNC90LAsIDA4MTMx!5e0!3m2!1sru!2sru!4v1617887968148!5m2!1sru!2sru">
-				</iframe>
+				</iframe> #}
+				<component is="googleMap" :locations="{{ locations|json_encode|e('html_attr') }}"></component>
 		</div>
 	</div>
 	<div class="contacts-trade">
@@ -67,39 +83,47 @@
 		<ul class="contacts-trade__list">
 			{% for trade in tradeOffices %}
 				<li class="contacts-trade__item">
-					<div class="contacts-trade__subtitle">{{trade.title}}:</div>
+					{% if trade.title is not empty %}
+						<div class="contacts-trade__subtitle">{{trade.title}}:</div>
+					{% endif %}
 					<div class="contacts-trade__desc">
 						<ul class="contacts-trade__sublist">
-							<li class="contacts-trade__subitem">
-								<div class="contacts-trade__icon">
-									<svg>
-										<use xlink:href="{{ templatePath }}images/sprite.svg#icons__location"></use>
-									</svg>
-								</div>
-								<div class="contacts-trade__text">
-									{{trade.address}}
-								</div>
-							</li>
-							<li class="contacts-trade__subitem">
-								<div class="contacts-trade__icon">
-									<svg viewbox="0 0 16 16">
-										<use xlink:href="{{ templatePath }}images/sprite.svg#icons__phone"></use>
-									</svg>
-								</div>
-								<div class="contacts-trade__text">
-									{{trade.phone}}
-								</div>
-							</li>
-							<li class="contacts-trade__subitem">
-								<div class="contacts-trade__icon">
-									<svg>
-										<use xlink:href="{{ templatePath }}images/sprite.svg#icons__mail"></use>
-									</svg>
-								</div>
-								<div class="contacts-trade__text">
-									{{trade.mail}}
-								</div>
-							</li>
+							{% if trade.address is not empty %}
+								<li class="contacts-trade__subitem">
+									<div class="contacts-trade__icon">
+										<svg>
+											<use xlink:href="{{ templatePath }}images/sprite.svg#icons__location"></use>
+										</svg>
+									</div>
+									<div class="contacts-trade__text">
+										{{trade.address}}
+									</div>
+								</li>
+							{% endif %}
+							{% if trade.phone is not empty %}
+								<li class="contacts-trade__subitem">
+									<div class="contacts-trade__icon">
+										<svg viewbox="0 0 16 16">
+											<use xlink:href="{{ templatePath }}images/sprite.svg#icons__phone"></use>
+										</svg>
+									</div>
+									<div class="contacts-trade__text">
+										{{trade.phone}}
+									</div>
+								</li>
+							{% endif %}
+							{% if trade.mail is not empty %}
+								<li class="contacts-trade__subitem">
+									<div class="contacts-trade__icon">
+										<svg>
+											<use xlink:href="{{ templatePath }}images/sprite.svg#icons__mail"></use>
+										</svg>
+									</div>
+									<div class="contacts-trade__text">
+										{{trade.mail}}
+									</div>
+								</li>
+							{% endif %}
 						</ul>
 					</div>
 				</li>
