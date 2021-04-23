@@ -47,7 +47,7 @@
                 :searchShields="searchShields"
                 :searchProducts="searchProducts"
                 :searchLink="searchLink"
-                v-if="showDropDown"
+                v-if="showDropDown && !!searchLink && searchLink.length > 0"
             ></search>
         </form>
     </div>
@@ -97,9 +97,9 @@ export default {
             if(vm.value.length > 3){
                 api.startSearch(vm.value).then(answer => {
                     vm.searchLink = answer.url
+                    vm.searchShields = answer.shields
+                    vm.searchProducts = answer.products
                     setTimeout(() => {
-                        vm.searchShields = answer.shields
-                        vm.searchProducts = answer.products
                         vm.showDropDown = true
                     }, 300);
                 }).catch(errors => {
