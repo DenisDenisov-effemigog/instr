@@ -48,12 +48,12 @@ export default {
       });
 
       // create MarkerClusterer and add Image
-      let markerCluster = new MarkerClusterer(
-        map,
-        markers,
+      // let markerCluster = new MarkerClusterer(
+      //   map,
+      //   markers,
 
-        { imagePath: imgClusterUrl }
-      );
+      //   { imagePath: imgClusterUrl }
+      // );
 
       // авто масштабирование
       map.fitBounds(this.bounds);
