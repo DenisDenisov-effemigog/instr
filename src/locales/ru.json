@@ -114,6 +114,7 @@
     "profile_orders.title.recipient": "Получатель",
     "profile_orders.title.payment": "Оплата",
     "profile_delivery.empty_text": "У вас пока нет ни одного адреса.",
+    "profile_delivery.notification_text": "Запрос отправлен и будет обработан менеджером.",
     "profile_finance.download": "Загрузить счет-фактуру",
     "profile_finance.empty_text": "Текст про то, что договор не заключен.",
     "profile_finance.title.product_limit": "Товарный лимит",
