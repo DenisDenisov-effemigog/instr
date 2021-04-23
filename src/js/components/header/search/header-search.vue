@@ -32,12 +32,13 @@
             </div>
         </div>
         <form @submit.prevent="goToSearch" class="header__search-form">
-            <input @focus="focus" type="text" 
+            <input @focus="focused = true" type="text" 
                    class="header__search-input" 
                    :class="{'header__search-input_focused': focused}" 
                    :placeholder="$tc('header.search.placeholder')"
                    v-model="value"
                    @keyup="startSearch"
+                   @blur="focused = false"
             >
                 <svg v-show="focused" class="header__search-form-icon">
                     <use :xlink:href="templatePath + 'images/sprite.svg#icons__mag'"></use>
@@ -71,7 +72,7 @@ export default {
     data(){
         return{
             value: '',
-            focused:false,
+            focused: false,
             activeSearch: false,
             searchShields: [],
             searchProducts: [],
@@ -86,20 +87,14 @@ export default {
         this.$eventBus.$on("closeSearch", this.exitSearch)
     },
     methods:{
-        focus(){
-            this.focused = true
-        },
-        closeSearch(){
-            this.focused = false
-        },
         startSearch() {
             let vm = this
             if(vm.value.length > 3){
                 api.startSearch(vm.value).then(answer => {
                     vm.searchLink = answer.url
-                    vm.searchShields = answer.shields
-                    vm.searchProducts = answer.products
                     setTimeout(() => {
+                        vm.searchShields = answer.shields
+                        vm.searchProducts = answer.products
                         vm.showDropDown = true
                     }, 300);
                 }).catch(errors => {
