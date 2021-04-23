@@ -291,6 +291,7 @@
     "profile.title.my": "Особистий кабінет",
     "profile.title.my_own": "Особисті дані",
     "profile_delivery.empty_text": "У вас поки немає жодної адреси.",
+    "profile_delivery.notification_text": "Запит відправлений і буде оброблений менеджером.",
     "profile_feeds.add": "Створити нове вивантаження",
     "profile_feeds.download_excel": "Завантажити Excel-файл",
     "profile_feeds.download_yml": "Завантажити YML-файл",
