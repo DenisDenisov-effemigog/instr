@@ -48,13 +48,13 @@
                         personType: 1,
                         icon: 'user1'
                     },
-                    {
-                        title: 'link.discounts',
-                        url: '/my/discounts',
-                        // exact: true,
-                        personType: [1,2],
-                        icon: 'sale'
-                    },
+                    // {
+                    //     title: 'link.discounts',
+                    //     url: '/my/discounts',
+                    //     // exact: true,
+                    //     personType: [1,2],
+                    //     icon: 'sale'
+                    // },
                     {
                         title: 'link.orders_list',
                         url: '/my/orders',

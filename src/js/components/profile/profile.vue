@@ -98,12 +98,12 @@ export default {
                     exact: true,
                     personType: [1,2],
                 },
-                {
-                    title: 'link.discounts',
-                    url: '/my/discounts',
-                    exact: true,
-                    personType: [1,2],
-                },
+                // {
+                //     title: 'link.discounts',
+                //     url: '/my/discounts',
+                //     exact: true,
+                //     personType: [1,2],
+                // },
                 {
                     title: 'link.orders_list',
                     url: '/my/orders/', 
