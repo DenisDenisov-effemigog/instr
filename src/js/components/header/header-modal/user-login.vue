@@ -4,7 +4,7 @@
         <label name="email" class="user__label">
             <input
                 class="user__input"
-                :class="{'user__input--error': $v.email.$error}"
+                :class="{'user__input--error': $v.email.$error || incorrect}"
                 type="email"
                 name="email"
                 id="email"
@@ -28,7 +28,7 @@
             <input
                 class="user__input"
                 :class="{'user__input--dots': $v.password.$model && !passwordHidden,
-                'user__input--error': $v.password.$error}"
+                'user__input--error': $v.password.$error || incorrect}"
                 :type="passwordType"
                 name="password"
                 id="password"
@@ -41,6 +41,7 @@
                 v-if="$v.password.$error">{{ $tc('text.error') }}</div>
         </label>
         <div class="user__error-text" v-if="$v.$error">*{{ $tc('text.required') }}</div>
+        <div class="user__error-text" v-if="incorrect">*{{ $tc('user_login.incorrect') }}</div>
         <input type="submit" class="user__button" :value="$tc('title.enter')">
     </form>
 </template>
@@ -77,7 +78,8 @@
             return {
                 email: '',
                 password: '',
-                passwordHidden: false
+                passwordHidden: false,
+                incorrect: false
             }
         },
         methods: {
@@ -95,6 +97,7 @@
                     window.location.replace(ref.length > 0 ? ref : '/');
                 }).catch((error) => {
                     console.log(error)
+                    this.incorrect = true
                 });
             },
             enter() {

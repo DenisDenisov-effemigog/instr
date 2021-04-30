@@ -405,6 +405,7 @@
     "user_reg.agreement": "Я згоден з політикою обробки персональних даних",
     "user_reg.name": "ПІБ",
     "user_reg.tax_payer": "Платник ПДВ",
+    "user_login.incorrect": "Невірний логін або пароль",
     "warranty.list_1_1": "Електроінструмент ТМ Denzel - 3 роки;",
     "warranty.list_1_2": "Електроінструмент ТМ MTX - 1 рік;",
     "warranty.list_1_3": "Електроінструмент ТМ Sparta - 1 рік;",
