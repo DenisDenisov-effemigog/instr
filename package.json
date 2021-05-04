@@ -53,6 +53,7 @@
   },
   "devDependencies": {
     "gulp-hash-src": "^0.1.6",
+    "gulp-uglify": "^3.0.2",
     "gulp-watch": "^5.0.1",
     "sass": "^1.28.0"
   },

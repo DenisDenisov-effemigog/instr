@@ -21,8 +21,9 @@ const gulp = require('gulp'),
     twig = require('gulp-twig'),
     vueify = require('vueify'),
     watch = require('gulp-watch'),
-    vinyl_buffer = require('vinyl-buffer')
-    hash_src = require("gulp-hash-src")
+    vinyl_buffer = require('vinyl-buffer'),
+    hash_src = require("gulp-hash-src"),
+    uglify = require('gulp-uglify');
 ;
 const { is_int } = require('locutus/php/var');
 
@@ -192,6 +193,7 @@ gulp.task('app:js:build', function () {
                 beautify: false
             }
         })))
+        .pipe(uglify())
         .pipe(gulp.dest(config.build.js));
 });
 
