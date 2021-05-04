@@ -17,7 +17,8 @@
                         :contract="contract"
                     ></finance-progress>
                 </router-link>
-                <router-link
+                <!-- #TODO временно -->
+                <!-- <router-link
                     tag="div" 
                     :to="'/my/discounts/'"
                 >
@@ -25,7 +26,7 @@
                          :className="'dashboard'"
                          :discounts="discountArr"
                      ></dashboard-discount>
-                </router-link>
+                </router-link> -->
                 <dashboard-contract></dashboard-contract>
             </div>
             <div class="dashboard__bottom">
