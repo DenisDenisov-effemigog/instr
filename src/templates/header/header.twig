@@ -33,16 +33,18 @@
     <header class="header">
         <div class="container">
             {# logos for desktop and mobile could be different #}
-            <a href="/" class="header__logo header__logo--desktop">
-                <svg viewBox="0 0 113 39" class="logo logo--ua">
-                    <use xlink:href="{{ templatePath }}images/sprite.svg#wt"></use>
-                </svg>
-            </a>
-            <a href="/" class="header__logo header__logo--mobile">
-                <svg viewBox="0 0 113 39" class="logo logo--ua">
-                    <use xlink:href="{{ templatePath }}images/sprite.svg#wt"></use>
-                </svg>
-            </a>
+            <div class="header__logo-wrap">
+                <a href="/" class="header__logo header__logo--desktop">
+                    <svg viewBox="0 0 113 38" class="logo logo--ua">
+                        <use xlink:href="{{ templatePath }}images/sprite.svg#wt"></use>
+                    </svg>
+                </a>
+                <a href="/" class="header__logo header__logo--mobile">
+                    <svg viewBox="0 0 113 38" class="logo logo--ua">
+                        <use xlink:href="{{ templatePath }}images/sprite.svg#wt"></use>
+                    </svg>
+                </a>
+            </div>
             <component is="header-search"></component>
             <component is="show-catalogue" :categories="{{ categories|json_encode()|e('html_attr') }}"></component>
             <component is="header-menu" :user="{{ user|json_encode()|e('html_attr') }}"></component>

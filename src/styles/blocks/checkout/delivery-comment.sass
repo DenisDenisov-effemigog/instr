@@ -29,3 +29,10 @@
     &__checkbox-text
         @extend .text-3
         width: 75%
+    &__checkbox-label
+        &::before
+            top: 50%
+            transform: translateY(-50%)
+    &__checkbox-svg
+        top: 50%
+        transform: translateY(-50%) !important
