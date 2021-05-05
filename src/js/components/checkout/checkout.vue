@@ -366,7 +366,7 @@
                     }
                 } else if (vm.user && vm.user.authorized) {
                     if (vm.currentDeliveryPoint === 'receive') {
-                        addressDelivery = vm.pointAddress.label
+                        !!vm.pointAddress.short ? addressDelivery = vm.pointAddress.short : addressDelivery = vm.pointAddress.address
                     } else if (vm.currentDeliveryPoint === 'delivery') {
                         if (!vm.addresses.length) {
                             if (vm.deliveryNewAddress.city &&
