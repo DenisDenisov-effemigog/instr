@@ -162,10 +162,6 @@
                 required: true,
                 type: Array
             },
-            deliveryPoints: {
-                required: true,
-                type: Array
-            },
             salePrice:{
                 type: Number,
                 required: true,
@@ -205,7 +201,7 @@
                 currentDeliveryId: this.deliveries[0].id,
                 currentDeliveryPayment: this.payments[0].id,
                 date: '',
-                pointAddress: this.deliveryPoints[0],
+                pointAddress: {},
                 deliveryAddress: '',
                 deliveryNewAddress: {},
             }

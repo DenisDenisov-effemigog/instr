@@ -56,7 +56,7 @@
                 type: Array
             },
             deliveryPoints: {
-                required: true,
+                required: false,
                 type: Array
             },
             addresses:{

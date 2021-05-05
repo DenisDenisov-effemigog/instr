@@ -89,7 +89,7 @@
                 let vm = this;
                 this.currentPoint = data
                 !!this.currentPoint.short ? this.current = this.currentPoint.short : this.current = this.currentPoint.address
-                this.$eventBus.$emit('change-select-point', this.selectName, this.currentPoint);
+                this.$eventBus.$emit('change-select-point', 'receive-address', this.currentPoint);
             },
             toggleSelect() {
                 this.openSelect = !this.openSelect;
