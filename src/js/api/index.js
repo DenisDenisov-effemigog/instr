@@ -171,34 +171,9 @@ if(window.apiRouter)
 else
 {
     ApiRequest.method = ApiRequest.runNoWait;
-    Api.method = Api.runs;
 }
 
 class Api {
-    static runs(action, payload)
-    {
-        return new Promise((resolve, reject) => {
-            axios.post(
-                '/bitrix/services/main/ajax.php?action='+encodeURIComponent(action),
-                new HttpDataTransfer(payload.data).getFormData(), //=> object to FormData
-                {
-                    headers: 
-                    {
-                        "Content-Type": "application/x-www-form-urlencoded",
-                    }
-                }
-            )
-            .then((response) => {
-                console.warn("[AP]", action, payload, response);
-                resolve(response);
-            })
-            .catch((response) => {
-                console.error('[BX.ajax error]', response, {action: action});
-                reject([{code: '111', message: response}]);
-            });
-
-        });
-    }
 
     _promiseBitrixRequest(action, payload, cacheable = false) {
         let request = new ApiRequest(action, payload);
