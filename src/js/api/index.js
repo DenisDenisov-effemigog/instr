@@ -56,7 +56,7 @@ class ApiRequest
             })
             .catch((response) => {
                 console.error('[BX.ajax error]', response, {action: action});
-                reject([{code: 'bx_sys_error', message: response}]);
+                reject([{code: 'bx', message: 'response'}]);
             });
 
         });
