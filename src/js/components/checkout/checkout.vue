@@ -328,7 +328,7 @@
                                 userReg.name = vm.userData.name
                                 userReg.email = vm.userData.newEmail
                                 userReg.phone = vm.userData.phone
-                                !!vm.pointAddress.short ? addressDelivery = vm.pointAddress.short : addressDelivery = vm.pointAddress.address
+                                addressDelivery = vm.deliveryAddress.label
                             }
                         } else {
                             vm.$eventBus.$emit('register-error')
