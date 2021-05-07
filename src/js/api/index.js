@@ -131,11 +131,6 @@ class ApiRequest
             errorsArr = response.errors
         }
         console.log(errorsArr);
-        // msgArr.forEach(function(item){
-        //     console.log(item);
-
-          // this.p_reject([{code: item.code, message: item.message}]);
-        // })
         this.p_reject(errorsArr);
     }
     
