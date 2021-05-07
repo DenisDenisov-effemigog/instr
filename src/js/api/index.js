@@ -124,7 +124,7 @@ class ApiRequest
     reject(response, action)
     {
         console.error('[BX.ajax error]', response, {action: this.action});
-        this.p_reject([{code: 'bx_sys_error', message: response.data.errors.message}]);
+        this.p_reject([{code: response.data.errors[0], message: response.data.errors[1]}]);
     }
     
     is_success(response)
