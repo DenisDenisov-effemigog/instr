@@ -77,5 +77,10 @@
                 }
             }
         },
+        watch: {
+            currentCity(value) {
+                address: ''
+            }
+        }
     }
 </script>
