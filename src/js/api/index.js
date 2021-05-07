@@ -125,7 +125,6 @@ class ApiRequest
     {
         console.error('[BX.ajax error]', response, {action: this.action});
         let errorsArr = response.data.errors
-        console.log(errorsArr);
         let errorCode = errorsArr[0].code
         let errorMsg = errorsArr[0].message
         // msgArr.forEach(function(item){
@@ -133,7 +132,7 @@ class ApiRequest
 
           // this.p_reject([{code: item.code, message: item.message}]);
         // })
-        this.p_reject([{code: errorCode, message: errorMsg?errorMsg:''}]);
+        this.p_reject(errorsArr);
     }
     
     is_success(response)
