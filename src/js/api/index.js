@@ -127,9 +127,11 @@ class ApiRequest
         let msgArr = response.data.errors
         msgArr.forEach(function(item){
             console.log(item);
+        this.p_reject([{code: 'bx_sys_error', message: msg?msg:''}]);
+
             // this.p_reject([{code: item.code, message: item.message}]);
         })
-        this.p_reject([{code: 'bx_sys_error', message: msg?msg:''}]);
+        // this.p_reject([{code: 'bx_sys_error', message: msg?msg:''}]);
     }
     
     is_success(response)
