@@ -5,7 +5,11 @@
                 'form__input--error': $v.current.$error
             }"
         >
-            <input type="text" v-model.trim="$v.current.$model" @keyup="search">
+            <input type="text"
+                v-model.trim="$v.current.$model"
+                @keyup="search"
+                :placeholder="$tc('checkout.receive-address.choose_address')"
+            >
             <svg class="select__arrow">
                 <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-down'"></use>
             </svg>
@@ -69,6 +73,9 @@
             this.popupItem = this.$el;
             this.results = this.points;
         },
+        created() {
+            this.$eventBus.$on('input-select-error', this.inputSelectError);
+        },
         computed: {
             current: {
                 get: function() {
@@ -83,7 +90,6 @@
         methods: {
             closeOutside() {
                 this.openSelect = false;
-                if (this.current !== this.$tc('checkout.receive-address.choose_address')) this.selectCurrent()
             },
             clickPoint(data){
                 let vm = this;
@@ -93,9 +99,7 @@
             },
             toggleSelect() {
                 this.openSelect = !this.openSelect;
-                if (this.current === this.$tc('checkout.receive-address.choose_address')) {
-                    this.current = ''
-                } else this.selectCurrent()
+                this.selectCurrent()
             },
             search() {
                 this.openSelect = true
@@ -110,15 +114,21 @@
                 }
             },
             selectCurrent() {
-                if (this.current === '') this.current = this.$tc('checkout.receive-address.choose_address')
-                else if (!!this.currentPoint.short) this.current = this.currentPoint.short
+                if (!!this.currentPoint.short) this.current = this.currentPoint.short
                 else if (!!this.currentPoint.address) this.current = this.currentPoint.address
+            },
+            inputSelectError() {
+                this.$v.current.$touch();
+                if (window.innerWidth > 767) {
+                    this.scrollTop('.receive-address__select', 150);
+                } else {
+                    this.scrollTop('.receive-address__select', 70);
+                }
             }
         },
         watch: {
             points() {
                 this.results = this.points
-                this.current = this.$tc('checkout.receive-address.choose_address')
             },
         },
     }
