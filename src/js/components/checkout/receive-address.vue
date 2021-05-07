@@ -8,7 +8,7 @@
                 v-model="city"
             ></autocomplete-input>
         </div>
-        <div v-if="city && !!deliveryPoints && deliveryPoints.length > 0" class="receive-address__select">
+        <div v-if="city && deliveryPoints.length > 0" class="receive-address__select">
             <!-- <select-list
                 :points="deliveryPoints"
                 :selectopenSelect="{}"
