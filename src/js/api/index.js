@@ -121,14 +121,15 @@ class ApiRequest
         this.p_resolve(response.data.answer)
     }
     
-    reject(response, action)
+    reject(response, action, msg)
     {
+        console.error('[BX.ajax error]', response, {action: this.action});
         let msgArr = response.data.errors
         msgArr.forEach(function(item){
-            this.p_reject([{code: item.code, message: item.message}]);
+            console.log(item);
+            // this.p_reject([{code: item.code, message: item.message}]);
         })
-        console.error('[BX.ajax error]', response, {action: this.action});
-        // this.p_reject([{code: response.data.errors[0], message: response.data.errors[1]}]);
+        this.p_reject([{code: 'bx_sys_error', message: msg?msg:''}]);
     }
     
     is_success(response)
