@@ -324,11 +324,17 @@
                                     vm.$eventBus.$emit('autocomplete-error')
                                 }
                             } else if (vm.currentDeliveryPoint === 'receive') {
-                                userReg.is_company = false
-                                userReg.name = vm.userData.name
-                                userReg.email = vm.userData.newEmail
-                                userReg.phone = vm.userData.phone
-                                !!vm.pointAddress.short ? addressDelivery = vm.pointAddress.short : addressDelivery = vm.pointAddress.address
+                                if (vm.pointAddress.short || vm.pointAddress.address) {
+                                    userReg.is_company = false
+                                    userReg.name = vm.userData.name
+                                    userReg.email = vm.userData.newEmail
+                                    userReg.phone = vm.userData.phone
+                                    !!vm.pointAddress.short ? addressDelivery = vm.pointAddress.short : addressDelivery = vm.pointAddress.address
+                                } else {
+                                    vm.$eventBus.$emit('pickup-address-error')
+                                    vm.$eventBus.$emit('autocomplete-error')
+                                    if (!vm.pointAddress.short || !vm.pointAddress.address) vm.$eventBus.$emit('input-select-error')
+                                }
                             }
                         } else {
                             vm.$eventBus.$emit('register-error')
@@ -352,13 +358,19 @@
                                     vm.$eventBus.$emit('autocomplete-error')
                                 }
                             } else if (vm.currentDeliveryPoint === 'receive') {
-                                userReg.is_company = true
-                                userReg.name = vm.userData.name
-                                userReg.company = vm.userData.company
-                                userReg.inn = vm.userData.code
-                                userReg.email = vm.userData.newEmail
-                                userReg.phone = vm.userData.phone
-                                !!vm.pointAddress.short ? addressDelivery = vm.pointAddress.short : addressDelivery = vm.pointAddress.address
+                                if (vm.pointAddress.short || vm.pointAddress.address) {
+                                    userReg.is_company = true
+                                    userReg.name = vm.userData.name
+                                    userReg.company = vm.userData.company
+                                    userReg.inn = vm.userData.code
+                                    userReg.email = vm.userData.newEmail
+                                    userReg.phone = vm.userData.phone
+                                    !!vm.pointAddress.short ? addressDelivery = vm.pointAddress.short : addressDelivery = vm.pointAddress.address
+                                } else {
+                                    vm.$eventBus.$emit('pickup-address-error')
+                                    vm.$eventBus.$emit('autocomplete-error')
+                                    if (!vm.pointAddress.short || !vm.pointAddress.address) vm.$eventBus.$emit('input-select-error')
+                                }
                             }
                         } else {
                             vm.$eventBus.$emit('register-error')
