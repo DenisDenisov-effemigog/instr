@@ -132,6 +132,7 @@ class ApiRequest
 
           // this.p_reject([{code: item.code, message: item.message}]);
         // })
+        console.log('111 ' ,  {action: action});
         this.p_reject([{code: errorCode, message: errorMsg?errorMsg:''}]);
     }
     
