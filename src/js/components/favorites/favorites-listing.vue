@@ -1,5 +1,5 @@
 <template>
-    <section class="favorites-listing">
+    <section class="favorites-listing listing">
         <div class="favorites-listing__header">
             <h1 class="favorites-listing__title">{{ $tc('favorites.title') }}</h1>
             <component is="listing-items-quantity" v-show="favorites.length > 0"
