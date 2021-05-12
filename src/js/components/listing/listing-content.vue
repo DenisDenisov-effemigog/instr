@@ -113,6 +113,7 @@
                     this.internalPagination = contents.pagination;
                     this.internalProducts = contents.products
                 }
+                this.$eventBus.$emit('filter-match', contents.products.length)
             },
             loadListing(contents) {
                 this.content = contents;

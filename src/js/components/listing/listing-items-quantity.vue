@@ -1,5 +1,5 @@
 <template>
-    <span class="listing__items-cont">{{ currency(itemsQuantity) }} {{ $tc('text.product', itemsQuantity) }}</span>
+    <span class="listing__items-cont">{{ currency(quantity) }} {{ $tc('text.product', itemsQuantity) }}</span>
 </template>
 
 <script>
@@ -11,5 +11,18 @@
                 required: true
             },
         },
+        data(){
+            return{
+                quantity: this.itemsQuantity
+            }
+        },
+        created(){
+            this.$eventBus.$on('filter-match', this.quantityMatch);
+        },
+        methods:{
+            quantityMatch(content){
+                this.quantity = content
+            }
+        }
     }
 </script>

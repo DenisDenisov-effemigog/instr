@@ -35,6 +35,7 @@ export default {
     created() {
         this.$eventBus.$on("sow-button", this.sowButton);
         this.$eventBus.$on("hide-button", this.hideButton);
+        this.$eventBus.$on('filter-match', this.quantityMatch);
     },
     methods:{
         sowButton(firstPart, items, secondPart, url) {
@@ -57,6 +58,9 @@ export default {
         },
         closeFilter(){
             this.$eventBus.$emit('closeModal')
+        },
+        quantityMatch(content){
+            this.items = content
         }
     }
 }
