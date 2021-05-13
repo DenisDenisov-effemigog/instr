@@ -86,6 +86,7 @@ export default {
                 this.saveChanges();
                 this.value = '';
             }
+            this.$eventBus.$emit("current-amount")
         },
         saveChanges() {
             this.value = this.$v.value.$model;

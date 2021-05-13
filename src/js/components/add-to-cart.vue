@@ -24,7 +24,7 @@
                         :autofocus="autofocusFlag"
                     > 
                     <!-- временно отключаем меру подсчета -->
-                    <p v-else @click="inputMode = true" class="add-to-cart__amount">{{storeAmount}} {{ $tc('text.count') }}</p>
+                    <p v-else @click="inputMode = true" class="add-to-cart__amount">{{amount}} {{ $tc('text.count') }}</p>
                 </div>
                 <div v-show="tooltipFlag" class="add-to-cart__tooltip" :class="{'add-to-cart__tooltip--active':tooltipFlag}">
                     {{ $tc('button.add_to_cart.tooltip.part1') }} {{maxAmount}} {{ $tc('button.add_to_cart.tooltip.part2') }}
@@ -147,8 +147,13 @@
             window.addEventListener('resize', this.updateWidth);
             this.updateWidth()
             window.addEventListener('scroll', this.mobileScroll);
+            this.$eventBus.$on("current-amount", this.currentAmount)
         },
         methods: {
+            currentAmount(){
+                console.log(this.storeAmount);
+                this.amount = this.storeAmount;
+            },
             setAmount(amount) {
                 if(amount >= this.maxAmount){
                     this.tooltipFlag = true
