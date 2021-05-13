@@ -1,7 +1,5 @@
 <template>
     <div class="add-to-cart" :class="{'add-to-cart--big': size==='big'}">
-        <pre>{{storeAmount}}</pre>
-        <pre>{{amount}}</pre>
         <div class="add-to-cart__in-cart" v-if="amount > 0 && !disabled">
 			<div
 				class="add-to-cart__button add-to-cart__button--decrease"
@@ -26,7 +24,7 @@
                         :autofocus="autofocusFlag"
                     > 
                     <!-- временно отключаем меру подсчета -->
-                    <p v-else @click="inputMode = true" class="add-to-cart__amount">{{amount}} {{ $tc('text.count') }}</p>
+                    <p v-else @click="inputMode = true" class="add-to-cart__amount">{{storeAmount}} {{ $tc('text.count') }}</p>
                 </div>
                 <div v-show="tooltipFlag" class="add-to-cart__tooltip" :class="{'add-to-cart__tooltip--active':tooltipFlag}">
                     {{ $tc('button.add_to_cart.tooltip.part1') }} {{maxAmount}} {{ $tc('button.add_to_cart.tooltip.part2') }}
@@ -134,9 +132,6 @@
             allowedDecreaseAmount() {
                 return this.isCart ? 1 : 0;
             },
-            currentAmount(){
-                return this.amount = this.storeAmount
-            }
         },
         watch: {
             storeAmount(newValue) {
