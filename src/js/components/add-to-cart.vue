@@ -1,5 +1,7 @@
 <template>
     <div class="add-to-cart" :class="{'add-to-cart--big': size==='big'}">
+        <pre>{{storeAmount}}</pre>
+        <pre>{{amount}}</pre>
         <div class="add-to-cart__in-cart" v-if="amount > 0 && !disabled">
 			<div
 				class="add-to-cart__button add-to-cart__button--decrease"
@@ -105,17 +107,12 @@
                 default: 0,
                 required: false,
             },
-            currentAmount:{
-                type: Number,
-                default: 0,
-                required: false,
-            }
         },
         data() {
             return {
                 loading: false,
                 disabled: false,
-                amount: this.currentAmount,
+                amount: 0,
                 width: 0,
                 _debounce_timer: null,
                 _loading_timer: null,
@@ -137,6 +134,9 @@
             allowedDecreaseAmount() {
                 return this.isCart ? 1 : 0;
             },
+            currentAmount(){
+                return this.amount = this.storeAmount
+            }
         },
         watch: {
             storeAmount(newValue) {
@@ -146,7 +146,7 @@
             }
         },
         mounted() {
-            this.amount = this.currentAmount;
+            this.amount = this.storeAmount;
         },
         created() {
             window.addEventListener('resize', this.updateWidth);

@@ -54,8 +54,7 @@
                         <component is="add-to-cart"
                                     :productId="product.id"
                                     :max-amount="product.stock"
-                                    :isCart="true"
-                                    :currentAmount="amount">
+                                    :isCart="true">
                         </component>
                         <div class="cart-card__price-per-one">{{ currency(+product.price) }}&nbsp;{{ $tc('text.currency') }}&nbsp;/&nbsp;{{ $tc('text.count') }}</div>
                     </div>
