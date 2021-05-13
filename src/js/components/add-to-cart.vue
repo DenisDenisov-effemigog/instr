@@ -105,6 +105,11 @@
                 default: 0,
                 required: false,
             },
+            currentAmount:{
+                type: Number,
+                default: 0,
+                required: false,
+            }
         },
         data() {
             return {
@@ -141,7 +146,7 @@
             }
         },
         mounted() {
-            this.amount = this.storeAmount;
+            this.amount = this.currentAmount;
         },
         created() {
             window.addEventListener('resize', this.updateWidth);
