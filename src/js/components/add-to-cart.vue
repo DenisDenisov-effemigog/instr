@@ -115,7 +115,7 @@
             return {
                 loading: false,
                 disabled: false,
-                amount: 0,
+                amount: this.currentAmount,
                 width: 0,
                 _debounce_timer: null,
                 _loading_timer: null,
