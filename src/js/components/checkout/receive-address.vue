@@ -8,6 +8,9 @@
         ></autocomplete-input>
         <!-- <div class="receive-address__tow">
         </div> -->
+        <div v-show="city && !!deliveryPoints && deliveryPoints.length == 0">
+            идет загрузка городов
+        </div>
         <div v-if="city && deliveryPoints.length > 0" class="receive-address__select">
             <!-- <select-list
                 :points="deliveryPoints"
