@@ -81,7 +81,7 @@
                 }
             },
             rangeStep() {
-                let delta = Math.floor( Math.ceil(this.filterInternal.values.max - this.filterInternal.values.min)/ 100);
+                let delta = Math.floor((this.filterInternal.values.max - this.filterInternal.values.min)/ 100);
                 if(delta < 1.0) delta = 1;
                 return delta
             }

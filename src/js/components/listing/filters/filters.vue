@@ -196,7 +196,7 @@
                     params.extension = "compare"
                 }
                 api.catalogGet(this.internal.hash, params).then(answer => {
-                    console.log(answer);
+                    console.log("answer " + answer.output.filters.match);
                     if (!!location && location === 'comparison') {
                         vm.$eventBus.$emit('apply-comparison', answer.output);
                     } else if (!!location && location === 'loadListing') {
