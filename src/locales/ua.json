@@ -60,6 +60,7 @@
     "checkout.delivery-address.street.error": "Помилка, вулиця не знайдено",
     "checkout.text.date": "Дата доставки орієнтовна. Не обов'язково до заповнення.",
     "checkout.receive-address.choose_address": "Виберіть адресу",
+    "checkout.receive-address.preloaded": "Завантаження адрес...",
     "checkout.title": "Оформлення замовлення",
     "checkout.title.comments": "Коментарі до замовлення",
     "checkout.title.contacts": "Контактна інформація",

@@ -8,8 +8,8 @@
         ></autocomplete-input>
         <!-- <div class="receive-address__tow">
         </div> -->
-        <div v-show="city && !!deliveryPoints && deliveryPoints.length == 0">
-            идет загрузка городов
+        <div class="receive-address__preloaded" v-show="city && !!deliveryPoints && deliveryPoints.length == 0">
+            {{$tc('checkout.receive-address.preloaded')}}
         </div>
         <div v-if="city && deliveryPoints.length > 0" class="receive-address__select">
             <!-- <select-list
