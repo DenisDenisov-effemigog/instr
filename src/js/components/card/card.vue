@@ -67,12 +67,12 @@
                                :id="product.id" 
                                :compare="product.is_compare"
                     ></component>
-                    <div @click="menuTooltip = !menuTooltip" class="card__menu-btn">
+                    <div @click="openTooltip" class="card__menu-btn">
                         <span></span>
                         <span></span>
                         <span></span>
                     </div>
-                    <div v-show="menuTooltip" class="card-menu-tooltip">
+                    <div ref="cardMenuTooltip" v-show="menuTooltip" class="card-menu-tooltip">
                         <div class="card-menu-tooltip__block">
                             <component is="in-favorite"
                                        :text="true"
@@ -139,6 +139,12 @@ export default {
         }
     },
     methods: {
+        openTooltip(){
+            this.menuTooltip = !this.menuTooltip
+            setTimeout(() => {
+                this.menuTooltip = false
+            }, 1500);
+        },
         cloneCard(btn){
             if(window.innerWidth > 987){
                 this.$eventBus.$emit("clickedToBtn")
