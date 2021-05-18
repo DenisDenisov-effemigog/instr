@@ -69,7 +69,7 @@
                     @click="$v.newEmail.$model = ''">
                     <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
                 </svg>
-                <div class="contacts__error-text contacts__error-text--invalid"
+                <div class="contacts-form__error-text contacts__error-text--invalid"
                     v-if="$v.newEmail.$error">{{ $tc('text.error') }}</div>
             </label>
             <label name="town" class="contacts-form__label">
@@ -79,7 +79,7 @@
                     type="text"
                     name="town"
                     id="town"
-                    autocomplete="organization"
+                    autocomplete="town"
                     autocorrect="off"
                     v-model.trim="$v.town.$model">
                 <span class="contacts-form__label-text"
@@ -117,7 +117,7 @@
                 {{ $tc('contacts.form_stick_text') }}
             </span>
         </div>
-        <input type="submit" class="contacts-form__btn" :value="$tc('contacts.form_btn')">
+        <input @click="sendForm" class="contacts-form__btn" :value="$tc('contacts.form_btn')">
     </form>
 </template>
 
@@ -162,8 +162,21 @@ export default {
                 name: '',
                 phone: '',
                 newEmail: '',
+                town:'',
+                message:'',
                 tokens: config.phoneTokens,
             }
         },
+        methods:{
+            sendForm(){
+                let formData = {};
+                formData.name = this.name
+                formData.phone = this.phone
+                formData.mail = this.newEmail
+                formData.town = this.town
+                formData.message = this.message
+                console.log(formData);
+            }
+        }
 }
 </script>
