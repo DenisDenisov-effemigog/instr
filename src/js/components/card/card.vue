@@ -67,29 +67,31 @@
                                :id="product.id" 
                                :compare="product.is_compare"
                     ></component>
-                    <div @click="openTooltip" class="card__menu-btn">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                    <div ref="cardMenuTooltip" v-show="menuTooltip" class="card-menu-tooltip">
-                        <div class="card-menu-tooltip__block">
-                            <component is="in-favorite"
-                                       :text="true"
-                                       :mobile="true"
-                                       :id="product.id"
-                                       :favorite="product.is_favorite"
-                            ></component>
-                            <component is="to-compare"
-                                       :text="true"
-                                       :mobile="true"
-                                       :id="product.id"
-                                       :compare="product.is_compare"
-                            ></component>
+                    <div v-click-outside="closeTooltip" class="card-menu__wrap">
+                        <div @click="openTooltip" class="card__menu-btn">
+                            <span></span>
+                            <span></span>
+                            <span></span>
                         </div>
-                        <svg class="card-menu-tooltip__close" @click="menuTooltip = false" viewBox="0 0 12 12">
-                            <use @click.stop :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
-                        </svg>
+                        <div ref="cardMenuTooltip" v-show="menuTooltip" class="card-menu-tooltip">
+                            <div class="card-menu-tooltip__block">
+                                <component is="in-favorite"
+                                        :text="true"
+                                        :mobile="true"
+                                        :id="product.id"
+                                        :favorite="product.is_favorite"
+                                ></component>
+                                <component is="to-compare"
+                                        :text="true"
+                                        :mobile="true"
+                                        :id="product.id"
+                                        :compare="product.is_compare"
+                                ></component>
+                            </div>
+                            <svg class="card-menu-tooltip__close" @click="menuTooltip = false" viewBox="0 0 12 12">
+                                <use @click.stop :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
+                            </svg>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -102,6 +104,8 @@
 <script>
 import sliderPhotoCard from './slider-photo-card.vue';
 import CardStikers from './card-stikers.vue';
+import ClickOutside from "vue-click-outside";
+
 
 export default {
     name: 'card',
@@ -110,6 +114,10 @@ export default {
         CardStikers,
     },
     props: {
+        cardIndex:{
+            type: Number,
+            required: false,
+        },
         changeIcon: {
             type: Boolean,
             default: false,
@@ -127,6 +135,9 @@ export default {
             required: true,
         }
     },
+    directives: {
+        ClickOutside
+    },
     data() {
         return {
             menuTooltip: false,
@@ -139,11 +150,11 @@ export default {
         }
     },
     methods: {
+        closeTooltip(){
+            this.menuTooltip = false
+        },
         openTooltip(){
             this.menuTooltip = !this.menuTooltip
-            setTimeout(() => {
-                this.menuTooltip = false
-            }, 1500);
         },
         cloneCard(btn){
             if(window.innerWidth > 987){
