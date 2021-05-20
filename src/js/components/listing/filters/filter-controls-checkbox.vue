@@ -18,6 +18,12 @@
             </span>
             <span class="filter-block__checkbox-text">{{ checkbox.title }}</span>
         </label>
+        <div v-if="!subcategoryShowAll" class="listing__subcategory-btn">
+                <a href="" @click.prevent="subcategoryShowAll = true">{{ $tc('header.catalogue.show_more') }}</a>
+        </div>
+        <div v-else-if="subcategoryShowAll" class="listing__subcategory-btn">
+            <a href="" @click.prevent="subcategoryShowAll = false">{{ $tc('header.catalogue.hide_more') }}</a>
+        </div>
     </div>
 </template>
 
@@ -32,7 +38,9 @@
         },
         data() {
             return {
-                checked: []
+                checked: [],
+                subcategoryShowAll: false,
+                valuesArr:[]
             }
         },
         model: {
@@ -47,10 +55,18 @@
         mounted() {
             this.parseFilter();
         },
+        created() {
+            this.valuesArr = this.cloneOverJson(this.value.values);
+            this.valuesArr.length > 5 ? this.subcategoryShowAll = true : this.subcategoryShowAll = false
+        },
         computed: {
             filteredValues() {
-                let values = this.cloneOverJson(this.value.values);
-                return values.slice(0, 5);
+                // let values = this.cloneOverJson(this.value.values);
+                if(this.subcategoryShowAll){
+                    return this.valuesArr
+                }else{
+                    return this.valuesArr.slice(0, 5);
+                }
             },
         },
         methods: {
