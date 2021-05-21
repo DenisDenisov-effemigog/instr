@@ -7,7 +7,9 @@
         </div>
         <div class="dashboard__main">
             <div class="dashboard__top">
-                <router-link
+                <!-- #TODO временно -->
+
+                <!-- <router-link
                     tag="span"
                     :to="'/my/finances/'"
                 >
@@ -17,8 +19,7 @@
                         :contract="contract"
                     ></finance-progress>
                 </router-link>
-                <!-- #TODO временно -->
-                <!-- <router-link
+                <router-link
                     tag="div" 
                     :to="'/my/discounts/'"
                 >
@@ -27,6 +28,9 @@
                          :discounts="discountArr"
                      ></dashboard-discount>
                 </router-link> -->
+
+                <!-- #TODO временно -->
+
                 <dashboard-contract></dashboard-contract>
             </div>
             <div class="dashboard__bottom">
