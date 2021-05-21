@@ -105,21 +105,25 @@
             loading(){
                 console.log(1);
                 let vm = this
-                setTimeout(function () {
+                // setTimeout(function () {
                     vm.loaded = true
-                }, 500)
+                // }, 500)
             },
             applyListing(contents) {
+                console.log(2);
                 this.content = contents;
                 if(contents.pagination) {
                     this.internalPagination = contents.pagination;
                     this.internalProducts = contents.products
                 }
+                this.loaded = false
             },
             loadListing(contents) {
+                console.log(3);
                 this.content = contents;
                 this.internalPagination = contents.pagination;
                 this.internalProducts = this.internalProducts.concat(contents.products)
+                this.loaded = false
             }
         },
     }
