@@ -18,10 +18,10 @@
             </span>
             <span class="filter-block__checkbox-text">{{ checkbox.title }}</span>
         </label>
-        <div v-if="!subcategoryShowAll" class="listing__subcategory-btn">
+        <div v-if="!subcategoryShowAll && valuesArr.length > 5" class="filter-block__btn">
                 <a href="" @click.prevent="subcategoryShowAll = true">{{ $tc('header.catalogue.show_more') }}</a>
         </div>
-        <div v-else-if="subcategoryShowAll" class="listing__subcategory-btn">
+        <div v-else-if="subcategoryShowAll && valuesArr.length > 5" class="filter-block__btn">
             <a href="" @click.prevent="subcategoryShowAll = false">{{ $tc('header.catalogue.hide_more') }}</a>
         </div>
     </div>
@@ -57,7 +57,7 @@
         },
         created() {
             this.valuesArr = this.cloneOverJson(this.value.values);
-            this.valuesArr.length > 5 ? this.subcategoryShowAll = true : this.subcategoryShowAll = false
+            this.valuesArr.length > 5 ? this.subcategoryShowAll = false : this.subcategoryShowAll = true
         },
         computed: {
             filteredValues() {
