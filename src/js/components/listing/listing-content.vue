@@ -105,9 +105,9 @@
             loading(){
                 console.log(1);
                 let vm = this
-                setTimeout(function () {
+                // setTimeout(function () {
                     vm.loaded = true
-                }, 500)
+                // }, 500)
             },
             applyListing(contents) {
                 this.content = contents;
@@ -115,6 +115,7 @@
                     this.internalPagination = contents.pagination;
                     this.internalProducts = contents.products
                 }
+                console.log(2);
                 this.loaded = false
             },
             loadListing(contents) {
@@ -122,6 +123,7 @@
                 this.internalPagination = contents.pagination;
                 this.internalProducts = this.internalProducts.concat(contents.products)
                 this.loaded = false
+                console.log(2);
             }
         },
     }
