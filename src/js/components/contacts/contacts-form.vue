@@ -178,11 +178,14 @@ export default {
                     formData.mail = this.newEmail
                     formData.town = this.town
                     formData.message = this.message
-                    console.log(formData);
+                    this.sendData(formData);
                 }else{
                     console.log("zapolni");
                 }
                 
+            },
+            sendData(data){
+                console.log(data);
             }
         }
 }

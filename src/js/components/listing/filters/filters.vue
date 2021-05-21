@@ -159,6 +159,7 @@
                 api.listingFilter(this.internal.hash, vm.emptyPayload).then((newFilters) => {
                     vm.applyExternalData(newFilters, true);
                     this.applyFilters(true);
+                    this.$eventBus.$emit('load-new-listing')
                 });
             },
 
@@ -184,6 +185,7 @@
                     newFilters.filters = vm.internal.filters
                     vm.applyExternalData(newFilters, true);
                     this.applyFilters(true);
+                    this.$eventBus.$emit('load-new-listing')
                 }).catch(errors => {
                     console.error(errors);
                 });

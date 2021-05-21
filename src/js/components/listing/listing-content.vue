@@ -95,6 +95,7 @@
             this.loading()
             this.$eventBus.$on('apply-listing', this.applyListing);
             this.$eventBus.$on('apply-loaded-listing', this.loadListing);
+            this.$eventBus.$on('load-new-listing', this.loading);
         },
         beforeDestroy() {
             this.$eventBus.$off('apply-listing');
@@ -102,6 +103,7 @@
         },
         methods: {
             loading(){
+                console.log(1);
                 let vm = this
                 setTimeout(function () {
                     vm.loaded = true
@@ -113,11 +115,13 @@
                     this.internalPagination = contents.pagination;
                     this.internalProducts = contents.products
                 }
+                this.loaded = false
             },
             loadListing(contents) {
                 this.content = contents;
                 this.internalPagination = contents.pagination;
                 this.internalProducts = this.internalProducts.concat(contents.products)
+                this.loaded = false
             }
         },
     }
