@@ -1,5 +1,5 @@
 <template>
-    <form action="" class="contacts-form">
+    <form action="" class="contacts-form" @submit.prevent="submit">
         <h3 class="contacts-form__title">{{  $tc('contacts.form_title') }}</h3>
         <div class="contacts-form__column">
             <label name="name" class="contacts-form__label">
@@ -75,7 +75,6 @@
             <label name="town" class="contacts-form__label">
                 <input
                     class="contacts-form__input"
-                    :class="{'contacts-form__input--error': $v.town.$error}"
                     type="text"
                     name="town"
                     id="town"
@@ -91,8 +90,6 @@
                     @click="$v.town.$model = ''">
                     <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
                 </svg>
-                <div class="contacts-form__error-text contacts__error-text--invalid"
-                    v-if="$v.town.$error">{{ $tc('text.error') }}</div>
             </label>
         </div>
         <label for="message" class="contacts-form__label contacts-form__label--column">
@@ -117,7 +114,7 @@
                 {{ $tc('contacts.form_stick_text') }}
             </span>
         </div>
-        <input @click="sendForm" class="contacts-form__btn" :value="$tc('contacts.form_btn')">
+        <input type="submit" class="contacts-form__btn" :value="$tc('contacts.form_btn')">
     </form>
 </template>
 
@@ -168,14 +165,24 @@ export default {
             }
         },
         methods:{
-            sendForm(){
-                let formData = {};
-                formData.name = this.name
-                formData.phone = this.phone
-                formData.mail = this.newEmail
-                formData.town = this.town
-                formData.message = this.message
-                console.log(formData);
+            submit(){
+                this.$v.$touch();
+                if (!this.$v.name.$invalid &&
+                    !this.$v.newEmail.$invalid && 
+                    !this.$v.phone.$invalid &&
+                    !this.$v.message.$invalid 
+                ) {
+                    let formData = {};
+                    formData.name = this.name
+                    formData.phone = this.phone
+                    formData.mail = this.newEmail
+                    formData.town = this.town
+                    formData.message = this.message
+                    console.log(formData);
+                }else{
+                    console.log("zapolni");
+                }
+                
             }
         }
 }
