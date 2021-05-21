@@ -84,6 +84,7 @@
         mounted() {
             if (this.pagination) this.internalPagination = this.pagination;
             if (this.products) this.internalProducts = this.cloneOverJson(this.products);
+            this.loaded = true
             // this.internalProducts = this.cloneOverJson(this.products);
         },
         computed: {
