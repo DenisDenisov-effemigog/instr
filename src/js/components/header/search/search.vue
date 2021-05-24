@@ -1,6 +1,6 @@
 <template>
     <div class="search" :class="{'search--opened': focused}">
-        <div v-if="!!searchLink">
+        <div v-if="!loader">
             <div class="search__result" v-if="searchHistory.length">
                 <ul class="search__result-list">
                     <li v-for="item in searchHistory" class="search__result-item">
@@ -91,6 +91,10 @@ export default {
             type:String,
             required: true
         },
+        loader:{
+            type:Boolean,
+            required: true
+        }
     },
     data(){
         return {

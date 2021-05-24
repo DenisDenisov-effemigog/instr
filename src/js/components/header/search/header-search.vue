@@ -19,11 +19,13 @@
                            @keyup="startSearch"
                     >
                     <button class="mobile-search__btn">{{ $tc('header.search.btn_find') }}</button>
-                    <search :focused=focused
-                            :searchLink="searchLink"
-                            :searchShields="searchShields"
-                            :searchProducts="searchProducts"
-                    ></search> 
+                     <search :focused=focused
+                     :loader="loader"
+                             :searchLink="searchLink"
+                             :searchShields="searchShields"
+                             :searchProducts="searchProducts"
+                             v-if="focused"
+                     ></search> 
                 </form>
             </div>
             <div class="header__search-mobile-btn" v-else @click.prevent="searchClick">
@@ -31,23 +33,24 @@
             </div>
         </div>
         <form @submit.prevent="goToSearch" class="header__search-form">
-            <input type="text" 
+            <input @focus="focused = true" type="text" 
                    class="header__search-input" 
                    :class="{'header__search-input_focused': focused}" 
                    :placeholder="$tc('header.search.placeholder')"
                    v-model="value"
                    @keyup="startSearch"
                    @blur="focused = false"
-                   v-if="focused"
             >
                 <svg v-show="focused" class="header__search-form-icon">
                     <use :xlink:href="templatePath + 'images/sprite.svg#icons__mag'"></use>
                 </svg>
             <search
                 :focused="focused"
+                :loader="loader"
                 :searchShields="searchShields"
                 :searchProducts="searchProducts"
                 :searchLink="searchLink"
+                v-if="showDropDown && focused"
             ></search>
         </form>
     </div>
@@ -76,7 +79,8 @@ export default {
             searchShields: [],
             searchProducts: [],
             searchLink: '',
-            showDropDown: false
+            showDropDown: false,
+            loader: false
         }
     },
     mounted() {
@@ -89,13 +93,14 @@ export default {
         startSearch() {
             let vm = this
             if(vm.value.length > 3){
-                this.focused = true
+                vm.showDropDown = true
+                vm.loader = true
                 api.startSearch(vm.value).then(answer => {
                     vm.searchLink = answer.url
                     setTimeout(() => {
                         vm.searchShields = answer.shields
                         vm.searchProducts = answer.products
-                        vm.showDropDown = true
+                        vm.loader = false
                     }, 300);
                 }).catch(errors => {
                     console.error(errors);
