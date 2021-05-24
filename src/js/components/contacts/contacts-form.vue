@@ -1,5 +1,5 @@
 <template>
-    <form action="" class="contacts-form" @submit.prevent="submit">
+    <form action="" class="contacts-form" @submit.prevent="submit" ref="form">
         <h3 class="contacts-form__title">{{  $tc('contacts.form_title') }}</h3>
         <div class="contacts-form__column">
             <label name="name" class="contacts-form__label">
@@ -107,7 +107,7 @@
         </label>
         <div class="contacts-form__stick">
             <label for="files" class="contacts-form__stick-label">
-                <input id="files" type="file" class="contacts-form__stick-input">
+                <input id="files" name="files" type="file" ref="file" class="contacts-form__stick-input">
                 {{ $tc('contacts.form_stick_input') }}
             </label>
             <span class="contacts-form__stick-text">
@@ -167,12 +167,15 @@ export default {
         methods:{
             submit(){
                 this.$v.$touch();
+                let formData = {};
                 if (!this.$v.name.$invalid &&
                     !this.$v.newEmail.$invalid && 
                     !this.$v.phone.$invalid &&
                     !this.$v.message.$invalid 
                 ) {
-                    let formData = {};
+                    if(this.$refs.file.files[0]){
+                        formData.file = this.$refs.file.files[0]
+                    }
                     formData.name = this.name
                     formData.phone = this.phone
                     formData.mail = this.newEmail
@@ -186,6 +189,7 @@ export default {
             },
             sendData(data){
                 console.log(data);
+                this.$refs.form.reset()
             }
         }
 }

@@ -104,14 +104,12 @@
         },
         methods: {
             loading(){
-                console.log(1);
                 let vm = this
                 // setTimeout(function () {
                     vm.loaded = false
                 // }, 500)
             },
             applyListing(contents) {
-                console.log(2);
                 this.content = contents;
                 if(contents.pagination) {
                     this.internalPagination = contents.pagination;
@@ -120,7 +118,6 @@
                 this.loaded = true
             },
             loadListing(contents) {
-                console.log(3);
                 this.content = contents;
                 this.internalPagination = contents.pagination;
                 this.internalProducts = this.internalProducts.concat(contents.products)
