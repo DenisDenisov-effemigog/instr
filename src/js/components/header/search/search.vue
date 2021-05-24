@@ -61,7 +61,7 @@
                     </div>
                 </div>
             </div>
-            <div v-else>
+            <div class="search__no-result" v-else>
                 Ничего не найдено
             </div>
         </div>
