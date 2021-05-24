@@ -23,7 +23,6 @@
                             :searchLink="searchLink"
                             :searchShields="searchShields"
                             :searchProducts="searchProducts"
-                            v-if="focused && !!searchLink"
                     ></search> 
                 </form>
             </div>
@@ -49,7 +48,6 @@
                 :searchShields="searchShields"
                 :searchProducts="searchProducts"
                 :searchLink="searchLink"
-                v-if="focused && !!searchLink"
             ></search>
         </form>
     </div>
