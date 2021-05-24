@@ -23,6 +23,7 @@
                             :searchLink="searchLink"
                             :searchShields="searchShields"
                             :searchProducts="searchProducts"
+                            v-if="focused"
                     ></search> 
                 </form>
             </div>
@@ -31,7 +32,7 @@
             </div>
         </div>
         <form @submit.prevent="goToSearch" class="header__search-form">
-            <input @focus="focused = true" type="text" 
+            <input type="text" 
                    class="header__search-input" 
                    :class="{'header__search-input_focused': focused}" 
                    :placeholder="$tc('header.search.placeholder')"
@@ -47,7 +48,7 @@
                 :searchShields="searchShields"
                 :searchProducts="searchProducts"
                 :searchLink="searchLink"
-                v-if="showDropDown && !!searchLink && searchLink.length > 0"
+                v-if="focused"
             ></search>
         </form>
     </div>
@@ -89,6 +90,7 @@ export default {
         startSearch() {
             let vm = this
             if(vm.value.length > 3){
+                this.focused = true
                 api.startSearch(vm.value).then(answer => {
                     vm.searchLink = answer.url
                     setTimeout(() => {
