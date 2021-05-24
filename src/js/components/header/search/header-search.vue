@@ -19,12 +19,11 @@
                            @keyup="startSearch"
                     >
                     <button class="mobile-search__btn">{{ $tc('header.search.btn_find') }}</button>
-                     <search :focused=focused
-                             :searchLink="searchLink"
-                             :searchShields="searchShields"
-                             :searchProducts="searchProducts"
-                             v-if="!!searchLink && searchLink.length > 0"
-                     ></search> 
+                    <search :focused=focused
+                            :searchLink="searchLink"
+                            :searchShields="searchShields"
+                            :searchProducts="searchProducts"
+                    ></search> 
                 </form>
             </div>
             <div class="header__search-mobile-btn" v-else @click.prevent="searchClick">
