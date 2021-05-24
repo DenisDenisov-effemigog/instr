@@ -1,0 +1,31 @@
+.actions
+    @extend .contacts
+    &__title
+        @extend .title-6
+    &__main
+        margin-top: 1rem
+        margin-left: -0.5rem
+        margin-right: -0.5rem
+        +tablet 
+            margin-top: 1.5rem
+            margin-left: -1rem
+            margin-right: -1rem
+    &__list
+        display: flex
+        flex-wrap: wrap
+        margin-top: 1rem
+        +tablet 
+            margin-top: 1.5rem
+    &__item 
+        width: calc(100% / 2)
+        padding: 0.5rem
+        +tablet
+            width: calc(100% / 3)
+            padding: 1rem
+    &__link
+        display: block
+    &__img
+        +tablet
+            &:hover
+                box-shadow: 0 2px 8px 0 rgba($black-real, .16)
+            

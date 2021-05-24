@@ -80,57 +80,6 @@
 		<h3 class="contacts-trade__title">
 			{{ 'contacts.trade_title'|trans }}
 		</h3>
-		<ul class="contacts-trade__list">
-			{% for trade in tradeOffices %}
-				<li class="contacts-trade__item">
-					{% if trade.title is not empty %}
-						<div class="contacts-trade__subtitle">{{trade.title}}:</div>
-					{% endif %}
-					<div class="contacts-trade__desc">
-						<ul class="contacts-trade__sublist">
-							{% if trade.address is not empty %}
-								<li class="contacts-trade__subitem">
-									<div class="contacts-trade__icon">
-										<svg>
-											<use xlink:href="{{ templatePath }}images/sprite.svg#icons__location"></use>
-										</svg>
-									</div>
-									<div class="contacts-trade__text">
-										{{trade.address}}
-									</div>
-								</li>
-							{% endif %}
-							{% if trade.phone is not empty %}
-								<li class="contacts-trade__subitem">
-									<div class="contacts-trade__icon">
-										<svg viewbox="0 0 16 16">
-											<use xlink:href="{{ templatePath }}images/sprite.svg#icons__phone"></use>
-										</svg>
-									</div>
-									<div class="contacts-trade__text">
-										{{trade.phone}}
-									</div>
-								</li>
-							{% endif %}
-							{% if trade.mail is not empty %}
-								<li class="contacts-trade__subitem">
-									<div class="contacts-trade__icon">
-										<svg>
-											<use xlink:href="{{ templatePath }}images/sprite.svg#icons__mail"></use>
-										</svg>
-									</div>
-									<div class="contacts-trade__text">
-										{{trade.mail}}
-									</div>
-								</li>
-							{% endif %}
-						</ul>
-					</div>
-				</li>
-			{% endfor %}
-		</ul>
-        <div class="contacts-trade__info">{{ 'contacts.note'|trans }}
-             <a href="tel: {{ 'contacts.tel'|trans }}" class="contacts-trade__info-link">{{ 'contacts.tel'|trans }}</a> {{ 'contacts.note-more'|trans }} <a href="mailto: {{ 'contacts.mail'|trans }}" class="contacts-trade__info-link">{{ 'contacts.mail'|trans }}</a>
-        </div>
+		{% include './contacts-trade.twig' with {'tradeOffices': tradeOffices} %}
 	</div>
 </section>

@@ -1,0 +1,15 @@
+<section class="actions">
+    <h2 class="actions__title">Акции</h2>
+    <div class="actions__main">
+        <ul class="actions__list">
+            {% for action in actionBanners %}
+                <li class="actions__item">
+                    <a class="actions__link" href="{{ action.link }}">
+                        <img class="actions__img" src="{{ action.img }}">
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</section>
