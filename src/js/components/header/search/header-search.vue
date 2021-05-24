@@ -23,7 +23,7 @@
                             :searchLink="searchLink"
                             :searchShields="searchShields"
                             :searchProducts="searchProducts"
-                            v-if="focused"
+                            v-if="focused && !!searchLink"
                     ></search> 
                 </form>
             </div>
@@ -39,6 +39,7 @@
                    v-model="value"
                    @keyup="startSearch"
                    @blur="focused = false"
+                   v-if="focused"
             >
                 <svg v-show="focused" class="header__search-form-icon">
                     <use :xlink:href="templatePath + 'images/sprite.svg#icons__mag'"></use>
@@ -48,7 +49,7 @@
                 :searchShields="searchShields"
                 :searchProducts="searchProducts"
                 :searchLink="searchLink"
-                v-if="focused"
+                v-if="focused && !!searchLink"
             ></search>
         </form>
     </div>
