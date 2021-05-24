@@ -25,6 +25,7 @@
                              :searchShields="searchShields"
                              :searchProducts="searchProducts"
                              v-if="focused"
+                             :result="result"
                      ></search> 
                 </form>
             </div>
@@ -51,6 +52,7 @@
                 :searchProducts="searchProducts"
                 :searchLink="searchLink"
                 v-if="showDropDown && focused"
+                :result="result"
             ></search>
         </form>
     </div>
@@ -80,7 +82,8 @@ export default {
             searchProducts: [],
             searchLink: '',
             showDropDown: false,
-            loader: false
+            loader: false,
+            result: true
         }
     },
     mounted() {
@@ -97,6 +100,11 @@ export default {
                 vm.loader = true
                 api.startSearch(vm.value).then(answer => {
                     vm.searchLink = answer.url
+                    if(!!vm.searchLink){
+                        vm.result = true
+                    }else{
+                        vm.result = false
+                    }
                     setTimeout(() => {
                         vm.searchShields = answer.shields
                         vm.searchProducts = answer.products
