@@ -44,7 +44,7 @@
             }
         },
         created(){
-            vm.$eventBus.$on('stop-loading', this.stopLoading)
+            this.$eventBus.$on('stop-loading', this.stopLoading)
         }
     }
 </script>
