@@ -38,6 +38,7 @@
                 v-if="+internalPagination.current < +internalPagination.total"
                 :hash="hash" 
                 :currentPage="internalPagination.current"
+                :loaded="loaded"
             ></component>
             <component 
                 is="pagination"
