@@ -1,9 +1,15 @@
 <template>
-    <div class="listing__pagination-btn"
-         @click="loadMore(currentPage + 1)"
-    >
-        <span>{{ $tc('link.load_more') }}</span> 
-        <svg v-if="loaded" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="20px" height="20px" viewBox="0 0 128 128" xml:space="preserve"><g><path d="M64 9.75A54.25 54.25 0 0 0 9.75 64H0a64 64 0 0 1 128 0h-9.75A54.25 54.25 0 0 0 64 9.75z" fill="#dc0000"/><animateTransform attributeName="transform" type="rotate" from="0 64 64" to="360 64 64" dur="1800ms" repeatCount="indefinite"></animateTransform></g></svg>
+    <div class="listing__pagination-btn-wrap">
+        <div v-if="btnLoaded" class="listing__pagination-btn"
+        >
+            <span>{{ $tc('link.load_more') }}</span> 
+            <svg  xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="20px" height="20px" viewBox="0 0 128 128" xml:space="preserve"><g><path d="M64 9.75A54.25 54.25 0 0 0 9.75 64H0a64 64 0 0 1 128 0h-9.75A54.25 54.25 0 0 0 64 9.75z" fill="#dc0000"/><animateTransform attributeName="transform" type="rotate" from="0 64 64" to="360 64 64" dur="1800ms" repeatCount="indefinite"></animateTransform></g></svg>
+        </div>
+        <div v-else class="listing__pagination-btn"
+            @click="loadMore(currentPage + 1)"
+        >
+            <span>{{ $tc('link.load_more') }}</span> 
+        </div>
     </div>
 </template>
 
@@ -23,30 +29,29 @@
             placement: {
                 type: String,
                 default: '.listing'
+            },
+            btnLoaded:{
+                type: Boolean,
+                required: true
             }
         },
         data(){
             return {
-                loaded: false
             }
         },
         methods:{
             loadMore(page) {
+                console.log(1);
                 let vm = this;
                 vm.loading()
                 vm.$eventBus.$emit('load-listing', page, 'loadMore');
             },
             loading(){
-                console.log(1);
-                this.loaded = true
+                this.$emit('btnPreload')
             },
-            stopLoading(){
-                console.log(2);
-                this.loaded = false
-            }
+            
         },
         created(){
-            this.$eventBus.$on('stop-loading', this.stopLoading)
         }
     }
 </script>

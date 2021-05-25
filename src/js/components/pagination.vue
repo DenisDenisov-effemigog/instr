@@ -206,23 +206,26 @@
                 }
             },
             goToPage(page, loadMore) {
-                let vm = this
-                if (vm.placement === '.listing') {
-                    api.goToPage(vm.hash, page).then((answer) => {
-                        if (loadMore === 'loadMore') {
-                            vm.$eventBus.$emit('apply-loaded-listing', answer.output);
-                        } else {
-                            vm.$eventBus.$emit('apply-listing', answer.output);
-                            vm.scrollList();
-                        }
-                        vm.$eventBus.$emit('stop-loading')
-                    }).catch(errors => {
-                        console.log(errors);
-                    });
-                } else if (vm.placement === '.order') {
-                    vm.$eventBus.$emit('apply-orders-list', page);
-                    vm.scrollList();
-                }
+                setTimeout(() => {
+                    let vm = this
+                    if (vm.placement === '.listing') {
+                        api.goToPage(vm.hash, page).then((answer) => {
+                            if (loadMore === 'loadMore') {
+                                vm.$eventBus.$emit('apply-loaded-listing', answer.output);
+                            } else {
+                                vm.$eventBus.$emit('apply-listing', answer.output);
+                                vm.scrollList();
+                            }
+                            vm.$eventBus.$emit('stop-loading')
+                        }).catch(errors => {
+                            console.log(errors);
+                        });
+                    } else if (vm.placement === '.order') {
+                        vm.$eventBus.$emit('apply-orders-list', page);
+                        vm.scrollList();
+                    }
+                }, 5000);
+                
             },
             scrollList() {
                 if (window.innerWidth > 767) {

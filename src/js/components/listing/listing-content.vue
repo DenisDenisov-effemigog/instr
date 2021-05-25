@@ -38,6 +38,8 @@
                 v-if="+internalPagination.current < +internalPagination.total"
                 :hash="hash" 
                 :currentPage="internalPagination.current"
+                :btnLoaded="btnLoaded"
+                @btnPreload="btnPreload"
             ></component>
             <component 
                 is="pagination"
@@ -79,6 +81,7 @@
                 content: null,
                 internalPagination: {},
                 internalProducts: [],
+                btnLoaded: false
             };
         },
         mounted() {
@@ -97,12 +100,19 @@
             this.$eventBus.$on('apply-listing', this.applyListing);
             this.$eventBus.$on('apply-loaded-listing', this.loadListing);
             this.$eventBus.$on('load-new-listing', this.loading);
+            this.$eventBus.$on('stop-loading', this.stopBtnLoading)
         },
         beforeDestroy() {
             this.$eventBus.$off('apply-listing');
             this.$eventBus.$off('apply-loaded-listing');
         },
         methods: {
+            btnPreload(){
+                this.btnLoaded = true
+            },
+            stopBtnLoading(){
+                this.btnLoaded = false
+            },
             loading(){
                 let vm = this
                 // setTimeout(function () {
