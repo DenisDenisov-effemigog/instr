@@ -23,10 +23,6 @@
             placement: {
                 type: String,
                 default: '.listing'
-            },
-            loaded:{
-                type: Boolean,
-                required: true
             }
         },
         data(){
@@ -41,7 +37,7 @@
                 vm.$eventBus.$emit('load-listing', page, 'loadMore');
             },
             loading(){
-                 this.loaded = true
+                this.loaded = true
             },
             stopLoading(){
                 this.loaded = false
