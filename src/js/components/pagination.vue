@@ -222,6 +222,7 @@
                     vm.$eventBus.$emit('apply-orders-list', page);
                     vm.scrollList();
                 }
+                vm.$eventBus.$emit('stop-loading')
             },
             scrollList() {
                 if (window.innerWidth > 767) {
