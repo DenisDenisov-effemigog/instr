@@ -215,6 +215,7 @@
                             vm.$eventBus.$emit('apply-listing', answer.output);
                             vm.scrollList();
                         }
+                        vm.$eventBus.$emit('stop-loading')
                     }).catch(errors => {
                         console.log(errors);
                     });
@@ -222,7 +223,6 @@
                     vm.$eventBus.$emit('apply-orders-list', page);
                     vm.scrollList();
                 }
-                vm.$eventBus.$emit('stop-loading')
             },
             scrollList() {
                 if (window.innerWidth > 767) {
