@@ -36,7 +36,12 @@
                                     <div class="page-order__desc-subtitle">
                                         {{ $tc(item.title) }}
                                     </div>
-                                    <div class="page-order__desc-desc">
+                                    <ul class="page-order__desc-desc" v-if="index === 1">
+                                        <li>{{item.desc.name}}</li>
+                                        <li>{{item.desc.email}}</li>
+                                        <li>{{item.desc.phone}}</li>
+                                    </ul>
+                                    <div class="page-order__desc-desc" v-else>
                                         {{item.desc}}
                                     </div>
                                 </div>

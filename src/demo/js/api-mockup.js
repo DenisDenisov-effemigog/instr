@@ -540,7 +540,11 @@ for(let i = 0; i < 10; ++i) {
                 ],
 
             delivery_address: 'Москва, Трехгорный Вал 3, ст. 26',
-            delivery_person: 'Константин Константинопольский konstantynopolsky@gmail.com +7 (910) 872-92-89',
+            delivery_person: {
+                name: 'Константин Константинопольский',
+                email: 'konstantynopolsky@gmail.com',
+                phone: '+7 (910) 872-92-89'
+            },
             payment: 'Оплата онлайн по карте',
             basket:[
                 {
@@ -2382,7 +2386,7 @@ function runLocal (action, config) {
                     id: foundOrder.id,
                     number: foundOrder.number,
                     date: foundOrder.date,
-                   totalPrice: foundOrder.totalPrice,
+                    totalPrice: foundOrder.totalPrice,
                     status: foundOrder.status,
                     qty: foundOrder.qty,
                     paid: foundOrder.paid,
