@@ -37,9 +37,11 @@
                 vm.$eventBus.$emit('load-listing', page, 'loadMore');
             },
             loading(){
+                console.log(1);
                 this.loaded = true
             },
             stopLoading(){
+                console.log(2);
                 this.loaded = false
             }
         },
