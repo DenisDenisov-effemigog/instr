@@ -33,7 +33,7 @@
         methods:{
             loadMore(page) {
                 let vm = this;
-                vm.loading
+                vm.loading()
                 vm.$eventBus.$emit('load-listing', page, 'loadMore');
             },
             loading(){
