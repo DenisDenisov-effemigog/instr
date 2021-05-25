@@ -1,6 +1,16 @@
 <template>
     <div class="pagination" v-if="pagination.urls.length > 1">
-        <a  class="pagination__arrow pagination__arrow-prev"
+        <a v-if="btnLoaded" class="pagination__arrow pagination__arrow-prev"
+            :class="{'pagination__arrow--disabled': internalPagination.urls[0].title <= 2 
+                || internalPagination.urls[0].title - 1 === 2
+                || (currentIteration === lastIteration && lastArray[0].title - 1 === 2)
+            }"
+        >
+            <svg>
+                <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-left'"></use>
+            </svg>
+        </a>
+        <a v-else class="pagination__arrow pagination__arrow-prev"
             :class="{'pagination__arrow--disabled': internalPagination.urls[0].title <= 2 
                 || internalPagination.urls[0].title - 1 === 2
                 || (currentIteration === lastIteration && lastArray[0].title - 1 === 2)
@@ -11,7 +21,69 @@
                 <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-left'"></use>
             </svg>
         </a>
-        <ul class="pagination__list">
+        <ul v-if="btnLoaded" class="pagination__list">
+
+            <li class="pagination__item" v-if="internalPagination.urls[0].title > 1"
+                :class="{'pagination__item--current': internalPagination.current === 1}"
+            >
+                <a  class="pagination__link"
+                >1</a>
+            </li>
+
+            <li class="pagination__item" v-if="(internalPagination.urls[0].title - 1 === 2
+                || (currentIteration === lastIteration && lastArray[0].title - 1 === 2))
+                && +internalPagination.urls[1].title !== 2"
+                :class="{'pagination__item--current': internalPagination.current === 2 }"
+            >
+                <a class="pagination__link"
+                >2</a>
+            </li>
+            <li class="pagination__item pagination__item--dots" v-else-if="internalPagination.urls[0].title > 2">
+                <div class="pagination__link">...</div>
+            </li>
+
+            <span class="pagination__span last" v-if="currentIteration === lastIteration
+                && internalPagination.urls.length < arrayLength"
+            >
+                <li class="pagination__item"
+                    v-for="(link, index) in lastArray.slice(0, arrayLength)" :key="index"
+                    :class="{'pagination__item--current': internalPagination.current == link.title}"
+                >
+                    <a class="pagination__link"
+                    >{{ link.title }}</a>
+                </li>
+            </span>
+            <span class="pagination__span" v-else>
+                <li class="pagination__item"
+                    v-for="(link, index) in internalPagination.urls.slice(0, arrayLength)" :key="index"
+                    :class="{'pagination__item--current': internalPagination.current === +link.title}"
+                >
+                    <a class="pagination__link"
+                    >{{ link.title }}</a>
+                </li>
+            </span>
+            
+            <li class="pagination__item"
+                :class="{'pagination__item--current': internalPagination.current === lastArray[arrayLength - 2].title}"
+                v-if="penultFlag"
+            >
+                <a class="pagination__link"
+                >{{ lastArray[arrayLength - 2].title }}</a>
+            </li>
+            <li class="pagination__item pagination__item--dots"
+                v-else-if="dotsFlag">
+                <div class="pagination__link">...</div>
+            </li>
+
+            <li class="pagination__item last" v-if="(notLast || lastLengthFlag) && lastFlag"
+                :class="{'pagination__item--current': internalPagination.current == internalPagination.total}"
+            >
+                <a class="pagination__link"
+                >{{ internalPagination.total }}</a>
+            </li>
+
+        </ul>
+        <ul v-else class="pagination__list">
 
             <li class="pagination__item" v-if="internalPagination.urls[0].title > 1"
                 :class="{'pagination__item--current': internalPagination.current === 1}"
@@ -85,7 +157,15 @@
             </li>
 
         </ul>
-        <a  class="pagination__arrow pagination__arrow_next"
+        <a v-if="btnLoaded" class="pagination__arrow pagination__arrow_next"
+            :class="{'pagination__arrow--disabled': !notLast || penultFlag
+            || +internalPagination.urls[arrayLength - 1].title + (arrayLength - 2) >= internalPagination.total}"
+        >
+            <svg>
+                <use :xlink:href="templatePath + 'images/sprite.svg#arrows__arrow-right'"></use>
+            </svg>
+        </a>
+        <a v-else class="pagination__arrow pagination__arrow_next"
             :class="{'pagination__arrow--disabled': !notLast || penultFlag
             || +internalPagination.urls[arrayLength - 1].title + (arrayLength - 2) >= internalPagination.total}"
             @click.prevent="slideToNext"
@@ -123,6 +203,10 @@
             placement: {
                 type: String,
                 default: '.listing'
+            },
+            btnLoaded:{
+                type: Boolean,
+                required: true
             }
         },
         watch: {
@@ -206,6 +290,7 @@
                 }
             },
             goToPage(page, loadMore) {
+                this.$emit('btnPreload')
                 setTimeout(() => {
                     let vm = this
                     if (vm.placement === '.listing') {

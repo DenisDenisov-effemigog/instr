@@ -45,6 +45,8 @@
                 is="pagination"
                 :pagination="internalPagination"
                 :hash="hash"
+                :btnLoaded="btnLoaded"
+                @btnPreload="btnPreload"
             >
             </component>
         </div>
