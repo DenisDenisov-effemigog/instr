@@ -1,10 +1,10 @@
 <template>
-  <div
+  <ul
     ref="sub"
     class="catalogue__subcategories"
     :class="{ 'catalogue__subcategories--open': openFlag }"
   >
-    <div
+    <li
       class="catalogue__subcategory"
       v-for="(subcategory, index) in subcategories"
       :key="index"
@@ -15,8 +15,8 @@
       <furtherSubcategories
         :categories="subcategory.subcategories"
       ></furtherSubcategories>
-    </div>
-  </div>
+    </li>
+  </ul>
 </template>
 
 <script>
@@ -50,7 +50,7 @@ export default {
       );
       let height = 0;
       if (category && window.innerWidth > 990) {
-        if (window.innerWidth < 1275) {
+        if (window.innerWidth < 1440) {
             this.$refs.sub.children.forEach(function (item) {
             height += item.clientHeight + 26;
           });

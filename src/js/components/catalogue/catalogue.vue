@@ -3,7 +3,7 @@
 
         <catalogue-mobile :categories="categories"></catalogue-mobile>
 
-        <div ref="tablet" class="catalogue_tablet">
+        <div ref="tablet" class="catalogue--tablet">
             <div class="container">
                 <ul ref="catList" class="catalogue__categories">
                     <div class="catalogue__categories-bg"></div>

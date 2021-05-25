@@ -18,20 +18,20 @@
     //&--active
     & .container
         display: flex
-    & .catalogue_mobile
+    & .catalogue--mobile
         display: block
         +desktop-small
             display: none
-    & .catalogue_tablet
+    & .catalogue--tablet
         +desktop-small
             position: relative
             display: block
-    &_tablet
+    &--tablet
         display: none
         height: 63.375rem
         background-color: $white
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08)
-    &_mobile
+    &--mobile
         display: none
         height: fit-content
         min-height: 83vh

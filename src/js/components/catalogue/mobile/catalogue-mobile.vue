@@ -1,7 +1,7 @@
 <template>
-    <div class="catalogue_mobile">
+    <div class="catalogue--mobile">
         <div class="container">
-            <div class="catalogue_mobile__close" @click="closeCategory">
+            <div class="catalogue--mobile__close" @click="closeCategory">
                 <svg>
                     <use :xlink:href="templatePath + 'images/sprite.svg#close'"></use>
                 </svg>
