@@ -109,6 +109,7 @@ export default {
             let vm = this;
             vm.currentPoint = data
             if (vm.sortingPage === 'listing') {
+                this.$eventBus.$emit('load-new-listing')
                 vm.$eventBus.$emit('add-sorting', vm.currentPoint.value);
             } else if (vm.sortingPage === 'orders') {
                 vm.$eventBus.$emit('apply-sorting', vm.currentPoint.value);
