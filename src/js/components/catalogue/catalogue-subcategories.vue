@@ -9,9 +9,9 @@
       v-for="(subcategory, index) in subcategories"
       :key="index"
     >
-      <a :href="subcategory.url" class="catalogue__subcategory-link">{{
-        subcategory.title
-      }}</a>
+      <a :href="subcategory.url" class="catalogue__subcategory-link">
+        {{ subcategory.title }}
+      </a>
       <furtherSubcategories
         :categories="subcategory.subcategories"
       ></furtherSubcategories>
@@ -34,6 +34,12 @@ export default {
       type: Boolean,
       required: true,
     },
+    catHeight: { type: Function}
+  },
+  data() {
+      return {
+        height: 1014
+      }
   },
   components: {
     furtherSubcategories,
@@ -44,36 +50,33 @@ export default {
     },
   },
   methods: {
-    catHeight() {
-    //   let category = this.$refs.sub.classList.contains(
-    //     "catalogue__subcategories--open"
-    //   );
+    blockHeight() {
       let height = 0;
-      if (this.openFlag && window.innerWidth > 990) {
-        this.$refs.sub.children.forEach(function (item) {
+      this.$refs.sub.children.forEach(function(item) {
         height += item.clientHeight + 26;
-        })
-        if (height / 3 > 1014) {
-          this.$emit("catHeight", height / 3);
-        } else {
-          this.$emit("catHeight", 1014);
-        }
-
-        // if (window.innerWidth < 1440) {
-        //     this.$refs.sub.children.forEach(function (item) {
-        //     height += item.clientHeight + 26;
-        //   });
-        //   if (height / 3 > 1014) {
-        //     this.$emit("catHeight", height / 3);
-        //   }
-        // } else {
-        //   this.$emit("catHeight", 1014);
-        // }
+      })
+      if (this.openFlag && window.innerWidth > 990) {
+        height / 3 > 1014 ? this.height = height / 3 : this.height = 1014
+        // this.$emit("catHeight", this.height)
       }
     },
+    // catHeight() {
+    //   let height = 0;
+    //   this.$refs.sub.children.forEach(function(item) {
+    //     height += item.clientHeight + 26;
+    //   })
+    //   if (this.openFlag && window.innerWidth > 990) {
+    //     height / 3 > 1014 ? this.height = height / 3 : this.height = 1014
+    //     this.$emit("catHeight", this.height)
+    //   }
+    // },
   },
   mounted() {
-    this.catHeight();
+    this.blockHeight();
+    if (this.openFlag && window.innerWidth > 990) {
+        this.catHeight(this.height);
+    }
+    // this.catHeight();
   },
   created() {
     this.$eventBus.$on("catMouseOver", this.catHeight);

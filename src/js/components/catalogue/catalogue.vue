@@ -12,7 +12,7 @@
                         v-for="(category, index) in categories"
                         :key="index"
                         @mouseover="catMouseOver(index)"
-                        :class="{'catalogue__category_hovered': hovered === index}"
+                        :class="{'catalogue__category--hovered': hovered === index}"
                     >
                         <div>
                             <a :href="category.url" class="catalogue__category-link">
@@ -28,10 +28,10 @@
                 <catalogue-subcategories
                     v-for="(category, index) in categories"
                     :key="index"
-                    v-show="index === hovered"
+                    v-if="index === hovered"
                     :categories="category.subcategories"
                     :openFlag ="index === hovered"
-                    @catHeight="catHeight"
+                    :catHeight="catHeight"
                 >
                 </catalogue-subcategories>
             </div>
