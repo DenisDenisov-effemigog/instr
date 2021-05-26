@@ -67,7 +67,7 @@
                                :id="product.id" 
                                :compare="product.is_compare"
                     ></component>
-                    <div v-click-outside="closeTooltip" class="card-menu__wrap">
+                    <div v-click-outside="closeTooltip" class="card__menu-wrap">
                         <div @click="openTooltip" class="card__menu-btn">
                             <span></span>
                             <span></span>
