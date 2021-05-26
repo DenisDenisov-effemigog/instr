@@ -49,7 +49,7 @@ export default {
     //     "catalogue__subcategories--open"
     //   );
       let height = 0;
-      if (openFlag && window.innerWidth > 990) {
+      if (this.openFlag && window.innerWidth > 990) {
         this.$refs.sub.children.forEach(function (item) {
         height += item.clientHeight + 26;
         })
