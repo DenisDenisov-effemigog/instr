@@ -2680,6 +2680,16 @@ function runLocal (action, config) {
                     }
                 });
                 break;
+            case 'instrument2:rest.feedback.send':
+                resolve({
+                    data: {
+                        data: {
+                            status: 1,
+                            answer: true
+                        }
+                    }
+                });
+                break;
             // case 'instrument2:rest.api.compare.filter':
             //     resolve({
             //         data: {
