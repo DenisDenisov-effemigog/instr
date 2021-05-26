@@ -50,16 +50,25 @@ export default {
       );
       let height = 0;
       if (category && window.innerWidth > 990) {
-        if (window.innerWidth < 1440) {
-            this.$refs.sub.children.forEach(function (item) {
-            height += item.clientHeight + 26;
-          });
-          if (height / 3 > 1014) {
-            this.$emit("catHeight", height / 3);
-          }
+        this.$refs.sub.children.forEach(function (item) {
+        height += item.clientHeight + 26;
+        })
+        if (height / 3 > 1014) {
+          this.$emit("catHeight", height / 3);
         } else {
           this.$emit("catHeight", 1014);
         }
+
+        // if (window.innerWidth < 1440) {
+        //     this.$refs.sub.children.forEach(function (item) {
+        //     height += item.clientHeight + 26;
+        //   });
+        //   if (height / 3 > 1014) {
+        //     this.$emit("catHeight", height / 3);
+        //   }
+        // } else {
+        //   this.$emit("catHeight", 1014);
+        // }
       }
     },
   },
