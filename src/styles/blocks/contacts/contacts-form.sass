@@ -1,11 +1,4 @@
 .contacts-form
-    display: none
-    +tablet
-        width: 50%
-        display: block
-        padding: 2rem
-        border: 1px solid $border-color_4
-        border-radius: 4px
     &__title
         @extend .title-7
         font-weight: 700
@@ -40,11 +33,14 @@
             border-color: $primary-hover
     &__column
         margin-top: 1.5rem
-        display: flex
-        justify-content: space-between
-        flex-wrap: wrap
         .contacts-form__label
-            width: calc(100% / 2 - 0.75rem)
+            width: 100%
+        +tablet
+            display: flex
+            justify-content: space-between
+            flex-wrap: wrap
+            .contacts-form__label
+                width: calc(100% / 2 - 0.75rem)
     &__stick
         @extend .text-3
         font-weight: 400
@@ -62,5 +58,14 @@
     &__btn
         @extend .button-primary
         margin-top: 1.5rem
-
-
+    &__answer
+        position: absolute
+        width: 100%
+        left: 50%
+        top: 50%
+        transform: translate(-50%, -50%)
+        padding: 2rem
+        background: #fff
+    &__answer-text
+        @extend .text-1
+        text-align: center
