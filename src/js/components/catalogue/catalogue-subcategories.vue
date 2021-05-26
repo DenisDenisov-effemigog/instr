@@ -45,11 +45,11 @@ export default {
   },
   methods: {
     catHeight() {
-      let category = this.$refs.sub.classList.contains(
-        "catalogue__subcategories--open"
-      );
+    //   let category = this.$refs.sub.classList.contains(
+    //     "catalogue__subcategories--open"
+    //   );
       let height = 0;
-      if (category && window.innerWidth > 990) {
+      if (openFlag && window.innerWidth > 990) {
         this.$refs.sub.children.forEach(function (item) {
         height += item.clientHeight + 26;
         })
