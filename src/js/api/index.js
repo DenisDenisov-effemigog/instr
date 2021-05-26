@@ -415,6 +415,16 @@ class Api {
     getCompare() {
         return this._promiseBitrixRequest('instrument2:rest.api.compare.get');
     }
+    sendContactForm(name, phone, email, message, city, attachment) {
+        return this._promiseBitrixRequest('instrument2:rest.feedback.send',{
+            name: name,
+            phone: phone,
+            email: email,
+            message: message,
+            city: city,
+            attachment: attachment
+        });
+    }
     // filterCompare() {
     //     return this._promiseBitrixRequest('instrument2:rest.api.compare.filter',);
     // }

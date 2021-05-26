@@ -1,6 +1,6 @@
 <template>
     <div class="contacts__wrap">
-        <form v-if="!answer" action="" class="contacts-form" @submit.prevent="submit" ref="form">
+        <form v-if="!answerFlag" action="" class="contacts-form" @submit.prevent="submit" ref="form">
             <h3 class="contacts-form__title">{{  $tc('contacts.form_title') }}</h3>
             <div class="contacts-form__column">
                 <label name="name" class="contacts-form__label">
@@ -132,6 +132,11 @@
 
     import config from "../../config";
 
+    import * as Api from '../../api/index'
+
+    let api = Api.getInstance();
+    let base64 = require('base-64');
+
 export default {
     name:"contacts-form",
     components: {
@@ -169,35 +174,43 @@ export default {
                 town:'',
                 message:'',
                 tokens: config.phoneTokens,
-                answer: false
+                answerFlag: false
             }
         },
         methods:{
-            submit(){
+            async submit(){
                 this.$v.$touch();
-                let formData = {};
+                let attachment = {};
                 if (!this.$v.name.$invalid &&
                     !this.$v.newEmail.$invalid && 
                     !this.$v.phone.$invalid &&
                     !this.$v.message.$invalid 
                 ) {
                     if(this.$refs.file.files[0]){
-                        formData.file = this.$refs.file.files[0]
+                        attachment.name = this.$refs.file.files[0].name
+                        let data = await this.getBase64(this.$refs.file.files[0])
+                        attachment.data = data
                     }
-                    formData.name = this.name
-                    formData.phone = this.phone
-                    formData.mail = this.newEmail
-                    formData.town = this.town
-                    formData.message = this.message
-                    this.sendData(formData);
+                    this.sendData(this.name, this.phone, this.email, this.message, this.city, attachment);
                 }else{
                     console.log("zapolni");
                 }
                 
             },
-            sendData(data){
-                console.log(data);
-                this.answer = true
+            sendData(name, phone, email, message, city, attachment){
+                api.sendContactForm(name, phone, email, message, city, attachment).then(answer => {
+                    if(answer){
+                        this.answerFlag = true
+                    }
+                })
+            },
+            getBase64(file) {
+                return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.readAsDataURL(file);
+                    reader.onload = () => resolve(reader.result);
+                    reader.onerror = error => reject(error);
+                });
             }
         }
 }
