@@ -171,7 +171,7 @@ export default {
                 name: '',
                 phone: '',
                 newEmail: '',
-                town:'',
+                city:'',
                 message:'',
                 tokens: config.phoneTokens,
                 answerFlag: false
