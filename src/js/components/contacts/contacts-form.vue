@@ -73,22 +73,22 @@
                     <div class="contacts-form__error-text contacts__error-text--invalid"
                         v-if="$v.newEmail.$error">{{ $tc('text.error') }}</div>
                 </label>
-                <label name="town" class="contacts-form__label">
+                <label name="city" class="contacts-form__label">
                     <input
                         class="contacts-form__input"
                         type="text"
-                        name="town"
-                        id="town"
-                        autocomplete="town"
+                        name="city"
+                        id="city"
+                        autocomplete="city"
                         autocorrect="off"
-                        v-model.trim="$v.town.$model">
+                        v-model.trim="$v.city.$model">
                     <span class="contacts-form__label-text"
-                        :class="{'contacts-form__label-text--up': $v.town.required}"
+                        :class="{'contacts-form__label-text--up': $v.city.required}"
                     >{{ $tc('contacts.form_town') }}</span>
                     <svg viewBox="0 0 24 24"
                         class="contacts-form__label-icon" 
-                        v-if="$v.town.required"
-                        @click="$v.town.$model = ''">
+                        v-if="$v.city.required"
+                        @click="$v.city.$model = ''">
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
                     </svg>
                 </label>
@@ -152,7 +152,7 @@ export default {
             name: {
                 required
             },
-            town: {
+            city: {
                 required
             },
             phone: {
