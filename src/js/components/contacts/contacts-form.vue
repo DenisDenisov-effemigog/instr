@@ -191,14 +191,14 @@ export default {
                         let data = await this.getBase64(this.$refs.file.files[0])
                         attachment.data = data
                     }
-                    this.sendData(this.name, this.phone, this.email, this.message, this.city, attachment);
+                    this.sendData(this.name, this.phone, this.newEmail, this.message, this.city, attachment);
                 }else{
                     console.log("zapolni");
                 }
                 
             },
             sendData(name, phone, email, message, city, attachment){
-                api.sendContactForm(name, phone, newEmail, message, city, attachment).then(answer => {
+                api.sendContactForm(name, phone, email, message, city, attachment).then(answer => {
                     if(answer){
                         this.answerFlag = true
                     }
