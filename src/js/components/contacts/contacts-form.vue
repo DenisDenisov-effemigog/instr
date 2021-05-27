@@ -198,7 +198,7 @@ export default {
                 
             },
             sendData(name, phone, email, message, city, attachment){
-                api.sendContactForm(name, phone, email, message, city, attachment).then(answer => {
+                api.sendContactForm(name, phone, newEmail, message, city, attachment).then(answer => {
                     if(answer){
                         this.answerFlag = true
                     }
