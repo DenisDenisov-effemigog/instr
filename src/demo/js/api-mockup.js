@@ -2680,7 +2680,7 @@ function runLocal (action, config) {
                     }
                 });
                 break;
-            case 'instrument2:rest.feedback.send':
+            case 'instrument2:rest.api.feedback.send':
                 resolve({
                     data: {
                         data: {

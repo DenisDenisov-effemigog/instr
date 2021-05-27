@@ -416,7 +416,7 @@ class Api {
         return this._promiseBitrixRequest('instrument2:rest.api.compare.get');
     }
     sendContactForm(name, phone, email, message, city, attachment) {
-        return this._promiseBitrixRequest('instrument2:rest.feedback.send',{
+        return this._promiseBitrixRequest('instrument2:rest.api.feedback.send',{
             name: name,
             phone: phone,
             email: email,
