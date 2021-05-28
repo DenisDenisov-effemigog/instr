@@ -29,29 +29,28 @@
         <label for="company" class="profile-modal__label" v-if="person.company">
             <input
                 class="profile-modal__input"
-                :class="{'profile-modal__input--error': $v.company.$error}"
                 type="text"
                 name="company"
                 id="company"
                 autocomplete="organization"
                 autocorrect="off"
-                v-model.trim="$v.company.$model"
+                v-model.trim="company"
                 readonly="readonly">
             <span class="profile-modal__label-text"
-                  :class="{'profile-modal__label-text--up': $v.company.required}"
+                  :class="{'profile-modal__label-text--up': company}"
             >{{ $tc('title.company') }}</span>
         </label>
         <label for="code" class="profile-modal__label" v-if="person.code">
             <input
                 class="profile-modal__input"
-                :class="{'profile-modal__input--error': $v.code.$error}"
+                :class="{'profile-modal__input--error': code}"
                 type="text"
                 name="code"
                 id="code"
-                v-model.trim="$v.code.$model"
+                v-model.trim="code"
                 readonly="readonly">
             <span class="profile-modal__label-text"
-                  :class="{'profile-modal__label-text--up': $v.code.required}"
+                  :class="{'profile-modal__label-text--up': code}"
             >{{ $tc('title.vat') }}</span>
         </label>
         <label for="phone" class="profile-modal__label profile-modal__label--column">
