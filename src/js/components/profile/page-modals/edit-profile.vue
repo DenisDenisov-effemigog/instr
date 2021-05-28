@@ -150,8 +150,6 @@
             },
             phone: {
                 required,
-                minLength: minLength(18),
-                maxLength: maxLength(18),
             },
             email: {
                 required,
