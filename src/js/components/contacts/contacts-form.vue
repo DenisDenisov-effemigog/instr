@@ -54,7 +54,7 @@
                     <input
                         class="contacts-form__input"
                         :class="{'contacts-form__input--error': $v.newEmail.$error}"
-                        type="email"
+                        type="text"
                         name="email"
                         id="email"
                         autocomplete="email"
@@ -62,7 +62,7 @@
                         autocapitalize="off"
                         v-model.trim="newEmail">
                     <span class="contacts-form__label-text"
-                        :class="{'contacts-form__label-text--up': $v.newEmail.required}"
+                        :class="{'contacts-form__label-text--up': $v.newEmail.required || emailReg}"
                     >{{ $tc('title.email') }}</span>
                     <svg viewBox="0 0 24 24"
                         class="contacts-form__label-icon"
@@ -71,7 +71,9 @@
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
                     </svg>
                     <div class="contacts-form__error-text contacts__error-text--invalid"
-                        v-if="$v.newEmail.$error">{{ $tc('text.error') }}</div>
+                        v-if="$v.newEmail.$error && !emailReg">{{ $tc('text.error') }}</div>
+                    <div class="contacts-form__error-text contacts__error-text--invalid"
+                        v-if="emailReg">{{ $tc('text.error_reg') }}</div>
                 </label>
                 <label name="city" class="contacts-form__label">
                     <input
@@ -174,17 +176,25 @@ export default {
                 city:'',
                 message:'',
                 tokens: config.phoneTokens,
-                answerFlag: false
+                answerFlag: false,
+                emailReg: false
             }
         },
         methods:{
             async submit(){
                 this.$v.$touch();
                 let attachment = {};
+                let mailReg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+                if(!mailReg.test(this.newEmail) && !this.newEmail == ''){
+                    this.emailReg = true
+                }else{
+                    this.emailReg = false
+                }
                 if (!this.$v.name.$invalid &&
                     !this.$v.newEmail.$invalid && 
                     !this.$v.phone.$invalid &&
-                    !this.$v.message.$invalid 
+                    !this.$v.message.$invalid &&
+                    mailReg.test(this.newEmail)
                 ) {
                     if(this.$refs.file.files[0]){
                         attachment.name = this.$refs.file.files[0].name

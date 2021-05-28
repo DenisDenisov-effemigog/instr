@@ -363,6 +363,7 @@
     "text.description": "Опис",
     "text.discount": "Знижка",
     "text.error": "Помилка при введенні даних",
+    "text.error_reg": "Некоректний формат пошти",
     "text.error.server": "Приносимо вибачення, але щось пішло не так",
     "text.free": "Безкоштовно",
     "text.from": "від",
