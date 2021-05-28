@@ -64,18 +64,20 @@ export default {
             ],
             reasons: [
                 'delete_profile.reason', 'delete_profile.reason', 'delete_profile.reason', 'delete_profile.reason_another'
-            ]
+            ],
+            profile: {}
         }  
     },
     computed: {
         h1() {
             return this.$store.state.layout.h1;
         },
-        profile() {
-            return this.cloneOverJson(this.$store.state.personal);
+        profileGet() {
+            return this.profile = this.cloneOverJson(this.$store.state.personal);
         },
     },
     created() {
+        this.profileGet
         this.$eventBus.$on('editProfile', this.editProfile)
     },
     methods: {
