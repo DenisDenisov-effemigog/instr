@@ -26,7 +26,7 @@
                 v-if="$v.name.$error"
             >{{ $tc('text.error') }}</span>   
         </label>
-        <label for="company" class="profile-modal__label">
+        <label for="company" class="profile-modal__label" v-if="person.company">
             <input
                 class="profile-modal__input"
                 :class="{'profile-modal__input--error': $v.company.$error}"
@@ -41,7 +41,7 @@
                   :class="{'profile-modal__label-text--up': $v.company.required}"
             >{{ $tc('title.company') }}</span>
         </label>
-        <label for="code" class="profile-modal__label">
+        <label for="code" class="profile-modal__label" v-if="person.code">
             <input
                 class="profile-modal__input"
                 :class="{'profile-modal__input--error': $v.code.$error}"
