@@ -141,13 +141,6 @@
             name: {
                 required
             },
-            company: {
-                required
-            },
-            code: {
-                required,
-                alphaNum
-            },
             phone: {
                 required,
             },
