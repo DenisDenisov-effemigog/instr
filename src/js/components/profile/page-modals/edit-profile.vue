@@ -176,9 +176,9 @@
             saveChanges() {
                 let vm = this
                 
-                api.editProfile(vm.$v.name.$model, vm.$v.phone.$model, vm.$v.email.$model).then(answer => {
+                api.editProfile(vm.$v.name.$model, vm.$v.phone.$model, vm.$v.email.$model).then((data) => {
                     vm.$eventBus.$emit('closeModal')
-                    vm.$eventBus.$emit('editProfile', answer)
+                    vm.$eventBus.$emit('editProfile', data)
                 }).catch(errors => {
                     console.error(errors);
                 })
