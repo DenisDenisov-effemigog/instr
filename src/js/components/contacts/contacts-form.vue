@@ -83,14 +83,14 @@
                         id="city"
                         autocomplete="city"
                         autocorrect="off"
-                        v-model.trim="$v.city.$model">
+                        v-model.trim="city">
                     <span class="contacts-form__label-text"
-                        :class="{'contacts-form__label-text--up': $v.city.required}"
+                        :class="{'contacts-form__label-text--up': city != ''}"
                     >{{ $tc('contacts.form_town') }}</span>
                     <svg viewBox="0 0 24 24"
                         class="contacts-form__label-icon" 
-                        v-if="$v.city.required"
-                        @click="$v.city.$model = ''">
+                        v-if="city != '' "
+                        @click="city = ''">
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
                     </svg>
                 </label>
@@ -152,9 +152,6 @@ export default {
     },
     validations: {
             name: {
-                required
-            },
-            city: {
                 required
             },
             phone: {
