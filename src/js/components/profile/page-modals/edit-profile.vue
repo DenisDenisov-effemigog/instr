@@ -105,7 +105,7 @@
             </svg>
             <span
                 class="profile-modal__error-text profile-modal__error-text--invalid-email"
-                v-if="$v.newEmail.$error && !emailReg"
+                v-if="$v.email.$error && !emailReg"
             >{{ $tc('text.error') }}</span>
             <span
                 class="profile-modal__error-text profile-modal__error-text--invalid-email"
