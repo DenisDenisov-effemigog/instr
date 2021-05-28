@@ -111,7 +111,7 @@
                     <input
                         class="checkout-reg__input"
                         :class="{'checkout-reg__input--error': $v.newEmail.$error}"
-                        type="email"
+                        type="text"
                         name="email"
                         id="email-checkout"
                         autocomplete="email"
@@ -131,7 +131,9 @@
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
                     </svg>
                     <div class="checkout-reg__error-text checkout-reg__error-text--invalid"
-                        v-if="$v.newEmail.$error">{{ $tc('text.error') }}</div>
+                        v-if="$v.newEmail.$error && !emailReg">{{ $tc('text.error') }}</div>
+                    <div class="checkout-reg__error-text checkout-reg__error-text--invalid"
+                        v-if="emailReg">{{ $tc('text.error_reg') }}</div>
                 </label>
             </form>
         </div>
@@ -193,7 +195,8 @@
                 phone: null,
                 newEmail: '',
                 phoneTokens: config.phoneTokens,
-                codeTokens: config.codeTokens
+                codeTokens: config.codeTokens,
+                emailReg: false
             }
         },
         created() {
@@ -201,7 +204,14 @@
         },
         methods:{
             buildPersonData(){
-                this.$eventBus.$emit('push-personal-data', this.name, this.company, this.code, this.phone, this.newEmail,)
+                let mailReg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+                if(!mailReg.test(this.newEmail) && !this.newEmail == ''){
+                    this.emailReg = true
+                }else{
+                    this.emailReg = false
+                    this.$eventBus.$emit('push-personal-data', this.name, this.company, this.code, this.phone, this.newEmail,)
+                }
+                
             },
             registerError() {
                 let vm = this

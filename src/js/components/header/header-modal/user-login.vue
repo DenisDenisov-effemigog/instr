@@ -5,7 +5,7 @@
             <input
                 class="user__input"
                 :class="{'user__input--error': $v.email.$error || incorrect}"
-                type="email"
+                type="text"
                 name="email"
                 id="email"
                 autocomplete="email"
@@ -22,7 +22,9 @@
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>
             <div class="user__error-text user__error-text--invalid"
-                v-if="$v.email.$error">{{ $tc('text.error') }}</div>
+                v-if="$v.email.$error && !emailReg">{{ $tc('text.error') }}</div>
+            <div class="user__error-text user__error-text--invalid"
+                v-if="emailReg">{{ $tc('text.error_reg') }}</div>
         </label>
         <label name="password" class="user__label">
             <input
@@ -79,13 +81,20 @@
                 email: '',
                 password: '',
                 passwordHidden: false,
-                incorrect: false
+                incorrect: false,
+                emailReg: false
             }
         },
         methods: {
             submit() {
                 this.$v.$touch();
-                if (!this.$v.$invalid) {
+                let mailReg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+                if(!mailReg.test(this.email) && !this.email == ''){
+                    this.emailReg = true
+                }else{
+                    this.emailReg = false
+                }
+                if (!this.$v.$invalid && !this.emailReg) {
                     this.login();
                 }
             },

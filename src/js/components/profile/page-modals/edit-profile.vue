@@ -86,7 +86,7 @@
             <input
                 class="profile-modal__input"
                 :class="{'profile-modal__input--error': $v.email.$error}"
-                type="email"
+                type="text"
                 name="email"
                 id="email"
                 autocomplete="email"
@@ -105,8 +105,12 @@
             </svg>
             <span
                 class="profile-modal__error-text profile-modal__error-text--invalid-email"
-                v-if="$v.email.$error"
+                v-if="$v.newEmail.$error && !emailReg"
             >{{ $tc('text.error') }}</span>
+            <span
+                class="profile-modal__error-text profile-modal__error-text--invalid-email"
+                v-if="emailReg"
+            >{{ $tc('text.error_reg') }}</span>
         </label>
         <div class="profile-modal__error-text" v-if="$v.$error">*{{ $tc('text.required') }}</div>
         <input type="submit" class="profile-modal__button" :value="$tc('input.text.save')">
@@ -162,12 +166,19 @@
                 phone: null,
                 email: '',
                 tokens: config.phoneTokens,
+                emailReg: false
             }
         },
         methods: {
             submit() {
                 this.$v.$touch();
-                if (!this.$v.$invalid) {
+                let mailReg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+                if(!mailReg.test(this.email) && !this.email == ''){
+                    this.emailReg = true
+                }else{
+                    this.emailReg = false
+                }
+                if (!this.$v.$invalid && !this.emailReg) {
                     this.saveChanges();
                 }
             },

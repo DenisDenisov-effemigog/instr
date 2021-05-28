@@ -128,7 +128,7 @@
             <input
                 class="user__input"
                 :class="{'user__input--error': $v.newEmail.$error}"
-                type="email"
+                type="text"
                 name="email"
                 id="email"
                 autocomplete="email"
@@ -145,7 +145,9 @@
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>
             <div class="user__error-text user__error-text--invalid"
-                v-if="$v.newEmail.$error">{{ $tc('text.error') }}</div>
+                v-if="$v.newEmail.$error && !emailReg">{{ $tc('text.error') }}</div>
+            <div class="user__error-text user__error-text--invalid"
+                v-if="emailReg">{{ $tc('text.error_reg') }}</div>
         </label>
         <div class="user__error-text" v-if="$v.error">*{{ $tc('text.required') }}</div>
         <label class="user__label user__label_row">
@@ -217,16 +219,24 @@
                 phone: '',
                 newEmail: '',
                 tokens: config.phoneTokens,
+                emailReg: false
             }
         },
         methods: {
             submit() {
                 this.$v.$touch();
+                let mailReg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+                if(!mailReg.test(this.newEmail) && !this.newEmail == ''){
+                    this.emailReg = true
+                }else{
+                    this.emailReg = false
+                }
                 if (this.individualFlag){
                     if (!this.$v.name.$invalid &&
                         !this.$v.newEmail.$invalid && 
                         !this.$v.phone.$invalid && 
-                        this.agreement
+                        this.agreement &&
+                        !this.emailReg
                     ) {
                         this.register();
                     }
@@ -236,7 +246,8 @@
                         !this.$v.vat.$invalid && 
                         !this.$v.newEmail.$invalid && 
                         !this.$v.phone.$invalid && 
-                        this.agreement
+                        this.agreement &&
+                        !this.emailReg
                     ) {
                         this.register();
                     }

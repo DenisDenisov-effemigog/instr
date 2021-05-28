@@ -62,7 +62,7 @@
                         autocapitalize="off"
                         v-model.trim="newEmail">
                     <span class="contacts-form__label-text"
-                        :class="{'contacts-form__label-text--up': $v.newEmail.required || emailReg}"
+                        :class="{'contacts-form__label-text--up': $v.newEmail.required}"
                     >{{ $tc('title.email') }}</span>
                     <svg viewBox="0 0 24 24"
                         class="contacts-form__label-icon"
@@ -194,7 +194,7 @@ export default {
                     !this.$v.newEmail.$invalid && 
                     !this.$v.phone.$invalid &&
                     !this.$v.message.$invalid &&
-                    mailReg.test(this.newEmail)
+                    !this.emailReg
                 ) {
                     if(this.$refs.file.files[0]){
                         attachment.name = this.$refs.file.files[0].name
