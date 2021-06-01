@@ -145,9 +145,9 @@
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>
             <div class="user__error-text user__error-text--invalid"
-                v-if="$v.newEmail.$error && !emailReg">{{ $tc('text.error') }}</div>
+                v-show="$v.newEmail.$error && !emailReg">{{ $tc('text.error') }}</div>
             <div ref="emailError" class="user__error-text user__error-text--invalid"
-                v-if="emailReg">{{ $tc('text.error_reg') }}</div>
+                v-show="emailReg">{{ $tc('text.error_reg') }}</div>
         </label>
         <div class="user__error-text" v-if="$v.error">*{{ $tc('text.required') }}</div>
         <label class="user__label user__label_row">
@@ -267,8 +267,14 @@
                     window.location.replace(config.links.personal_profile);
                 }).catch((errors) => {
                     console.log(errors )
-                    this.emailReg = true
-                    this.$refs.emailError.innerHTML = errors.message
+                    setTimeout(() => {
+                        this.emailReg = true
+                        console.log(this.$refs.emailError);
+                        this.$refs.emailError.innerHTML = errors.message
+                    }, 100);
+                    // this.emailReg = true
+                    // console.log(this.$refs.emailError);
+                    // this.$refs.emailError.innerHTML = errors.message
                 });
 
             },
