@@ -104,11 +104,12 @@
             </svg>
             <span
                 class="profile-modal__error-text profile-modal__error-text--invalid-email"
-                v-if="$v.email.$error && !emailReg"
+                v-show="$v.email.$error && !emailReg"
             >{{ $tc('text.error') }}</span>
             <span
+                ref="emailError"
                 class="profile-modal__error-text profile-modal__error-text--invalid-email"
-                v-if="emailReg"
+                v-show="emailReg"
             >{{ $tc('text.error_reg') }}</span>
         </label>
         <div class="profile-modal__error-text" v-if="$v.$error">*{{ $tc('text.required') }}</div>
@@ -165,6 +166,7 @@
                 let mailReg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
                 if(!mailReg.test(this.email) && !this.email == ''){
                     this.emailReg = true
+                    this.$refs.emailError.innerHTML = this.$tc('text.error_reg')
                 }else{
                     this.emailReg = false
                 }
@@ -180,6 +182,10 @@
                     vm.$eventBus.$emit('editProfile', answer)
                 }).catch(errors => {
                     console.error(errors);
+                    setTimeout(() => {
+                        this.emailReg = true
+                        this.$refs.emailError.innerHTML = errors[0].message
+                    }, 100);
                 })
             }
         },
