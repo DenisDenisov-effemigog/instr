@@ -269,7 +269,7 @@
                     console.log(errors )
                     setTimeout(() => {
                         this.emailReg = true
-                        console.log(this.$refs.emailError);
+                        console.log(errors[0].message);
                         this.$refs.emailError.innerHTML = errors.message
                     }, 100);
                     // this.emailReg = true
