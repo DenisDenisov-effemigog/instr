@@ -131,9 +131,9 @@
                         <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
                     </svg>
                     <div class="checkout-reg__error-text checkout-reg__error-text--invalid"
-                        v-if="$v.newEmail.$error && !emailReg">{{ $tc('text.error') }}</div>
-                    <div class="checkout-reg__error-text checkout-reg__error-text--invalid"
-                        v-if="emailReg">{{ $tc('text.error_reg') }}</div>
+                        v-show="$v.newEmail.$error && !emailReg">{{ $tc('text.error') }}</div>
+                    <div ref="emailError" class="checkout-reg__error-text checkout-reg__error-text--invalid"
+                        v-show="emailReg">{{ $tc('text.error_reg') }}</div>
                 </label>
             </form>
         </div>
@@ -201,12 +201,22 @@
         },
         created() {
             this.$eventBus.$on('register-error', this.registerError)
+            this.$eventBus.$on("signup-error", this.signupError)
         },
         methods:{
+            signupError(message){
+                this.registerError
+                setTimeout(() => {
+                    this.emailReg = true
+                    this.$refs.emailError.innerHTML = message
+                }, 100);
+            },
             buildPersonData(){
                 let mailReg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
                 if(!mailReg.test(this.newEmail) && !this.newEmail == ''){
+                    this.$refs.emailError.innerHTML = this.$tc('text.error_reg')
                     this.emailReg = true
+                    this.registerError
                 }else{
                     this.emailReg = false
                     this.$eventBus.$emit('push-personal-data', this.name, this.company, this.code, this.phone, this.newEmail,)

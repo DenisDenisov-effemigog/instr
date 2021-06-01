@@ -437,6 +437,9 @@
                         }).catch(errors => {
                             console.error('Cannot create order');
                             console.log(errors);
+                            if(errors[0].code == "signup_error"){
+                                this.$eventBus.$emit("signup-error", errors[0].message)
+                            }
                         })
                     }).catch(errors => {
                         console.error('Cannot validate order');
