@@ -144,9 +144,9 @@
                 @click="$v.newEmail.$model = ''">
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>
-            <div ref="emailError" class="user__error-text user__error-text--invalid"
-                v-if="$v.newEmail.$error && !emailReg">{{ $tc('text.error') }}</div>
             <div class="user__error-text user__error-text--invalid"
+                v-if="$v.newEmail.$error && !emailReg">{{ $tc('text.error') }}</div>
+            <div ref="emailError" class="user__error-text user__error-text--invalid"
                 v-if="emailReg">{{ $tc('text.error_reg') }}</div>
         </label>
         <div class="user__error-text" v-if="$v.error">*{{ $tc('text.required') }}</div>
@@ -266,8 +266,9 @@
                     vm.$eventBus.$emit('closeModal');
                     window.location.replace(config.links.personal_profile);
                 }).catch((errors) => {
-                    console.log("errors " + errors )
-                    console.log(this.$refs.emailError);
+                    console.log(errors )
+                    this.$refs.emailError.innerHTML = errors.message
+                    this.emailReg = true
                 });
 
             },
