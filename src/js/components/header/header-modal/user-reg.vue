@@ -228,6 +228,7 @@
                 let mailReg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
                 if(!mailReg.test(this.newEmail) && !this.newEmail == ''){
                     this.emailReg = true
+                    this.$refs.emailError.innerHTML = $tc('text.error_reg')
                 }else{
                     this.emailReg = false
                 }
