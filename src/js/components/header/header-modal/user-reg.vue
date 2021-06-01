@@ -265,7 +265,7 @@
                 }
                 api.authSignUp(type, vm.name, vm.company, vm.vat, vm.newEmail, vm.phone, vm.isVatPayer).then(() => {
                     vm.$eventBus.$emit('closeModal');
-                    window.location.replace(config.links.personal_profile);
+                    window.location.replace(config.links.personal_dashboard);
                 }).catch((errors) => {
                     console.log(errors )
                     setTimeout(() => {

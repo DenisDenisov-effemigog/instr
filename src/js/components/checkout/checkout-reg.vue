@@ -205,7 +205,7 @@
         },
         methods:{
             signupError(message){
-                this.registerError
+                this.registerError()
                 setTimeout(() => {
                     this.emailReg = true
                     this.$refs.emailError.innerHTML = message
@@ -216,7 +216,7 @@
                 if(!mailReg.test(this.newEmail) && !this.newEmail == ''){
                     this.$refs.emailError.innerHTML = this.$tc('text.error_reg')
                     this.emailReg = true
-                    this.registerError
+                    this.registerError()
                 }else{
                     this.emailReg = false
                     this.$eventBus.$emit('push-personal-data', this.name, this.company, this.code, this.phone, this.newEmail,)
