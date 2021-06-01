@@ -144,7 +144,7 @@
                 @click="$v.newEmail.$model = ''">
                 <use :xlink:href="templatePath + 'images/sprite.svg#icons__times-small'"></use>
             </svg>
-            <div class="user__error-text user__error-text--invalid"
+            <div ref="emailError" class="user__error-text user__error-text--invalid"
                 v-if="$v.newEmail.$error && !emailReg">{{ $tc('text.error') }}</div>
             <div class="user__error-text user__error-text--invalid"
                 v-if="emailReg">{{ $tc('text.error_reg') }}</div>
@@ -266,7 +266,8 @@
                     vm.$eventBus.$emit('closeModal');
                     window.location.replace(config.links.personal_profile);
                 }).catch((errors) => {
-                    console.log(errors)
+                    console.log("errors " + errors )
+                    console.log(this.$refs.emailError);
                 });
 
             },
