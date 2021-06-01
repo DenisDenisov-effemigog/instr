@@ -1,5 +1,6 @@
 <template>
     <div class="personalcab">
+        <pre>{{personal}}</pre>
         <div class="personalcab__layout">
             <div class="personalcab__personal-data">
                 <h2 class="profile__title">{{ $tc(h1) }}</h2>
