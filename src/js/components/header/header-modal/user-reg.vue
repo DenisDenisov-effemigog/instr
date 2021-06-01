@@ -267,8 +267,8 @@
                     window.location.replace(config.links.personal_profile);
                 }).catch((errors) => {
                     console.log(errors )
-                    this.$refs.emailError.innerHTML = errors.message
                     this.emailReg = true
+                    this.$refs.emailError.innerHTML = errors.message
                 });
 
             },
