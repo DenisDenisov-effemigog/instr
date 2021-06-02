@@ -77,7 +77,6 @@ export default {
         },
     },
     created() {
-        this.profileGet
         this.$eventBus.$on('editProfile', this.editProfile)
     },
     methods: {
@@ -93,6 +92,7 @@ export default {
         }
     },
     mounted() {
+        this.profileGet
         this.$eventBus.$emit('hideMenu')
         this.$store.dispatch('personalUpdateProfile');
     }
