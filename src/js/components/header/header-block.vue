@@ -92,7 +92,7 @@ export default {
     },
     computed: {
         userLink() {
-            return this.user.authorized ? config.links.personal_dashboard : ''
+            return this.user.authorized ? config.links.personal : ''
         }
     },
     created() {

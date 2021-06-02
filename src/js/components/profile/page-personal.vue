@@ -89,7 +89,7 @@ export default {
             this.$eventBus.$emit("openModal", 'profile-delete', [this.reasons, 'profile'], false, false)
         },
         editProfile(profile) {
-            this.profile = this.cloneOverJson(this.$store.state.personal);
+            this.profile = profile
         }
     },
     mounted() {
