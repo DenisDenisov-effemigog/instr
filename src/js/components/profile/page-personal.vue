@@ -89,12 +89,12 @@ export default {
         },
         editProfile(profile) {
             this.profile = profile
+            this.$store.dispatch('personalUpdateProfile');
         }
     },
     mounted() {
         this.profileGet
         this.$eventBus.$emit('hideMenu')
-        this.$store.dispatch('personalUpdateProfile');
     }
 }
 </script>
