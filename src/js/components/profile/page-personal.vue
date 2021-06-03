@@ -65,15 +65,14 @@ export default {
             reasons: [
                 'delete_profile.reason', 'delete_profile.reason', 'delete_profile.reason', 'delete_profile.reason_another'
             ],
-            profile: {}
         }  
     },
     computed: {
         h1() {
             return this.$store.state.layout.h1;
         },
-        profileGet() {
-            return this.profile = this.cloneOverJson(this.$store.state.personal);
+        profile() {
+            return this.cloneOverJson(this.$store.state.personal);
         },
     },
     created() {
@@ -87,13 +86,11 @@ export default {
             // через массив передаем причины удаления и что удаляем - 2 элемеента
             this.$eventBus.$emit("openModal", 'profile-delete', [this.reasons, 'profile'], false, false)
         },
-        editProfile(profile) {
-            this.profile = profile
+        editProfile() {
             this.$store.dispatch('personalUpdateProfile');
         }
     },
     mounted() {
-        this.profileGet
         this.$eventBus.$emit('hideMenu')
     }
 }

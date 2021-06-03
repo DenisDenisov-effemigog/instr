@@ -179,7 +179,7 @@
                 
                 api.editProfile(vm.$v.name.$model, vm.$v.phone.$model, vm.$v.email.$model).then((answer) => {
                     vm.$eventBus.$emit('closeModal')
-                    vm.$eventBus.$emit('editProfile', answer)
+                    vm.$eventBus.$emit('editProfile')
                 }).catch(errors => {
                     console.error(errors);
                     setTimeout(() => {
