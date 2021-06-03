@@ -161,31 +161,40 @@
                 applyFilter: false,
                 filteredProducts: [],
                 slideWidth:0,
-                startMove: 0,
+                startMoveX: 0,
+                startMoveY: 0,
                 directionFlag: '',
                 startTime: 0,
-                endTime: 0
+                endTime: 0,
+                swipe: true
             }
         },
         methods: {
             touchstart(event){
-                this.startMove = event.changedTouches[0].pageX
+                this.startMoveX = event.changedTouches[0].pageX
                 this.startTime = new Date().getTime()
+                this.startMoveY = event.changedTouches[0].pageY
             },
             touchmove(event){
-                if(this.startMove < event.changedTouches[0].pageX){
+                console.log(Math.abs(this.startMoveY - event.changedTouches[0].pageY));
+                if(this.startMoveX < event.changedTouches[0].pageX){
                     this.directionFlag = true
                 }else{
                     this.directionFlag = false
+                }
+                if(Math.abs(this.startMoveY - event.changedTouches[0].pageY) > 30){
+                    this.swipe = false
+                }else{
+                    this.swipe = true
                 }
             },
             touchend(){
                 this.endTime = new Date().getTime()
                 if(this.directionFlag){
-                    if(this.endTime - this.startTime > 120)
+                    if(this.endTime - this.startTime > 120 && this.swipe)
                         this.slideToPrev()
                 }else{
-                    if(this.endTime - this.startTime > 120)
+                    if(this.endTime - this.startTime > 120 && this.swipe)
                         this.slideToNext()
                 }
             },
@@ -264,7 +273,6 @@
             setSlideWidth(){
                     let vm = this
                     vm.$refs.main.forEach(function(item){
-                        console.log(item);
                         item.children.forEach(function(elem){
                             elem.style.minWidth = vm.slideWidth + 'px'
                         })
