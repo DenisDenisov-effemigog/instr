@@ -176,13 +176,14 @@
                 this.startMoveY = event.changedTouches[0].pageY
             },
             touchmove(event){
-                console.log(Math.abs(this.startMoveY - event.changedTouches[0].pageY));
+                let pointX = Math.abs(this.startMoveX - event.changedTouches[0].pageX)
+                let pointY = Math.abs(this.startMoveY - event.changedTouches[0].pageY)
                 if(this.startMoveX < event.changedTouches[0].pageX){
                     this.directionFlag = true
                 }else{
                     this.directionFlag = false
                 }
-                if(Math.abs(this.startMoveY - event.changedTouches[0].pageY) > 30){
+                if(pointX < pointY){
                     this.swipe = false
                 }else{
                     this.swipe = true
