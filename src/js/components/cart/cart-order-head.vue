@@ -65,7 +65,7 @@ export default {
             return this.progress
         },
         getPrice(){
-            return this.salePrice - this.currentPrice
+            return (this.salePrice - this.currentPrice).toFixed(2)
         }
     }
 }
