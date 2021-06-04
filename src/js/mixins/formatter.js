@@ -2,7 +2,7 @@ export default {
     methods: {
         currency: function (value) {
             let str = value
-                .toFixed(0);
+                .toFixed(2);
 
             let parts = str.split('.');
             parts[0] = parts[0]

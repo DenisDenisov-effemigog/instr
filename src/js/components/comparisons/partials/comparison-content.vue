@@ -100,6 +100,23 @@
                     @touchmove="touchmove"
                     @touchend="touchend"
                 >
+                    <li class="comparisons__item"  >
+                        <div class="comparisons__sidebar">
+                            <div class="comparisons__sidebar-item">
+                                {{ $tc('text.price') }}
+                            </div>
+                        </div>
+                        <div class="comparisons__descriptions">
+                            <div class="comparisons__descriptions-wrap" ref="price">
+                                <div class="comparisons__description" v-for="(item, itemIndex) in comparisons" :key="itemIndex" :class="{'comparisons__description--mod': qnty <= 2}" >
+                                    <div class="comparisons__description-text" >{{item.newPrice}}</div>
+                                </div>
+                                <div class="comparisons__description comparisons__description--no-product" v-if="qnty == 1">
+
+                                </div>
+                            </div>
+                        </div>
+                    </li>
                     <li class="comparisons__item"  v-for="(item, itemIndex) in sliceList" :key="itemIndex">
                         <div class="comparisons__sidebar">
                             <div class="comparisons__sidebar-item">
@@ -206,12 +223,14 @@
                 if (vm.currentSlideNumber > 0 && window.innerWidth > 767 && this.qnty > 3) {
                     vm.currentSlideNumber--
                     vm.$refs.top.style.transform = `translateX(-${vm.currentSlideNumber * vm.slideWidth}px)`
+                    vm.$refs.price.style.transform = `translateX(-${vm.currentSlideNumber * vm.slideWidth}px)`
                     vm.$refs.main.forEach(function(item){
                         item.style.transform = `translateX(-${vm.currentSlideNumber * vm.slideWidth}px)`
                     })
                 }else if(vm.currentSlideNumber > 0 && window.innerWidth < 767 && this.qnty > 2){
                     vm.currentSlideNumber--
                     vm.$refs.top.style.transform = `translateX(-${vm.currentSlideNumber * vm.slideWidth}px)`
+                    vm.$refs.price.style.transform = `translateX(-${vm.currentSlideNumber * vm.slideWidth}px)`
                     vm.$refs.main.forEach(function(item){
                         item.style.transform = `translateX(-${vm.currentSlideNumber * vm.slideWidth}px)`
                     })
@@ -222,12 +241,14 @@
                 if (window.innerWidth > 767 && this.qnty > 3 && vm.currentSlideNumber !== (vm.qnty - vm.shownItemsQnty)) {
                     vm.currentSlideNumber++
                     vm.$refs.top.style.transform = `translateX(-${vm.currentSlideNumber * vm.slideWidth}px)`
+                    vm.$refs.price.style.transform = `translateX(-${vm.currentSlideNumber * vm.slideWidth}px)`
                     vm.$refs.main.forEach(function(item){
                         item.style.transform = `translateX(-${vm.currentSlideNumber * vm.slideWidth}px)`
                     })
                 }else if(window.innerWidth < 767 && this.qnty > 2 && vm.currentSlideNumber !== (vm.qnty - vm.shownItemsQnty)){
                     vm.currentSlideNumber++
                     vm.$refs.top.style.transform = `translateX(-${vm.currentSlideNumber * vm.slideWidth}px)`
+                    vm.$refs.price.style.transform = `translateX(-${vm.currentSlideNumber * vm.slideWidth}px)`
                     vm.$refs.main.forEach(function(item){
                         item.style.transform = `translateX(-${vm.currentSlideNumber * vm.slideWidth}px)`
                     })
@@ -257,6 +278,7 @@
                 let vm = this
                 this.currentSlideNumber = 0;
                 vm.$refs.top.style.transform = 'translateX(0)'
+                vm.$refs.price.style.transform = 'translateX(0)'
                 vm.$refs.main.forEach(function(item){
                     item.style.transform = 'translateX(0)'
                 })
