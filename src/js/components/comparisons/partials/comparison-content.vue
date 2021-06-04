@@ -302,6 +302,9 @@
                             elem.style.minWidth = vm.slideWidth + 'px'
                         })
                     })
+                    vm.$refs.price.children.forEach(function(elem){
+                        elem.style.minWidth = vm.slideWidth + 'px'
+                    })
             },
             getSlideWidht(){
                 this.slideWidth = this.$refs.top.children[0].offsetWidth
