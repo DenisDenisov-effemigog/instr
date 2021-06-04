@@ -176,26 +176,28 @@
                 this.startMoveY = event.changedTouches[0].pageY
             },
             touchmove(event){
-                let pointX = Math.abs(this.startMoveX - event.changedTouches[0].pageX)
-                let pointY = Math.abs(this.startMoveY - event.changedTouches[0].pageY)
                 if(this.startMoveX < event.changedTouches[0].pageX){
                     this.directionFlag = true
                 }else{
                     this.directionFlag = false
                 }
-                if(pointX < pointY){
+            },
+            touchend(event){
+                let pointX = Math.abs(this.startMoveX - event.changedTouches[0].pageX)
+                let pointY = Math.abs(this.startMoveY - event.changedTouches[0].pageY)
+                // console.log("pointX " + pointX);
+                // console.log("pointY " + pointY);
+                 if(pointX < pointY && pointY > 6){
                     this.swipe = false
                 }else{
                     this.swipe = true
                 }
-            },
-            touchend(){
                 this.endTime = new Date().getTime()
                 if(this.directionFlag){
-                    if(this.endTime - this.startTime > 120 && this.swipe)
+                    if(this.endTime - this.startTime > 80 && this.swipe)
                         this.slideToPrev()
                 }else{
-                    if(this.endTime - this.startTime > 120 && this.swipe)
+                    if(this.endTime - this.startTime > 80 && this.swipe)
                         this.slideToNext()
                 }
             },
