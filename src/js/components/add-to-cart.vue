@@ -183,8 +183,8 @@
                         clearTimeout(vm._loading_timer);
                         vm._loading_timer = null;
                     }
+                    this.$store.dispatch('basketOrderCalc')
                 });
-                this.$store.dispatch('basketOrderCalc')
             },
             startSetAmount() {
                 let vm = this;

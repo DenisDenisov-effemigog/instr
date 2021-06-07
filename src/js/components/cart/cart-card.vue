@@ -189,8 +189,9 @@
                 this.$store.dispatch('basketSendQuantity', {
                     productId: productId,
                     quantity: 0
+                }).finally(() => {
+                    this.$store.dispatch('basketOrderCalc')
                 })
-                this.$store.dispatch('basketOrderCalc')
             },
         },
     }
