@@ -109,7 +109,7 @@
                         <div class="comparisons__descriptions">
                             <div class="comparisons__descriptions-wrap" ref="price">
                                 <div class="comparisons__description" v-for="(item, itemIndex) in comparisons" :key="itemIndex" :class="{'comparisons__description--mod': qnty <= 2}" >
-                                    <div class="comparisons__description-text" >{{item.newPrice}}&nbsp;{{ $tc('text.currency') }}</div>
+                                    <div class="comparisons__description-text" >{{currency(item.newPrice)}}&nbsp;{{ $tc('text.currency') }}</div>
                                 </div>
                                 <div class="comparisons__description comparisons__description--no-product" v-if="qnty == 1">
 
@@ -324,7 +324,7 @@
                 if (this.expanded) {
                     return keyArr
                 } else {
-                    return keyArr.slice(0, 10)
+                    return keyArr.slice(0, 9)
                 }
                 
             },
